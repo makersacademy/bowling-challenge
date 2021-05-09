@@ -60,7 +60,7 @@ To run tests in the browser, open `public/js/spec/SpecRunner.html` in the browse
 
 ## Objectives
 
-The purpose of this project was to build a score calculator for 10 pin bowling. Bowling is a deceptively complex game and the goal here was to build a working app with high code quality, using test driven development. Once the game logic was complete I used jQuery, HTML and CSS to create a responsive UI and deployed the app.
+The purpose of this project was to build a score calculator for 10 pin bowling. Bowling is a deceptively complex game and the goal here was to build a working app with high code quality, using test driven development. Once the game logic was complete I used jQuery, HTML and CSS to create a responsive UI and deployed the app through surge. I used Travis CI and Coveralls to automate testing and coverage, and ESLint, CodeClimate and Better Code to ensure high code quality and maintainability.
 
 ### Testing:
 - I used Jasmine to write automated unit and feature tests which can be run in the browser. The code base was written using TDD, with a red-green-refactor approach.

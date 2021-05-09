@@ -14,24 +14,36 @@ class Bowling {
     let bowling = this;
 
     for (let frame = 0; frame < 10; frame++) {
-      if (spare(rollNumber) ){
+      if (strike(rollNumber) ){
+        strikeBonus(rollNumber)
+        rollNumber++
+      } else if (spare(rollNumber) ){
         spareBonus(rollNumber)
+        rollNumber += 2
       } else {
         frameScore(rollNumber)
+        rollNumber += 2
       }
-      rollNumber += 2
     }
     return totalScore;
 
-  function spare(rollNumber) {
-   return (bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] == 10)
+    function frameScore(rollNumber) {
+      return totalScore += bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] 
+    }
+    function bonus(rollNumber) {
+      return bowling.rolls[rollNumber + 1] + bowling.rolls[rollNumber + 2]
+    }
+    function spare(rollNumber) {
+    return (bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] === 10)
+    }
+    function spareBonus(rollNumber) {
+      return totalScore += bowling.rolls[rollNumber] + bonus(rollNumber)
+    }
+    function strike(rollNumber) {
+      return bowling.rolls[rollNumber] === 10
+    }
+    function strikeBonus(rollNumber) {
+      return totalScore += bowling.rolls[rollNumber] + bonus(rollNumber)
+    }
   }
-  function spareBonus(rollNumber) {
-    return totalScore += bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] + bowling.rolls[rollNumber + 2]
-  }
-  function frameScore(rollNumber) {
-    return totalScore += bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] 
-  }
-  }
-  
 }

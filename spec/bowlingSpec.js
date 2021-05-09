@@ -20,8 +20,8 @@ describe('Bowling', function() {
     })
   })
 
-  describe('can roll a normal game', function() {
-    it('can roll produces resuls from a normal game', function(){
+  describe('normal game', function() {
+    it('produces results from a normal game', function(){
      manyRolls(1,20)
      expect(bowling.score()).toEqual(20)
     })
@@ -45,6 +45,27 @@ describe('Bowling', function() {
       bowling.roll(3)
       bowling.roll(7)
       expect(bowling.score()).toEqual(53)
+    })
+  })
+
+  describe('strike game', function(){
+    it('can roll a strike', function(){
+      bowling.roll(10)
+      bowling.roll(5)
+      bowling.roll(3)
+      manyRolls(0,16)
+      expect(bowling.score()).toEqual(26)
+    })
+    it('can calculate final strike frame correctly', function(){
+      manyRolls(3,18)
+      bowling.roll(10)
+      bowling.roll(7)
+      bowling.roll(2)
+      expect(bowling.score()).toEqual(73)
+    })
+    it('can roll a perfect game', function(){
+      manyRolls(10,12)
+      expect(bowling.score()).toEqual(300)
     })
   })
 

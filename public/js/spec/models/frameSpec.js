@@ -5,7 +5,7 @@ describe('Frame', () => {
 
   beforeEach(() => { frame = new Frame });
 
-  describe('score', () => {
+  describe('#score()', () => {
     it('calculates the score after 1 roll', () => {
       frame.addRoll(5);
       expect(frame.score()).toBe(5);
@@ -25,7 +25,7 @@ describe('Frame', () => {
     });
   });
 
-  describe('isOver', () => {
+  describe('#isOver()', () => {
     it('knows it is over after 2 rolls', () => {
       frame.addRoll(5);
       frame.addRoll(5);

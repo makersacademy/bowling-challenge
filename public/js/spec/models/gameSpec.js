@@ -10,7 +10,7 @@ describe('Game', () => {
     spyOn(game, '_newFrame').and.returnValue(game.frames.push(frame));
   });
 
-  describe('addRoll', () => {
+  describe('#addRoll()', () => {
     it('adds roll to current frame', () => {
       game.addRoll(9);
       expect(frame.addRoll).toHaveBeenCalledWith(9);
@@ -26,7 +26,7 @@ describe('Game', () => {
     });
   });
 
-  describe('totalScore', () => {
+  describe('#totalScore()', () => {
     it('calculates the total score of all frames', () => {
       game.frames.push(frame);
       game.totalScore();

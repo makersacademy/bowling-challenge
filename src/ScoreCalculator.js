@@ -1,3 +1,5 @@
+'use strict';
+
 class ScoreCalculator {
   constructor() {
     this._frames = [];

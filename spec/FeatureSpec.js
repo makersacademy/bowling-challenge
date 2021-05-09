@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Feature test', () => {
   let scoreRecorder
   let scoreCalculator
@@ -98,7 +100,5 @@ describe('Feature test', () => {
     expect(scoreCalculator.frameScores(frames)[7]).toEqual(97 - 77);
     expect(scoreCalculator.frameScores(frames)[8]).toEqual(117 - 97);
     expect(scoreCalculator.frameScores(frames)[9]).toEqual(133 - 117);
-    console.log(frames)
-    console.log(scoreCalculator.frameScores(frames))
   });
 }); 

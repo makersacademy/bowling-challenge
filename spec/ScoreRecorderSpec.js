@@ -1,3 +1,5 @@
+'use strict';
+
 describe('ScoreRecorder', () => {
   let nineFrames
 
@@ -12,7 +14,7 @@ describe('ScoreRecorder', () => {
     it('adds first roll', () => {
       let scoreRecorder = new ScoreRecorder();
       scoreRecorder.addRoll(1);
-      expectedFrames = [[1]];
+      const expectedFrames = [[1]];
       expect(scoreRecorder.frames()).toEqual(expectedFrames);
     });
 
@@ -20,7 +22,7 @@ describe('ScoreRecorder', () => {
       const frames = [[1]];
       let scoreRecorder = new ScoreRecorder(frames);
       scoreRecorder.addRoll(2);
-      expectedFrames = [[1, 2]];
+      const expectedFrames = [[1, 2]];
       expect(scoreRecorder.frames()).toEqual(expectedFrames);
     });
 
@@ -28,7 +30,7 @@ describe('ScoreRecorder', () => {
       const frames = [[10]];
       let scoreRecorder = new ScoreRecorder(frames);
       scoreRecorder.addRoll(3);
-      expectedFrames = [[10], [3]];
+      const expectedFrames = [[10], [3]];
       expect(scoreRecorder.frames()).toEqual(expectedFrames);
     });
 
@@ -37,7 +39,7 @@ describe('ScoreRecorder', () => {
       frames.push([10, 1]);
       let scoreRecorder = new ScoreRecorder(frames);
       scoreRecorder.addRoll(4);
-      expectedFrames = nineFrames;
+      const expectedFrames = nineFrames;
       expectedFrames.push([10, 1, 4]);
       expect(scoreRecorder.frames()).toEqual(expectedFrames);
     });
@@ -47,7 +49,7 @@ describe('ScoreRecorder', () => {
       frames.push([5, 5]);
       let scoreRecorder = new ScoreRecorder(frames);
       scoreRecorder.addRoll(5);
-      expectedFrames = nineFrames;
+      const expectedFrames = nineFrames;
       expectedFrames.push([5, 5, 5]);
       expect(scoreRecorder.frames()).toEqual(expectedFrames);
     });
@@ -57,7 +59,7 @@ describe('ScoreRecorder', () => {
       frames.push([7, 1]);
       let scoreRecorder = new ScoreRecorder(frames);
       scoreRecorder.addRoll(6);
-      expectedFrames = nineFrames;
+      const expectedFrames = nineFrames;
       expectedFrames.push([7, 1]);
       expect(scoreRecorder.frames()).toEqual(expectedFrames);
     });
@@ -67,7 +69,7 @@ describe('ScoreRecorder', () => {
       frames.push([10, 10, 10]);
       let scoreRecorder = new ScoreRecorder(frames);
       scoreRecorder.addRoll(10);
-      expectedFrames = nineFrames;
+      const expectedFrames = nineFrames;
       expectedFrames.push([10, 10, 10]);
       expect(scoreRecorder.frames()).toEqual(expectedFrames);
     });

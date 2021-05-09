@@ -1,3 +1,5 @@
+'use strict';
+
 describe('ScoreCalculator', () => {
   let scoreCalculator
 
@@ -142,7 +144,7 @@ describe('ScoreCalculator', () => {
         frames.push([10]);
       };
       frames.push([10, 10, 10]);
-      score = 300;
+      const score = 300;
       expect(scoreCalculator.gameScore(frames)).toEqual(score);
     });
 

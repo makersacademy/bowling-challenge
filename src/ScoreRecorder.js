@@ -1,3 +1,5 @@
+'use strict';
+
 class ScoreRecorder {
   constructor(frames = []) {
     this._frames = frames;

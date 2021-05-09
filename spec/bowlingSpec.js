@@ -16,7 +16,7 @@ describe('Bowling', function() {
   describe('guttergame', function() {
     it('can roll a gutter game' , function() {
     manyRolls(0,20)
-    expect(bowling.score()).toBe(0)
+    expect(bowling.score()).toEqual(0)
     })
   })
 
@@ -26,7 +26,7 @@ describe('Bowling', function() {
      expect(bowling.score()).toEqual(20)
     })
     it('can raise error if more than 10 pins entered', function(){
-      expect(function () { bowling.roll(17) }).toThrowError(Error, 'Enter correct number of pins knowcked down: 1-10 only!')
+      expect(function () { bowling.roll(17) }).toThrowError(Error, 'Enter correct number of pins knocked down: 1-10 only!')
     })
   })
 

@@ -2,14 +2,17 @@
 
 class Bowling {
   constructor() {
-  this.rolls = [];
+  this.rolls = new Array(21).fill("");
+  this.rollsIndex = 0
   }
   
   roll(pins) {
     if(pins > 10) {
-      throw new Error('Enter correct number of pins knowcked down: 1-10 only!')
+      throw new Error('Enter correct number of pins knocked down: 1-10 only!')
+    } else {
+      this.rolls[this.rollsIndex] = pins
+      this.rollsIndex++
     }
-    this.rolls.push(pins)
   }
   score() {
     let totalScore = 0;
@@ -28,7 +31,7 @@ class Bowling {
         rollNumber += 2
       }
     }
-    return totalScore;
+    return parseInt(totalScore);
 
     function frameScore(rollNumber) {
       return totalScore += bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] 

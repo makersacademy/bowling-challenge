@@ -1,7 +1,14 @@
 component_depth: 3
 exclude:
-  - /public/js/lib/.*
-  - /node_modules/.*
-test:
-  include:
-    - /public/js/spec/.*
+
+
+languages:
+- name: javascript
+  production:
+    exclude:
+      - .*/spec/.*\.js
+      - .*/lib/.*
+      - .*/node_modules/.*
+  test:
+    include:
+      - .*/spec/.*\.js

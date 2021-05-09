@@ -54,9 +54,7 @@ class Game {
   _validate(roll) {
     if (roll > 10 || roll < 0) { throw new Error('Invalid roll'); }
     if (roll + this._currentFrame().score() > this._currentFrame().TOTAL_PINS) {
-      if (!this._isBonusRoll()) {
-        throw new Error('Invalid roll');
-      }
+      if (!this._isBonusRoll()) { throw new Error('Invalid roll'); }
     }
   }
 

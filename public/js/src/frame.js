@@ -13,7 +13,6 @@ class Frame {
   addRoll(roll) {
     this.rolls.push(roll);
     if (this.isFinal) { return; }
-
     if (this._isStrike()) {
       this.bonusCount += this.STRIKE_BONUS;
     } else if (this._isSpare()) {

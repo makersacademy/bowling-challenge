@@ -39,6 +39,13 @@ describe('Bowling', function() {
       manyRolls(5,21)
       expect(bowling.score()).toEqual(150)
     })
+    it('can correclty calculate last spare frame', function() {
+      manyRolls(2,18)
+      bowling.roll(7)
+      bowling.roll(3)
+      bowling.roll(7)
+      expect(bowling.score()).toEqual(53)
+    })
   })
 
 })

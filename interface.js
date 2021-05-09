@@ -23,6 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
     scorecard.addScore(score)
     updateScore()
   })
-  
+
+  document.querySelector('#reset').addEventListener('submit', () => {
+    // put in confirmation
+  })
+
+  //auto game over
+
+  //flash error if frame > 10 score
 
 })

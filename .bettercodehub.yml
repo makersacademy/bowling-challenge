@@ -1,7 +1,4 @@
 component_depth: 3
-exclude:
-
-
 languages:
 - name: javascript
   production:

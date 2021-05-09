@@ -1,17 +1,16 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": [
-    "airbnb-base"
-  ],
-  "parserOptions": {
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "rules": {
-    "no-underscore-dangle": "off"
-  },
-  "ignorePatterns": ["**/spec/**", "**/src/interface.js"]
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": [
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "rules": {
+    },
+    "ignorePatterns": ["**/lib/**", "**/spec/**", "**/interface.js", "karma.conf.js"]
 }

@@ -36,7 +36,6 @@ describe("Scorecard", () => {
     scorecard.addScore(2)
     scorecard.addScore(1)
 
-    console.log(scorecard.currentFrameNumber)
     expect(scorecard.scoreData[(scorecard.currentFrameNumber - 3)].totalFrameScore).toEqual(9);
     expect(scorecard.scoreData[(scorecard.currentFrameNumber - 2)].totalFrameScore).toEqual(3);
   });
@@ -56,7 +55,7 @@ describe("Scorecard", () => {
 
     scorecard.addScore(10)
 
-    console.log(scorecard.scoreData)
+    
 
     expect(scorecard.scoreData[0].isStrike).toEqual(true);
     expect(scorecard.currentRoll).toEqual(1);
@@ -70,20 +69,9 @@ describe("Scorecard", () => {
     scorecard.addScore(4)
 
     expect(scorecard.scoreData[0].firstRollScore).toEqual(10);
-    expect(scorecard.scoreData[0].totalFrameScore).toEqual(10);
-    expect(scorecard.scoreData[0].totalFrameScore).toEqual(9);
+    expect(scorecard.scoreData[0].totalFrameScore).toEqual(19);
+    expect(scorecard.scoreData[1].totalFrameScore).toEqual(9);
     expect(scorecard.scoreData[0].totalScore).toEqual(19);
     expect(scorecard.scoreData[1].totalScore).toEqual(28);
-
   });
-
-
 });
-
-
-
-
-
-
-
-

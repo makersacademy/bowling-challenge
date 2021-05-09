@@ -15,8 +15,15 @@ describe('Bowling', () => {
   it('can roll all ones', function() {
     loopFunction(1,20)
     expect(game.score()).toEqual(20);
-
   });
+
+  it('can roll a spare', function() {
+    game.roll(5)
+    game.roll(5)
+    game.roll(4)
+    loopFunction(0,17);
+    expect(game.score()).toEqual(18);
+  })
 
   function loopFunction(pins, rolls) {
     for (let i = 0; i < rolls; i++) {

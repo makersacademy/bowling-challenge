@@ -16,9 +16,12 @@ Bowling Challenge
 * To see the webpage run `open index.html`
 
 ## Check it out
-spare gif
-strike gif
-perfect game gif
+It can calculate a spare
+![spare](https://github.com/kerrimcm/bowling-challenge/blob/master/images/calculate-spare.gif)
+It can calculate a strike
+![strike](https://github.com/kerrimcm/bowling-challenge/blob/master/images/calculate-strike.gif)
+It can record a perfect game, 12 rolls of 10
+![perfectgame](https://github.com/kerrimcm/bowling-challenge/blob/master/images/perfect-game.gif) 
 
 ## Original Instructions
 

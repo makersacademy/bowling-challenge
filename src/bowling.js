@@ -4,11 +4,12 @@
 class Bowling {
   constructor() {
     this.rolls = [];
+    //this.score = 0;
   }
 
   roll(pins) {
     if (this._isWrongNumber(pins)) {
-      throw 'Can only roll values of 10 and below';
+      throw 'Can only roll positive values of 10 and below';
     } else {
       this.rolls.push(pins);
     }
@@ -36,11 +37,16 @@ class Bowling {
 
       rollIndex += 2;
     }
+    console.log(score);
     return score; 
   }
 
+  returnScore() {
+    return this.score();
+  }
+
   _isWrongNumber(pins) {
-    return pins > 10;
+    return pins > 10 || pins < 0;
   }
 
   _isSpare(frameScore) {

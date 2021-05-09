@@ -46,7 +46,11 @@ describe ('Bowling', () => {
   });
 
   it('throws an error when wrong number of pins is called', function() {
-    expect(function() { bowling.roll(12) } ).toThrow('Can only roll values of 10 and below');
+    expect(function() { bowling.roll(12) } ).toThrow('Can only roll positive values of 10 and below');
+  });
+
+  it('throws an error when negative number of pins is called', function() {
+    expect(function() { bowling.roll(-1) } ).toThrow('Can only roll positive values of 10 and below');
   });
 
   it('calculates a strike in the 10th frame', function() {

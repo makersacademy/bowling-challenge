@@ -23,16 +23,15 @@ class Scorecard {
   };
 
   addScore(score){
-    if (this.currentFrameNumber === 11){
-      if(this.scoreData[(this.currentFrameNumber - 2)].isSpare === true){
+    if (this.currentFrameNumber > 10){
+      if(this.scoreData[(this.currentFrameNumber - 2)].isSpare){
         this._lastRound(score)
         return
-      }else {
-        console.log("game Over")
+      } else {
+        this._gameOver()
         return
       }  
-    }
-    if (this.currentRoll === 1){
+    } else if (this.currentRoll === 1){
       this._updateFirstRollScore(score)
       if(this._isStrike(score)){
         this._strike(score)
@@ -42,14 +41,15 @@ class Scorecard {
     } else if (this.currentRoll === 2) {
       this._updateSecondRollScore(score)
       this._switchRolls()
-      this._updateFrameNumber() 
-       
+      this._updateFrameNumber()  
     }
     this._spare(score)
   };
 
   _updateFrameNumber(){
-    this.currentFrameNumber ++
+    // if(this.currentFrameNumber < 10){
+      this.currentFrameNumber ++ 
+    // }
   };
 
   _switchRolls(){
@@ -74,14 +74,17 @@ class Scorecard {
   }
 
   _strike(score){
-    this.scoreData[(this.currentFrameNumber - 1)].isStrike = true
-    this._updateFrameNumber()
+    if(this._isLastFrame()) {
+      return
+    } else {
+      this.scoreData[(this.currentFrameNumber - 1)].isStrike = true
+      this._updateFrameNumber()
+    }
   }
 
   _isStrike(score){
     return score === 10
   }
-
 
   _updateStrikeBonus(score){
     if(this.currentFrameNumber > 1){
@@ -96,7 +99,6 @@ class Scorecard {
   _spare(score){
     if (this.currentFrameNumber > 1 && this.scoreData[this.currentFrameNumber - 2].totalFrameScore === 10) {
       this.scoreData[this.currentFrameNumber - 2].isSpare = true
-
     }  
   }
 
@@ -117,11 +119,20 @@ class Scorecard {
   }
 
   _lastRound(score){
-    
-      this.scoreData[(this.currentFrameNumber - 2)].totalScore += score
-      this.scoreData[(this.currentFrameNumber - 2)].totalFrameScore += score
-      this.scoreData[9].thirdRoll = score
-      console.log(this.scoreData)
-    console.log('Game over') 
+    this.scoreData[(this.currentFrameNumber - 2)].totalScore += score
+    this.scoreData[(this.currentFrameNumber - 2)].totalFrameScore += score
+    this.runningTotal += score
+    this.scoreData[9].thirdRoll = score
+    this._gameOver() 
   }
+
+  _isLastFrame() {
+    return this.currentFrameNumber >= 9
+  }
+
+  _gameOver() {
+    return 'Game Over'
+  }
+
 };
+

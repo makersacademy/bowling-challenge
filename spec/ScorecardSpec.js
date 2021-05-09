@@ -97,7 +97,7 @@ describe("Scorecard", () => {
   })
 
   describe('10th frame', () => {
-    it('spare', () => {
+    it('gives an extra roll for spare', () => {
       for (let i = 0; i < 9; i++){
         scorecard.addScore(4)
         scorecard.addScore(4)
@@ -107,11 +107,58 @@ describe("Scorecard", () => {
       scorecard.addScore(5)
       scorecard.addScore(5)
 
-      console.log(scorecard.scoreData)
-      // expect(scorecard.scoreData[9].totalFrameScore).toEqual(15)
+      expect(scorecard.scoreData[9].totalFrameScore).toEqual(15)
       expect(scorecard.scoreData[9].totalScore).toEqual(87)
     })
   })
 
+
+  describe('10th frame', () => {
+    it('gives an extra roll for spare', () => {
+      for (let i = 0; i < 9; i++){
+        scorecard.addScore(4)
+        scorecard.addScore(4)
+      }
+      
+      scorecard.addScore(5)
+      scorecard.addScore(4)
+      scorecard.addScore(5)
+
+      // expect(scorecard.currentFrameNumber).toEqual(10)
+      expect(scorecard.scoreData[9].totalFrameScore).toEqual(9)
+      expect(scorecard.scoreData[9].totalScore).toEqual(81)
+    })
+
+    it('game over is no spare or strike', () => {
+      for (let i = 0; i < 9; i++){
+        scorecard.addScore(4)
+        scorecard.addScore(4)
+      }
+      
+      scorecard.addScore(5)
+      scorecard.addScore(4)
+      scorecard.addScore(5)
+
+      // expect(scorecard.currentFrameNumber).toEqual(10)
+      expect(scorecard.scoreData[9].totalFrameScore).toEqual(9)
+      expect(scorecard.scoreData[9].totalScore).toEqual(81)
+    })
+
+    it('gives an extra roll for strike', () => {
+      for (let i = 0; i < 9; i++){
+        scorecard.addScore(4)
+        scorecard.addScore(4)
+      }
+      
+      scorecard.addScore(10)
+      scorecard.addScore(10)
+      scorecard.addScore(5)
+
+      expect(scorecard.scoreData[9].totalFrameScore).toEqual(25)
+      expect(scorecard.scoreData[9].totalScore).toEqual(97)
+    })
   
+  })
+
+
 });

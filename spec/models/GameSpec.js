@@ -36,12 +36,16 @@ describe('Game', () => {
     describe('Guard conditions', () => {
       it('throws error when negative number is input', () => {
         const game = new Game()
-        expect(() => { game.addRoll(-1) }).toThrow(new Error('Invalid roll'))
+        expect(() => {
+          game.addRoll(-1)
+        }).toThrow(new Error(INVALID_ROLL_ERROR))
       })
 
       it('throws error when number over 10 is input', () => {
         const game = new Game()
-        expect(() => { game.addRoll(11) }).toThrow(new Error('Invalid roll'))
+        expect(() => {
+          game.addRoll(11)
+        }).toThrow(new Error(INVALID_ROLL_ERROR))
       })
     })
   })

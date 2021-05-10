@@ -1,10 +1,13 @@
+const GAME_OVER_ALERT = 'This game is over! Refresh to score a new game'
+const INVALID_ROLL_ALERT = 'Please enter a valid roll!'
+
 $(() => {
   const game = new Game()
   const scoreBoard = new ScoreBoard()
 
   $('#add-roll').on('click', () => {
     if (!$('#roll-input').val()) {
-      alert('Please enter a valid roll!')
+      alert(INVALID_ROLL_ALERT)
       return
     }
 
@@ -51,9 +54,9 @@ $(() => {
   function errorHandler(error) {
     if (error && game.isOver()) {
       console.log(error)
-      alert('This game is over! Refresh to score a new game')
+      alert(GAME_OVER_ALERT)
     } else if (error) {
-      alert('Please enter a valid roll!')
+      alert(INVALID_ROLL_ALERT)
     }
   }
 })

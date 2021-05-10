@@ -1,4 +1,6 @@
 const TOTAL_FRAMES = 10
+const GAME_OVER_ERROR = 'Game Over'
+const INVALID_ROLL_ERROR = 'Invalid roll'
 
 class Game {
   constructor (scoreBoard = new ScoreBoard()) {
@@ -7,7 +9,7 @@ class Game {
   }
 
   addRoll (pins) {
-    if (this.isOver()) { throw new Error('Game Over') }
+    if (this.isOver()) { throw new Error(GAME_OVER_ERROR) }
     const roll = parseInt(pins, 10)
     this._validate(roll)
     this.frames.forEach(frame => frame.addBonus(roll))
@@ -43,11 +45,11 @@ class Game {
   }
 
   _validate (roll) {
-    if (roll > TOTAL_PINS || roll < 0) { throw new Error('Invalid roll') }
-    if (this._isMoreThanRemainingPins(roll)) { throw new Error('Invalid roll') }
+    if (roll > TOTAL_PINS || roll < 0) { throw new Error(INVALID_ROLL_ERROR) }
+    if (this._isMoreThanTotalPins(roll)) { throw new Error(INVALID_ROLL_ERROR) }
   }
 
-  _isMoreThanRemainingPins (roll) {
+  _isMoreThanTotalPins (roll) {
     return (
       roll + this._currentFrame().score() > TOTAL_PINS && !this._isBonusRoll()
     )

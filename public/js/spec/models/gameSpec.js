@@ -25,12 +25,4 @@ describe('Game', () => {
       expect(frame.addRoll).toHaveBeenCalledWith(2)
     })
   })
-
-  describe('#totalScore()', () => {
-    it('calculates the total score of all frames', () => {
-      game.frames.push(frame)
-      game.totalScore()
-      expect(frame.score).toHaveBeenCalled()
-    })
-  })
 })

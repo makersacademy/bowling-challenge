@@ -20,21 +20,8 @@ class Game {
     }
   }
 
-  totalScore () {
-    return this._scores().reduce((sum, score) => sum + score)
-  }
-
-  calculateScores () {
-    const accumulator = ((sum) => (value) => sum += value)(0)
-    return this._scores().map(accumulator)
-  }
-
   isOver () {
     return this._isFinalFrame() && this._currentFrame().isOver()
-  }
-
-  _scores () {
-    return this.frames.map((frame) => frame.score())
   }
 
   _currentFrame () {

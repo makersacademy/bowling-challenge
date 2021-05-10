@@ -16,7 +16,7 @@ module.exports = (config) => {
       'public/js/spec/**/*.js',
       'public/js/src/frame.js',
       'public/js/src/game.js',
-      'public/js/src/scoreBoard.js',
+      'public/js/src/ScoreBoard.js',
     ],
 
     // list of files / patterns to exclude

@@ -9,17 +9,13 @@ describe('ScoreBoard', () => {
   })
 
   describe('#totalScore()', () => {
-    it('calculates the total score of all frames', () => {
+    it('calculates the total score of 2 frames', () => {
       expect(scoreBoard.totalScore([frame, frame])).toEqual(10)
       expect(frame.score).toHaveBeenCalled()
     })
-  })
 
-  describe('#Scores()', () => {
-    it('returns the scores of all frames', () => {
-      const scores = scoreBoard.scores([frame, frame])
-      expect(scores[0]).toEqual(5)
-      expect(scores[1]).toEqual(5)
+    it('calculates the total score of 4 frames', () => {
+      expect(scoreBoard.totalScore([frame, frame, frame, frame])).toEqual(20)
       expect(frame.score).toHaveBeenCalled()
     })
   })

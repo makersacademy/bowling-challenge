@@ -1,9 +1,14 @@
 class ScoreBoard {
   totalScore (frames) {
-    return this.scores(frames).reduce((sum, score) => sum + score)
+    return this._scores(frames).reduce((sum, score) => sum + score)
   }
 
-  scores (frames) {
+  calculateRunningTotal () {
+    const accumulator = ((sum) => (value) => sum += value)(0)
+    return this._scores().map(accumulator)
+  }
+
+  _scores (frames) {
     return frames.map((frame) => frame.score())
   }
 }

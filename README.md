@@ -5,7 +5,7 @@ Bowling Score Calculator 🎳
 
 Bowling score tracker written in JavaScript
 
-[Dependencies](#dependencies) | [Getting Started](#getting-started) | [Running Tests](#runnning-tests) | [Objectives](#objectives) | [Design](#design) | [Usage](#usage) | [User Stories](#user-stories) | [Deployed App](#deployed-app)
+[Deployed App](#deployed-app) | [Dependencies](#dependencies) | [Getting Started](#getting-started) | [Running Tests](#runnning-tests) | [Objectives](#objectives) | [Design](#design) | [Usage](#usage) | [User Stories](#user-stories)
 
 ## Example usage:
 

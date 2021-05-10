@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Bowling Time</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="wrapper-entry">
+      <h1>Lets bowl</h1>
+      <h2>Current Round is:</h2><span id="currentRound"></span>
+      <h2>Current Frame is:</h2><span id="currentFrame"></span>
+      <h2>Your current scorecard is:</h2><span id="currentScore"></span>
+      <br>
+      <input type="number" id="scoreToAdd" placeholder="Enter your score" min="1" max="10"></input>
+      <input type="button" id="submit" value="Submit"></input>
+    </div>
+    <div class='scorebox-container'>
+      <div class="scorebox">
+        <div class="frame1">2</div>
+        <div class="frame2">3</div>
+        <div class="roundScore"></div>
+      </div>
+      <div class="scorebox">
+        <div class="frame1">4</div>
+        <div class="frame2">5</div>
+        <div class="roundScore"></div>
+      </div>
+      <div class="scorebox">
+        <div class="frame1">7</div>
+        <div class="frame2">3</div>
+        <div class="roundScore"></div>
+      </div>
+      <div class="scorebox">
+        <div class="frame1">2</div>
+        <div class="frame2">3</div>
+        <div class="roundScore"></div>
+      </div>
+      <div class="scorebox">
+        <div class="frame1">4</div>
+        <div class="frame2">5</div>
+        <div class="roundScore"></div>
+      </div>
+      <div class="scorebox">
+        <div class="frame1">X</div>
+        <div class="frame2"></div>
+        <div class="roundScore"></div>
+      </div>
+      <div class="scorebox">
+        <div class="frame1">2</div>
+        <div class="frame2">3</div>
+        <div class="roundScore"></div>
+      </div>
+      <div class="scorebox">
+        <div class="frame1">4</div>
+        <div class="frame2">5</div>
+        <div class="roundScore"></div>
+      </div>
+      <div class="scorebox">
+        <div class="frame1">3</div>
+        <div class="frame2">4</div>
+        <div class="roundScore"></div>
+      </div>
+      <div class="scorebox">
+        <div class="frame1">3</div>
+        <div class="frame2">4</div>
+        <!-- <div class="frame10-1"></div>
+          <div class="frame10-2"></div>
+          <div class="frame10-3"></div> -->
+        <div class="roundScore"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./src/ScoreCalculator.js"></script>
+<script src="./src/index.js"></script>
+
+</html>

@@ -6,7 +6,9 @@ describe('Game', () => {
   beforeEach(() => {
     frameClass = jasmine.createSpy('frameClass')
     game = new Game(frameClass)
-    frame = jasmine.createSpyObj('frame', ['addRoll', 'isOver', 'isFinal', 'score', 'addBonus'])
+    frame = jasmine.createSpyObj('frame', [
+      'addRoll', 'isOver', 'isFinal', 'score', 'addBonus'
+    ])
     spyOn(game, '_newFrame').and.returnValue(game.frames.push(frame))
   })
 
@@ -23,6 +25,10 @@ describe('Game', () => {
       expect(frame.addRoll).toHaveBeenCalledTimes(2)
       expect(frame.addRoll).toHaveBeenCalledWith(6)
       expect(frame.addRoll).toHaveBeenCalledWith(2)
+    })
+
+    it('throws error when negative number is input', () => {
+      expect(() => { game.addRoll(-1) }).toThrow(new Error('Invalid roll'))
     })
   })
 })

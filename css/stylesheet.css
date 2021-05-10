@@ -1,0 +1,146 @@
+/* palette: https://coolors.co/ffadad-ffd6a5-fdffb6-caffbf-9bf6ff-a0c4ff-bdb2ff-ffc6ff-fffffc  */
+body {
+  background-color: #ffffeb;
+  font-family:sans-serif;
+  overflow: hidden;
+}
+
+h1 {
+  margin:auto;
+  margin-bottom: 5px;
+  margin-top: 100px;
+  width: 50%;
+  text-align:center;
+  color: black;
+}
+
+h3 {
+  margin:auto;
+  margin-top: 20px;
+  width: 50%;
+  text-align:center;
+}
+
+table {
+  table-layout: fixed;
+}
+
+table, th, td {
+  margin: auto;
+  margin-top: 33px;
+  width: 90%;
+  text-align:center;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+form {
+  margin:auto;
+  width: 50%;
+  text-align:center;
+}
+
+.score_box {
+  background-color: #caffbf;
+  width: 400px;
+  height: 100px;
+  margin: 7em auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  overflow: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.table_box {
+  background-color: #caffbf;
+  width: 80%;
+  height: 150px;
+  margin: 7em auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  overflow: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.add_score_box {
+  background-color: #caffbf;
+  width: 400px;
+  height: 100px;
+  margin: 7em auto;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  overflow: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+#new_score_button {
+  cursor: pointer;
+  border-radius: 5em;
+  color: black;
+  background: #bdb2ff;
+  border: 0;
+  padding-left: 40px;
+  padding-right: 35px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-top:10px;
+  margin-bottom:10px;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+#new_score_form {
+  margin-top: 18px;
+}
+
+#reset_button {
+  cursor: pointer;
+  border-radius: 5em;
+  color: black;
+  background: #bdb2ff;
+  border: 0;
+  padding-left: 40px;
+  padding-right: 35px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.game_over_box {
+  margin:auto;
+  background-color: #ff5c5c;
+  width: 400px;
+  height: 40px;
+  margin: 7em auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  overflow: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+#game_over {
+  color: white;
+  margin:auto;
+  margin-top: 5px;
+}
+
+#bowling_pic_1 {
+  position: relative;
+  display: inline-flex;
+  width: 250px;
+  top:-700px;
+  left: 50px;
+}

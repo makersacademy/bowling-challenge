@@ -1,15 +1,14 @@
 'use strict'
 
 describe('Feature testing a full game', () => {
-  let game
   let scoreBoard
 
   beforeEach(() => {
-    game = new Game()
     scoreBoard = new ScoreBoard()
   })
 
   it('runs correctly when game is a gutter game', () => {
+    const game = new Game()
     new Array(20).fill(0).forEach((roll) => game.addRoll(roll))
 
     expect(scoreBoard.totalScore(game.frames)).toBe(0)
@@ -19,6 +18,7 @@ describe('Feature testing a full game', () => {
   })
 
   it('runs correctly when every frame is a spare', () => {
+    const game = new Game()
     new Array(21).fill(5).forEach((roll) => game.addRoll(roll))
 
     expect(scoreBoard.totalScore(game.frames)).toBe(150)
@@ -28,6 +28,7 @@ describe('Feature testing a full game', () => {
   })
 
   it('runs correctly when game is a perfect game', () => {
+    const game = new Game()
     new Array(12).fill(10).forEach((roll) => game.addRoll(roll))
 
     expect(scoreBoard.totalScore(game.frames)).toBe(300)
@@ -37,6 +38,7 @@ describe('Feature testing a full game', () => {
   })
 
   it('runs correctly for example game with different roll values', () => {
+    const game = new Game()
     const exampleGame = [
       1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6
     ]
@@ -49,6 +51,7 @@ describe('Feature testing a full game', () => {
   })
 
   it('runs a correct game for example game 2', () => {
+    const game = new Game()
     const exampleGame2 = [
       9, 1, 0, 10, 10, 10, 6, 2, 7, 3, 8, 2, 10, 9, 0, 10, 10, 8
     ]

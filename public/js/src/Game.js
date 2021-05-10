@@ -8,7 +8,7 @@ class Game {
 
   addRoll (pins) {
     if (this.isOver()) { throw new Error('Game Over') }
-    if (this.frames.length === 0) { this._newFrame() }
+    if (this.frames.length === 0) { this._createNewFrame() }
 
     const roll = parseInt(pins, 10)
     this._validate(roll)
@@ -16,7 +16,7 @@ class Game {
     this._currentFrame().addRoll(roll)
 
     if (this._currentFrame().isOver() && !this._isFinalFrame()) {
-      this._newFrame()
+      this._createNewFrame()
     }
   }
 
@@ -28,7 +28,7 @@ class Game {
     return this.frames[this.frames.length - 1]
   }
 
-  _newFrame () {
+  _createNewFrame () {
     this.frames.push(new this.FRAME_CLASS())
     if (this._isFinalFrame()) { this._currentFrame().makeFinal() }
   }

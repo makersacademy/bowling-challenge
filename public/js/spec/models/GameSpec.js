@@ -9,7 +9,7 @@ describe('Game', () => {
     frame = jasmine.createSpyObj('frame', [
       'addRoll', 'isOver', 'isFinal', 'score', 'addBonus'
     ])
-    spyOn(game, '_newFrame').and.returnValue(game.frames.push(frame))
+    spyOn(game, '_createNewFrame').and.returnValue(game.frames.push(frame))
   })
 
   describe('#addRoll()', () => {

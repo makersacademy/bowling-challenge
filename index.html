@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Score Card</title>
+  </head>
+  <body>
+    <section>
+      <h1 id='curent-score'>Current Score: 0</h1>
+      <h3 id='frame-roll-number'>Frame Number: 1</h3>
+      <h3 id='frame-roll-number'>Roll Number: 1</h3>
+      <h4 id='frame-roll-number'>Enter number of pins knocked down</h4>
+      <form>
+        <select>
+          <option value='1'>1 pin</option>
+          <option value='2'>2 pins</option>
+          <option value='3'>3 pins</option>
+          <option value='4'>4 pins</option>
+          <option value='5'>5 pins</option>
+          <option value='6'>6 pins</option>
+          <option value='7'>7 pins</option>
+          <option value='8'>8 pins</option>
+          <option value='9'>9 pins</option>
+          <option value='10'>10 pins</option>
+        </select>
+        <input type="submit" value="🎳" class="myButton">
+      </form>
+      <p>
+        <table>
+          <caption>Current Scores</caption>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Roll 1</th>
+              <th>Roll 2</th>
+              <th>(bonus roll)</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Frame 1</b></td>
+              <td>0</td>
+              <td>3</td>
+              <td></td>
+              <td><b>3</b></td>
+            </tr>
+            <tr>
+              <td><b>Frame 2</b></td>
+              <td>9</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </p>
+    </section>
+    <script src='src/ScoreRecorder.js'></script>
+    <script src='src/ScoreCalculator.js'></script>
+  </body>
+</html>

@@ -12,7 +12,6 @@ $(() => {
       game.addRoll($('#roll-input').val())
       updateScores()
       updateRolls()
-      $('#roll-input').val('')
       if (game.isOver()) { showTotalScore() }
     } catch (error) {
       errorHandler(error)
@@ -41,12 +40,12 @@ $(() => {
 
   function updateScores() {
     for (let i = 0; i < 10; i += 1) {
-      $(`#frame-score${i + 1}`).text(scoreBoard.calculateRunningTotal(game.frames)[i])
+      $(`#frame-score${i + 1}`).text(game.runningTotal()[i])
     }
   }
 
   function showTotalScore() {
-    $('#total-score').text(`You scored ${scoreBoard.totalScore(game.frames)} points`)
+    $('#total-score').text(`You scored ${game.totalScore()} points`)
   }
 
   function errorHandler(error) {

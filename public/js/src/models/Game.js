@@ -12,10 +12,7 @@ class Game {
     this._validate(roll)
     this.frames.forEach(frame => frame.addBonus(roll))
     this._currentFrame().addRoll(roll)
-
-    if (this._currentFrame().isOver() && !this._isFinalFrame()) {
-      this._createNewFrame()
-    }
+    this._createNewFrame()
   }
 
   isOver () {
@@ -35,7 +32,9 @@ class Game {
   }
 
   _createNewFrame () {
-    this.frames.push(new Frame())
+    if (this._currentFrame().isOver() && !this._isFinalFrame()) {
+      this.frames.push(new Frame())
+    }
     if (this._isFinalFrame()) { this._currentFrame().makeFinal() }
   }
 

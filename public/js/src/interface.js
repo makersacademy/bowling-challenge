@@ -1,5 +1,6 @@
 $(() => {
   const game = new Game()
+  const scoreBoard = new ScoreBoard()
 
   $('#add-roll').on('click', () => {
     if (!$('#roll-input').val()) {
@@ -39,7 +40,7 @@ $(() => {
 
   function updateScores() {
     for (let i = 0; i < 10; i += 1) {
-      $(`#${i + 1}`).text(game.calculateScores()[i])
+      $(`#${i + 1}`).text(scoreBoard.calculateRunningTotal(game.frames)[i])
     }
   }
 

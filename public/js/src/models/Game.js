@@ -13,7 +13,7 @@ class Game {
 
     const roll = parseInt(pins, 10)
     this._validate(roll)
-    this.frames.forEach((frame) => frame.addBonus(roll))
+    this.frames.forEach(frame => frame.addBonus(roll))
     this._currentFrame().addRoll(roll)
 
     if (this._currentFrame().isOver() && !this._isFinalFrame()) {

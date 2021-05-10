@@ -4,22 +4,23 @@ describe('ScoreBoard', () => {
 
   beforeEach(() => {
     scoreBoard = new ScoreBoard()
-    frame1 = jasmine.createSpyObj('frame', ['score'])
-    frame2 = jasmine.createSpyObj('frame', ['score'])
+    frame = { score: () => {} }
+    spyOn(frame, 'score').and.returnValue(5)
   })
 
   describe('#totalScore()', () => {
     it('calculates the total score of all frames', () => {
-      scoreBoard.totalScore([frame1])
-      expect(frame1.score).toHaveBeenCalled()
+      expect(scoreBoard.totalScore([frame, frame])).toEqual(10)
+      expect(frame.score).toHaveBeenCalled()
     })
   })
 
   describe('#Scores()', () => {
     it('returns the scores of all frames', () => {
-      scoreBoard.scores([frame1, frame2])
-      expect(frame1.score).toHaveBeenCalled()
-      expect(frame2.score).toHaveBeenCalled()
+      const scores = scoreBoard.scores([frame, frame])
+      expect(scores[0]).toEqual(5)
+      expect(scores[1]).toEqual(5)
+      expect(frame.score).toHaveBeenCalled()
     })
   })
 })

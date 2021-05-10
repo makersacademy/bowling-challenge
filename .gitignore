@@ -5,5 +5,5 @@ coverage
 coverage/
 .nyc_output
 .vscode
-cypress/screenshotsFolder/
-cypress/videosFolder/
+cypress/screenshots/
+cypress/videos/

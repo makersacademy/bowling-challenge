@@ -29,6 +29,10 @@ class Game {
     return this.scoreBoard.totalScore()
   }
 
+  runningTotal () {
+    return this.scoreBoard.calculateRunningTotal()
+  }
+
   _currentFrame () {
     return this.frames[this.frames.length - 1]
   }

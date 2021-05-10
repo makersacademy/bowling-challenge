@@ -1,7 +1,6 @@
 class ScoreBoard {
   totalScore (frames) {
-    const scores = frames.map((frame) => frame.score())
-    return scores.reduce((sum, score) => sum + score)
+    return this.scores(frames).reduce((sum, score) => sum + score)
   }
 
   scores (frames) {

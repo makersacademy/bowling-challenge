@@ -1,10 +1,9 @@
 const TOTAL_FRAMES = 10
 
 class Game {
-  constructor (frameClass = Frame, scoreBoard = new ScoreBoard()) {
-    this.FRAME_CLASS = frameClass
+  constructor (scoreBoard = new ScoreBoard()) {
     this.scoreBoard = scoreBoard
-    this.frames = []
+    this.frames = [new Frame()]
   }
 
   addRoll (pins) {
@@ -38,7 +37,7 @@ class Game {
   }
 
   _createNewFrame () {
-    this.frames.push(new this.FRAME_CLASS())
+    this.frames.push(new Frame())
     if (this._isFinalFrame()) { this._currentFrame().makeFinal() }
   }
 

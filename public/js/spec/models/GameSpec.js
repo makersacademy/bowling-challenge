@@ -11,7 +11,7 @@ describe('Game', () => {
   describe('#addRoll()', () => {
     it('calls addRoll() on the current frame', () => {
       const frame = createFrameSpy()
-      game = new Game()
+      const game = new Game()
       game.frames = [frame]
       spyOn(frame, 'addRoll')
 
@@ -21,7 +21,7 @@ describe('Game', () => {
 
     it('calls addRoll() current frame for 2 rolls', () => {
       const frame = createFrameSpy()
-      game = new Game()
+      const game = new Game()
       game.frames = [frame]
       spyOn(frame, 'addRoll')
 
@@ -33,12 +33,16 @@ describe('Game', () => {
       expect(frame.addRoll).toHaveBeenCalledWith(2)
     })
 
-    it('throws error when negative number is input', () => {
-      expect(() => { game.addRoll(-1) }).toThrow(new Error('Invalid roll'))
-    })
+    describe('Guard conditions', () => {
+      it('throws error when negative number is input', () => {
+        const game = new Game()
+        expect(() => { game.addRoll(-1) }).toThrow(new Error('Invalid roll'))
+      })
 
-    it('throws error when number over 10 is input', () => {
-      expect(() => { game.addRoll(11) }).toThrow(new Error('Invalid roll'))
+      it('throws error when number over 10 is input', () => {
+        const game = new Game()
+        expect(() => { game.addRoll(11) }).toThrow(new Error('Invalid roll'))
+      })
     })
   })
 
@@ -46,7 +50,7 @@ describe('Game', () => {
     describe('#totalScore()', () => {
       it('calls totalScore() on scoreBoard', () => {
         const scoreBoard = { totalScore: () => {} }
-        const game = new Game({}, scoreBoard)
+        const game = new Game(scoreBoard)
 
         spyOn(scoreBoard, 'totalScore')
         game.totalScore()
@@ -58,7 +62,7 @@ describe('Game', () => {
     describe('#runningTotal()', () => {
       it('calls runningTotal() on scoreBoard', () => {
         const scoreBoard = { calculateRunningTotal: () => {} }
-        const game = new Game({}, scoreBoard)
+        const game = new Game(scoreBoard)
 
         spyOn(scoreBoard, 'calculateRunningTotal')
         game.runningTotal()

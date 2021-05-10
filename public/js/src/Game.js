@@ -1,4 +1,3 @@
-const FrameClass = require('./Frame')
 const TOTAL_FRAMES = 10
 
 class Game {

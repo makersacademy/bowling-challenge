@@ -5,6 +5,7 @@ const port = 3000
 
 app.use(express.static('public'))
 app.get('/')
+
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })

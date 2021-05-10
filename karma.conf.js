@@ -13,7 +13,8 @@ module.exports = (config) => {
 
     // list of files / patterns to load in the browser
     files: [
-      'public/js/spec/**/*.js',
+      'spec/models/*.js',
+      'spec/features/*.js',
       'public/js/src/models/Frame.js',
       'public/js/src/models/Game.js',
       'public/js/src/models/ScoreBoard.js',

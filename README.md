@@ -5,7 +5,7 @@ Bowling Score Calculator 🎳
 
 Bowling score tracker written in JavaScript
 
-[Deployed App](#deployed-app) | [Dependencies](#dependencies) | [Getting Started](#getting-started) | [Running Tests](#runnning-tests) | [Objectives](#objectives) | [Design](#design) | [Usage](#usage) | [User Stories](#user-stories)
+[Deployed App](#deployed-app) | [Dependencies](#dependencies) | [Getting Started](#getting-started) | [Running Tests](#runnning-tests) | [Objectives](#objectives) | [Design](#design) | [Usage](#usage) | [User Stories](#user-stories) | [Bowling Rules](#bowling--how-does-it-work)
 
 ## Example usage:
 
@@ -54,19 +54,31 @@ npm install
 
 ## Runnning tests:
 
-To run tests from the terminal, run `npm test`
+The test suite comprises of 3 types of test:
+- Unit tests, found in `spec/models/`
+- Features tests, found in `spec/features/`
+- Integration tests, found in `spec/integration/`
 
-To run tests in the browser, open `public/js/spec/SpecRunner.html` in the browser, which also gives an overview of the public interfaces and functionality of the classes and the app as a whole.
+Unit and feature tests use Jasmine, whilst the intgration tests use Cypress.
+
+To run the Jasmine unit and features tests from the terminal, run `npm test`
+
+To run these tests in the browser, open `public/js/spec/SpecRunner.html` in the browser, which also gives an overview of the public interfaces and functionality of the app.
+
+To run the Cypress integration tests from the terminal, run `npm run cy`
+To open the Cypress GUI and see the tests running, run `npx cypress open`
 
 ## Objectives
 
 The purpose of this project was to build a score calculator for 10 pin bowling. Bowling is a deceptively complex game and the goal here was to build a working app with high code quality, using test driven development. Once the game logic was complete I used jQuery, HTML and CSS to create a responsive UI and deployed the app through surge. I used Travis CI and Coveralls to automate testing and coverage, and ESLint, CodeClimate and Better Code to ensure high code quality and maintainability.
 
 ### Testing:
-- I used Jasmine as my testing framework, to write automated unit and feature tests which can be run in the browser.
-- The feature specs focus on running through an entire game, to ensure the program functions as expected. The unit specs test individual functions in isolation.
-- I created a spy object to mock the Game class in the ScoreBoard tests
-- I chose to mock the Frame class in the game class tests, using dependency injection, to ensure the classes were tested in isolation:
+- I used Jasmine as my testing framework for unit and feature tests.
+- For end to end testing I used Cypress
+- The Jasmine feature specs focus on running through an entire bowling game, to ensure the program functions as expected and that the classes are working together correctly. The unit specs test individual functions and classes in isolation
+- The Cypress Integration tests interact with the app in the browser as a user would and ensure the interface behaves as expected
+- I created spy objects to mock class dependencies in the tests
+- In GameSpec.js I used dependency injection to mock the ScoreBoard class and ensure the classes were tested in isolation:
 
 ```js
 // Dependency injection in Game.js
@@ -174,3 +186,28 @@ As a bowler,
 So that my game flows and I can focus on the bowling,
 I want the game to automatically register when it is the final frame.
 ```
+
+## Bowling — how does it work?
+
+### Strikes
+
+The player has a strike if they knock down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+
+### Spares
+
+The player has a spare if they knock down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+
+### 10th frame
+
+If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+
+    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
+    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+
+### Gutter Game
+
+A Gutter Game is when the player never hits a pin (20 zero scores).
+
+### Perfect Game
+
+A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.

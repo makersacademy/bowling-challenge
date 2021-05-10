@@ -9,54 +9,39 @@ describe('Feature testing a full game', () => {
     scoreBoard = new ScoreBoard()
   })
 
-  it('runs a correct gutter game', () => {
-    for (let i = 0; i < 20; i++) { game.addRoll(0); }
+  it('runs correctly when game is a gutter game', () => {
+    new Array(20).fill(0).forEach((roll) => game.addRoll(roll))
 
-    expect(game.frames.length).toBe(10)
     expect(scoreBoard.totalScore(game.frames)).toBe(0)
     expect(scoreBoard.calculateRunningTotal(game.frames)).toEqual(
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     )
   })
 
-  it('runs a correct game when every roll is 5', () => {
-    for (let i = 0; i < 21; i++) { game.addRoll(5) }
+  it('runs correctly when every frame is a spare', () => {
+    new Array(21).fill(5).forEach((roll) => game.addRoll(roll))
 
-    expect(game.frames.length).toBe(10)
     expect(scoreBoard.totalScore(game.frames)).toBe(150)
     expect(scoreBoard.calculateRunningTotal(game.frames)).toEqual(
       [15, 30, 45, 60, 75, 90, 105, 120, 135, 150]
     )
   })
 
-  it('runs a correct game when each frame is 9-0', () => {
-    for (let i = 0; i < 10; i++) {
-      [9, 0].forEach((roll) => game.addRoll(roll))
-    }
-    expect(game.frames.length).toBe(10)
-    expect(scoreBoard.totalScore(game.frames)).toBe(90)
-    expect(scoreBoard.calculateRunningTotal(game.frames)).toEqual(
-      [9, 18, 27, 36, 45, 54, 63, 72, 81, 90]
-    )
-  })
+  it('runs correctly when game is a perfect game', () => {
+    new Array(12).fill(10).forEach((roll) => game.addRoll(roll))
 
-  it('runs a correct perfect game', () => {
-    for (let i = 0; i < 12; i++) { game.addRoll(10); }
-
-    expect(game.frames.length).toBe(10)
     expect(scoreBoard.totalScore(game.frames)).toBe(300)
     expect(scoreBoard.calculateRunningTotal(game.frames)).toEqual(
       [30, 60, 90, 120, 150, 180, 210, 240, 270, 300]
     )
   })
 
-  it('runs a correct game for example game 1', () => {
-    const exampleGame1 = [
+  it('runs correctly for example game with different roll values', () => {
+    const exampleGame = [
       1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6
     ]
-    exampleGame1.forEach((roll) => game.addRoll(roll))
+    exampleGame.forEach((roll) => game.addRoll(roll))
 
-    expect(game.frames.length).toBe(10)
     expect(scoreBoard.totalScore(game.frames)).toBe(133)
     expect(scoreBoard.calculateRunningTotal(game.frames)).toEqual(
       [5, 14, 29, 49, 60, 61, 77, 97, 117, 133]
@@ -69,7 +54,6 @@ describe('Feature testing a full game', () => {
     ]
     exampleGame2.forEach((roll) => game.addRoll(roll))
 
-    expect(game.frames.length).toBe(10)
     expect(scoreBoard.totalScore(game.frames)).toBe(176)
     expect(scoreBoard.calculateRunningTotal(game.frames)).toEqual(
       [10, 30, 56, 74, 82, 100, 120, 139, 148, 176]

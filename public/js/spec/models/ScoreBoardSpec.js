@@ -1,5 +1,4 @@
 describe('ScoreBoard', () => {
-
   describe('#calculateTotalScore()', () => {
     it('calculates the total score of 2 frames', () => {
       const scoreBoard = new ScoreBoard()

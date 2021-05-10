@@ -8,8 +8,6 @@ class Game {
 
   addRoll (pins) {
     if (this.isOver()) { throw new Error('Game Over') }
-    if (this.frames.length === 0) { this._createNewFrame() }
-
     const roll = parseInt(pins, 10)
     this._validate(roll)
     this.frames.forEach(frame => frame.addBonus(roll))

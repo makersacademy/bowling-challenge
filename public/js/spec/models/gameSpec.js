@@ -30,5 +30,9 @@ describe('Game', () => {
     it('throws error when negative number is input', () => {
       expect(() => { game.addRoll(-1) }).toThrow(new Error('Invalid roll'))
     })
+
+    it('throws error when number over 10 is input', () => {
+      expect(() => { game.addRoll(11) }).toThrow(new Error('Invalid roll'))
+    })
   })
 })

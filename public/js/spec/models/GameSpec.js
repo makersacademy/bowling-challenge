@@ -19,7 +19,12 @@ describe('Game', () => {
       expect(frame.addRoll).toHaveBeenCalledWith(9)
     })
 
-    xit('calls addRoll() current frame for 2 rolls', () => {
+    it('calls addRoll() current frame for 2 rolls', () => {
+      const frame = createFrameSpy()
+      game = new Game()
+      game.frames = [frame]
+      spyOn(frame, 'addRoll')
+
       game.addRoll(6)
       game.addRoll(2)
 
@@ -28,11 +33,11 @@ describe('Game', () => {
       expect(frame.addRoll).toHaveBeenCalledWith(2)
     })
 
-    xit('throws error when negative number is input', () => {
+    it('throws error when negative number is input', () => {
       expect(() => { game.addRoll(-1) }).toThrow(new Error('Invalid roll'))
     })
 
-    xit('throws error when number over 10 is input', () => {
+    it('throws error when number over 10 is input', () => {
       expect(() => { game.addRoll(11) }).toThrow(new Error('Invalid roll'))
     })
   })

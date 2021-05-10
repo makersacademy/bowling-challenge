@@ -1,5 +1,8 @@
 {
   "baseUrl": "http://localhost:3000/",
   "video": false,
-  "integrationFolder": "spec/integration"
+  "integrationFolder": "spec/integration",
+  "pluginsFile": "spec/cypress/plugins/index.js",
+  "supportFile": "spec/cypress/support/index.js",
+  "fixturesFolder": "spec/cypress/fixtures"
 }

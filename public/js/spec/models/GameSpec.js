@@ -35,4 +35,16 @@ describe('Game', () => {
       expect(() => { game.addRoll(11) }).toThrow(new Error('Invalid roll'))
     })
   })
+
+  describe('scoring functions', () => {
+    describe('#totalScore()', () => {
+      it('calls totalScore() on scoreBoard', () => {
+        const scoreBoard = { totalScore: () => {}, runningTotal: () => {} }
+        const game = new Game(frameClass, scoreBoard)
+        spyOn(scoreBoard, 'totalScore')
+        game.totalScore()
+        expect(scoreBoard.totalScore).toHaveBeenCalledTimes(1)
+      })
+    })
+  })
 })

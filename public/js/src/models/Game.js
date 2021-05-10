@@ -1,8 +1,9 @@
 const TOTAL_FRAMES = 10
 
 class Game {
-  constructor (frameClass = Frame) {
+  constructor (frameClass = Frame, scoreBoard = new ScoreBoard()) {
     this.FRAME_CLASS = frameClass
+    this.scoreBoard = scoreBoard
     this.frames = []
   }
 
@@ -22,6 +23,10 @@ class Game {
 
   isOver () {
     return this._isFinalFrame() && this._currentFrame().isOver()
+  }
+
+  totalScore () {
+    return this.scoreBoard.totalScore()
   }
 
   _currentFrame () {

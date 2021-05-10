@@ -5,7 +5,7 @@ Bowling Score Calculator 🎳
 
 Bowling score tracker written in JavaScript
 
-[Dependencies](#dependencies) | [Getting Started](#getting-started) | [Running Tests](#runnning-tests) | [Objectives](#objectives) | [Design](#design) | [Usage](#usage) | [User Stories](#user-stories) | [Deployed App](#deployed-version)
+[Dependencies](#dependencies) | [Getting Started](#getting-started) | [Running Tests](#runnning-tests) | [Objectives](#objectives) | [Design](#design) | [Usage](#usage) | [User Stories](#user-stories) | [Deployed App](#deployed-app)
 
 ## Example usage:
 
@@ -115,7 +115,7 @@ Public Interfaces:
 
 **Game**
 - `#addRoll()` -Takes integer argument between 0 and 10. Throws error if the game is over or if an invalid input is entered
-- `isOver()` - Returns true or false if game is over or not over
+- `isOver()` - Returns true if game is over, false if it's not
 
 **Frame**
 - `#addRoll()` - Takes integer argument, adds roll to `this.rolls` array

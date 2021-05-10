@@ -26,21 +26,21 @@ $(() => {
   function updateFrames() {
     for (let i = 0; i < 9; i += 1) {
       if (game.frames.length >= i + 1) {
-        $(`#${i + 1}-1`).text(game.frames[i].rolls[0])
-        $(`#${i + 1}-2`).text(game.frames[i].rolls[1])
+        $(`#frame${i + 1}-roll1`).text(game.frames[i].rolls[0])
+        $(`#frame${i + 1}-roll2`).text(game.frames[i].rolls[1])
       }
     }
   }
 
   function updateFinalFrame() {
     for (let i = 0; i < 3; i += 1) {
-      $(`#10-${i + 1}`).text(game.frames[9].rolls[i])
+      $(`#frame10-roll${i + 1}`).text(game.frames[9].rolls[i])
     }
   }
 
   function updateScores() {
     for (let i = 0; i < 10; i += 1) {
-      $(`#${i + 1}`).text(scoreBoard.calculateRunningTotal(game.frames)[i])
+      $(`#frame-score${i + 1}`).text(scoreBoard.calculateRunningTotal(game.frames)[i])
     }
   }
 

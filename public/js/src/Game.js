@@ -1,3 +1,4 @@
+const FrameClass = require('./Frame')
 const TOTAL_FRAMES = 10
 
 class Game {
@@ -12,7 +13,7 @@ class Game {
 
     const roll = parseInt(pins, 10)
     this._validate(roll)
-    this.frames.forEach((frame) => { frame.addBonus(roll) })
+    this.frames.forEach((frame) => frame.addBonus(roll))
     this._currentFrame().addRoll(roll)
 
     if (this._currentFrame().isOver() && !this._isFinalFrame()) {
@@ -38,7 +39,7 @@ class Game {
   }
 
   _validate (roll) {
-    if (roll > 10 || roll < 0) { throw new Error('Invalid roll') }
+    if (roll > TOTAL_PINS || roll < 0) { throw new Error('Invalid roll') }
     if (this._isMoreThanRemainingPins(roll)) { throw new Error('Invalid roll') }
   }
 

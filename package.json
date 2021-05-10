@@ -19,5 +19,6 @@
     "karma-coveralls": "^2.1.0",
     "karma-jasmine": "^4.0.1",
     "nyc": "^15.1.0"
-  }
+  },
+  "dependencies": {}
 }

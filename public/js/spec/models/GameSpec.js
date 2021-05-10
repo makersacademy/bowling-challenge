@@ -1,12 +1,16 @@
+function createFrameSpy () {
+  return {
+    addRoll: () => {},
+    score: () => { return 0 },
+    addBonus: () => {},
+    isOver: () => {}
+  }
+}
+
 describe('Game', () => {
   describe('#addRoll()', () => {
     it('calls addRoll() on the current frame', () => {
-      const frame = {
-        addRoll: () => {},
-        score: () => { return 0 },
-        addBonus: () => {},
-        isOver: () => {}
-      }
+      const frame = createFrameSpy()
       game = new Game()
       game.frames = [frame]
       spyOn(frame, 'addRoll')

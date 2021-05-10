@@ -1,7 +1,7 @@
 To Do
 
 - Create working front end. 
-![Front Page Example](images/example_frontpage.png | width=200)
+![Front Page Example](images/example_frontpage.png)
 
 
 Bowling Challenge

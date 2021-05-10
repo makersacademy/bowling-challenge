@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "nyc karma start karma.conf.js --single-run",
+    "test": "karma start karma.conf.js --single-run",
     "coverage": "nyc report | coveralls"
   },
   "devDependencies": {

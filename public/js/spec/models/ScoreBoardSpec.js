@@ -19,4 +19,13 @@ describe('ScoreBoard', () => {
       expect(frame.score).toHaveBeenCalled()
     })
   })
+
+  describe('#calculateRunningTotal()', () => {
+    it('calculates the running total of all frames', () => {
+      expect(scoreBoard.calculateRunningTotal(
+        [frame, frame, frame, frame]
+        )).toEqual([5, 10, 15, 20])
+      expect(frame.score).toHaveBeenCalled()
+    })
+  })
 })

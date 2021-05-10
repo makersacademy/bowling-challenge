@@ -69,16 +69,24 @@ The purpose of this project was to build a score calculator for 10 pin bowling. 
 - I chose to mock the Frame class in the game class tests, using dependency injection, to ensure the classes were tested in isolation:
 
 ```js
-// dependency injection in game.js
+// Dependency injection in Game.js
 class Game {
-  constructor (frameClass = Frame) {
+  constructor (scoreBoard = new ScoreBoard()) {
+    this.scoreBoard = scoreBoard
   // ...
 
-// mocking the implementation of Frame in gameSpec.js using Jasime spies
-  beforeEach(() => {
-    frameClass = jasmine.createSpy('frameClass');
-    game = new Game(frameClass);
-    // ...
+// Mocking the implementation of ScoreBoard in GameSpec.js
+describe('#totalScore()', () => {
+  it('calls totalScore() on scoreBoard', () => {
+    const scoreBoard = { totalScore: () => {} }
+    const game = new Game(scoreBoard)
+
+    spyOn(scoreBoard, 'totalScore')
+    game.totalScore()
+
+    expect(scoreBoard.totalScore).toHaveBeenCalledTimes(1)
+  })
+})
 ```
 
 - I used Karma and ChromeHeadless to enable runnings tests from the terminal. This then enabled me to Implement CI using Travis.
@@ -114,8 +122,10 @@ class Game {
 Public Interfaces:
 
 **Game**
-- `#addRoll()` -Takes integer argument between 0 and 10. Throws error if the game is over or if an invalid input is entered
+- `#addRoll()` -Takes integer argument between 0 and 10. checks validity of roll and adds the roll to the current frame. Throws error if the game is over or if an invalid input is entered
 - `isOver()` - Returns true if game is over, false if it's not
+- `#totalScore()` - Uses ScoreBoard to return the total score of the game
+- `#runningTotal()` - Uses ScoreBoard to return the running total for each frame so far in the game
 
 **Frame**
 - `#addRoll()` - Takes integer argument, adds roll to `this.rolls` array
@@ -125,7 +135,7 @@ Public Interfaces:
 - `#isOver()` - returns true if frame is over, false if it's not
 
 **ScoreBoard**
-- `#totalScore()` - Returns the sum of the scores of all frames so far
+- `#calculateTotalScore()` - Returns the sum of the scores of all frames so far
 - `#calculateRunningTotal()` - Returns the running total for each frame. e.g. after 3 strikes, it would return `[30, 50, 60]`. after 4 frames with a score of 5 each, it would return `[5, 10, 15, 20]`
 
 ### Sequence Diagrams

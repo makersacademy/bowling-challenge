@@ -48,19 +48,19 @@ describe('Game', () => {
 
   describe('scoring functions', () => {
     describe('#totalScore()', () => {
-      it('calls totalScore() on scoreBoard', () => {
-        const scoreBoard = { totalScore: () => {} }
+      it('calls calculateTotalScore() on scoreBoard', () => {
+        const scoreBoard = { calculateTotalScore: () => {} }
         const game = new Game(scoreBoard)
 
-        spyOn(scoreBoard, 'totalScore')
+        spyOn(scoreBoard, 'calculateTotalScore')
         game.totalScore()
 
-        expect(scoreBoard.totalScore).toHaveBeenCalledTimes(1)
+        expect(scoreBoard.calculateTotalScore).toHaveBeenCalledTimes(1)
       })
     })
 
     describe('#runningTotal()', () => {
-      it('calls runningTotal() on scoreBoard', () => {
+      it('calls calculateRunningTotal() on scoreBoard', () => {
         const scoreBoard = { calculateRunningTotal: () => {} }
         const game = new Game(scoreBoard)
 

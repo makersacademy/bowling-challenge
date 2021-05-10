@@ -1,30 +1,34 @@
 describe('ScoreBoard', () => {
-  let scoreBoard
-  let frame
 
-  beforeEach(() => {
-    scoreBoard = new ScoreBoard()
-    frame = { score: () => {} }
-    spyOn(frame, 'score').and.returnValue(5)
-  })
-
-  describe('#totalScore()', () => {
+  describe('#calculateTotalScore()', () => {
     it('calculates the total score of 2 frames', () => {
-      expect(scoreBoard.totalScore([frame, frame])).toEqual(10)
+      const scoreBoard = new ScoreBoard()
+      const frame = { score: () => {} }
+      spyOn(frame, 'score').and.returnValue(5)
+
+      expect(scoreBoard.calculateTotalScore([frame, frame])).toEqual(10)
       expect(frame.score).toHaveBeenCalled()
     })
 
     it('calculates the total score of 4 frames', () => {
-      expect(scoreBoard.totalScore([frame, frame, frame, frame])).toEqual(20)
+      const scoreBoard = new ScoreBoard()
+      const frame = { score: () => {} }
+      spyOn(frame, 'score').and.returnValue(5)
+      const frames = [frame, frame, frame, frame]
+
+      expect(scoreBoard.calculateTotalScore(frames)).toEqual(20)
       expect(frame.score).toHaveBeenCalled()
     })
   })
 
   describe('#calculateRunningTotal()', () => {
     it('calculates the running total of all frames', () => {
-      expect(scoreBoard.calculateRunningTotal(
-        [frame, frame, frame, frame]
-        )).toEqual([5, 10, 15, 20])
+      const scoreBoard = new ScoreBoard()
+      const frame = { score: () => {} }
+      spyOn(frame, 'score').and.returnValue(5)
+      const frames = [frame, frame, frame, frame]
+
+      expect(scoreBoard.calculateRunningTotal(frames)).toEqual([5, 10, 15, 20])
       expect(frame.score).toHaveBeenCalled()
     })
   })

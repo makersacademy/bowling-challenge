@@ -1,5 +1,5 @@
 Bowling Score Calculator 🎳
-========================
+===========================
 
 [![Build Status](https://travis-ci.com/AJ8GH/bowling-score-calculator.svg?branch=master)](https://travis-ci.com/AJ8GH/bowling-score-calculator) [![Coverage Status](https://coveralls.io/repos/github/AJ8GH/bowling-score-calculator/badge.svg?branch=master)](https://coveralls.io/github/AJ8GH/bowling-score-calculator?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/a4fa6060a3a3e9fe32ef/maintainability)](https://codeclimate.com/github/AJ8GH/bowling-challenge/maintainability) ![Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg) [![BCH compliance](https://bettercodehub.com/edge/badge/AJ8GH/bowling-challenge?branch=master)](https://bettercodehub.com/)
 
@@ -128,6 +128,7 @@ describe('#totalScore()', () => {
 - My aim was to create comprehensive and clear documentation, to ensure other developers could easily use and contribute to the project
 
 ### Design:
+- The source code for the application is located in the `public/js/src` directory
 - Private functions are prefixed with underscores, e.g. `frame._isStrike()`
 - Predicate functions which return boolean values begin with the word 'is', e.g. `game.isOver()`
 - **Game class**: Responsible for tracking the frames and the progress of the game

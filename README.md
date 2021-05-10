@@ -1,7 +1,7 @@
 Bowling Score Calculator 🎳
 ========================
 
-[![Build Status](https://travis-ci.com/AJ8GH/bowling-challenge.svg?branch=master)](https://travis-ci.com/AJ8GH/bowling-challenge) [![Coverage Status](https://coveralls.io/repos/github/AJ8GH/bowling-challenge/badge.svg?branch=master)](https://coveralls.io/github/AJ8GH/bowling-challenge?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/a4fa6060a3a3e9fe32ef/maintainability)](https://codeclimate.com/github/AJ8GH/bowling-challenge/maintainability) ![Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg) [![BCH compliance](https://bettercodehub.com/edge/badge/AJ8GH/bowling-challenge?branch=master)](https://bettercodehub.com/)
+[![Build Status](https://travis-ci.com/AJ8GH/bowling-score-calculator.svg?branch=master)](https://travis-ci.com/AJ8GH/bowling-score-calculator) [![Coverage Status](https://coveralls.io/repos/github/AJ8GH/bowling-score-calculator/badge.svg?branch=master)](https://coveralls.io/github/AJ8GH/bowling-score-calculator?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/a4fa6060a3a3e9fe32ef/maintainability)](https://codeclimate.com/github/AJ8GH/bowling-challenge/maintainability) ![Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg) [![BCH compliance](https://bettercodehub.com/edge/badge/AJ8GH/bowling-challenge?branch=master)](https://bettercodehub.com/)
 
 Bowling score tracker written in JavaScript
 

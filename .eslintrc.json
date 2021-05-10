@@ -12,5 +12,11 @@
     },
     "rules": {
     },
-    "ignorePatterns": ["**/lib/**", "**/spec/**", "**/interface.js", "karma.conf.js"]
+    "ignorePatterns": [
+      "**/lib/**",
+      "**/spec/**",
+      "**/interface.js",
+      "karma.conf.js",
+      "cypress/**"
+    ]
 }

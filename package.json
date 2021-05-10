@@ -2,10 +2,12 @@
   "scripts": {
     "test": "nyc karma start karma.conf.js --single-run",
     "coverage": "nyc report | coveralls",
-    "start": "node server.js"
+    "start": "node server.js",
+    "cy": "cypress run"
   },
   "devDependencies": {
     "coveralls": "^3.1.0",
+    "cypress": "^7.2.0",
     "eslint": "^7.26.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-standard": "^16.0.2",

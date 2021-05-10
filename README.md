@@ -61,12 +61,17 @@ The test suite comprises of 3 types of test:
 
 Unit and feature tests use Jasmine, whilst the intgration tests use Cypress.
 
+### Jasmine
 To run the Jasmine unit and features tests from the terminal, run `npm test`
 
 To run these tests in the browser, open `public/js/spec/SpecRunner.html` in the browser, which also gives an overview of the public interfaces and functionality of the app.
 
-To run the Cypress integration tests from the terminal, run `npm run cy`
-To open the Cypress GUI and see the tests running, run `npx cypress open`
+### Cypress
+To run the Cypress integration tests, first start the server with `npm start`. You should get confirmation in the terminal that it is listening on local host 3000
+
+Once the server is running you can run Cypress from the terminal with `npm run cy`
+
+Alternatively you can open the Cypress GUI and see it running through the app, with `npx cypress open`
 
 ## Objectives
 
@@ -74,10 +79,11 @@ The purpose of this project was to build a score calculator for 10 pin bowling. 
 
 ### Testing:
 - I used Jasmine as my testing framework for unit and feature tests.
-- For end to end testing I used Cypress
-- The Jasmine feature specs focus on running through an entire bowling game, to ensure the program functions as expected and that the classes are working together correctly. The unit specs test individual functions and classes in isolation
-- The Cypress Integration tests interact with the app in the browser as a user would and ensure the interface behaves as expected
-- I created spy objects to mock class dependencies in the tests
+- For integration testing I used Cypress
+- The Jasmine feature specs focus on running through an entire bowling game, to ensure the entire program functions as expected and that the classes are working together correctly
+- The Cypress integration tests interact with the app in the browser as a user would and ensure the interface behaves as expected
+- I built a simple server using Express, in `server.js`, to serve a version of that app that Cypress can run tests against
+- The unit specs test individual functions and classes in isolation. I created spy objects to mock class dependencies in the tests
 - In GameSpec.js I used dependency injection to mock the ScoreBoard class and ensure the classes were tested in isolation:
 
 ```js
@@ -101,7 +107,7 @@ describe('#totalScore()', () => {
 })
 ```
 
-- I used Karma and ChromeHeadless to enable runnings tests from the terminal. This then enabled me to Implement CI using Travis.
+- I used Karma and ChromeHeadless to enable running the Jasmine tests from the terminal. This then enabled me to Implement CI using Travis.
 - Using NYC and Coveralls I then set up automated test coverage reports for the codebase.
 - Note - NYC currently fails to report coverage when running tests locally, however the stats are accurately sent to coveralls, reporting 98% test coverage.
 

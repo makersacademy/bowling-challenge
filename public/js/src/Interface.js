@@ -12,6 +12,7 @@ $(() => {
       game.addRoll($('#roll-input').val())
       updateScores()
       updateRolls()
+      $('#roll-input').val('')
       if (game.isOver()) { showTotalScore() }
     } catch (error) {
       errorHandler(error)

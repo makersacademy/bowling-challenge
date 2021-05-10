@@ -54,19 +54,31 @@ npm install
 
 ## Runnning tests:
 
-To run tests from the terminal, run `npm test`
+The test suite comprises of 3 types of test:
+- Unit tests, found in `spec/models/`
+- Features tests, found in `spec/features/`
+- Integration tests, found in `spec/integration/`
 
-To run tests in the browser, open `public/js/spec/SpecRunner.html` in the browser, which also gives an overview of the public interfaces and functionality of the classes and the app as a whole.
+Unit and feature tests use Jasmine, whilst the intgration tests use Cypress.
+
+To run the Jasmine unit and features tests from the terminal, run `npm test`
+
+To run these tests in the browser, open `public/js/spec/SpecRunner.html` in the browser, which also gives an overview of the public interfaces and functionality of the app.
+
+To run the Cypress integration tests from the terminal, run `npm run cy`
+To open the Cypress GUI and see the tests running, run `npx cypress open`
 
 ## Objectives
 
 The purpose of this project was to build a score calculator for 10 pin bowling. Bowling is a deceptively complex game and the goal here was to build a working app with high code quality, using test driven development. Once the game logic was complete I used jQuery, HTML and CSS to create a responsive UI and deployed the app through surge. I used Travis CI and Coveralls to automate testing and coverage, and ESLint, CodeClimate and Better Code to ensure high code quality and maintainability.
 
 ### Testing:
-- I used Jasmine as my testing framework, to write automated unit and feature tests which can be run in the browser.
-- The feature specs focus on running through an entire game, to ensure the program functions as expected. The unit specs test individual functions in isolation.
-- I created a spy object to mock the Game class in the ScoreBoard tests
-- I chose to mock the Frame class in the game class tests, using dependency injection, to ensure the classes were tested in isolation:
+- I used Jasmine as my testing framework for unit and feature tests.
+- For end to end testing I used Cypress
+- The Jasmine feature specs focus on running through an entire bowling game, to ensure the program functions as expected and that the classes are working together correctly. The unit specs test individual functions and classes in isolation
+- The Cypress Integration tests interact with the app in the browser as a user would and ensure the interface behaves as expected
+- I created spy objects to mock class dependencies in the tests
+- In GameSpec.js I used dependency injection to mock the ScoreBoard class and ensure the classes were tested in isolation:
 
 ```js
 // Dependency injection in Game.js

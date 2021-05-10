@@ -11,11 +11,11 @@ Bowling score tracker written in JavaScript
 
 ***A perfect game*** 🙂
 
-![perfect-game](public/images/perfect-game.gif)
+![perfect-game](images/perfect-game.gif)
 
 ***A gutter game*** 🙁
 
-![gutter-game](public/images/gutter-game.gif)
+![gutter-game](images/gutter-game.gif)
 
 ## Deployed app
 
@@ -132,11 +132,11 @@ Public Interfaces:
 
 #### Spare Bonus
 
-![spare-bonus](public/images/spare-bonus.png)
+![spare-bonus](images/spare-bonus.png)
 
 #### Strike Bonus
 
-![strike-bonus](public/images/strike-bonus.png)
+![strike-bonus](images/strike-bonus.png)
 
 ### User Stories
 ```

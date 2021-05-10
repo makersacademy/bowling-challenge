@@ -10,5 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const pins = document.querySelector('#pins').value;
     bowling.roll(pins)
     updateScore()
+    // shows the list of the pins, need to add a table to push numbers into each frame and to show final score at end
   })
 })

@@ -110,7 +110,7 @@ describe('#totalScore()', () => {
 })
 ```
 
-- I avoided the use of `beforeEach()` blocks to initialize classes and define constants in my test suites. Even though this would make the tests more DRY, I believe they would less readable, requiring additional cognitive effort to understand them at a glance. I realise this is a matter for debate, but here I opted for clarity and readability over DRYness.
+- I avoided the use of `beforeEach()` blocks to initialize classes and define constants in my tests for the Game and ScoreBoard classes. Even though this would make the tests more DRY, I believe they would less readable, requiring additional cognitive effort to understand them at a glance. I realise this is a matter for debate, but here I opted for clarity and readability over DRYness. 
 - I also focused only on testing the public interface, rather than the private functions. The result is that my tests are decoupled from the code's implementation, making it simple to refactor or extend the app.
 
 ### CI/CD

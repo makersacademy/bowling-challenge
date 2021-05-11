@@ -3,7 +3,8 @@ function createFrameSpy () {
     addRoll: () => {},
     score: () => { return 0 },
     addBonus: () => {},
-    isOver: () => {}
+    isOver: () => {},
+    _isSpare: () => { return false }
   }
 }
 
@@ -50,7 +51,7 @@ describe('Game', () => {
         }).toThrow(new Error(INVALID_ROLL_ERROR))
       })
 
-      it('throws error when Game is over', () => {
+      it('throws error when game is over', () => {
         const game = new Game()
         const frame = createFrameSpy()
 
@@ -60,6 +61,18 @@ describe('Game', () => {
         expect(() => {
           game.addRoll(5)
         }).toThrow(new Error(GAME_OVER_ERROR))
+      })
+
+      it('throws error when roll is more than remaining pins', () => {
+        const game = new Game()
+        const frame = createFrameSpy()
+
+        frame.score = () => { return 8 }
+        game.frames = [frame]
+
+        expect(() => {
+          game.addRoll(5)
+        }).toThrow(new Error(INVALID_ROLL_ERROR))
       })
     })
   })

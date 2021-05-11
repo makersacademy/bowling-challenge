@@ -107,12 +107,13 @@ describe('#totalScore()', () => {
 ```
 
 - I avoided the use of `beforeEach()` blocks to initialize classes and define constants in my test suites. Even though this would have made them more DRY, I believe it would have also made the tests less readable, requiring additional cognitive effort to understand them at a glance. I realise this is a matter for debate, but here I opted for clarity and readbility over DRYness.
+- I also focused only on testing the public interface, rather than the private functions, so that my tests are decoupled from my implementation, making it simple to refactor or extend the code.
 
 ### CI/CD
 - I used Karma and ChromeHeadless to enable running the Jasmine tests from the terminal. This then enabled me to Implement CI using Travis.
 - I deployed the app through Surge and added a deployment task to the travis build, so that it automatically deploys on a successfull push.
 - Using NYC and Coveralls I then set up automated test coverage reports for the codebase.
-- Note - NYC currently fails to report coverage when running tests locally, however the stats are accurately sent to coveralls, reporting 98% test coverage.
+- Note - NYC currently fails to report coverage when running tests locally, however the stats are accurately sent to coveralls, reporting 100% test coverage.
 
 ### Edge cases:
 - Guard conditions are implemented to prevent invalid inputs. Errors will be thrown when 'empty' rolls are entered, as well as if the roll is greater than the number of remaining pins for the frame.

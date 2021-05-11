@@ -22,18 +22,22 @@ Bowling score tracker written in JavaScript
 You can use the deployed app [here](https://bowling-score-tracker.surge.sh)
 
 ## Dependencies
-- `"coveralls": "^3.1.0"`
-- `"eslint": "^7.21.0"`
-- `"eslint-config-airbnb-base": "^14.2.1"`
-- `"eslint-plugin-import": "^2.22.1"`
-- `"jasmine": "^3.6.4"`
-- `"karma": "^6.2.0"`
-- `"karma-chrome-launcher": "^3.1.0"`
-- `"karma-cli": "^2.0.0"`
-- `"karma-coverage": "^2.0.3"`
-- `"karma-coveralls": "^2.1.0"`
-- `"karma-jasmine": "^4.0.1"`
-- `"nyc": "^15.1.0"`
+* `"coveralls": "^3.1.0",`
+* `"cypress": "^7.2.0",`
+* `"eslint": "^7.26.0",`
+* `"eslint-config-standard": "^16.0.2",`
+* `"eslint-plugin-import": "^2.22.1",`
+* `"eslint-plugin-node": "^11.1.0",`
+* `"eslint-plugin-promise": "^4.3.1",`
+* `"express": "^4.17.1",`
+* `"jasmine": "^3.6.4",`
+* `"karma": "^6.2.0",`
+* `"karma-chrome-launcher": "^3.1.0",`
+* `"karma-cli": "^2.0.0",`
+* `"karma-coverage": "^2.0.3",`
+* `"karma-coveralls": "^2.1.0",`
+* `"karma-jasmine": "^4.0.1",`
+* `"nyc": "^15.1.0"`
 
 ## Getting Started
 

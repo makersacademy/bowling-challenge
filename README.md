@@ -150,9 +150,9 @@ Public Interfaces:
 **Frame**
 - `#addRoll()` - Takes integer argument, adds roll to `this.rolls` array.
 - `#score()` - Returns the total score of the frame instance.
-- `#makeFinal()` - sets the `this.isFinal` property to true, to adjust logic for the final frame.
+- `#makeFinal()` - Sets the `this.isFinal` property to true, to adjust logic for the final frame.
 - `#addBonus()` - Adds bonus score if needed (frames are aware of how many bonuses they need).
-- `#isOver()` - returns true if frame is over, false if it's not.
+- `#isOver()` - Returns true if frame is over, false if it's not.
 
 **ScoreBoard**
 - `#calculateTotalScore()` - Returns the sum of the scores of all frames so far.

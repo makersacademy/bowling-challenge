@@ -10,8 +10,9 @@ function createFrameSpy () {
 describe('Game', () => {
   describe('#addRoll()', () => {
     it('calls addRoll() on the current frame', () => {
-      const frame = createFrameSpy()
       const game = new Game()
+      const frame = createFrameSpy()
+
       game.frames = [frame]
       spyOn(frame, 'addRoll')
 
@@ -20,8 +21,9 @@ describe('Game', () => {
     })
 
     it('calls addRoll() current frame for 2 rolls', () => {
-      const frame = createFrameSpy()
       const game = new Game()
+      const frame = createFrameSpy()
+
       game.frames = [frame]
       spyOn(frame, 'addRoll')
 
@@ -46,6 +48,18 @@ describe('Game', () => {
         expect(() => {
           game.addRoll(11)
         }).toThrow(new Error(INVALID_ROLL_ERROR))
+      })
+
+      it('throws error when Game is over', () => {
+        const game = new Game()
+        const frame = createFrameSpy()
+
+        frame.isOver = () => { return true }
+        game.frames = new Array(10).fill(frame)
+
+        expect(() => {
+          game.addRoll(5)
+        }).toThrow(new Error(GAME_OVER_ERROR))
       })
     })
   })

@@ -3,7 +3,6 @@ const INVALID_ROLL_ALERT = 'Please enter a valid roll!'
 
 $(() => {
   const game = new Game()
-  const scoreBoard = new ScoreBoard()
 
   $('#add-roll').on('click', () => {
     if (!$('#roll-input').val()) {

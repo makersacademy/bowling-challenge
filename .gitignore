@@ -1,6 +1,6 @@
 /**/.DS_Store
 node_modules
-instructions.md
+specification.md
 coverage
 coverage/
 .nyc_output

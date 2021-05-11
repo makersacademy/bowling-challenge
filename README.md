@@ -111,9 +111,9 @@ describe('#totalScore()', () => {
 
 ### CI/CD
 - I used Karma and ChromeHeadless to enable running the Jasmine tests from the terminal. This then enabled me to Implement CI using Travis.
-- I deployed the app through Surge and added a deployment task to the travis build, so that it automatically deploys on a successfull push.
 - Using NYC and Coveralls I then set up automated test coverage reports for the codebase.
 - Note - NYC currently fails to report coverage when running tests locally, however the stats are accurately sent to coveralls, reporting 100% test coverage.
+- I deployed the app through Surge and added a deployment task to the travis build, so that it automatically deploys on a successfull push.
 
 ### Edge cases:
 - Guard conditions are implemented to prevent invalid inputs. Errors will be thrown when 'empty' rolls are entered, as well as if the roll is greater than the number of remaining pins for the frame.

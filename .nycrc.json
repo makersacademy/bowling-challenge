@@ -1,7 +1,7 @@
 {
   "all": true,
   "include": [
-    "public/js/src/*.js"
+    "public/js/src/models/*.js"
   ],
   "exclude": [
     "**/*.spec.js"

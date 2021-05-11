@@ -19,7 +19,7 @@ Bowling score tracker written in JavaScript
 
 ## Deployed app
 
-You can use the deployed app [here](https://bowling-score-tracker.surge.sh/)
+You can use the deployed app [here](https://bowling-score-tracker.surge.sh)
 
 ## Dependencies
 - `"coveralls": "^3.1.0"`
@@ -82,9 +82,6 @@ The purpose of this project was to build a score calculator for 10 pin bowling. 
 - The Cypress integrations interact with the app in the browser as if it were a user and ensures that UI behaves as expected
 - To set up Cypress, I built a simple server using Express, in `server.js`, to serve a version of that app to run the tests against
 - The Jasmine features focus on running through an entire bowling game, to ensure the entire program functions as expected and that the classes are working together correctly
-- I used Karma and ChromeHeadless to enable running the Jasmine tests from the terminal. This then enabled me to Implement CI using Travis.
-- Using NYC and Coveralls I then set up automated test coverage reports for the codebase.
-- Note - NYC currently fails to report coverage when running tests locally, however the stats are accurately sent to coveralls, reporting 98% test coverage.
 - The units test individual functions and classes in isolation. I created 'spy/fake' objects to mock class dependencies in the tests
 - In GameSpec.js I used dependency injection to mock the ScoreBoard class and ensure the classes were tested in isolation:
 
@@ -109,51 +106,57 @@ describe('#totalScore()', () => {
 })
 ```
 
+### CI/CD
+- I used Karma and ChromeHeadless to enable running the Jasmine tests from the terminal. This then enabled me to Implement CI using Travis.
+- I deployed the app through Surge and added a deployment task to the travis build, so that it automatically deploys on a successfull push.
+- Using NYC and Coveralls I then set up automated test coverage reports for the codebase.
+- Note - NYC currently fails to report coverage when running tests locally, however the stats are accurately sent to coveralls, reporting 98% test coverage.
+
 ### Edge cases:
 - Guard conditions are implemented to prevent invalid inputs. Errors will be thrown when 'empty' rolls are entered, as well as if the roll is greater than the number of remaining pins for the frame.
 - An error is also thrown when attempting to input a roll when the game is over.
 
 ### Code Quality:
 - I focused on building encapsulated classes with clear responsibilities:
-- For linting I used ESLint to enforce the standard JS style
+- For linting I used ESLint to enforce the standard JS style.
 - I used CodeClimate and Better Code Hub to check the repository for code smells and technical debt, with both at maximum scores.
 
 ### Workflow:
-- Git: small, consistent commits at green and refactoring stages, using clear and communicative commit messages
-- Agile: creating user stories from a specification, then test driving and implementing features
+- Git: small, consistent commits at green and refactoring stages, using clear and communicative commit messages.
+- Agile: creating user stories from a specification, then test driving and implementing features.
 
 ### Documentation:
-- My aim was to create comprehensive and clear documentation, to ensure other developers could easily use and contribute to the project
+- My aim was to create comprehensive and clear documentation, to ensure other developers could easily use and contribute to the project.
 
 ### Design:
-- The source code for the application is located in the `public/js/src` directory
-- Private functions are prefixed with underscores, e.g. `frame._isStrike()`
-- Predicate functions which return boolean values begin with the word 'is', e.g. `game.isOver()`
-- **Game class**: Responsible for tracking the frames and the progress of the game
-- **Frame class**: Responsible for tracking its rolls, score and bonuses
-- **ScoreBoard class**: Responsible for calculating and returning the scores
-- **Interface**: Built using js and jQuery, responsible for updating the view after each roll input
+- The source code for the application is located in the `public/js/src` directory.
+- Private functions are prefixed with underscores, e.g. `frame._isStrike()`.
+- Predicate functions which return boolean values begin with the word 'is', e.g. `game.isOver()`.
+- **Game class**: Responsible for tracking the frames and the progress of the game.
+- **Frame class**: Responsible for tracking its rolls, score and bonuses.
+- **ScoreBoard class**: Responsible for calculating and returning the scores.
+- **Interface**: Built using js and jQuery, responsible for updating the view after each roll input.
 
 ## Usage
 
 Public Interfaces:
 
 **Game**
-- `#addRoll()` -Takes integer argument between 0 and 10. checks validity of roll and adds the roll to the current frame. Throws error if the game is over or if an invalid input is entered
-- `isOver()` - Returns true if game is over, false if it's not
-- `#totalScore()` - Uses ScoreBoard to return the total score of the game
-- `#runningTotal()` - Uses ScoreBoard to return the running total for each frame so far in the game
+- `#addRoll()` -Takes integer argument between 0 and 10. checks validity of roll and adds the roll to the current frame. Throws error if the game is over or if an invalid input is entered.
+- `isOver()` - Returns true if game is over, false if it's not.
+- `#totalScore()` - Uses ScoreBoard to return the total score of the game.
+- `#runningTotal()` - Uses ScoreBoard to return the running total for each frame so far in the game.
 
 **Frame**
-- `#addRoll()` - Takes integer argument, adds roll to `this.rolls` array
-- `#score()` - Returns the total score of the frame instance
-- `#makeFinal()` - sets the `this.isFinal` property to true, to adjust logic for the final frame
-- `#addBonus()` - Adds bonus score if needed (frames are aware of how many bonuses they need)
-- `#isOver()` - returns true if frame is over, false if it's not
+- `#addRoll()` - Takes integer argument, adds roll to `this.rolls` array.
+- `#score()` - Returns the total score of the frame instance.
+- `#makeFinal()` - sets the `this.isFinal` property to true, to adjust logic for the final frame.
+- `#addBonus()` - Adds bonus score if needed (frames are aware of how many bonuses they need).
+- `#isOver()` - returns true if frame is over, false if it's not.
 
 **ScoreBoard**
-- `#calculateTotalScore()` - Returns the sum of the scores of all frames so far
-- `#calculateRunningTotal()` - Returns the running total for each frame. e.g. after 3 strikes, it would return `[30, 50, 60]`. after 4 frames with a score of 5 each, it would return `[5, 10, 15, 20]`
+- `#calculateTotalScore()` - Returns the sum of the scores of all frames so far.
+- `#calculateRunningTotal()` - Returns the running total for each frame. e.g. after 3 strikes, it would return `[30, 50, 60]`. after 4 frames with a score of 5 each, it would return `[5, 10, 15, 20]`.
 
 ### Sequence Diagrams
 

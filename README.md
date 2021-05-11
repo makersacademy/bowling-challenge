@@ -52,6 +52,8 @@ cd bowling-score-tracker
 npm install
 ```
 
+To run the app locally, start the server with `npm start`, then head to http://localhost:3000 in your browser.
+
 ## Runnning tests:
 
 There are 3 test suites in the spec folder:
@@ -59,7 +61,7 @@ There are 3 test suites in the spec folder:
 - Features tests, found in `spec/features/`
 - Integration tests, found in `spec/integration/`
 
-The unit and feature tests use Jasmine, while the intgration tests use Cypress.
+The unit and feature tests use Jasmine, while the integration tests use Cypress.
 
 ### Jasmine
 To run the Jasmine test suites from the terminal, run `npm test`
@@ -67,11 +69,13 @@ To run the Jasmine test suites from the terminal, run `npm test`
 To see a more detailed test output, which also serves as documentation, open `public/js/spec/SpecRunner.html` in the browser.
 
 ### Cypress
-To run the Cypress test suite, first start the server with `npm start`. You should get confirmation in the terminal that it is listening on local host 3000.
+To run the Cypress test suite you will need to start the server. You can do this with `npm start`
+
+You should get confirmation in the terminal that it is listening on localhost port 3000.
 
 You can now run Cypress from the terminal by opening a new terminal and running `npm run cy`
 
-Alternatively you can open the Cypress GUI with `npx cypress open`. This way you can see the tests running through the app in the automated browser.
+Alternatively you can open the Cypress GUI with `npx cypress open`, to see the tests running through the app in the automated browser.
 
 ## Objectives
 
@@ -106,8 +110,8 @@ describe('#totalScore()', () => {
 })
 ```
 
-- I avoided the use of `beforeEach()` blocks to initialize classes and define constants in my test suites. Even though this would have made them more DRY, I believe it would have also made the tests less readable, requiring additional cognitive effort to understand them at a glance. I realise this is a matter for debate, but here I opted for clarity and readbility over DRYness.
-- I also focused only on testing the public interface, rather than the private functions, so that my tests are decoupled from my implementation, making it simple to refactor or extend the code.
+- I avoided the use of `beforeEach()` blocks to initialize classes and define constants in my test suites. Even though this would make the tests more DRY, I believe they would less readable, requiring additional cognitive effort to understand them at a glance. I realise this is a matter for debate, but here I opted for clarity and readability over DRYness.
+- I also focused only on testing the public interface, rather than the private functions. The result is that my tests are decoupled from the code's implementation, making it simple to refactor or extend the app.
 
 ### CI/CD
 - I used Karma and ChromeHeadless to enable running the Jasmine tests from the terminal. This then enabled me to Implement CI using Travis.

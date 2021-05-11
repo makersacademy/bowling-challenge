@@ -19,7 +19,7 @@ Bowling score tracker written in JavaScript
 
 ## Deployed app
 
-You can use the deployed app <a href="https://bowling-score-tracker.surge.sh" target="_blank">here</a>
+You can use the deployed app [here](https://bowling-score-tracker.surge.sh)
 
 ## Dependencies
 - `"coveralls": "^3.1.0"`

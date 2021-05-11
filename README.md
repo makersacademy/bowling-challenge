@@ -54,36 +54,38 @@ npm install
 
 ## Runnning tests:
 
-The test suite comprises of 3 types of test:
+There are 3 test suites in the spec folder:
 - Unit tests, found in `spec/models/`
 - Features tests, found in `spec/features/`
 - Integration tests, found in `spec/integration/`
 
-Unit and feature tests use Jasmine, whilst the intgration tests use Cypress.
+The unit and feature tests use Jasmine, while the intgration tests use Cypress.
 
 ### Jasmine
-To run the Jasmine unit and features tests from the terminal, run `npm test`
+To run the Jasmine test suites from the terminal, run `npm test`
 
-To run these tests in the browser, open `public/js/spec/SpecRunner.html` in the browser, which also gives an overview of the public interfaces and functionality of the app.
+To see a more detailed test output, which also serves as documentation, open `public/js/spec/SpecRunner.html` in the browser.
 
 ### Cypress
-To run the Cypress integration tests, first start the server with `npm start`. You should get confirmation in the terminal that it is listening on local host 3000
+To run the Cypress test suite, first start the server with `npm start`. You should get confirmation in the terminal that it is listening on local host 3000.
 
-Once the server is running you can run Cypress from the terminal with `npm run cy`
+You can now run Cypress from the terminal by opening a new terminal and running `npm run cy`
 
-Alternatively you can open the Cypress GUI and see it running through the app, with `npx cypress open`
+Alternatively you can open the Cypress GUI with `npx cypress open`. This way you can see the tests running through the app in the automated browser.
 
 ## Objectives
 
-The purpose of this project was to build a score calculator for 10 pin bowling. Bowling is a deceptively complex game and the goal here was to build a working app with high code quality, using test driven development. Once the game logic was complete I used jQuery, HTML and CSS to create a responsive UI and deployed the app through surge. I used Travis CI and Coveralls to automate testing and coverage, and ESLint, CodeClimate and Better Code to ensure high code quality and maintainability.
+The purpose of this project was to build a score calculator for 10 pin bowling. Bowling is a deceptively complex game and the goal was to build a working app with high code quality, using test driven development. Once the game logic was complete I used jQuery, HTML and CSS to create a responsive UI and deployed the app through surge. I used Travis CI and Coveralls to automate testing and coverage, and ESLint, CodeClimate and Better Code to ensure high code quality and maintainability.
 
 ### Testing:
-- I used Jasmine as my testing framework for unit and feature tests.
-- For integration testing I used Cypress
-- The Jasmine feature specs focus on running through an entire bowling game, to ensure the entire program functions as expected and that the classes are working together correctly
-- The Cypress integration tests interact with the app in the browser as a user would and ensure the interface behaves as expected
-- I built a simple server using Express, in `server.js`, to serve a version of that app that Cypress can run tests against
-- The unit specs test individual functions and classes in isolation. I created spy objects to mock class dependencies in the tests
+- I used the Jasmine testing framework for unit and feature tests and for integration testing I used Cypress
+- The Cypress integrations interact with the app in the browser as if it were a user and ensures that UI behaves as expected
+- To set up Cypress, I built a simple server using Express, in `server.js`, to serve a version of that app to run the tests against
+- The Jasmine features focus on running through an entire bowling game, to ensure the entire program functions as expected and that the classes are working together correctly
+- I used Karma and ChromeHeadless to enable running the Jasmine tests from the terminal. This then enabled me to Implement CI using Travis.
+- Using NYC and Coveralls I then set up automated test coverage reports for the codebase.
+- Note - NYC currently fails to report coverage when running tests locally, however the stats are accurately sent to coveralls, reporting 98% test coverage.
+- The units test individual functions and classes in isolation. I created 'spy/fake' objects to mock class dependencies in the tests
 - In GameSpec.js I used dependency injection to mock the ScoreBoard class and ensure the classes were tested in isolation:
 
 ```js
@@ -102,14 +104,10 @@ describe('#totalScore()', () => {
     spyOn(scoreBoard, 'totalScore')
     game.totalScore()
 
-    expect(scoreBoard.totalScore).toHaveBeenCalledTimes(1)
+    expect(scoreBoard.calculateTotalScore).toHaveBeenCalledTimes(1)
   })
 })
 ```
-
-- I used Karma and ChromeHeadless to enable running the Jasmine tests from the terminal. This then enabled me to Implement CI using Travis.
-- Using NYC and Coveralls I then set up automated test coverage reports for the codebase.
-- Note - NYC currently fails to report coverage when running tests locally, however the stats are accurately sent to coveralls, reporting 98% test coverage.
 
 ### Edge cases:
 - Guard conditions are implemented to prevent invalid inputs. Errors will be thrown when 'empty' rolls are entered, as well as if the roll is greater than the number of remaining pins for the frame.
@@ -122,7 +120,7 @@ describe('#totalScore()', () => {
 
 ### Workflow:
 - Git: small, consistent commits at green and refactoring stages, using clear and communicative commit messages
-- Agile: creating user stories from a fuzzy specification, then test driving and implementing the features
+- Agile: creating user stories from a specification, then test driving and implementing features
 
 ### Documentation:
 - My aim was to create comprehensive and clear documentation, to ensure other developers could easily use and contribute to the project

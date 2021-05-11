@@ -1,7 +1,7 @@
 Bowling Score Calculator 🎳
 ===========================
 
-[![Build Status](https://travis-ci.com/AJ8GH/bowling-score-calculator.svg?branch=master)](https://travis-ci.com/AJ8GH/bowling-score-calculator) [![Coverage Status](https://coveralls.io/repos/github/AJ8GH/bowling-score-calculator/badge.svg?branch=master)](https://coveralls.io/github/AJ8GH/bowling-score-calculator?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/a4fa6060a3a3e9fe32ef/maintainability)](https://codeclimate.com/github/AJ8GH/bowling-challenge/maintainability) ![Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg) [![BCH compliance](https://bettercodehub.com/edge/badge/AJ8GH/bowling-challenge?branch=master)](https://bettercodehub.com/)
+[![Build Status](https://travis-ci.com/AJ8GH/bowling-score-calculator.svg?branch=master)](https://travis-ci.com/AJ8GH/bowling-score-calculator) [![Coverage Status](https://coveralls.io/repos/github/AJ8GH/bowling-score-calculator/badge.svg)](https://coveralls.io/github/AJ8GH/bowling-score-calculator) [![Maintainability](https://api.codeclimate.com/v1/badges/a4fa6060a3a3e9fe32ef/maintainability)](https://codeclimate.com/github/AJ8GH/bowling-challenge/maintainability) ![Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg) [![BCH compliance](https://bettercodehub.com/edge/badge/AJ8GH/bowling-challenge?branch=master)](https://bettercodehub.com/)
 
 Bowling score tracker written in JavaScript
 
@@ -105,6 +105,8 @@ describe('#totalScore()', () => {
   })
 })
 ```
+
+- I avoided the use of `beforeEach()` blocks to initialize classes and define constants in my test suites. Even though this would have made them more DRY, I believe it would have also made the tests less readable, requiring additional cognitive effort to understand them at a glance. I realise this is a matter for debate, but here I opted for clarity and readbility over DRYness.
 
 ### CI/CD
 - I used Karma and ChromeHeadless to enable running the Jasmine tests from the terminal. This then enabled me to Implement CI using Travis.

@@ -68,18 +68,20 @@ There are 3 test suites in the spec folder:
 The unit and feature tests use Jasmine, while the integration tests use Cypress.
 
 ### Jasmine
-To run the Jasmine test suites from the terminal, run `npm test`
+There are 2 options for running the Jasmine test suites:
 
-To see a more detailed test output, which also serves as documentation, open `public/js/spec/SpecRunner.html` in the browser.
+* To run the tests from the terminal, run `npm test`
+* To see a more detailed test output, which also serves as documentation, open `public/js/spec/SpecRunner.html` in the browser.
 
 ### Cypress
-To run the Cypress test suite you will need to start the server. You can do this with `npm start`
+First, start the server with `npm start`
 
-You should get confirmation in the terminal that it is listening on localhost port 3000.
+This serves a version of the app that the tests can run against. You should get confirmation in the terminal that it is listening on localhost port 3000.
 
-You can now run Cypress from the terminal by opening a new terminal and running `npm run cy`
+There are again 2 options for running the tests:
+* From the terminal (open a new terminal and leave the server running), with `npm run cy`
 
-Alternatively you can open the Cypress GUI with `npx cypress open`, to see the tests running through the app in the automated browser.
+* Through the Cypress GUI with `npx cypress open`. This way you can see the tests running through the app in the automated browser, providing more visibility.
 
 ## Objectives
 
@@ -114,7 +116,7 @@ describe('#totalScore()', () => {
 })
 ```
 
-- I avoided the use of `beforeEach()` blocks to initialize classes and define constants in my tests for the Game and ScoreBoard classes. Even though this would make the tests more DRY, I believe they would less readable, requiring additional cognitive effort to understand them at a glance. I realise this is a matter for debate, but here I opted for clarity and readability over DRYness. 
+- I avoided the use of `beforeEach()` blocks to initialize classes and define constants in my tests for the Game and ScoreBoard classes. Even though this would make the tests more DRY, I believe they would less readable, requiring additional cognitive effort to understand them at a glance. I realise this is a matter for debate, but here I opted for clarity and readability over DRYness.
 - I also focused only on testing the public interface, rather than the private functions. The result is that my tests are decoupled from the code's implementation, making it simple to refactor or extend the app.
 
 ### CI/CD

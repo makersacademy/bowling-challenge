@@ -1,0 +1,138 @@
+body,
+html {
+  height: 100%;
+  color: #f0544f;
+  font-family: "Roboto", sans-serif;
+  margin: auto;
+  font-size: 20px;
+}
+
+.background {
+  background-image: url("https://raw.githubusercontent.com/mscwilson/bowling/c447c432c8d11c03b57cb65911d1ef57d514886e/images/pexels-matthias-zomer-344034.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 70vh;
+}
+
+h1 {
+  font-family: "Dela Gothic One", cursive;
+  font-size: 50px;
+  padding-top: -100px;
+  text-shadow: 0 0 3px #fff, 0 0 3px #ff0000, 0 0 5px #0000ff;
+}
+#enter-rolls {
+  padding-bottom: 40px;
+  font-weight: bold;
+  text-shadow: 0 0 3px #ff0000, 0 0 5px #0000ff;
+  color: #fff;
+}
+
+.input-form {
+  padding-top: 10px;
+  padding-left: 35px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+select {
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #f0544f;
+}
+
+button {
+  padding: 5px;
+  width: 100px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #f0544f;
+  background-color: white;
+}
+
+#clear-button {
+  margin-top: 5px;
+}
+
+#card-and-reset {
+  /* for some reason the grid breaks if I remove this section */
+}
+
+.grid-container {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid white;
+  display: grid;
+  grid-template-columns: repeat(22, 50px);
+  grid-template-rows: [row-title-start] 40px [row-frames-start] 40px [row-rolls-start] 40px [row-scores-start] 40px;
+}
+
+#grid-title {
+  grid-column: 1 / 21;
+  grid-row: row-title-start;
+  text-align: center;
+  font-weight: bold;
+  line-height: 170%;
+}
+
+.frame-no {
+  border-bottom: 3px solid white;
+  grid-column-start: span 2;
+  grid-row: row-frames-start / row-rolls-start;
+  text-align: center;
+  line-height: 170%;
+}
+
+.frame-total {
+  border-left: 2px solid white;
+  border-bottom: 3px solid white;
+  grid-column-start: span 2;
+  grid-row: row-title-start / row-rolls-start;
+  text-align: center;
+  line-height: 400%;
+  font-weight: bold;
+}
+
+.roll {
+  border-left: 2px solid white;
+  grid-row: row-rolls-start;
+  text-align: center;
+  line-height: 110%;
+  color: #242331;
+  font-family: "Caveat", cursive;
+  font-size: 35px;
+}
+
+.total-score {
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  grid-column-start: span 2;
+  grid-row: row-scores-start;
+  text-align: center;
+  line-height: 100%;
+  color: #242331;
+  font-family: "Caveat", cursive;
+  font-size: 35px;
+}
+
+#final-total {
+  border-left: 3px solid white;
+  border-right: 2px solid white;
+  border-top: 3px solid white;
+  border-bottom: 2px solid white;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 90%;
+  color: #242331;
+  font-size: 35px;
+}

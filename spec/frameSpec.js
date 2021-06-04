@@ -4,7 +4,7 @@ describe('Frame', () => {
   let frame
 
   beforeEach(() => {
-    frame = new Frame()
+    frame = new Frame(10)
   })
 
   describe('.prototype.roll()', () => {
@@ -20,6 +20,21 @@ describe('Frame', () => {
       frame.roll(4)
 
       expect(frame.numOfRolls).toBe(2)
+    })
+  })
+
+  describe('.prototype.isStrike', () => {
+    it('returns true if the frame is a strike', () => {
+      frame.roll(10)
+
+      expect(frame.isStrike).toBe(true)
+    })
+
+    it('returns false if the frame is not a strike', () => {
+      frame.roll(0)
+      frame.roll(10)
+
+      expect(frame.isStrike).toBe(false)
     })
   })
 })

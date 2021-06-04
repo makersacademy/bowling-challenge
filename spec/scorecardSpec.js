@@ -15,4 +15,11 @@ describe('Scorecard', () => {
     expect(scorecard.currentFrame()).toEqual(1)
     expect(scorecard.currentRoll()).toEqual(1)
   })
+
+  it('limits the game to 10 frames', () => {
+    expect(scorecard.isGameOver()).toBe(false)
+    scorecard.frame = 11
+
+    expect(scorecard.isGameOver()).toBe(true)
+  })
 })

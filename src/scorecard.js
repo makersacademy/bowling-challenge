@@ -26,4 +26,10 @@ class Scorecard {
   currentRoll () {
     return this.roll
   }
+
+  isGameOver () {
+    if ((this.currentFrame()) < 11) {
+      return false
+    } return true
+  }
 }

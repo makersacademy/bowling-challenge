@@ -6,5 +6,7 @@ describe('Frame', () => {
     frame = new Frame()
   })
 
-  
+  it('begins each frame with a score of 0', () => {
+    expect(frame.currentScore()).toEqual(0)
+  })
 })

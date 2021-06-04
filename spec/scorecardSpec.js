@@ -6,8 +6,8 @@ describe('Scorecard', () => {
     scorecard = new Scorecard()
   })
 
-  it('begins the game with a score of 0', () => {
+  it('begins the 10 frame game with a score of 0', () => {
+    expect(scorecard.framesArray().length).toEqual(10)
     expect(scorecard.currentScore()).toEqual(0)
   })
-
 })

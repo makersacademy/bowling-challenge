@@ -1,10 +1,20 @@
 'use strict'
 class Scorecard {
-  constructor() {
-    this.score = 0
+  constructor () {
+    this.frames = [new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame()]
   }
 
-  currentScore() {
-    return this.score
+  getSum (total, num) {
+    return total + Math.round(num)
+  }
+
+  currentScore () {
+    const arr = this.framesArray().map(frame => frame.currentScore())
+    console.log(arr)
+    return arr.reduce(this.getSum, 0)
+  }
+
+  framesArray () {
+    return this.frames
   }
 }

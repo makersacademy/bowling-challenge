@@ -30,6 +30,7 @@
     "jasmine": "^3.7.0"
   },
   "dependencies": {
-    "esbuild": "^0.12.6"
+    "esbuild": "^0.12.6",
+    "jasmine-spec-reporter": "^7.0.0"
   }
 }

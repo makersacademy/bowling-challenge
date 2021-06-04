@@ -4,8 +4,7 @@ Bowling Challenge
 The Task
 ------
 
-A weekend challenge to count and sum the scores of a bowling game for one player (in JavaScript)
-Initially coded in ruby in this [repo](https://github.com/taran314/bowling-challenge-ruby).
+A weekend challenge to count and sum the scores of a bowling game for one player (in JavaScript). Initially coded in ruby in this [repo](https://github.com/taran314/bowling-challenge-ruby).
 
 How to use
 -------

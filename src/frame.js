@@ -13,4 +13,8 @@ class Frame {
   currentScore () {
     return this.rollArray().reduce((a, b) => a + b, 0)
   }
+
+  updateRollScore (pins) {
+    this.rolls.push(pins)
+  }
 }

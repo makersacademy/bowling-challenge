@@ -20,4 +20,11 @@ describe('Frame', () => {
 
     expect(frame.currentScore()).toEqual(4)
   })
+
+  it('updates the roll scores', () => {
+    frame.updateRollScore(2)
+    frame.updateRollScore(2)
+
+    expect(frame.rolls).toEqual([0, 2, 2])
+  })
 })

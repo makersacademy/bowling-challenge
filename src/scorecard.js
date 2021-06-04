@@ -30,6 +30,12 @@ class Scorecard {
     return this.roll
   }
 
+  enterRollPins (pins) {
+    const currentFrame = this.currentFrame()
+
+    { this.frames[(currentFrame - 1)].updateRollScore(pins) }
+  }
+
   isGameOver () {
     if ((this.currentFrame()) < 11) {
       return false

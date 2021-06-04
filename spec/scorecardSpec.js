@@ -16,6 +16,15 @@ describe('Scorecard', () => {
     expect(scorecard.currentRoll()).toEqual(1)
   })
 
+  it('passes the correct frame a roll score', () => {
+    let frame
+    frame = jasmine.createSpyObj('frame', ['updateRollScore'])
+    scorecard.frames[0] = frame
+    scorecard.enterRollPins(2)
+
+    expect(frame.updateRollScore).toHaveBeenCalledWith(2)
+  })
+
   it('limits the game to 10 frames', () => {
     expect(scorecard.isGameOver()).toBe(false)
     scorecard.frame = 11

@@ -2,7 +2,7 @@
 
 class Frame {
   constructor () {
-    this.rolls = [0]
+    this.rolls = []
     this.score = this.currentScore()
   }
 

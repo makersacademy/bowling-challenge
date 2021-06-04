@@ -4,10 +4,24 @@ Bowling Challenge
 The Task
 ------
 
-Count and sum the scores of a bowling game for one player (in JavaScript)
+A weekend challenge to count and sum the scores of a bowling game for one player (in JavaScript)
+Initially coded in ruby in this [repo](https://github.com/taran314/bowling-challenge-ruby).
+
+How to use
+-------
+
+- To run the app, click the deployment link on github pages in this repo.
+- To run tests, clone the repo and run SpecRunner.html
 
 Implementation
 -------
+- Coded in JavaScript and jQuery
+- Jasmine for unit testing
+- Basic frontend in HTML and CSS.
+
+User Stories
+---------
+
 - Creating new frames after two rolls
 - Bonus points for spares are updated
 - Strikes create a new frame
@@ -15,12 +29,6 @@ Implementation
 - Tenth frame logic
 - Update scores method
 - Interface shows cumulative scores and each roll for each frame
-
-How to use
--------
-
-- Clone the repo
-- Run SpecRunner.html to run the tests or index.html to run the app
 
 TODO
 -------

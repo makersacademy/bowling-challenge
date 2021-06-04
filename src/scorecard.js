@@ -1,7 +1,10 @@
 'use strict'
 class Scorecard {
   constructor () {
-    this.frames = [new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame()]
+    this.frames = []
+    for (let i = 0; i < 10; i++) {
+      this.frames.push(new Frame())
+    }
     this.frame = 1
     this.roll = 1
   }

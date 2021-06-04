@@ -59,4 +59,20 @@ describe('Frame', () => {
       expect(frame.isSpare).toBe(false)
     })
   })
+
+  describe('.prototype.addBonus()', () => {
+    it('adds to the score of the frame but not the pinfall', () => {
+      frame.roll(3)
+      frame.roll(4)
+
+      expect(frame.pinfall).toBe(7)
+      expect(frame.score).toBe(7)
+
+      frame.addBonus(3)
+      frame.addBonus(6)
+
+      expect(frame.pinfall).toBe(7)
+      expect(frame.score).toBe(16)
+    })
+  })
 })

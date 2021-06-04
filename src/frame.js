@@ -2,10 +2,15 @@
 
 class Frame {
   constructor () {
-    this.score = 0
+    this.rolls = [0]
+    this.score = this.currentScore()
+  }
+
+  rollArray () {
+    return this.rolls
   }
 
   currentScore () {
-    return this.score
+    return this.rollArray().reduce((a, b) => a + b, 0)
   }
 }

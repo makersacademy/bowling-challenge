@@ -9,4 +9,15 @@ describe('Frame', () => {
   it('begins each frame with a score of 0', () => {
     expect(frame.currentScore()).toEqual(0)
   })
+
+  it('begins each frame with no rolls', () => {
+    expect(frame.rolls).toEqual([0])
+  })
+
+  it('updates the frame score for normal scoring', () => {
+    frame.rolls.push(2)
+    frame.rolls.push(2)
+
+    expect(frame.currentScore()).toEqual(4)
+  })
 })

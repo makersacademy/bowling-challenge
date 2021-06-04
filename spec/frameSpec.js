@@ -37,4 +37,26 @@ describe('Frame', () => {
       expect(frame.isStrike).toBe(false)
     })
   })
+
+  describe('.prototype.isSpare', () => {
+    it('returns true if the frame is a spare', () => {
+      frame.roll(6)
+      frame.roll(4)
+
+      expect(frame.isSpare).toBe(true)
+    })
+
+    it('returns false if the frame is not a spare', () => {
+      frame.roll(6)
+      frame.roll(3)
+
+      expect(frame.isSpare).toBe(false)
+    })
+
+    it('returns false if the frame is a strike', () => {
+      frame.roll(10)
+
+      expect(frame.isSpare).toBe(false)
+    })
+  })
 })

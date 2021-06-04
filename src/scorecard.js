@@ -2,6 +2,8 @@
 class Scorecard {
   constructor () {
     this.frames = [new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame(), new Frame()]
+    this.frame = 1
+    this.roll = 1
   }
 
   getSum (total, num) {
@@ -10,11 +12,18 @@ class Scorecard {
 
   currentScore () {
     const arr = this.framesArray().map(frame => frame.currentScore())
-    console.log(arr)
     return arr.reduce(this.getSum, 0)
   }
 
   framesArray () {
     return this.frames
+  }
+
+  currentFrame () {
+    return this.frame
+  }
+
+  currentRoll () {
+    return this.roll
   }
 }

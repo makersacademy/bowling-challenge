@@ -6,6 +6,7 @@ describe('Game', () => {
   class FrameClassDouble {
     addRoll () {}
     addBonus () {}
+    get isFinalized () {}
   }
 
   beforeEach(() => {
@@ -39,6 +40,18 @@ describe('Game', () => {
       expect(firstFrame.addBonus).toHaveBeenCalledWith(4)
       expect(secondFrame.addBonus).toHaveBeenCalledWith(4)
       expect(thirdFrame.addBonus).toHaveBeenCalledWith(4)
+    })
+
+    it('moves onto the next frame if current frame is over', () => {
+      const firstFrame = game._currentFrame
+      const spy = spyOnProperty(firstFrame, 'isFinalized', 'get').and.returnValue(true)
+
+      expect(firstFrame).toBe(game._currentFrame)
+
+      game.bowl(4)
+
+      expect(spy).toHaveBeenCalledWith()
+      expect(firstFrame).not.toBe(game._currentFrame)
     })
   })
 })

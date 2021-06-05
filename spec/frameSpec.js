@@ -109,21 +109,23 @@ describe('Frame', () => {
 
   describe('.prototype.isFinalized', () => {
     describe('for a normal frame', () => {
-      it('returns false when no rolls', () => {
-        expect(frame.isFinalized).toBe(false)
-      })
+      describe('when no strike or spare', () => {
+        it('returns false when no rolls', () => {
+          expect(frame.isFinalized).toBe(false)
+        })
 
-      it('returns false when not at max rolls (non-strike)', () => {
-        frame.addRoll(4)
+        it('returns false when not at max rolls', () => {
+          frame.addRoll(4)
 
-        expect(frame.isFinalized).toBe(false)
-      })
+          expect(frame.isFinalized).toBe(false)
+        })
 
-      it('returns true when at max rolls (non-spare)', () => {
-        frame.addRoll(4)
-        frame.addRoll(3)
+        it('returns true when at max rolls', () => {
+          frame.addRoll(4)
+          frame.addRoll(3)
 
-        expect(frame.isFinalized).toBe(true)
+          expect(frame.isFinalized).toBe(true)
+        })
       })
 
       describe('after a strike', () => {
@@ -137,6 +139,23 @@ describe('Frame', () => {
           frame.addRoll(10)
           frame.addBonus(3)
           frame.addBonus(4)
+
+          expect(frame.isFinalized).toBe(true)
+        })
+      })
+
+      describe('after a spare', () => {
+        it('when not all bonuses added it returns false', () => {
+          frame.addRoll(5)
+          frame.addRoll(5)
+
+          expect(frame.isFinalized).toBe(false)
+        })
+
+        it('when all bonus rolls added it returns true', () => {
+          frame.addRoll(5)
+          frame.addRoll(5)
+          frame.addBonus(3)
 
           expect(frame.isFinalized).toBe(true)
         })

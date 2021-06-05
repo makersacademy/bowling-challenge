@@ -1,19 +1,21 @@
 class Frame {
   constructor() {
-    this.total = 0;
-    this.rolls = 0;
+    this.rolls = [];
   }
 
   roll = (pinsKnocked) => {
-    this.total += pinsKnocked;
-    this.rolls++;
+    this.rolls.push(pinsKnocked);
   };
 
   isStrike = () => {
-    return this.total == 10 && this.rolls == 1;
+    return this.rolls[0] == 10;
   };
 
   isSpare = () => {
-    return this.total == 10 && this.rolls == 2;
+    return this.scoreRolls() == 10 && this.rolls.length == 2;
+  };
+
+  scoreRolls = () => {
+    return this.rolls.reduce((x, y) => x + y, 0);
   };
 }

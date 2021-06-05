@@ -107,6 +107,19 @@ describe('Frame', () => {
     })
   })
 
+  describe('.prototype.isOver', () => {
+    it('when max frame rolls not reached it returns false', () => {
+      expect(frame.isOver).toBe(false)
+    })
+
+    it('when max frame rolls reached it returns true', () => {
+      frame.addRoll(3)
+      frame.addRoll(4)
+
+      expect(frame.isOver).toBe(true)
+    })
+  })
+
   describe('.prototype.isFinalized', () => {
     describe('for a normal frame', () => {
       describe('when no strike or spare', () => {

@@ -36,6 +36,10 @@ class Scorecard {
 
     this.frames[currentFrame - 1].updateRollScore(pins);
 
+    if (currentFrame > 1 && this.currentRoll() === 1 && this.isSparePendingBonus()) {
+      this.spareScoring(pins)
+    }
+
     if (currentFrame) this.updateCurrentFrame();
     this.updateCurrentRoll();
   }
@@ -55,6 +59,18 @@ class Scorecard {
         this.frame = 10;
       }
     }
+  }
+
+  isSparePendingBonus () {
+   const currentFrame = this.currentFrame();
+
+   return this.frames[currentFrame - 2].bonusStatus === 'spare'
+  }
+
+  spareScoring (pins) {
+    const currentFrame = this.currentFrame();
+
+    this.frames[currentFrame - 2].updateBonusScore(pins)
   }
 
   isGameOver() {

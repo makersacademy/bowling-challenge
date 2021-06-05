@@ -37,7 +37,7 @@ describe("Scorecard", () => {
     expect(scorecard.isGameOver()).toBe(true);
   });
 
-  describe("for non-bonus scoring throws", () => {
+  describe("NORMAL SCORING", () => {
     it("advances to next roll", () => {
       expect(scorecard.currentRoll()).toEqual(1);
       scorecard.enterRollPins(2);
@@ -59,4 +59,17 @@ describe("Scorecard", () => {
       expect(scorecard.currentRoll()).toEqual(1);
     });
   });
+  
+  describe("SPARE SCORING", () => {
+    it("passes the correct frame a bonus score", () => {
+      scorecard.enterRollPins(2);
+      scorecard.enterRollPins(8);
+      expect(scorecard.frames[0].bonusStatus).toEqual('spare')
+      scorecard.enterRollPins(3);
+
+      expect(scorecard.frames[0].bonusScore).toEqual(3)
+      expect(scorecard.frames[0].currentScore()).toEqual(13)
+      expect(scorecard.currentScore()).toEqual(16)
+    })
+  })
 });

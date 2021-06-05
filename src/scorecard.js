@@ -7,6 +7,7 @@ class Scorecard {
     }
     this.frame = 1;
     this.roll = 1;
+    this.play = true;
   }
 
   getSum(total, num) {
@@ -34,7 +35,8 @@ class Scorecard {
     const currentFrame = this.currentFrame();
 
     this.frames[currentFrame - 1].updateRollScore(pins);
-    this.updateCurrentFrame();
+
+    if (currentFrame) this.updateCurrentFrame();
     this.updateCurrentRoll();
   }
 
@@ -48,10 +50,14 @@ class Scorecard {
     const currentRoll = this.currentRoll();
     if (currentRoll > 1) {
       this.frame += 1;
+      if (this.frame > 10) {
+        this.play = null;
+        this.frame = 10;
+      }
     }
   }
 
   isGameOver() {
-    return this.currentFrame() >= 11;
+    return this.play === null;
   }
 }

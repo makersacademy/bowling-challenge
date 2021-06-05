@@ -2,7 +2,7 @@
 
 describe("Scorecard", () => {
   let scorecard;
-  beforeEach(function () {
+  beforeEach(() => {
     scorecard = new Scorecard();
   });
 
@@ -32,7 +32,7 @@ describe("Scorecard", () => {
 
   it("limits the game to 10 frames", () => {
     expect(scorecard.isGameOver()).toBe(false);
-    scorecard.frame = 11;
+    scorecard.play = null;
 
     expect(scorecard.isGameOver()).toBe(true);
   });

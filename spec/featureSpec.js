@@ -26,4 +26,15 @@ describe("Game Scenarios", () => {
     expect(game.currentFrame()).toEqual(2);
     expect(game.frames[0].rolls).toEqual([1, 1]);
   });
+
+  it("Multiple frames (non-bonus scores)", () => {
+    for (let i = 0; i < 20; i++) {
+      game.enterRollPins(1);
+    }
+
+    expect(game.currentScore()).toEqual(20);
+    expect(game.isGameOver()).toBe(true);
+    expect(game.currentFrame()).toEqual(10);
+    expect(game.frames[9].rolls).toEqual([1, 1]);
+  });
 });

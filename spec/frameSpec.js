@@ -7,17 +7,17 @@ describe('Frame', () => {
     frame = new Frame()
   })
 
-  describe('.prototype.roll()', () => {
+  describe('.prototype.addRoll()', () => {
     it('adds to the pinfall', () => {
-      frame.roll(3)
-      frame.roll(4)
+      frame.addRoll(3)
+      frame.addRoll(4)
 
       expect(frame.pinfall).toBe(7)
     })
 
     it('adds to the number of rolls', () => {
-      frame.roll(3)
-      frame.roll(4)
+      frame.addRoll(3)
+      frame.addRoll(4)
 
       expect(frame.numOfRolls).toBe(2)
     })
@@ -25,14 +25,14 @@ describe('Frame', () => {
 
   describe('.prototype.isStrike', () => {
     it('returns true if the frame is a strike', () => {
-      frame.roll(10)
+      frame.addRoll(10)
 
       expect(frame.isStrike).toBe(true)
     })
 
     it('returns false if the frame is not a strike', () => {
-      frame.roll(0)
-      frame.roll(10)
+      frame.addRoll(0)
+      frame.addRoll(10)
 
       expect(frame.isStrike).toBe(false)
     })
@@ -40,21 +40,21 @@ describe('Frame', () => {
 
   describe('.prototype.isSpare', () => {
     it('returns true if the frame is a spare', () => {
-      frame.roll(6)
-      frame.roll(4)
+      frame.addRoll(6)
+      frame.addRoll(4)
 
       expect(frame.isSpare).toBe(true)
     })
 
     it('returns false if the frame is not a spare', () => {
-      frame.roll(6)
-      frame.roll(3)
+      frame.addRoll(6)
+      frame.addRoll(3)
 
       expect(frame.isSpare).toBe(false)
     })
 
     it('returns false if the frame is a strike', () => {
-      frame.roll(10)
+      frame.addRoll(10)
 
       expect(frame.isSpare).toBe(false)
     })
@@ -62,7 +62,7 @@ describe('Frame', () => {
 
   describe('.prototype.addBonus()', () => {
     it('adds to the score of the frame but not the pinfall', () => {
-      frame.roll(10)
+      frame.addRoll(10)
 
       expect(frame.pinfall).toBe(10)
       expect(frame.score).toBe(10)
@@ -75,7 +75,7 @@ describe('Frame', () => {
     })
 
     it('can add bonus rolls twice after a strike', () => {
-      frame.roll(10)
+      frame.addRoll(10)
 
       expect(frame.score).toBe(10)
 
@@ -87,8 +87,8 @@ describe('Frame', () => {
     })
 
     it('can add bonus roll once after a spare', () => {
-      frame.roll(6)
-      frame.roll(4)
+      frame.addRoll(6)
+      frame.addRoll(4)
 
       expect(frame.score).toBe(10)
 
@@ -99,8 +99,8 @@ describe('Frame', () => {
     })
 
     it('cannot add bonus rolls if frame not strike or spare', () => {
-      frame.roll(2)
-      frame.roll(1)
+      frame.addRoll(2)
+      frame.addRoll(1)
       frame.addBonus(4)
 
       expect(frame.score).toBe(3)

@@ -112,6 +112,19 @@ describe('Frame', () => {
       it('returns false when no rolls', () => {
         expect(frame.isFinalized).toBe(false)
       })
+
+      it('returns false when not at max rolls (non-strike)', () => {
+        frame.addRoll(4)
+
+        expect(frame.isFinalized).toBe(false)
+      })
+
+      it('returns true when at max rolls (non-spare)', () => {
+        frame.addRoll(4)
+        frame.addRoll(3)
+
+        expect(frame.isFinalized).toBe(true)
+      })
     })
   })
 })

@@ -8,6 +8,8 @@ describe('Scorecard', () => {
 
   it('begins the 10 frame game with a score of 0', () => {
     expect(scorecard.framesArray().length).toEqual(10)
+    console.log(scorecard.framesArray())
+
     expect(scorecard.currentScore()).toEqual(0)
   })
 
@@ -17,12 +19,12 @@ describe('Scorecard', () => {
   })
 
   it('passes the correct frame a roll score', () => {
-    let frame
-    frame = jasmine.createSpyObj('frame', ['updateRollScore'])
+    const frame = jasmine.createSpyObj('frame', ['updateRollScore'])
     scorecard.frames[0] = frame
     scorecard.enterRollPins(2)
 
     expect(frame.updateRollScore).toHaveBeenCalledWith(2)
+    // todo: this is testing state. Add a test for behaviour (score)
   })
 
   it('limits the game to 10 frames', () => {

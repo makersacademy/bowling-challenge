@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "jasmine",
+    "test": "npm run unit && npm run integration",
+    "unit": "jasmine",
+    "integration": "jasmine spec/integrationSpec.js",
     "build": "esbuild app.jsx --bundle --outfile=out.js"
   },
   "repository": {

@@ -4,7 +4,7 @@ describe('Frame', () => {
   let frame
 
   beforeEach(() => {
-    frame = new Frame(10)
+    frame = new Frame()
   })
 
   describe('.prototype.roll()', () => {
@@ -62,17 +62,48 @@ describe('Frame', () => {
 
   describe('.prototype.addBonus()', () => {
     it('adds to the score of the frame but not the pinfall', () => {
-      frame.roll(3)
-      frame.roll(4)
+      frame.roll(10)
 
-      expect(frame.pinfall).toBe(7)
-      expect(frame.score).toBe(7)
+      expect(frame.pinfall).toBe(10)
+      expect(frame.score).toBe(10)
 
       frame.addBonus(3)
       frame.addBonus(6)
 
-      expect(frame.pinfall).toBe(7)
-      expect(frame.score).toBe(16)
+      expect(frame.pinfall).toBe(10)
+      expect(frame.score).toBe(19)
+    })
+
+    it('can add bonus rolls twice after a strike', () => {
+      frame.roll(10)
+
+      expect(frame.score).toBe(10)
+
+      frame.addBonus(3)
+      frame.addBonus(6)
+      frame.addBonus(4)
+
+      expect(frame.score).toBe(19)
+    })
+
+    it('can add bonus roll once after a spare', () => {
+      frame.roll(6)
+      frame.roll(4)
+
+      expect(frame.score).toBe(10)
+
+      frame.addBonus(3)
+      frame.addBonus(6)
+
+      expect(frame.score).toBe(13)
+    })
+
+    it('cannot add bonus rolls if frame not strike or spare', () => {
+      frame.roll(2)
+      frame.roll(1)
+      frame.addBonus(4)
+
+      expect(frame.score).toBe(3)
     })
   })
 })

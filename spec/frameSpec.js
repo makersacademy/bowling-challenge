@@ -155,37 +155,33 @@ describe('Frame', () => {
         })
       })
 
-      describe('after a strike', () => {
-        it('when not all bonuses added it returns false', () => {
-          frame.addRoll(10)
+      it('after a strike when not all bonuses added it returns false', () => {
+        frame.addRoll(10)
 
-          expect(frame.isFinalized).toBe(false)
-        })
-
-        it('when all bonus rolls added it returns true', () => {
-          frame.addRoll(10)
-          frame.addBonus(3)
-          frame.addBonus(4)
-
-          expect(frame.isFinalized).toBe(true)
-        })
+        expect(frame.isFinalized).toBe(false)
       })
 
-      describe('after a spare', () => {
-        it('when not all bonuses added it returns false', () => {
-          frame.addRoll(5)
-          frame.addRoll(5)
+      it('after a strike when all bonus rolls added it returns true', () => {
+        frame.addRoll(10)
+        frame.addBonus(3)
+        frame.addBonus(4)
 
-          expect(frame.isFinalized).toBe(false)
-        })
+        expect(frame.isFinalized).toBe(true)
+      })
 
-        it('when all bonus rolls added it returns true', () => {
-          frame.addRoll(5)
-          frame.addRoll(5)
-          frame.addBonus(3)
+      it('after a spare when not all bonuses added it returns false', () => {
+        frame.addRoll(5)
+        frame.addRoll(5)
 
-          expect(frame.isFinalized).toBe(true)
-        })
+        expect(frame.isFinalized).toBe(false)
+      })
+
+      it('after a spare when all bonus rolls added it returns true', () => {
+        frame.addRoll(5)
+        frame.addRoll(5)
+        frame.addBonus(3)
+
+        expect(frame.isFinalized).toBe(true)
       })
     })
   })

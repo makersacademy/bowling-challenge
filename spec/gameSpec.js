@@ -18,6 +18,11 @@ describe("Game", () => {
       game.takeTurn(4);
       expect(game.frames[1].scoreRolls()).toEqual(4);
     });
+    it("adds to the next frame after a strike", () => {
+      game.takeTurn(10);
+      game.takeTurn(5);
+      expect(game.frames[1].scoreRolls()).toEqual(5);
+    });
   });
 
   describe(".nextFrame", () => {

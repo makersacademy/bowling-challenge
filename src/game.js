@@ -16,11 +16,16 @@ class Game {
   }
 
   takeTurn = (pinsKnocked) => {
-    this.frames[this.currentFrameIndex].roll(pinsKnocked);
-    if (this.frames[this.currentFrameIndex].rolls.length == 2) this.nextTurn();
+    this.currentFrame().roll(pinsKnocked);
+    if (this.currentFrame().rolls.length == 2) this.nextTurn();
+    if (this.currentFrame().isStrike()) this.nextTurn();
   };
 
   nextTurn = () => {
     this.currentFrameIndex++;
+  };
+
+  currentFrame = () => {
+    return this.frames[this.currentFrameIndex];
   };
 }

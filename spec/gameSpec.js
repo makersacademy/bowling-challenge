@@ -7,6 +7,7 @@ describe('Game', () => {
     addRoll () {}
     addBonus () {}
     get isOver () {}
+    get score () { return 10 }
   }
 
   beforeEach(() => {
@@ -52,6 +53,24 @@ describe('Game', () => {
 
       expect(spy).toHaveBeenCalledWith()
       expect(firstFrame).not.toBe(game._currentFrame)
+    })
+
+    it('returns the current totalScore', () => {
+      game._addNewFrame()
+      game._addNewFrame()
+      game._addNewFrame()
+
+      expect(game.bowl(1)).toBe(40)
+    })
+  })
+
+  describe('.prototype.totalScore', () => {
+    it('sums the score of each frame', () => {
+      game._addNewFrame()
+      game._addNewFrame()
+      game._addNewFrame()
+
+      expect(game.totalScore).toBe(40)
     })
   })
 })

@@ -125,6 +125,22 @@ describe('Frame', () => {
 
         expect(frame.isFinalized).toBe(true)
       })
+
+      describe('after a strike', () => {
+        it('when not all bonuses added it returns false', () => {
+          frame.addRoll(10)
+
+          expect(frame.isFinalized).toBe(false)
+        })
+
+        it('when all bonus rolls added it returns true', () => {
+          frame.addRoll(10)
+          frame.addBonus(3)
+          frame.addBonus(4)
+
+          expect(frame.isFinalized).toBe(true)
+        })
+      })
     })
   })
 })

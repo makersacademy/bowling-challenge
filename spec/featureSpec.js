@@ -15,4 +15,15 @@ describe("Game Scenarios", () => {
     expect(game.isGameOver()).toBe(true);
     expect(game.currentFrame()).toEqual(10);
   });
+
+  it("First frame (non-bonus scores)", () => {
+    for (let i = 0; i < 2; i++) {
+      game.enterRollPins(1);
+    }
+
+    expect(game.currentScore()).toEqual(2);
+    expect(game.isGameOver()).toBe(false);
+    expect(game.currentFrame()).toEqual(2);
+    expect(game.frames[0].rolls).toEqual([1, 1]);
+  });
 });

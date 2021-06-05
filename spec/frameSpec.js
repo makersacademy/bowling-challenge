@@ -18,9 +18,27 @@ describe("Frame", () => {
   });
 
   describe(".isStrike", () => {
-    it("knows if a strike was rolled", () => {
+    it("returns true when the frame is a strike", () => {
       frame.roll(10);
       expect(frame.isStrike()).toEqual(true);
+    });
+    it("returns false when the frame is not a strike", () => {
+      frame.roll(6);
+      frame.roll(4);
+      expect(frame.isStrike()).toEqual(false);
+    });
+  });
+
+  describe(".isSpare", () => {
+    it("returns true when the frame is a spare", () => {
+      frame.roll(5);
+      frame.roll(5);
+      expect(frame.isSpare()).toEqual(true);
+    });
+    it("returns false when the frame is not a spare", () => {
+      frame.roll(5);
+      frame.roll(4);
+      expect(frame.isSpare()).toEqual(false);
     });
   });
 });

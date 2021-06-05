@@ -12,4 +12,8 @@ class Frame {
   isStrike = () => {
     return this.total == 10 && this.rolls == 1;
   };
+
+  isSpare = () => {
+    return this.total == 10 && this.rolls == 2;
+  };
 }

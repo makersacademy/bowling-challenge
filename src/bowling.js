@@ -2,9 +2,10 @@
 
 class Bowling {
   constructor() {
-    this.currentRound = 1
-    this.currentBall = 1
-    this.scorecard = [[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null]]
+    this.currentRound = 1;
+    this.currentBall = 1;
+    this.scorecard = [[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null, null]]
+    this.game_over = false;
   }
 
   getCurrentRound() {
@@ -15,21 +16,22 @@ class Bowling {
     return this.currentBall
   }
 
-  // inputPins(pins) {
-  //   if (this.currentBall === 1) {
-  //     this.firstPin = pins;
-  //     this.currentBall += 1;
-  //   }
-  //   else if (this.currentBall === 2) {
-  //     (this.scorecard).push([this.firstPin, pins]);
-  //     this.currentBall = 1;
-  //   }
-  // }
-
   inputPins(pins) {
+    if (this.game_over === true) {
+      throw new Error('You have no more throws!')
+    }
+    if ((this.currentRound !== 10) && (pins > 10 || this.scorecard[this.currentRound - 1][this.currentBall - 2] + pins >= 10)) {
+      throw new Error('Invalid input. Please check your pins.')
+    }
+
+    if (this.currentRound === 10 && this.currentBall === 3
+      && (this.scorecard[this.currentRound - 1][this.currentBall - 3] + pins < 10)) {
+        this.game_over = true;
+      }
+
     this.scorecard[this.currentRound - 1][this.currentBall - 1] = pins;
     this.currentBall += 1;
-    if (this.currentBall === 3) {
+    if (this.currentBall === 3 && this.currentRound < 10) {
       this.currentBall = 1;
       this.currentRound += 1;
     }

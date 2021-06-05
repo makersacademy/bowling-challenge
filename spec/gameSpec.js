@@ -22,6 +22,12 @@ describe("Game", () => {
       game.takeTurn(5);
       expect(game.frames[1].scoreRolls()).toEqual(5);
     });
+    it("updates the scores after each turn", () => {
+      game.takeTurn(10);
+      game.takeTurn(10);
+      game.takeTurn(10);
+      expect(game.frames[0].total).toEqual(30);
+    });
   });
 
   describe(".getCurrentScore", () => {
@@ -49,6 +55,18 @@ describe("Game", () => {
       game.takeTurn(1);
       game.getBonus(2, 0);
       expect(game.frames[0].total).toEqual(12);
+    });
+  });
+
+  describe(".updateScores", () => {
+    it("updates every frames score using getBonus", () => {
+      game.takeTurn(10);
+      game.takeTurn(5);
+      game.takeTurn(5);
+      game.takeTurn(5);
+      game.updateScores();
+      expect(game.frames[0].total).toEqual(20);
+      expect(game.frames[1].total).toEqual(15);
     });
   });
 });

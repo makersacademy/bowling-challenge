@@ -37,11 +37,19 @@ class Game {
     return total;
   };
 
+  updateScores = () => {
+    this.frames.forEach((frame, index) => {
+      if (frame.isStrike()) this.getBonus(2, index);
+      if (frame.isSpare()) this.getBonus(1, index);
+    });
+  };
+
   getBonus = (bonusRolls, index) => {
     let bonus = this.frames
       .slice(index + 1, index + bonusRolls + 1)
       .map((frame) => frame.rolls)
       .flat()
+      .slice(0, bonusRolls)
       .reduce((a, b) => a + b, 0);
     this.frames[index].addBonus(bonus);
   };

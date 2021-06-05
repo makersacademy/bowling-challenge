@@ -106,4 +106,12 @@ describe('Frame', () => {
       expect(frame.score).toBe(3)
     })
   })
+
+  describe('.prototype.isFinalized', () => {
+    describe('for a normal frame', () => {
+      it('returns false when no rolls', () => {
+        expect(frame.isFinalized).toBe(false)
+      })
+    })
+  })
 })

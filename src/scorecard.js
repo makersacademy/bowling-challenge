@@ -34,6 +34,21 @@ class Scorecard {
     const currentFrame = this.currentFrame();
 
     this.frames[currentFrame - 1].updateRollScore(pins);
+    this.updateCurrentFrame();
+    this.updateCurrentRoll();
+  }
+
+  updateCurrentRoll() {
+    const currentFrame = this.currentFrame();
+
+    this.roll = this.frames[currentFrame - 1].rolls.length + 1;
+  }
+
+  updateCurrentFrame() {
+    const currentRoll = this.currentRoll();
+    if (currentRoll > 1) {
+      this.frame += 1;
+    }
   }
 
   isGameOver() {

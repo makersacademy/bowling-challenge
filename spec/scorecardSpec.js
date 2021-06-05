@@ -17,7 +17,7 @@ describe("Scorecard", () => {
   });
 
   it("passes the correct frame a roll score", () => {
-    const frame = jasmine.createSpyObj("frame", ["updateRollScore"]);
+    const frame = jasmine.createSpyObj("frame", ["updateRollScore", "rolls"]);
     scorecard.frames[0] = frame;
     scorecard.enterRollPins(2);
 
@@ -35,5 +35,28 @@ describe("Scorecard", () => {
     scorecard.frame = 11;
 
     expect(scorecard.isGameOver()).toBe(true);
+  });
+
+  describe("for non-bonus scoring throws", () => {
+    it("advances to next roll", () => {
+      expect(scorecard.currentRoll()).toEqual(1);
+      scorecard.enterRollPins(2);
+      expect(scorecard.currentRoll()).toEqual(2);
+    });
+
+    it("advances to next frame", () => {
+      expect(scorecard.currentFrame()).toEqual(1);
+      scorecard.enterRollPins(2);
+      scorecard.enterRollPins(2);
+      expect(scorecard.currentFrame()).toEqual(2);
+    });
+
+    it("starts each frame at roll 1", () => {
+      expect(scorecard.currentFrame()).toEqual(1);
+      scorecard.enterRollPins(2);
+      scorecard.enterRollPins(2);
+      expect(scorecard.currentFrame()).toEqual(2);
+      expect(scorecard.currentRoll()).toEqual(1);
+    });
   });
 });

@@ -6,7 +6,7 @@ describe('Game', () => {
   class FrameClassDouble {
     addRoll () {}
     addBonus () {}
-    get isFinalized () {}
+    get isOver () {}
   }
 
   beforeEach(() => {
@@ -44,7 +44,7 @@ describe('Game', () => {
 
     it('moves onto the next frame if current frame is over', () => {
       const firstFrame = game._currentFrame
-      const spy = spyOnProperty(firstFrame, 'isFinalized', 'get').and.returnValue(true)
+      const spy = spyOnProperty(firstFrame, 'isOver', 'get').and.returnValue(true)
 
       expect(firstFrame).toBe(game._currentFrame)
 

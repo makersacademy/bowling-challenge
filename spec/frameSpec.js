@@ -41,4 +41,20 @@ describe("Frame", () => {
       expect(frame.isSpare()).toEqual(false);
     });
   });
+
+  describe(".total", () => {
+    it("returns the total score for the frame", () => {
+      frame.roll(5);
+      frame.roll(4);
+      expect(frame.total).toEqual(9);
+    });
+  });
+
+  describe(".addBonus", () => {
+    it("adds a given amount to the total", () => {
+      frame.roll(10);
+      frame.addBonus(10);
+      expect(frame.total).toEqual(20);
+    });
+  });
 });

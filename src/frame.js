@@ -1,10 +1,12 @@
 class Frame {
   constructor() {
     this.rolls = [];
+    this.total = 0;
   }
 
   roll = (pinsKnocked) => {
     this.rolls.push(pinsKnocked);
+    this.total += pinsKnocked;
   };
 
   isStrike = () => {
@@ -17,5 +19,9 @@ class Frame {
 
   scoreRolls = () => {
     return this.rolls.reduce((x, y) => x + y, 0);
+  };
+
+  addBonus = (bonus) => {
+    this.total += bonus;
   };
 }

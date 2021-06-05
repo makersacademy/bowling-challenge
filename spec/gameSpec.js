@@ -7,6 +7,7 @@ describe('Game', () => {
     addRoll () {}
     addBonus () {}
     get isOver () {}
+    get isFinalized () {}
     get score () { return 10 }
   }
 
@@ -61,6 +62,22 @@ describe('Game', () => {
       game._addNewFrame()
 
       expect(game.bowl(1)).toBe(40)
+    })
+
+    it('does not addRoll or addBonus to frame if game is over', () => {
+      for (let i = 0; i < 9; i++) {
+        spyOnProperty(game._currentFrame, 'isOver', 'get').and.returnValue(true)
+        spyOnProperty(game._currentFrame, 'isFinalized', 'get').and.returnValue(true)
+        game._addNewFrame()
+      }
+      spyOnProperty(game._currentFrame, 'isOver', 'get').and.returnValue(true)
+      spyOnProperty(game._currentFrame, 'isFinalized', 'get').and.returnValue(true)
+      spyOn(game._currentFrame, 'addRoll')
+      spyOn(game._currentFrame, 'addBonus')
+      game.bowl(3)
+
+      expect(game._currentFrame.addRoll).not.toHaveBeenCalledWith(3)
+      expect(game._currentFrame.addBonus).not.toHaveBeenCalledWith(3)
     })
   })
 

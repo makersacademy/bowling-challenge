@@ -8,8 +8,6 @@ describe("Scorecard", () => {
 
   it("begins the 10 frame game with a score of 0", () => {
     expect(scorecard.framesArray().length).toEqual(10);
-    console.log(scorecard.framesArray());
-
     expect(scorecard.currentScore()).toEqual(0);
   });
 
@@ -24,7 +22,12 @@ describe("Scorecard", () => {
     scorecard.enterRollPins(2);
 
     expect(frame.updateRollScore).toHaveBeenCalledWith(2);
-    // todo: this is testing state. Add a test for behaviour (score)
+
+    scorecard.frame = 2;
+    expect(scorecard.frames[1].rolls).toEqual([]);
+    scorecard.enterRollPins(2);
+    expect(scorecard.frames[1].rolls).toEqual([2]);
+    expect(scorecard.frames[2].rolls).toEqual([]);
   });
 
   it("limits the game to 10 frames", () => {

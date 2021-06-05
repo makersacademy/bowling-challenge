@@ -89,5 +89,13 @@ describe('Game', () => {
 
       expect(game.totalScore).toBe(40)
     })
+
+    it('only sums the score of frames up to the maximum frame number', () => {
+      for (let i = 0; i < 100; i++) {
+        game._addNewFrame()
+      }
+
+      expect(game.totalScore).toBe(100)
+    })
   })
 })

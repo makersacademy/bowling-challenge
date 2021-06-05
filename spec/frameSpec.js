@@ -109,12 +109,26 @@ describe('Frame', () => {
 
   describe('.prototype.isOver', () => {
     it('when max frame rolls not reached it returns false', () => {
+      frame.addRoll(1)
+
       expect(frame.isOver).toBe(false)
     })
 
     it('when max frame rolls reached it returns true', () => {
       frame.addRoll(3)
       frame.addRoll(4)
+
+      expect(frame.isOver).toBe(true)
+    })
+
+    it('when max frame pins not reached it returns false', () => {
+      frame.addRoll(1)
+
+      expect(frame.isOver).toBe(false)
+    })
+
+    it('when max frame pins reached it returns true', () => {
+      frame.addRoll(10)
 
       expect(frame.isOver).toBe(true)
     })

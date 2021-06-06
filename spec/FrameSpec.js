@@ -51,4 +51,12 @@ describe("Frame", () => {
       expect(frame.isSpare()).toBe(false);
     });
   });
+
+  describe("#frameScore", () => {
+    it("returns the frame score", () => {
+      frame.roll(2);
+      frame.roll(4);
+      expect(frame.frameScore()).toEqual(6);
+    });
+  });
 });

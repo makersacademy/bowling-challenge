@@ -35,25 +35,10 @@ describe("Game", () => {
   });
 
   it("can calculate the score correctly", () => {
-    game.bowl(1);
-    game.bowl(4);
-    game.bowl(4);
-    game.bowl(5);
-    game.bowl(6);
-    game.bowl(4);
-    game.bowl(5);
-    game.bowl(5);
-    game.bowl(10);
-    game.bowl(0);
-    game.bowl(1);
-    game.bowl(7);
-    game.bowl(3);
-    game.bowl(6);
-    game.bowl(4);
-    game.bowl(10);
-    game.bowl(2);
-    game.bowl(8);
-    game.bowl(6);
+    let rolls = [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6];
+    rolls.forEach((roll) => {
+      game.bowl(roll);
+    });
     expect(game.score()).toEqual(133);
   });
 

@@ -38,7 +38,7 @@ describe("Game Scenarios", () => {
     expect(game.frames[9].rolls).toEqual([1, 1]);
   });
 
-  it("Single strike", () => {
+  it("Single spare", () => {
     for (let i = 0; i < 2; i++) {
       game.enterRollPins(5);
     }

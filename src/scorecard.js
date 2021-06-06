@@ -15,12 +15,8 @@ class Scorecard {
   }
 
   currentScore() {
-    const arr = this.framesArray().map((frame) => frame.currentScore());
+    const arr = this.frames.map((frame) => frame.currentScore());
     return arr.reduce(this.getSum, 0);
-  }
-
-  framesArray() {
-    return this.frames;
   }
 
   currentFrame() {
@@ -31,23 +27,30 @@ class Scorecard {
     return this.roll;
   }
 
+  _currentFrame() {
+    return this.frames[this.frame - 1];
+  }
+  _previousFrame() {
+    return this.frames[this.frame - 2];
+  }
+
   enterRollPins(pins) {
-    const currentFrame = this.currentFrame();
+    this._currentFrame().updateRollScore(pins);
 
-    this.frames[currentFrame - 1].updateRollScore(pins);
-
-    if (currentFrame > 1 && this.currentRoll() === 1 && this.isSparePendingBonus()) {
-      this.spareScoring(pins)
+    if (
+      this.frame > 1 &&
+      this.currentRoll() === 1 &&
+      this.isSparePendingBonus()
+    ) {
+      this.spareScoring(pins);
     }
 
-    if (currentFrame) this.updateCurrentFrame();
+    this.updateCurrentFrame();
     this.updateCurrentRoll();
   }
 
   updateCurrentRoll() {
-    const currentFrame = this.currentFrame();
-
-    this.roll = this.frames[currentFrame - 1].rolls.length + 1;
+    this.roll = this._currentFrame().rolls.length + 1;
   }
 
   updateCurrentFrame() {
@@ -61,16 +64,12 @@ class Scorecard {
     }
   }
 
-  isSparePendingBonus () {
-   const currentFrame = this.currentFrame();
-
-   return this.frames[currentFrame - 2].bonusStatus === 'spare'
+  isSparePendingBonus() {
+    return this._previousFrame().bonusStatus === "spare";
   }
 
-  spareScoring (pins) {
-    const currentFrame = this.currentFrame();
-
-    this.frames[currentFrame - 2].updateBonusScore(pins)
+  spareScoring(pins) {
+    this._previousFrame().updateBonusScore(pins);
   }
 
   isGameOver() {

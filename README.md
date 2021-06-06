@@ -57,6 +57,8 @@ game.bowl(4) // => 18
 // etc.
 ```
 
+You can also open `index.html` for a simple web interface.
+
 ### Testing
 
 ```bash

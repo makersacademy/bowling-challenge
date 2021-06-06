@@ -16,7 +16,7 @@ describe("Scorecard", () => {
   });
 
   it("passes the correct frame a roll score", () => {
-    const frame = jasmine.createSpyObj("frame", ["updateRollScore", "rolls"]);
+    const frame = jasmine.createSpyObj("frame", ["updateRollScore", "rolls", "isSpare", "isStrike"]);
     scorecard.frames[0] = frame;
     scorecard.enterRollPins(2);
 
@@ -63,12 +63,25 @@ describe("Scorecard", () => {
     it("passes the correct frame a bonus score", () => {
       scorecard.enterRollPins(2);
       scorecard.enterRollPins(8);
-      expect(scorecard.frames[0].bonusStatus).toEqual('spare')
+      expect(scorecard.frames[0].isSpare()).toBe(true)
       scorecard.enterRollPins(3);
 
-      expect(scorecard.frames[0].bonusScore).toEqual(3)
       expect(scorecard.frames[0].currentScore()).toEqual(13)
       expect(scorecard.currentScore()).toEqual(16)
+    })
+  })
+
+  describe("STRIKE SCORING", () => {
+    it("passes the correct frame a bonus score", () => {
+      scorecard.enterRollPins(10);
+      expect(scorecard.frame).toEqual(2);
+      expect(scorecard.roll).toEqual(1);
+      expect(scorecard.frames[0].isStrike()).toBe(true)
+      scorecard.enterRollPins(7);
+      scorecard.enterRollPins(1);
+
+      expect(scorecard.frames[0].currentScore()).toEqual(18)
+      expect(scorecard.currentScore()).toEqual(26)
     })
   })
 });

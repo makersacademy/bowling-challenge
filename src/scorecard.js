@@ -36,11 +36,18 @@ class Scorecard {
 
   enterRollPins(pins) {
     this._currentFrame().updateRollScore(pins);
-
+      // console.log(this._previousFrame().isSpare())
     if (
       this.frame > 1 &&
       this.currentRoll() === 1 &&
-      this.isSparePendingBonus()
+      this._previousFrame().isSpare()
+    ) {
+      this.spareScoring(pins);
+    }
+
+    if (
+      this.frame > 1 &&
+      this._previousFrame().isStrike()
     ) {
       this.spareScoring(pins);
     }
@@ -55,7 +62,7 @@ class Scorecard {
 
   updateCurrentFrame() {
     const currentRoll = this.currentRoll();
-    if (currentRoll > 1) {
+    if (currentRoll > 1 || this._currentFrame().isStrike()) {
       this.frame += 1;
       if (this.frame > 10) {
         this.play = null;
@@ -69,6 +76,10 @@ class Scorecard {
   }
 
   spareScoring(pins) {
+    this._previousFrame().updateBonusScore(pins);
+  }
+
+  strikeScoring(pins) {
     this._previousFrame().updateBonusScore(pins);
   }
 

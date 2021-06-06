@@ -10,7 +10,7 @@
     "test": "npm run unit && npm run integration",
     "unit": "jasmine",
     "integration": "jasmine spec/integrationSpec.js",
-    "build": "esbuild app.jsx --bundle --outfile=out.js"
+    "build": "esbuild lib/index.js --bundle --outfile=bundle.min.js --minify"
   },
   "repository": {
     "type": "git",

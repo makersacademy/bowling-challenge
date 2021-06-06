@@ -78,10 +78,6 @@ module.exports = class Game {
     return this.totalScore;
   }
 
-  gameOver() {
-    return this.frames.length > this.MAX_FRAMES;
-  }
-
   isLastFrame() {
     this.frames.length === this.MAX_FRAMES - 1;
   }

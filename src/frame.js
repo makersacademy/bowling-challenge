@@ -21,9 +21,21 @@ class Frame {
   }
 
   updateBonusStatus() {
-    if(this.rollArray().reduce((a, b) => a + b, 0) === 10) {
+    if(this.rolls[0] === 10) {
+      this.bonusStatus = 'strike'
+    }
+
+    else if (this.rolls.reduce((a, b) => a + b, 0) === 10) {
       this.bonusStatus = 'spare'
-    };
+    }
+  }
+
+  isSpare() {
+    return this.bonusStatus === 'spare';
+  }
+
+  isStrike() {
+    return this.bonusStatus === 'strike';
   }
 
   updateBonusScore(pins) {

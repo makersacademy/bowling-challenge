@@ -42,11 +42,22 @@ describe("Frame", () => {
   
   describe("SPARE", () => {
     it("knows when eligible for a spare", () => {
-      expect(frame.bonusStatus).toEqual(null)
+      expect(frame.isSpare()).toBe(false)
       frame.updateRollScore(1);
       frame.updateRollScore(9);
   
-      expect(frame.bonusStatus).toEqual('spare')
+      expect(frame.isSpare()).toBe(true)
     });
    })
+
+   describe("STRIKE", () => {
+    it("knows when eligible for a strike", () => {
+      expect(frame.isStrike()).toBe(false)
+      frame.updateRollScore(10);
+      console.log(frame)
+  
+      expect(frame.isStrike()).toBe(true)
+    });
+   })
+
 });

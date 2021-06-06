@@ -91,5 +91,17 @@ describe("Game", () => {
         expect(game.score()).toEqual(149);
       });
     });
+
+    describe("when the player rolls 3 strikes in the 10th frame", () => {
+      it("returns 30", () => {
+        for (let i = 0; i < 18; i++) {
+          game.bowl(0);
+        }
+        game.bowl(10);
+        game.bowl(10);
+        game.bowl(10);
+        expect(game.score()).toEqual(30);
+      });
+    });
   });
 });

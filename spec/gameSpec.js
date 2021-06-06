@@ -22,12 +22,6 @@ describe("Game", () => {
       game.takeTurn(5);
       expect(game.frames[1].scoreRolls()).toEqual(5);
     });
-    it("updates the scores after each turn", () => {
-      game.takeTurn(10);
-      game.takeTurn(10);
-      game.takeTurn(10);
-      expect(game.frames[0].total).toEqual(30);
-    });
   });
 
   describe(".getCurrentScore", () => {

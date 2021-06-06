@@ -34,6 +34,18 @@ describe("Game", () => {
     });
   });
 
+  describe("when a strike occurs three times in a row", () => {
+    it("can calculate three strikes in a row", () => {
+      game.bowl(10);
+      game.bowl(10);
+      game.bowl(10);
+      for (let i = 0; i < 13; i++) {
+        game.bowl(0);
+      }
+      expect(game.score()).toEqual(60);
+    });
+  });
+
   it("can calculate the score correctly", () => {
     let rolls = [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6];
     rolls.forEach((roll) => {

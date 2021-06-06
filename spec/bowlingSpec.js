@@ -71,9 +71,18 @@ describe('Bowling', () => {
   })
 
   it('only allows 2 balls in the tenth round if no spare or strike', () => {
-    for (let i = 0; i < 19; i++) {
+    for (let i = 0; i < 20; i++) {
       bowling.inputPins(1);
     }
     expect(function(){ bowling.inputPins(1); }).toThrowError('You have no more throws!');
+  })
+
+  it('allows 3 balls in the tenth round if the first two are a spare', () => {
+    for (let i = 0; i < 19; i++) {
+      bowling.inputPins(1);
+    }
+    bowling.inputPins(9);
+    bowling.inputPins(1);
+    expect(function(){ bowling.inputPins(1); }).not.toThrowError('You have no more throws!');
   })
 })

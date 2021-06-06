@@ -24,17 +24,18 @@ class Bowling {
       throw new Error('Invalid input. Please check your pins.')
     }
 
-    if (this.currentRound === 10 && this.currentBall === 3
-      && (this.scorecard[this.currentRound - 1][this.currentBall - 3] + pins < 10)) {
-        this.game_over = true;
-      }
-
     this.scorecard[this.currentRound - 1][this.currentBall - 1] = pins;
     this.currentBall += 1;
+    
     if (this.currentBall === 3 && this.currentRound < 10) {
       this.currentBall = 1;
       this.currentRound += 1;
     }
+
+    if (this.currentRound === 10 && this.currentBall === 3
+      && ((this.scorecard[this.currentRound - 1][this.currentBall - 2] + pins) < 10)) {
+        this.game_over = true;
+      }
   }
 
   showScorecard() {

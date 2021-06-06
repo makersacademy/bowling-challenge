@@ -26,7 +26,7 @@ describe("Game", () => {
   });
 
   describe("perfect game", () => {
-    it("can roll a pefect game", () => {
+    it("can roll a perfect game", () => {
       for (let i = 0; i < 12; i++) {
         game.bowl(10);
       }
@@ -55,5 +55,18 @@ describe("Game", () => {
     game.bowl(8);
     game.bowl(6);
     expect(game.score()).toEqual(133);
+  });
+
+  describe("when the game is over", () => {
+    it("does not let you to bowl", () => {
+      for (let i = 0; i < 20; i++) {
+        game.bowl(1);
+      }
+      expect(function () {
+        game.bowl(1);
+      }).toThrow(
+        "Game Over: Maximum frame size exceeded. Please start a new game."
+      );
+    });
   });
 });

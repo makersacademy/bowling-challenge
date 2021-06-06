@@ -103,5 +103,17 @@ describe("Game", () => {
         expect(game.score()).toEqual(30);
       });
     });
+
+    describe("when the player rolls a spare in the 10th frame", () => {
+      it("returns 20", () => {
+        for (let i = 0; i < 18; i++) {
+          game.bowl(0);
+        }
+        game.bowl(1);
+        game.bowl(9);
+        game.bowl(10);
+        expect(game.score()).toEqual(20);
+      });
+    });
   });
 });

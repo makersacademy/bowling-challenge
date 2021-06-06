@@ -16,7 +16,7 @@ The `game.score()` method returns the current total score, following [traditiona
 
 ### Design
 
-This program follows Object-oriented design pattern, and consists of two classes: Game and Frame. Game holds an array of Frame objects. Game knows about its frames, the order of those frames and overall game score. Frame knows about its rolls, whether it is a spare or a strike, and whether it is closed or open.
+This program follows Object-oriented design pattern, and consists of two classes: Game and Frame. Game holds an array of Frame objects. Game knows about its frames, the order of those frames and overall game score. Since Game knows the position of its frames, it is responsible for distributing their bonuses to the right frames. Frame knows about its rolls, whether it is a spare or a strike, and whether it is closed or open.
 
 ## Features
 

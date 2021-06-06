@@ -4,8 +4,9 @@ class Bowling {
   constructor() {
     this.currentRound = 1;
     this.currentBall = 1;
-    this.scorecard = [[null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null], [null, null, null]]
-    this.game_over = false;
+    this.scorecard = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-', '-']]
+    this.gameOver = false;
+    this.totalScore = 0
   }
 
   getCurrentRound() {
@@ -16,15 +17,22 @@ class Bowling {
     return this.currentBall
   }
 
-  inputPins(pins) {
-    if (this.game_over === true) {
+  inputPins(current_pins) {
+    let last_pins = this.scorecard[this.currentRound - 1][this.currentBall - 2];
+
+    if (this.gameOver === true) {
       throw new Error('You have no more throws!')
     }
-    if ((this.currentRound !== 10) && (pins > 10 || this.scorecard[this.currentRound - 1][this.currentBall - 2] + pins >= 10)) {
+    if ((this.currentRound !== 10) && (current_pins > 10 || this.scorecard[this.currentRound - 1][this.currentBall - 2] + current_pins >= 10)) {
       throw new Error('Invalid input. Please check your pins.')
     }
 
-    this.scorecard[this.currentRound - 1][this.currentBall - 1] = pins;
+    if ((last_pins + current_pins) < 10) {
+      this.totalScore += (last_pins + current_pins)
+      this.scorecard[this.currentRound - 1][this.scorecard[this.currentRound - 1].length - 1] = this.totalScore
+    }
+    
+    this.scorecard[this.currentRound - 1][this.currentBall - 1] = current_pins;
     this.currentBall += 1;
     
     if (this.currentBall === 3 && this.currentRound < 10) {
@@ -33,12 +41,12 @@ class Bowling {
     }
 
     if (this.currentBall === 4) {
-      this.game_over = true;
+      this.gameOver = true;
     }
 
     if (this.currentRound === 10 && this.currentBall === 3
-      && ((this.scorecard[this.currentRound - 1][this.currentBall - 2] + pins) < 10)) {
-        this.game_over = true;
+      && ((last_pins + current_pins) < 10)) {
+        this.gameOver = true;
     }
 
     

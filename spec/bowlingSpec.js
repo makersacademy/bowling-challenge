@@ -28,20 +28,20 @@ describe('Bowling', () => {
 
   it('adds the pins to the scoreboard', () => {
     bowling.inputPins(5);
-    expect(bowling.showScorecard()).toContain([5, null]);
+    expect(bowling.showScorecard()).toContain([5, '-', '-']);
   })
 
   it('adds a round to the scoreboard', () => {
     bowling.inputPins(1);
     bowling.inputPins(1);
-    expect(bowling.showScorecard()).toContain([1, 1]);
+    expect(bowling.showScorecard()).toContain([1, 1, 2]);
   })
 
   it('creates a new array for each round', () => {
     for (let i = 0; i < 4; i++) {
       bowling.inputPins(1);
     }
-    expect(bowling.showScorecard()).toContain([1, 1], [1, 1]);
+    expect(bowling.showScorecard()).toContain([1, 1, 2], [1, 1, 2]);
   })
 
   it('doesnt allow round to exceed 10 pins', () => {
@@ -92,5 +92,18 @@ describe('Bowling', () => {
     bowling.inputPins(9);
     bowling.inputPins(1);
     expect(function(){ bowling.inputPins(1); }).toThrowError('You have no more throws!');
+  })
+
+  it('sends pins to the scoreboard immediately if no strike or spare', () => {
+    bowling.inputPins(4);
+    bowling.inputPins(4);
+    expect(bowling.showScorecard()).toContain([4, 4, 8])
+  })
+
+  it('sends a full game with no strikes or spares to the scoreboard', () => {
+    for (let i = 0; i < 20; i++) {
+      bowling.inputPins(4);
+    }
+    expect(bowling.showScorecard()).toEqual([[4, 4, 8], [4, 4, 16], [4, 4, 24], [4, 4, 32], [4, 4, 40], [4, 4, 48], [4, 4, 56], [4, 4, 64], [4, 4, 72], [4, 4, '-', 80]])
   })
 })

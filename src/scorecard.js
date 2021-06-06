@@ -36,7 +36,6 @@ class Scorecard {
 
   enterRollPins(pins) {
     this._currentFrame().updateRollScore(pins);
-      // console.log(this._previousFrame().isSpare())
     if (
       this.frame > 1 &&
       this.currentRoll() === 1 &&
@@ -47,9 +46,10 @@ class Scorecard {
 
     if (
       this.frame > 1 &&
+      this.roll < 3 &&
       this._previousFrame().isStrike()
     ) {
-      this.spareScoring(pins);
+      this.strikeScoring(pins);
       if ( this.roll === 1 &&
         this.frame > 2 &&
         this.frames[this.frame - 3 ].isStrike()) {

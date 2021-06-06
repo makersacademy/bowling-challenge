@@ -107,4 +107,62 @@ describe("Scorecard", () => {
       expect(scorecard.frames[2].currentScore()).toEqual(3)
     })
   })
+
+  describe('10TH FRAME', () => {
+    describe('spare in roll 2', () => {
+      it('has 3 rolls', () => {
+      for (let i = 0; i < 18; i++) {
+        scorecard.enterRollPins(0);
+      }
+      scorecard.enterRollPins(5)
+      scorecard.enterRollPins(5)
+
+      expect(scorecard.frame).toEqual(10)
+      expect(scorecard.roll).toEqual(3)
+
+      scorecard.enterRollPins(2)
+      expect(scorecard.currentScore()).toEqual(12)
+      })
+    })
+
+    describe('strike in roll 1', () => {
+      it('handles one strike in 10th frame', () => {
+        for (let i = 0; i < 18; i++) {
+          scorecard.enterRollPins(0);
+        }
+
+        scorecard.enterRollPins(10)
+        expect(scorecard.frame).toEqual(10)
+        expect(scorecard.roll).toEqual(2)
+        scorecard.enterRollPins(2)
+
+        expect(scorecard.frame).toEqual(10)
+        expect(scorecard.roll).toEqual(3)
+
+        scorecard.enterRollPins(3)
+        expect(scorecard.currentScore()).toEqual(15)
+      })
+      it('handles 10, 10, 2', () => {
+        for (let i = 0; i < 18; i++) {
+          scorecard.enterRollPins(0);
+        }
+
+        scorecard.enterRollPins(10)
+        scorecard.enterRollPins(10)
+        scorecard.enterRollPins(2)
+        expect(scorecard.currentScore()).toEqual(22)
+      })
+
+      it('handles 10, 10, 10', () => {
+        for (let i = 0; i < 18; i++) {
+          scorecard.enterRollPins(0);
+        }
+
+        scorecard.enterRollPins(10)
+        scorecard.enterRollPins(10)
+        scorecard.enterRollPins(10)
+        expect(scorecard.currentScore()).toEqual(30)
+      })
+    })
+  })
 });

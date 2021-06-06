@@ -54,7 +54,6 @@ describe("Frame", () => {
     it("knows when eligible for a strike", () => {
       expect(frame.isStrike()).toBe(false)
       frame.updateRollScore(10);
-      console.log(frame)
   
       expect(frame.isStrike()).toBe(true)
     });

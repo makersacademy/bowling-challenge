@@ -9,8 +9,8 @@ module.exports = class Game {
     this.MAX_FRAMES = 10;
   }
 
-  isNew() {
-    return this.frames.length === 0;
+  numOfFrames() {
+    return this.frames.length;
   }
 
   addNewFrame() {

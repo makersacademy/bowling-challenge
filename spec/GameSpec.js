@@ -115,5 +115,17 @@ describe("Game", () => {
         expect(game.score()).toEqual(20);
       });
     });
+
+    describe("when the player rolls a spare or a strike in the 10th frame", () => {
+      it("can never roll more than 3 balls in the 10th frame", () => {
+        for (let i = 0; i < 18; i++) {
+          game.bowl(2);
+        }
+        game.bowl(10);
+        game.bowl(10);
+        game.bowl(10);
+        expect(game.numOfFrames()).toEqual(10);
+      });
+    });
   });
 });

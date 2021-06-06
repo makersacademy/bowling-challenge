@@ -106,4 +106,51 @@ describe('Bowling', () => {
     }
     expect(bowling.showScorecard()).toEqual([[4, 4, 8], [4, 4, 16], [4, 4, 24], [4, 4, 32], [4, 4, 40], [4, 4, 48], [4, 4, 56], [4, 4, 64], [4, 4, 72], [4, 4, '-', 80]])
   })
+
+  it('goes to the second round and reduce ball to 1 if there is a strike', () => {
+    bowling.inputPins(10);
+    expect(bowling.getCurrentRound()).toEqual(2);
+    expect(bowling.getCurrentBall()).toEqual(1);
+  })
+
+  it('allows 1 ball per round all the way to round 10 and allows 3 balls in round 10 if all strikes', () => {
+    for (let i = 0; i < 12; i++) {
+      bowling.inputPins(10);
+    }
+    expect(bowling.getCurrentRound()).toEqual(10);
+    expect(bowling.getCurrentBall()).toEqual(4);
+  })
+
+  it('turns strike bonus on after a strike', () => {
+    bowling.inputPins(10);
+    expect(bowling.isStrikeBonus).toEqual(true)
+  })
+
+  it('stores the round a strike was made in', () => {
+    for (let i = 0; i < 6; i++) {
+      bowling.inputPins(4);
+    }
+    bowling.inputPins(10);
+    expect(bowling.strikeBonusRound).toEqual(4);
+  })
+
+  it('adds the pin after a strike to the strike bonus', () => {
+    bowling.inputPins(10);
+    bowling.inputPins(5);
+    expect(bowling.strikeBonusAmount).toEqual(5)
+  })
+
+  it('adds the strike bonus to the score after a regular bonus round', () => {
+    bowling.inputPins(10);
+    bowling.inputPins(3);
+    bowling.inputPins(3);
+    expect(bowling.scorecard[0][2]).toEqual(16)
+  })
+
+  it('adds scores 300 for a perfect game', () => {
+    for (let i = 0; i < 12; i++) {
+      bowling.inputPins(10);
+    }
+    expect(bowling.scorecard[9][3]).toEqual(300)
+  })
 })

@@ -50,7 +50,13 @@ class Scorecard {
       this._previousFrame().isStrike()
     ) {
       this.spareScoring(pins);
+      if ( this.roll === 1 &&
+        this.frame > 2 &&
+        this.frames[this.frame - 3 ].isStrike()) {
+        this.frames[this.frame - 3 ].updateBonusScore(pins)
+      }
     }
+
 
     this.updateCurrentFrame();
     this.updateCurrentRoll();
@@ -69,10 +75,6 @@ class Scorecard {
         this.frame = 10;
       }
     }
-  }
-
-  isSparePendingBonus() {
-    return this._previousFrame().bonusStatus === "spare";
   }
 
   spareScoring(pins) {

@@ -3,7 +3,7 @@
 class Frame {
   constructor() {
     this.rolls = [];
-    this.bonusScore = 0
+    this.bonusScore =0;
     this.bonusStatus = null
   }
 

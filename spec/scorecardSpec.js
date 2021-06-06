@@ -83,5 +83,28 @@ describe("Scorecard", () => {
       expect(scorecard.frames[0].currentScore()).toEqual(18)
       expect(scorecard.currentScore()).toEqual(26)
     })
+
+    it("does it twice in a row", () => {
+      scorecard.enterRollPins(10);
+      expect(scorecard.frame).toEqual(2);
+      expect(scorecard.roll).toEqual(1);
+      expect(scorecard.frames[0].isStrike()).toBe(true)
+      scorecard.enterRollPins(10);
+      expect(scorecard.frame).toEqual(3);
+      expect(scorecard.roll).toEqual(1);
+
+      expect(scorecard.frames[0].currentScore()).toEqual(20)
+      expect(scorecard.currentScore()).toEqual(30)
+    })
+    it("does it twice in a row and a bit more", () => {
+      scorecard.enterRollPins(10);
+      scorecard.enterRollPins(10);
+      scorecard.enterRollPins(1);
+      scorecard.enterRollPins(2);
+
+      expect(scorecard.frames[0].currentScore()).toEqual(21)
+      expect(scorecard.frames[1].currentScore()).toEqual(13)
+      expect(scorecard.frames[2].currentScore()).toEqual(3)
+    })
   })
 });

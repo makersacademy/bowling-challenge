@@ -32,10 +32,16 @@ class Bowling {
       this.currentRound += 1;
     }
 
+    if (this.currentBall === 4) {
+      this.game_over = true;
+    }
+
     if (this.currentRound === 10 && this.currentBall === 3
       && ((this.scorecard[this.currentRound - 1][this.currentBall - 2] + pins) < 10)) {
         this.game_over = true;
-      }
+    }
+
+    
   }
 
   showScorecard() {

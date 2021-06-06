@@ -82,7 +82,15 @@ describe('Bowling', () => {
       bowling.inputPins(1);
     }
     bowling.inputPins(9);
-    bowling.inputPins(1);
     expect(function(){ bowling.inputPins(1); }).not.toThrowError('You have no more throws!');
+  })
+
+  it('doesnt allow more than 3 balls in the tenth round', () => {
+    for (let i = 0; i < 19; i++) {
+      bowling.inputPins(1);
+    }
+    bowling.inputPins(9);
+    bowling.inputPins(1);
+    expect(function(){ bowling.inputPins(1); }).toThrowError('You have no more throws!');
   })
 })

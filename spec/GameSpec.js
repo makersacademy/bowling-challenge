@@ -7,10 +7,6 @@ describe("Game", () => {
     game = new Game();
   });
 
-  it("can create a new game", () => {
-    expect(game).toBeInstanceOf(Game);
-  });
-
   it("can roll gutter game", () => {
     for (let i = 0; i < 20; i++) {
       game.bowl(0);
@@ -64,6 +60,21 @@ describe("Game", () => {
       }).toThrow(
         "Game Over: Maximum frame size exceeded. Please start a new game."
       );
+    });
+  });
+
+  describe("10th frame", () => {
+    describe("when the player does not make a strike or a spare", () => {
+      it("returns 119", () => {
+        let rolls = [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10];
+        rolls.forEach((roll) => {
+          game.bowl(roll);
+        });
+
+        game.bowl(2);
+        game.bowl(4);
+        expect(game.score()).toEqual(119);
+      });
     });
   });
 });

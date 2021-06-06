@@ -97,10 +97,6 @@ module.exports = class Game {
   bowl(pins) {
     if (this.lastFrame().isClosed(this.isFinalFrameInput())) {
       this.addNewFrame();
-      if (this.gameOver()) {
-        throw "Game Over: Maximum frame size exceeded. Please start a new game.";
-      }
-
       this.lastFrame().roll(pins);
     } else {
       this.lastFrame().roll(pins);

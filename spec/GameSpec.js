@@ -50,19 +50,6 @@ describe("Game", () => {
     expect(game.score()).toEqual(133);
   });
 
-  describe("when the game is over", () => {
-    it("does not let you to bowl", () => {
-      for (let i = 0; i < 20; i++) {
-        game.bowl(1);
-      }
-      expect(function () {
-        game.bowl(1);
-      }).toThrow(
-        "Game Over: Maximum frame size exceeded. Please start a new game."
-      );
-    });
-  });
-
   describe("10th frame", () => {
     describe("when the player does not make a strike or a spare", () => {
       it("returns 119", () => {
@@ -88,6 +75,20 @@ describe("Game", () => {
         game.bowl(8);
         game.bowl(6);
         expect(game.score()).toEqual(133);
+      });
+    });
+
+    describe("when the player makes a strike", () => {
+      it("returns 151", () => {
+        let rolls = [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10];
+        rolls.forEach((roll) => {
+          game.bowl(roll);
+        });
+
+        game.bowl(10);
+        game.bowl(8);
+        game.bowl(6);
+        expect(game.score()).toEqual(149);
       });
     });
   });

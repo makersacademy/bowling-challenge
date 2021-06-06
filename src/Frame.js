@@ -34,11 +34,7 @@ module.exports = class Frame {
   }
 
   isClosed(isFinalFrameInput) {
-    if (
-      isFinalFrameInput &&
-      (this.isSpare() || this.isStrike() || this.frameScore() % 10 === 0) &&
-      this.rolls.length !== 3
-    ) {
+    if (isFinalFrameInput && this.rolls.length < 3) {
       return false;
     } else if (isFinalFrameInput && this.rolls.length === 3) {
       return true;

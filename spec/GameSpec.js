@@ -24,4 +24,13 @@ describe("Game", () => {
     }
     expect(game.score()).toEqual(20);
   });
+
+  describe("perfect game", () => {
+    it("can roll a pefect game", () => {
+      for (let i = 0; i < 12; i++) {
+        game.bowl(10);
+      }
+      expect(game.score()).toEqual(300);
+    });
+  });
 });

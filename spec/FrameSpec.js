@@ -35,4 +35,20 @@ describe("Frame", () => {
       expect(frame.isClosed()).toEqual(true);
     });
   });
+
+  describe("#isSpare", () => {
+    it("returns true if the frame is a spare", () => {
+      frame.roll(8);
+      frame.roll(2);
+
+      expect(frame.isSpare()).toBe(true);
+    });
+
+    it("returns false if the frame is not a spare", () => {
+      frame.roll(2);
+      frame.roll(5);
+
+      expect(frame.isSpare()).toBe(false);
+    });
+  });
 });

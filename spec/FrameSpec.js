@@ -29,5 +29,10 @@ describe("Frame", () => {
 
       expect(frame.isStrike()).toBe(false);
     });
+
+    it("is closed after a strike", () => {
+      frame.roll(10);
+      expect(frame.isClosed()).toEqual(true);
+    });
   });
 });

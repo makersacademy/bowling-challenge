@@ -22,5 +22,15 @@ describe("BowlingScore", function() {
       }
       expect(bowlingScore.totalScore()).toEqual(26);
     })
+
+    it("saves a spare", function() {
+      bowlingScore.roll(3);
+      bowlingScore.roll(7);
+      bowlingScore.roll(1);
+      for(i = 1; i <= 17; i++) {
+        bowlingScore.roll(0);
+      }
+      expect(bowlingScore.totalScore()).toEqual(12);
+    })
   });
 })

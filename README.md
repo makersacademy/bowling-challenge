@@ -30,7 +30,7 @@ This program follows Object-oriented design pattern, and consists of two classes
 ### How to run
 
 ```bash
-1. Git clone https://github.com/gunelmc/bowling-challenge.git
+1. Git clone https://github.com/GunelMC/bowling-challenge.git
 2. cd bowling-challenge
 3. npm install
 ```

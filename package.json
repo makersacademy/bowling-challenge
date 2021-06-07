@@ -1,0 +1,38 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "npm run unit && npm run integration",
+    "unit": "jasmine",
+    "integration": "jasmine spec/integrationSpec.js",
+    "build": "esbuild lib/index.js --bundle --outfile=bundle.min.js --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdupplaw/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rdupplaw/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/rdupplaw/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jasmine": "^4.1.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "jasmine": "^3.7.0"
+  },
+  "dependencies": {
+    "esbuild": "^0.12.6",
+    "jasmine-spec-reporter": "^7.0.0"
+  }
+}

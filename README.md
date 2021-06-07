@@ -30,17 +30,17 @@ This program follows Object-oriented design pattern, and consists of two classes
 ### How to run
 
 ```bash
-1. Git clone https://github.com/GunelMC/bowling-challenge.git
-2. cd bowling-challenge
-3. npm install
+Git clone https://github.com/GunelMC/bowling-challenge.git
+cd bowling-challenge
+npm install
 ```
 
 ### How to test
 
 ```
-1. Git clone this repository
-2. Install dependencies `npm install`
-3. Run test `npm run test`
+Git clone this repository
+Install dependencies `npm install`
+Run test `npm run test`
 ```
 
 ### Built with

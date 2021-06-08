@@ -1,31 +1,36 @@
 export default class Frame {
-  constructor() {
-    this.rolls = [];
-    this.pinsLeft = 10;
-    this.result = "";
-    this.score = 0;
-  }
+	constructor() {
+		this.rolls = [];
+		this.bonusScore = 0;
+		this._totalPins = 10;
+	}
 
-  roll(pins, bonus=false) {
-    if (this.pinsLeft < pins) {throw "Not enough pins left"}
-    this.rolls.push(pins);
-    this.score += pins;
-    if (bonus===false) {
-      this.pinsLeft -= pins;
-    } 
-    if (this.pinsLeft===0 && this.rolls.length===1) {
-      this.result = "Strike";
-    } else if (this.pinsLeft===0 && this.rolls.length===2) {
-      this.result = "Spare";
-    }
-  }
+	roll(pins, bonus = false) {
+		if (this.pinsLeft(bonus) < pins) {
+			throw 'Not enough pins left';
+		}
+		this.rolls.push(pins);
+	}
 
-  setPins(pins = 10) {
-    this.pinsLeft = pins;
-  }
+	addScore(num) {
+		this.bonusScore += num;
+	}
 
-  addScore(num) {
-    this.score += num;
-  }
+	_knockedPins() {
+		return this.rolls.reduce((total, roll) => total + roll, 0);
+	}
+
+	score() {
+		return this._knockedPins() + this.bonusScore;
+	}
+
+	result() {
+		if (this.rolls.length > 0 && this.rolls[0] === 10) return 'Strike';
+		if (this.rolls.length > 1 && this.rolls[0] + this.rolls[1] === 10) return 'Spare';
+		return '';
+	}
+
+	pinsLeft(bonus = false) {
+		return bonus ? 10 : this._totalPins - this._knockedPins();
+	}
 }
-

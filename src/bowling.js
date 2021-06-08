@@ -9,7 +9,7 @@ export default class Bowling {
 
 	roll(pins) {
 		if (this.isGameOver) return;
-		this.currentFrame().roll(pins, this._isBonus);
+		this.currentFrame().roll(pins, this.isBonus);
 		this._checkGameStatus();
 		this._prepareNextRoll();
 	}
@@ -58,24 +58,16 @@ export default class Bowling {
 	}
 
 	get _isNextFrame() {
-		if (
+		return (
 			this.frames.length === 0 ||
 			((this.frames[this.frames.length - 1].result() !== '' ||
 				this.frames[this.frames.length - 1].rolls.length === 2) &&
 				this.frames.length <= 9)
-		) {
-			return true;
-		} else {
-			return false;
-		}
+		);
 	}
 
-	get _isBonus() {
-		if (this.frames.length === 10 && this.frames[this.frames.length - 1].result() !== '') {
-			return true;
-		} else {
-			return false;
-		}
+	get isBonus() {
+		return this.frames.length === 10 && this.frames[this.frames.length - 1].result() !== '';
 	}
 
 	_checkGameStatus() {

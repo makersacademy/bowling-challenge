@@ -25,7 +25,7 @@ function initiateGame() {
 }
 
 function refresh() {
-	setRollArea(bowling.currentFrame().pinsLeft());
+	setRollArea(bowling.currentFrame().pinsLeft(bowling.isBonus));
 	$('.scorecard-body').empty();
 	let accumScore = 0;
 	for (let i = 0; i < bowling.frames.length; i++) {
@@ -41,7 +41,7 @@ function refresh() {
 			frame.rolls[2] === undefined ? '' : frame.rolls[2]
 		}</div>
       <div class="frame-score" id="${frameId}-score">${frame.score === 0 ? '' : accumScore}</div>
-      <div class="frame-result" id="${frameId}-result">${frame.result}</div>
+      <div class="frame-result" id="${frameId}-result">${frame.result()}</div>
     </div>
   `);
 	}
@@ -72,8 +72,9 @@ function addPinsImages(pinsLeft) {
 }
 
 function addButtonListener() {
+	// console.log('add button listener')
 	$('.roll-choice').click((e) => {
-		if (bowling.gameStatus) {
+		if (!bowling.isGameOver) {
 			nextRoll(parseInt(e.target.id));
 		}
 	});
@@ -82,7 +83,7 @@ function addButtonListener() {
 function nextRoll(pins) {
 	bowling.roll(pins);
 	refresh();
-	if (!bowling.gameStatus) {
+	if (bowling.isGameOver) {
 		endGame();
 	}
 }

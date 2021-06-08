@@ -3,6 +3,7 @@
         "browser": true,
         "es2021": true,
         "jquery": true,
+        "node": true,
         "jest": true
     },
     "extends": "eslint:recommended",
@@ -11,13 +12,5 @@
         "sourceType": "module"
     },
     "rules": {
-        "indent": [
-            "error",
-            2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ]
     }
 }

@@ -91,7 +91,7 @@ function endGame() {
 	$('.roll').slideUp();
 	$('.pins-img').remove();
 	setTimeout(() => {
-		if (bowling.totalScore === 300) {
+		if (bowling.totalScore() === 300) {
 			showKingpin();
 		}
 		popGameOverMsg();
@@ -102,7 +102,7 @@ function popGameOverMsg() {
 	$('.roll').before(`
     <div class="game-over">
       <h1 class="anim">GAME OVER</h1>
-      <h4>Total Score: ${bowling.totalScore}</h4>
+      <h4>Total Score: ${bowling.(totalScore())}</h4>
     </div>
   `);
 }

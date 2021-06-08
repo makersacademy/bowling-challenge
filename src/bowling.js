@@ -4,14 +4,12 @@ export default class Bowling {
 	constructor() {
 		this.frames = [];
 		this.isGameOver = false;
-		this.totalScore = 0;
 		this._newFrame();
 	}
 
 	roll(pins) {
 		if (this.isGameOver) return;
 		this.currentFrame().roll(pins, this._isBonus);
-		this.totalScore += pins;
 		this._checkGameStatus();
 		this._prepareNextRoll();
 	}
@@ -41,7 +39,6 @@ export default class Bowling {
 			extraScore = this.currentFrame().rolls[0];
 		}
 		prevFrame.addScore(extraScore);
-		this.totalScore += extraScore;
 	}
 
 	_adjustPrevPrevFrameScore() {
@@ -54,11 +51,9 @@ export default class Bowling {
 			extraScore = this.currentFrame().rolls[0];
 		}
 		prevPrevFrame.addScore(extraScore);
-		this.totalScore += extraScore;
 	}
 
 	_newFrame() {
-		// this.currentFrame = new Frame();
 		this.frames.push(new Frame());
 	}
 
@@ -99,5 +94,9 @@ export default class Bowling {
 
 	currentFrame() {
 		return this.frames[this.frames.length - 1];
+	}
+
+	totalScore() {
+		return this.frames.reduce((total, frame) => total + frame.score(), 0);
 	}
 }

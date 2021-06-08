@@ -39,7 +39,7 @@ describe('Bowling', () => {
 		for (let i = 0; i < 12; i++) {
 			bowling.roll(10);
 		}
-		expect(bowling.totalScore).toEqual(300);
+		expect(bowling.totalScore()).toEqual(300);
 	});
 
 	test('Invalid roll after game over', () => {
@@ -47,7 +47,7 @@ describe('Bowling', () => {
 			bowling.roll(10);
 		}
 		bowling.roll(10);
-		expect(bowling.totalScore).toEqual(300);
+		expect(bowling.totalScore()).toEqual(300);
 	});
 
 	test('Example roll scores 133', () => {
@@ -70,6 +70,6 @@ describe('Bowling', () => {
 		bowling.roll(2);
 		bowling.roll(8);
 		bowling.roll(6);
-		expect(bowling.totalScore).toEqual(133);
+		expect(bowling.totalScore()).toEqual(133);
 	});
 });

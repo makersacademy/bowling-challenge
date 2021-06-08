@@ -3,7 +3,6 @@ import Frame from './frame.js';
 export default class Bowling {
 	constructor() {
 		this.frames = [];
-		this.isGameOver = false;
 		this._newFrame();
 	}
 
@@ -71,17 +70,20 @@ export default class Bowling {
 	}
 
 	_checkGameStatus() {
-		if (
+		if (this.isGameOver) {
+			this._adjustScoresForPastFrames();
+		}
+	}
+
+	get isGameOver() {
+		return (
 			(this.frames.length === 10 &&
 				this.frames[this.frames.length - 1].result !== '' &&
 				this.frames[this.frames.length - 1].rolls.length === 3) ||
 			(this.frames.length === 10 &&
 				this.frames[this.frames.length - 1].result === '' &&
 				this.frames[this.frames.length - 1].rolls.length === 2)
-		) {
-			this.isGameOver = true;
-			this._adjustScoresForPastFrames();
-		}
+		);
 	}
 
 	get currentFrame() {

@@ -25,13 +25,13 @@ function initiateGame() {
 }
 
 function refresh() {
-	setRollArea(bowling.currentFrame().pinsLeft(bowling.isBonus));
+	setRollArea(bowling.currentFrame.pinsLeft(bowling.isBonus));
 	$('.scorecard-body').empty();
 	let accumScore = 0;
 	for (let i = 0; i < bowling.frames.length; i++) {
 		const frame = bowling.frames[i];
 		const frameId = i + 1;
-		accumScore += frame.score();
+		accumScore += frame.score;
 		$('.scorecard-body').append(`
     <div class="scorecard-item" id="frame-${frameId}">
       <div class="frame-no" id="frame-no-${frameId}">${frameId}</div>
@@ -41,7 +41,7 @@ function refresh() {
 			frame.rolls[2] === undefined ? '' : frame.rolls[2]
 		}</div>
       <div class="frame-score" id="${frameId}-score">${frame.score === 0 ? '' : accumScore}</div>
-      <div class="frame-result" id="${frameId}-result">${frame.result()}</div>
+      <div class="frame-result" id="${frameId}-result">${frame.result}</div>
     </div>
   `);
 	}
@@ -92,7 +92,7 @@ function endGame() {
 	$('.roll').slideUp();
 	$('.pins-img').remove();
 	setTimeout(() => {
-		if (bowling.totalScore() === 300) {
+		if (bowling.totalScore === 300) {
 			showKingpin();
 		}
 		popGameOverMsg();
@@ -103,7 +103,7 @@ function popGameOverMsg() {
 	$('.roll').before(`
     <div class="game-over">
       <h1 class="anim">GAME OVER</h1>
-      <h4>Total Score: ${bowling.totalScore()}</h4>
+      <h4>Total Score: ${bowling.totalScore}</h4>
     </div>
   `);
 }

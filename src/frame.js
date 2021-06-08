@@ -20,11 +20,11 @@ export default class Frame {
 		return this.rolls.reduce((total, roll) => total + roll, 0);
 	}
 
-	score() {
+	get score() {
 		return this._knockedPins() + this.bonusScore;
 	}
 
-	result() {
+	get result() {
 		if (this.rolls.length > 0 && this.rolls[0] === 10) return 'Strike';
 		if (this.rolls.length > 1 && this.rolls[0] + this.rolls[1] === 10) return 'Spare';
 		return '';

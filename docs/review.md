@@ -112,7 +112,7 @@ In all cases we should try to ensure that each function has a single responsibil
 
 ## Single Responsibility Principle and other SOLID issues
 
-Ensure your objects are [solid](https://github.com/makersacademy/course/blob/master/pills/code_reviews.md#oop---are-your-objects-solid)?
+Ensure your objects are [solid](https://github.com/makersacademy/course/blob/main/pills/code_reviews.md#oop---are-your-objects-solid)?
 
 For example, have you separated responsibilities of...
   * knowing whether a frame is a strike / spare

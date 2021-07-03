@@ -1,3 +1,52 @@
+Marcus' README Edits - My approach and mini code review
+=================
+
+### Solo Challenge: Automate complex score-calculation logic for Ten Pin Bowling
+
+<img src="BowlingChallengeGif.gif" width="100%" height="100%" />
+
+To use
+---------
+* View deployed app at: https://bowling-challenge-mfg.herokuapp.com/ [![Heroku](https://cloud.githubusercontent.com/assets/12953472/18688266/701982fc-7f7b-11e6-8971-5f1e03f554b7.png)](https://bowling-challenge-mfg.herokuapp.com/)
+
+* git clone repository
+* Open 'SpecRunner.html' for tests
+* Open 'index.html' for the bowling scorecard itself
+
+My approach
+---------
+* I completed the challenge over 2 weekends. I used the first weekend to work out the logic of the model, with the second week for the front end, css and testing out jQuery
+* I also split the logical tasks into: score calculator and game runner. This enabled me to only consider each aspect and reduce the cognitive load
+* CSS and jQuery are new to me, so I ensured to practice both extensively on the second weekend, challenging myself with styling the table and making a strike animation
+* I aimed to have deep understanding of my code, diagrammed extensively and stuck to the coding processes that I am refining e.g. TDD, Debugging process, algorithmic thinking, simplest step to MVP first
+
+
+Mini personal code review: My appraisal of my attempt at the weekend challenge
+---------
+* I really enjoyed the bowling challenge. My first weekend was satisfying logic, my second weekend focussed on testing out jQuery and having the front end working.
+* I think the real key to finding what could be a hard challenge fun and easy was thinking through my understanding of the code, diagramming extensively and most importantly sticking to the coding processes that I am refining e.g. TDD, Debugging process, algorithmic thinking, simplest step to MVP first
+* I also set up extensive tests for the back end model, which I found made it easy to refactor the code and ensure I was covering all scenarios. This was the first time I really felt myself letting the tests LEAD development
+* Taking the time to properly refactor was also essential to improving the quality of my code. I extracted a lot of logic and changed the scoring logic to be backward looking rather than forward looking, which vastly simplified my code
+* I enjoyed learning a new language in JS, a new testing framework in Jasmine, CSS, HTML and the extension jQuery in completing this exercise
+* I also spent the extra time it took to deepen my understanding of JS to answer some of the elements I got stuck on, including researching how scope and hoisting works for JS so that I could effectively refactor and extract coding logic
+
+Learnings/Things I would do better next time
+---------
+* One of the lessons I really learned was prioritising tasks to take on the essential functionality first, before any styling or additional features. For example, I got stuck on making a button a bowling ball, but jQuery had an issue with this being in a form. If I made the button work first, then moved it to a form, I would have known it was the form causing the issue.
+* At a couple of points I could have committed my code more often. This would have made it easier to go back and see changes if I got stuck.
+
+Elements I would like to improve in the codebase:
+---------
+* Features I would continue to add would be spare/ gutter ball animations, and a reset button for the game. I could also add support for multiple players
+* From a code perspective, there were some additional changes I considered but decided were not worth the effort at this point e.g. further refactoring the model logic, calculating the score by frame rather than looping through for score calculation each time (would make the code slightly quicker but bowling is a relatively small game so computer load is not an issue)
+
+Outstanding questions from the exercise:
+---------
+* Transcending scopes discussion: attaching data to objects and using dependancy injection (I used both here - dependency injection in the interface, attaching data to objects in the score calculator)
+* What are the implications of function expression vs declaration, other than hoisting
+* Check my understanding of hoisting, global, local and local nested scope
+* I also had a set of questions after the first weekend of completing logic that I answered, including: How to raise error messages using jQuery, checking the logical approach I had taken to take to run the game (I chose rolls that run game rather than game that runs roll), checking where I could refactor the code and how JS works with undefined errors
+
 
 Bowling Challenge
 =================

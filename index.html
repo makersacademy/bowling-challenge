@@ -1,0 +1,84 @@
+<html>
+    <head>
+            <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <!-- BootStrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link href="bowling.css" rel="stylesheet">
+    </head>
+
+<body bgcolor="gray">
+    
+    <div>
+
+
+            <h1 id="bowling scorecard" style="color:purple ">Bowling Scorecard</h1>
+
+          
+          <!-- Rolls -->
+          <h2>No Of Rolls: <span id='noOfRolls'></span></h2>
+          <input id="roll" type="button" value="Roll" class ="btn btn-primary">
+
+
+          <!-- Total Score -->
+            <h2>Total Score: <span id='total'></span></h2>
+                <input type ="button" id ="totalScore" value="Total" class ="btn btn-primary">
+
+            <!-- Frame -->
+            <h2>Current Frame: <span id='currentFrame'></span></h2>
+                <!-- <input type ="button" id ="Frame" value="Frame" class ="btn btn-primary"> -->
+            
+            
+            
+
+            <!-- Pins Dropped after a Roll  -->
+            <h2>Pins Dropped: <span id='pinsDropped' style="color:blue"></span></h1>
+            <!-- <input id="pinsD" type="button" value="pinsDropped" class ="btn btn-primary"> -->
+    
+
+            <!-- Frame Score -->
+            <h2>Frame Score: <span id='fScore'></span></h2>
+                <!-- <input id="frameScore" type="button" value="FrameScore" class ="btn btn-primary"> -->
+
+            <!-- Is a Strike?-->
+            <h2>is a Strike: <span id='strike'></span></h2>
+                <!-- <input id="isAStrike" type="button" value="Strike?" class ="btn btn-primary"> -->
+                
+
+            <h2>is a Spare: <span id='spare'></span></h2>
+                <!-- <input id="isASpare" type="button" value="Spare?" class ="btn btn-primary"> -->
+
+            
+                <input id="Reset" type="button" value="Reset All" class ="btn btn-primary">
+
+            <form>
+                Rolls <input type="number" name="Rolls" id="roll"><br>
+                <button onclick="add()">Add</button>
+            </form>
+                
+
+            <!-- Score Table  -->
+            <table class="table1">
+                <tr><th> Frame </th><th> Pins Knocked Down</th></tr>
+                <tr><td>1</td><td>10</td></tr>
+                <tr><td>2</td><td>3</td></tr>
+                <tr><td>3</td><td>7 </td></tr>
+            </table>
+        
+
+</div>
+    <a href="http://jquery.com/">jQuery</a>
+        <script src="jquery.js"></script>
+        <script src="interface.js"></script>
+        <script src="src/bowling.js"></script>
+
+
+
+ </body>
+
+</html>
+
+
+
+
+
+            <!-- placeholder="No# of Rolls" -->

@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<style type="text/css">
+  table, th, td {
+    border: 1px solid black;
+  }
+</style>
+<body class="container">
+
+<img src="/images/bowling-image.png" class="img-fluid" alt="Responsive image">
+
+<section>
+  <form>
+    <div class="row">
+      <input class="form-control col-3" type="text" id="roll1" placeholder="Bowl 1">
+      <input class="form-control col-3" type="text" id="roll2" placeholder="Bowl 2">
+      <input class="form-control col" type="submit" id="submit">
+    </div>
+  </form>
+</section>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Play</th>
+      <th scope="col">1</th>
+      <th scope="col">2</th>
+      <th scope="col">3</th>
+      <th scope="col">4</th>
+      <th scope="col">5</th>
+      <th scope="col">6</th>
+      <th scope="col">7</th>
+      <th scope="col">8</th>
+      <th scope="col">9</th>
+      <th scope="col">10</th>
+    </tr>
+  </thead>
+<tr>
+  <td scope="row">First Roll: </td>
+  <th><span id="roll-0"></span></th>
+  <th><span id="roll-3"></span></th>
+  <th><span id="roll-6"></span></th>
+  <th><span id="roll-9"></span></th>
+  <th><span id="roll-12"></span></th>
+  <th><span id="roll-15"></span></th>
+  <th><span id="roll-18"></span></th>
+  <th><span id="roll-21"></span></th>
+  <th><span id="roll-24"></span></th>
+  <th><span id="roll-27"></span></th>
+
+</tr>
+<tr>
+  <td>Second Roll: </td>
+  <th><span id="roll-1"></span></th>
+  <th><span id="roll-4"></span></th>
+  <th><span id="roll-7"></span></th>
+  <th><span id="roll-10"></span></th>
+  <th><span id="roll-13"></span></th>
+  <th><span id="roll-16"></span></th>
+  <th><span id="roll-19"></span></th>
+  <th><span id="roll-22"></span></th>
+  <th><span id="roll-25"></span></th>
+  <th><span id="roll-28"></span></th>
+</tr>
+<tr>
+  <td>Score: </td>
+  <th><span id="roll-2"></span></th>
+  <th><span id="roll-5"></span></th>
+  <th><span id="roll-8"></span></th>
+  <th><span id="roll-11"></span></th>
+  <th><span id="roll-14"></span></th>
+  <th><span id="roll-17"></span></th>
+  <th><span id="roll-20"></span></th>
+  <th><span id="roll-23"></span></th>
+  <th><span id="roll-26"></span></th>
+  <th><span id="roll-29"></span></th>
+</tr>
+</table>
+</section>
+
+
+</body>
+</html>
+
+<script src="../public/javascript/src/scorecard.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="../public/javascript/src/interface.js"></script>
+
+
+
+

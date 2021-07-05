@@ -1,0 +1,89 @@
+body {
+  text-align: center;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.disable{
+  background-color: grey;
+}
+
+#start-game {
+  margin-bottom: 20px;
+}
+
+.scorecard {
+  padding: 0 20% 0 20%;
+  border: 1px lightgrey;
+}
+
+.pins-img {
+  margin: 30px;
+}
+
+.pin-img {
+  width: 40px;
+}
+
+.roll-choice {
+  margin: 2px;
+  /* border-style: solid; */
+  border-style: solid;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+.roll-choice:hover {
+  cursor: pointer;
+}
+
+.scorecard-title {
+  margin-top: 4%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 16% 16% 16% 16% 16% 16%;
+  font-weight: bold;
+  border: 1px lightgrey;
+}
+
+.scorecard-body {
+  margin-top: 1%;
+}
+
+.scorecard-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 16% 16% 16% 16% 16% 16%;
+  border: 1px lightgrey;
+}
+
+.game-over {
+  margin: 50px;
+  color: Red;
+}
+
+.anim {
+  background: linear-gradient(90deg, #f00, #fff, #f00);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 5s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
+.kingpin {
+  position: fixed;
+  width: 100%;
+}

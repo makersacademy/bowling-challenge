@@ -1,0 +1,30 @@
+{
+  "name": "bowling-jest",
+  "version": "1.0.0",
+  "description": "![bowling](https://media.giphy.com/media/l0HlW6GBSjbyFDCW4/giphy.gif)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.13.15",
+    "eslint": "^7.24.0",
+    "eslint-plugin-jest": "^24.3.4",
+    "eslint-plugin-jquery": "^1.5.1",
+    "jest": "^26.6.3"
+  },
+  "scripts": {
+    "test": "jest --coverage",
+    "lint": "eslint ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cspoppuppy/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cspoppuppy/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/cspoppuppy/bowling-challenge#readme"
+}

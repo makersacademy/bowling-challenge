@@ -1,0 +1,58 @@
+h1 {
+  font-size: 40px;
+  font-family: 'Bungee Shade';
+  text-align: center;
+  color: #3b281b;
+}
+
+h2 {
+  font-size: 30px;
+  font-family: 'Anton', sans-serif;;
+  color: #3b281b;
+}
+
+.button {
+   padding: 15px 20px;
+   background-color: #823b6d;
+   color: #e6d1df;
+   text-align:center;
+   border-radius: 8px;
+   font-family: 'Poppins', sans-serif;
+   width:70px;
+}
+
+.button:hover {
+  background-color: #6b686a;
+}
+
+.myDiv {
+    z-index: 1;
+}
+
+.myDiv .bg {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(https://i.etsystatic.com/7580913/r/il/e1ce40/1817823675/il_fullxfull.1817823675_ohvh.jpg) center center;
+    opacity: .4;
+    background-position: center;
+    background-attachment: inherit;
+    background-repeat: repeat;
+    background-size: cover;
+    height: auto;
+    width: 100%;
+    height: auto;
+    min-width: 1024px;
+}
+
+@font-face {
+    font-family: 'stripedshadowsregular';
+    src: url('stripedshadows-webfont.woff2') format('woff2'),
+         url('stripedshadows-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

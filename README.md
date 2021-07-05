@@ -73,3 +73,12 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+
+Todo;
+- Add technical setup to Readme
+- Travis CI
+- Add UI with CSS & Jquery
+- Potentially separate frames into their own separate class
+- Unable to raise error to stop user adding to much to their score or for doing more than 10 frames
+- Remove extra stuff from the Readme

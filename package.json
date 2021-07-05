@@ -1,0 +1,35 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "10 Pin Bowling Scorecard – Makers Week 5",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "jasmine-node": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jasmine": "^2.10.1"
+  },
+  "scripts": {
+    "test": "jasmine-node spec/*Spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ollyholly/bowling-challenge.git"
+  },
+  "author": "Olly Holly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ollyholly/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/ollyholly/bowling-challenge#readme"
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="./src/Bowling.js"></script>
+    <script src="./src/Frame.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="public/css/style.css" />
+
+    <title>Bowling</title>
+  </head>
+  <body>
+    <!-- *****HEADER***** -->
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center my-5">
+            <h1 id="header">🎳 let's bowl!</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row ">
+        <div class="control d-flex justify-content-between w-100">
+          <div id="roll-numbers">
+            <div class="m-2">
+              Your roll
+            </div>
+          </div>
+          <div id="screen" class="p-4 bg-light">
+            Strike
+          </div>
+          <div id="control-btn">
+            <button type="button" class="btn btn-dark">New Game</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- *****GRID***** -->
+
+    <div class="container">
+      <div class="row d-flex justify-content-center" id="frame-container">
+        <!-- FRAME -->
+
+        <!-- <div>
+          <div class="w-100 text-center frame-count">1</div>
+          <div class="frame d-flex align-content-between flex-wrap m-1">
+            <div class="d-flex justify-content-end w-100">
+              <div class="roll text-center">5</div>
+              <div class="roll text-center">6</div>
+            </div>
+            <div class="score mt-auto w-100 text-center py-2">100</div>
+          </div>
+        </div> -->
+
+        <!-- FRAME-END -->
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      (function() {
+        for (let i = 0; i < 10; i++) {
+          let html =
+            "<div class='my-3'>" +
+            "<div class='w-100 text-center frame-count'>" +
+            (i + 1) +
+            "</div>" +
+            "<div class='frame d-flex align-content-between flex-wrap m-1'>" +
+            "<div class='d-flex justify-content-end w-100'>" +
+            "<div class='roll text-center'>5</div>" +
+            "<div class='roll text-center'>6</div>" +
+            "</div>" +
+            "<div class='score mt-auto w-100 text-center py-2'>100</div>" +
+            "</div>" +
+            "</div>";
+
+          $("#frame-container").append(html);
+        }
+      })();
+    </script>
+    <script>
+      (function() {
+        var totalFrame =
+          "<div class='my-3'>" +
+          "<div class='w-100 text-center frame-count'>" +
+          "Total" +
+          "</div>" +
+          "<div class='frame d-flex align-content-between flex-wrap m-1'>" +
+          "<div class='d-flex justify-content-end w-100'>" +
+          "<div ></div>" +
+          "<div ></div>" +
+          "</div>" +
+          "<div class='score mt-auto w-100 text-center py-2'>300</div>" +
+          "</div>" +
+          "</div>";
+        $("#frame-container").append(totalFrame);
+      })();
+    </script>
+    <script>
+      (function() {
+        for (let i = 0; i < 10; i++) {
+          let rollBtn =
+            "<button type='button' class='btn btn-outline-secondary roll-btn m-1'>" +
+            i +
+            "</button>";
+          $("#roll-numbers").append(rollBtn);
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:monmon8/bowling-challenge.git",
+  "author": "monmon8",
+  "license": "MIT",
+  "scripts": { 
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}

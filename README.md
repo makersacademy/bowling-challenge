@@ -73,3 +73,23 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+## To Do
+
+** I spent too much time trying to figure out how to do mock tests and in the end I ended up with an entirely different code which was not easy to change, so at the last minute I reverted to a much older version of the challenge.
+** I plan to have only one class for keep track of the scores, and plan to do this ASAP.
+
+## How to Use
+
+* to run the jasmine tests, open the SpecRunner.html file in your browser.
+* once the code is working, with an interface, I will update this section with instructions on how to actually play the game.
+
+## How to use
+
+* The interface is not working yet.
+* All tests are passing. To run the test, copy the full path of the SpecRunner.html file and paste in the your web browser.
+* to play a game, create a game object in your console by : game = new Game();
+* enter the pins hit down by each roll with : game.roll(no. of pins hit).
+* to check which frame you are in, type: game._currentFrameNumber().
+* to check the total score enter: game.getTotalScore().
+* to check the score for each roll enter: game._frameRoll1Score(), game._frameRoll2Score() etc.

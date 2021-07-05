@@ -1,0 +1,91 @@
+<!-- CSS for table is under "Modified Table" -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+<h1 class="title">Bowling Score Card</h1>
+<div id="buttons" class="buttons">
+Pins Hit:
+<button type="button" onclick="pinHit(0)"  class="btn btn-danger">Gutter Ball!</button>
+<button type="button" onclick="pinHit(1)"  class="btn btn-danger">1</button>
+<button type="button" onclick="pinHit(2)"  class="btn btn-danger">2</button>
+<button type="button" onclick="pinHit(3)"  class="btn btn-warning">3</button>
+<button type="button" onclick="pinHit(4)"  class="btn btn-warning">4</button>
+<button type="button" onclick="pinHit(5)"  class="btn btn-info">5</button>
+<button type="button" onclick="pinHit(6)"  class="btn btn-info">6</button>
+<button type="button" onclick="pinHit(7)"  class="btn btn-info">7</button>
+<button type="button" onclick="pinHit(8)"  class="btn btn-success">8</button>
+<button type="button" onclick="pinHit(9)"  class="btn btn-success">9</button>
+<button type="button" onclick="pinHit(10)"  class="btn btn-success">Strike!</button>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr id="columnHeaders">
+      <th scope="col">Player Name</th>
+      <th scope="col" colspan="2">Frame 1</th>
+      <th scope="col" colspan="2">Frame 2</th>
+      <th scope="col" colspan="2">Frame 3</th>
+      <th scope="col" colspan="2">Frame 4</th>
+      <th scope="col" colspan="2">Frame 5</th>
+      <th scope="col" colspan="2">Frame 6</th>
+      <th scope="col" colspan="2">Frame 7</th>
+      <th scope="col" colspan="2">Frame 8</th>
+      <th scope="col" colspan="2">Frame 9</th>
+      <th scope="col" colspan="3">Frame 10</th>
+      <th scope="col" colspan="2">Total Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="frameScores" class="table-light">
+      <th id="player" scope="row" rowspan="2">Paul</th>
+      <th id="f1t1" scope="col"></th>
+      <th id="f1t2" scope="col"></th>
+      <th id="f2t1" scope="col"></th>
+      <th id="f2t2" scope="col"></th>
+      <th id="f3t1" scope="col"></th>
+      <th id="f3t2" scope="col"></th>
+      <th id="f4t1" scope="col"></th>
+      <th id="f4t2" scope="col"></th>
+      <th id="f5t1" scope="col"></th>
+      <th id="f5t2" scope="col"></th>
+      <th id="f6t1" scope="col"></th>
+      <th id="f6t2" scope="col"></th>
+      <th id="f7t1" scope="col"></th>
+      <th id="f7t2" scope="col"></th>
+      <th id="f8t1" scope="col"></th>
+      <th id="f8t2" scope="col"></th>
+      <th id="f9t1" scope="col"></th>
+      <th id="f9t2" scope="col"></th>
+      <th id="f10t1" scope="col"></th>
+      <th id="f10t2" scope="col"></th>
+      <th id="f10t3" scope="col"></th>
+      <th id="total" scope="col" rowspan="2"></th>
+    </tr>
+    <tr id="totalScores" class="table-light">
+      <th id="f1total" scope="row" colspan="2"></th>
+      <th id="f2total" scope="row" colspan="2"></th>
+      <th id="f3total" scope="row" colspan="2"></th>
+      <th id="f4total" scope="row" colspan="2"></th>
+      <th id="f5total" scope="row" colspan="2"></th>
+      <th id="f6total" scope="row" colspan="2"></th>
+      <th id="f7total" scope="row" colspan="2"></th>
+      <th id="f8total" scope="row" colspan="2"></th>
+      <th id="f9total" scope="row" colspan="2"></th>
+      <th id="f10total" scope="row" colspan="3"></th>
+    </tr>
+    </table>
+<h2 id="gameOver" class="notice" style="display: none">Game Over :(</h1>
+  <div id="playAgain-button" style="display: none">
+<button id ="playAgain" type="button" class="btn btn-success">Play Again?</button>
+</div>
+</body>
+<footer>
+    <script src="./src/checker.js"></script>
+    <script src="./src/scorecard.js"></script>
+    <script src="./interface/interface.js"></script>
+</footer>
+</html>

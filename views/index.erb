@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+    <link href="css/index.css" type="text/css" rel="stylesheet"/>
+    <title>Bowling</title>
+  </head>
+  <body>
+    <div id="content">
+      Bowling
+      <div id="scorecard">
+        <div id="scorecard-segment">
+          <div id="name-and-controls">
+            <div id="player-name"></div>
+            <form id="enter-scores" action="/">
+              <input type="text" id="new-score" autocomplete="off" spellcheck="false"/>
+            </form>
+          </div>
+          <% for i in 1..9 do %>
+          <div class="standard frame" id="player-1-frame-<%= i %>">
+            <div class="frame-rolls">
+              <div class="score-box" id="frame-<%= i %>-roll-1"></div>
+              <div class="score-box" id="frame-<%= i %>-roll-2"></div>
+            </div>
+            <div class="frame-total"></div>
+          </div>
+          <% end %>
+          <div class="final frame" id="player-1-frame-10">
+            <div class="frame-rolls">
+              <div class="score-box" id="frame-10-roll-1"></div>
+              <div class="score-box" id="frame-10-roll-2"></div>
+              <div class="score-box" id="frame-10-roll-3"></div>
+            </div>
+            <div class="frame-total"></div>
+          </div>
+          <div class="game-total-cushion">
+            <div id="player-1-game-total"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script language="JavaScript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/scorecard.js"></script>
+    <script src="js/frame.js"></script>
+    <script src="js/finalFrame.js"></script>
+    <script src="js/bonus.js"></script>
+  </body>
+</html>

@@ -1,3 +1,11 @@
+### Rubbish and basic logic model
+
+<p align="center">
+<img src=/images/very_basic_model.png>
+</p>
+
+I haven't got very far at all. The logic is still v, v basic and needs a lot of tidying up. The methods need separating and I should be exteracting into other clasees. Will come back to this.
+
 
 Bowling Challenge
 =================

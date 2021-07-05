@@ -73,3 +73,23 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+
+User Stories
+---
+
+1#
+As a player I want to be able to go bowling
+I want to be able to bowl twice a frame
+
+2#
+As a player, I want to be able to record my score
+I want to be able to manual enter my score for each bowl
+
+3#
+As a player, I want to be able to see my total score
+I want to be able to see the combine score of both my bowls
+
+4#
+As a player, if I score 10 in my first bowl
+I shouldn't be able to bowl again in the same frame

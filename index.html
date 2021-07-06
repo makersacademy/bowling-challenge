@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bowling </title>
+        <link href="https://fonts.googleapis.com/css?family=Caveat|Orbitron" rel="stylesheet">
+        <link rel='stylesheet' type='text/css' href='./style.css'>
+    <body>
+      <h1 id="title">Welcome to BowlingScore.com!</h1>
+      <article id="error"></article>
+
+      <section id='scorecard'>
+        <table>
+          <tr>
+            <th colspan='2'>1</th>
+            <th colspan='2'>2</th>
+            <th colspan='2'>3</th>
+            <th colspan='2'>4</th>
+            <th colspan='2'>5</th>
+            <th colspan='2'>6</th>
+            <th colspan='2'>7</th>
+            <th colspan='2'>8</th>
+            <th colspan='2'>9</th>
+            <th colspan='2'>10</th>
+          </tr>
+          <tr>
+            <td colspan='1'></td><td class='frame' id='frame1' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame2' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame3' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame4' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame5' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame6' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame7' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame8' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame9' colspan='1'></td>
+            <td colspan='1'></td><td class='frame' id='frame10' colspan='1'></td>
+          </tr>
+          <tr>
+            <td colspan='2' class='frameScore' frameNo=0></td>
+            <td colspan='2' class='frameScore' frameNo=1></td>
+            <td colspan='2' class='frameScore' frameNo=2></td>
+            <td colspan='2' class='frameScore' frameNo=3></td>
+            <td colspan='2' class='frameScore' frameNo=4></td>
+            <td colspan='2' class='frameScore' frameNo=5></td>
+            <td colspan='2' class='frameScore' frameNo=6></td>
+            <td colspan='2' class='frameScore' frameNo=7></td>
+            <td colspan='2' class='frameScore' frameNo=8></td>
+            <td colspan='2' class='frameScore' frameNo=9></td>
+          </tr>
+        </table>
+      </section>
+
+        <section id='roll'>
+              <button id='btn0' class='scoreButton' value=0>0</button>
+              <button id='btn1' class='scoreButton' value=1>1</button>
+              <button id='btn2' class='scoreButton' value=2>2</button>
+              <button id='btn3' class='scoreButton' value=3>3</button>
+              <button id='btn4' class='scoreButton' value=4>4</button>
+              <button id='btn5' class='scoreButton' value=5>5</button>
+              <button id='btn6' class='scoreButton' value=6>6</button>
+              <button id='btn7' class='scoreButton' value=7>7</button>
+              <button id='btn8' class='scoreButton' value=8>8</button>
+              <button id='btn9' class='scoreButton' value=9>9</button>
+              <button id='btn10' class='scoreButton' value=10>10</button>
+        </section>
+
+        <section id='footer'>
+          <h2 id='currentScore' > Total score: <span id='total_score'></h2>
+          <button id='new_game'>New Game</button>
+        </section>
+
+    </body>
+    <script src="./lib/jquery-3.3.1.min.js"></script>
+    <script src="./src/Frame.js"></script>
+    <script src="./src/FinalFrame.js"></script>
+    <script src="./src/Game.js"></script>
+    <script src='./src/GameInterface.js'></script>
+</html>

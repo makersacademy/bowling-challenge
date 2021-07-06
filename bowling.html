@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+  <style>
+    table, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 5px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <script src="./src/bowling.js"></script>
+  <script src="./src/interface.js"></script>
+
+  <table>
+    <tr>
+      <td id="1"> </td>
+      <td id="2"> </td>
+      <td id="3"> </td>
+      <td id="4"> </td>
+      <td id="5"> </td>
+      <td id="6"> </td>
+      <td id="7"> </td>
+      <td id="8"> </td>
+      <td id="9"> </td>
+      <td id="10"> </td>
+      <td id="11"> </td>
+      <td id="12"> </td>
+      <td id="13"> </td>
+      <td id="14"> </td>
+      <td id="15"> </td>
+      <td id="16"> </td>
+      <td id="17"> </td>
+      <td id="18"> </td>
+      <td id="19"> </td>
+      <td id="20"> </td>
+      <td id="21"> </td>
+      <td id="totalScore" colspan ="4" rowspan = "2">Total: </td>
+    </tr>
+    <tr>
+      <td colspan="2">f1</td>
+      <td colspan="2">f2</td>
+      <td colspan="2">f3</td>
+      <td colspan="2">f4</td>
+      <td colspan="2">f5</td>
+      <td colspan="2">f6</td>
+      <td colspan="2">f7</td>
+      <td colspan="2">f8</td>
+      <td colspan="2">f9</td>
+      <td colspan="3">f10</td>
+    </tr>
+  </table>
+  </br>
+  <table align='center'>
+    <tr>
+      <td><button id='zero'>0</button></td>
+      <td><button id='one'>1</button></td>
+      <td><button id='two'>2</button></td>
+      <td><button id='three'>3</button></td>
+      <td><button id='four'>4</button></td>
+      <td><button id='five'>5</button></td>
+    </tr>
+    <tr>
+      <td><button id='six'>6</button></td>
+      <td><button id='seven'>7</button></td>
+      <td><button id='eight'>8</button></td>
+      <td><button id='nine'>9</button></td>
+      <td><button id='spare'>/</button></td>
+      <td><button id='strike'>x</button></td>
+    </tr>
+  </table>
+</body>
+</html>

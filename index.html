@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <main align = middle>
+  <head>
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="public/javascripts/Bowling.js"></script>
+    <script src="interface.js"></script>
+    <link rel='stylesheet' href="style.css">
+    <!-- Title is the TABS title -->
+    <title>Bowling</title>
+    <h1>Bowling</h1>
+  </head>
+  <body align = middle>
+    <h3>ROUND <span id="roundcount"></span></h3>
+   
+    <style>
+      table, td {
+        border: 1px solid black;
+      }
+      </style>
+
+<p align = left >
+  <button id="reset">RESTART GAME</button>
+</p>
+</body>
+</main>
+
+    <section>
+   
+    <form action="/interface.js"></form>
+   
+      <h1><select id="bowl1">
+          <option value=0>0</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+          <option value=6>6</option>
+          <option value=7>7</option>
+          <option value=8>8</option>
+          <option value=9>9</option>
+          <option value=10>X</option>
+        </select> 
+ 
+        <select id="bowl2">
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+            <option value='/'>/</option>
+            <option value=10>X</option>
+          </select> 
+        <p>
+       <h2><input type="button" id="round-scores"  value="Submit Round!"></h2>
+     </form>
+   </h1>
+    
+    </section>
+</html>
+

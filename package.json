@@ -1,0 +1,33 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "bowling",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  },
+  "scripts": {
+    "test": "test",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShinyVerse/bowling-challenge.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Laura Jackson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShinyVerse/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/ShinyVerse/bowling-challenge#readme"
+}

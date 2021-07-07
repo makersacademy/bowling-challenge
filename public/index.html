@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+  <title>Score Card</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="javascript/src/scoreCard.js"></script>
+  <script src="javascript/src/frame.js"></script>
+  <script src="javascript/src/interface.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <h1> Bowling Scorecard </h1>
+  <table style="width:20%">
+<tr>
+  <th>Frame</th>
+  <th>First Bowl</th>
+  <th>Second Bowl</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><span id='roll1_frame1'</span></td>
+  <td><span id='roll2_frame1'</span></td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><span id='roll1_frame2'</span></td>
+  <td><span id='roll2_frame2'</span></td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><span id='roll1_frame3'</span></td>
+  <td><span id='roll2_frame3'</span></td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><span id='roll1_frame4'</span></td>
+  <td><span id='roll2_frame4'</span></td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><span id='roll1_frame5'</span></td>
+  <td><span id='roll2_frame5'</span></td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><span id='roll1_frame6'</span></td>
+  <td><span id='roll2_frame6'</span></td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><span id='roll1_frame7'</span></td>
+  <td><span id='roll2_frame7'</span></td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><span id='roll1_frame8'</span></td>
+  <td><span id='roll2_frame8'</span></td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><span id='roll1_frame9'</span></td>
+  <td><span id='roll2_frame9'</span></td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><span id='roll1_frame10'</span></td>
+  <td><span id='roll2_frame10'</span></td>
+</tr>
+<tr>
+  <td>Total</td>
+  <td><span id='total'</span></td>
+</tr>
+</table>
+<h1> Enter Scores </h1>
+<form id="add-scores">
+  <input id="roll1" type="text" placeholder="First Bowl"></input>
+  <input id="roll2" type="text" placeholder="Second Bowl"></input>
+  <input type="submit" value="Enter"></input>
+</form>
+</body>
+</html>

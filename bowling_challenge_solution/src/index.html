@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <link rel="stylesheet" href="stylesheet.css">
+  <meta charset="UTF-8">
+  <title>Bowling Calculator</title>
+</head>
+<body>
+  <div class="top_space"></div>
+  <div class="center_title">
+    <h1>Welcome to Ten Pin Bowling Scorecard!</h1>
+  </div>
+  
+  <div class="container">
+    <div class="frame_1">
+      <form onsubmit="return false">
+        <label for="">Frame 1</label><br>
+        <input type="text" name="firstRoll" id="frameOneFirstRoll"><br>
+        <input type="text" name="secondRoll" id="frameOneSecondRoll"><br>
+        <input type="submit" value="Input this frame" id="inputFrameOne"><br>
+      </form><br>
+      <span id="frameOneScore"></span>
+    </div>
+    <div class="frame_2">
+      <form onsubmit="return false">
+        <label for="">Frame 2</label>
+        <input type="text" name="firstRoll" id="frameTwoFirstRoll">
+        <input type="text" name="secondRoll" id="frameTwoSecondRoll">
+        <input type="submit" value="Input this frame" id="inputFrameTwo">
+      </form><br>
+      <span id="frameTwoScore"></span>
+    </div>
+    <div class="frame_3">
+      <form onsubmit="return false">
+        <label for="">Frame 3</label>
+        <input type="text" name="firstRoll" id="frameThreeFirstRoll">
+        <input type="text" name="secondRoll" id="frameThreeSecondRoll">
+        <input type="submit" value="Input this frame" id="inputFrameThree">
+      </form><br>
+      <span id="frameThreeScore"></span>
+    </div>
+    <div class="frame_4">
+      <form onsubmit="return false">
+        <label for="">Frame 4</label>
+        <input type="text" name="firstRoll" id="frameFourFirstRoll">
+        <input type="text" name="secondRoll" id="frameFourSecondRoll">
+        <input type="submit" value="Input this frame" id="inputFrameFour">
+      </form><br>
+      <span id="frameFourScore"></span>
+    </div>
+    <div class="frame_5">
+      <form onsubmit="return false">
+        <label for="">Frame 5</label>
+        <input type="text" name="firstRoll" id="frameFiveFirstRoll">
+        <input type="text" name="secondRoll" id="frameFiveSecondRoll">
+        <input type="submit" value="Input this frame" id="inputFrameFive">
+      </form><br>
+      <span id="frameFiveScore"></span>
+    </div>
+    <div class="frame_6">
+      <form onsubmit="return false">
+        <label for="">Frame 6</label>
+        <input type="text" name="firstRoll" id="frameSixFirstRoll">
+        <input type="text" name="secondRoll" id="frameSixSecondRoll">
+        <input type="submit" value="Input this frame" id="inputFrameSix">
+      </form><br>
+      <span id="frameSixScore"></span>
+    </div>
+    <div class="frame_7">
+      <form onsubmit="return false">
+        <label for="">Frame 7</label>
+        <input type="text" name="firstRoll" id="frameSevenFirstRoll">
+        <input type="text" name="secondRoll" id="frameSevenSecondRoll">
+        <input type="submit" value="Input this frame" id="inputFrameSeven">
+      </form><br>
+      <span id="frameSevenScore"></span>
+    </div>
+    <div class="frame_8">
+      <form onsubmit="return false">
+        <label for="">Frame 8</label>
+        <input type="text" name="firstRoll" id="frameEightFirstRoll">
+        <input type="text" name="secondRoll" id="frameEightSecondRoll">
+        <input type="submit" value="Input this frame" id="inputFrameEight">
+      </form><br>
+      <span id="frameEightScore"></span>
+    </div>
+    <div class="frame_9">
+      <form onsubmit="return false">
+        <label for="">Frame 9</label>
+        <input type="text" name="firstRoll" id="frameNineFirstRoll">
+        <input type="text" name="secondRoll" id="frameNineSecondRoll">
+        <input type="submit" value="Input this frame" id="inputFrameNine">
+      </form><br>
+      <span id="frameNineScore"></span>
+    </div>
+    <div class="frame_10">
+      <form onsubmit="return false">
+        <label for="">Frame 10</label>
+        <input type="text" name="firstRoll" id="frameTenFirstRoll">
+        <input type="text" name="secondRoll" id="frameTenSecondRoll">
+        <input type="text" name="thirdRoll" id="frameTenThirdRoll">
+        <input type="submit" value="Input this frame" id="inputFrameTen">
+      </form><br>
+      <span id="frameTenScore"></span>
+    </div>
+  </div>
+  <div class="center">
+    <button id="calculateScoreTest">Calculate Total Score</button>
+  </div><br><br>
+  <div class="center">
+    <h1>Total Score</h1>
+    <span id="totalScore"></span>
+  </div>
+  <div><script src="interface.js"></script></div>
+  <div><script src="game.js"></script></div>
+  <div><script src="frames.js"></script></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+body {
+  background-image: url("https://www.islandecho.co.uk/wp-content/uploads/2018/06/Tenpin-Oddfellows-Event.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div.top_space {
+  height: 10%;
+}
+div.center_title {
+  padding-right: 100px;
+  padding-left: 100px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  width: max-content;
+  margin: auto; 
+}
+
+div.center {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  width: max-content;
+  margin: auto;
+  padding: 5px;
+}
+
+div.container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  text-align: center;
+  column-count: 10;
+  width: 95%;
+  margin: auto;
+  padding: 30px;
+}

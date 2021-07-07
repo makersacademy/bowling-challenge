@@ -1,3 +1,42 @@
+## Bowling playing application
+
+This is a single page application (SPA) that enables you to play bowling. In this application, you enter the number of the pins you hit in each role of different rounds, then you will see your point at the end of the round.
+
+## How to use the application
+
+To use the application, clone the current repository:
+
+[Bowling challenge](https://github.com/soroushh/bowling-challenge)
+
+Then run the following command to see the application on your browser :
+
+``` open index.html ```
+
+Then you will see the interface for choosing your pins at each rounds of the game.In addition, you will see the number of the round and the score you have got:
+
+![Ten Pin Score Example](images/app.png)
+
+## Techonologies used
+
+Javascript (Jquery)
+
+test framework: Jasmine
+
+CSS
+
+HTML
+
+## How to run the tests
+
+In order to run the tests, you should run the following command in your command line:
+
+``` open SpecRunner.html ```
+
+Then, you will see all the tests are passed in the browser.
+
+![Tests passed Example](images/tests.png)
+
+## You can find the rules of the game in the following text.
 
 Bowling Challenge
 =================

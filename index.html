@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Bowling</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 p-3">
+        <h2 class="mb-3">Bowling Scorecard</h2>
+        <h4 id ="current-stage">
+          <strong>
+            Frame <span id="current-frame"></span>:
+          </strong>
+          &nbsp; Roll <span id="current-roll"></span>
+        </h4>
+        <form id="player-action">
+          <label>
+            Enter number of knocked down pins:
+            <input type="text" id="player-knocks" class="mx-2" required>
+          </label>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+    <div class="row font-weight-bold">
+      <div class="col-2 px-3">Frame</div>
+      <div class="col-2 px-3">Roll</div>
+      <div class="col-2 px-3">Knocked down pins</div>
+      <div class="col-2 px-3">Total score</div>
+      <div class="col-4 px-3">Notes</div>
+    </div>
+    <div id="results">
+      <!-- Use a loop to add as many rows of data as there are frames and rolls? -->
+    </div>
+  </div>
+
+  <script src="src/Game.js"></script>
+  <script src="src/Interface.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<script src="jquery-3.3.1.js"></script>
+<script src="jQuery/scorecard.js"></script>
+<script src="src/playerScoreCard.js"></script>
+  <head>
+    <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="public/theme.css">
+    <title>Bowling scorecard</title>
+  </head>
+  <body>
+    <div id="title" align="center">
+      <h1>BOWLING SCORECARD</h1>
+    </div>
+    <div id="pinButtons" align="center">
+      <div id="selectPinNumber">select number of pins knocked down</div>
+      <button class="button" id="0pin">0</button>
+      <button class="button" id="1pin">1</button>
+      <button class="button" id="2pin">2</button>
+      <button class="button" id="3pin">3</button>
+      <button class="button" id="4pin">4</button>
+      <button class="button" id="5pin">5</button>
+      <button class="button" id="6pin">6</button>
+      <button class="button" id="7pin">7</button>
+      <button class="button" id="8pin">8</button>
+      <button class="button" id="9pin">9</button>
+      <button class="button" id="10pin">10</button>
+    </div>
+
+    <div class="output">
+    <div id='scorecard'>
+      <table id='scorecardTable' class='scorecard' cellpadding='1' cellspacing='0'>
+        <tr>
+          <th colspan='6'>Frame 1</th>
+          <th colspan='6'>Frame 2</th>
+          <th colspan='6'>Frame 3</th>
+          <th colspan='6'>Frame 4</th>
+          <th colspan='6'>Frame 5</th>
+          <th colspan='6'>Frame 6</th>
+          <th colspan='6'>Frame 7</th>
+          <th colspan='6'>Frame 8</th>
+          <th colspan='6'>Frame 9</th>
+          <th colspan='6'>Frame 10</th>
+        </tr>
+        <tr>
+          <td colspan='3' id="round1FirstBowl"></td>
+          <td id="round1SecondBowl" colspan='3'></td>
+          <td colspan='3' id="round2FirstBowl"></td>
+          <td id="round2SecondBowl" colspan='3'></td>
+          <td colspan='3' id="round3FirstBowl"></td>
+          <td id="round3SecondBowl" colspan='3'></td>
+          <td colspan='3' id="round4FirstBowl"></td>
+          <td id="round4SecondBowl" colspan='3'></td>
+          <td colspan='3' id="round5FirstBowl"></td>
+          <td id="round5SecondBowl" colspan='3'></td>
+          <td colspan='3' id="round6FirstBowl"></td>
+          <td id="round6SecondBowl" colspan='3'></td>
+          <td colspan='3' id="round7FirstBowl"></td>
+          <td id="round7SecondBowl" colspan='3'></td>
+          <td colspan='3' id="round8FirstBowl"></td>
+          <td id="round8SecondBowl" colspan='3'></td>
+          <td colspan='3' id="round9FirstBowl"></td>
+          <td id="round9SecondBowl" colspan='3'></td>
+          <td colspan='3' id="round10FirstBowl"></td>
+          <td id="round10SecondBowl" colspan='3'></td>
+        </tr>
+        <tr>
+          <td colspan='6'id="round1Score"></td>
+          <td colspan='6'id="round2Score"></td>
+          <td colspan='6'id="round3Score"></td>
+          <td colspan='6'id="round4Score"></td>
+          <td colspan='6'id="round5Score"></td>
+          <td colspan='6'id="round6Score"></td>
+          <td colspan='6'id="round7Score"></td>
+          <td colspan='6'id="round8Score"></td>
+          <td colspan='6'id="round9Score"></td>
+          <td colspan='6'id="round10Score"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  </body>
+</html>

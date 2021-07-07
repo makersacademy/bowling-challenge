@@ -1,0 +1,28 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "jasmine-node": "latest"
+  },
+  "scripts": {
+    "test": "jasmine-node spec/*Spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dtrts/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dtrts/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/dtrts/bowling-challenge#readme",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
+}

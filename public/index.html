@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling Calculator</title>
+    <script src="src/jquery.js"></script>
+    <script src="src/interface.js" ></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <script src="src/ScoreCard.js"></script>
+    <script src="src/Frame.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"> 
+  </head>
+
+  <body>
+
+      <center><h1>Bowling Score Calculator</h1>
+      <form>
+        <label for="roll_one">
+          roll one
+            <input type="number" name="roll_one" id="roll_one">
+        </label>
+        <label for="roll_two">
+          roll two
+            <input type="number" name="roll_two", id="roll_two">
+        </label>
+        <input type="submit" value="Submit" id="roll">
+      </form><br><br>
+      <form>
+          last roll
+            <input type="number" name="last_roll_one", id="last_roll_one">
+            <input type="number" name="last_roll_two", id="last_roll_two">
+            <input type="number" name="last_roll_three", id="last_roll_three">
+            <input type="submit" value="Submit" id="last_roll">
+      </form>
+      <h1 id="all_frames"> </h1><br>
+      <button id="calculate_total">Calculate total</button>
+    </center>
+
+  </body>
+
+</html>

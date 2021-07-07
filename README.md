@@ -1,3 +1,28 @@
+Bowling Challenge - Richie Ganney
+=================
+
+# User stories
+as a user,
+so i can...
+i want to input my score into the program
+
+as a user,
+so i can keep track of my bowling score 
+i want to my total score after each frame
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Bowling Challenge
 =================

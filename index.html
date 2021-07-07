@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Bowling World</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link navbar-brand" href="#">Bowling World</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="jumbotron">
+      <div class="container pt-5">
+        <button type="button" class="btn btn-light">0</button>
+        <button type="button" class="btn btn-light">1</button>
+        <button type="button" class="btn btn-light">2</button>
+        <button type="button" class="btn btn-light">3</button>
+        <button type="button" class="btn btn-light">4</button>
+        <button type="button" class="btn btn-light">5</button>
+        <button type="button" class="btn btn-light">6</button>
+        <button type="button" class="btn btn-light">7</button>
+        <button type="button" class="btn btn-light">8</button>
+        <button type="button" class="btn btn-light">9</button>
+        <button type="button" class="btn btn-light">10</button>
+      </div>
+    </div>
+    <div class="container">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Roll</th>
+            <th>Frame 1</th>
+            <th>Frame 2</th>
+            <th>Frame 3</th>
+            <th>Frame 4</th>
+            <th>Frame 5</th>
+            <th>Frame 6</th>
+            <th>Frame 7</th>
+            <th>Frame 8</th>
+            <th>Frame 9</th>
+            <th>Frame 10</th>
+            <th>Bonus roll</th>
+            <th>Bonus roll</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-weight-bold">First</td>
+            <td id="frame-1-roll-1"></td>
+            <td id="frame-2-roll-1"></td>
+            <td id="frame-3-roll-1"></td>
+            <td id="frame-4-roll-1"></td>
+            <td id="frame-5-roll-1"></td>
+            <td id="frame-6-roll-1"></td>
+            <td id="frame-7-roll-1"></td>
+            <td id="frame-8-roll-1"></td>
+            <td id="frame-9-roll-1"></td>
+            <td id="frame-10-roll-1"></td>
+            <!-- <td id="bonus-1-roll"></td>
+            <td id="bonus-2-roll"></td> -->
+          </tr>
+          <tr>
+            <td class="font-weight-bold">Second</td>
+            <td id="frame-1-roll-2"></td>
+            <td id="frame-2-roll-2"></td>
+            <td id="frame-3-roll-2"></td>
+            <td id="frame-4-roll-2"></td>
+            <td id="frame-5-roll-2"></td>
+            <td id="frame-6-roll-2"></td>
+            <td id="frame-7-roll-2"></td>
+            <td id="frame-8-roll-2"></td>
+            <td id="frame-9-roll-2"></td>
+            <td id="frame-10-roll-2"></td>
+          </tr>
+          <tr>
+            <td class="font-weight-bold">Running Total</td>
+            <td id="frame-1-score"></td>
+            <td id="frame-2-score"></td>
+            <td id="frame-3-score"></td>
+            <td id="frame-4-score"></td>
+            <td id="frame-5-score"></td>
+            <td id="frame-6-score"></td>
+            <td id="frame-7-score"></td>
+            <td id="frame-8-score"></td>
+            <td id="frame-9-score"></td>
+            <td id="frame-10-score"></td>
+            <!-- <td id="bonus-1-score"></td>
+            <td id="bonus-2-score"></td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script type="text/javascript" src="src/frame.js"></script>
+    <script type="text/javascript" src="src/scoreCard.js"></script>
+    <script type="text/javascript" src="src/interface.js"></script>
+  </body>
+</html>

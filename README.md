@@ -1,3 +1,23 @@
+# Makers Academy weekend challenge 5.
+At this stage my program can count a spare, an avarage and a gutter game. Half way through I decided to change my approach and refactor the score method into something more readable and more structured. 
+
+### Approach:
+
+Test driven developent 
+
+### Technologies used:
+JavaScript, Jasmine 
+
+### How to run: 
+Clone this repository <br>
+```
+git@github.com:monikakaczan/bowling-challenge.git
+```
+Jasmine for testing:
+```
+open SpecRunner.html in Chrome
+```
+
 
 Bowling Challenge
 =================

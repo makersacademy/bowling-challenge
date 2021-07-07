@@ -1,0 +1,70 @@
+#title-box {
+  text-decoration: underline;
+  font-size: 1000%;
+  text-shadow: 3px 2px red;
+  font-weight: bold;
+  text-align: center;
+  color: yellow;
+  padding: 100px 100px 100px 100px;
+}
+
+body {
+  font-size: 50%;
+  text-align: center;
+  color: yellow;
+  background-image: url('../images/BowlingBackground.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: absolute;
+  margin: 0;
+  left: 0;
+  bottom: 0px;
+}
+
+#frame-counter-box {
+  font-size: 50%;
+  text-align: center;
+  color: yellow;
+  padding: 100px 0 0 0;
+}
+
+#completed-frames {
+  font-size: 1000%;
+  text-align: center;
+  color: yellow;
+}
+
+#message {
+  font-size: 1000%;
+  text-align: center;
+  color: yellow;
+}
+
+#enter-Bowl-1 {
+  font-size: 50%;
+  text-shadow: 3px 2px red;
+  text-align: center;
+  color: yellow;
+  padding: 100px 0 0 0;
+}
+
+#enter-Bowl-2 {
+  font-size: 50%;
+  text-shadow: 3px 2px red;
+  text-align: center;
+  color: yellow;
+  padding: 100px 0 0 0;
+}
+
+.btn-toolbar {
+  margin-left:140px;
+  padding: 0 0 100px 0;
+}
+
+li{
+  list-style-type: none;
+  float:left;
+  text-align: center;
+  background:yellow; border:2px #000 solid;
+  padding: 100px 0 0 0;
+}

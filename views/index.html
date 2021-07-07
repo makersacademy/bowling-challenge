@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='BowlingScoreStyleSheet.css'>
+
+    <title>Bowling Scorecard</title>
+  </head>
+
+  <body>
+
+<div class="container" id="title-box">
+      <h1>Bowling Scorecard</h1>
+</div>
+
+<div class="row">
+
+</div>
+  
+<div class="row">
+  <div class="col" id="frame-counter-box">
+    <h4>You have played</h4>
+    <h4 id="completed-frames"></h4>
+    <h4>complete frames</h4>
+  </div>
+
+  <div class="col" id="message-box">
+      <h4>Please read the message below:</h4>
+      <h2 id="message"></h2>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col" id="enter-Bowl-1">
+    <h4>Enter bowl 1 score</h4>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" d="score-input-1" aria-label="First group">
+          <button type="button" class="btn btn-secondary" id="bowl1-0" value="Input">0</button>
+          <button type="button" class="btn btn-secondary" id="bowl1-1" value="Input">1</button>
+          <button type="button" class="btn btn-secondary" id="bowl1-2" value="Input">2</button>
+          <button type="button" class="btn btn-secondary" id="bowl1-3" value="Input">3</button>
+          <button type="button" class="btn btn-secondary" id="bowl1-4" value="Input">4</button>
+          <button type="button" class="btn btn-secondary" id="bowl1-5" value="Input">5</button>
+          <button type="button" class="btn btn-secondary" id="bowl1-6" value="Input">6</button>
+          <button type="button" class="btn btn-secondary" id="bowl1-7" value="Input">7</button>
+          <button type="button" class="btn btn-secondary" id="bowl1-8" value="Input">8</button>
+          <button type="button" class="btn btn-secondary" id="bowl1-9" value="Input">9</button>
+          <button type="button" class="btn btn-secondary" id="bowl1-10" value="Input">10</button>
+        </div>
+      </div>
+  </div>
+
+  <div class="col" id="enter-Bowl-2">
+    <h4>Enter bowl 2 score</h4>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" id="score-input-2" aria-label="First group">
+          <button type="button" class="btn btn-secondary" id="bowl2-0" value="Input">0</button>
+          <button type="button" class="btn btn-secondary" id="bowl2-1" value="Input">1</button>
+          <button type="button" class="btn btn-secondary" id="bowl2-2" value="Input">2</button>
+          <button type="button" class="btn btn-secondary" id="bowl2-3" value="Input">3</button>
+          <button type="button" class="btn btn-secondary" id="bowl2-4" value="Input">4</button>
+          <button type="button" class="btn btn-secondary" id="bowl2-5" value="Input">5</button>
+          <button type="button" class="btn btn-secondary" id="bowl2-6" value="Input">6</button>
+          <button type="button" class="btn btn-secondary" id="bowl2-7" value="Input">7</button>
+          <button type="button" class="btn btn-secondary" id="bowl2-8" value="Input">8</button>
+          <button type="button" class="btn btn-secondary" id="bowl2-9" value="Input">9</button>
+          <button type="button" class="btn btn-secondary" id="bowl2-10" value="Input">10</button>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="row" text-align="center";>
+  <ul>
+      <li>Frame 1</li>
+      <li>Frame 2</li>
+      <li>Frame 3</li>
+      <li>Frame 4</li>
+      <li>Frame 5</li>
+      <li>Frame 6</li>
+      <li>Frame 7</li>
+      <li>Frame 8</li>
+      <li>Frame 9</li>
+      <li>Frame 10</li>
+    </ul>
+  </div>
+
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../public/js/bowlingScore.js"></script>
+    <script src="../public/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../public/js/interface.js"></script>
+  </body>
+
+</html>

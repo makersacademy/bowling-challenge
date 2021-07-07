@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="css/stylesheet.css" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div id="scores">
+    <button id="gutter" disabled='enabled'>Gutter</button>
+    Pins: <input id="pins" type="number" min=1 max=9 disabled='enabled' value=1>
+    <button id="pinsGo" disabled='enabled'>Go</button>
+    <button id="spare" disabled='disabled'>Spare</button>
+    <button id="strike" disabled='disabled'>Strike!</button>
+</div>
+<div id="scorecard">
+    <table>
+        <tr>
+            <th>Frame</th>
+            <th>Roll 1</th>
+            <th>      </th>
+            <th>Roll 2</th>
+            <th>Total Score</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td id="11" class='score'></td>
+            <td id="111" class="note"></td>
+            <td id="12" class='score'></td>
+            <td id="total1"></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td id="21" class='score'></td>
+            <td id="211" class="note"></td>
+            <td id="22" class='score'></td>
+            <td id="total2"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td id="31" class='score'></td>
+            <td id="311" class="note"></td>
+            <td id="32" class='score'></td>
+            <td id="total3"></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td id="41" class='score'></td>
+            <td id="411" class="note"></td>
+            <td id="42" class='score'></td>
+            <td id="total4"></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td id="51" class='score'></td>
+            <td id="511" class="note"></td>
+            <td id="52" class='score'></td>
+            <td id="total5"></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td id="61" class='score'></td>
+            <td id="611" class="note"></td>
+            <td id="62" class='score'></td>
+            <td id="total6"></td>
+        </tr>
+            <td>7</td>
+            <td id="71" class='score'></td>
+            <td id="711" class="note"></td>
+            <td id="72" class='score'></td>
+            <td id="total7"></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td id="81" class='score'></td>
+            <td id="811" class="note"></td>
+            <td id="82" class='score'></td>
+            <td id="total8"></td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td id="91" class='score'></td>
+            <td id="911" class="note"></td>
+            <td id="92" class='score'></td>
+            <td id="total9"></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td id="101" class='score'></td>
+            <td id="103" class='score'></td>
+            <td id="102" class='score'></td>
+            <td id="total10"></td>
+            <td id="1011" class="note"></td>
+            <td id="1021" class="note"></td>
+            <td id="1031" class="note"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Final Score:</td>
+            <td id="finalscore"></td>
+        </tr>
+    </table>
+
+</div>
+<button id='newGame'>New Game</button>
+
+<script src="javascript/src/BowlingGame.js"></script>
+<script src="javascript/src/index.js"></script>
+<script src="javascript/src/Spare.js"></script>
+<script src="javascript/src/Strike.js"></script>
+</body>

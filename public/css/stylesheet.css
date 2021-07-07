@@ -1,0 +1,13 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center; 
+}
+table, th, td {
+    border: 1px solid white;
+    margin: auto auto auto 35%;
+  }
+.note {
+    color: red;
+    font-weight: bold;
+    width: 40px;
+}

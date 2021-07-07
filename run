@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# TODO: background rackup first, then launch browser. Kill rackup on finish.
+
+clear
+
+echo -e "NOTE: launches browser first, so need to reload page once server is running"
+
+echo -e "open $PWD/index.html"
+open "$PWD/index.html"
+
+
+

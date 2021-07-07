@@ -1,0 +1,28 @@
+#!/bin/bash
+
+USAGE='usage:\ttdd.test [file-name]'
+
+# TODO Logic needs to add case to print USAGE
+
+if [[ "$1" ]] ; then
+  FILE_NAME="./$1"
+  if [[ ! -f $FILE_NAME ]] ; then
+    echo -e "$FILE_NAME not found"
+    exit 1
+  fi
+else
+  FILE_NAME=". --ext .js"
+fi
+
+clear
+CMD="npx karma start karma.conf.js --single-run"
+echo -e "$HOSTNAME\$ $CMD\n"
+$CMD
+
+CMD="npx eslint $FILE_NAME"
+echo -e "$HOSTNAME\$ $CMD\n"
+$CMD
+# echo $?
+if [[ "$?" == 0 ]] ; then
+  echo -e "Woo! No ESLint errors! Beer?"
+fi

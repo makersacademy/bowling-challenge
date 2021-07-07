@@ -1,3 +1,110 @@
+# Bowling challenge
+
+[![Build Status](https://travis-ci.com/will-head/bowling-challenge.svg?branch=master)](https://api.travis-ci.com/will-head/bowling-challenge.svg?branch=master)
+
+## Setup
+
+```
+$ npm install
+```
+
+## Usage
+
+```
+$ ./run
+```
+This will open the default browser and load index.html
+
+## Testing
+
+To run Jasmine Unit tests and ESLint run script:  
+```
+$ ./test/tdd.test`
+```
+
+To test in browser, run script:  
+```
+$ ./test/web.test
+```
+
+## Todo
+
+* Error check if Frame.add is passed more than ten in total
+* Write/Implement/Refactor remaining classes
+* Add ability to change Player name
+* Implement feature test in Jasmine?
+
+## Doing
+
+* Test and implement Frame
+
+## Done
+
+* Add installation details (npm install)
+* Add Roll to SpecRunner
+* Fix ESLint errors
+* Add Player score to interface
+* Add Player name to interface
+* Test and implement Player.score
+* Add interface to Game
+* Add jQuery support to Karma/Jasmine [@metahub/karma-jasmine-jquery - npm](https://www.npmjs.com/package/@metahub/karma-jasmine-jquery)
+* Write Tests for Game.new(player) and Game.player
+* Implement Game.new(player) and Game.player
+* Update CRC cards
+* Redo CRC cards as Markdown table
+* Solve ESLint errors - added [eslint-plugin-jasmine](https://www.npmjs.com/package/eslint-plugin-jasmine)
+* Refactor Player
+* Implement Player
+* Write Tests for Player
+* CRC Cards ([arkon/crcmaker: A simple tool for generating CRC cards.](https://github.com/arkon/crcmaker))
+* Update Test Scripts to include Jasmine CLI
+* Setup Travis
+* Setup Jasmine CLI
+* Setup Test Scripts
+* Setup ESLint
+
+*Note: (reverse chronological)*
+
+## CRC Cards
+
+| ```Class```                  | Game                |
+| :--                          | :--:                |
+| ```Responsibilities```       | ```Collaborators``` |
+| .new(player) | Player |
+| .player | Frame |
+| .currentRoll | Roll |
+| @frames |
+| .addRolltoFrame(frame, roll)
+
+
+| ```Class```                  | Player              |
+| :--                          | :--:                |
+| ```Responsibilities```       | ```Collaborators``` |
+| .new(name) | Game |
+| .name ||
+| .score ||
+
+| ```Class```                  | Frame               |
+| :--                          | :--:                |
+| ```Responsibilities```       | ```Collaborators``` |
+| .new(number) | Game |
+| .add(roll) | Roll |
+
+
+| ```Class```                  | Roll                |
+| :--                          | :--:                |
+| ```Responsibilities```       | ```Collaborators``` |
+| .new(pinsDown) | Game |
+| pinsDown | Frame |
+
+
+
+## Notes
+
+* Followed [@dpwdec](https://github.com/dpwdec)'s instructions to get Jasmine CLI and Travis working:
+https://dpwdec.github.io/2020/05/15/cmd-line-jasmine.html
+
+# Original README.md
 
 Bowling Challenge
 =================

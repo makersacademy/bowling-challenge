@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# TODO: background rackup first, then launch Chrome. Kill rackup on finish.
+
+clear
+
+# CMD="open -na \"Google Chrome\" --args --incognito \"http://localhost:9292\""
+# echo -e "$HOSTNAME\$ $CMD\n"
+# $CMD
+echo $HOSTNAME\$ open -na "Google Chrome" --args --incognito "$PWD/index.html"
+open -na "Google Chrome" --args --incognito "$PWD/index.html" "$PWD/spec/SpecRunner.html" 
+
+
+# CMD="rackup"
+# echo -e "$HOSTNAME\$ $CMD\n"
+# $CMD
+
+
+

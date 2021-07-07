@@ -1,0 +1,38 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "eslint": "^7.0.0"
+  },
+  "devDependencies": {
+    "@metahub/karma-jasmine-jquery": "*",
+    "babel-eslint": "^10.1.0",
+    "eslint-plugin-jasmine": "*",
+    "jasmine": "*",
+    "jasmine-core": "*",
+    "jasmine-jquery": "*",
+    "karma": "*",
+    "karma-chrome-launcher": "*",
+    "karma-cli": "*",
+    "karma-jasmine": "*",
+    "karma-jquery": "*"
+  },
+  "scripts": {
+    "test": "karma start karma.conf.js --single-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/will-head/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/will-head/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/will-head/bowling-challenge#readme"
+}

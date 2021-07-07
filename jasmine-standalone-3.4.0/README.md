@@ -1,4 +1,4 @@
-Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 8 Sept 2019:
+Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 1 Sept 2019:
 =================
 ## Purpose of the app:
 * The function of the app is to calculate the users score for a bowling game
@@ -10,28 +10,24 @@ Bowling Challenge - Weekend Challenge for Weeks 5 & 6 - Update as at Sun 8 Sept 
 `git clone https://github.com/HannaAikas/bowling-challenge.git`
 * Open the relevant folder on your terminal
 `cd bowling-challenge`
-* Open ./jasmine-standalone-3.4.0/SpecRunner.html
-* To play the game, open the console in your browser (Chrome or Firefox), and input e.g. `game = new Game()` `game.inputScore(5);` `<repeat inputting of several scores, as app won't work unless you have input enough rolls to make a complete frame>` `console.log(game.calculateTotalScore);`
+* Open SpecRunner.html
+`open SpecRunner.html`
 
 ## Notes - Progress to date:
-### DONE - User stories implemented so far:
+### DONE:
+* Create README and diagram to show the logic of the app
+### TO DO - User stories to be implemented:
 ![domain_model](./images/bowling-domain-model.png)
 * One frame - user does 2 rolls (no spares or strikes)
 * Two frames - calculate total score for these (no spares or strikes)
 * Spares - user plays 2 frames, of which one is a spare
 * Strikes - user plays 2 frames, of which one is a strike
-### TO DO - Refactoring:
-* Tidy up file structure e.g. have duplicate of images
-* Consider splitting Game object into several objects (Game, Frame, Roll?)
-### TO DO - User stories to be implemented:
-* Full game (excl. 10th frame rules) - user plays 10 frames, including some spares, strikes and misses -> app calculates score at end
+* Full game (excl. 10th frame rules) - user plays 10 frames, including some spares, strikes and misses
 * Full game incl. 10th frame rules
 ### TO DO - Functionality:
 * Create user interface
-* Guard against e.g. users inputting a score > 10
-* Investigate using closures for getter methods
-### TO DO - Documentation:
-* Explain choices in README doc e.g. did X to achieve encapsulation / SRP
+### TO DO - Refactoring:
+* Is it possible to have "class" Frame be an object that exists within "class" Game? If so, how do you call the constructor method to create a new Frame?
 
 ## App logic - Rules of Bowling:
 ![business_logic](./images/bowling-logic.png)
@@ -66,6 +62,8 @@ ORIGINAL INSTRUCTIONS FROM MAKERS:
 Bowling Challenge
 =================
 
+
+* Challenge time: rest of the day and weekend.
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**
@@ -83,7 +81,7 @@ As usual please start by
 
 * Forking this repo
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 

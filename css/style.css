@@ -1,0 +1,139 @@
+/* body, input {
+  background-color: #884ec7;
+  text-align: center;
+  color:#ffffff;
+  font-size: 30px;
+  }
+  div {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+  }
+  button {
+    font-size: 15px;
+    border-radius: 25px;
+  }
+  title {
+    font-size: 50px;
+    color:#ffffff;
+    display: block;
+  } */
+  /* Variables
+================================== */
+/* Tables
+================================== */
+.Rtable {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 3em 0;
+  padding: 0;
+}
+.Rtable-cell {
+  box-sizing: border-box;
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+  width: 100%;
+  padding: 0.8em 1.2em;
+  overflow: hidden;
+  list-style: none;
+  border: solid 3px white;
+  background: rgba(112, 128, 144, 0.2);
+}
+.Rtable-cell > h1,
+.Rtable-cell > h2,
+.Rtable-cell > h3,
+.Rtable-cell > h4,
+.Rtable-cell > h5,
+.Rtable-cell > h6 {
+  margin: 0;
+}
+/* Table column sizing
+================================== */
+.Rtable--2cols > .Rtable-cell {
+  width: 50%;
+}
+.Rtable--3cols > .Rtable-cell {
+  width: 33.33%;
+}
+.Rtable--4cols > .Rtable-cell {
+  width: 25%;
+}
+.Rtable--5cols > .Rtable-cell {
+  width: 20%;
+}
+.Rtable--6cols > .Rtable-cell {
+  width: 16.6%;
+}
+.Rtable--10cols > .Rtable-cell {
+  width: 10%;
+}
+/* Page styling
+================================== */
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Josefin Sans Regular'), local('JosefinSans-Regular'), url(https://fonts.gstatic.com/s/josefinsans/v14/Qw3aZQNVED7rKGKxtqIqX5EUDXx9.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Josefin Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Josefin Sans Bold'), local('JosefinSans-Bold'), url(https://fonts.gstatic.com/s/josefinsans/v14/Qw3FZQNVED7rKGKxtqIqX5Ectllte10k.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Bowling';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://www.fontspace.com/jeri-ingalls/ji-bowling-balls?) format('truetype');
+}
+
+#scoresheet{
+	background-image: url('../images/scoresheet.png');
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+	/* height:200px;
+	width:200px; */
+}
+html {
+  height: 100%;
+  background-color: #EEE;
+}
+body {
+  box-sizing: border-box;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 2em;
+  max-width: 800px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.2em;
+  background-color: white;
+  border: double 3px #DDD;
+  border-top: none;
+  border-bottom: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  text-align: center;
+}
+h2 {
+  font-family: "Bowling";
+}
+h3 {
+  font-size: 1.2em;
+}
+h4 {
+  font-size: 1em;
+}
+strong {
+  color: #434d57;
+}

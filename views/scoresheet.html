@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../styles/scoresheet.css">
+  </head>
+  <body class="bg">
+    <span id="heading-span">
+    <h1 id="currentFrame">Frame number: 1</h1>
+    <h2 id="currentThrow">Throw number: 1</h2>
+    </span>
+
+    <button class='pin' id="0pin">0</button>
+    <button class='pin' id="1pin">1</button>
+    <button class='pin' id="2pin">2</button>
+    <button class='pin' id="3pin">3</button>
+    <button class='pin' id="4pin">4</button>
+    <button class='pin' id="5pin">5</button>
+    <button class='pin' id="6pin">6</button>
+    <button class='pin' id="7pin">7</button>
+    <button class='pin' id="8pin">8</button>
+    <button class='pin' id="9pin">9</button>
+    <button class='pin' id="10pin">10</button>
+
+    <div id="table-div">
+    <table id="main-scoresheet">
+      <tr>
+        <th id="name-heading">Name</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+      </tr>
+      <tr>
+        <td>Aidan</td>
+        <td>
+          <table><tr><th class="unusedframe">-</th>
+            <th class="frame" id="frame1throw1">-</th>
+            <th class="frame" id="frame1throw2">-</th>
+          </tr></table><span class="score" id='score1'>-</span></td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th class="frame" id="frame2throw1">-</th>
+          <th class="frame" id="frame2throw2">-</th>
+        </tr></table><span class="score" id='score2'>-</span></td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th class="frame" id="frame3throw1">-</th>
+          <th class="frame" id="frame3throw2">-</th>
+        </tr></table><span class="score" id='score3'>-</span></td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th class="frame" id="frame4throw1">-</th>
+          <th class="frame" id="frame4throw2">-</th>
+        </tr></table><span class="score" id='score4'>-</span></td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th class="frame" id="frame5throw1">-</th>
+          <th class="frame" id="frame5throw2">-</th>
+        </tr></table><span class="score" id='score5'>-</span></td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th class="frame" id="frame6throw1">-</th>
+          <th class="frame" id="frame6throw2">-</th>
+        </tr></table><span class="score" id='score6'>-</span></td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th class="frame" id="frame7throw1">-</th>
+          <th class="frame" id="frame7throw2">-</th>
+        </tr></table><span class="score" id='score7'>-</span></td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th class="frame" id="frame8throw1">-</th>
+          <th class="frame" id="frame8throw2">-</th>
+        </tr></table><span class="score" id='score8'>-</span></td>
+
+        <td><table><tr>
+          <th class="unusedframe">-</th>
+          <th class="frame" id="frame9throw1">-</th>
+          <th class="frame" id="frame9throw2">-</th>
+        </tr></table><span class="score" id='score9'>-</span></td>
+
+        <td><table><tr>
+          <th class="frame" id="frame10throw1">-</th>
+          <th class="frame" id="frame10throw2">-</th>
+          <th class="frame" id="frame10throw3">-</th>
+        </tr></table><span class="score" id='score10'>-</span></td>
+      </tr>
+    </table>
+    </div>
+    <button id="play-again">play again</button>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <script src="../public/interface.js" type="text/javascript"></script>
+    <script src="../public/src/bowlingGame.js"></script>
+    <script src="../public/src/frames.js"></script>
+  </body>
+</html>

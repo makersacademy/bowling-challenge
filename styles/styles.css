@@ -1,0 +1,46 @@
+html {
+  font-family: 'Lobster',
+  cursive;
+}
+
+/* Style the header */
+header {
+  background-color: rgb(0, 0, 0);
+  padding: 30px;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+}
+img {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0px;
+  display: flex;
+  height:200px;
+}
+input[type=submit] {
+background-color: #000000;
+border: none;
+color: white;
+font-size: small;
+font-family: inherit;
+padding: 10px 18px;
+padding: 1rem 1rem;
+text-decoration: none;
+margin: 2px 2px;
+cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #f12e2e;
+  font-weight: bold;
+}
+
+footer {
+  font-size: 10px;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}

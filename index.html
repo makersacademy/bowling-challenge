@@ -1,0 +1,113 @@
+<html>
+<head>
+  <link href="styles/styles.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <script src="src/bowling.js"></script>
+  <title> BOWLARAMA </title>
+  <style>
+    table,
+    th,
+    td {
+      border: 3px solid black;
+      border-collapse: collapse;
+    }
+    th,td {
+      padding: 10px;
+      text-align: center;
+    }
+
+  </style>
+
+</head>
+<header>Bowlarama
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQBg4VgLgJw3UGB1UTfMAaKPHIDHhnJm67QeA&usqp=CAU"
+    alt="Bowling">
+    <!-- <img src="bowling-cut-out.png" alt="Bowling"> -->
+</header>
+
+<body>
+  <h1>Bowlarama score card</h1>
+
+  <script src="jquery.js"></script>
+
+  <script src="src/bowling.js">
+  $(document).ready(function() {
+  bowling = new Bowling();
+
+  function roll() {
+    bowling.roll()
+    var x = document.getElementById('td1')
+    x.innerHTML = bowling.display()
+  }
+  $("#roll1").click('submit', function () {
+    console.log(roll1);
+  bowling.roll();
+  $('td').text(bowling.display());
+  bowling.display('roll1');
+  });
+  $("#roll2").click('submit', function () {
+  bowling.roll();
+  $('td').text(bowling.display());
+  bowling.display();
+  });
+  });
+  </script>
+
+  <form id="rollOne">
+Roll 1 
+  <input type="number" id="roll1" min="0" max="10">
+  <input type="submit" value="Submit" onsubmit="roll()">
+  </form>
+  <form id = "rollTwo">
+Roll 2
+  <input type="number" id="roll2" min="0" max="10">
+  <input type="submit" value="Submit">
+  </form>
+  <br>
+  <br>
+  <table style="width:100%">
+    <tr>
+      <th colspan="2">Round 1</th>
+      <th colspan="2">Round 2</th>
+      <th colspan="2">Round 3</th>
+      <th colspan="2">Round 4</th>
+      <th colspan="2">Round 5</th>
+      <th colspan="2">Round 6</th>
+      <th colspan="2">Round 7</th>
+      <th colspan="2">Round 8</th>
+      <th colspan="2">Round 9</th>
+      <th colspan="2">Round 10</th>
+      <th>Total</th>
+    </tr>
+      <td id= "td1"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+  </table>
+
+</body>
+<br>
+<br>
+<footer>
+  A MATTYBWOY CREATION
+</footer>
+</html>

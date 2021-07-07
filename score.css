@@ -1,0 +1,30 @@
+html {
+    background-color: rgb(175,238,238);
+}
+
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    text-align: center;
+}
+
+.error {
+    color: red;
+    margin-left: 5px;
+  }
+
+  header {
+    background-color: black;
+    padding: 40px 40px;
+    margin: 0px;
+  }
+
+#final-score {
+    color: red;
+  }
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: auto;
+  padding: 1em;
+}

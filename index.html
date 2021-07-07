@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling scorecard</title>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="score.css">
+    <script src="src/Score.js"></script>
+    <script src="src/interface.js"></script>
+  </head>
+  <header>
+  </header>
+  <body>
+    <h1>Bowling scorecard</h1>
+      <div class=game>
+        <p>This is frame number: <span id="display-frame">1 </span></p>
+        <p>This is roll number: <span id="display-roll">1 </span></p>
+        <br>
+      
+            <form id="roll-one-div">
+                1st roll 
+            <input id="roll-one" type="text" placeholder="Enter value for 1st roll"></input>
+            <input type="submit"></input>
+            </form>
+            <br>
+            <br>
+            <form id="roll-two-div">
+                2nd roll
+            <input id="roll-two" type="text" placeholder="Enter value for 2nd roll"> </input>
+            <input type="submit"></input>
+            </form>
+            <br>
+            <br>
+            <form id="roll-three-div">
+                3rd roll (only for 10th frame) 
+            <input id="roll-three" type="text" placeholder="Enter value for 3rd roll"></input>
+            <input type="submit"></input>
+            </form>
+            <br>
+            
+        
+        <p>Your partial score: 
+          <div id="display-score"> </div></p>
+  
+        <p>Your rolls so far: <span id="display-array"> </span></p>
+        
+        <div >
+            <table>
+              <tr>
+                <th>Frame</th>
+                <th colspan="2">Rolls</th>
+              </tr>
+              <tbody id="table">
+              </tbody>
+            </table>
+        </div>
+
+     </div>
+     <div class="no_game">
+        <p>Your final score: <span id="final-score"> </span></p>
+        <br>
+       Please refresh the page to restart the game.
+     </div>
+  </body>
+<footer>
+</footer>
+</html>

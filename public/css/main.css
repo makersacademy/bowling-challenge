@@ -1,0 +1,30 @@
+body{
+    background-color: gainsboro;
+    font-family: sans-serif;
+}
+
+input {
+    text-align: center;
+}
+
+#play-game {
+    display: none;
+}
+
+#frames {
+    width: 100%;
+}
+
+#frames td, #frames th {
+    border: 1px solid black;
+}
+
+.pins-bowled-button {
+    border-radius: 50%;
+    width: 4ch;
+    text-align: center;
+}
+
+#summarise {
+    display: none;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bowling with JS</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="public/css/main.css">
+    <script src="jasmine-standalone-3.3.0/src/Bowlers.js"></script>
+    <script src="jasmine-standalone-3.3.0/src/Game.js"></script>
+    <script src="jasmine-standalone-3.3.0/src/Frame.js"></script>
+    <script src="jasmine-standalone-3.3.0/src/Interface.js"></script>
+</head>
+<body>
+    <center>
+        <header><h1>Bowling with JS</h1></header>
+    
+        <section id='get-bowlers'>
+            <form>
+                <input id='bowler-input-field' type='text' placeholder="Bowler"></input>
+                <br>
+                <br>
+                <input id='bowler-input-submit' type='submit'></input>
+            </form>
+            <br>
+            <button id='begin-game'>Begin Game</button>
+            <h2>Bowlers</h2>
+            <article id='list-of-bowlers'></article>
+        </section>
+
+        <section id='play-game'>
+            <h2>Frames</h2>
+            <article id='frames'></article>
+            <h2 id='current-bowler-name'></h2>
+            <article id='pins-knocked-down-input'>
+                <button class='pins-bowled-button' value='0'>0</button>
+                <button class='pins-bowled-button' value='1'>1</button>
+                <button class='pins-bowled-button' value='2'>2</button>
+                <button class='pins-bowled-button' value='3'>3</button>
+                <button class='pins-bowled-button' value='4'>4</button>
+                <button class='pins-bowled-button' value='5'>5</button>
+                <button class='pins-bowled-button' value='6'>6</button>
+                <button class='pins-bowled-button' value='7'>7</button>
+                <button class='pins-bowled-button' value='8'>8</button>
+                <button class='pins-bowled-button' value='9'>9</button>
+                <button class='pins-bowled-button' value='10'>10</button>
+            </article>
+        </section>
+
+        <section id='summarise'>SUMMARY</section>
+    </center>
+</body>
+</html>

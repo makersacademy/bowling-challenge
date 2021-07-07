@@ -1,3 +1,31 @@
+BowlApp ReadMe
+==============
+
+## User Stories
+
+```
+As a bowler
+So that I can begin a game
+I want to add the list of bowlers
+```
+
+```
+As a bowler
+So that I can keep track of what happened during a game
+I want to record the number of pins I knocked down during a frame
+```
+
+```
+As a bowler
+So that I can keep an eye on the game's progress
+I want to be able to see the current status of each frame
+```
+
+```
+As a bowler
+So that I know who won
+I want to be able to see each player's score at game end
+```
 
 Bowling Challenge
 =================

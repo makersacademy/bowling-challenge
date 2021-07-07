@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+    <html>
+      <head>
+        <link rel="stylesheet" type="text/css" href="./Public/skeleton.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bowling Calculator</title>
+      </head>
+      <body>
+        <section>
+          <h1> Welcome to the Bowling Calculator </h1>
+          <h4> The website that will calculate your bowling score for you. Choose your score for each frame and hit submit to get started.</h4>
+          <h3>Score so far:</h3> <h2 style="font-size: 6.0rem" id="score"></h2>
+          <p>
+            <div id="frame1_show">
+              <h3 id="frame1_heading"> Frame 1 </h3>
+            <form><center>
+              <select id="frame1_roll1" >
+                <option></option>
+                <option value= 0 >0</option>
+                <option value= 1 >1</option>
+                <option value= 2 >2</option>
+                <option value= 3 >3</option>
+                <option value= 4 >4</option>
+                <option value= 5 >5</option>
+                <option value= 6 >6</option>
+                <option value= 7 >7</option>
+                <option value= 8 >8</option>
+                <option value= 9 >9</option>
+                <option value= 10 >10</option>
+              </select>
+
+              <select id="frame1_roll2" >
+                <option></option>
+                <option value= 0 >0</option>
+                <option value= 1 >1</option>
+                <option value= 2 >2</option>
+                <option value= 3 >3</option>
+                <option value= 4 >4</option>
+                <option value= 5 >5</option>
+                <option value= 6 >6</option>
+                <option value= 7 >7</option>
+                <option value= 8 >8</option>
+                <option value= 9 >9</option>
+                <option value= 10 >10</option>
+              </select>
+              <input id="frame1" type="submit" value="Submit">
+            </center></form>
+          </div>
+          <div id="frame2_show">
+            <h3 id="frame2_heading"> Frame 2 </h3>
+          <form ><center>
+            <select id="frame2_roll1" >
+              <option></option>
+              <option value= 0 >0</option>
+              <option value= 1 >1</option>
+              <option value= 2 >2</option>
+              <option value= 3 >3</option>
+              <option value= 4 >4</option>
+              <option value= 5 >5</option>
+              <option value= 6 >6</option>
+              <option value= 7 >7</option>
+              <option value= 8 >8</option>
+              <option value= 9 >9</option>
+              <option value= 10 >10</option>
+            </select>
+            <select id="frame2_roll2" >
+              <option></option>
+              <option value= 0 >0</option>
+              <option value= 1 >1</option>
+              <option value= 2 >2</option>
+              <option value= 3 >3</option>
+              <option value= 4 >4</option>
+              <option value= 5 >5</option>
+              <option value= 6 >6</option>
+              <option value= 7 >7</option>
+              <option value= 8 >8</option>
+              <option value= 9 >9</option>
+              <option value= 10 >10</option>
+            </select>
+            <input id="frame2" type="submit" value="Submit">
+          </center></form>
+        </div>
+          <h3 id="frame3_heading"> Frame 3 </h3>
+        <form><center>
+          <select id="frame3_roll1" >
+            <option></option>
+            <option value= 0 >0</option>
+            <option value= 1 >1</option>
+            <option value= 2 >2</option>
+            <option value= 3 >3</option>
+            <option value= 4 >4</option>
+            <option value= 5 >5</option>
+            <option value= 6 >6</option>
+            <option value= 7 >7</option>
+            <option value= 8 >8</option>
+            <option value= 9 >9</option>
+            <option value= 10 >10</option>
+          </select>
+          <select id="frame3_roll2" >
+            <option></option>
+            <option value= 0 >0</option>
+            <option value= 1 >1</option>
+            <option value= 2 >2</option>
+            <option value= 3 >3</option>
+            <option value= 4 >4</option>
+            <option value= 5 >5</option>
+            <option value= 6 >6</option>
+            <option value= 7 >7</option>
+            <option value= 8 >8</option>
+            <option value= 9 >9</option>
+            <option value= 10 >10</option>
+          </select>
+          <input id="frame3" type="submit" value="Submit">
+        </center></form>
+        <h3 id="frame4_heading"> Frame 4 </h3>
+      <form> <center>
+        <select id="frame4_roll1" >
+          <option></option>
+          <option value= 0 >0</option>
+          <option value= 1 >1</option>
+          <option value= 2 >2</option>
+          <option value= 3 >3</option>
+          <option value= 4 >4</option>
+          <option value= 5 >5</option>
+          <option value= 6 >6</option>
+          <option value= 7 >7</option>
+          <option value= 8 >8</option>
+          <option value= 9 >9</option>
+          <option value= 10 >10</option>
+        </select>
+        <select id="frame4_roll2" >
+          <option></option>
+          <option value= 0 >0</option>
+          <option value= 1 >1</option>
+          <option value= 2 >2</option>
+          <option value= 3 >3</option>
+          <option value= 4 >4</option>
+          <option value= 5 >5</option>
+          <option value= 6 >6</option>
+          <option value= 7 >7</option>
+          <option value= 8 >8</option>
+          <option value= 9 >9</option>
+          <option value= 10 >10</option>
+        </select>
+        <input id="frame4" type="submit" value="Submit">
+      </center></form>
+      <h3 id="frame5_heading"> Frame 5 </h3>
+    <form><center>
+      <select id="frame5_roll1" >
+        <option></option>
+        <option value= 0 >0</option>
+        <option value= 1 >1</option>
+        <option value= 2 >2</option>
+        <option value= 3 >3</option>
+        <option value= 4 >4</option>
+        <option value= 5 >5</option>
+        <option value= 6 >6</option>
+        <option value= 7 >7</option>
+        <option value= 8 >8</option>
+        <option value= 9 >9</option>
+        <option value= 10 >10</option>
+      </select>
+      <select id="frame5_roll2" >
+        <option></option>
+        <option value= 0 >0</option>
+        <option value= 1 >1</option>
+        <option value= 2 >2</option>
+        <option value= 3 >3</option>
+        <option value= 4 >4</option>
+        <option value= 5 >5</option>
+        <option value= 6 >6</option>
+        <option value= 7 >7</option>
+        <option value= 8 >8</option>
+        <option value= 9 >9</option>
+        <option value= 10 >10</option>
+      </center></select>
+      <input id="frame5" type="submit" value="Submit">
+    </form>
+    <h3 id="frame6_heading"> Frame 6 </h3>
+  <form><center>
+    <select id="frame6_roll1" >
+      <option></option>
+      <option value= 0 >0</option>
+      <option value= 1 >1</option>
+      <option value= 2 >2</option>
+      <option value= 3 >3</option>
+      <option value= 4 >4</option>
+      <option value= 5 >5</option>
+      <option value= 6 >6</option>
+      <option value= 7 >7</option>
+      <option value= 8 >8</option>
+      <option value= 9 >9</option>
+      <option value= 10 >10</option>
+    </select>
+    <select id="frame6_roll2" >
+      <option></option>
+      <option value= 0 >0</option>
+      <option value= 1 >1</option>
+      <option value= 2 >2</option>
+      <option value= 3 >3</option>
+      <option value= 4 >4</option>
+      <option value= 5 >5</option>
+      <option value= 6 >6</option>
+      <option value= 7 >7</option>
+      <option value= 8 >8</option>
+      <option value= 9 >9</option>
+      <option value= 10 >10</option>
+    </select>
+    <input id="frame6" type="submit" value="Submit">
+  </center></form>
+  <h3 id="frame7_heading"> Frame 7 </h3>
+<form ><center>
+  <select id="frame7_roll1" >
+    <option></option>
+    <option value= 0 >0</option>
+    <option value= 1 >1</option>
+    <option value= 2 >2</option>
+    <option value= 3 >3</option>
+    <option value= 4 >4</option>
+    <option value= 5 >5</option>
+    <option value= 6 >6</option>
+    <option value= 7 >7</option>
+    <option value= 8 >8</option>
+    <option value= 9 >9</option>
+    <option value= 10 >10</option>
+  </select>
+  <select id="frame7_roll2" >
+    <option></option>
+    <option value= 0 >0</option>
+    <option value= 1 >1</option>
+    <option value= 2 >2</option>
+    <option value= 3 >3</option>
+    <option value= 4 >4</option>
+    <option value= 5 >5</option>
+    <option value= 6 >6</option>
+    <option value= 7 >7</option>
+    <option value= 8 >8</option>
+    <option value= 9 >9</option>
+    <option value= 10 >10</option>
+  </select>
+  <input id="frame7" type="submit" value="Submit">
+</center></form>
+<h3 id="frame8_heading"> Frame 8 </h3>
+<form><center>
+<select id="frame8_roll1" >
+  <option></option>
+  <option value= 0 >0</option>
+  <option value= 1 >1</option>
+  <option value= 2 >2</option>
+  <option value= 3 >3</option>
+  <option value= 4 >4</option>
+  <option value= 5 >5</option>
+  <option value= 6 >6</option>
+  <option value= 7 >7</option>
+  <option value= 8 >8</option>
+  <option value= 9 >9</option>
+  <option value= 10 >10</option>
+</select>
+<select id="frame8_roll2" >
+  <option></option>
+  <option value= 0 >0</option>
+  <option value= 1 >1</option>
+  <option value= 2 >2</option>
+  <option value= 3 >3</option>
+  <option value= 4 >4</option>
+  <option value= 5 >5</option>
+  <option value= 6 >6</option>
+  <option value= 7 >7</option>
+  <option value= 8 >8</option>
+  <option value= 9 >9</option>
+  <option value= 10 >10</option>
+</center></select>
+<input id="frame8" type="submit" value="Submit">
+</form>
+<h3 id="frame9_heading"> Frame 9 </h3>
+<form><center>
+<select id="frame9_roll1" >
+  <option></option>
+  <option value= 0 >0</option>
+  <option value= 1 >1</option>
+  <option value= 2 >2</option>
+  <option value= 3 >3</option>
+  <option value= 4 >4</option>
+  <option value= 5 >5</option>
+  <option value= 6 >6</option>
+  <option value= 7 >7</option>
+  <option value= 8 >8</option>
+  <option value= 9 >9</option>
+  <option value= 10 >10</option>
+</select>
+<select id="frame9_roll2" >
+  <option></option>
+  <option value= 0 >0</option>
+  <option value= 1 >1</option>
+  <option value= 2 >2</option>
+  <option value= 3 >3</option>
+  <option value= 4 >4</option>
+  <option value= 5 >5</option>
+  <option value= 6 >6</option>
+  <option value= 7 >7</option>
+  <option value= 8 >8</option>
+  <option value= 9 >9</option>
+  <option value= 10 >10</option>
+</center></select>
+<input id="frame9"type="submit" value="Submit">
+</form>
+<h3 id="frame10_heading"> Frame 10 </h3>
+<form><center>
+<select id="frame10_roll1" >
+  <option></option>
+  <option value= 0 >0</option>
+  <option value= 1 >1</option>
+  <option value= 2 >2</option>
+  <option value= 3 >3</option>
+  <option value= 4 >4</option>
+  <option value= 5 >5</option>
+  <option value= 6 >6</option>
+  <option value= 7 >7</option>
+  <option value= 8 >8</option>
+  <option value= 9 >9</option>
+  <option value= 10 >10</option>
+</select>
+<select id="frame10_roll2" >
+  <option></option>
+  <option value= 0 >0</option>
+  <option value= 1 >1</option>
+  <option value= 2 >2</option>
+  <option value= 3 >3</option>
+  <option value= 4 >4</option>
+  <option value= 5 >5</option>
+  <option value= 6 >6</option>
+  <option value= 7 >7</option>
+  <option value= 8 >8</option>
+  <option value= 9 >9</option>
+  <option value= 10 >10</option>
+</center></select>
+<input id="frame10" type="submit" value="Submit">
+</form>
+
+          </p>
+        </section>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="src/Game.js"></script>
+    <script src="interface.js"></script>
+  </body>
+</html>

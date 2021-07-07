@@ -1,3 +1,9 @@
+## Technologies
+
+JavaScript
+ESLint - linter
+Jasmine - testing framework
+
 
 Bowling Challenge
 =================

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CalcuBowl</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      <div class="notification is-info" , style="text-align: center;">
+        Welcome to <strong>CalcuBowl!</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="columns is-centered">
+      <div class="columns">
+        <div class="column">
+          <a class="button is-link is-rounded", id="zero">0</a>
+        </div>
+        <div class="column">
+          <a class="button is-link is-rounded", id="one">1</a>
+        </div>
+        <div class="column">
+          <a class="button is-link is-rounded", id="two">2</a>
+        </div>
+        <div class="column">
+          <a class="button is-link is-rounded", id="three">3</a>
+        </div>
+        <div class="column">
+          <a class="button is-link is-rounded", id="four">4</a>
+        </div>
+        <div class="column">
+          <a class="button is-link is-rounded", id="five">5</a>
+        </div>
+        <div class="column">
+          <a class="button is-link is-rounded", id="six">6</a>
+        </div>
+        <div class="column">
+          <a class="button is-link is-rounded", id="seven">7</a>
+        </div>
+        <div class="column">
+          <a class="button is-link is-rounded", id="eight">8</a>
+        </div>
+        <div class="column">
+          <a class="button is-link is-rounded", id="nine">9</a>
+        </div>
+        <div class="column">
+          <a class="button is-link is-rounded", id="ten">10</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="columns is-centered">
+    <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;table-layout:fixed}
+    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg .tg-baqh{text-align:center;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+    </style>
+
+    <table class="tg", width ="1000">
+      <tr>
+        <th class="tg-baqh" colspan="2">1</th>
+        <th class="tg-baqh" colspan="2">2</th>
+        <th class="tg-baqh" colspan="2">3</th>
+        <th class="tg-baqh" colspan="2">4</th>
+        <th class="tg-baqh" colspan="2">5</th>
+        <th class="tg-baqh" colspan="2">6</th>
+        <th class="tg-baqh" colspan="2">7</th>
+        <th class="tg-baqh" colspan="2">8</th>
+        <th class="tg-baqh" colspan="2">9</th>
+        <th class="tg-baqh" colspan="3">10</th>
+      </tr>
+      <tr height="50">
+        <td id="1", class="tg-0lax", style="text-align:center"></td>
+        <td id="2", class="tg-0lax", style="text-align:center"></td>
+        <td id="3", class="tg-0lax", style="text-align:center"></td>
+        <td id="4", class="tg-0lax", style="text-align:center"></td>
+        <td id="5", class="tg-0lax", style="text-align:center"></td>
+        <td id="6", class="tg-0lax", style="text-align:center"></td>
+        <td id="7", class="tg-0lax", style="text-align:center"></td>
+        <td id="8", class="tg-0lax", style="text-align:center"></td>
+        <td id="9", class="tg-0lax", style="text-align:center"></td>
+        <td id="10", class="tg-0lax", style="text-align:center"></td>
+        <td id="11", class="tg-0lax", style="text-align:center"></td>
+        <td id="12", class="tg-0lax", style="text-align:center"></td>
+        <td id="13", class="tg-0lax", style="text-align:center"></td>
+        <td id="14", class="tg-0lax", style="text-align:center"></td>
+        <td id="15", class="tg-0lax", style="text-align:center"></td>
+        <td id="16", class="tg-0lax", style="text-align:center"></td>
+        <td id="17", class="tg-0lax", style="text-align:center"></td>
+        <td id="18", class="tg-0lax", style="text-align:center"></td>
+        <td id="19", class="tg-0lax", style="text-align:center"></td>
+        <td id="20", class="tg-0lax", style="text-align:center"></td>
+        <td id="21", class="tg-0lax", style="text-align:center"></td>
+      </tr>
+      <tr height="50">
+        <td id="tot1", class="tg-0lax" colspan="2", style="text-align:center"></td>
+        <td id="tot2", class="tg-0lax" colspan="2", style="text-align:center"></td>
+        <td id="tot3", class="tg-0lax" colspan="2", style="text-align:center"></td>
+        <td id="tot4", class="tg-0lax" colspan="2", style="text-align:center"></td>
+        <td id="tot5", class="tg-0lax" colspan="2", style="text-align:center"></td>
+        <td id="tot6", class="tg-0lax" colspan="2", style="text-align:center"></td>
+        <td id="tot7", class="tg-0lax" colspan="2", style="text-align:center"></td>
+        <td id="tot8", class="tg-0lax" colspan="2", style="text-align:center"></td>
+        <td id="tot9", class="tg-0lax" colspan="2", style="text-align:center"></td>
+        <td id="tot10", class="tg-0lax" colspan="3", style="text-align:center"></td>
+      </tr>
+    </table>
+  </section>
+
+  <div id= "total", class="box", style="text-align:center">
+    Your score is  ..
+  </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="src/game.js"></script>
+<script src="src/frame.js"></script>
+<script src="src/interface.js"></script>
+</html>

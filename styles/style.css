@@ -1,0 +1,33 @@
+.current-score {
+  color: green;
+}
+
+.bowl {
+  color: green;
+}
+
+.roll-button {
+  background-color: #555555; /* Green */
+  color: #ffffff;
+}
+
+.strike {
+  color: red;
+}
+
+.frame {
+  color: red;
+}
+
+.roll {
+  color: green;
+}
+
+.button-score {
+  background-color: #555555; /* Green */
+  color: #ffffff;
+}
+
+.game-status {
+  color: green;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="./jasmine/jasmine-standalone-3.1.0/src/Game.js"></script>
+  <script src="./jasmine/jasmine-standalone-3.1.0/src/Score.js"></script>
+  <!-- JQuery file  -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="./jasmine/jasmine-standalone-3.1.0/src/interface.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <title>Bowling</title>
+</head>
+<body>
+    <h1>Bowling</h1>
+  <div>
+    <h2>Game status: <span id="game-status" class="game-status"></span> <span id="game-status"></span></h2>
+  </div>
+  <div>
+    <p>Frame: <span id="frame" class="frame"></span> | Rolls: <span id="rolls-count" class="rolls-count"></span> | Scorecard: <span id="score-card" class="score-card"></span> | Bonus: <span id="bonus" class="bonus"></span></p>
+  </div>
+  <div>
+    <h2><span id="strike" class="strike"></span></h2>
+  </div>
+  <div>
+    <h2>Current score <span id="current-score"></span>: <span id="current-score"></span></h2>
+  </div>
+  <div>
+    <form id="bowl-pins">
+      Input how many pins to knock down:<input id="pins" type="text"></input>
+      <input type="submit" value="roll"></input>
+    </form>
+  </div>
+  <div>
+    <br/><br/>
+    <p><strong>Notes:</strong></p>
+    <li>please enter the <strong>correct</strong> number of pins in each roll as there is no validation</li>
+    <li>if you enter a <strong>strike</strong> in roll 1, please enter <strong>'0'</strong> in roll 2</li>
+  </div>
+</body>
+</html>

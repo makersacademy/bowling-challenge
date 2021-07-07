@@ -1,4 +1,44 @@
+Bowling Challenge
+==================
 
+What is working:
+-------
+All of the following features listed below have been implemented.
+
+Features implemented
+-------
+```
+* [ ] Gutter game
+* [ ] One frame
+* [ ] Multiple frames
+* [ ] Spares
+* [ ] Strikes
+* [ ] Final Frame
+* Interactive animated interface with jQuery.
+
+```
+
+Improvements
+-------
+* the bonus logic for spare (roll 2) has not been implemented
+* validation: currently the app does not check if the roll is a number between
+0-10
+* validation: currently the app does not check the no. of pins knocked down in
+roll 1, so as to limit the number of pins that can be knocked down in roll 2
+* validation for roll 3 in Game 10
+* improved UI: on the index page, if you score a Strike, you must enter '0' in
+roll 2 manually
+
+
+Instructions to Start
+-------
+
+* Clone the repo
+* Open Terminal and type in 'open index.html' to open the index page.
+
+You can now play Bowling!
+
+<!--
 Bowling Challenge
 =================
 
@@ -72,4 +112,4 @@ In code review we'll be hoping to see:
 * All tests passing
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want. -->

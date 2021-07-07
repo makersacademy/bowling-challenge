@@ -73,3 +73,44 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+## User Stories
+
+As a bowler,
+
+So I can keep track of my ctore,
+
+I would like to be able to save rolls to score card.
+
+As a bowler,
+
+So I can know a frame is complete,
+
+I would like to not be able to add rolls to frame after completed.
+
+As a bowler,
+
+So I can know my score,
+
+I would like the score of my game to be calculated.
+
+## Getting started
+
+To create a game instantiate a Game object.
+
+game = new Game()
+
+To create a new frame call:
+
+game.addFrame()
+
+This adds frame to a list saved as:
+
+game.frameList
+
+Then to add a roll to a frame call:
+
+game.framelist[i].addroll(rollValue)
+
+Where 'i' is the index of the frame and 'rollValue' is the value of the roll.
+

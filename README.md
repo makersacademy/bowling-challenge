@@ -1,4 +1,39 @@
 
+###user stories ###
+
+User Stories:
+
+As a bowler
+So I can know my score from a frame
+I want to add up the number of pins I knocked over in roll 1 and 2
+
+
+As a bowler
+So I can get see my running total
+I want to add up the score from each frame
+
+
+As a bowler
+So I can calculate my score when I get a strike
+I want the frame to end and then a bonus score to be added, consisting of the score from the next two rolls
+
+
+As a bowler
+So I can calculate my score when I get a spare
+I want a bonus score to be added, consisting of the score from the next roll
+
+
+As a bowler
+So I can add my bonus when I get a strike or a spare on the 10th frame
+I want to add on a score for a roll
+
+
+
+
+
+
+
+
 Bowling Challenge
 =================
 

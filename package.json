@@ -1,0 +1,33 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "Game.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shihhanwang/bowling-challenge.git"
+  },
+  "author": "Shih Han Wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shihhanwang/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/shihhanwang/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "dependencies": {
+    "eslint": "^4.19.1",
+    "plugin": "^0.3.3"
+  }
+}

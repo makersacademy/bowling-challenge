@@ -1,0 +1,62 @@
+.scorecard_container {
+    width: 1050px;
+    height: 100px;
+    display: flex;
+    border: 2px solid black;
+}
+
+.roll, .frame_score, .last_roll, .last_frame_score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.frame {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.roll_container {
+    width: 100px;
+    height: 50px;
+    display: flex;
+}
+
+.roll {
+    width: 49px;
+    height: 49px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.frame_score {
+    width: 99px;
+    height: 50px;
+    border-right: 1px solid black;
+}
+
+.last_frame {
+    width: 150px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.last_roll_container {
+    width: 150px;
+    height: 50px;
+    display: flex;
+}
+
+.last_roll {
+    width: 50px;
+    height: 49px;
+    border-bottom: 1px solid black;
+}
+
+.last_frame_score {
+    width: 150px;
+    height: 50px;
+}

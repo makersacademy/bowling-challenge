@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <link rel='stylesheet' type='text/css' href='lib/style/scorecard.css'>
+    <script src='lib/javascript/roll.js'></script>
+    <script src='lib/javascript/frame.js'></script>
+    <script src='lib/javascript/scorecard.js'></script>
+    <script src='lib/javascript/jQuery.js'></script>
+    <script src='lib/javascript/interface.js'></script>
+    <title>Bowling</title>
+  </head>
+  <body>
+    <h1>Bowling Scorecard</h1>
+    <div class='scorecard_container'>
+      <div class='frame' id='frame1'>
+        <div class='roll_container'>
+          <div class='roll' id='frame1_roll1'>
+          </div>
+          <div class='roll' id='frame1_roll2'>
+          </div>
+        </div>
+        <div class='frame_score' id='frame1_score'>
+        </div>
+      </div>
+      <div class='frame' id='frame2'>
+        <div class='roll_container'>
+          <div class='roll' id='frame2_roll1'>
+          </div>
+          <div class='roll' id='frame2_roll2'>
+          </div>
+        </div>
+        <div class='frame_score' id='frame2_score'>
+        </div>
+      </div>
+      <div class='frame' id='frame3'>
+        <div class='roll_container'>
+          <div class='roll' id='frame3_roll1'>
+          </div>
+          <div class='roll' id='frame3_roll2'>
+          </div>
+        </div>
+        <div class='frame_score' id='frame3_score'>
+        </div>
+      </div>
+      <div class='frame' id='frame4'>
+        <div class='roll_container'>
+          <div class='roll' id='frame4_roll1'>
+          </div>
+          <div class='roll' id='frame4_roll2'>
+          </div>
+        </div>
+        <div class='frame_score' id='frame4_score'>
+        </div>
+      </div>
+      <div class='frame' id='frame5'>
+        <div class='roll_container'>
+          <div class='roll' id='frame5_roll1'>
+          </div>
+          <div class='roll' id='frame5_roll2'>
+          </div>
+        </div>
+        <div class='frame_score' id='frame5_score'>
+        </div>
+      </div>
+      <div class='frame' id='frame6'>
+        <div class='roll_container'>
+          <div class='roll' id='frame6_roll1'>
+          </div>
+          <div class='roll' id='frame6_roll2'>
+          </div>
+        </div>
+        <div class='frame_score' id='frame6_score'>
+        </div>
+      </div>
+      <div class='frame' id='frame7'>
+        <div class='roll_container'>
+          <div class='roll' id='frame7_roll1'>
+          </div>
+          <div class='roll' id='frame7_roll2'>
+          </div>
+        </div>
+        <div class='frame_score' id='frame7_score'>
+        </div>
+      </div>
+      <div class='frame' id='frame8'>
+        <div class='roll_container'>
+          <div class='roll' id='frame8_roll1'>
+          </div>
+          <div class='roll' id='frame8_roll2'>
+          </div>
+        </div>
+        <div class='frame_score' id='frame8_score'>
+        </div>
+      </div>
+      <div class='frame' id='frame9'>
+        <div class='roll_container'>
+          <div class='roll' id='frame9_roll1'>
+          </div>
+          <div class='roll' id='frame9_roll2'>
+          </div>
+        </div>
+        <div class='frame_score' id='frame9_score'>
+        </div>
+      </div>
+      <div class='last_frame' id='frame10'>
+        <div class='last_roll_container'>
+          <div class='roll' id='frame10_roll1'>
+          </div>
+          <div class='roll' id='frame10_roll2'>
+          </div>
+          <div class='last_roll' id='frame10_roll3'>
+          </div>
+        </div>
+        <div class='last_frame_score' id='frame10_score'>
+        </div>
+      </div>
+    </div>
+    <h1>Total score: <span id='total_score'></span></h1>
+    <select id='roll_input'>
+      <option value=0>0</option>
+      <option value=1>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+      <option value=6>6</option>
+      <option value=7>7</option>
+      <option value=8>8</option>
+      <option value=9>9</option>
+      <option value=10>10</option>
+    </select>
+    <button id='submit_roll'>Submit</button>
+  </body>
+</html>

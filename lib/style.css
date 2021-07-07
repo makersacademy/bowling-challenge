@@ -1,0 +1,16 @@
+body {
+  background-color: #d4dbe2;
+}
+
+th {
+  background-color: #9db8d8
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}

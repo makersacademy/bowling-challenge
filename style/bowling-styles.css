@@ -1,0 +1,87 @@
+body {
+  background: url("../images/bowling-background.png");
+  background-repeat: no-repeat;
+  background-size: 106%;
+  background-color: #b2cecf;
+  font-family: helvetica;
+  font-weight: bold;
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  width: 90%;
+  height: 200px;
+  font-size: 40px;
+  background: transparent;
+  empty-cells: show;
+}
+
+table, th, td {
+  text-align: right;
+  border: 2px solid black;
+  border-collapse: collapse;
+  padding: 1.2%;
+}
+
+th {
+  height: 60px;
+}
+
+td {
+  font-size: 20px;
+  width: 50px;
+}
+
+h2 {
+  text-align: left;
+}
+
+input:hover {
+  /* transform: rotate(45deg); */
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+
+@-moz-keyframes spin { 100%
+  {
+  -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin { 100%
+  {
+  -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+  -webkit-transform: rotate(360deg); transform:rotate(360deg);
+  }
+}
+
+.bowling_man {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  margin: 20px;
+  width: 300px;
+}
+
+.bowling_pin {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  margin: 20px;
+  width: 100px;
+}
+
+.frame_number {
+  height: 90px;
+}
+
+.scores {
+  height: 50px;
+}

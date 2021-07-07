@@ -1,3 +1,6 @@
+Need to write README
+Did not finish due to lack of time and illness
+As well as completing required functionality further refactoring also needs to be done
 
 Bowling Challenge
 =================

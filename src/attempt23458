@@ -1,0 +1,52 @@
+'use strict';
+
+function Game() {
+  this.rollIndex = 0
+  this.frame = 0
+  this.total = 0
+  this.game = []
+};
+
+Game.prototype.framesMaker = function () {
+  for(var i = 0; i < 9; i++) {
+    this.game.push([0, 0])
+  }
+  this.game.push([0,0,0])
+}
+
+Game.prototype.rollAdvance = function () {
+  if(this.frame < 10){
+    this.rollIndex ++;
+
+    if(this.rollIndex > 2) {
+      this.frame++;
+      this.rollIndex = 1
+    }
+  } else {
+    this.rollindex++;
+  }
+
+};
+
+Game.prototype.tally = function (pins) {
+  this.total += pins
+
+  if (pins === 10) {
+    this.total += (pins)
+    if(this.game[this.frame + 1][0] === 10) {
+      this.total += (this.game[this.frame + 2][0])
+    }
+  } else if (this.game[this.frame][0] + this.game[this.frame][1] === 10) {
+    this.total += this.game[this.frame + 1][0]
+  }
+};
+
+Game.prototype.bowl = function (pins) {
+  this.tally(pins)
+  this.game.push(pins)
+  this.rollAdvance()
+};
+
+Game.prototype.getScore = function () {
+  return this.total
+};

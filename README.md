@@ -73,3 +73,79 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+##  Challenge Notes
+
+High level plan
+===============
+
+1.  Fork
+2.  Create README and update as you go along
+3.  Identify features
+4.  Draw up UI
+5.  Create user stories
+6.  Create a business logic model
+7.  TDD business logic / features using Jasmine and JS
+8.  Refactor code
+
+User Stories
+============
+
+As a player
+So I can play a single frame
+I’d like to see what I scored for a frame
+
+As a player
+So I know my total score
+I’d like to view my total score for up to 10 frames
+
+As a player
+So that I can have a gutter game
+I’d like to bowl 20 zero scores.
+
+As a player
+So I can get bonus points for a spare
+I’d like to have my spare bonus points added to my total
+
+As a player
+So I can get bonus points for a strike
+I’d like to have my spare bonus points added to my total
+
+As a player
+So that I can play a perfect game
+I’d like to be able to enter 10 strikes in a row.
+
+As a player
+So that I can get 30 points in the 10th frame
+I’d like to be able to score 3 strikes in a row in the final frame only.
+
+As a player
+So that I can get 20 points in the final frame
+I’d like to be able to knock over 10 pins in the first two rolls and then get a strike.
+
+Notes
+============
+
+So far I have:
+
+1.  Forked
+2.  Created a README
+3.  Identified features
+4.  Drawn up UI
+5.  Created user stories
+6.  Created a partial business logic model
+7.  Done TDD some of my business logic model / features using Jasmine and JS
+
+Reflection
+
+I chose to move forward with the user interface before I had completed the business logic because I wanted to spend some time on this rather than using all of my allocated time on logic.  This has meant I got more familiar with JQuery and linking up JS with a HTML page.  
+
+I don't think to move on to the front end before a basic backend is complete is something I'd do as a regular process but in this case, it was helpful to get practice in both areas.  Even for learning purposes, I think having a more basic but complete game logic would have been a better idea than moving on to the front end with incomplete logic.
+
+To complete this challenge I would first write a more detailed model with complete (pseudo) logic for the game.  This will likely mean some of my existing tests and functions may not be required.  There is also already a lot of refactoring to do.  For example, doing multiple rolls when testing game scenarios such as a perfect game and gutter game.  However, going through this process has made me much more aware of how I can write more elegant tests focused on the user stories I created.  This will be more efficient compared to what I initially did b testing the individual functions which would be built up for later tests.  I already knew this but carried away with the challenge.
+
+Once the logic is written I'd expect to have fewer tests then I have now. Linking the UI to the JS with Jquery should also require much fewer queries then what I am currently on track to have.
+
+I'd finish off with getting more familiar with Travis CI and ESLint.
+
+To conclude whilst it was good to get more exposure to using Jquery and developing a front end it's become very clear why it's a good idea to start with a clear model and good understanding of how the logic will work before starting.

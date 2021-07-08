@@ -1,0 +1,11 @@
+/* inputBar={
+  "float":"left"
+} */
+
+#input-bar form {
+  float: left;
+  padding-right: 10px;
+}
+#input-bar input {
+  width: 40px;
+}

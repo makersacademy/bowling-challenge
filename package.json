@@ -1,0 +1,27 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "a bowling scorecard",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "cypress": "^3.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "dev test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wpdunk/bowling-challenge.git"
+  },
+  "author": "William Dunk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wpdunk/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/wpdunk/bowling-challenge#readme"
+}

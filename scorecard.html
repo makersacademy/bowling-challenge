@@ -1,0 +1,24 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css">
+</head>
+<body>
+  <label for="rollValue">Number of pins:</label>
+  <input type="text" class="form-control" id="rollValue" placeholder="EG '10'" required>
+  <button type="button" id="addRoll" class="btn btn-primary">Add roll</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Frame</th>
+        <th scope="col">Roll</th>
+        <th scope="col">Hit pins</th>
+        <th scope="col">Running score</th>
+      </tr>
+    </thead>
+    <tbody id="scorecardRows">
+    </tbody>
+  </table>
+  <script src='lib/jquery-3.3.1.min.js'></script>
+  <script src='src/scorecardController.js'></script>
+  <script src='src/scorecard.js'></script>
+  <script src='src/frame.js'></script>
+</body>

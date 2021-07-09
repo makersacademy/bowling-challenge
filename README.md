@@ -138,6 +138,9 @@ A Makers Week 6 solo weekend challenge - Bowling Challenge in JS
 * Next step here!
 
 ### How to use
-
+To run tests, in the command line type:
+```
+open SpecRunner.html
+```
 
 ### Improvements

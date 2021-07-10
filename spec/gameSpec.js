@@ -9,9 +9,16 @@ describe('Game', () => {
   });
 
   it('hits 2 pins', () => {
-    for(let i = 0; i < 1; i++ ) {
+    for(let i = 0; i < 1; i++) {
       game.hit();
     }
     expect(game.hit()).toEqual(2)
+  });
+
+  it('hits a strike', () => {
+    for(let i = 0; i < 9; i++) {
+      game.hit();
+    }
+    expect(game.hit()).toEqual(10)
   });
 });

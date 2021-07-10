@@ -30,4 +30,10 @@ describe('Bowling', () => {
     bowling.tenthFrame(6, 4, 10)
     expect(bowling.rolls[0]).toEqual({ first: 6, second: 4, third: 10 })
   });
+
+  it('scores a frame without a strike or spare', () => {
+    bowling.frame(2, 3)
+    bowling.scoreFrame(1)
+    expect(bowling.frameScore[0]).toEqual(5)
+  });
 });

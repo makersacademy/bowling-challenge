@@ -2,7 +2,8 @@
 
 class Bowling {
   constructor() {
-    this.rolls = []
+    this.rolls = [];
+    this.frameScore = [];
   };
 
   frame(first, second = 'strike') {
@@ -20,5 +21,9 @@ class Bowling {
       this.rolls.push({first: first, second: second, third: third});
     };
   };
+
+  scoreFrame(frame) {
+    this.frameScore.push(this.rolls[frame - 1]['first'] + this.rolls[frame - 1]['second']);
+  }
 
 };

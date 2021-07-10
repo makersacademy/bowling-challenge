@@ -1,0 +1,31 @@
+{
+  "name": "bowling-challenge-javascript",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BecaLParker/bowling-challenge-JavaScript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BecaLParker/bowling-challenge-JavaScript/issues"
+  },
+  "homepage": "https://github.com/BecaLParker/bowling-challenge-JavaScript#readme",
+  "dependencies": {
+   
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "eslint": "^7.28.0",
+    "prettier": "^2.3.0"
+  }
+}

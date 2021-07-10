@@ -1,9 +1,12 @@
 'use strict';
 
 class Game{
+  constructor() {
+    this.score = 0
+  }
 
   hit() {
-    return 2
+    return this.score += 1;
   }
 
 }

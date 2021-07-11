@@ -37,4 +37,10 @@ class FinalFrame {
   isSpare() {
     return this.pins(1) + this.pins(2) === 10;
   }
+
+  bonusScore() {
+    if (this.isSpare()) {
+      return this.pins(3)
+    }
+  }
 }

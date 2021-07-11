@@ -105,7 +105,6 @@ A Makers Week 6 solo weekend challenge - Bowling Challenge in JS
 | Class | FinalFrame |
 | --- | --- |
 | **Properties:** | rolls : Array (of Roll instances) |
-|  | PINS : 10 |
 | **Actions:** | isEnded() : Boolean |
 | | add(roll : Roll) | 
 | | score() : Int | 

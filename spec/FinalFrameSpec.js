@@ -90,7 +90,7 @@ describe("FinalFrame", () => {
     });
   });
 
-  describe("isStrike", () => {
+  describe("isStrike()", () => {
     it("can identify a strike", () => {
       finalFrame.add(10);
 
@@ -98,7 +98,7 @@ describe("FinalFrame", () => {
     });
   });
 
-  describe("isSpare", () => {
+  describe("isSpare()", () => {
     it("can identify a spare", () => {
       for (let i = 0; i < 2; i++) {
         finalFrame.add(5);
@@ -112,5 +112,14 @@ describe("FinalFrame", () => {
 
       expect(finalFrame.isSpare()).toBe(false);
     })
+  });
+
+  describe("bonusScore()", () => {
+    it("can score the bonus for a spare", () => {
+      for (let i = 0; i < 3; i++) {
+        finalFrame.add(5);
+      }
+      expect(finalFrame.bonusScore()).toEqual(5);
+    });
   });
 });

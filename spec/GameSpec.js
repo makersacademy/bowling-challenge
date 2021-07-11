@@ -43,7 +43,7 @@ describe("Game", () => {
       game.roll(0);
     }
     
-    expect(game.final_score()).toEqual(0);
+    expect(game.finalScore()).toEqual(0);
   });
 
   it("can score a game of all 1s", () => {
@@ -65,7 +65,7 @@ describe("Game", () => {
       game.roll(1);
     }
     
-    expect(game.final_score()).toEqual(20);
+    expect(game.finalScore()).toEqual(20);
   });
 
   it("can score one spare", () => {
@@ -92,7 +92,7 @@ describe("Game", () => {
       game.roll(0);
     }
 
-    expect(game.final_score()).toEqual(12);
+    expect(game.finalScore()).toEqual(12);
   });
 
   it("can score one strike", () => {
@@ -121,7 +121,7 @@ describe("Game", () => {
       game.roll(0);
     }
 
-    expect(game.final_score()).toEqual(14);
+    expect(game.finalScore()).toEqual(14);
   });
 
   it("can score a perfect game", () => {
@@ -157,11 +157,12 @@ describe("Game", () => {
       game.roll(10);
     }
 
-    expect(game.final_score()).toEqual(300);
+    expect(game.finalScore()).toEqual(300);
   });
 
   it("can score an all spares game", () => {
     game = new Game(frame, finalFrame);
+    // truth sequence for 2 rolls on 9 frames, then 3
     spyOn(frame, "isEnded").and.returnValues(false, false,
                                               true, false, true, false,
                                               true, true, false, true, true, false,
@@ -192,6 +193,23 @@ describe("Game", () => {
       game.roll(5);
     }
 
-    expect(game.final_score()).toEqual(150);
+    expect(game.finalScore()).toEqual(150);
+  });
+
+  xit("can calculate the cumulative score at the end of a frame", () => {
+    game = new Game(frame, frame);
+    spyOn(frame, "isEnded").and.returnValues(false, false,
+                                              true, false, true, false,
+                                              );
+    spyOn(frame, "score").and.returnValue(10);
+    spyOn(frame, "isSpare").and.returnValue(true);
+    spyOn(frame, "isStrike").and.returnValue(false);
+    spyOn(frame, "pins").and.returnValue(5);
+    for (let i = 0; i < 4; i++) {
+      game.roll(5);
+    }
+
+    // What should the cumulative score be? 15: frame 1 & bonus, or 25: frame 1 & bonus plus frame 2 pending bonus??
+    expect(game.finalScore()).toEqual(15);
   });
 });

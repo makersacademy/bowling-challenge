@@ -85,9 +85,12 @@ A Makers Week 6 solo weekend challenge - Bowling Challenge in JS
 | Class | Game |
 | --- | --- |
 | **Properties:** | frames: Array (9 frames and 1 finalframe) |
+|  | bonusScores: Array (Int) |
 | **Actions:** | roll(pins : Int) : Nil |
 | | score() : Int |
 | | finalScore() : Int |
+| | spareBonus(index : Int) : Int |
+| | strikeBonus(index : Int) : Int |
 
 | Class | Frame |
 | --- | --- |
@@ -151,9 +154,9 @@ open SpecRunner.html
 ### Todo
 * Game constructor: is the same frame added to `this.frames` 10 times or are they now unique frames? - testing in browser console seems to indicate yes.
 * Research more JS Loops - pro and cons.
+* used a variable bonusScore inside final_score to temporarily store a variable so that it would not need to be calculated again and disturb the spyOn return values.
+* `score()` should calculate cumulative score - what should the cumulative score be? - see unit test for Game. Current commented out code does not work because it assumes `final_score()` has been ran. Need to move logic of adding bonus score to the `bonusScores` array to `roll(number)`.
 
 
-
-### Improvements
 * Refactor specs (truth sequence for two rolls per frame, one roll first frame, one roll nine frames and then 3 rolls last frame). How to/can you?
 * Refactoring Game class - SRP

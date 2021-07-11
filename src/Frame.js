@@ -2,4 +2,7 @@
 
 class Frame {
 
+  isEnded() {
+    return false
+  }
 }

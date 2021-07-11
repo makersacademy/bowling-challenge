@@ -8,6 +8,7 @@ class Game {
       this.frames[i] = frame;
     }
     this.frames[9] = finalFrame;
+    this.bonusScores = new Array(10);
   }
 
   roll(number) {
@@ -21,23 +22,43 @@ class Game {
     }
   }
 
-  final_score() {
-    let score = 0;
+  finalScore() {
+    let totalScore = 0;
     this.frames.forEach( (frame, i) => {
-      score += frame.score();
-      console.log("Hello this is frame");
-
+      totalScore += frame.score();
       if (frame.isSpare()) {
-        console.log("Frame is a spare");
-        score += this.spareBonus(i);
+        let bonusScore = this.spareBonus(i);
+        totalScore += bonusScore;
+        this.bonusScores[i] = bonusScore;
       } else if (frame.isStrike()) {
-        console.log("Frame is a strike");
-        score += this.strikeBonus(i);
+        let bonusScore = this.strikeBonus(i);
+        totalScore += bonusScore;
+        this.bonusScores[i] = bonusScore;
       }
     })
-    console.log("Finished calculating score")
-    return score;
+    return totalScore;
   }
+
+  // score() {
+  //   //bonusScores array is empty until final_score is ran...
+  //   let cumulativeScore = 0;
+  //   for (let frame of this.frames) {
+  //     if (frame === undefined) {
+  //       continue;
+  //     } else {
+  //       cumulativeScore += frame.score();
+  //     }
+  //   }
+
+  //   for (let bonusScore of this.bonusScores) {
+  //     if (bonusScore === undefined) {
+  //       continue;
+  //     } else {
+  //       cumulativeScore += bonusScore;
+  //     }
+  //   }
+  //   return cumulativeScore;
+  // }
 
   spareBonus(i) {
     if (i === 9) {

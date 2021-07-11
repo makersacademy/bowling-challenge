@@ -32,4 +32,11 @@ describe('Game', () => {
     expect(game.score).toEqual(10)
   })
 
+  it('returns total score', () => {
+    for (let i = 0; i < 20; i++){
+    game.hit(1)
+    }
+    expect(game.totalScore()).toEqual(20)
+  });
+  
 });

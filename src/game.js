@@ -9,4 +9,8 @@ class Game{
     return this.score += pins;
   }
 
+  totalScore() {
+    return this.score;
+  }
+
 };

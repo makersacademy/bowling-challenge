@@ -21,5 +21,15 @@ describe('Game', () => {
       game.hit(0);
     }
     expect(game.score).toEqual(0)
+  });
+
+  it('hits a spare', () => {
+    game.hit(5)
+    game.hit(5)
+    for (let i = 0; i < 18; i++) {
+      game.hit(0);
+    }
+    expect(game.score).toEqual(10)
   })
+
 });

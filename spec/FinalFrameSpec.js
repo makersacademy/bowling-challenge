@@ -86,7 +86,7 @@ describe("FinalFrame", () => {
         finalFrame.add(10);
       }
 
-      expect(finalFrame.score()).toEqual(30);
+      expect(finalFrame.score()).toEqual(10);
     });
   });
 

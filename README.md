@@ -156,6 +156,7 @@ open SpecRunner.html
 * `score()` should calculate cumulative score - what should the cumulative score be? - see unit test for Game. Current commented out code does not work because it assumes `final_score()` has been ran. Need to move logic of adding bonus score to the `bonusScores` array to `roll(number)`.
 * edge cases: rolling above 10 or a negative number, 2 rolls exceeding 10 for regular Frames. 
 
+* How to dependency inject a class (not an instance) with jasmine?? Tests fail due to `frameClass is not a constructor`. (Instead - create 9 new instances of Frame when initializing a Game)
 
 * Refactor specs (truth sequence for two rolls per frame, one roll first frame, one roll nine frames and then 3 rolls last frame). How to/can you?
-* Refactoring Game class - SRP
+* Refactoring Game class, Frame class, FinalFrame class - SRP

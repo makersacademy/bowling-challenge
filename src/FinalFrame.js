@@ -23,11 +23,11 @@ class FinalFrame {
   }
 
   score() {
-    let frameScore = 0;
-    for (let roll of this.rolls) {
-      frameScore += roll;
+    if (this.isStrike()) {
+      return this.pins(1);
+    } else {
+      return this.pins(1) + this.pins(2);
     }
-    return frameScore;
   }
 
   isStrike() {

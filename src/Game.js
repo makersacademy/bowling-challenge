@@ -2,11 +2,17 @@
 
 class Game {
 
-  constructor(frame = new Frame(), finalFrame = new finalFrame()) {
+  constructor(frame1 = new Frame(), frame2 = new Frame(), frame3 = new Frame(), frame4 = new Frame(), frame5 = new Frame(), frame6 = new Frame(), frame7 = new Frame(), frame8 = new Frame(), frame9 = new Frame(), finalFrame = new FinalFrame()) {
     this.frames = new Array(10);
-    for (let i = 0; i < 9; i++) {
-      this.frames[i] = frame;
-    }
+    this.frames[0] = frame1;
+    this.frames[1] = frame2;
+    this.frames[2] = frame3;
+    this.frames[3] = frame4;
+    this.frames[4] = frame5;
+    this.frames[5] = frame6;
+    this.frames[6] = frame7;
+    this.frames[7] = frame8;
+    this.frames[8] = frame9;
     this.frames[9] = finalFrame;
     this.bonusScores = new Array(10);
   }
@@ -20,6 +26,8 @@ class Game {
         break;
       }
     }
+    // remove this soon!
+    console.log(`roll ${number}`)
   }
 
   finalScore() {
@@ -72,7 +80,7 @@ class Game {
     if (i === 9) {
       return this.frames[i].bonusScore();
     } else if (this.frames[i + 1].isStrike() && i === 8) {
-      return this.frames[i + 1].score() + this.frames[i + 1].pins(2);
+      return this.frames[i + 1].pins(1) + this.frames[i + 1].pins(2);
     } else if (this.frames[i + 1].isStrike()) {
       return this.frames[i + 1].score() + this.frames[i + 2].pins(1);
     } else {

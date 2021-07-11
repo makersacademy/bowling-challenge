@@ -21,7 +21,7 @@ describe("Game", () => {
                     pins: (number) => {},
                     bonusScore: () => {}
             };
-    game = new Game(frame, frame);
+    game = new Game(frame, frame, frame, frame, frame, frame, frame, frame, frame, frame);
   });
 
   it("can score a gutter game", () => {
@@ -125,7 +125,7 @@ describe("Game", () => {
   });
 
   it("can score a perfect game", () => {
-    game = new Game(frame, finalFrame);
+    game = new Game(frame, frame, frame, frame, frame, frame, frame, frame, frame, finalFrame);
     // truth sequence for 1 roll on 9 frames
     spyOn(frame, "isEnded").and.returnValues(false,
                                               true, false,
@@ -161,7 +161,7 @@ describe("Game", () => {
   });
 
   it("can score an all spares game", () => {
-    game = new Game(frame, finalFrame);
+    game = new Game(frame, frame, frame, frame, frame, frame, frame, frame, frame, finalFrame);
     // truth sequence for 2 rolls on 9 frames, then 3
     spyOn(frame, "isEnded").and.returnValues(false, false,
                                               true, false, true, false,
@@ -197,7 +197,7 @@ describe("Game", () => {
   });
 
   xit("can calculate the cumulative score at the end of a frame", () => {
-    game = new Game(frame, frame);
+    game = new Game(frame, frame, frame, frame, frame, frame, frame, frame, frame, frame);
     spyOn(frame, "isEnded").and.returnValues(false, false,
                                               true, false, true, false,
                                               );

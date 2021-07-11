@@ -67,5 +67,11 @@ describe("Frame", () => {
 
       expect(frame.isSpare()).toBe(true);
     });
+
+    it("does not identify a strike as a spare", () => {
+      frame.add(10);
+
+      expect(frame.isSpare()).toBe(false);
+    })
   });
 });

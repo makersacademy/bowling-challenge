@@ -159,4 +159,39 @@ describe("Game", () => {
 
     expect(game.final_score()).toEqual(300);
   });
+
+  it("can score an all spares game", () => {
+    game = new Game(frame, finalFrame);
+    spyOn(frame, "isEnded").and.returnValues(false, false,
+                                              true, false, true, false,
+                                              true, true, false, true, true, false,
+                                              true, true, true, false, true, true, true, false, 
+                                              true, true, true, true, false, true, true, true, true, false,
+                                              true, true, true, true, true, false, true, true, true, true, true, false,
+                                              true, true, true, true, true, true, false, true, true, true, true, true, true, false,
+                                              true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, false,
+                                              true, true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, true, false,
+                                              true, true, true, true, true, true, true, true, true, // first 9 frames ended on 10th roll
+                                              true, true, true, true, true, true, true, true, true, // first 9 frames ended on 11th roll
+                                              true, true, true, true, true, true, true, true, true // first 9 frames ended on 12th roll
+                                              );
+    spyOn(frame, "score").and.returnValue(10);
+    spyOn(frame, "isSpare").and.returnValue(true);
+    spyOn(frame, "isStrike").and.returnValue(false);
+    spyOn(frame, "pins").and.returnValue(5);
+    spyOn(finalFrame, "isEnded").and.returnValues(false, 
+                                                  false, 
+                                                  false);
+    spyOn(finalFrame, "score").and.returnValue(10);
+    spyOn(finalFrame, "isSpare").and.returnValue(true);
+    spyOn(finalFrame, "isStrike").and.returnValue(false);
+    spyOn(finalFrame, "bonusScore").and.returnValue(5);
+    spyOn(finalFrame, "pins").and.returnValue(5);
+
+    for (let i = 0; i < 21; i++) {
+      game.roll(5);
+    }
+
+    expect(game.final_score()).toEqual(150);
+  });
 });

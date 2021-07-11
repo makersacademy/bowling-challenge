@@ -40,7 +40,11 @@ class Game {
   }
 
   spareBonus(i) {
-    return this.frames[i + 1].pins(1);
+    if (i === 9) {
+      return this.frames[i].bonusScore();
+    } else {
+      return this.frames[i + 1].pins(1);
+    }
   }
 
   strikeBonus(i) {

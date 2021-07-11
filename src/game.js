@@ -2,11 +2,11 @@
 
 class Game{
   constructor() {
-    this.score = 0
+    this.score = 0;
   }
 
-  hit() {
-    return this.score += 1;
+  hit(pins) {
+    return this.score += pins;
   }
 
-}
+};

@@ -90,4 +90,27 @@ describe("FinalFrame", () => {
     });
   });
 
+  describe("isStrike", () => {
+    it("can identify a strike", () => {
+      finalFrame.add(10);
+
+      expect(finalFrame.isStrike()).toBe(true);
+    });
+  });
+
+  describe("isSpare", () => {
+    it("can identify a spare", () => {
+      for (let i = 0; i < 2; i++) {
+        finalFrame.add(5);
+      }
+
+      expect(finalFrame.isSpare()).toBe(true);
+    });
+
+    it("does not identify a strike as a spare", () => {
+      finalFrame.add(10);
+
+      expect(finalFrame.isSpare()).toBe(false);
+    })
+  });
 });

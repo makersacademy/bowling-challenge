@@ -39,4 +39,9 @@ describe ('Bowling', () => {
     rollMany(0, 17);
     expect(bowling.score()).toEqual(24);
   });
+
+  it ('can play a perfect game', () => {
+    rollMany(10, 12);
+    expect(bowling.score()).toEqual(300);
+  });
 });

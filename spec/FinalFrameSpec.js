@@ -19,20 +19,20 @@ describe("FinalFrame", () => {
       expect(finalFrame.isEnded()).toBe(true);
     });
 
-    xit("does not end the frame after a spare", () => {
+    it("does not end the frame after a spare", () => {
       for (let i = 0; i < 2; i++) {
         finalFrame.add(5);
       }
       expect(finalFrame.isEnded()).toBe(false);
     });
 
-    xit("does not end the frame after a strike", () => {
+    it("does not end the frame after a strike", () => {
       finalFrame.add(10);
 
       expect(finalFrame.isEnded()).toBe(false);
     });
     
-    xit("does not end the frame after 2 strikes", () => {
+    it("does not end the frame after 2 strikes", () => {
       for (let i = 0; i < 2; i++) {
         finalFrame.add(10);
       }
@@ -40,7 +40,7 @@ describe("FinalFrame", () => {
       expect(finalFrame.isEnded()).toBe(false);
     });
 
-    xit("it ends the frame after 3 rolls", () => {
+    it("it ends the frame after 3 rolls", () => {
       for (let i = 0; i < 3; i++) {
         finalFrame.add(5);
       }

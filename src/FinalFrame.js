@@ -6,7 +6,7 @@ class FinalFrame {
   }
   
   isEnded() {
-    if (this.rolls.length === 2 && (this.pins(1) + this.pins(2) < 10)) {
+    if (this.rolls.length === 2 && (this.pins(1) + this.pins(2) < 10) || this.rolls.length === 3) {
       return true;
     } else {
       return false;

@@ -49,5 +49,13 @@ describe ('Bowling', () => {
         }
         expect(bowling.score()).toEqual(270)
       })
+
+      it('gives the user a perfect score', () => {
+        for(let i = 0; i <= 12; i++) {
+          frame.addRoll(10);
+          bowling.addFrame(frame.latestFrame)
+        }
+        expect(bowling.score()).toEqual(300)
+      })
   })
 });

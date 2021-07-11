@@ -7,11 +7,11 @@ class Bowling {
   }
 
   addFrame(frame) {
-    this.frames.push(frame);
+    this.frames.length < FRAMES_PER_GAME ? this.frames.push(frame) : this._finalFrame(frame);
     if(this.frames.length > 1 && this._isSpare()) {
-      this._addSpareBonus();
+        this._addSpareBonus();
     } else if (this.frames.length >= 2 && this._isStrike()) {
-      this._addStrikeBonus();
+        this._addStrikeBonus();
     }
   }
 
@@ -68,11 +68,14 @@ class Bowling {
     }
   }
 
-  _finalFrame() {
-    if (this.frames.length >= FRAMES_PER_GAME) {
-      this.finalFrame = true;
-      //if (this._calcFrame(this._lastFrame()) === 10 && this._isTenthFrameStrike())
-        
+  _finalFrame(frame) {
+    if (this._calcFrame(this._lastFrame()) < 10) {
+      this._endGame()
+    } else if (this._calcFrame(this._lastFrame()) === 20) {
+      this._lastFrame().push(this._calcFrame(frame));
+      this._endGame();
+    } else {
+      this._lastFrame().push(this._calcFrame(frame));
     }
   }
 
@@ -82,5 +85,9 @@ class Bowling {
 
   score() {
     return this.frameScores().reduce((frame, index) => frame += index)
+  }
+
+  _endGame() {
+    return this.score();
   }
 }

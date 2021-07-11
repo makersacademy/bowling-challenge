@@ -28,10 +28,6 @@ class Frame {
     return roll <= NUMBER_OF_PINS ? true : false;
   }
 
-  frameScore() {
-    return this.reduced(this.frames[this.frames.length -1])
-  }
-
   _isStrike() {
     return this.rolls[this.rolls.length -1] === 10 ? true : false;
   }
@@ -53,5 +49,9 @@ class Frame {
 
   _currentFrame() {
     this.latestFrame = this.frames[this.frames.length - 1]
+  }
+
+  _isNotFinalFrame() {
+    return this.frames.length < 10 ? true : false;
   }
 }

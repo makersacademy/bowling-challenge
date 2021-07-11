@@ -16,6 +16,7 @@ describe("FinalFrame", () => {
       for (let i = 0; i < 2; i++) {
         finalFrame.add(1);
       }
+
       expect(finalFrame.isEnded()).toBe(true);
     });
 
@@ -23,6 +24,7 @@ describe("FinalFrame", () => {
       for (let i = 0; i < 2; i++) {
         finalFrame.add(5);
       }
+
       expect(finalFrame.isEnded()).toBe(false);
     });
 
@@ -119,6 +121,7 @@ describe("FinalFrame", () => {
       for (let i = 0; i < 3; i++) {
         finalFrame.add(5);
       }
+
       expect(finalFrame.bonusScore()).toEqual(5);
     });
 
@@ -126,6 +129,7 @@ describe("FinalFrame", () => {
       for (let i = 0; i < 3; i++) {
         finalFrame.add(10);
       }
+      
       expect(finalFrame.bonusScore()).toEqual(20);
     });
   });

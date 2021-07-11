@@ -2,6 +2,7 @@ class Frame {
   constructor() {
     this.roll_1 = 0;
     this.roll_2 = 0;
+    this.total = 0;
   }
   stRoll(roll) {
     this.roll_1 += roll;
@@ -9,8 +10,12 @@ class Frame {
   ndRoll(roll) {
     this.roll_2 += roll;
   }
+  getRolls() {
+    this.total += this.roll_1 + this.roll_2;
+    return this.total;
+  }
   getTotal() {
-    return this.roll_1 + this.roll_2;
+    return this.total;
   }
   isStrike() {
     if (this.roll_1 === 10) {
@@ -20,10 +25,13 @@ class Frame {
     }
   }
   isSpare() {
-    if (this.getTotal() === 10 && this.roll_2 != 0) {
+    if (this.getRolls() === 10 && this.roll_2 != 0) {
       return true;
     } else {
       return false;
     }
+  }
+  addPoints(num) {
+    this.total += num;
   }
 }

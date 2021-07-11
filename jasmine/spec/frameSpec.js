@@ -9,7 +9,14 @@ describe("Frame", function () {
     it("can add two rolls of its frame", function () {
       frame.stRoll(3);
       frame.ndRoll(4);
-      expect(frame.getTotal()).toEqual(7);
+      expect(frame.getRolls()).toEqual(7);
+    });
+    it("can add additional points to the total", function () {
+      frame.stRoll(5);
+      frame.ndRoll(5);
+      expect(frame.getRolls()).toEqual(10);
+      frame.addPoints(3);
+      expect(frame.getTotal()).toEqual(13);
     });
   });
 

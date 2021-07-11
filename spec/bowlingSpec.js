@@ -46,7 +46,22 @@ describe ('Bowling', () => {
   });
 
   it('throws an error when wrong number of pins is called', () => {
-    spyOn(bowling, '_isWrongNumber').and.callFake(() => { return true })
     expect(() => { bowling.roll(12) }).toThrow('Can only roll values of 10 and below')
+  });
+
+  it('can score a strike in the 10th frame', function() {
+    rollMany(3, 18);
+    bowling.roll(10);
+    bowling.roll(4);
+    bowling.roll(5);
+    expect(bowling.score()).toEqual(73);
+  });
+
+  it('can score a spare in the 10th frame', function() {
+    rollMany(4, 18);
+    bowling.roll(8);
+    bowling.roll(2);
+    bowling.roll(5);
+    expect(bowling.score()).toEqual(87);
   });
 });

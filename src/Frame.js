@@ -6,7 +6,13 @@ class Frame {
   }
 
   isEnded() {
-    return false;
+    if (this.rolls.length === 2) {
+      return true;
+    } else if (this.pins(1) === 10) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   add(number) {

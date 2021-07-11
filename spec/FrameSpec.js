@@ -11,6 +11,19 @@ describe("Frame", () => {
     it("is not true by default", () => {
       expect(frame.isEnded()).not.toBe(true);
     });
+
+    it("can be ended after 2 rolls", () => {
+      for (let i = 0; i < 2; i++) {
+        frame.add(1);
+      }
+      expect(frame.isEnded()).toBe(true);
+    });
+
+    it("can be ended with a strike after 1 roll", () => {
+      frame.add(10);
+
+      expect(frame.isEnded()).toBe(true);
+    });
   });
 
   describe("add()", () => {

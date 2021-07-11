@@ -121,5 +121,12 @@ describe("FinalFrame", () => {
       }
       expect(finalFrame.bonusScore()).toEqual(5);
     });
+
+    it("can score the bonus for a strike", () => {
+      for (let i = 0; i < 3; i++) {
+        finalFrame.add(10);
+      }
+      expect(finalFrame.bonusScore()).toEqual(20);
+    });
   });
 });

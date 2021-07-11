@@ -40,7 +40,9 @@ class FinalFrame {
 
   bonusScore() {
     if (this.isSpare()) {
-      return this.pins(3)
+      return this.pins(3);
+    } else if (this.isStrike()) {
+      return this.pins(2) + this.pins(3);
     }
   }
 }

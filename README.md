@@ -79,7 +79,7 @@ A Makers Week 6 solo weekend challenge - Bowling Challenge in JS
 
 * **Languages used**: JavaScript
 * **Testing frameworks**: Jasmine
-* **Linting**: 
+* **Linting**: eslint
 
 ### Domain Model
 | Class | Game |
@@ -135,7 +135,12 @@ A Makers Week 6 solo weekend challenge - Bowling Challenge in JS
   * The FinalFrame is a special Frame that has **upto** 3 integers stored in the `rolls` property. The game ends with 2 rolls if the first two rolls are less than 10. It can calculate it's own `score()` excluding the bonus score.
 
   **Please see above final Domain Model (Class Diagram)**
-* Next step here!
+* First unit test: gutter game.
+* Second unit test: all 1s game.
+* Third unit test: game now needs concept of 'frames'. 
+  * TDD creation of frame class.
+  * Use a spy - assume the same frame instance is added into the `game.frames` property 10 times. (would it be a clone or would they be unique frames in the array? - not sure how to dependency inject a whole class.)
+
 
 ### How to use
 To run tests, in the command line type:
@@ -143,4 +148,11 @@ To run tests, in the command line type:
 open SpecRunner.html
 ```
 
+### Todo
+* Game constructor: is the same frame added to `this.frames` 10 times or are they now unique frames? - testing in browser console seems to indicate yes.
+* Research more JS Loops - pro and cons.
+
+
+
 ### Improvements
+* Refactor specs (truth sequence for two rolls per frame, one roll first frame, one roll nine frames and then 3 rolls last frame). How to/can you?

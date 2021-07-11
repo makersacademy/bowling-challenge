@@ -3,6 +3,7 @@
 describe("Game", () => {
   let game;
   let frame;
+  let finalFrame;
 
   beforeEach( () => {
     frame = { isEnded: () => {},
@@ -12,7 +13,15 @@ describe("Game", () => {
               isStrike: () => {},
               pins: (number) => {}
             };
-    game = new Game(frame);
+    finalFrame = { isEnded: () => {},
+                    add: (number) => {},
+                    score: () => {},
+                    isSpare: () => {},
+                    isStrike: () => {},
+                    pins: (number) => {},
+                    bonusScore: () => {}
+            };
+    game = new Game(frame, frame);
   });
 
   it("can score a gutter game", () => {
@@ -113,5 +122,41 @@ describe("Game", () => {
     }
 
     expect(game.final_score()).toEqual(14);
+  });
+
+  it("can score a perfect game", () => {
+    game = new Game(frame, finalFrame);
+    // truth sequence for 1 roll on 9 frames
+    spyOn(frame, "isEnded").and.returnValues(false,
+                                              true, false,
+                                              true, true, false,
+                                              true, true, true, false,
+                                              true, true, true, true, false,
+                                              true, true, true, true, true, false, 
+                                              true, true, true, true, true, true, false, 
+                                              true, true, true, true, true, true, true, false, 
+                                              true, true, true, true, true, true, true, true, false,
+                                              true, true, true, true, true, true, true, true, true, // first 9 frames ended on 10th roll
+                                              true, true, true, true, true, true, true, true, true, // first 9 frames ended on 11th roll
+                                              true, true, true, true, true, true, true, true, true, // first 9 frames ended on 12th roll
+                                              );
+    spyOn(frame, "score").and.returnValue(10);
+    spyOn(frame, "isSpare").and.returnValue(false);
+    spyOn(frame, "isStrike").and.returnValue(true);
+    spyOn(frame, "pins").and.returnValue(10);
+    spyOn(finalFrame, "isEnded").and.returnValues(false, 
+                                                  false, 
+                                                  false);
+    spyOn(finalFrame, "score").and.returnValue(10);
+    spyOn(finalFrame, "isSpare").and.returnValue(false);
+    spyOn(finalFrame, "isStrike").and.returnValue(true);
+    spyOn(finalFrame, "bonusScore").and.returnValue(20);
+    spyOn(finalFrame, "pins").and.returnValue(10);
+    
+    for (let i = 0; i < 12; i++) {
+      game.roll(10);
+    }
+
+    expect(game.final_score()).toEqual(300);
   });
 });

@@ -8,7 +8,7 @@ class Frame {
   isEnded() {
     if (this.rolls.length === 2) {
       return true;
-    } else if (this.pins(1) === 10) {
+    } else if (this.isStrike()) {
       return true;
     } else {
       return false;
@@ -30,5 +30,13 @@ class Frame {
       frameScore += roll;
     }
     return frameScore;
+  }
+
+  isStrike() {
+    return this.pins(1) === 10;
+  }
+
+  isSpare() {
+    return this.pins(1) + this.pins(2) === 10;
   }
 }

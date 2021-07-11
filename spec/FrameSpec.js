@@ -19,7 +19,7 @@ describe("Frame", () => {
       expect(frame.isEnded()).toBe(true);
     });
 
-    it("can be ended with a strike after 1 roll", () => {
+    it("can be ended with a strike in 1 roll", () => {
       frame.add(10);
 
       expect(frame.isEnded()).toBe(true);
@@ -48,6 +48,24 @@ describe("Frame", () => {
       }
 
       expect(frame.score()).toEqual(2);
+    });
+  });
+
+  describe("isStrike", () => {
+    it("can identify a strike", () => {
+      frame.add(10);
+
+      expect(frame.isStrike()).toBe(true);
+    });
+  });
+
+  describe("isSpare", () => {
+    it("can identify a spare", () => {
+      for (let i = 0; i < 2; i++) {
+        frame.add(5);
+      }
+
+      expect(frame.isSpare()).toBe(true);
     });
   });
 });

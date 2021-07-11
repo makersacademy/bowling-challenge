@@ -112,7 +112,6 @@ A Makers Week 6 solo weekend challenge - Bowling Challenge in JS
 | | isStrike() : Boolean |
 | | pins(turn : Int) : Int | 
 | | bonusScore() : Int | 
-| | resetPins() |
 
 **Relationships**
 * Game & Frame: 1 to 9
@@ -141,6 +140,9 @@ A Makers Week 6 solo weekend challenge - Bowling Challenge in JS
 * Third unit test: game now needs concept of 'frames'. 
   * TDD creation of frame class.
   * Use a spy - assume the same frame instance is added into the `game.frames` property 10 times. (would it be a clone or would they be unique frames in the array? - not sure how to dependency inject a whole class.)
+* continued with unit tests and took heavy inspiration from last week's challenge. Made a few improvements such as naming, corrected logic for "truth sequences".
+* ran out of time for refactoring/SRP-ing.
+* It works but could be better if I had more time/more practise with JavaScript.
 
 
 ### How to use
@@ -148,15 +150,25 @@ To run tests, in the command line type:
 ```
 open SpecRunner.html
 ```
+After opening the SpecRunner, open the console in chrome dev tools; then, to run the scores, (e.g. 12 strikes):
+```
+game = new Game();
+```
+```
+for (let i = 0; i < 12; i++) {
+      game.roll(10);
+    }
+game.finalScore()
+```
 
-### Todo
-* Game constructor: is the same frame added to `this.frames` 10 times or are they now unique frames? - testing in browser console seems to indicate yes.
-* Research more JS Loops - pro and cons.
-* used a variable bonusScore inside final_score to temporarily store a variable so that it would not need to be calculated again and disturb the spyOn return values.
-* `score()` should calculate cumulative score - what should the cumulative score be? - see unit test for Game. Current commented out code does not work because it assumes `final_score()` has been ran. Need to move logic of adding bonus score to the `bonusScores` array to `roll(number)`.
+### TODO/Notes
+* Game constructor (aliasing): is the same frame added to `this.frames` 10 times or are they now unique frames? - no, not unique in console (feature) test.
+* Research more JS Loops - pro and cons of each. Practise more JS.
+* I used a variable bonusScore inside finalScore to temporarily store a variable so that it would not need to be calculated again and disturb the `spyOn` return values.
+* `score()` should calculate cumulative score - what should the cumulative score be? - see unit test for Game. Current commented out code does not work because it assumes `finalScore()` has been ran. Need to move logic of adding bonus score to the `bonusScores` array to `roll(number)`.
 * edge cases: rolling above 10 or a negative number, 2 rolls exceeding 10 for regular Frames. 
-
-* How to dependency inject a class (not an instance) with jasmine?? Tests fail due to `frameClass is not a constructor`. (Instead - create 9 new instances of Frame when initializing a Game)
-
-* Refactor specs (truth sequence for two rolls per frame, one roll first frame, one roll nine frames and then 3 rolls last frame). How to/can you?
+* edge case: no need to worry about adding too many rolls to frames - the Game class prevents this.
+* How to dependency inject a class (not an instance) with Jasmine? Tests fail due to `frameClass is not a constructor`. (Instead - I created 9 new instances of Frame when initializing a Game, this looks a little repetitive.)
+* Refactor specs (truth sequence for two rolls per frame, one roll first frame, one roll nine frames and then 3 rolls last frame). How to refactor this/can you?
 * Refactoring Game class, Frame class, FinalFrame class - SRP
+* Maybe implement a 'number of pins' property on the frame classes and a 'reset' function for the FinalFrame if required.

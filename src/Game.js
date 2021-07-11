@@ -26,8 +26,6 @@ class Game {
         break;
       }
     }
-    // remove this soon!
-    console.log(`roll ${number}`)
   }
 
   finalScore() {

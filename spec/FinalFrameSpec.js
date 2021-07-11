@@ -71,6 +71,23 @@ describe("FinalFrame", () => {
       expect(finalFrame.pins(3)).toEqual(5);
     });
   });
-  
+
+  describe("score()", () => {
+    it("can score a frame with 2 rolls", () => {
+      for (let i = 0; i < 2; i++) {
+        finalFrame.add(1);
+      }
+
+      expect(finalFrame.score()).toEqual(2);
+    });
+
+    it("can score a frame of all strikes", () => {
+      for (let i = 0; i < 3; i++) {
+        finalFrame.add(10);
+      }
+
+      expect(finalFrame.score()).toEqual(30);
+    });
+  });
 
 });

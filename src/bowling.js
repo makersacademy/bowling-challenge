@@ -6,7 +6,11 @@ class Bowling {
   }
 
   roll(pins) {
-    this.rolls.push(pins)
+    if (this._isWrongNumber(pins)) {
+      throw 'Can only roll values of 10 and below'
+    } else {
+      this.rolls.push(pins)
+    }
   }
 
   score() {
@@ -33,6 +37,10 @@ class Bowling {
     return score; 
   }
 
+  _isWrongNumber(pins) {
+    return pins > 10;
+  }
+  
   _isSpare(frameScore) {
     return frameScore === 10;
   }

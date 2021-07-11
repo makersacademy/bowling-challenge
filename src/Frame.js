@@ -6,7 +6,7 @@ class Frame {
   }
 
   isEnded() {
-    return false
+    return false;
   }
 
   add(number) {
@@ -18,4 +18,11 @@ class Frame {
     return this.rolls[i];
   }
 
+  score() {
+    let frameScore = 0;
+    for (let roll of this.rolls) {
+      frameScore += roll;
+    }
+    return frameScore;
+  }
 }

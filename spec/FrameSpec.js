@@ -28,5 +28,13 @@ describe("Frame", () => {
     });
   });
   
-  
+  describe("score()", () => {
+    it("can score a frame", () => {
+      for (let i = 0; i < 2; i++) {
+        frame.add(1);
+      }
+
+      expect(frame.score()).toEqual(2);
+    });
+  });
 });

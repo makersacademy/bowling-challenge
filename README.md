@@ -156,3 +156,4 @@ open SpecRunner.html
 
 ### Improvements
 * Refactor specs (truth sequence for two rolls per frame, one roll first frame, one roll nine frames and then 3 rolls last frame). How to/can you?
+* Refactoring Game class - SRP

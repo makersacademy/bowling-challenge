@@ -9,7 +9,8 @@ describe("Game", () => {
               add: (number) => {},
               score: () => {},
               isSpare: () => {},
-              pins: (number) => {1}
+              isStrike: () => {},
+              pins: (number) => {}
             };
     game = new Game(frame);
   });
@@ -83,5 +84,34 @@ describe("Game", () => {
     }
 
     expect(game.final_score()).toEqual(12);
+  });
+
+  it("can score one strike", () => {
+    // truth sequence for 1 roll first frame, then 2 per frame.
+    spyOn(frame, "isEnded").and.returnValues(false,
+                                              true, false, true, false,
+                                              true, true, false, true, true, false,
+                                              true, true, true, false, true, true, true, false, 
+                                              true, true, true, true, false, true, true, true, true, false,
+                                              true, true, true, true, true, false, true, true, true, true, true, false,
+                                              true, true, true, true, true, true, false, true, true, true, true, true, true, false,
+                                              true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, false,
+                                              true, true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, true, false,
+                                              true, true, true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, true, true, false);
+    // 2nd element is the result for the strike bonus
+    spyOn(frame, "score").and.returnValues(10, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0);
+    spyOn(frame, "isSpare").and.returnValue(false);
+    // 2nd false is the check for strike in i+1 frame
+    spyOn(frame, "isStrike").and.returnValues(true, false, false, false, false, false, false, false, false, false);
+
+    game.roll(10);
+    for (let i = 0; i < 2; i++) {
+      game.roll(1);
+    }
+    for (let i = 0; i < 16; i++) {
+      game.roll(0);
+    }
+
+    expect(game.final_score()).toEqual(14);
   });
 });

@@ -29,6 +29,8 @@ class Game {
       if (frame.isSpare()) {
         // console.log("Frame is a spare");
         score += this.spareBonus(i);
+      } else if (frame.isStrike()) {
+        score += this.strikeBonus(i);
       }
     })
     // console.log("Finished calculating score")
@@ -37,5 +39,9 @@ class Game {
 
   spareBonus(i) {
     return this.frames[i + 1].pins(1);
+  }
+
+  strikeBonus(i) {
+    return this.frames[i + 1].score();
   }
 }

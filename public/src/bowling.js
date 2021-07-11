@@ -2,19 +2,19 @@
 class Bowling {
   constructor() {
     this.frames = [];
+    this.currentFrame = 0;
   }
-  addFrame(frame) {
+
+  addFrame(frame, rolls) {
     this.frames.push(frame);
+    if(this.frames[this.frames.length -2] == 10) {
+      this._spareChecker(rolls);
+    };
   }
   score() {
-    return this.frames.reduce((num, i) => num = num + i, 0);
+    return this.frames.reduce((num, i) => num = num + i);
   }
-  isSpare(frame) {
-    if(frame._frameScore() == 10) {
-      this.frames.push(frame.rolls[frame.rolls.length -1])
-    }
+  _spareChecker(frame) {
+    this.frames[this.frames.length -2] += frame.rolls[frame.rolls.length -2];
   }
-
-
-  
 }

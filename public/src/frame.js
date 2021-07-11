@@ -10,7 +10,7 @@ class Frame {
     if (this._isValidScore(pins)) {
       this.rolls.push(pins);
       this._addFrame();
-      } else { return new Error('Invalid number of pins'); }
+      } else { throw new Error('Invalid number of pins'); }
     }
 
   _addFrame() {
@@ -23,7 +23,7 @@ class Frame {
     return roll <= NUMBER_OF_PINS ? true : false;
   }
 
-  _frameScore() {
+  frameScore() {
     return this.frames[this.frames.length -1].reduce((num, i) => num = num + i);
   }
 }

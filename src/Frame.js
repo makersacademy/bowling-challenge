@@ -6,9 +6,7 @@ class Frame {
   }
 
   isEnded() {
-    if (this.rolls.length === 2) {
-      return true;
-    } else if (this.isStrike()) {
+    if (this.rolls.length === 2 || this.isStrike()) {
       return true;
     } else {
       return false;

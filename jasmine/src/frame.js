@@ -12,4 +12,18 @@ class Frame {
   getTotal() {
     return this.roll_1 + this.roll_2;
   }
+  isStrike() {
+    if (this.roll_1 === 10) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  isSpare() {
+    if (this.getTotal() === 10 && this.roll_2 != 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

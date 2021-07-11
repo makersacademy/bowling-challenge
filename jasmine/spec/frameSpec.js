@@ -12,4 +12,22 @@ describe("Frame", function () {
       expect(frame.getTotal()).toEqual(7);
     });
   });
+
+  describe("Determining types", function () {
+    it("can determine a strike", function () {
+      frame.stRoll(10);
+      frame.ndRoll(0);
+      expect(frame.isStrike()).toBe(true);
+    });
+    it("can determine a spare", function () {
+      frame.stRoll(5);
+      frame.ndRoll(5);
+      expect(frame.isSpare()).toBe(true);
+    });
+    it("can tell apart a strike from a spare", function () {
+      frame.stRoll(10);
+      frame.ndRoll(0);
+      expect(frame.isSpare()).toBe(false);
+    });
+  });
 });

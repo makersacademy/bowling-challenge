@@ -2,11 +2,18 @@
 
 class Game{
   constructor() {
-    this.score = 0;
+    this.score = 0
+    this.rolls = 0
   }
 
   hit(pins) {
-    return this.score += pins;
+    this.score += pins
+    this.rolls += 1
+
+    if (this.pins === 10 && this.rolls === 2) {
+      return;
+    }
+
   }
 
   totalScore() {

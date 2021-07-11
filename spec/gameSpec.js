@@ -8,12 +8,11 @@ describe('Game', () => {
     game = new Game();
   });
 
-  it('hits 2 pins', () => {
-    expect(game.hit(2)).toEqual(2)
-  });
-
   it('hits a strike', () => {
-    expect(game.hit(10)).toEqual(10)
+    game.hit(10)
+    game.hit(2)
+    game.hit(3)
+    expect(game.score).toEqual(20)
   });
 
   it('hits a gutter game', () => {
@@ -30,13 +29,18 @@ describe('Game', () => {
       game.hit(0);
     }
     expect(game.score).toEqual(10)
-  })
+  });
 
   it('returns total score', () => {
     for (let i = 0; i < 20; i++){
     game.hit(1)
     }
     expect(game.totalScore()).toEqual(20)
+  });
+
+  it('returns number of rolls', () => {
+    game.hit(4)
+    expect(game.rolls).toEqual(1)
   });
   
 });

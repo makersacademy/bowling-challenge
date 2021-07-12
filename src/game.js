@@ -11,28 +11,28 @@ class Game {
     this.rolls.push(pins)
   }
   score() {
-    let totalScore = 0;
-    let rollNumber = 0;
+    let total = 0;
+    let rollIndex = 0;
     let bowling = this;
 
     for (let frame = 0; frame < 10; frame++) {
-      if (spare(rollNumber) ){
-        spareScore(rollNumber)
+      if (spare(rollIndex) ){
+        spareScore(rollIndex)
       } else {
-        frameScore(rollNumber)
+        frameScore(rollIndex)
       }
-      rollNumber += 2
+      rollIndex += 2
     }
-    return totalScore;
+    return total;
 
-  function spare(rollNumber) {
-   return (bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] == 10)
+  function spare(rollIndex) {
+   return (bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1] == 10)
   }
-  function spareScore(rollNumber) {
-    return totalScore += bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] + bowling.rolls[rollNumber + 2]
+  function spareScore(rollIndex) {
+    return total += bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1] + bowling.rolls[rollIndex + 2]
   }
-  function frameScore(rollNumber) {
-    return totalScore += bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] 
+  function frameScore(rollIndex) {
+    return total += bowling.rolls[rollIndex] + bowling.rolls[rollIndex + 1] 
   }
   }
   

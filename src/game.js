@@ -12,17 +12,30 @@ class Game {
   }
   score() {
     let totalScore = 0;
-    let BowlIndex = 0;
+    let rollNumber = 0;
+    let bowling = this;
+
     for (let frame = 0; frame < 10; frame++) {
-      if (this.rolls[BowlIndex] + this.rolls[BowlIndex + 1] == 10) {
-        totalScore += this.rolls[BowlIndex] + this.rolls[BowlIndex + 1] + this.rolls[BowlIndex + 2]
+      if (spare(rollNumber) ){
+        spareScore(rollNumber)
       } else {
-      totalScore += this.rolls[BowlIndex] + this.rolls[BowlIndex + 1] 
+        frameScore(rollNumber)
       }
-      BowlIndex += 2
+      rollNumber += 2
     }
-    return totalScore
+    return totalScore;
+
+  function spare(rollNumber) {
+   return (bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] == 10)
   }
+  function spareScore(rollNumber) {
+    return totalScore += bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] + bowling.rolls[rollNumber + 2]
+  }
+  function frameScore(rollNumber) {
+    return totalScore += bowling.rolls[rollNumber] + bowling.rolls[rollNumber + 1] 
+  }
+  }
+  
 }
 
 

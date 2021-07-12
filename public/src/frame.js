@@ -32,14 +32,14 @@ class Frame {
     return this.rolls[this.rolls.length -1] === 10 ? true : false;
   }
 
-  reduced(arr) {
+  _reduced(arr) {
     return arr.reduce((num, i) => num = num + i);
   }
 
   _sortFrames() {
     if (this.frames.length > 0) {
       this.frames.filter(frame => { 
-        if (this.reduced(frame) > 10) {
+        if (this._reduced(frame) > 10) {
           this.frames.pop();
         };
         frame;
@@ -49,9 +49,5 @@ class Frame {
 
   _currentFrame() {
     this.latestFrame = this.frames[this.frames.length - 1]
-  }
-
-  _isNotFinalFrame() {
-    return this.frames.length < 10 ? true : false;
   }
 }

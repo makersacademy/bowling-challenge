@@ -57,5 +57,19 @@ describe ('Bowling', () => {
         }
         expect(bowling.score()).toEqual(300)
       })
+
+      it('user gets a spare in the final frame and gutters', () => {
+        for(let i = 0; i <= 9; i++) {
+          frame.addRoll(10);
+          bowling.addFrame(frame.latestFrame)
+        }
+        frame.addRoll(8);
+        frame.addRoll(2);
+        bowling.addFrame(frame.latestFrame)
+        frame.addRoll(0);
+        frame.addRoll(0);
+        bowling.addFrame(frame.latestFrame)
+        expect(bowling.score()).toEqual(280)
+      })
   })
 });

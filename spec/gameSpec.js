@@ -40,7 +40,13 @@ describe('Game', () => {
 
   it('returns number of rolls', () => {
     game.hit(4)
-    expect(game.rolls).toEqual(1)
+    game.hit(5)
+    expect(game.rolls).toEqual(2)
   });
+
+  it('resets rolls after strike', () => {
+    game.hit(10)
+    expect(game.rolls).toEqual(0)
+  })
   
 });

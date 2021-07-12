@@ -4,20 +4,27 @@ class Game{
   constructor() {
     this.score = 0
     this.rolls = 0
+    this.pins = 0
   }
 
   hit(pins) {
     this.score += pins
     this.rolls += 1
 
-    if (this.pins === 10 && this.rolls === 2) {
-      return;
+    if (this.pins === 10 && this.rolls === 1) {
+      return this.rolls = 0;
     }
-
   }
 
   totalScore() {
-    return this.score;
+    return this.score
+    
   }
+
+  // isStrike() {
+  //   if (this.pins === 10) {
+  //     return this.rolls = 0;
+  //   }
+  // }
 
 };

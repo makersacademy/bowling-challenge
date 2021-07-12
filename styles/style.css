@@ -1,0 +1,60 @@
+body {
+  background-color: green;
+}
+.scoreboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  border: 2px solid black;
+}
+
+.numbers > * {
+  height: 60px;
+  width: 60px;
+  background-color: lightsalmon;
+  border: none;
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frames {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+
+}
+
+.frames > * {
+  height: 60px;
+  width: 63px;
+  border: 2px solid black;
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bonus {
+  border: 1px solid black;
+  width: 15px;
+  height: 15px;
+  
+}
+
+#ten {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
+}

@@ -6,14 +6,13 @@ class Frame {
   }
   stRoll(roll) {
     this.roll_1 += roll;
+    this.total += roll;
   }
   ndRoll(roll) {
     this.roll_2 += roll;
+    this.total += roll;
   }
-  getRolls() {
-    this.total += this.roll_1 + this.roll_2;
-    return this.total;
-  }
+
   getTotal() {
     return this.total;
   }
@@ -25,7 +24,7 @@ class Frame {
     }
   }
   isSpare() {
-    if (this.getRolls() === 10 && this.roll_2 != 0) {
+    if (this.roll_1 + this.roll_2 === 10 && this.roll_2 != 0) {
       return true;
     } else {
       return false;

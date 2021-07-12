@@ -1,9 +1,13 @@
-
+body {
+  background-color: green;
+}
 .scoreboard {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 .numbers {
@@ -16,8 +20,12 @@
 .numbers > * {
   height: 60px;
   width: 60px;
-  border: 2px solid black;
+  background-color: lightsalmon;
+  border: none;
   margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .frames {
@@ -32,6 +40,9 @@
   width: 63px;
   border: 2px solid black;
   margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bonus {

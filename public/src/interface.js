@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const bowling = new Bowling();
   const frame = new Frame();
 
-  const updateFrameScore = (selector, index) => {
-    document.querySelector(selector).innerText = bowling.frameScores()[index] || 0;
+  const updateFrameScore = (selector) => {
+    document.querySelector(selector).innerText = bowling.score() || 0;
   }
   
   document.querySelector('#zero').addEventListener('click', () => {
@@ -61,6 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('#submit').addEventListener('click', () => {
     bowling.addFrame(frame.latestFrame);
     updateScore();
-    updateFrameScore(frame.interfaceFrames(), bowling.frames.length - 1);
+    updateFrameScore(frame.interfaceFrames());
   });
 })

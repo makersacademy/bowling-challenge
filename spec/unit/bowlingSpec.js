@@ -1,3 +1,4 @@
+'use strict';
 
 describe ('Bowling', () => {
   describe('Bowling_&_Frame', () => {

@@ -1,3 +1,5 @@
+'use strict';
+
 const FRAMES_PER_GAME = 10 
 
 class Bowling {
@@ -6,7 +8,7 @@ class Bowling {
   }
 
   score() {
-    return this.frameScores().reduce((frame, index) => frame += index)
+    return this.frameScores().reduce((frame, index) => frame += index, 0);
   }
 
   addFrame(frame) {
@@ -85,6 +87,6 @@ class Bowling {
   }
 
   _endGame() {
-    return this.score();
+    return;
   }
 }

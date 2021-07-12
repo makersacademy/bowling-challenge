@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Frame', () => {
   beforeEach(function () {
     frame = new Frame();

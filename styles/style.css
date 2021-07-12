@@ -1,0 +1,49 @@
+
+.scoreboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  border: 2px solid black;
+}
+
+.numbers > * {
+  height: 60px;
+  width: 60px;
+  border: 2px solid black;
+  margin: 3px;
+}
+
+.frames {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+
+}
+
+.frames > * {
+  height: 60px;
+  width: 63px;
+  border: 2px solid black;
+  margin: 3px;
+}
+
+.bonus {
+  border: 1px solid black;
+  width: 15px;
+  height: 15px;
+  
+}
+
+#ten {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
+}

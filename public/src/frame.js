@@ -50,4 +50,9 @@ class Frame {
   _currentFrame() {
     this.latestFrame = this.frames[this.frames.length - 1]
   }
+
+  interfaceFrames() {
+    return ['#one', '#two', '#three', '#four', '#five',
+     '#six', '#seven', '#eight', '#nine', '#ten'][this.frames.length - 1];
+  }
 }

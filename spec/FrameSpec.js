@@ -1,58 +1,43 @@
-describe("Player", function() {
-  var player;
-  var song;
+describe("Frame", () => {
+  let frame;
 
-  beforeEach(function() {
-    player = new Player();
-    song = new Song();
+  beforeEach(() => {
+    frame = new Frame();
   });
 
-  it("should be able to play a Song", function() {
-    player.play(song);
-    expect(player.currentlyPlayingSong).toEqual(song);
-
-    //demonstrates use of custom matcher
-    expect(player).toBePlaying(song);
+  it('returns the total score for a single frame of 2 rolls', () => {
+    frame.add([3,3]);
+    expect(frame.totalScore()).toEqual(6);
   });
 
-  describe("when song has been paused", function() {
-    beforeEach(function() {
-      player.play(song);
-      player.pause();
-    });
-
-    it("should indicate that the song is currently paused", function() {
-      expect(player.isPlaying).toBeFalsy();
-
-      // demonstrates use of 'not' with a custom matcher
-      expect(player).not.toBePlaying(song);
-    });
-
-    it("should be possible to resume", function() {
-      player.resume();
-      expect(player.isPlaying).toBeTruthy();
-      expect(player.currentlyPlayingSong).toEqual(song);
-    });
+  it('returns the total score in a game', () => {
+    for(let i = 0; i < 10; i++) {
+      frame.add([3,3]);
+    }
+    expect(frame.totalScore()).toEqual(60);
   });
 
-  // demonstrates use of spies to intercept and test method calls
-  it("tells the current song if the user has made it a favorite", function() {
-    spyOn(song, 'persistFavoriteStatus');
-
-    player.play(song);
-    player.makeFavorite();
-
-    expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
+  it('returns the score for a spare and the bonus points in next frame', () => {
+    frame.add([5,5]);
+    frame.add([3,2]);
+    expect(frame.totalScore()).toEqual(18);
   });
 
-  //demonstrates use of expected exceptions
-  describe("#resume", function() {
-    it("should throw an exception if song is already playing", function() {
-      player.play(song);
-
-      expect(function() {
-        player.resume();
-      }).toThrowError("song is already playing");
-    });
+  it('returns the score for a strike and the bonus points for the next 2 rolls', () => {
+    frame.add([10]);
+    frame.add([10]);
+    frame.add([5,3]);
+    expect(frame.totalScore()).toEqual(51);
   });
+
+  it('can score a perfect game (all strikes)', () => {
+    for(let i = 0; i < 10; i++) {
+      frame.add(10);
+    }
+    expect(frame.totalScore()).toEqual(300);
+  });
+
+  // it('gives an extra shot in the 10th frame when first shot is a strike', () => {
+
+  // });
 });

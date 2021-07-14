@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bowling Game</title>
+  <script src="./interface.js"></script>
+  <link rel="stylesheet" href="./css/stylesheet.css">
+</head>
+<body>
+  <h1>
+    <span>B</span>
+    <span>0</span>
+    <span>W</span>
+    <span>L</span>
+    <span>I</span>
+    <span>N</span>
+    <span>G</span>
+    <span>!</span>
+  </h1>
+  <section>
+    <h2>You're scorecard is: </h2>
+    <h2 id="score"></h2>
+    <p>
+      <div class="form">
+      <form id="enter-rolls">
+        <input type="number" id="pins" value="0" min="0" max="10"></input>
+        <input type="submit" id="enterRoll" value="Enter Roll">
+      </form>
+    </div>
+    </p>
+  </section>
+  <script src="src/bowling.js"></script>
+</body>
+</html>

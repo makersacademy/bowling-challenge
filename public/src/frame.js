@@ -15,12 +15,11 @@ class Frame {
     }
 
   _addFrame() {
-    if (this.rolls.length % 2 == 0) {
-      this.frames.push(this.rolls.slice(-2))
-    } else if (this._isStrike()) {
-      this.frames.push(this.rolls.slice(-1))
-      this. rolls = this.rolls.filter(n => n != 10);
-    }
+    this.frames.push(this.rolls.slice(-1))
+    // if (this._isStrike()) {
+    //   this.frames.push(this.rolls.slice(-1))
+    //   this. rolls = this.rolls.filter(n => n != 10);
+    // }
     this._currentFrame()
   }
 
@@ -49,10 +48,5 @@ class Frame {
 
   _currentFrame() {
     this.latestFrame = this.frames[this.frames.length - 1]
-  }
-
-  interfaceFrames() {
-    return ['#one', '#two', '#three', '#four', '#five',
-     '#six', '#seven', '#eight', '#nine', '#ten'][this.frames.length - 1];
   }
 }

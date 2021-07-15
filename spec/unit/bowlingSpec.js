@@ -1,4 +1,3 @@
-'use strict';
 
 describe ('Bowling', () => {
   describe('Bowling_&_Frame', () => {
@@ -10,6 +9,7 @@ describe ('Bowling', () => {
       it ('user scores a gutter game', () => {
         for (let i = 0; i < 10; i ++) {
           frame.addRoll(0);
+          bowling.addFrame(frame.latestFrame)
           frame.addRoll(0);
           bowling.addFrame(frame.latestFrame);
         }
@@ -18,6 +18,7 @@ describe ('Bowling', () => {
 
       it ('user receives score after 1 frame', () => {
         frame.addRoll(4)
+        bowling.addFrame(frame.latestFrame)
         frame.addRoll(4)
         bowling.addFrame(frame.latestFrame)
         expect(bowling.score()).toEqual(8)
@@ -25,9 +26,11 @@ describe ('Bowling', () => {
 
       it ('gives the user a spare bonus', () => {
         frame.addRoll(5);
+        bowling.addFrame(frame.latestFrame)
         frame.addRoll(5);
         bowling.addFrame(frame.latestFrame)
         frame.addRoll(3)
+        bowling.addFrame(frame.latestFrame)
         //bonus points of 3 are added to the first frame
         frame.addRoll(3)
         bowling.addFrame(frame.latestFrame)
@@ -38,6 +41,7 @@ describe ('Bowling', () => {
         frame.addRoll(10);
         bowling.addFrame(frame.latestFrame)
         frame.addRoll(4);
+        bowling.addFrame(frame.latestFrame)
         frame.addRoll(4);
         bowling.addFrame(frame.latestFrame)
         expect(bowling.score()).toEqual(26)
@@ -65,9 +69,11 @@ describe ('Bowling', () => {
           bowling.addFrame(frame.latestFrame)
         }
         frame.addRoll(8);
+        bowling.addFrame(frame.latestFrame)
         frame.addRoll(2);
         bowling.addFrame(frame.latestFrame)
         frame.addRoll(0);
+        bowling.addFrame(frame.latestFrame)
         frame.addRoll(0);
         bowling.addFrame(frame.latestFrame)
         expect(bowling.score()).toEqual(280)

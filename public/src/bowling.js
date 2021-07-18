@@ -1,30 +1,24 @@
-
-
 const FRAMES_PER_GAME = 10 
 
 class Bowling {
   constructor() {
     this.frames = [];
-    this.rollIndex = 0
-  }
-
-  score() {
-    return this.frameScores().reduce((frame, index) => frame = frame + index);
   }
 
   addFrame(frame) {
-    this.frames.length - 10 < FRAMES_PER_GAME ? this.frames.push(frame) : this._finalFrame(frame);
-    // if (this.frames.length > 1 && this._isSpare()) {
-    //     this._addSpareBonus();
+    this.frames.length < FRAMES_PER_GAME ? this.frames.push(frame) : this._finalFrame(frame); 
     if (this.frames.length > 2 && this._isStrike()) {
-      this._addStrikeBonus();
+      this._addStrikeBonus(this._calcFrame(frame));
     } else if (this.frames.length > 1 && this._secondLastFrame().length <= 1 ) {
-      this._secondLastFrame().push(this._lastFrame()[0]);
-      this.frames.pop();
-      if (this.frames.length > 1) {this._addSpareBonus()};
-    }
+      this._secondLastFrame().push(frame[0]);
+      if (this._secondLastFrame()[0] != 10) { this.frames.pop() }
+      if (this.frames.length > 1) { this._addSpareBonus() };
+    } 
     }
   
+  score() {
+    return this.frameScores().reduce((frame, index) => frame = frame + index);
+  }
 
   frameScores() {
     return this.frames.map(frame => frame.reduce((num, i) => num = num + i))
@@ -34,15 +28,15 @@ class Bowling {
     if (this._secondLastFrame().length > 1 && this._calcFrame(this._secondLastFrame()) == 10) {this._secondLastFrame().push(this._lastFrame()[0]) }
   }
 
-  _addStrikeBonus() {
-    // //this._secondLastFrame().push(this._calcFrame(this._lastFrame()));
-    // if (this._theLastTwoFramesAreAPerfectScore()) {
-    //   if (this._thirdLastFrame() === undefined && this.frames.length > 2) {
-    //     //this.frames[0].push(10);
-    //   } else if (this._thirdLastFrame() != undefined) {
-    //     this._thirdLastFrame().push(10);
-    //   };
-    // }
+  _addStrikeBonus(frame) {
+    if (this._thirdLastFrame().length < 3 && this._calcFrame(this._thirdLastFrame()) != 20) {
+      this._thirdLastFrame().push(this._lastFrame()[0])
+      this._secondLastFrame().push(this._lastFrame()[0])
+      this.frames.pop();
+    } else if (this._theLastTwoFramesAreAPerfectScore()) {
+      this._secondLastFrame().push(frame)
+      this._thirdLastFrame().push(this._lastFrame()[0])
+    }
   }
 
   _theLastTwoFramesAreAPerfectScore() {
@@ -65,10 +59,6 @@ class Bowling {
     return theFrame.reduce((frame, index) => frame += index, 0)
   }
 
-  _isNormalFrame() {
-    return this._lastFrame()[0] + this._calcFrame(this._secondLastFrame()) < 10 ? true : false
-  }
-
   _isSpare() {
     if (this._secondLastFrame().length > 1 && this._calcFrame(this._secondLastFrame()) == 10) {
       return true;
@@ -78,30 +68,31 @@ class Bowling {
   }
 
   _isStrike() {
-    if (this._thirdLastFrame()[0] >= 10) {
-      return true;
-    } else {
-      return false;
-    }
+    return this._thirdLastFrame()[0] >= 10 ? true : false;
+  }
+
+  _finalFrameStrike() {
+    return this._lastFrame()[0] === 10 && this._lastFrame().length < 4
   }
 
   _finalFrame(frame) {
-    if (this._calcFrame(this._lastFrame()) < 10) {
-      this._endGame()
-    } else if (this._calcFrame(this._lastFrame()) === 20) {
-      this._lastFrame().push(this._calcFrame(frame));
-      this._endGame();
-    } else {
-      this._lastFrame().push(this._calcFrame(frame));
+    if (this._calcFrame(this._secondLastFrame()) < 10 && this._lastFrame().length < 2) {
+      this._lastFrame().push(frame[0]);
+    } else if (this._calcFrame(this._lastFrame()) === 10 && this._lastFrame().length > 1) {
+      this._lastFrame().push(frame[0]);
+    } else if (this._lastFrame().length == 3) {
+      this._lastFrame().push(frame[0]);
+    } else if (this._finalFrameStrike()) {
+      this._lastFrame().push(frame[0]);
     }
   }
 
   interfaceFrames() {
     return ['#one', '#two', '#three', '#four', '#five',
-     '#six', '#seven', '#eight', '#nine', '#ten']//[this.frameScores().length - 1];
+     '#six', '#seven', '#eight', '#nine', '#ten'];
   }
 
-  _endGame() {
-    return;
+  endGame() {
+    this.frames = []
   }
 }

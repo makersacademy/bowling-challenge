@@ -16,10 +16,6 @@ class Frame {
 
   _addFrame() {
     this.frames.push(this.rolls.slice(-1))
-    // if (this._isStrike()) {
-    //   this.frames.push(this.rolls.slice(-1))
-    //   this. rolls = this.rolls.filter(n => n != 10);
-    // }
     this._currentFrame()
   }
 

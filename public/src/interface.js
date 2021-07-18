@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const updatingFrames = () => {
     bowling.interfaceFrames().map((frame, index) => {
+      if (bowling.frames.length < 11) {
       document.querySelector(frame).innerText = bowling.frameScores()[index] || "";
+      }
     })
   }
 
@@ -71,5 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('#tenth').addEventListener('click', () => {
     frame.addRoll(10);
     updateFrameAndAddScore();
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    bowling.endGame();
+    location.reload();
   });
  })

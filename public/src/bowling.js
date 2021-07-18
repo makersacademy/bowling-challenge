@@ -72,15 +72,15 @@ class Bowling {
   }
 
   _finalFrameStrike() {
-    return this._lastFrame()[0] === 10 && this._lastFrame().length < 4
+    return this._lastFrame()[0] === 10 && this._lastFrame().length < 3
   }
 
   _finalFrame(frame) {
-    if (this._calcFrame(this._secondLastFrame()) < 10 && this._lastFrame().length < 2) {
+    if (this._lastFrame().length < 2) {
       this._lastFrame().push(frame[0]);
-    } else if (this._calcFrame(this._lastFrame()) === 10 && this._lastFrame().length > 1) {
+    } else if (this._calcFrame(this._lastFrame()) === 10 && this._lastFrame().length === 2) {
       this._lastFrame().push(frame[0]);
-    } else if (this._lastFrame().length == 3) {
+    } else if (this._lastFrame().length === 3) {
       this._lastFrame().push(frame[0]);
     } else if (this._finalFrameStrike()) {
       this._lastFrame().push(frame[0]);

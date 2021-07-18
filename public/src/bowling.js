@@ -1,5 +1,3 @@
-'use strict';
-
 const FRAMES_PER_GAME = 10 
 
 class Bowling {
@@ -7,17 +5,19 @@ class Bowling {
     this.frames = [];
   }
 
-  score() {
-    return this.frameScores().reduce((frame, index) => frame += index, 0);
-  }
-
   addFrame(frame) {
-    this.frames.length < FRAMES_PER_GAME ? this.frames.push(frame) : this._finalFrame(frame);
-    if (this.frames.length > 1 && this._isSpare()) {
-        this._addSpareBonus();
-    } else if (this.frames.length >= 2 && this._isStrike()) {
-        this._addStrikeBonus();
+    this.frames.length < FRAMES_PER_GAME ? this.frames.push(frame) : this._finalFrame(frame); 
+    if (this.frames.length > 2 && this._isStrike()) {
+      this._addStrikeBonus(this._calcFrame(frame));
+    } else if (this.frames.length > 1 && this._secondLastFrame().length <= 1 ) {
+      this._secondLastFrame().push(frame[0]);
+      if (this._secondLastFrame()[0] != 10) { this.frames.pop() }
+      if (this.frames.length > 1) { this._addSpareBonus() };
+    } 
     }
+  
+  score() {
+    return this.frameScores().reduce((frame, index) => frame = frame + index);
   }
 
   frameScores() {
@@ -25,22 +25,22 @@ class Bowling {
   }
 
   _addSpareBonus() {
-    this._secondLastFrame().push(this._lastFrame()[0]);
+    if (this._secondLastFrame().length > 1 && this._calcFrame(this._secondLastFrame()) == 10) {this._secondLastFrame().push(this._lastFrame()[0]) }
   }
 
-  _addStrikeBonus() {
-    this._secondLastFrame().push(this._lastFrame().reduce((num, i) => num = num + i));
-    if (this._theLastTwoFramesAreAPerfectScore()) {
-      if (this._thirdLastFrame() === undefined && this.frames.length > 2) {
-        this.frames[0].push(10);
-      } else if (this._thirdLastFrame() != undefined) {
-        this._thirdLastFrame().push(10);
-      };
+  _addStrikeBonus(frame) {
+    if (this._thirdLastFrame().length < 3 && this._calcFrame(this._thirdLastFrame()) != 20) {
+      this._thirdLastFrame().push(this._lastFrame()[0])
+      this._secondLastFrame().push(this._lastFrame()[0])
+      this.frames.pop();
+    } else if (this._theLastTwoFramesAreAPerfectScore()) {
+      this._secondLastFrame().push(frame)
+      this._thirdLastFrame().push(this._lastFrame()[0])
     }
   }
 
   _theLastTwoFramesAreAPerfectScore() {
-    return this._calcFrame(this._secondLastFrame()) === 20 && this._calcFrame(this._lastFrame()) == 10
+    return this._calcFrame(this._thirdLastFrame()) === 20 && this._lastFrame()[0] == 10
   }
 
   _lastFrame() {
@@ -56,7 +56,7 @@ class Bowling {
   }
 
   _calcFrame(theFrame) {
-    return theFrame.reduce((frame, index) => frame += index)
+    return theFrame.reduce((frame, index) => frame += index, 0)
   }
 
   _isSpare() {
@@ -68,25 +68,31 @@ class Bowling {
   }
 
   _isStrike() {
-    if (this._secondLastFrame().length === 1 && this._calcFrame(this._secondLastFrame()) == 10) {
-      return true;
-    } else {
-      return false;
-    }
+    return this._thirdLastFrame()[0] >= 10 ? true : false;
+  }
+
+  _finalFrameStrike() {
+    return this._lastFrame()[0] === 10 && this._lastFrame().length < 4
   }
 
   _finalFrame(frame) {
-    if (this._calcFrame(this._lastFrame()) < 10) {
-      this._endGame()
-    } else if (this._calcFrame(this._lastFrame()) === 20) {
-      this._lastFrame().push(this._calcFrame(frame));
-      this._endGame();
-    } else {
-      this._lastFrame().push(this._calcFrame(frame));
+    if (this._calcFrame(this._secondLastFrame()) < 10 && this._lastFrame().length < 2) {
+      this._lastFrame().push(frame[0]);
+    } else if (this._calcFrame(this._lastFrame()) === 10 && this._lastFrame().length > 1) {
+      this._lastFrame().push(frame[0]);
+    } else if (this._lastFrame().length == 3) {
+      this._lastFrame().push(frame[0]);
+    } else if (this._finalFrameStrike()) {
+      this._lastFrame().push(frame[0]);
     }
   }
 
-  _endGame() {
-    return;
+  interfaceFrames() {
+    return ['#one', '#two', '#three', '#four', '#five',
+     '#six', '#seven', '#eight', '#nine', '#ten'];
+  }
+
+  endGame() {
+    this.frames = []
   }
 }

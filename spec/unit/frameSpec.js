@@ -1,4 +1,4 @@
-'use strict';
+
 
 describe('Frame', () => {
   beforeEach(function () {
@@ -9,7 +9,7 @@ describe('Frame', () => {
     it ('allows user to add pins to total', () => {
       frame.addRoll(2);
       frame.addRoll(6);
-      expect(frame.latestFrame).toEqual([2, 6])
+      expect(frame.rolls).toEqual([2, 6])
     })
 
     it ('throws an error if entered invalid number of pins', () => {

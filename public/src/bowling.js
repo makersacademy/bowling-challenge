@@ -25,7 +25,7 @@ class Bowling {
   }
 
   _addSpareBonus() {
-    if (this._secondLastFrame().length > 1 && this._calcFrame(this._secondLastFrame()) == 10) {this._secondLastFrame().push(this._lastFrame()[0]) }
+    if (this._secondLastFrame().length > 1 && this._calcFrame(this._secondLastFrame()) === 10) {this._secondLastFrame().push(this._lastFrame()[0]) }
   }
 
   _addStrikeBonus(frame) {
@@ -78,7 +78,7 @@ class Bowling {
   _finalFrame(frame) {
     if (this._lastFrame().length < 2) {
       this._lastFrame().push(frame[0]);
-    } else if (this._calcFrame(this._lastFrame()) === 10 && this._lastFrame().length === 2) {
+    } else if (this._calcFrame(this._lastFrame()) === 10) {
       this._lastFrame().push(frame[0]);
     } else if (this._lastFrame().length === 3) {
       this._lastFrame().push(frame[0]);

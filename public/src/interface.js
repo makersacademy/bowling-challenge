@@ -2,21 +2,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateScore = () => {
     document.querySelector('#score').innerText = bowling.score();
   }
+
+  const interfaceRolls = ['#roll1', '#roll2', '#roll3', '#roll4', '#roll5', '#roll6', '#roll7', 
+  '#roll8', '#roll9', '#roll10', '#roll11', '#roll12', '#roll13', '#roll14', '#roll15', 
+  '#roll16', '#roll17', '#roll18', '#roll19', '#roll20'];
   
   const bowling = new Bowling();
   const frame = new Frame();
 
   const updatingFrames = () => {
-    bowling.interfaceFrames().map((frame, index) => {
-      if (bowling.frames.length < 11) {
-      document.querySelector(frame).innerText = bowling.frameScores()[index] || "";
-      }
+      bowling.frames.map((frame) => {
+        document.querySelector(bowling.interfaceFrames()[bowling.frames.length - 1]).innerText = bowling.frameScores().reduce((n, i) => n += i);
+      })
+  }
+
+  const updatingRolls = () => {
+    frame.interfaceRolls().map((roll, index) => {
+      document.querySelector(roll).innerText = frame.rolls[index] || "";
     })
   }
 
   const updateFrameAndAddScore = () => {
     bowling.addFrame(frame.latestFrame);
     updateScore();
+    updatingRolls();
     updatingFrames();
   }
   

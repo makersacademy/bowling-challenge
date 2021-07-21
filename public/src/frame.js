@@ -45,4 +45,10 @@ class Frame {
   _currentFrame() {
     this.latestFrame = this.frames[this.frames.length - 1]
   }
+
+  interfaceRolls() {
+    return ['#roll1', '#roll2', '#roll3', '#roll4', '#roll5', '#roll6', '#roll7', 
+    '#roll8', '#roll9', '#roll10', '#roll11', '#roll12', '#roll13', '#roll14', '#roll15', 
+    '#roll16', '#roll17', '#roll18', '#roll19', '#roll20'];
+  }
 }

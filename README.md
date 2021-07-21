@@ -21,7 +21,7 @@ My goal was to create an interface that calculated the score of the frame and up
 
 ## Screens
 
-<img alt ='bowling scorecard' src ="https://raw.githubusercontent.com/frank-mck/bowling-challenge/main/images/Screenshot%202021-07-21%20at%2012.28.57.png"  width="600px" style="display: block;">
+<img alt ='bowling scorecard' src ="https://raw.githubusercontent.com/frank-mck/bowling-challenge/main/images/Screenshot%202021-07-21%20at%2013.53.27.png"  width="600px" style="display: block;">
 
 ## Bowling — how does it work?
 

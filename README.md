@@ -1,6 +1,18 @@
 
 # Bowling Challenge
-=================
+              .-.
+              \ /      .-.
+              |_|  .-. \ /
+              |=|  \ / |_|
+             /   \ |_| |=|
+            / (@) \|=|/   \
+       ____ |     /   \@)  \
+     .'    '.    / (@) \   |
+    / #      \   |     |   |
+    |    o o |'='|     |  /
+    \     o  /    \   /'='
+     '.____.'      '=
+
 
 Makers week 6 solo weekend challenge in JavaScript.
 

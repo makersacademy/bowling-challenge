@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.scoreboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  background-color: rgb(144, 146, 255);
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  justify-content: center;
+}
+
+#strike {
+  background-color: black;
+}
+#frame, #frame2, #frame3, #frame4, #frame5, #frame6, #frame7, #frame8, #frame9, #frame10 {
+  display: grid;
+  grid-template-areas: "one two"
+                      "total total";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2fr;
+  text-align: center;
+  padding: 0;
+  
+}
+
+#roll1, #roll3, #roll5, #roll7, #roll9, #roll11, #roll13, #roll15, #roll17, #roll19 {
+  grid-area: one;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;;
+  text-align: center;
+  height: 20px;
+  margin: 0;
+}
+
+#roll2, #roll4, #roll6, #roll8, #roll10, #roll12, #roll14, #roll16, #roll18, #roll20 {
+  grid-area: two;
+  border-bottom: 2px solid black;
+  text-align: center;
+  margin: 0;
+  height: 20px;
+}
+
+#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #ten {
+  grid-area: total;
+}
+
+.numbers > * {
+  height: 50px;
+  width: 50px;
+  background-color: #fff;
+  border: none;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+  transition: .2s;
+  position: relative;
+  background-color:rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
+}
+
+.numbers > *:active {
+  top: 0.1rem;
+}
+
+.frames {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  border-radius: 5px;
+
+}
+
+.frames > * {
+  height: 60px;
+  width: 63px;
+  border: 2px solid black;
+  margin: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.bonus {
+  border: 1px solid black;
+  width: 15px;
+  height: 15px;
+  
+}
+
+#ten {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
+}

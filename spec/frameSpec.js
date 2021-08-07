@@ -1,5 +1,5 @@
 /* eslint-disable */
-describe("Frame", () => {
+describe ("Frame", () => {
   
   beforeEach(() => {
     frame = new Frame(1);

@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-describe("Score", () => {
+describe ("Score", () => {
   beforeEach( () => {
     score = new Score();
   });

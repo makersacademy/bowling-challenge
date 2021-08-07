@@ -14,6 +14,13 @@ class Frame {
     return this.rolls.length > 1 || this.rolls[0] == 10;
   }
 
+  calculateScore(frames) {
+    this.accumulativeScore = this.rolls.reduce((a,b) => a + b);
+    if(frames.length > 1) {
+      this.accumulativeScore += frames[frames.length - 2].accumulativeScore;
+    }
+  }
+
   _isOverTen(roll) {
     if(this.rolls.length == 0) {
       return roll > 10

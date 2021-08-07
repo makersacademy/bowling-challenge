@@ -43,4 +43,11 @@ describe("Feature test", () => {
     expect(() => { game.roll(7); }).toThrowError("Cannot enter more than 10 in a single frame.");
     expect(game.currentFrame.rolls).toEqual([4]);
   })
+
+  it("The accumulative score is added up for each frame after it is completed", () => {
+    for(let i = 0; i < 6; i++) game.roll(3);
+    expect(game.scorecard.frames[0].accumulativeScore).toEqual(6);
+    expect(game.scorecard.frames[1].accumulativeScore).toEqual(12);
+    expect(game.scorecard.frames[2].accumulativeScore).toEqual(18);
+  })
 })

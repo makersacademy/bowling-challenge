@@ -7,7 +7,7 @@ describe("Game", () => {
 
   beforeEach(() => {
     scorecard = jasmine.createSpyObj("scorecard",['newFrame']);
-    frame = jasmine.createSpyObj("frame",['newRoll', 'isLastRoll']);
+    frame = jasmine.createSpyObj("frame",['newRoll', 'isLastRoll', 'calculateScore']);
     game = new Game(scorecard, frame);
   })
 
@@ -27,7 +27,7 @@ describe("Game", () => {
 
   describe("has multiple rolls", () => {
     beforeEach(() => {
-      frame.isLastRoll.and.returnValue([3,3]);
+      frame.isLastRoll.and.returnValue(true);
     })
 
     it("sets a new frame after two rolls", () => {
@@ -35,6 +35,7 @@ describe("Game", () => {
       expect(frame.newRoll).toHaveBeenCalledWith(3)
       expect(game.currentFrame).not.toEqual(frame);
       expect(scorecard.newFrame).toHaveBeenCalledWith(game.currentFrame);
+      expect(frame.calculateScore).toHaveBeenCalled();
     })
   })
 })

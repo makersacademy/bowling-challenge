@@ -11,14 +11,17 @@ class Game{
     this.score += pins
     this.rolls += 1
 
-    if (this.pins === 10 && this.rolls === 1) {
-      return this.rolls = 0;
+    if (this.pins === 10) {
+      return this.rollsReset
     }
   }
 
+  rollsReset() {
+    return this.rolls = 0
+  };
+
   totalScore() {
     return this.score
-    
   }
 
   // isStrike() {
@@ -26,5 +29,4 @@ class Game{
   //     return this.rolls = 0;
   //   }
   // }
-
 };

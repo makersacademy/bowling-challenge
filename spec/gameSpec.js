@@ -10,9 +10,7 @@ describe('Game', () => {
 
   it('hits a strike', () => {
     game.hit(10)
-    game.hit(2)
-    game.hit(3)
-    expect(game.score).toEqual(20)
+    expect(game.score).toEqual(10)
   });
 
   it('hits a gutter game', () => {
@@ -46,7 +44,7 @@ describe('Game', () => {
 
   it('resets rolls after strike', () => {
     game.hit(10)
-    expect(game.rolls).toEqual(0)
+    expect(game.rollsReset).toEqual(0)
   })
   
 });

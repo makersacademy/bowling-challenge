@@ -6,7 +6,7 @@ describe("Game", () => {
   let frame;
 
   beforeEach(() => {
-    scorecard = jasmine.createSpy("scorecard");
+    scorecard = jasmine.createSpyObj("scorecard",['newFrame']);
     frame = jasmine.createSpyObj("frame",['newRoll']);
     game = new Game(scorecard, frame);
   })
@@ -19,5 +19,9 @@ describe("Game", () => {
   it("can receive a roll", () => {
     game.roll(6)
     expect(frame.newRoll).toHaveBeenCalledWith(6)
+  })
+
+  it("sends the first frame to scorecard", () => {
+    expect(scorecard.newFrame).toHaveBeenCalledWith(frame)
   })
 })

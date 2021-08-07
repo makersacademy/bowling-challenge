@@ -13,6 +13,10 @@ So I can focus on bowling
 I'd like the app to change frame automatically as necessary
 
 As a player
+So I don't make a mistake
+I'd like the app to notify when I've entered a roll too large
+
+As a player
 So I don't need to calculate myself
 I'd like the app to add bonuses itself
 

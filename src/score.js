@@ -13,11 +13,18 @@ class Score {
 
   secondRoll(pins) {
     this.secondRollPins = pins;
+    this.checkSpare();
   }
 
   checkStrike() {
     if (this.firstRollPins === 10) {
       this.isStrike = true;
+    }
+  }
+
+  checkSpare() {
+    if (this.firstRollPins + this.secondRollPins === 10) { 
+      this.isSpare = true;
     }
   }
 }

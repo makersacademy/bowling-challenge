@@ -27,7 +27,7 @@ class Game {
 
   storeFrame() {
     this.framesArray.push(this.currentFrameObj);
-    this.scoresArray.push(this.currentFrameObj.frameScore);
+    this.calculateScore();
   }
 
   checkIfEnd() {
@@ -39,11 +39,23 @@ class Game {
   }
 
   nextFrame() {
-    this.currentFrameNum += 1
+    this.currentFrameNum += 1;
     this.currentFrameObj = new Frame(this.currentFrameNum);
   }
 
   endGame() {
     this.finished = true;
+  }
+
+  calculateScore() {
+    this.scoresArray.push(this.currentFrameObj.frameScore);
+    if (this.currentFrameNum > 1) {
+      if (this.framesArray[this.currentFrameNum - 2].isStrike === true) {
+        this.scoresArray[this.currentFrameNum - 2] += (10 + this.currentFrameObj.frameScore);
+      } else if (this.framesArray[this.currentFrameNum - 2].isSpare === true) {
+        this.scoresArray[this.currentFrameNum - 2]
+        += (10 + this.currentFrameObj.currentFrameObj.score.firstRoll);
+      }
+    }
   }
 }

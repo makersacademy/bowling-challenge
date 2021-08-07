@@ -5,4 +5,8 @@ class Game {
     this.scoresArray = [];
     this.framesArray = [];
   }
+
+  startGame() { 
+    this.currentFrameObj = new Frame(1);
+  }
 }

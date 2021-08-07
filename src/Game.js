@@ -9,5 +9,9 @@ class Game {
 
   roll(pins) {
     this.currentFrame.newRoll(pins)
+    if(this.currentFrame.isLastRoll()) {
+      this.currentFrame = new Frame();
+      this.scorecard.newFrame(this.currentFrame);
+    }
   }
 }

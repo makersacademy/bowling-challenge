@@ -20,4 +20,10 @@ describe("Feature test", () => {
   it("The current frame is also stored on the scorecard", () => {
     expect(game.scorecard.frames).toEqual([game.currentFrame])
   })
+
+  it("A new frame is started after two rolls", () => {
+    for(let i = 0; i < 2; i++) game.roll(3);
+    expect(game.scorecard.frames.length).toEqual(2)
+    expect(game.currentFrame.rolls).toEqual([])
+  })
 })

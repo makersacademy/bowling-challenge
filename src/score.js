@@ -4,6 +4,7 @@ class Score {
     this.secondRollPins = null;
     this.isStrike = false;
     this.isSpare = false;
+    this.score = null;
   }
 
   firstRoll(pins) {

@@ -10,12 +10,18 @@ describe("Frame", () => {
     expect(frame.round).toEqual(1)
   })
 
-  it('is expected to pass first rolls and second rolls to score', () => {
+  it ('is expected to pass first rolls and second rolls to score', () => {
     frame.firstRoll(5)
     frame.secondRoll(5)
     expect(frame.score.firstRollPins).toEqual(5)
     expect(frame.score.secondRollPins).toEqual(5)
-    expect(frame.score.isSpare).toEqual(true)
+    expect(frame.isSpare).toEqual(true)
+  })
+
+  it ('can correctly calculate score when not strike or spare', () => {
+    frame.firstRoll(5)
+    frame.secondRoll(3)
+    expect(frame.frameScore).toEqual(8)
   })
 
 }) 

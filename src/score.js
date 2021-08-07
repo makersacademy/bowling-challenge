@@ -23,8 +23,15 @@ class Score {
   }
 
   checkSpare() {
-    if (this.firstRollPins + this.secondRollPins === 10) { 
+    if (this.firstRollPins + this.secondRollPins === 10 && this.isStrike === false) {
       this.isSpare = true;
     }
+  }
+
+  calculateScore() {
+    if (this.isStrike === true || this.isSpare === true) {
+      return 0;
+    }
+    return (this.firstRollPins + this.secondRollPins);
   }
 }

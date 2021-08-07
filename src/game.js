@@ -6,7 +6,15 @@ class Game {
     this.framesArray = [];
   }
 
-  startGame() { 
+  startGame() {
     this.currentFrameObj = new Frame(1);
+  }
+
+  firstRoll(pins) {
+    this.currentFrameObj.firstRoll(pins);
+  }
+
+  secondRoll(pins) {
+    this.currentFrameObj.secondRoll(pins);
   }
 }

@@ -5,10 +5,6 @@ Bowling Challenge
 ### User stories
 
 As a player
-So I can track a game of bowling
-I'd like to start a new game
-
-As a player
 So I can keep track of my score
 I'd like to enter a roll
 

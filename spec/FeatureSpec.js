@@ -26,13 +26,19 @@ describe("Feature test", () => {
     expect(game.scorecard.frames.length).toEqual(2);
     expect(game.currentFrame.rolls).toEqual([]);
   })
+
+  it("A new frame is started after a strike", () => {
+    game.roll(10);
+    expect(game.scorecard.frames.length).toEqual(2);
+    expect(game.currentFrame.rolls).toEqual([]);
+  })
   
-  it("stops more than 10 pins being entered on a single roll", () => {
+  it("Throws an error when more than 10 pins being entered on a single roll", () => {
     expect(() => { game.roll(11); }).toThrowError("Cannot enter more than 10 in a single frame.");
     expect(game.currentFrame.rolls).toEqual([]);
   })
   
-  it("stops more than 10 pins being entered on a single frame", () => {
+  it("Throws an error when more than 10 pins being entered on a single frame", () => {
     game.roll(4);
     expect(() => { game.roll(7); }).toThrowError("Cannot enter more than 10 in a single frame.");
     expect(game.currentFrame.rolls).toEqual([4]);

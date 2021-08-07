@@ -25,7 +25,13 @@ describe("Frame", () => {
     })
 
     it("returns false if last roll has not been taken", () => {
+      frame.newRoll(3);
       expect(frame.isLastRoll()).toEqual(false)
+    })
+
+    it("returns true if first roll is a strike", () => {
+      frame.newRoll(10);
+      expect(frame.isLastRoll()).toEqual(true)
     })
   })
 })

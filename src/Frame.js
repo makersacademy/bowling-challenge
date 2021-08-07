@@ -6,14 +6,12 @@ class Frame {
   }
 
   newRoll(roll) {
-    if(this._isOverTen(roll)) {
-      throw new Error("Cannot enter more than 10 in a single frame.");
-    }
+    if(this._isOverTen(roll)) throw new Error("Cannot enter more than 10 in a single frame.");
     this.rolls.push(roll);
   }
 
   isLastRoll() {
-    return this.rolls.length > 1 ? true : false;
+    return this.rolls.length > 1 || this.rolls[0] == 10;
   }
 
   _isOverTen(roll) {

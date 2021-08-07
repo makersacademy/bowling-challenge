@@ -44,10 +44,16 @@ describe("Feature test", () => {
     expect(game.currentFrame.rolls).toEqual([4]);
   })
 
-  it("The accumulative score is added up for each frame after it is completed", () => {
+  it("The accumulative score is added up for each frame after each roll", () => {
     for(let i = 0; i < 6; i++) game.roll(3);
     expect(game.scorecard.frames[0].accumulativeScore).toEqual(6);
     expect(game.scorecard.frames[1].accumulativeScore).toEqual(12);
     expect(game.scorecard.frames[2].accumulativeScore).toEqual(18);
+  })
+
+  it("A bonus is given for a spare", () => {
+    let frame = game.currentFrame
+    for(let i = 0; i< 3; i++) game.roll(5);
+    expect(frame.accumulativeScore).toEqual(15);
   })
 })

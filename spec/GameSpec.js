@@ -7,7 +7,7 @@ describe("Game", () => {
 
   beforeEach(() => {
     scorecard = jasmine.createSpyObj("scorecard",['newFrame']);
-    frame = jasmine.createSpyObj("frame",['newRoll', 'isLastRoll', 'calculateScore']);
+    frame = jasmine.createSpyObj("frame",['newRoll', 'isLastRoll', 'calculateScores']);
     game = new Game(scorecard, frame);
   })
 
@@ -35,7 +35,7 @@ describe("Game", () => {
       expect(frame.newRoll).toHaveBeenCalledWith(3)
       expect(game.currentFrame).not.toEqual(frame);
       expect(scorecard.newFrame).toHaveBeenCalledWith(game.currentFrame);
-      expect(frame.calculateScore).toHaveBeenCalled();
+      expect(frame.calculateScores).toHaveBeenCalled();
     })
   })
 })

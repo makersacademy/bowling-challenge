@@ -40,7 +40,7 @@ describe("Frame", () => {
   describe("on 1st frame", () => {
     it("calculates accumulative score", () => {
       for(let i = 0; i < 2; i++) frame.newRoll(3);
-      frame.calculateScore([]);
+      frame.calculateScores([]);
       expect(frame.accumulativeScore).toEqual(6)
     })
   })
@@ -48,13 +48,26 @@ describe("Frame", () => {
   describe("when not the 1st frame", () => {
     beforeEach(() => {
       for(let i = 0; i < 2; i++) previousFrame.newRoll(3);
-      previousFrame.calculateScore([previousFrame]);
+      previousFrame.calculateScores([previousFrame]);
     })
 
     it("calculates accumulative score", () => {
       for(let i = 0; i < 2; i++) frame.newRoll(3);
-      frame.calculateScore([previousFrame, frame]);
+      frame.calculateScores([previousFrame, frame]);
       expect(frame.accumulativeScore).toEqual(12)
+    })
+  })
+
+  describe("when spare before", () => {
+    beforeEach(() => {
+      for(let i = 0; i < 2; i++) previousFrame.newRoll(5);
+      previousFrame.calculateScores([previousFrame]);
+    })
+
+    it("addes bonus to previous spare", () => {
+      frame.newRoll(3);
+      frame.calculateScores([previousFrame, frame]);
+      expect(previousFrame.accumulativeScore).toEqual(13)
     })
   })
 })

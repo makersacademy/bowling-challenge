@@ -14,10 +14,14 @@ class Frame {
     return this.rolls.length > 1 || this.rolls[0] == 10;
   }
 
-  calculateScore(frames) {
+  calculateScores(frames) {
     this.accumulativeScore = this.rolls.reduce((a,b) => a + b);
     if(frames.length > 1) {
-      this.accumulativeScore += frames[frames.length - 2].accumulativeScore;
+      const previousFrame = frames[frames.length - 2]
+      if(previousFrame._isSpareAwaitingBonus()) {
+        previousFrame.accumulativeScore += this.rolls[0]
+      }
+      this.accumulativeScore += previousFrame.accumulativeScore;
     }
   }
 
@@ -26,6 +30,13 @@ class Frame {
       return roll > 10
     } else {
     return this.rolls[0] + roll > 10
+    }
+  }
+
+  _isSpareAwaitingBonus() {
+    if(!this._bonusGiven && this.rolls.length > 1 && this.rolls[0] + this.rolls[1] == 10) {
+      this._bonusGiven = true;
+      return true
     }
   }
 }

@@ -32,14 +32,18 @@ class Game {
 
   checkIfEnd() {
     if (this.currentFrameObj.checkEnd() === 'End') {
-      endGame();
+      this.endGame();
     } else if (this.currentFrameObj.checkEnd() === 'Bonus') {
-      bonusFrame();
+      this.bonusFrame();
     }
   }
 
   nextFrame() {
     this.currentFrameNum += 1
     this.currentFrameObj = new Frame(this.currentFrameNum);
+  }
+
+  endGame() {
+    this.finished = true;
   }
 }

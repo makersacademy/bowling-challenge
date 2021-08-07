@@ -49,6 +49,17 @@ describe ("Game", () => {
       expect(game.currentFrameObj).not.toEqual(oldRound)
     })
 
+    it ('triggers game to finish when 10th frame is ended', () => {
+      game.startGame()
+      Array.from(Array(10).keys()).forEach(function(i) {
+        game.firstRoll(4);
+        game.secondRoll(3);
+        game.endFrame();
+      });
+      expect(game.scoresArray).toEqual([7,7,7,7,7,7,7,7,7,7])
+      expect(game.finished).toEqual(true)
+    })
+
   })
 
 

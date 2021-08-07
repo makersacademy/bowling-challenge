@@ -21,4 +21,17 @@ class Frame {
   calculateScore() {
     this.frameScore = this.score.calculateScore();
   }
+
+  checkEnd() {
+    if (this.round === 10
+      && this.isStrike === false
+      && this.isSpare === false) {
+      return 'End';
+    }
+    if (this.round === 10
+      && (this.isStrike === true
+      || this.isSpare) === false) {
+      return 'Bonus';
+    }
+  }
 }

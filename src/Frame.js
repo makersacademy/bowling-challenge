@@ -1,3 +1,11 @@
 "use strict";
 
-class Frame {};
+class Frame {
+  constructor() {
+    this.rolls = [];
+  }
+
+  newRoll(roll) {
+    this.rolls.push(roll);
+  }
+}

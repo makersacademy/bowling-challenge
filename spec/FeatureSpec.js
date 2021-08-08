@@ -56,4 +56,11 @@ describe("Feature test", () => {
     for(let i = 0; i< 3; i++) game.roll(5);
     expect(frame.accumulativeScore).toEqual(15);
   })
+
+  it("A bonus is given for a strike followed by a normal frame", () => {
+    let frame = game.currentFrame
+    game.roll(10);
+    for(let i = 0; i< 2; i++) game.roll(3);
+    expect(frame.accumulativeScore).toEqual(16);
+  })
 })

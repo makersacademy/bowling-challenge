@@ -70,4 +70,17 @@ describe("Frame", () => {
       expect(previousFrame.accumulativeScore).toEqual(13)
     })
   })
+
+  describe("when strike before", () => {
+    beforeEach(() => {
+      previousFrame.newRoll(10);
+      previousFrame.calculateScores([previousFrame]);
+    })
+
+    it("addes bonus to previous strike", () => {
+      for(let i = 0; i < 2; i++) frame.newRoll(3);
+      frame.calculateScores([previousFrame, frame]);
+      expect(previousFrame.accumulativeScore).toEqual(16)
+    })
+  })
 })

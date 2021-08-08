@@ -9,14 +9,14 @@ describe ("Score", () => {
     expect(score.score).toEqual(0);
   })
 
-    describe('firstBowlPins', () => {
+    describe('firstBowl', () => {
       it ('returns the number of pins knocked over on the first bowl', () => {
         score.firstBowl(5);
         expect(score.firstBowlPins).toEqual(5);
       });
     });
 
-    describe('secondBowlPins', () => {
+    describe('secondBowl', () => {
       it ('returns the number of pins knocked over on the second bowl', () => {
         score.secondBowl(5);
         expect(score.secondBowlPins).toEqual(5);
@@ -53,6 +53,7 @@ describe ("Score", () => {
         score.isStrike();
         score.calculateScore();
         expect(score.storedScore).toEqual(10);
+        expect(score.score).toEqual(0)
       });
 
       it ('stores the score if a spare', () => {
@@ -61,6 +62,7 @@ describe ("Score", () => {
         score.isSpare();
         score.calculateScore();
         expect(score.storedScore).toEqual(10);
+        expect(score.score).toEqual(0);
       })
     });
 

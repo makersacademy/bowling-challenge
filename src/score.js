@@ -1,5 +1,4 @@
- 
- class Score {
+class Score {
 
   constructor() {
     this.firstBowlPins = null;

@@ -12,11 +12,11 @@ class Game {
   }
 
   firstRoll(pins) {
-    this.currentFrameObj.firstRoll(pins);
+    this.currentFrameObj.firstRoll(parseInt(pins));
   }
 
   secondRoll(pins) {
-    this.currentFrameObj.secondRoll(pins);
+    this.currentFrameObj.secondRoll(parseInt(pins));
   }
 
   endFrame() {
@@ -64,7 +64,6 @@ class Game {
   }
 
   calculateBonusScore() {
-    console.log(this.framesArray);
     if (this.framesArray[9].score.isStrike === true) {
       this.bonusStrike();
     } else if (this.framesArray[9].score.isSpare === true) {
@@ -78,7 +77,6 @@ class Game {
   }
 
   bonusSpare() {
-    console.log('we are in bonus spare');
     this.scoresArray[9] = (10 + this.currentFrameObj.score.firstRollPins);
     this.finished = true;
   }

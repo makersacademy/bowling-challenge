@@ -64,7 +64,6 @@ class Game {
   }
 
   calculateBonusScore() {
-    debugger;
     console.log(this.framesArray);
     if (this.framesArray[9].score.isStrike === true) {
       this.bonusStrike();
@@ -80,7 +79,7 @@ class Game {
 
   bonusSpare() {
     console.log('we are in bonus spare');
-    this.scoresArray[9] = (10 + this.currentFrameObj.frameScore);
+    this.scoresArray[9] = (10 + this.currentFrameObj.score.firstRollPins);
     this.finished = true;
   }
 

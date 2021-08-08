@@ -61,9 +61,7 @@ describe ("Game", () => {
   describe (".calculate score", () => {
     it ('calculates strike correctly', () => { 
       game.startGame();
-      game.firstRoll(10);
-      game.secondRoll(0);
-      game.endFrame();
+      rollAStrike();
       expect(game.scoresArray).toEqual([0])
       rollASeven();
       expect(game.scoresArray).toEqual([17,7]);
@@ -74,11 +72,7 @@ describe ("Game", () => {
       Array.from(Array(9).keys()).forEach(function(i) {
         rollASeven();
       });
-      game.firstRoll(10);
-      game.secondRoll(0);
-      console.log(game.currentFrameObj)
-      game.endFrame();
-      console.log(game.currentFrameObj)
+      rollAStrike();
       game.firstRoll(3);
       game.secondRoll(4);
       game.endFrame();
@@ -87,12 +81,18 @@ describe ("Game", () => {
       expect(game.finished).toEqual(true);
     });
 
-    xit ('calculates final round spare correctly', () => {
+    it ('calculates final round spare correctly', () => {
       game.startGame()
-      Array.from(Array(10).keys()).forEach(function(i) {
+      Array.from(Array(9).keys()).forEach(function(i) {
         rollASeven();
       });
-      expect(game.scoresArray).toEqual([7,7,7,7,7,7,7,7,7,7]);
+      game.firstRoll(3);
+      game.secondRoll(7);
+      game.endFrame();
+      game.firstRoll(5);
+      game.secondRoll(3);
+      game.endFrame();
+      expect(game.scoresArray).toEqual([7,7,7,7,7,7,7,7,7,15]);
       expect(game.finished).toEqual(true);
     });
   });

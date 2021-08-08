@@ -19,5 +19,13 @@ describe ("Score", () => {
       });
     });
 
+    describe('isStrike', () => {
+      it ('checks if the bowl is a strike', () => {
+        score.firstBowl(10);
+        score.isStrike();
+        expect(score.strike).toEqual(true);
+      });
+    });
+
 
 });

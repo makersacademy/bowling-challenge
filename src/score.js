@@ -4,6 +4,7 @@
   constructor() {
     this.firstBowlPins = null;
     this.secondBowlPins = null;
+    this.strike = false;
 
   };
 
@@ -15,5 +16,9 @@
     this.secondBowlPins = pins;
   }
 
-
+  isStrike() {
+    if (this.firstBowlPins === 10) {
+      this.strike = true
+    }
+  };
  };

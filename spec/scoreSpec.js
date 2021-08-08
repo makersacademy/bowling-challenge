@@ -1,7 +1,7 @@
 
-describe ("Score", () => {
+describe ('Score', () => {
 
-  beforeEach( () => {
+  beforeEach(() => {
     score = new Score();
   });
 

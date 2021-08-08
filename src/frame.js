@@ -20,6 +20,8 @@ class Frame {
   nextRoll() {
     if(this._roll === 1) {
       this._roll = 2
+    } else if (this._roll === 2 && this.isOnFinalFrame()) {
+      this._roll = 3
     } else {
       this._roll = 1
       this._frame += 1

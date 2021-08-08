@@ -5,12 +5,16 @@ class Game {
   }
 
   roll(score) {
-    this.invalidInput(score)
+    
 
-    if(this._currentRoll() === 1) {
+    if(frame.isOnFinalFrame()) {
+      this.finalFrameProcedure(score)
+    } else if (this._currentRoll() === 1) {
+      this.invalidInput(score)
       this.firstRollProcedure(score)
     } 
     else {
+      this.invalidInput(score)
       this.secondRollProcedure(score)
     }
   } 
@@ -39,6 +43,26 @@ class Game {
     } else {
       frame.nextRoll()
     } 
+  }
+
+  finalFrameProcedure(score) {
+    // need to put in guard conditions for input!!
+    scorecard.addToScorecard(this._currentFrame(), score)
+    if (this._currentRoll() === 1) {
+      frame.nextRoll()
+    }  else if (this._currentRoll() === 2 && this._frameScore(this._currentFrame()) >= 10) {
+      frame.nextRoll()
+    // } else if(this._currentRoll() === 2 && this._frameScore(this._currentFrame()) < 10) {
+    //   this.endGame()
+    // } else if (this._currentRoll() === 3) {
+    //   this.endGame()
+    // }
+    }
+  }
+
+  newGame() {
+    frame = new Frame()
+    scorecard = new Scorecard()
   }
 
   invalidInput(score) {

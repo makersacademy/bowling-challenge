@@ -69,11 +69,8 @@ addScore(score) {
 totalScore() {
   return this._totalScore
 }
+
+finalFrameScore() {
+  this.getFrameScore(9)
 }
-
-// let arr = this._scorecard[frame]
-// let sum = 0
-// for(var i in arr) { sum += arr[i]}
-// return sum
-
-// sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
+}

@@ -82,7 +82,41 @@ describe('Game', () => {
       game.roll(3)
       expect(game._currentFrame()).toEqual(2)
       expect(game._currentRoll()).toEqual(1)
-    })
-  })
+    });
+  });
+
+  describe('final frame procedure', () => {
+    it('moves on to next roll after roll 1', () => {
+      spyOn(frame, 'isOnFinalFrame').and.returnValue(true);
+      game.roll(5)
+      expect(game._currentRoll()).toEqual(2)
+    });
+    // it('ends the game if no strike/spare scores', () => {
+    //   spyOn(frame, 'isOnFinalFrame').and.returnValue(true);
+    //   game.roll(5)
+    //   game.roll(3)
+    //   expect(game._currentFrame()).toEqual(1)
+    // });
+    it('goes to bonus roll if there is a strike in roll 1', () => {
+      spyOn(frame, 'isOnFinalFrame').and.returnValue(true);
+      game.roll(7)
+      game.roll(6)
+      expect(game._currentRoll()).toEqual(3)
+    });
+    it('goes to bonus roll if there is a spare in first two rolls', () => {
+      spyOn(frame, 'isOnFinalFrame').and.returnValue(true);
+      game.roll(7)
+      game.roll(3)
+      console.log(game._currentRoll())
+      expect(game._currentRoll()).toEqual(3)
+    });
+    // it('adds the total to the final score', () => {
+    //   spyOn(frame, 'isOnFinalFrame').and.returnValue(true);
+    //   game.roll(7)
+    //   game.roll(3)
+    //   game.roll(8)
+    //   expect(scorecard.totalScore()).toEqual(18)
+    // });
+  });
 
 });

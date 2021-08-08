@@ -7,6 +7,7 @@
     this.strike = false;
     this.spare = false;
     this.score = 0;
+    this.storedScore = 0;
 
   };
 
@@ -31,6 +32,10 @@
   }
 
   calculateScore() {
+    if ((this.strike === true) || (this.spare === true)) {
+      this.storedScore += 10;
+    } else {
     this.score = (this.firstBowlPins + this.secondBowlPins)
   }
- };
+ }
+}

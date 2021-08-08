@@ -41,12 +41,27 @@ describe ("Score", () => {
     });
 
     describe('calculateScore', () => {
-      it ('adds the first and second bowls', () => {
+      it ('adds the first and second bowls if not a strike or spare', () => {
         score.firstBowl(4);
         score.secondBowl(3);
         score.calculateScore();
         expect(score.score).toEqual(7);
       });
+
+      it('stores the score if a strike', () => {
+        score.firstBowl(10);
+        score.isStrike();
+        score.calculateScore();
+        expect(score.storedScore).toEqual(10);
+      });
+
+      it ('stores the score if a spare', () => {
+        score.firstBowl(3);
+        score.secondBowl(7);
+        score.isSpare();
+        score.calculateScore();
+        expect(score.storedScore).toEqual(10);
+      })
     });
 
 

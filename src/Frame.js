@@ -18,10 +18,18 @@ class Frame {
     this.accumulativeScore = this.rolls.reduce((a,b) => a + b);
     if(frames.length > 1) {
       const previousFrame = frames[frames.length - 2];
+      if(frames.length > 2) {
+        const twoFramesBefore = frames[frames.length - 3];
+        if(twoFramesBefore._isStrikeAwaitingBonus()) {
+          twoFramesBefore.accumulativeScore += 10 + this.rolls[0];
+          twoFramesBefore._bonusGiven = true;
+          previousFrame.accumulativeScore = twoFramesBefore.accumulativeScore + previousFrame.rolls.reduce((a,b) => a + b);
+        }
+      }
       if(previousFrame._isSpareAwaitingBonus()) {
         previousFrame.accumulativeScore += this.rolls[0];
       } else if(previousFrame._isStrikeAwaitingBonus()) {
-        if(this.rolls.length == 2) {
+        if(this.rolls.length > 1) {
           previousFrame.accumulativeScore += this.rolls[0] + this.rolls[1];
           previousFrame._bonusGiven = true;
         }

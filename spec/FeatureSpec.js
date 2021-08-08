@@ -63,4 +63,14 @@ describe("Feature test", () => {
     for(let i = 0; i< 2; i++) game.roll(3);
     expect(frame.accumulativeScore).toEqual(16);
   })
+
+  it("A bonus is given for a double", () => {
+    let twoFramesBefore = game.currentFrame;
+    game.roll(10);
+    let previousFrame = game.currentFrame;
+    game.roll(10);
+    for(let i = 0; i < 2; i++) game.roll(3);
+    expect(previousFrame.accumulativeScore).toEqual(39);
+    expect(twoFramesBefore.accumulativeScore).toEqual(23);
+  })
 })

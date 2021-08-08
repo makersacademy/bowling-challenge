@@ -3,10 +3,12 @@
 describe("Frame", () => {
   let frame;
   let previousFrame;
+  let twoFramesBefore;
 
   beforeEach(() => {
     frame = new Frame();
     previousFrame = new Frame();
+    twoFramesBefore = new Frame();
   })
 
   it("records a roll", () => {
@@ -81,6 +83,24 @@ describe("Frame", () => {
       for(let i = 0; i < 2; i++) frame.newRoll(3);
       frame.calculateScores([previousFrame, frame]);
       expect(previousFrame.accumulativeScore).toEqual(16)
+    })
+  })
+
+  describe("when a double is rolled", () => {
+    beforeEach(() => {
+      twoFramesBefore.newRoll(10);
+      twoFramesBefore.calculateScores([twoFramesBefore]);
+      previousFrame.newRoll(10);
+      previousFrame.calculateScores([twoFramesBefore, previousFrame]);
+    })
+
+    it("addes bonus to previous strikes", () => {
+      for(let i = 0; i < 2; i++) {
+        frame.newRoll(3);
+        frame.calculateScores([twoFramesBefore, previousFrame, frame]);
+      }
+      expect(previousFrame.accumulativeScore).toEqual(39)
+      expect(twoFramesBefore.accumulativeScore).toEqual(23)
     })
   })
 })

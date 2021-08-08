@@ -5,6 +5,7 @@
     this.firstBowlPins = null;
     this.secondBowlPins = null;
     this.strike = false;
+    this.spare = false;
 
   };
 
@@ -19,6 +20,12 @@
   isStrike() {
     if (this.firstBowlPins === 10) {
       this.strike = true
-    }
+    };
   };
+
+  isSpare() {
+    if (this.firstBowlPins + this.secondBowlPins === 10) {
+      this.spare = true;
+    }
+  }
  };

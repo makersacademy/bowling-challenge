@@ -22,6 +22,15 @@ class Frame {
       this._roll = 2
     } else {
       this._roll = 1
+      this._frame += 1
     }
+  }
+
+  isOnFinalFrame() {
+    if(this._frame === 10) {
+      return true;
+    } else {
+      return false;
+    };
   }
 }

@@ -32,4 +32,17 @@ describe('Frame', () => {
       expect(frame.currentRoll()).toEqual(1);
     });
   });
+
+  describe('knows if player is on final frame', () => {
+    it('returns false if frame is not 10', () => {
+      expect(frame.isOnFinalFrame()).toEqual(false)
+    });
+    it('returns false if frame is not 10', () => {
+      for(let i = 0; i < 9; i ++){
+        frame.addFrame();
+      }
+      expect(frame.isOnFinalFrame()).toEqual(true)
+    });
+  });
 });
+

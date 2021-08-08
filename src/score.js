@@ -6,6 +6,7 @@
     this.secondBowlPins = null;
     this.strike = false;
     this.spare = false;
+    this.score = 0;
 
   };
 
@@ -19,7 +20,7 @@
 
   isStrike() {
     if (this.firstBowlPins === 10) {
-      this.strike = true
+      this.strike = true;
     };
   };
 
@@ -27,5 +28,9 @@
     if (this.firstBowlPins + this.secondBowlPins === 10) {
       this.spare = true;
     }
+  }
+
+  calculateScore() {
+    this.score = (this.firstBowlPins + this.secondBowlPins)
   }
  };

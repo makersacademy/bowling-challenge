@@ -12,5 +12,12 @@ describe ("Score", () => {
       });
     });
 
+    describe('secondBowlPins', () => {
+      it ('returns the number of pins knocked over on the first bowl', () => {
+        score.secondBowl(5);
+        expect(score.secondBowlPins).toEqual(5);
+      });
+    });
+
 
 });

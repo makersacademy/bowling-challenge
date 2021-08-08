@@ -11,5 +11,9 @@
     this.firstBowlPins = pins;
   }
 
+  secondBowl(pins) {
+    this.secondBowlPins = pins;
+  }
+
 
  };

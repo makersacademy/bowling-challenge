@@ -2,7 +2,14 @@
  class Score {
 
   constructor() {
-    this.test = 5;
+    this.firstBowlPins = null;
+    this.secondBowlPins = null;
+
   };
+
+  firstBowl(pins) {
+    this.firstBowlPins = pins;
+  }
+
 
  };

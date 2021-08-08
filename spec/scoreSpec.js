@@ -5,10 +5,12 @@ describe ("Score", () => {
     score = new Score();
   });
 
-
-  it ('initial test to confirm Jasmine is working', () => {
-    expect(score.test).toEqual(5);
-  });
+    describe('firstBowlPins', () => {
+      it ('returns the number of pins knocked over on the first bowl', () => {
+        score.firstBowl(5);
+        expect(score.firstBowlPins).toEqual(5);
+      });
+    });
 
 
 });

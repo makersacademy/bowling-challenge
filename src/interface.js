@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', (event) => { 
+  $(".anim").hide();
   const game = new Game();
   const form = document.getElementById('rollForm');
   let scoreTable = document.getElementById('scoreTables');
+
 
   form.addEventListener( 'submit', (event) => {
     event.preventDefault();
@@ -16,11 +18,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
   updateScore = () => {
     for (var i= 0; i < game.currentFrameNum -1; i++) {
       scoreTable.rows[1].cells[i].innerHTML = game.scoresArray[i]
-      if (game.framesArray[i].score.isStrike);
+      if (game.framesArray[i].score.isStrike) { 
+        strikeAnim();
+      };
     }
   }
 
-  checkStrike = () => { 
-    if game.scoresArray
+  strikeAnim = () => { 
+    $(".anim").fadeIn ();
+    $(".anim").slideUp (3000);
   }
 });
+

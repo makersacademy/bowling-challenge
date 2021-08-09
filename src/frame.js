@@ -24,13 +24,13 @@ class Frame {
 
   checkEnd() {
     if ((this.round === 10
-      && this.score.isStrike === false
-      && this.score.isSpare === false) || this.round === 11) {
+      && this.isStrike === false
+      && this.isSpare === false) || this.round === 11) {
       return 'End';
     }
     if (this.round === 10
-      && (this.score.isStrike === true
-      || this.score.isSpare) === true) {
+      && (this.isStrike === true
+      || this.isSpare) === true) {
       return 'Bonus';
     }
   }

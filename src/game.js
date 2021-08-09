@@ -8,7 +8,7 @@ class Game {
   }
 
   startGame() {
-    this.currentFrameObj = new Frame(1);
+    this.currentFrameObj = new Frame(this.currentFrameNum);
   }
 
   firstRoll(pins) {
@@ -27,17 +27,16 @@ class Game {
 
   storeFrame() {
     if (this.currentFrameNum < 11) {
-    this.framesArray.push(this.currentFrameObj);
-    this.calculateScore();
-    }
-    else {
+      this.framesArray.push(this.currentFrameObj);
+      this.calculateScore();
+    } else {
       this.calculateBonusScore();
     }
   }
 
   checkIfEnd() {
     if (this.currentFrameObj.checkEnd() === 'End') {
-      console.log('we are ending on 10th round')
+      console.log('we are ending on 10th round');
       this.endGame();
     }
   }
@@ -54,9 +53,9 @@ class Game {
   calculateScore() {
     this.scoresArray.push(this.currentFrameObj.frameScore);
     if (this.currentFrameNum > 1) {
-      if (this.framesArray[this.currentFrameNum - 2].score.isStrike === true) {
+      if (this.framesArray[this.currentFrameNum - 2].isStrike === true) {
         this.scoresArray[this.currentFrameNum - 2] += (10 + this.currentFrameObj.frameScore);
-      } else if (this.framesArray[this.currentFrameNum - 2].score.isSpare === true) {
+      } else if (this.framesArray[this.currentFrameNum - 2].isSpare === true) {
         this.scoresArray[this.currentFrameNum - 2]
         += (10 + this.currentFrameObj.currentFrameObj.score.firstRoll);
       }
@@ -64,9 +63,9 @@ class Game {
   }
 
   calculateBonusScore() {
-    if (this.framesArray[9].score.isStrike === true) {
+    if (this.framesArray[9].isStrike === true) {
       this.bonusStrike();
-    } else if (this.framesArray[9].score.isSpare === true) {
+    } else if (this.framesArray[9].isSpare === true) {
       this.bonusSpare();
     }
   }

@@ -14,10 +14,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
   
 
   updateScore = () => {
-    console.log(game)
-    for (i= 0; i < scoreTable.rows[1].cells.length; i++) {
-      console.log(game.scoresArray[i].value)
-      scoreTable.rows[1].cells[i].innerHTML = game.scoresArray[i].value;
+    for (var i= 0; i < game.currentFrameNum -1; i++) {
+      scoreTable.rows[1].cells[i].innerHTML = game.scoresArray[i]
+      if (game.framesArray[i].score.isStrike);
     }
+  }
+
+  checkStrike = () => { 
+    if game.scoresArray
   }
 });

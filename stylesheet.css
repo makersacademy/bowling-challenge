@@ -1,0 +1,29 @@
+section {
+ background-image:linear-gradient(to bottom right, #7fa1d4, green);
+ justify-content: center;
+ font-family: Helvetica;
+}
+
+.form { 
+  weight: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image:linear-gradient(to bottom right, rgb(150, 150, 228), blue);
+}
+
+.box { 
+  font-family: Arial;
+}
+
+.anim {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anim img {
+  width: 500px;
+  height: 500px;
+}

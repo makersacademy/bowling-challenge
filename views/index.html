@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel='stylesheet' href='../stylesheet.css'>
     <title>Bowling</title>
     <script src= "../src/game.js"> </script>
     <script src= "../src/frame.js"> </script>
     <script src= "../src/score.js"> </script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src= "../src/interface.js"> </script>
 
   </head>
 
   <body>
+    <section>
     <table id='scoreTables' style="width:75%">
       <tr>
         <th>Frame 1</th>
@@ -24,6 +26,8 @@
         <th>Frame 9</th>
         <th>Frame 10</th>
       </tr>
+    </section>
+    <div class=box>
       <tr>
         <td></td>
         <td></td>
@@ -36,9 +40,11 @@
         <td></td>
         <td></td>
       </tr>
+    </div>
     </table>
     <br>
-    <div>
+    <div class='form'>
+      <br>
       <form id="rollForm">
         <label for="rollOne">First roll score:</label>
         <input type='text' name='rollOne' id='rollOne'>
@@ -49,7 +55,9 @@
         <input type="submit" value="Submit scores">
       </form>
     </div>
-
+    <div class='anim'>
+      <img src='../simpsons_strike_gif.gif' alt='strike'>
+    </div>
   </body>
 
 </html>

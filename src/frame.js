@@ -4,8 +4,9 @@ class Frame {
     this.frameNumber = frameNumber;
     this.frameTotal = 0;
     this.score = new Score();
-    this.strike = score.strike
-    this.spare = score.spare
+    this.strike = null
+    this.spare = null
+    this.storedScore = this.score.storedScore;
   }
 
   firstBowl(pins) {
@@ -17,7 +18,17 @@ class Frame {
   }
 
   calculateScore() {
-    this.frameTotal = this.score.calculateScore();
-    
+    this.score.calculateScore();
+    this.frameTotal = this.score.score;
   }
+
+  isStrike () {
+    this.score.isStrike()
+    this.strike = this.score.strike
+  }
+
+  isSpare () {
+    this.score.isSpare();
+    this.spare = this.score.spare
+      }
 }

@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+body {
+  font-family: 'Staatliches', cursive;
+}
+.container {
+  display: grid;
+  height: 10rem;
+  margin-top: 2rem;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-rows: 0.5fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . . . . . . . . ."
+    ". . . . . . . . . .";
+
+}
+
+.frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-width: 2px, 2px, 5px, 2px;
+}
+
+.scores {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 0px;
+  grid-auto-flow: row;
+  grid-template-areas: 
+  ". . .";
+  border: solid black 2px;
+}
+
+.first-score {
+  display: flex;
+  justify-content:end;
+  align-items: center;
+  padding: 5px;
+}
+
+.second-score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.end-score {
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: indigo;
+  color: aliceblue;
+}

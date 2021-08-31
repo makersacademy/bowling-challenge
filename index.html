@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bowling Scorecard</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Roboto&family=Caveat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/style.css" />
+  </head>
+  <body>
+    <div class="background">
+      <div class="container">
+        <h1>10-Pin Bowling</h1>
+
+        <div id="enter-rolls">
+          Frame <span id="frame-number-span">1</span>: What's your roll?
+          <form class="input-form" id="rolls-form">
+            <select id="input-roll">
+            </select>
+            <button type="submit">Yeah!</button>
+          </form>
+        </div>
+        <div id="card-and-reset">
+          <div id="scorecard" class="grid-container">
+            <div class="grid-item" id="grid-title">Frames</div>
+            <div class="grid-item frame-no">1</div>
+            <div class="grid-item frame-no">2</div>
+            <div class="grid-item frame-no">3</div>
+            <div class="grid-item frame-no">4</div>
+            <div class="grid-item frame-no">5</div>
+            <div class="grid-item frame-no">6</div>
+            <div class="grid-item frame-no">7</div>
+            <div class="grid-item frame-no">8</div>
+            <div class="grid-item frame-no">9</div>
+            <div class="grid-item frame-no">10</div>
+            <div class="grid-item frame-total">Total</div>
+
+            <div class="grid-item roll" id="fr1roll1"></div>
+            <div class="grid-item roll" id="fr1roll2"></div>
+
+            <div class="grid-item roll" id="fr2roll1"></div>
+            <div class="grid-item roll" id="fr2roll2"></div>
+
+            <div class="grid-item roll" id="fr3roll1"></div>
+            <div class="grid-item roll" id="fr3roll2"></div>
+
+            <div class="grid-item roll" id="fr4roll1"></div>
+            <div class="grid-item roll" id="fr4roll2"></div>
+
+            <div class="grid-item roll" id="fr5roll1"></div>
+            <div class="grid-item roll" id="fr5roll2"></div>
+
+            <div class="grid-item roll" id="fr6roll1"></div>
+            <div class="grid-item roll" id="fr6roll2"></div>
+
+            <div class="grid-item roll" id="fr7roll1"></div>
+            <div class="grid-item roll" id="fr7roll2"></div>
+
+            <div class="grid-item roll" id="fr8roll1"></div>
+            <div class="grid-item roll" id="fr8roll2"></div>
+
+            <div class="grid-item roll" id="fr9roll1"></div>
+            <div class="grid-item roll" id="fr9roll2"></div>
+
+            <div class="grid-item roll" id="fr10roll1"></div>
+            <div class="grid-item roll" id="fr10roll2"></div>
+
+            <div class="grid-item roll" id="fr10roll3"></div>
+            <div class="grid-item roll" id="fr10roll4"></div>
+
+            <div class="grid-item total-score" id="fr1total"></div>
+            <div class="grid-item total-score" id="fr2total"></div>
+            <div class="grid-item total-score" id="fr3total"></div>
+            <div class="grid-item total-score" id="fr4total"></div>
+            <div class="grid-item total-score" id="fr5total"></div>
+            <div class="grid-item total-score" id="fr6total"></div>
+            <div class="grid-item total-score" id="fr7total"></div>
+            <div class="grid-item total-score" id="fr8total"></div>
+            <div class="grid-item total-score" id="fr9total"></div>
+            <div class="grid-item total-score" id="fr10total"></div>
+            <div class="grid-item total-score" id="final-total"></div>
+          </div>
+          <div id="clear">
+            <form id="clear-form" action="index.html">
+              <button type="submit" id="clear-button" >Clear All</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="src/jQuery.js"></script>
+    <script src="src/BowlingJQuery.js"></script>
+  </body>
+</html>

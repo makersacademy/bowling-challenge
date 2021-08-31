@@ -1,75 +1,35 @@
+## Bowling Scorecard Challenge in JavaScript
 
-Bowling Challenge
-=================
+A ten-pin bowling score calculator. It's a translation of [this](https://github.com/mscwilson/bowling-challenge-ruby) Ruby project, with a jQuery UI. It's hosted [here](https://mscwilson.github.io/bowling).
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
 
-## The Task
+### The Task
+Ten-pin bowling has surprisingly [complex rules](https://en.wikipedia.org/wiki/Ten-pin_bowling#Scoring). Essentially the score is the number of pins knocked over per round (frame), but there are bonus points if all ten pins fall after only one or two consecutive rolls.
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+This was the 6th weekend challenge for [Makers Academy](https://makers.tech). The goal was to practise JavaScript, with a stretch goal of adding a jQuery interface.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Try it out [on my GitHub Pages site](https://mscwilson.github.io/bowling).
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+It looks like this:
+![during a game](images/bowling-dropdown.png)
+![end of the game](images/bowling-ended.png)
 
-As usual please start by
+### Technical Approach
+The logic is a straight translation of my [original](https://github.com/mscwilson/bowling-challenge-ruby) Ruby project. That wasn't written with an interface in mind, so it was challenging to then display what I wanted. I looked at more examples of real scorecards and saw that results are usually shown differently from how I expected. I ended up writing several new functions, for example to calculate cumulative scores for each frame.
 
-* Forking this repo
+During a Frame, the user is only given appropriate choices in the Select dropdown list. For example, if they already knocked down 8 pins, the dropdown list will have only 0, 1, and 2 as options.
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+I chose a handwriting-style font for the scores to reference real, old-fashioned scorecards. The background image is a free picture from [Pexels](https://www.pexels.com/).
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+### Installation and Usage
+* Clone this repo and navigate into it
+* Open `index.html` in your browser
+* Enter number of pins knocked down to see a cumulative score
+* To run the unit tests, open `SpecRunner.html` in your browser
 
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+### Known Issues
+* The scorecard grid has absolute sizes, it's not responsive. It doesn't fit the screen on mobile. To fix this ideally I would create a new layout for mobile, with a vertically aligned scorecard.
+* There's a bug around displaying the score in the 10th frame under certain conditions.
+* The code isn't the cleanest. The Frame logic around what to display in the scorecard is particularly in need of refactoring.
+* The scorecard borders aren't perfect; there are some unwanted double thickness sections down the left-hand side.
+* I'd like it to congratulate the user if they get a "perfect game".

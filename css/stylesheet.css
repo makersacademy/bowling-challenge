@@ -1,0 +1,30 @@
+h1 {
+  font-size:40px;
+  font-style: italic;
+}
+
+button {
+  font-size: 20px;
+  font-style: italic;
+  border-radius:4mm;
+  background-color: rgba(250, 250, 250, 0.884);
+}
+
+input {
+  text-align: center;
+  border-radius:4mm;
+  font-size: 20px;
+  font-style: italic;
+  border-style: outset;
+  background-color:rgba(217, 242, 243, 0.884)
+}
+
+body {
+  padding-top: 3%;
+  text-align:  center;
+  background-color: rgb(238, 236, 226);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  color:rgba(187, 77, 77, 0.623)
+}
+

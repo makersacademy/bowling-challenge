@@ -4,38 +4,41 @@ Bowling Challenge
 
 ## Planning
 ```
-**Add(pins)**: 
+add(pins)
+--------- 
 Is frame full?
-    YES: Done.
+    YES: Endpoint.
     NO: Is pins an integer between 0 and number of remaining pins?
         YES: Is it last frame (frame_id = 10)?
 
             YES: Is roll_1 null?
-                YES: Add pins to roll_1. Done.
+                YES: Add pins to roll_1. Endpoint.
                 NO: Is roll_2 null?
                     YES: Do roll_1 + pins equal 10 or more?
-                        YES: Add pins to roll_2, reset remaining pins.
-                        NO: Add pins to  roll_2 and frame = full.
-                    NO: add pins to roll_3 and frame = full.
+                        YES: Add pins to roll_2, reset remaining pins. Endpoint.
+                        NO: Add pins to roll_2 and frame = full. Endpoint.
+                    NO: Add pins to roll_3 and frame = full. Endpoint.
                 
             NO: Is roll_1 null?
-                YES: is pins value 10?
-                    YES: add pins to roll_1 and set roll_2 to zero and frame = full. Done.
-                    NO: add pins to roll_1. Done.
-                NO: add pins to roll_2 and frame = full. Done.
-        NO: Invalid roll. Done.
+                YES: Is pins value 10?
+                    YES: Add pins to roll_1 and set roll_2 to zero and frame = full. Endpoint.
+                    NO: Add pins to roll_1. Endpoint.
+                NO: Add pins to roll_2 and frame = full. Endpoint.
+        NO: Invalid roll. Endpoint.
 ```
 
-From above logic, Frame class will have to have to have these attributes:
+From above logic, Frame class will need to have these attributes:
 frame_id (number) - class initialized with frame_id passed to it
 roll_1 (number) initialized null
 roll_2 (number) initialized null
 roll_3 (number) initialized null if frame_id = 10
 frame_full (boolean) initialized false
+remaining_pins (number) initialized with a TOTAL_PINS value (10)
 A frame object might include a hash consisting of these values.
 
 Will need function to add pins to frame - this will call on a number of private functions to work through logic above.
 Will also need functions to access value of frame_id, the rolls, and frame_full.
+Could move valid roll logic to game class later.
 
 ## The Task
 

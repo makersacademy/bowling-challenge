@@ -2,10 +2,40 @@
 Bowling Challenge
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Planning
+```
+**Add(pins)**: 
+Is frame full?
+    YES: Done.
+    NO: Is pins an integer between 0 and number of remaining pins?
+        YES: Is it last frame (frame_id = 10)?
+
+            YES: Is roll_1 null?
+                YES: Add pins to roll_1. Done.
+                NO: Is roll_2 null?
+                    YES: Do roll_1 + pins equal 10 or more?
+                        YES: Add pins to roll_2, reset remaining pins.
+                        NO: Add pins to  roll_2 and frame = full.
+                    NO: add pins to roll_3 and frame = full.
+                
+            NO: Is roll_1 null?
+                YES: is pins value 10?
+                    YES: add pins to roll_1 and set roll_2 to zero and frame = full. Done.
+                    NO: add pins to roll_1. Done.
+                NO: add pins to roll_2 and frame = full. Done.
+        NO: Invalid roll. Done.
+```
+
+From above logic, Frame class will have to have to have these attributes:
+frame_id (number) - class initialized with frame_id passed to it
+roll_1 (number) initialized null
+roll_2 (number) initialized null
+roll_3 (number) initialized null if frame_id = 10
+frame_full (boolean) initialized false
+A frame object might include a hash consisting of these values.
+
+Will need function to add pins to frame - this will call on a number of private functions to work through logic above.
+Will also need functions to access value of frame_id, the rolls, and frame_full.
 
 ## The Task
 
@@ -15,24 +45,7 @@ Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
-
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
 
 ## Bowling — how does it work?
 
@@ -64,12 +77,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

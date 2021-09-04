@@ -32,10 +32,6 @@ class Frame {
     return this.secondRoll != null;
   }
 
-  isBonusFrame() {
-    return this.number > 10;
-  }
-
   isBoring() {
     return this.baseScore() < 10;
   }

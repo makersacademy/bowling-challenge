@@ -4,6 +4,10 @@ class FrameDouble {
     this.secondRoll;
     this.number;
   }
+
+  setNumber(num) {
+    this.number = num;
+  }
 }
 
 describe('ScoreCard', () => {
@@ -41,12 +45,19 @@ describe('ScoreCard', () => {
     scoreCard.addFrame(spareFrame);
     scoreCard.addFrame(strikeFrame);
 
-    boringFrame.number = 1;
-    spareFrame.number = 2;
-    strikeFrame.number = 3;
-
     expect(scoreCard.getFrameNumber(1).number).toEqual(1);
     expect(scoreCard.getFrameNumber(2).number).toEqual(2);
     expect(scoreCard.getFrameNumber(3).number).toEqual(3);
+  });
+
+  it('can return all the regular frames', () => {
+    for (let i = 1; i < 12; i++) {
+      frame = new FrameDouble;
+      scoreCard.addFrame(frame);
+    }
+
+    console.log(scoreCard.regularFrames())
+
+    expect(scoreCard.regularFrames().length).toBe(10);
   });
 });

@@ -4,8 +4,10 @@
           +int firstRoll
           +int secondRoll
           +int number
+
           -ScoreCard scoreCard
           
+          +addRoll() undefined
           +after() Frame
           +afterNext() Frame
           +baseScore() Int
@@ -22,12 +24,14 @@
           +array scores
 
           +firstTenFrames()
+
           -createFrames()
       }
 
       class Game{
         +score()
         +printScores()
+        
         -spareBonus()
         -strikeBonus()
       }

@@ -4,7 +4,7 @@ describe('Game', function () {
 
   beforeEach(function () {
     frame = { 
-
+      addRoll: () => {},
     };
     game = new Game(frame);
   });
@@ -25,9 +25,4 @@ describe('Game', function () {
     });
 
   });
-
-
-
-
-
 })

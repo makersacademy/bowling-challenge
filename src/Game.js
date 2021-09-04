@@ -7,7 +7,8 @@ class Game {
   } 
 
   addFrame() {
-    this.framesCount ++;
-    this.frames.push(new Frame());
+    if (this.frames.length < 10) {
+      this.frames.push(new Frame());
+    }
   }
 }

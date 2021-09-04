@@ -44,8 +44,14 @@ describe('ScoreCard', () => {
       scoreCard.addFrame(frame);
     }
 
-    console.log(scoreCard.regularFrames())
-
     expect(scoreCard.regularFrames().length).toBe(10);
+  });
+
+  it('can return the last frame', () => {
+    scoreCard.addFrame(boringFrame);
+    scoreCard.addFrame(spareFrame);
+    scoreCard.addFrame(strikeFrame);
+
+    expect(scoreCard.lastFrame()).toEqual(strikeFrame);
   });
 });

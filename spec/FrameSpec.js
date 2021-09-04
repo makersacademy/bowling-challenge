@@ -1,5 +1,3 @@
-'use strict';
-
 describe('Frame', function () {
   let frame;
 
@@ -27,22 +25,23 @@ describe('Frame', function () {
     });
   });
 
-
-
   describe('calculates the score for the frame', function () {
     it('returns correct score for frame', function () {
-
+      frame.addRoll(5);
+      frame.addRoll(5);
+      frame.addBonusScore(5);
+      expect(frame.calcFrameTotal()).toEqual(15);
     });
   });
 
-  
-
-  
-
-
-
-
-
-
-
+  describe('updates instance variable to frame total', function () {
+    it('updates frame total to correct amount', function () {
+      frame.addRoll(5);
+      frame.addRoll(5);
+      frame.addBonusScore(5);
+      frame.calcFrameTotal();
+      frame.setFrameTotal();
+      expect(frame.frameTotal).toEqual(15);
+    });
+  });
 })

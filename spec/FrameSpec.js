@@ -8,4 +8,16 @@ describe("Frame", () => {
 		expect(frame.rollOne).toEqual(0);
 		expect(frame.rollTwo).toEqual(0);
 	});
+
+	it("can roll one ball", () => {
+		frame.roll(4);
+		expect(frame.rollOne).toEqual(4);
+	});
+
+	it("can roll a second ball", () => {
+		frame.roll(4);
+		frame.roll(2);
+		expect(frame.rollTwo).toEqual(2);
+	});
+
 });

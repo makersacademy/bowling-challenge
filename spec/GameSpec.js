@@ -15,4 +15,6 @@ describe("Game", () => {
 		expect(game.frameNo).toEqual(2);
 		expect(game.frames.length).toEqual(1);
 	});
+
+  
 });

@@ -1,15 +1,3 @@
-class FrameDouble {
-  constructor() {
-    this.firstRoll;
-    this.secondRoll;
-    this.number;
-  }
-
-  setNumber(num) {
-    this.number = num;
-  }
-}
-
 describe('ScoreCard', () => {
   beforeEach(() => {
     scoreCard = new ScoreCard();

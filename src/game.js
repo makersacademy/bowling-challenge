@@ -1,5 +1,5 @@
 class Game {
-  constructor() {
-
+  constructor(scoreCard) {
+    this.scoreCard = scoreCard;
   }
 }

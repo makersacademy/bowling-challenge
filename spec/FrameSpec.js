@@ -1,18 +1,3 @@
-class ScoreCardDouble {
-  constructor() {
-    this.frames = [];
-  }
-
-  addFrame(frame) {
-    this.frames.push(frame);
-    this.frames[this.frames.length - 1].setNumber(this.frames.length);
-  }
-
-  getFrameNumber(num) {
-    return this.frames[num - 1];
-  }
-}
-
 describe('Frame', () => {
   beforeEach(() => {
     scoreCard = new ScoreCardDouble;
@@ -70,22 +55,6 @@ describe('Frame', () => {
 
     frame.addRoll(3);
     expect(frame.baseScore()).toBe(5);
-  });
-
-  it("can tell if it's a bonus frame", () => {
-    for (let i = 1; i < 12; i++) {
-      frame = new Frame(scoreCard);
-    }
-
-    firstFrame = scoreCard.getFrameNumber(1);
-    lastRegularFrame = scoreCard.getFrameNumber(10);
-    bonusFrame = scoreCard.getFrameNumber(11);
-
-    expect(firstFrame.isBonusFrame()).toBe(false);
-    expect(lastRegularFrame.isBonusFrame()).toBe(false);
-    expect(bonusFrame.isBonusFrame()).toBe(true);
-
-    console.log(scoreCard)
   });
 
   it('can tell how many rolls it has', () => {

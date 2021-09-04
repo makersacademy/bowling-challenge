@@ -1,8 +1,10 @@
 describe('Game', () => {
-
   beforeEach(() => {
-    game = new Game();
+    scoreCard = new ScoreCardDouble;
+    game = new Game(scoreCard);
   });
 
-  it('', () => {});
+  it('has a scorecard', () => {
+    expect(game.scoreCard).toEqual(scoreCard);
+  });
 });

@@ -29,20 +29,23 @@ describe('Frame', () => {
   describe('add bowl', () => {
     it('is expected to add the bowl to the _bowls array', () => {
       frame.addBowl(5);
-      expect(frame.bowls()).toContain(5);
+      expect(frame.bowls()).toEqual([5]);
     })
 
     it('is expected to start over if two bowls have been made', () => {
       frame.addBowl(5);
       frame.addBowl(5);
-      expect(frame.bowls()).toContain(5, 5);
+      expect(frame.bowls()).toEqual([5, 5]);
       frame.addBowl(8);
-      expect(frame.bowls()).toContain(8);
+      expect(frame.bowls()).toEqual([8]);
     })
 
-    it('is expected to throw error if the sum of bowls is greater than 10', () => {
+    it('is expected to allow three bwols on the 10th frame', () => {
+      frame._frameCount = 10;
       frame.addBowl(5);
-      expect( () => { frame.addBowl(6) }).toThrow(new Error('Sum of bowls for this frame cannot exceed 10'));
+      frame.addBowl(5);
+      frame.addBowl(5);
+      expect(frame.bowls()).toEqual([5, 5, 5]);
     })
 
     it('cannot add negative numbers to the _bowls array', () => {

@@ -3,9 +3,11 @@
 class Frame {
 
   #maxPins = 10;
+  #maxFrames = 10;
 
   constructor() {
     this._bowls = [];
+    this._frameCount = 1;
   }
 
   bowls() {
@@ -13,28 +15,52 @@ class Frame {
   }
 
   addBowl(number) {
-    this.#startOver()
+    this.#newFrame()
     this.#noNegativeNums(number)
-    this.#sumTooHigh(number)
-    
-    this._bowls.push(number);
-  }
 
-  #sumTooHigh(number) {
-    if (this._bowls[0] + number > this.#maxPins || number > this.#maxPins) {
-      throw Error('Sum of bowls for this frame cannot exceed 10');
-    };
+    this._bowls.push(number);
+    this.#resetFrameCount();
   }
 
   #noNegativeNums(number) {
     if (number < 0) {
-      throw Error('Cannot input negative numbers')
+      throw Error('Cannot input negative numbers');
+    }
+  }
+  #newFrame() {
+    if (this.#scenario(1) && this.#compareArrLength(3)) {
+      this.#incrementAndResetFrame()
+    }
+    if (this.#scenario(2) &&  this.#compareArrLength(2)) {
+      this.#incrementAndResetFrame()
     }
   }
 
-  #startOver() {
-    if (this._bowls[0] === this.#maxPins || this._bowls.length === 2) {
-      this._bowls = [];
+  #incrementFrame() {
+    this._frameCount++;
+  }
+  
+  #resetFrameCount() {
+    if (this._frameCount > this.#maxFrames) {
+      this._frameCount = 1;
+    }
+  }
+
+  #compareArrLength(number) {
+    return this._bowls.length === number;
+  }
+
+  #incrementAndResetFrame() {
+    this.#incrementFrame();
+    this._bowls = [];
+  }
+
+  #scenario(choice) {
+    switch(choice) {
+    case 1:
+      return this._frameCount === this.#maxFrames;
+    case 2:
+      return this._frameCount < this.#maxFrames;
     }
   }
 

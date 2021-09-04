@@ -54,13 +54,13 @@ describe('Game', () => {
       expect(game.score()).toBe(8);
     });
 
-    // it('calculates the correct score for a spare', () => {
-    //   game.roll(5);
-    //   game.roll(5);
-    //   game.roll(5);
-    //   game.roll(0);
+    it('calculates the correct score for a spare', () => {
+      game.roll(5);
+      game.roll(5);
+      game.roll(5);
+      game.roll(0);
 
-    //   expect(game.score()).toBe(20);
-    // });
+      expect(game.score()).toBe(20);
+    });
   });
 });

@@ -19,8 +19,13 @@ class Game {
 
     this.scoreCard.regularFrames().forEach((frame) => {
       total += frame.baseScore();
+      if (frame.isSpare()) total += this._spareBonus(frame);
     })
 
     return total;
+  }
+
+  _spareBonus(frame) {
+    if (frame.after()) return frame.after().firstRoll;
   }
 }

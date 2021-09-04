@@ -5,7 +5,7 @@ describe("Feature Test", () => {
   let frame;
 
   beforeEach(() => {
-    frame = new frame();
+    frame = new Frame(10);
   });
 
 });

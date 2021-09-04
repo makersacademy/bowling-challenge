@@ -8,6 +8,7 @@
           -ScoreCard scoreCard
           
           +addRoll() undefined
+          +setNumber() undefined
           +after() Frame
           +afterNext() Frame
           +baseScore() Int
@@ -31,7 +32,7 @@
       class Game{
         +score()
         +printScores()
-        
+
         -spareBonus()
         -strikeBonus()
       }

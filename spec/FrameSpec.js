@@ -1,10 +1,11 @@
 class ScoreCardDouble {
   constructor() {
-    this.frames = []
+    this.frames = [];
   }
 
   addFrame(frame) {
-    this.frames.push(frame)
+    this.frames.push(frame);
+    this.frames[this.frames.length - 1].setNumber(this.frames.length);
   }
 }
 
@@ -15,8 +16,16 @@ describe('Frame', () => {
   });
 
   it('has a scorecard', () => {
-    expect(frame.scoreCard).toBe(scoreCard)
-  })
+    expect(frame.scoreCard).toBe(scoreCard);
+  });
+
+  it('has a number', () => {
+    frame2 = new Frame(scoreCard);
+
+    expect(frame.number).toBe(1);
+    expect(frame2.number).toBe(2);
+    console.log(scoreCard)   
+  });
 
   it('starts with no rolls', () => {
     expect(frame.firstRoll).toBe(null)

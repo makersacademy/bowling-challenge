@@ -26,13 +26,17 @@ describe('Frame', () => {
 
     it('is expected to throw error if the sum of bowls is greater than 10', () => {
       frame.addBowl(5);
-      expect( () => { frame.addBowl(6) } ).toThrow(new Error('Sum of bowls for this frame cannot exceed 10'));
+      expect( () => { frame.addBowl(6) }).toThrow(new Error('Sum of bowls for this frame cannot exceed 10'));
     })
 
     it('is expected to throw error if adding more than two bowls', () => {
       frame.addBowl(5)
       frame.addBowl(2)
-      expect( () => { frame.addBowl(2) } ).toThrow(new Error('Limit of bowls for this frame has been reached'))
+      expect( () => { frame.addBowl(2) }).toThrow(new Error('Limit of bowls for this frame has been reached'))
+    })
+
+    it('cannot add negative numbers to the _bowls array', () => {
+      expect( () => { frame.addBowl(-5) }).toThrow(new Error('Cannot input negative numbers'));
     })
   })
 

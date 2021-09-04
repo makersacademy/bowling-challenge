@@ -9,6 +9,7 @@ class Frame {
   }
 
   addBowl(number) {
+    this.#noNegativeNums(number)
     this.#maxBowls();
     this.#sumTooHigh(number)
     this._bowls.push(number);
@@ -24,6 +25,11 @@ class Frame {
     if (this._bowls.length === 2) {
       throw Error('Limit of bowls for this frame has been reached');
     };
+  }
+  #noNegativeNums(number) {
+    if (number < 0) {
+      throw Error('Cannot input negative numbers')
+    }
   }
 
 }

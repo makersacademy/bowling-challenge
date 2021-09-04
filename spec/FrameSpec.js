@@ -13,4 +13,8 @@ describe('Frame', () => {
   it('has rolls remaining', () => {
     expect(frame.rollsRemaining).toEqual(2);
   })
+
+  it('has a frame score', () => {
+    expect(frame.frameScore).toEqual(0);
+  })
 })

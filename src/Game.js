@@ -14,8 +14,6 @@ class Game {
 
 	rollBall(value) {
 		this.currentFrame.roll(value);
-		// console.log(this.currentFrame.currentroll);
-		// console.log(this.currentFrame);
 		if (this.currentFrame.endFrame) {
 			this.nextFrame();
 		}
@@ -23,13 +21,11 @@ class Game {
 
 	score() {
 		for (let i = 0; i < this.frameNo - 1; i++) {
-			// console.log(this.frames[0]["frameType"])
 			if (this.isSpare(i)) {
 				this.currentscore += this.frames[i + 1]["rollOne"];
 			}
 			if (this.isStrike(i)) {
-				this.currentscore +=
-					this.frames[i + 1]["rollOne"] + this.frames[i + 1]["rollTwo"];
+				this.scoreStrike(i);
 			}
 			this.currentscore +=
 				this.frames[i]["rollOne"] + this.frames[i]["rollTwo"];
@@ -43,5 +39,15 @@ class Game {
 
 	isStrike(index) {
 		return this.frames[index]["frameType"] === "Strike";
+	}
+
+	scoreStrike(index) {
+		if (!(this.isStrike(index + 1)) ) {
+			this.currentscore +=
+				this.frames[index + 1]["rollOne"] + this.frames[index + 1]["rollTwo"];		
+		} else {
+			this.currentscore +=
+				this.frames[index + 1]["rollOne"] + this.frames[index + 2]["rollOne"];
+		}
 	}
 }

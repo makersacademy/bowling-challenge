@@ -67,5 +67,15 @@ describe("Game", () => {
 		expect(game.currentscore).toEqual(24);
 	})
 
+	it("can score multiple strikes in a row", () => {
+		game.rollBall(10);
+		game.rollBall(10);
+		game.rollBall(3)
+		game.rollBall(4)
+		game.score();
+		console
+		expect(game.currentscore).toEqual(47)
+	})
+
 
 });

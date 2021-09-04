@@ -17,7 +17,7 @@
           +isSpare() Bool
           +isStrike() Bool
 
-          -twoRolls() Bool
+          -hasTwoRolls() Bool
       }
 
       class ScoreCard{

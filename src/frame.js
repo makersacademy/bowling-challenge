@@ -28,6 +28,10 @@ class Frame {
     return score;
   }
 
+  hasTwoRolls() {
+    return this.secondRoll != null;
+  }
+
   isBonusFrame() {
     return this.number > 10;
   }

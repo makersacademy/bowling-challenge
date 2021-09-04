@@ -84,7 +84,15 @@ describe('Frame', () => {
     expect(firstFrame.isBonusFrame()).toBe(false);
     expect(lastRegularFrame.isBonusFrame()).toBe(false);
     expect(bonusFrame.isBonusFrame()).toBe(true);
-    
+
     console.log(scoreCard)
+  });
+
+  it('can tell how many rolls it has', () => {
+    frame.addRoll(1);
+    expect(frame.hasTwoRolls()).toBe(false);
+    
+    frame.addRoll(2);
+    expect(frame.hasTwoRolls()).toBe(true);
   });
 });

@@ -1,6 +1,13 @@
 class Game {
 
   constructor() {
-    this.framesCount = 1;
+    let frame = new Frame();
+
+    this.frames = [frame];
   } 
+
+  addFrame() {
+    this.framesCount ++;
+    this.frames.push(new Frame());
+  }
 }

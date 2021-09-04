@@ -54,4 +54,11 @@ describe('Frame', () => {
 
     expect(frame.after()).toBe(frame2);
   });
+
+  it('can access the frame after next', () => {
+    frame2 = new Frame(scoreCard);
+    frame3 = new Frame(scoreCard);
+
+    expect(frame.afterNext()).toBe(frame3);
+  });
 });

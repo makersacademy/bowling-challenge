@@ -15,6 +15,10 @@ class Frame {
     return this.scoreCard.getFrameNumber(this.number + 1);
   }
 
+  afterNext() {
+    return this.after().after();
+  }
+
   setNumber(num) {
     this.number = num;
   }

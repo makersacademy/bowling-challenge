@@ -30,8 +30,6 @@ describe('Game', () => {
     game.roll(10);
     game.roll(2);
 
-    console.log(game.scoreCard)
-
     expect(game.scoreCard.getFrameNumber(1).firstRoll).toEqual(3);
     expect(game.scoreCard.getFrameNumber(1).secondRoll).toEqual(5);
     expect(game.scoreCard.getFrameNumber(2).firstRoll).toEqual(4);
@@ -54,13 +52,44 @@ describe('Game', () => {
       expect(game.score()).toBe(8);
     });
 
-    it('calculates the correct score for a spare', () => {
+    it('calculates the correct score for a game containing a spare', () => {
       game.roll(5);
       game.roll(5);
       game.roll(5);
-      game.roll(0);
+      game.roll(2);
 
-      expect(game.score()).toBe(20);
+      expect(game.score()).toBe(22);
+    });
+
+    it('calculates the correct score for a game containing a strike', () => {
+      game.roll(10);
+      game.roll(5);
+      game.roll(2);
+
+      expect(game.score()).toBe(24);
+    });
+
+    it('calculates the correct score for a game containing consecutive strikes', () => {
+      game.roll(10);
+      game.roll(10);
+      game.roll(5);
+      game.roll(2);
+
+      expect(game.score()).toBe(49);
+    });
+
+    it('calculates the correct score for a perfect game', () => {
+      for (let i = 0; i < 12; i++) { game.roll(10) }
+
+      expect(game.score()).toBe(300);
+    });
+
+    it('calculates the correct score for an example game', () => {
+      let scores = [1,4,4,5,6,4,5,5,10,0,1,7,3,6,4,10,2,8,6]
+      
+      scores.forEach((score) => game.roll(score))
+
+      expect(game.score()).toBe(133);
     });
   });
 });

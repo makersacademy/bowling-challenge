@@ -17,19 +17,18 @@ describe("Game", () => {
 	});
 
 	it("can roll a single frame and then move to the next frame", () => {
-		spyOn(game, "nextFrame");
 		spyOn(game.currentFrame, "roll");
 		game.rollBall(5);
 		game.rollBall(4);
 		expect(game.currentFrame.roll).toHaveBeenCalledWith(5);
 		expect(game.currentFrame.roll).toHaveBeenCalledWith(4);
-		// expect(game.nextFrame).toHaveBeenCalled();
 	});
 
 	it("can roll multiple strikes", () => {
+		spyOn(game, "nextFrame");
 		game.rollBall(10);
 		game.rollBall(10);
-		game.rollBall(10);
-		expect(game.frameNo).toEqual(4);
+		game.rollBall(10);	
+		expect(game.nextFrame).toHaveBeenCalledTimes(3);
 	});
 });

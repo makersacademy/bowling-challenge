@@ -23,7 +23,7 @@ class Game {
 
 	score() {
 		for (let i = 0; i < this.frameNo - 1; i++) {
-			if (this.frames[i]["frameType"] === "Spare") {
+			if (this.isSpare(i)) {
 				this.currentscore += this.frames[i + 1]["rollOne"];
 			}
 			this.currentscore +=
@@ -32,7 +32,7 @@ class Game {
 		return this.currentscore;
 	}
 
-	// isSpare(index) {
-	// 	this.frames[i]["frameType"] === "Spare";
-	// }
+	isSpare(index) {
+		return this.frames[index]["frameType"] === "Spare"
+	}
 }

@@ -6,4 +6,8 @@ class ScoreCard {
   addFrame(frame) {
     this.frames.push(frame);
   }
+
+  getFrameNumber(num) {
+    return this.frames[num - 1];
+  }
 }

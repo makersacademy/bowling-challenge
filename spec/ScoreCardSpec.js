@@ -2,6 +2,7 @@ class FrameDouble {
   constructor() {
     this.firstRoll;
     this.secondRoll;
+    this.number;
   }
 }
 
@@ -33,5 +34,19 @@ describe('ScoreCard', () => {
     scoreCard.addFrame(strikeFrame);
 
     expect(scoreCard.frames).toEqual([boringFrame, spareFrame, strikeFrame]);
+  });
+
+  it('can find a frame by number', () => {
+    scoreCard.addFrame(boringFrame);
+    scoreCard.addFrame(spareFrame);
+    scoreCard.addFrame(strikeFrame);
+
+    boringFrame.number = 1;
+    spareFrame.number = 2;
+    strikeFrame.number = 3;
+
+    expect(scoreCard.getFrameNumber(1).number).toEqual(1);
+    expect(scoreCard.getFrameNumber(2).number).toEqual(2);
+    expect(scoreCard.getFrameNumber(3).number).toEqual(3);
   });
 });

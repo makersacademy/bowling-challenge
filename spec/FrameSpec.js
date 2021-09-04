@@ -7,6 +7,10 @@ class ScoreCardDouble {
     this.frames.push(frame);
     this.frames[this.frames.length - 1].setNumber(this.frames.length);
   }
+
+  getFrameNumber(num) {
+    return this.frames[num - 1];
+  }
 }
 
 describe('Frame', () => {
@@ -24,7 +28,6 @@ describe('Frame', () => {
 
     expect(frame.number).toBe(1);
     expect(frame2.number).toBe(2);
-    console.log(scoreCard)   
   });
 
   it('starts with no rolls', () => {
@@ -44,5 +47,11 @@ describe('Frame', () => {
 
     expect(frame.firstRoll).toBe(1);
     expect(frame.secondRoll).toBe(2);
+  });
+
+  it('can access the next frame', () => {
+    frame2 = new Frame(scoreCard);
+
+    expect(frame.after()).toBe(frame2);
   });
 });

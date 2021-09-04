@@ -24,9 +24,10 @@
           +array rolls
           +array scores
 
-          +firstTenFrames()
+          +firstTenFrames() array
+          +getFrameNumber() undefined
 
-          -createFrames()
+          -createFrames() undefined
       }
 
       class Game{

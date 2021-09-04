@@ -11,6 +11,10 @@ class Frame {
     this.firstRoll ? this.secondRoll = roll : this.firstRoll = roll
   }
 
+  after() {
+    return this.scoreCard.getFrameNumber(this.number + 1);
+  }
+
   setNumber(num) {
     this.number = num;
   }

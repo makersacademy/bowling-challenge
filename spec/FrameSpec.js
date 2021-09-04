@@ -1,8 +1,22 @@
-describe('Frame', () => {
+class ScoreCardDouble {
+  constructor() {
+    this.frames = []
+  }
 
+  addFrame(frame) {
+    this.frames.push(frame)
+  }
+}
+
+describe('Frame', () => {
   beforeEach(() => {
-    frame = new Frame();
+    scoreCard = new ScoreCardDouble;
+    frame = new Frame(scoreCard);
   });
+
+  it('has a scorecard', () => {
+    expect(frame.scoreCard).toBe(scoreCard)
+  })
 
   it('starts with no rolls', () => {
     expect(frame.firstRoll).toBe(null)

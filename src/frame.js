@@ -1,7 +1,8 @@
 class Frame {
-  constructor() {
+  constructor(scoreCard) {
     this.firstRoll = null;
     this.secondRoll = null;
+    this.scoreCard = scoreCard;
   }
 
   addRoll(roll) {

@@ -9,6 +9,12 @@ describe('Game', () => {
   it('starts with one frame', () => {
     console.log(game);
     console.log(game.frames);
-    expect(game.frames.length).toEqual(1);
+    expect(game.frames).toHaveSize(1);
+  })
+
+  describe('frames', () => {
+    it('has current roll', () => {
+      expect(game.frames['currentRoll']).toEqual(0)
+    })
   })
 })

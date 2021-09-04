@@ -1,6 +1,6 @@
 class Game {
 
   constructor() {
-    this.frames = [1];
+    this.frames = new Frame();
   }
 }

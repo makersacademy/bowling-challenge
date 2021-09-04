@@ -16,5 +16,13 @@ describe("Game", () => {
 		expect(game.frames.length).toEqual(1);
 	});
 
-  
+	it("can roll a single frame and then move to the next frame", () => {
+		spyOn(game, "nextFrame");
+		spyOn(game.currentFrame, "roll");
+		game.rollBall(5);
+		game.rollBall(4);
+		expect(game.currentFrame.roll).toHaveBeenCalledWith(5);
+		expect(game.currentFrame.roll).toHaveBeenCalledWith(4);
+		// expect(game.nextFrame).toHaveBeenCalled();
+	});
 });

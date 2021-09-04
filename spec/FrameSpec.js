@@ -20,4 +20,8 @@ describe("Frame", () => {
 		expect(frame.rollTwo).toEqual(2);
 	});
 
+	it("can roll a strike", () => {
+		frame.roll(10);
+		expect(frame.currentroll).toEqual(3);
+	});
 });

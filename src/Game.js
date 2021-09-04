@@ -3,6 +3,7 @@ class Game {
 		this.frameNo = 1;
 		this.frames = [];
 		this.currentFrame = frame;
+		this.currentscore = 0;
 	}
 
 	nextFrame(frame = new Frame()) {
@@ -15,8 +16,16 @@ class Game {
 		this.currentFrame.roll(value);
 		// console.log(this.currentFrame.currentroll);
 		// console.log(this.currentFrame);
-		if (this.currentFrame.currentroll === 3) {
+		if (this.currentFrame.endFrame) {
 			this.nextFrame();
 		}
+	}
+
+	score() {
+		for (let i = 0; i < this.frameNo - 1; i++) {
+			this.currentscore +=
+				this.frames[i]["rollOne"] + this.frames[i]["rollTwo"];
+		}
+		return this.currentscore;
 	}
 }

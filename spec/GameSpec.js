@@ -28,7 +28,18 @@ describe("Game", () => {
 		spyOn(game, "nextFrame");
 		game.rollBall(10);
 		game.rollBall(10);
-		game.rollBall(10);	
+		game.rollBall(10);
 		expect(game.nextFrame).toHaveBeenCalledTimes(3);
 	});
+
+	it("can score a partial non-strike/non-spare game", () => {
+		game.rollBall(5);
+		game.rollBall(4);
+		game.rollBall(3);
+		game.rollBall(2);
+		game.score();
+		expect(game.currentscore).toEqual(14);
+	});
+
+	
 });

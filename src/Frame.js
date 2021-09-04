@@ -3,6 +3,7 @@ class Frame {
 		this.currentroll = 1;
 		this.rollOne = 0;
 		this.rollTwo = 0;
+    this.endFrame = false;
 	}
 
 	roll(value) {
@@ -11,13 +12,13 @@ class Frame {
 			this.incrementRoll();
 		} else if (this.currentroll === 2) {
 			this.rollTwo = value;
-			this.currentroll++;
+			this.endFrame = true;
 		}
 	}
 
 	incrementRoll() {
 		if (this.isStrike()) {
-			this.currentroll += 2;
+			this.endFrame = true;
 		} else {
 			this.currentroll++;
 		}

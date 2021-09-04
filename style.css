@@ -1,0 +1,21 @@
+header {
+  font-size: 25px;
+}
+body {
+  padding-top: 15%;
+  text-align: center;
+  align-items: center;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+  background-image: url("background.jpg");
+
+}
+
+.grid-container {
+
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  align-items: center;
+  justify-content: center;
+}

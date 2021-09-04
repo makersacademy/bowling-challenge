@@ -25,4 +25,11 @@ describe("Game", () => {
 		expect(game.currentFrame.roll).toHaveBeenCalledWith(4);
 		// expect(game.nextFrame).toHaveBeenCalled();
 	});
+
+	it("can roll multiple strikes", () => {
+		game.rollBall(10);
+		game.rollBall(10);
+		game.rollBall(10);
+		expect(game.frameNo).toEqual(4);
+	});
 });

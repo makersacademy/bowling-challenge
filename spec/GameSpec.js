@@ -41,5 +41,12 @@ describe("Game", () => {
 		expect(game.currentscore).toEqual(14);
 	});
 
-	
+	it("can score a full non-strike/non-spare game", () => {
+		for (let i = 0; i < 10; i++){
+			game.rollBall(5)
+		}
+		game.score()
+		expect(game.currentscore).toEqual(50)
+	})
+
 });

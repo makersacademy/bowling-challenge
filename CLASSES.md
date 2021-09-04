@@ -12,7 +12,7 @@
           +after() Frame
           +afterNext() Frame
           +baseScore() Int
-          +firstTen() Bool
+          +isBonusFrame() Bool
           +isBoring() Bool
           +isSpare() Bool
           +isStrike() Bool

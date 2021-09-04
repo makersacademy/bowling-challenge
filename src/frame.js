@@ -21,11 +21,15 @@ class Frame {
 
   baseScore() {
     let score = 0;
-    
+
     if (this.firstRoll) score += this.firstRoll;
     if (this.secondRoll) score += this.secondRoll;
 
     return score;
+  }
+
+  isBonusFrame() {
+    return this.number > 10;
   }
 
   setNumber(num) {

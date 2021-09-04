@@ -36,6 +36,18 @@ class Frame {
     return this.number > 10;
   }
 
+  isBoring() {
+    return this.baseScore() < 10;
+  }
+
+  isSpare() {
+    return this.hasTwoRolls() && this.baseScore() == 10;
+  }
+
+  isStrike() {
+    return !this.hasTwoRolls() && this.baseScore() == 10;
+  }
+
   setNumber(num) {
     this.number = num;
   }

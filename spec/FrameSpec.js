@@ -95,4 +95,30 @@ describe('Frame', () => {
     frame.addRoll(2);
     expect(frame.hasTwoRolls()).toBe(true);
   });
+
+  it('can tell if it is a boring frame', () => {
+    frame.addRoll(5);
+    frame.addRoll(4);
+
+    expect(frame.isBoring()).toBe(true);
+    expect(frame.isSpare()).toBe(false);
+    expect(frame.isStrike()).toBe(false);    
+  });
+
+  it('can tell if it is a spare', () => {
+    frame.addRoll(2);
+    frame.addRoll(8);
+
+    expect(frame.isBoring()).toBe(false);
+    expect(frame.isSpare()).toBe(true);
+    expect(frame.isStrike()).toBe(false);    
+  });
+
+  it('can tell if it is a strike', () => {
+    frame.addRoll(10);
+
+    expect(frame.isBoring()).toBe(false);
+    expect(frame.isSpare()).toBe(false);
+    expect(frame.isStrike()).toBe(true);    
+  });
 });

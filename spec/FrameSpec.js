@@ -61,4 +61,14 @@ describe('Frame', () => {
 
     expect(frame.afterNext()).toBe(frame3);
   });
+
+  it('calculates the base score', () => {
+    expect(frame.baseScore()).toBe(0);
+
+    frame.addRoll(2);
+    expect(frame.baseScore()).toBe(2);
+
+    frame.addRoll(3);
+    expect(frame.baseScore()).toBe(5);
+  });
 });

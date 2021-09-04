@@ -23,8 +23,13 @@ class Game {
 
 	score() {
 		for (let i = 0; i < this.frameNo - 1; i++) {
+			// console.log(this.frames[0]["frameType"])
 			if (this.isSpare(i)) {
 				this.currentscore += this.frames[i + 1]["rollOne"];
+			}
+			if (this.isStrike(i)) {
+				this.currentscore +=
+					this.frames[i + 1]["rollOne"] + this.frames[i + 1]["rollTwo"];
 			}
 			this.currentscore +=
 				this.frames[i]["rollOne"] + this.frames[i]["rollTwo"];
@@ -33,6 +38,10 @@ class Game {
 	}
 
 	isSpare(index) {
-		return this.frames[index]["frameType"] === "Spare"
+		return this.frames[index]["frameType"] === "Spare";
+	}
+
+	isStrike(index) {
+		return this.frames[index]["frameType"] === "Strike";
 	}
 }

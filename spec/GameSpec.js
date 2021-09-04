@@ -59,5 +59,13 @@ describe("Game", () => {
 		expect(game.currentscore).toEqual(19);
 	});
 
-	
+	it("can score a strike", () => {
+		game.rollBall(10);
+		game.rollBall(3);
+		game.rollBall(4);
+		game.score();
+		expect(game.currentscore).toEqual(24);
+	})
+
+
 });

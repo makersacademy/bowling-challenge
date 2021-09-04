@@ -4,6 +4,7 @@ class Frame {
 		this.rollOne = 0;
 		this.rollTwo = 0;
     this.endFrame = false;
+    this.frameType = "Normal"
 	}
 
 	roll(value) {
@@ -13,11 +14,15 @@ class Frame {
 		} else if (this.currentroll === 2) {
 			this.rollTwo = value;
 			this.endFrame = true;
+      if (this.isSpare()) {
+        this.frameType = "Spare"
+      }
 		}
 	}
 
 	incrementRoll() {
 		if (this.isStrike()) {
+      this.frameType = "Strike"
 			this.endFrame = true;
 		} else {
 			this.currentroll++;

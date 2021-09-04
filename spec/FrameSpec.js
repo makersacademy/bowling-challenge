@@ -22,19 +22,20 @@ describe("Frame", () => {
 
 	it("can understand a strike", () => {
 		frame.roll(10);
-		expect(frame.isStrike()).toEqual(true);
+		expect(frame.frameType).toEqual("Strike");
 		expect(frame.endFrame).toEqual(true);
 	});
 
 	it("understands a spare", () => {
 		frame.roll(2);
 		frame.roll(8);
-		expect(frame.isSpare()).toEqual(true);
+		expect(frame.frameType).toEqual("Spare");
 	});
 
 	it("understands the difference between a strike and a spare", () => {
 		frame.roll(10);
 		expect(frame.isSpare()).toEqual(false);
 		expect(frame.isStrike()).toEqual(true);
+    expect(frame.frameType).toEqual("Strike")
 	});
 });

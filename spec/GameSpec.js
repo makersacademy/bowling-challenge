@@ -42,11 +42,22 @@ describe("Game", () => {
 	});
 
 	it("can score a full non-strike/non-spare game", () => {
-		for (let i = 0; i < 10; i++){
-			game.rollBall(5)
+		for (let i = 0; i < 10; i++) {
+			game.rollBall(5);
+			game.rollBall(0);
 		}
-		game.score()
-		expect(game.currentscore).toEqual(50)
-	})
+		game.score();
+		expect(game.currentscore).toEqual(50);
+	});
 
+	it("can score a spare", () => {
+		game.rollBall(5);
+		game.rollBall(5);
+		game.rollBall(3);
+		game.rollBall(3);
+		game.score();
+		expect(game.currentscore).toEqual(19);
+	});
+
+	
 });

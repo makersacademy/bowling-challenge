@@ -1,38 +1,38 @@
 ```mermaid 
  classDiagram
       class Frame{
-          +int first_roll
-          +int second_roll
+          +int firstRoll
+          +int secondRoll
           +int number
-          -Scoresheet scoresheet
+          -ScoreCard scoreCard
           
           +after() Frame
-          +after_next() Frame
-          +base_score() Int
-          +first_ten() Bool
-          +boring() Bool
-          +spare() Bool
-          +strike() Bool
+          +afterNext() Frame
+          +baseScore() Int
+          +firstTen() Bool
+          +isBoring() Bool
+          +isSpare() Bool
+          +isStrike() Bool
 
-          -two_rolls() Bool
+          -twoRolls() Bool
       }
 
-      class Scorecard{
+      class ScoreCard{
           +array rolls
           +array scores
 
-          +first_ten_frames()
-          -create_frames()
+          +firstTenFrames()
+          -createFrames()
       }
 
       class Game{
         +score()
-        +print_scores()
-        -spare_bonus()
-        -strike_bonus()
+        +printScores()
+        -spareBonus()
+        -strikeBonus()
       }
 
-      Frame <|--|> Scorecard
+      Frame <|--|> ScoreCard
       Game <|-- Frame
-      Game <|-- Scorecard
+      Game <|-- ScoreCard
 ```

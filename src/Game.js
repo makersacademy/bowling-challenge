@@ -47,25 +47,29 @@ class Game {
   }
 
   updateFrameTotals() {
-    // addAnyBonuses
+    if ( this.frames.length >= 1 ) { this._addAnyBonuses()}
     this.recalculateFrameTotals();
   }
 
   recalculateFrameTotals() {
     this.currentFrame.calcFrameTotal() && this.currentFrame.setFrameTotal()
+    // update for last frame
+    // update for two frames ago
+  }
+
+  _addAnyBonuses(){
+    if (this._isStrike()) { this._addStrikeBonus() }
+    // add spare bonus if spare
+  }
+
+  _isNotFirstFrame() {
+    this.frames.length >= 1 ? true : false
   }
 
   _completeFrame(frame = new Frame()) {
     this.updateFrameTotals();
     this.frames.push(this.currentFrame);
     this.currentFrame = frame
-  }
-
-  _isFrameIncomplete() {
-    if (this.currentFrame.rolls == []) {return false}
-    else if (this.currentFrame.rolls.length == 1 ) {return true}
-    else if ( this.currentFrame.rolls[0] == 10 && this.frames.length == 9 ) { return true }
-    else if ( this.currentFrame.rolls[0] + this.currentFrame.rolls[1] == 10 && this.frames.length == 9) { return true }
   }
 
   _isFrameComplete() {
@@ -75,18 +79,48 @@ class Game {
     else if (this.currentFrame.rolls.length == 2 ) {return true}
   }
 
+  _isFrameIncomplete() {
+    if (this.currentFrame.rolls == []) {return false}
+    else if (this.currentFrame.rolls.length == 1 ) {return true}
+    else if ( this.currentFrame.rolls[0] == 10 && this.frames.length == 9 ) { return true }
+    else if ( this.currentFrame.rolls[0] + this.currentFrame.rolls[1] == 10 && this.frames.length == 9) { return true }
+  }
+
+  _isDoubleStrike() {
+
+  }
+
+  _isStrike() {
+    if (this.frames.slice(-1)[0].rolls[0] == 10) { return true }
+  }
+
+  _isSpare() {
+
+  }
+
+  _doubleStrikeBonus() {
+
+  }
+
+  _addStrikeBonus() {
+    //  if doubleStrike
+    // doubleStrikeBonus()
+    let strikeBonus = this.currentFrame.rolls.slice(0, 1).reduce((a, b) => a + b, 0)
+    this.frames.slice(-1)[0].addBonusScore(strikeBonus)
+  }
+
+  _addSpareBonus() {
+
+  }
 }
 
-new_game = new Game;
-new_game.roll(5)
-console.log(new_game.currentFrame.rolls)
+// new_game = new Game;
+// new_game.roll(10)
+// // console.log(new_game.currentFrame.rolls)
 
 
-new_game.roll(5)
-console.log(new_game._isFrameComplete())
-console.log(new_game.currentFrame.rolls)
-
-new_game.roll(5)
-new_game.roll(5)
-console.log(new_game.frames)
-console.log(new_game.scoreTotal())
+// new_game.roll(10)
+// new_game.roll(10)
+// new_game.roll(10)
+// console.log(new_game.frames)
+// // console.log(new_game.scoreTotal())

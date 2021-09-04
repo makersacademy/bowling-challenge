@@ -4,5 +4,8 @@ describe('Frame', () => {
     frame = new Frame();
   });
 
-  it('', () => {});
+  it('starts with no rolls', () => {
+    expect(frame.firstRoll).toBe(null)
+    expect(frame.secondRoll).toBe(null)
+  });
 });

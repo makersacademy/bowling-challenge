@@ -177,7 +177,7 @@ describe("Scoring", () => {
         expect(scoring.calculateScore([frame10])).toEqual([18]);
       });
 
-      it("calcultes last frame triple strike", () => {
+      it("calculates last frame triple strike", () => {
         frame10.rollOne.and.returnValue(10);
         frame10.rollTwo.and.returnValue(10);
         frame10.rollThree.and.returnValue(10);

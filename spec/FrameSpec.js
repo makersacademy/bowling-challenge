@@ -36,4 +36,12 @@ describe('Frame', () => {
       expect(frame.isStrike()).toEqual(true);
     })
   })
+
+  describe('isSplit', () => {
+    it('returns true if last roll is split condition', () => {
+      frame.addRoll(5);
+      frame.addRoll(5);
+      expect(frame.isSplit()).toEqual(true);
+    })
+  })
 })

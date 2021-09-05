@@ -14,4 +14,8 @@ class Frame {
   isStrike() {
     return this.currentRoll == 1 && this.frameScore == 10;
   }
+
+  isSplit() {
+    return this.currentRoll == 2 && this.frameScore == 10;
+  }
 }

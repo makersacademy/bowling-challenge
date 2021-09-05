@@ -33,7 +33,7 @@ class Game {
 	}
 
 	score() {
-		this.currentscore = 0
+		this.currentscore = 0;
 		for (let i = 0; i < this.frameNo - 1; i++) {
 			if (i === 9) {
 				this.currentscore +=
@@ -41,7 +41,7 @@ class Game {
 					this.frames[i]["rollTwo"] +
 					this.frames[i]["rollThree"];
 			} else {
-				if (i < this.frameNo) {
+				if (i < this.frameNo - 2) {
 					if (this.isSpare(i)) {
 						this.currentscore += this.frames[i + 1]["rollOne"];
 					}

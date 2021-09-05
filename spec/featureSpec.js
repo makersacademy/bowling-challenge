@@ -29,4 +29,29 @@ describe("Feature Test", () => {
     game.bowl(6);
     game.scorecard();
   });
+
+  it("bowls a perfect game", () => {
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    game.bowl(10);
+    game.scorecard();
+  });
+
+  it("bowls an incomplete game", () => {
+    game.bowl(3);
+    game.bowl(7);
+    game.bowl(2);
+    game.bowl(4);
+    game.bowl(10);
+    game.scorecard();
+  });
 });

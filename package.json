@@ -1,27 +1,28 @@
 {
-  "name": "bowling-challenge",
-  "version": "1.0.0",
-  "description": "Bowling Challenge\r =================",
-  "main": ".eslintrc.js",
-  "directories": {
-    "doc": "docs",
-    "lib": "lib"
-  },
-  "dependencies": {
-    "eslint": "^7.32.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "/spec/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ashtroboy79/bowling-challenge.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ashtroboy79/bowling-challenge/issues"
-  },
-  "homepage": "https://github.com/ashtroboy79/bowling-challenge#readme"
+	"name": "bowling-challenge",
+	"version": "1.0.0",
+	"description": "Bowling Challenge\r =================",
+	"main": ".eslintrc.js",
+	"directories": {
+		"doc": "docs",
+		"lib": "lib"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"eslint": "^7.32.0",
+		"eslint-config-google": "^0.14.0"
+	},
+	"scripts": {
+		"test": "/spec/*.*"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ashtroboy79/bowling-challenge.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ashtroboy79/bowling-challenge/issues"
+	},
+	"homepage": "https://github.com/ashtroboy79/bowling-challenge#readme"
 }

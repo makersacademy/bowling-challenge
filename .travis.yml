@@ -7,4 +7,4 @@ install:
   - npm install
 
 script:
-  - make test
+  - npm test

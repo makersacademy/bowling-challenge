@@ -1,32 +1,16 @@
 
 Bowling Challenge
 =================
-
-* 
-* 
-* 
-* 
-
 ## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
+*  So approaching this challenge I had two options, the first was to translate my existing ruby version of the challenge into javascript, which would be quicker in someways, however I had hit into a blocker on the spare/strike scoring on the final frame. In addition to it not being fully complete, I dont feel it was suitably encapsulated as it was written as a single class, and while my initial intention with the ruby version had been to get the code running and then extract it out into seperate classes. So in addition to translating the code, I would then need to extract classes , which would probably be very heavily dependent on each other. 
 
-### Optional Extras
+*   As such I decided to start from the ground up in Javascript, I had some of the previous planing to help me, however even with the previous planning and experience from last weekend, I still had a difficult time getting this to function. I had some issues with dependancy injection, and had to use google and w3schools tutorials as well as some trial and error. I knew from the start that I wanted to have a seperate final frame, and being able to use inheritence was quite nice. I still struggled with getting the logic right, due to my decision on how I would do the scoring, by looking forward rather than back, I choose this method as it was easier for me to visualise. I was finally able to get program to score a perfect game, I also added a test based on the example located at (images/example_ten_pin_scoring.png).
 
-In any order you like:
+*   Testing was definitely a bit of a challenge, and I had some issues with how to spy on objects, definitely need to spend more time looking up how to stub method returns, which is something I'm kinda understanding in RSpec. While most of the tests feel quite tight, I wasn't sure on the exact view on having multiple expectations in a single test. Finally while I liked the peace of mind that the final test in GameSpec.js gave me as it was based on the example, it is very long as multiple balls need to be "rolled". 
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests. - Am still trying to get this working.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform. - Think i managed to get this installed and working when i run the npx eslint src/"myfile".js commands I get error related to class names not being defined and or used. Not 100% sure if it is installed correctly/ 
+* The interface is incredibly basic and doesnt quite function how i would have liked it to do, as I wanted the user to be able to enter the entire frame in different input boxes and then with a single click to "roll" them, however it caused issues with how the values were stored and resulted in a few NaN results when the score button was clicked. However even before this I encountered the issue of the results not being calculated as when I was getting the value from the page it was as a string and needed parsing into an integer. I also played around with getting a 3rd ball input field to appear when the final frame was reached, which i did manage to get working, however as multiple input fields were causing me issues, this functionality got removed. 
 
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
+* As for the optional extras, I have not used jQuery, as by the time I got the basic interface done I was very tired. I am trying to get Travis CI to run my tests, but am struggling to find the correct setup for the .yml file, and the Travis CI keeps failing to complete, this is even with using 'npm init' to make the package.json file for me, I'm guessing it boils down not knowing exactly how to direct it to my test suite.  Lastly ESLint, took a few tries to setup, and I decided to use the google styling guide, which raised a few errors, and most were able to be automatically fixed, though those that remain either reference "Missing JSDoc comment" or are issues with the class name being defined and never used. Finally there are a few styling conflicts with Prettier. 

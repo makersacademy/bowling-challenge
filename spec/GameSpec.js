@@ -1,119 +1,119 @@
-describe("Game", () => {
-	let game;
-	let frame;
-	beforeEach(() => {
-		game = new Game();
-	});
+describe('Game', () => {
+  let game;
+  let frame;
+  beforeEach(() => {
+    game = new Game();
+  });
 
-	it("initializes an empty game", () => {
-		expect(game.frameNo).toEqual(1);
-		expect(game.frames).toEqual([]);
-	});
+  it('initializes an empty game', () => {
+    expect(game.frameNo).toEqual(1);
+    expect(game.frames).toEqual([]);
+  });
 
-	it("can create a new frame", () => {
-		game.nextFrame();
-		expect(game.frameNo).toEqual(2);
-		expect(game.frames.length).toEqual(1);
-	});
+  it('can create a new frame', () => {
+    game.nextFrame();
+    expect(game.frameNo).toEqual(2);
+    expect(game.frames.length).toEqual(1);
+  });
 
-	it("can roll a single frame and then move to the next frame", () => {
-		spyOn(game.currentFrame, "roll");
-		game.rollBall(5);
-		game.rollBall(4);
-		expect(game.currentFrame.roll).toHaveBeenCalledWith(5);
-		expect(game.currentFrame.roll).toHaveBeenCalledWith(4);
-	});
+  it('can roll a single frame and then move to the next frame', () => {
+    spyOn(game.currentFrame, 'roll');
+    game.rollBall(5);
+    game.rollBall(4);
+    expect(game.currentFrame.roll).toHaveBeenCalledWith(5);
+    expect(game.currentFrame.roll).toHaveBeenCalledWith(4);
+  });
 
-	it("can roll multiple strikes", () => {
-		spyOn(game, "nextFrame");
-		game.rollBall(10);
-		game.rollBall(10);
-		game.rollBall(10);
-		expect(game.nextFrame).toHaveBeenCalledTimes(3);
-	});
+  it('can roll multiple strikes', () => {
+    spyOn(game, 'nextFrame');
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(10);
+    expect(game.nextFrame).toHaveBeenCalledTimes(3);
+  });
 
-	it("can score a partial non-strike/non-spare game", () => {
-		game.rollBall(5);
-		game.rollBall(4);
-		game.rollBall(3);
-		game.rollBall(2);
-		game.score();
-		expect(game.currentscore).toEqual(14);
-	});
+  it('can score a partial non-strike/non-spare game', () => {
+    game.rollBall(5);
+    game.rollBall(4);
+    game.rollBall(3);
+    game.rollBall(2);
+    game.score();
+    expect(game.currentscore).toEqual(14);
+  });
 
-	it("can score a full non-strike/non-spare game", () => {
-		for (let i = 0; i < 10; i++) {
-			game.rollBall(5);
-			game.rollBall(0);
-		}
-		game.score();
-		expect(game.currentscore).toEqual(50);
-	});
+  it('can score a full non-strike/non-spare game', () => {
+    for (let i = 0; i < 10; i++) {
+      game.rollBall(5);
+      game.rollBall(0);
+    }
+    game.score();
+    expect(game.currentscore).toEqual(50);
+  });
 
-	it("can score a spare", () => {
-		game.rollBall(5);
-		game.rollBall(5);
-		game.rollBall(3);
-		game.rollBall(3);
-		game.score();
-		expect(game.currentscore).toEqual(19);
-	});
+  it('can score a spare', () => {
+    game.rollBall(5);
+    game.rollBall(5);
+    game.rollBall(3);
+    game.rollBall(3);
+    game.score();
+    expect(game.currentscore).toEqual(19);
+  });
 
-	it("can score a strike", () => {
-		game.rollBall(10);
-		game.rollBall(3);
-		game.rollBall(4);
-		game.score();
-		expect(game.currentscore).toEqual(24);
-	});
+  it('can score a strike', () => {
+    game.rollBall(10);
+    game.rollBall(3);
+    game.rollBall(4);
+    game.score();
+    expect(game.currentscore).toEqual(24);
+  });
 
-	it("can score multiple strikes in a row", () => {
-		game.rollBall(10);
-		game.rollBall(10);
-		game.rollBall(3);
-		game.rollBall(4);
-		game.score();
-		expect(game.currentscore).toEqual(47);
-	});
+  it('can score multiple strikes in a row', () => {
+    game.rollBall(10);
+    game.rollBall(10);
+    game.rollBall(3);
+    game.rollBall(4);
+    game.score();
+    expect(game.currentscore).toEqual(47);
+  });
 
-	it("can create the final frame", () => {
-		spyOn(game, "finalFrame");
-		for (let i = 0; i < 9; i++) {
-			game.rollBall(5);
-			game.rollBall(4);
-		}
-		expect(game.finalFrame).toHaveBeenCalled();
-	});
+  it('can create the final frame', () => {
+    spyOn(game, 'finalFrame');
+    for (let i = 0; i < 9; i++) {
+      game.rollBall(5);
+      game.rollBall(4);
+    }
+    expect(game.finalFrame).toHaveBeenCalled();
+  });
 
-	it("can score a perfect game", () => {
-		for (let i = 0; i < 12; i++) {
-			game.rollBall(10);
-		}
-		game.score();
-		expect(game.currentscore).toEqual(300);
-	});
+  it('can score a perfect game', () => {
+    for (let i = 0; i < 12; i++) {
+      game.rollBall(10);
+    }
+    game.score();
+    expect(game.currentscore).toEqual(300);
+  });
 
-	it("score the example game from the images folder", () => {
-		game.rollBall(1)
-		game.rollBall(4)
-		game.rollBall(4)
-		game.rollBall(5)
-		game.rollBall(6)
-		game.rollBall(4)
-		game.rollBall(5)
-		game.rollBall(5)
-		game.rollBall(10)
-		game.rollBall(0)
-		game.rollBall(1)
-		game.rollBall(7)
-		game.rollBall(3)
-		game.rollBall(6)
-		game.rollBall(4)
-		game.rollBall(10)
-		game.rollBall(2)
-		game.rollBall(8)
-		game.rollBall(6)
-		game.score()
-		expect(game.currentscore).toEqual(133);
-	})
+  it('score the example game from the images folder', () => {
+    game.rollBall(1);
+    game.rollBall(4);
+    game.rollBall(4);
+    game.rollBall(5);
+    game.rollBall(6);
+    game.rollBall(4);
+    game.rollBall(5);
+    game.rollBall(5);
+    game.rollBall(10);
+    game.rollBall(0);
+    game.rollBall(1);
+    game.rollBall(7);
+    game.rollBall(3);
+    game.rollBall(6);
+    game.rollBall(4);
+    game.rollBall(10);
+    game.rollBall(2);
+    game.rollBall(8);
+    game.rollBall(6);
+    game.score();
+    expect(game.currentscore).toEqual(133);
+  });
 });

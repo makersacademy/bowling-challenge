@@ -12,11 +12,16 @@ class Frame {
   }
 
   after() {
-    return this.scoreCard.getFrameNumber(this.number + 1);
+    let after = this.scoreCard.getFrameNumber(this.number + 1)
+    
+    return after ? after : null
   }
 
   afterNext() {
-    return this.after().after();
+    let after = this.after()
+    let afterNext = this.after() ? this.after().after() : null
+
+    return afterNext;
   }
 
   baseScore() {

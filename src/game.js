@@ -2,15 +2,27 @@ class Game {
   constructor(scoreCard) {
     this.scoreCard = scoreCard;
     this.turn = "first";
+    this.currentFrame = 1;
+    this.pinsRemaining = 10;
   }
 
   roll(pinsDown) {
     if (this.turn == "first") {
-      if (pinsDown < 10) this.turn = "second";
+      if (pinsDown < 10) {
+        this.pinsRemaining = 10 - pinsDown;
+        this.turn = "second";
+      } else {
+        this.pinsRemaining = 10;
+        this.currentFrame ++;
+      }
+
       new Frame(this.scoreCard);
     } else {
       this.turn = "first";
+      this.pinsRemaining = 10;
+      this.currentFrame ++;
     }
+
     this.scoreCard.lastFrame().addRoll(pinsDown);
   }
 
@@ -27,14 +39,19 @@ class Game {
   }
 
   _spareBonus(frame) {
-    if (frame.after()) return frame.after().firstRoll;
+    return frame.after() ? frame.after().firstRoll : 0
   }
 
   _strikeBonus(frame) {
     let bonus = 0;
-    if (frame.after()) bonus += frame.after().baseScore();
-    if (frame.after().isStrike() && frame.afterNext()) {
-      bonus += frame.afterNext().firstRoll;
+    if (frame.after()) {
+      if (frame.after()) bonus += frame.after().baseScore();
+    }
+
+    if (frame.afterNext()) {
+      if (frame.after().isStrike()) {
+        bonus += frame.afterNext().firstRoll;
+      }
     }
 
     return bonus;

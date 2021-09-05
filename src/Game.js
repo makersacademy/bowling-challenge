@@ -33,6 +33,7 @@ class Game {
 	}
 
 	score() {
+		this.currentscore = 0
 		for (let i = 0; i < this.frameNo - 1; i++) {
 			if (i === 9) {
 				this.currentscore +=

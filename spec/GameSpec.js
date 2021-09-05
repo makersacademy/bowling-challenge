@@ -89,7 +89,6 @@ describe("Game", () => {
 		for (let i = 0; i < 12; i++) {
 			game.rollBall(10);
 		}
-		console.log(game.frames)
 		game.score();
 		expect(game.currentscore).toEqual(300);
 	});

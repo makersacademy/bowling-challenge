@@ -9,11 +9,13 @@ class Game {
   } 
 
   roll(pins) {
-    for (let i = 0; i < this.frames.length; i++) {
-      this.frames[i].addRoll(pins);
+    if (this.isGameOver() !== true) {
+      for (let i = 0; i < this.frames.length; i++) {
+        this.frames[i].addRoll(pins);
+      }
+      this.checkFrameOver();
+      this.addFrame();
     }
-    this.checkFrameOver();
-    this.addFrame();
   }
 
   addFrame() {
@@ -33,5 +35,9 @@ class Game {
         this.frames[i].closed = true;
       }
     }
+  }
+
+  isGameOver() {
+    return this.frameScores.length === 10;
   }
 }

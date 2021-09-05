@@ -59,4 +59,12 @@ describe('Game', () => {
       expect(game.score).toEqual(1);
     })
   })
+
+  it('throws an error if trying to add rolls after game over', () => {
+    for (let i = 0; i < 12; i++) {
+      game.roll(10);
+    }
+    game.roll(2);
+    expect(game.score).toEqual(300);
+  })
 })

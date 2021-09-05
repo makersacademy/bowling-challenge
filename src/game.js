@@ -10,6 +10,11 @@ class Game {
     this._isGameOver();
   } 
 
+  frameScore() {
+    let score = new Score();
+    return score.currentFrame(this.frames[this.frames.length - 1]);
+  }
+
   _getPlayerRolls(roll_one, roll_two) {
     let current_frame = this.frames[this.frames.length - 1]
     current_frame.firstRoll(roll_one);

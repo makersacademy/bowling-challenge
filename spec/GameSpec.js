@@ -38,5 +38,13 @@ describe('Game', () => {
       game.roll(3);
       expect(game.frames[0].closed).toEqual(true);
     })
+
+    it('adds a frame score only once', () => {
+      game.roll(1);
+      game.roll(0);
+      game.roll(0);
+      game.roll(0);
+      expect(game.score).toEqual(1);
+    })
   })
 })

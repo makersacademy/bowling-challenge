@@ -1,54 +1,68 @@
-function showScore(game, element) {
+const game = new Game(new ScoreCard);
+
+function showScore() {
   document.querySelector('#score').innerHTML = `Score: ${game.score()}`;
 }
 
-function showFrame(game, element) {
+function showFrame() {
   document.querySelector('#frame').innerHTML = `Frame: ${game.currentFrame}`;
 }
 
-function showTurn(game, element) {
-  document.querySelector('#turn').innerHTML = `${game.turn} roll`;
+function showTurn() {
+  document.querySelector('#turn').innerHTML = `${capitalise(game.turn)} roll:`;
 }
 
-function generateButtons(game) {
+function capitalise(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+function createButton(num) {
+  rollButton = document.createElement('button');
+  rollButton.setAttribute('class', 'rollButton');
+  rollButton.innerHTML = `${num}`;
+  rollButton.addEventListener('click', () => {
+    game.roll(num);
+    updateInfo();
+  })
+
+  return rollButton;
+}
+
+function generateButtons() {
   document.querySelectorAll('.rollButton').forEach((b) => {
-    document.querySelector('body').removeChild(b)
+    document.querySelector('#buttons').removeChild(b)
   })
 
   for (let i = 0; i <= game.pinsRemaining; i++) {
-    rollButton = document.createElement('button');
-    rollButton.setAttribute('class', 'rollButton');
-    rollButton.innerHTML = `${i}`;
-    rollButton.addEventListener('click', () => {
-      game.roll(i);
-      updateInfo(game);
-    })
+    rollButton = createButton(i);
 
-    document.querySelector('body').appendChild(rollButton);
+    document.querySelector('#buttons').appendChild(rollButton);
   }
 }
 
-function updateInfo(game) {
-  showFrame(game);
-  showTurn(game);
-  showScore(game);
-  generateButtons(game);
+function updateInfo() {
+  showScore();
+  showFrame();
+  showTurn();
+  generateButtons();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const game = new Game(new ScoreCard);
-
-  frame = document.createElement("h1");
-  frame.setAttribute('id', 'frame');
-  document.querySelector('body').appendChild(frame);
-
-  turn = document.createElement("h1");
-  turn.setAttribute('id', 'turn');
-  document.querySelector('body').appendChild(turn);
-
-  score = document.createElement("h1");
+  score = document.createElement("div");
   score.setAttribute('id', 'score');
   document.querySelector('body').appendChild(score);
 
-  updateInfo(game);
+  frame = document.createElement("div");
+  frame.setAttribute('id', 'frame');
+  document.querySelector('body').appendChild(frame);
+
+  turn = document.createElement("div");
+  turn.setAttribute('id', 'turn');
+  document.querySelector('body').appendChild(turn);
+
+  buttons = document.createElement("div");
+  buttons.setAttribute('id', 'buttons');
+  document.querySelector('body').appendChild(buttons);
+
+  updateInfo();
 });

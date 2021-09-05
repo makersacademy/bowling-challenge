@@ -77,5 +77,7 @@ describe("Game", () => {
 		expect(game.currentscore).toEqual(47)
 	})
 
+	it('calls')
+
 
 });

@@ -9,7 +9,7 @@ class Frame {
 
   addRoll(pins) {
     this.currentRoll++;
-    this.frameScore += pins;
+    this.frameScore += parseFloat(pins);
     this.updateRollsRemaining();
   }
   

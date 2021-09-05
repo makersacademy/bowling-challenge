@@ -4,22 +4,56 @@
     <title>Bowling Score Keeper</title>
   </head>
   <body>
+    
     <header id="title">
       <h1>Bowling Score Keeper</h1>
     </header>
     <main>
-    <section id="submit-roll">
-      <p>You rolled: </p>
-      <form>
-        <input type="number" min="0" max="10">
-        <input type="submit" value="Submit">
-      </form>
+    <section>
+      <p>How many pins did you knock over?</p>
+      <button id="0"></button>
+      <button id="one" value="1"></button>
+      <button id="2"></button>
+      <button id="3"></button>
+      <button id="4"></button>
+      <button id="5"></button>
+      <button id="6"></button>
+      <button id="7"></button>
+      <button id="8"></button>
+      <button id="9"></button> 
+      <button id="10"></button>
     </section>
     <section id="score-card">
-  
+      <table>
+        <tr>
+          <th colspan=2>Frame 1</th>
+          <th colspan=2>Frame 2</th>
+          <th colspan=2>Frame 3</th>
+        </tr>
+        <tr>
+          <td id="f1r1"></td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td colspan=2>0</td>
+          <td colspan=2>0</td>
+          <td colspan=2>0</td>
+         
+        </tr>
+      </table>
+    </section>
+
+    <section >
+      <p id="total-score"></p>
     </section>
     </main>
 
+    <script src="src/interface.js"></script>
     <script src="src/Game.js"></script>
     <script src="src/Frame.js"></script>
   </body>

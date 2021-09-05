@@ -17,4 +17,16 @@ describe('Frame', () => {
   it('has a frame score', () => {
     expect(frame.frameScore).toEqual(0);
   })
+
+  describe('addRoll', () => {
+    it('increments the current roll', () => {
+      frame.addRoll(2)
+      expect(frame.currentRoll).toEqual(1);
+    })
+
+    it('adds pins struck to frame score', () => {
+      frame.addRoll(2)
+      expect(frame.frameScore).toEqual(2);
+    })
+  })
 })

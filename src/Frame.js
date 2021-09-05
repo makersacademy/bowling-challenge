@@ -5,4 +5,9 @@ class Frame {
     this.rollsRemaining = 2;
     this.frameScore = 0;
   }
+
+  addRoll(pins) {
+    this.currentRoll++;
+    this.frameScore += pins;
+  }
 }

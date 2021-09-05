@@ -4,6 +4,7 @@ class Frame {
     this.currentRoll = 0;
     this.rollsRemaining = 2;
     this.frameScore = 0;
+    this.closed = false;
   }
 
   addRoll(pins) {
@@ -18,6 +19,10 @@ class Frame {
 
   isSplit() {
     return this.currentRoll == 2 && this.frameScore == 10;
+  }
+
+  isFrameOver() {
+    return this.closed === false && this.rollsRemaining === 0;
   }
 
   updateRollsRemaining() {

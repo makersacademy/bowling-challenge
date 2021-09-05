@@ -62,4 +62,14 @@ describe('Frame', () => {
       expect(frame.rollsRemaining).toEqual(1);
     })
   })
+
+  describe('isFrameOver', () => {
+    it('returns true if frame is over', () => {
+      frame.addRoll(5);
+      frame.addRoll(2);
+      expect(frame.isFrameOver()).toEqual(true);
+    })
+
+
+  })
 })

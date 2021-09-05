@@ -1,9 +1,9 @@
 export class Frame {
 
   constructor () {
-    this.rolls = []
-    this.bonus_score = 0
-    this.frameTotal = 0
+    this.rolls = [];
+    this.bonus_score = 0;
+    this.frameTotal = 0;
   }
 
   addRoll(score) {
@@ -11,7 +11,7 @@ export class Frame {
   }
 
   addBonusScore(bonus) {
-    this.bonus_score += bonus
+    this.bonus_score += bonus;
   }
 
   calcFrameTotal() {

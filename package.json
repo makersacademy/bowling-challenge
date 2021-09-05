@@ -1,30 +1,30 @@
 {
-  "name": "bowling-challenge",
-  "version": "1.0.0",
-  "description": "js bowling challenge",
-  "main": ".eslintrc.js",
-  "directories": {
-    "doc": "docs",
-    "lib": "lib"
-  },
-  "dependencies": {
-    "eslint-config-google": "^0.14.0",
-    "npm": "^7.22.0"
-  },
-  "devDependencies": {
-    "eslint": "^7.32.0"
-  },
-  "scripts": {
-    "test": "./spec"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ashtroboy79/bowling-challenge.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ashtroboy79/bowling-challenge/issues"
-  },
-  "homepage": "https://github.com/ashtroboy79/bowling-challenge#readme"
+	"name": "bowling-challenge",
+	"version": "1.0.0",
+	"description": "js bowling challenge",
+	"main": ".eslintrc.js",
+	"directories": {
+		"doc": "docs",
+		"lib": "lib"
+	},
+	"dependencies": {
+		"eslint-config-google": "^0.14.0",
+		"npm": "^7.22.0"
+	},
+	"devDependencies": {
+		"eslint": "^7.32.0"
+	},
+	"scripts": {
+		"test": "SpecRunner.html"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ashtroboy79/bowling-challenge.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ashtroboy79/bowling-challenge/issues"
+	},
+	"homepage": "https://github.com/ashtroboy79/bowling-challenge#readme"
 }

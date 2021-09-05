@@ -9,6 +9,7 @@ class Frame {
   addRoll(pins) {
     this.currentRoll++;
     this.frameScore += pins;
+    this.updateRollsRemaining();
   }
   
   isStrike() {
@@ -17,5 +18,11 @@ class Frame {
 
   isSplit() {
     return this.currentRoll == 2 && this.frameScore == 10;
+  }
+
+  updateRollsRemaining() {
+    if (this.isStrike() === false && this.isSplit() === false) {
+      this.rollsRemaining--;
+    }
   }
 }

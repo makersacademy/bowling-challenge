@@ -44,4 +44,22 @@ describe('Frame', () => {
       expect(frame.isSplit()).toEqual(true);
     })
   })
+
+  describe('updateRollsRemaining', () => {
+    it('decrements rolls remaining', () => {
+      frame.addRoll(5);
+      expect(frame.rollsRemaining).toEqual(1);
+    })
+
+    it('does not change rolls remaining if strike', () => {
+      frame.addRoll(10);
+      expect(frame.rollsRemaining).toEqual(2);
+    })
+
+    it('does not change rolls remaining if split', () => {
+      frame.addRoll(5);
+      frame.addRoll(5);
+      expect(frame.rollsRemaining).toEqual(1);
+    })
+  })
 })

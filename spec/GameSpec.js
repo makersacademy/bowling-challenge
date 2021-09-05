@@ -60,7 +60,7 @@ describe('Game', () => {
     })
   })
 
-  it('throws an error if trying to add rolls after game over', () => {
+  it('does nothing if trying to add rolls after game over', () => {
     for (let i = 0; i < 12; i++) {
       game.roll(10);
     }

@@ -1,9 +1,7 @@
 class Game {
 
   constructor() {
-    let frame = new Frame();
-
-    this.frames = [frame];
+    this.frames = [new Frame()];
     this.score = 0;
     this.frameScores = [];
   } 

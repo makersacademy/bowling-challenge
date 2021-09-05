@@ -1,0 +1,27 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "JS bowling challenge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint": "^7.32.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eballantine/bowling-challenge.git"
+  },
+  "author": "eballantine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eballantine/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/eballantine/bowling-challenge#readme"
+}

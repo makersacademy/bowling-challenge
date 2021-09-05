@@ -15,4 +15,9 @@ class Score {
             this.strike = true
         }
     }
+    isSpare() {
+        if (this.firstBowlPins + this.secondBowlPins === 10) {
+            this.spare = true;
+        }
+    }
 };

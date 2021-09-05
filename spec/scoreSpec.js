@@ -24,6 +24,15 @@ describe ("Score", () => {
         });
     });
 
+    describe ('isSpare', () => {
+        it ('checks if bowl is a spare', () => {
+        score.firstBowl(3);
+        score.secondBowl(7);
+        score.isSpare();
+        expect(score.spare).toEqual(true);
+        });
+    });
+
 
 
 

@@ -24,6 +24,19 @@ describe('Frame', () => {
       expect(frame.score).toContain(10);
       expect(frame.bonus).toEqual(1);
     });
+
+    it('calls roll function and appends second pin value to score', () => {
+      frame.roll(3);
+      frame.play(6);
+      expect(frame.score).toEqual([3, 6]);
+    });
+
+    it('calls roll function, adds plus 1 to bonus and appends second pin value to score ', () => {
+      frame.roll(4);
+      frame.play(6);
+      expect(frame.score).toEqual([4, 6]);
+      expect(frame.bonus).toEqual(1);
+    });
   });
 
   describe('roll', () => {
@@ -34,8 +47,15 @@ describe('Frame', () => {
   });
 
   describe('isPerfectStrike', () => {
-    it('is a perfect strike when kocking down all 10 pins in first round', () => {
-      expect(frame.isPerfectScore(10)).toBe(true);
+    it('returns true when kocking down all 10 pins in first round', () => {
+      expect(frame.isPerfectStrike(10)).toBe(true);
+    });
+  });
+
+  describe('isStrike', () => {
+    it('returns true when kocking down all 10 pins in 2nd round', () => {
+      frame.roll(4);
+      expect(frame.isStrike(6)).toBe(true);
     });
   });
 });

@@ -39,6 +39,34 @@ describe('CalculateScore', () => {
       calculateScore.total();
       expect(calculateScore._score).toEqual(90);
     })
+
+    it('is expected to calculate only spares', () => {
+      for(let i = 1; i <= 9; i++) {
+        frame.addBowl(5);
+        frame.addBowl(5);
+        calculateScore.addFrame(frame.bowls());
+      };
+      frame.addBowl(5);
+      frame.addBowl(5);
+      frame.addBowl(5);
+      calculateScore.addFrame(frame.bowls());
+      calculateScore.total();
+      expect(calculateScore._score).toEqual(150)
+    })
+
+    it('is expected to calculate only spares', () => {
+      for(let i = 1; i <= 9; i++) {
+        frame.addBowl(9);
+        frame.addBowl(1);
+        calculateScore.addFrame(frame.bowls());
+      };
+      frame.addBowl(9);
+      frame.addBowl(1);
+      frame.addBowl(9);
+      calculateScore.addFrame(frame.bowls());
+      calculateScore.total();
+      expect(calculateScore._score).toEqual(190)
+    })
   })
 
 })

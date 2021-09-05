@@ -15,6 +15,19 @@ describe('Frame', () => {
             frame.secondBowl(1);
             expect(frame.score.secondBowlPins).toEqual(1)
         });
+        
+        it('recognises when first bowl is a strike', () => {
+            frame.firstBowl(10);
+            frame.isStrike();
+            expect(frame.strike).toEqual(true)
+        });
+        it('recognises when second bowl is a spare', () => {
+            frame.firstBowl(3);
+            frame.secondBowl(7);
+            frame.isSpare();
+            expect(frame.spare).toEqual(true)
+        });
+    
     });
 
 

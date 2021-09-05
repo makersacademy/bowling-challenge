@@ -5,16 +5,11 @@ class Game {
     this.frames = [];
   }
 
-  enterFrameRolls(roll_one, roll_two) {
+  frameRolls(roll_one, roll_two) {
     this._newFrame();
     this._getPlayerRolls(roll_one, roll_two);
     this._isGameOver();
   } 
-
-  
-
-
-
 
   frameScore() {
     this.score.currentFrame(this.frames[this.frames.length - 1]);
@@ -25,11 +20,6 @@ class Game {
     this.score.scoreSoFar(this.frames);
     return this.score.totalScore;
   }
-
-
-
-
-
 
   _getPlayerRolls(roll_one, roll_two) {
     let current_frame = this.frames[this.frames.length - 1]

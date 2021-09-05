@@ -1,13 +1,14 @@
+/*jshint esversion: 6 */
 'use strict';
 
 class Frame {
 
-  #maxPins = 10;
   #maxFrames = 10;
 
   constructor() {
     this._bowls = [];
     this._frameCount = 1;
+
   }
 
   bowls() {
@@ -15,8 +16,8 @@ class Frame {
   }
 
   addBowl(number) {
-    this.#newFrame()
-    this.#noNegativeNums(number)
+    this.#newFrame();
+    this.#noNegativeNums(number);
 
     this._bowls.push(number);
     this.#resetFrameCount();
@@ -29,17 +30,17 @@ class Frame {
   }
   #newFrame() {
     if (this.#scenario(1) && this.#compareArrLength(3)) {
-      this.#incrementAndResetFrame()
+      return this.#incrementAndResetFrame();
     }
-    if (this.#scenario(2) &&  this.#compareArrLength(2)) {
-      this.#incrementAndResetFrame()
+    if (this.#scenario(2) && this.#compareArrLength(2)) {
+      return this.#incrementAndResetFrame();
     }
   }
 
   #incrementFrame() {
     this._frameCount++;
   }
-  
+
   #resetFrameCount() {
     if (this._frameCount > this.#maxFrames) {
       this._frameCount = 1;
@@ -56,11 +57,11 @@ class Frame {
   }
 
   #scenario(choice) {
-    switch(choice) {
-    case 1:
-      return this._frameCount === this.#maxFrames;
-    case 2:
-      return this._frameCount < this.#maxFrames;
+    switch (choice) {
+      case 1:
+        return this._frameCount === this.#maxFrames;
+      case 2:
+        return this._frameCount < this.#maxFrames;
     }
   }
 

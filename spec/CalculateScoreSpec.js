@@ -1,6 +1,8 @@
-'use strict';
+/*jshint esversion: 6 */
 
 describe('CalculateScore', () => {
+  
+  'use strict';
 
   let calculateScore;
   let frame;
@@ -10,6 +12,22 @@ describe('CalculateScore', () => {
     frame = new Frame();
   });
 
+  const addFrames = (howManyFrames, firstBowl, secondBowl) => {
+    for(let i = 1; i <= howManyFrames; i++) {
+      frame.addBowl(firstBowl);
+      frame.addBowl(secondBowl);
+      calculateScore.addFrame(frame.bowls());
+    }
+  };
+
+  const addTenthFrame = (firstBowl, secondBowl, thirdBowl) => {
+    frame.addBowl(firstBowl);
+    frame.addBowl(secondBowl);
+    frame.addBowl(thirdBowl);
+    calculateScore.addFrame(frame.bowls());
+  };
+
+
   describe('new', () =>{
     it('it is expected to be an instance of CalculateScore', () => {
       expect(calculateScore).toBeInstanceOf(CalculateScore);
@@ -17,70 +35,49 @@ describe('CalculateScore', () => {
 
     it('is expected to have a score attribute', () => {
       expect(calculateScore).toEqual(jasmine.objectContaining( { _score: 0, _frames: [] } ));
-    })
-  })
+    });
+  });
 
   describe('addFrame', () => {
     it('is expected to add a frame to _frames array', () => {
-      frame.addBowl(4);
-      frame.addBowl(5);
-      calculateScore.addFrame(frame.bowls())
-      expect(calculateScore._frames).toContain([4, 5])
-    })
-  })
+      addFrames(1, 4, 5);
+      expect(calculateScore._frames).toContain([4, 5]);
+    });
+  });
 
-  describe('tallyUp', () => {
+  describe('total', () => {
     it('is expected to tally the score up', () => {
-      for(let i = 1; i <= 10; i++) {
-        frame.addBowl(5);
-        frame.addBowl(4);
-        calculateScore.addFrame(frame.bowls());
-      };
+      addFrames(10, 5, 4);
       calculateScore.total();
       expect(calculateScore._score).toEqual(90);
-    })
+    });
 
     it('is expected to calculate only spares', () => {
-      for(let i = 1; i <= 9; i++) {
-        frame.addBowl(5);
-        frame.addBowl(5);
-        calculateScore.addFrame(frame.bowls());
-      };
-      frame.addBowl(5);
-      frame.addBowl(5);
-      frame.addBowl(5);
-      calculateScore.addFrame(frame.bowls());
+      addFrames(9, 5, 5);
+      addTenthFrame(5, 5, 5);
       calculateScore.total();
-      expect(calculateScore._score).toEqual(150)
-    })
+      expect(calculateScore._score).toEqual(150);
+    });
 
     it('is expected to calculate a game of only spares', () => {
-      for(let i = 1; i <= 9; i++) {
-        frame.addBowl(9);
-        frame.addBowl(1);
-        calculateScore.addFrame(frame.bowls());
-      };
-      frame.addBowl(9);
-      frame.addBowl(1);
-      frame.addBowl(9);
-      calculateScore.addFrame(frame.bowls());
+      addFrames(9, 9, 1);
+      addTenthFrame(9, 1, 9);
       calculateScore.total();
-      expect(calculateScore._score).toEqual(190)
-    })
+      expect(calculateScore._score).toEqual(190);
+    });
 
     it('is expected to calculate a game of only strikes', () => {
-      for(let i = 1; i <= 9; i++) {
-        frame.addBowl(10);
-        frame.addBowl(0);
-        calculateScore.addFrame(frame.bowls());
-      };
-      frame.addBowl(10);
-      frame.addBowl(10);
-      frame.addBowl(10);
-      calculateScore.addFrame(frame.bowls());
+      addFrames(9, 10, 0);
+      addTenthFrame(10, 10, 10);
       calculateScore.total();
-      expect(calculateScore._score).toEqual(300)
-    })
-  })
+      expect(calculateScore._score).toEqual(300);
+    });
 
-})
+    it('is expected to return a gutterball game as zero', () => {
+      addFrames(10, 0, 0);
+      calculateScore.total();
+      expect(calculateScore._score).toEqual(0);
+    });
+  });
+
+});

@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 'use strict';
 
 class CalculateScore {
@@ -6,11 +7,11 @@ class CalculateScore {
 
   constructor() {
     this._score = 0;
-    this._frames = []
+    this._frames = [];
   }
 
   addFrame(frameArr) {
-    this._frames.push(frameArr)
+    this._frames.push(frameArr);
   }
 
   total() {
@@ -19,25 +20,25 @@ class CalculateScore {
       if (this.#strike(frame)) {
         if (currentFrame <= 7) {
           let arr = frames[index].concat(frames[index + 1][0], frames[index + 2][0]);
-          this._score += arr.reduce((a, b) =>   a + b );
+          this._score += arr.reduce((a, b) => a + b);
         } else if (currentFrame === 8) {
-          let arr = frames[index].concat(frames[index + 1][0], frames[index + 1][1])
-          this._score += arr.reduce((a, b) => a + b );
+          let arr = frames[index].concat(frames[index + 1][0], frames[index + 1][1]);
+          this._score += arr.reduce((a, b) => a + b);
         } else {
-          this._score += frame.reduce((a, b) => a + b );
+          this._score += frame.reduce((a, b) => a + b);
         }
       } else if (this.#spare(frame)) {
         if (currentFrame <= 8) {
           let arr = frames[index].concat(frames[index + 1][0]);
-          this._score += arr.reduce((a, b) =>   a + b );
+          this._score += arr.reduce((a, b) => a + b);
         } else {
-          this._score += frame.reduce((a, b) => a + b );
+          this._score += frame.reduce((a, b) => a + b);
         }
       } else {
-        frame.reduce((a, b) => { this._score += a + b })
+        this._score += frame.reduce((a, b) => a + b);
       }
       currentFrame += 1;
-    })
+    });
     currentFrame = 0;
   }
 

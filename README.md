@@ -17,8 +17,8 @@ Bowling Challenge
 In any order you like:
 
 * Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+* Set up [Travis CI](https://travis-ci.org) to run your tests. - Am still trying to get this working.
+* Add [ESLint](http://eslint.org/) to your codebase and make your code conform. - Think i managed to get this installed and working when i run the npx eslint src/"myfile".js commands I get error related to class names not being defined and or used. Not 100% sure if it is installed correctly/ 
 
 ### Perfect Game
 

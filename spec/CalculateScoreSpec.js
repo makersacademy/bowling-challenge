@@ -78,6 +78,16 @@ describe('CalculateScore', () => {
       calculateScore.total();
       expect(calculateScore._score).toEqual(0);
     });
+
+    it('is expected to calculate a mixed game', () => {
+      addFrames(2, 4, 4);
+      addFrames(4, 10, 0);
+      addFrames(2, 5, 5);
+      addFrames(1, 0, 10);
+      addFrames(1, 7, 0);
+      calculateScore.total();
+      expect(calculateScore._score).toEqual(170);
+    });
   });
 
 });

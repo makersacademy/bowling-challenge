@@ -1,5 +1,44 @@
+# Bowling Challenge
 
-Bowling Challenge
+A one-player game of bowling.
+
+### Installation
+
+TBC
+
+### Usage
+
+TBC
+
+### Running Tests
+
+Test Suite is Jasmine.
+
+Run `SpecRunner.html` in a web browser
+
+### Screenshot
+
+TBC
+
+### Development Process
+
+1) Test drive a hypothetical gutter game where every roll is a 0.
+2) Build on this logic to test drive a hypothetical game where every roll is a 1.
+3) Test drive a hypothetical game where player bowls a spare or a strike and then zeros for their remaining bowls.
+4) Use functionality of scoring a strike to test drive a perfect game.
+5) Extract functionality for keeping track of single frame scores into a separate frame class.
+6) Modify game class to create new instances of frames and push each frame into a frames array.
+7) Contain amount of frames per game to 10 and allow frame index to increment after 1 strike or 2 bowls.
+8) Redesign score method in game class to play gutter game or a basic game of no strikes or spares.
+9) Carefully plan out logic for strikes and spares in separate function that tracks each frame score.
+10) Create HTML file to build basic content for bowling app e.g. bowl button and scoresheet table.
+11) Create stylesheet to make web page look more appealing.
+12) Create jQuery file to fill out scoresheet with every bowl. Realised at this point that more logic needs to be added for not allowing a frame with more than 10 pins, and also a function to confirm that the game is over so that the final total can be shown.
+
+### Author
+
+Terence Allitt
+
 =================
 
 * Feel free to use google, your notes, books, etc. but work on your own

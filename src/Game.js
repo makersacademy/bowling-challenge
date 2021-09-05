@@ -4,11 +4,12 @@ class Game {
 		this.frames = [];
 		this.currentFrame = frame;
 		this.currentscore = 0;
+		this.gameOver = false;
 	}
 
 	nextFrame(frame = new Frame()) {
 		if (this.frameNo > 10) {
-			return
+			return (this.gameOver = true);
 		} else {
 			this.frames.push(this.currentFrame);
 			this.frameNo++;
@@ -34,9 +35,11 @@ class Game {
 	score() {
 		for (let i = 0; i < this.frameNo - 1; i++) {
 			if (i === 9) {
-				this.currentscore += this.frames[i]["rollOne"] + this.frames[i]["rollTwo"] + this.frames[i]["rollThree"]
-			}
-			else {
+				this.currentscore +=
+					this.frames[i]["rollOne"] +
+					this.frames[i]["rollTwo"] +
+					this.frames[i]["rollThree"];
+			} else {
 				if (i < this.frameNo) {
 					if (this.isSpare(i)) {
 						this.currentscore += this.frames[i + 1]["rollOne"];

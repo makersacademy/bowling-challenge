@@ -93,4 +93,28 @@ describe("Game", () => {
 		game.score();
 		expect(game.currentscore).toEqual(300);
 	});
+
+	it("score the example game from the images folder", () => {
+		game.rollBall(1)
+		game.rollBall(4)
+		game.rollBall(4)
+		game.rollBall(5)
+		game.rollBall(6)
+		game.rollBall(4)
+		game.rollBall(5)
+		game.rollBall(5)
+		game.rollBall(10)
+		game.rollBall(0)
+		game.rollBall(1)
+		game.rollBall(7)
+		game.rollBall(3)
+		game.rollBall(6)
+		game.rollBall(4)
+		game.rollBall(10)
+		game.rollBall(2)
+		game.rollBall(8)
+		game.rollBall(6)
+		game.score()
+		expect(game.currentscore).toEqual(133);
+	})
 });

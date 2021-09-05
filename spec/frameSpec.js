@@ -69,6 +69,22 @@ describe("Frame", () => {
       frame.add(2);
       expect(frame.isFull()).toBeTruthy();
     });
+
+    describe("Frame array generation", () => {
+      it("generates array of 10 frame objects", () => {
+        console.log("here:", frame.generateFramesArray());
+        expect(frame.generateFramesArray().length).toEqual(10);
+      });
+
+      it("sets first to ninth array objects as normal frames", () => {
+        expect(frame.generateFramesArray()[0].isFinalFrame()).toEqual(false);
+        expect(frame.generateFramesArray()[8].isFinalFrame()).toEqual(false);
+      });
+
+      it("sets tenth array object as final frame", () => {
+        expect(frame.generateFramesArray()[9].isFinalFrame()).toEqual(true);
+      });
+    });
   });
 
   describe("Frame 10", () => {
@@ -124,22 +140,6 @@ describe("Frame", () => {
       frame.add(10);
       expect(frame.rollThree()).toEqual(10);
       expect(frame.isFull()).toBeTruthy();
-    });
-  });
-
-  describe("Frame array generation", () => {
-    it("generates array of 10 frame objects", () => {
-      console.log("here:", frame.generateFramesArray());
-      expect(frame.generateFramesArray().length).toEqual(10);
-    });
-
-    it("sets first to ninth array objects as normal frames", () => {
-      expect(frame.generateFramesArray()[0].isFinalFrame()).toEqual(false);
-      expect(frame.generateFramesArray()[8].isFinalFrame()).toEqual(false);
-    });
-
-    it("sets tenth array object as final frame", () => {
-      expect(frame.generateFramesArray()[9].isFinalFrame()).toEqual(true);
     });
   });
 });

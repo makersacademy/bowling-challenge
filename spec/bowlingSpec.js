@@ -9,7 +9,7 @@ let game;
     for(let i=0; i<20; i++){
       game.roll(0)
     }
-    expect(game.score_total).toEqual(0);
+    expect(game.totalScore).toEqual(0);
   });
 
 });

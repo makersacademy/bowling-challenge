@@ -31,4 +31,12 @@ describe('Game', () => {
       expect(game.frames.length).toEqual(10);
     })
   })
+
+  describe('checkFrameOver', () => {
+    it('updates the status to closed if no rolls remaining', () => {
+      game.roll(2);
+      game.roll(3);
+      expect(game.frames[0].closed).toEqual(true);
+    })
+  })
 })

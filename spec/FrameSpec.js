@@ -69,7 +69,5 @@ describe('Frame', () => {
       frame.addRoll(2);
       expect(frame.isFrameOver()).toEqual(true);
     })
-
-
   })
 })

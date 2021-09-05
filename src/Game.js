@@ -12,7 +12,7 @@ class Game {
     for (let i = 0; i < this.frames.length; i++) {
       this.frames[i].addRoll(pins);
     }
-    checkFrameOver();
+    this.checkFrameOver();
   }
 
   addFrame() {
@@ -23,9 +23,10 @@ class Game {
 
   checkFrameOver() {
     for (let i = 0; i < this.frames.length; i++) {
-      if (this.frames[i].isFrameOver()) {
+      if (this.frames[i].isFrameOver() === true) {
         this.frameScores.push(this.frames[i].frameScore);
         this.score += this.frames[i].frameScore;
+        this.frames[i].closed = true;
       }
     }
   }

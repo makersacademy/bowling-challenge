@@ -5,17 +5,17 @@ class Frame {
     this.roll_two = 0;
   }
 
-  first_roll(roll) {
-    this._guard_clauses(roll);
+  firstRoll(roll) {
+    this._guardClauses(roll);
     this.roll_one = roll
   }
 
-  second_roll(roll) {
-    this._guard_clauses(roll);
+  secondRoll(roll) {
+    this._guardClauses(roll);
     this.roll_two = roll
   }
 
-  _guard_clauses(roll) {
+  _guardClauses(roll) {
     if (!Number.isInteger(roll)) {
       throw Error('Please enter a number');
     } else if (roll > 10 || roll < 0) {

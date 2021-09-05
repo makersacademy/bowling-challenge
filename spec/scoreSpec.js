@@ -3,6 +3,10 @@ describe ("Score", () => {
         score = new Score();
     });
 
+    it ('starts with a score of 0', () => {
+        expect(score.score).toEqual(0);
+    })
+
     describe ('firstBowlPins', () => {
         it ('shows number of pins knocked down by first bowl', () => {
             score.firstBowl(5);
@@ -30,6 +34,15 @@ describe ("Score", () => {
         score.secondBowl(7);
         score.isSpare();
         expect(score.spare).toEqual(true);
+        });
+    });
+
+    describe('calculateScore', () => {
+        it ('adds the first and second bowls', () => {
+            score.firstBowl(7);
+            score.secondBowl(2);  
+            score.calculateScore();
+            expect(score.score).toEqual(9); 
         });
     });
 

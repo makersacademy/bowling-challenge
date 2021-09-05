@@ -1,7 +1,5 @@
 "use strict";
 
-// test
-
 class Frame {
   constructor(id) {
     this.TOTAL_PINS = 10;

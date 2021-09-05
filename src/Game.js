@@ -9,7 +9,15 @@ class Game {
 	nextFrame(frame = new Frame()) {
 		this.frames.push(this.currentFrame);
 		this.frameNo++;
-		this.currentFrame = new Frame();
+		if (this.frameNo < 10) {
+			this.currentFrame = frame;
+		} else if (this.frameNo === 10) {
+			this.finalFrame();
+		}
+	}
+
+	finalFrame(frame = new FinalFrame()) {
+		this.currentFrame = frame;
 	}
 
 	rollBall(value) {
@@ -21,11 +29,15 @@ class Game {
 
 	score() {
 		for (let i = 0; i < this.frameNo - 1; i++) {
-			if (this.isSpare(i)) {
-				this.currentscore += this.frames[i + 1]["rollOne"];
+			if (i < this.frameNo) {
+				if (this.isSpare(i)) {
+					this.currentscore += this.frames[i + 1]["rollOne"];
+				}
 			}
-			if (this.isStrike(i)) {
-				this.scoreStrike(i);
+			if (i < this.frameNo - 2) {
+				if (this.isStrike(i)) {
+					this.scoreStrike(i);
+				}
 			}
 			this.currentscore +=
 				this.frames[i]["rollOne"] + this.frames[i]["rollTwo"];
@@ -42,12 +54,14 @@ class Game {
 	}
 
 	scoreStrike(index) {
-		if (!(this.isStrike(index + 1)) ) {
+		if (!this.isStrike(index + 1)) {
 			this.currentscore +=
-				this.frames[index + 1]["rollOne"] + this.frames[index + 1]["rollTwo"];		
+				this.frames[index + 1]["rollOne"] + this.frames[index + 1]["rollTwo"];
 		} else {
-			this.currentscore +=
-				this.frames[index + 1]["rollOne"] + this.frames[index + 2]["rollOne"];
+			if (index + 2 < this.frameNo - 1) {
+				this.currentscore +=
+					this.frames[index + 1]["rollOne"] + this.frames[index + 2]["rollOne"];
+			}
 		}
 	}
 }

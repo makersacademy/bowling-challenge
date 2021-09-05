@@ -3,8 +3,8 @@ class Frame {
 		this.currentroll = 1;
 		this.rollOne = 0;
 		this.rollTwo = 0;
-    this.endFrame = false;
-    this.frameType = "Normal"
+		this.endFrame = false;
+		this.frameType = "Normal";
 	}
 
 	roll(value) {
@@ -14,15 +14,15 @@ class Frame {
 		} else if (this.currentroll === 2) {
 			this.rollTwo = value;
 			this.endFrame = true;
-      if (this.isSpare()) {
-        this.frameType = "Spare"
-      }
+			if (this.isSpare()) {
+				this.frameType = "Spare";
+			}
 		}
 	}
 
 	incrementRoll() {
 		if (this.isStrike()) {
-      this.frameType = "Strike"
+			this.frameType = "Strike";
 			this.endFrame = true;
 		} else {
 			this.currentroll++;
@@ -33,7 +33,7 @@ class Frame {
 		return this.rollOne === 10;
 	}
 
-  isSpare() {
-    return (this.rollOne < 10 && this.rollOne + this.rollTwo === 10)
-  }
+	isSpare() {
+		return this.rollOne < 10 && this.rollOne + this.rollTwo === 10;
+	}
 }

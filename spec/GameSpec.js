@@ -65,19 +65,31 @@ describe("Game", () => {
 		game.rollBall(4);
 		game.score();
 		expect(game.currentscore).toEqual(24);
-	})
+	});
 
 	it("can score multiple strikes in a row", () => {
 		game.rollBall(10);
 		game.rollBall(10);
-		game.rollBall(3)
-		game.rollBall(4)
+		game.rollBall(3);
+		game.rollBall(4);
 		game.score();
-		console
-		expect(game.currentscore).toEqual(47)
-	})
+		console;
+		expect(game.currentscore).toEqual(47);
+	});
 
-	it('calls')
+	// it("can score multiple strikes in a row", () => {
+	// 	game.rollBall(10);
+	// 	game.rollBall(10);
+	// 	game.score();
+	// 	expect(game.currentscore).toEqual(20);
+	// });
 
-
+	it("create the final frame", () => {
+		spyOn(game, "finalFrame");
+		for (let i = 0; i < 9; i++) {
+			game.rollBall(5);
+			game.rollBall(4);
+		}
+		expect(game.finalFrame).toHaveBeenCalled();
+	});
 });

@@ -36,6 +36,6 @@ describe("Frame", () => {
 		frame.roll(10);
 		expect(frame.isSpare()).toEqual(false);
 		expect(frame.isStrike()).toEqual(true);
-    expect(frame.frameType).toEqual("Strike")
+		expect(frame.frameType).toEqual("Strike");
 	});
 });

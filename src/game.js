@@ -1,7 +1,8 @@
 class Game {
 
-  constructor() {
-    this.frames = []
+  constructor(score = new Score) {
+    this.score = score;
+    this.frames = [];
   }
 
   enterFrameRolls(roll_one, roll_two) {
@@ -10,10 +11,25 @@ class Game {
     this._isGameOver();
   } 
 
+  
+
+
+
+
   frameScore() {
-    let score = new Score();
-    return score.currentFrame(this.frames[this.frames.length - 1]);
+    this.score.currentFrame(this.frames[this.frames.length - 1]);
+    return this.score.frameScore;
   }
+
+  totalScore() {
+    this.score.scoreSoFar(this.frames);
+    return this.score.totalScore;
+  }
+
+
+
+
+
 
   _getPlayerRolls(roll_one, roll_two) {
     let current_frame = this.frames[this.frames.length - 1]
@@ -21,15 +37,15 @@ class Game {
     current_frame.secondRoll(roll_two);
   }
 
-  _isGameOver() {
-    if (this.frames.length === 10) {
-      console.log('Game over!');
-    }
-  }
-
   _newFrame() {
     if (this.frames.length <= 10) {
       this.frames.push(new Frame);
+    }
+  }
+
+  _isGameOver() {
+    if (this.frames.length === 10) {
+      console.log('Game over!');
     }
   }
 

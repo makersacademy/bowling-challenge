@@ -36,16 +36,18 @@ describe('Game', () => {
 
   });
 
-  describe('frameScore', () => {
+  describe('score', () => {
 
     it('shows the score for the current frame', () => {
       game.enterFrameRolls(2, 3);
       expect(game.frameScore()).toEqual(5);
     });
 
-
-
-
+    it('shows the total score for played frames in a game of bowing, no matter which frame a player is on', () => {
+      game.enterFrameRolls(3, 4);
+      game.enterFrameRolls(1, 7);
+      expect(game.totalScore()).toEqual(15);
+    });
 
   });
 

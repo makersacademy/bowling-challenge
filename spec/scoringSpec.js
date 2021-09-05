@@ -6,6 +6,7 @@ describe("Scoring", () => {
   let frame2;
   let frame3;
   let frame4;
+  let frame10;
 
   beforeEach(() => {
     scoring = new Scoring();
@@ -19,12 +20,12 @@ describe("Scoring", () => {
       expect(scoring.calculateScore([frame])).toEqual([7]);
     });
 
-    it("finishes calculating scores if first roll of a frame is null", () => {
+    it("finishes calculating score if first roll of a frame is null", () => {
       frame.rollOne.and.returnValue(null);
       expect(scoring.calculateScore([frame])).toEqual([]);
     });
 
-    it("calculates incomplete frame if second roll of a frame is null", () => {
+    it("calculates incomplete frame if second roll of frame is null", () => {
       frame.rollOne.and.returnValue(1);
       frame.rollTwo.and.returnValue(null);
       expect(scoring.calculateScore([frame])).toEqual([1]);
@@ -34,80 +35,154 @@ describe("Scoring", () => {
   describe("Spare/strike (normal) frame tests", () => {
     beforeEach(() => {
       frame2 = jasmine.createSpyObj("frame", ["rollOne", "rollTwo", "getId"]);
-      frame3 = jasmine.createSpyObj("frame", ["rollOne", "rollTwo", "getId"]);
-      frame4 = jasmine.createSpyObj("frame", ["rollOne", "rollTwo", "getId"]);
     });
 
-    it("calculates spare as 10 if following frame is null", () => {
-      frame.rollOne.and.returnValue(3);
-      frame.rollTwo.and.returnValue(7);
-      frame2.rollOne.and.returnValue(null);
-      expect(scoring.calculateScore([frame, frame2])).toEqual([10]);
+    describe("spare handling", () => {
+      beforeEach(() => {
+        frame.rollOne.and.returnValue(3);
+        frame.rollTwo.and.returnValue(7);
+      });
+
+      it("handles spare if next frame is null", () => {
+        frame2.rollOne.and.returnValue(null);
+        expect(scoring.calculateScore([frame, frame2])).toEqual([10]);
+      });
+
+      it("handles spare frame bonus", () => {
+        frame2.rollOne.and.returnValue(5);
+        frame2.rollTwo.and.returnValue(null);
+        expect(scoring.calculateScore([frame, frame2])).toEqual([15, 5]);
+      });
     });
 
-    it("calculates spare frame bonus", () => {
-      frame.rollOne.and.returnValue(3);
-      frame.rollTwo.and.returnValue(7);
-      frame2.rollOne.and.returnValue(5);
-      frame2.rollTwo.and.returnValue(null);
-      expect(scoring.calculateScore([frame, frame2])).toEqual([15, 5]);
-    });
+    describe("strike handling", () => {
+      beforeEach(() => {
+        frame.rollOne.and.returnValue(10);
+        frame.rollTwo.and.returnValue(0);
+      });
 
-    it("calculates strike as 10 if following frame is null", () => {
-      frame.rollOne.and.returnValue(10);
-      frame.rollTwo.and.returnValue(0);
-      frame2.rollOne.and.returnValue(null);
-      expect(scoring.calculateScore([frame, frame2])).toEqual([10]);
-    });
+      describe("strike handling: single strike scenarios", () => {
+        it("handles strike if following frame is null", () => {
+          frame2.rollOne.and.returnValue(null);
+          expect(scoring.calculateScore([frame, frame2])).toEqual([10]);
+        });
 
-    it("calculates strike as 15 if following frame has one roll of 5", () => {
-      frame.rollOne.and.returnValue(10);
-      frame.rollTwo.and.returnValue(0);
-      frame2.rollOne.and.returnValue(5);
-      frame2.rollTwo.and.returnValue(null);
-      expect(scoring.calculateScore([frame, frame2])).toEqual([15, 5]);
-    });
+        it("handles strike if next frame has one, non-strike roll", () => {
+          frame2.rollOne.and.returnValue(5);
+          frame2.rollTwo.and.returnValue(null);
+          expect(scoring.calculateScore([frame, frame2])).toEqual([15, 5]);
+        });
 
-    it("calculates strike as 18 if following frame rolls are 5 & 3", () => {
-      frame.rollOne.and.returnValue(10);
-      frame.rollTwo.and.returnValue(0);
-      frame2.rollOne.and.returnValue(5);
-      frame2.rollTwo.and.returnValue(3);
-      expect(scoring.calculateScore([frame, frame2])).toEqual([18, 8]);
-    });
+        it("handles strike if next frame is two non-strike rolls", () => {
+          frame2.rollOne.and.returnValue(5);
+          frame2.rollTwo.and.returnValue(3);
+          expect(scoring.calculateScore([frame, frame2])).toEqual([18, 8]);
+        });
+      });
 
-    it("calculates strike as 20 if next frame a strike followed by null frame", () => {
-      frame.rollOne.and.returnValue(10);
-      frame.rollTwo.and.returnValue(0);
-      frame2.rollOne.and.returnValue(10);
-      frame2.rollTwo.and.returnValue(0);
-      frame3.rollOne.and.returnValue(null);
-      expect(scoring.calculateScore([frame, frame2, frame3])).toEqual([20, 10]);
-    });
+      describe("strike handling: multi-strike scenarios", () => {
+        beforeEach(() => {
+          frame3 = jasmine.createSpyObj("frame", [
+            "rollOne",
+            "rollTwo",
+            "getId",
+          ]);
+          frame2.rollOne.and.returnValue(10);
+          frame2.rollTwo.and.returnValue(0);
+        });
 
-    it("calculates strike as 25 if next frame a strike followed by a 5", () => {
-      frame.rollOne.and.returnValue(10);
-      frame.rollTwo.and.returnValue(0);
-      frame2.rollOne.and.returnValue(10);
-      frame2.rollTwo.and.returnValue(0);
-      frame3.rollOne.and.returnValue(5);
-      frame3.rollTwo.and.returnValue(null);
-      expect(scoring.calculateScore([frame, frame2, frame3])).toEqual([
-        25, 15, 5,
+        it("handles strike if next frame a strike followed by null frame", () => {
+          frame3.rollOne.and.returnValue(null);
+          expect(scoring.calculateScore([frame, frame2, frame3])).toEqual([
+            20, 10,
+          ]);
+        });
+
+        it("handles strike followed by strike followed by non-strike", () => {
+          frame3.rollOne.and.returnValue(5);
+          frame3.rollTwo.and.returnValue(null);
+          expect(scoring.calculateScore([frame, frame2, frame3])).toEqual([
+            25, 15, 5,
+          ]);
+        });
+
+        it("handles turkey", () => {
+          frame4 = jasmine.createSpyObj("frame", [
+            "rollOne",
+            "rollTwo",
+            "getId",
+          ]);
+          frame3.rollOne.and.returnValue(10);
+          frame3.rollTwo.and.returnValue(0);
+          frame4.rollOne.and.returnValue(null);
+          expect(
+            scoring.calculateScore([frame, frame2, frame3, frame4])
+          ).toEqual([30, 20, 10]);
+        });
+      });
+    });
+  });
+
+  describe("penultimate and last frame tests", () => {
+    beforeEach(() => {
+      scoring = new Scoring();
+      frame10 = jasmine.createSpyObj("frame", [
+        "rollOne",
+        "rollTwo",
+        "rollThree",
+        "getId",
       ]);
+      frame10.getId.and.returnValue(10);
     });
 
-    it("calculates turkey", () => {
-      frame.rollOne.and.returnValue(10);
-      frame.rollTwo.and.returnValue(0);
-      frame2.rollOne.and.returnValue(10);
-      frame2.rollTwo.and.returnValue(0);
-      frame3.rollOne.and.returnValue(10);
-      frame3.rollTwo.and.returnValue(0);
-      frame4.rollOne.and.returnValue(null);
-      expect(scoring.calculateScore([frame, frame2, frame3, frame4])).toEqual([
-        30, 20, 10,
-      ]);
+    describe("ninth frame strikes", () => {
+      beforeEach(() => {
+        frame.rollOne.and.returnValue(10);
+        frame.rollTwo.and.returnValue(0);
+      });
+
+      it("handles ninth frame strike followed by non-strikes", () => {
+        frame10.rollOne.and.returnValue(5);
+        frame10.rollTwo.and.returnValue(2);
+        expect(scoring.calculateScore([frame, frame10])).toEqual([17, 7]);
+      });
+
+      it("handles ninth frame strike followed by strikes", () => {
+        frame10.rollOne.and.returnValue(10);
+        frame10.rollTwo.and.returnValue(10);
+        frame10.rollThree.and.returnValue(null);
+        expect(scoring.calculateScore([frame, frame10])).toEqual([30, 20]);
+      });
+    });
+
+    describe("last frame tests", () => {
+      it("calculates last frame with no bonus", () => {
+        frame10.rollOne.and.returnValue(4);
+        frame10.rollTwo.and.returnValue(2);
+        frame10.rollThree.and.returnValue(1);
+        expect(scoring.calculateScore([frame10])).toEqual([6]);
+      });
+
+      it("calculates last frame with spare bonus", () => {
+        frame10.rollOne.and.returnValue(3);
+        frame10.rollTwo.and.returnValue(7);
+        frame10.rollThree.and.returnValue(5);
+        expect(scoring.calculateScore([frame10])).toEqual([15]);
+      });
+
+      it("calculates last frame with strike bonus", () => {
+        frame10.rollOne.and.returnValue(10);
+        frame10.rollTwo.and.returnValue(4);
+        frame10.rollThree.and.returnValue(4);
+        expect(scoring.calculateScore([frame10])).toEqual([18]);
+      });
+
+      it("calcultes last frame triple strike", () => {
+        frame10.rollOne.and.returnValue(10);
+        frame10.rollTwo.and.returnValue(10);
+        frame10.rollThree.and.returnValue(10);
+        expect(scoring.calculateScore([frame10])).toEqual([30]);
+      });
     });
   });
 });

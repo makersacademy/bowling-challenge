@@ -1,9 +1,9 @@
 class Game {
   constructor(scoreCard) {
-    this.scoreCard = scoreCard;
-    this.turn = "first";
     this.currentFrame = 1;
     this.pinsRemaining = 10;
+    this.scoreCard = scoreCard;
+    this.turn = "first";
   }
 
   roll(pinsDown) {

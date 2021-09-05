@@ -4,38 +4,40 @@
           +int firstRoll
           +int secondRoll
           +int number
-
-          -ScoreCard scoreCard
+          +ScoreCard scoreCard
           
           +addRoll() undefined
-          +setNumber() undefined
           +after() Frame
           +afterNext() Frame
           +baseScore() Int
-          +isBonusFrame() Bool
+          +hasTwoRolls() Bool
           +isBoring() Bool
           +isSpare() Bool
           +isStrike() Bool
+          +setNumber() undefined
 
-          -hasTwoRolls() Bool
       }
 
       class ScoreCard{
-          +array rolls
-          +array scores
+          +array frames
 
-          +firstTenFrames() array
-          +getFrameNumber() undefined
-
-          -createFrames() undefined
+          +addFrame() undefined
+          +getFrameNumber() frame
+          +lastFrame() frame
+          +regularFrames() array
       }
 
       class Game{
-        +score()
-        +printScores()
+        +int currentFrame
+        +int pinsRemaining
+        +ScoreCard scoreCard
+        +String turn
 
-        -spareBonus()
-        -strikeBonus()
+        +roll(pinsDown) undefined
+        +score() int
+
+        _spareBonus() int
+        _strikeBonus() int
       }
 
       Frame <|--|> ScoreCard

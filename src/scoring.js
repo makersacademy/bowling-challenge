@@ -40,8 +40,11 @@ class Scoring {
   }
 
   _bonusFrame(frame) {
-    if (frame.getId() === 10 || this._oneFrameAhead.rollOne() === null) {
-      const bonus = frame.getId() === 10 ? frame.rollThree() : 0;
+    if (
+      frame.isFinalFrame() === true ||
+      this._oneFrameAhead.rollOne() === null
+    ) {
+      const bonus = frame.isFinalFrame() === true ? frame.rollThree() : 0;
       this._addFrameScore(bonus);
       return;
     }
@@ -60,7 +63,8 @@ class Scoring {
 
   _strikeType() {
     const result =
-      this._oneFrameAhead.rollOne() < 10 || this._oneFrameAhead.getId() === 10;
+      this._oneFrameAhead.rollOne() < 10 ||
+      this._oneFrameAhead.isFinalFrame() === true;
     result ? this._singleStrike() : this._doubleStrike();
   }
 

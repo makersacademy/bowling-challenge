@@ -10,7 +10,11 @@ describe("Scoring", () => {
 
   beforeEach(() => {
     scoring = new Scoring();
-    frame = jasmine.createSpyObj("frame", ["rollOne", "rollTwo", "getId"]);
+    frame = jasmine.createSpyObj("frame", [
+      "rollOne",
+      "rollTwo",
+      "isFinalFrame",
+    ]);
   });
 
   describe("Single (normal) frame tests", () => {
@@ -34,7 +38,11 @@ describe("Scoring", () => {
 
   describe("Spare/strike (normal) frame tests", () => {
     beforeEach(() => {
-      frame2 = jasmine.createSpyObj("frame", ["rollOne", "rollTwo", "getId"]);
+      frame2 = jasmine.createSpyObj("frame", [
+        "rollOne",
+        "rollTwo",
+        "isFinalFrame",
+      ]);
     });
 
     describe("spare handling", () => {
@@ -85,7 +93,7 @@ describe("Scoring", () => {
           frame3 = jasmine.createSpyObj("frame", [
             "rollOne",
             "rollTwo",
-            "getId",
+            "isFinalFrame",
           ]);
           frame2.rollOne.and.returnValue(10);
           frame2.rollTwo.and.returnValue(0);
@@ -110,7 +118,7 @@ describe("Scoring", () => {
           frame4 = jasmine.createSpyObj("frame", [
             "rollOne",
             "rollTwo",
-            "getId",
+            "isFinalFrame",
           ]);
           frame3.rollOne.and.returnValue(10);
           frame3.rollTwo.and.returnValue(0);
@@ -130,9 +138,9 @@ describe("Scoring", () => {
         "rollOne",
         "rollTwo",
         "rollThree",
-        "getId",
+        "isFinalFrame",
       ]);
-      frame10.getId.and.returnValue(10);
+      frame10.isFinalFrame.and.returnValue(true);
     });
 
     describe("ninth frame strikes", () => {

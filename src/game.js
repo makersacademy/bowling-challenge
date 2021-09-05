@@ -19,7 +19,9 @@ class Game {
   }
 
   scorecard(scoreGenerator = new Scoring()) {
-    this._frameScores = scoreGenerator.cumulativeScore(this._frames);
+    const scores = scoreGenerator.calculateScore(this._frames);
+    this._frameScores = scoreGenerator.cumulativeScores(scores);
+    return this._frameScores;
   }
 
   getCurrentFrame() {

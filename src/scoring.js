@@ -2,7 +2,8 @@
 
 class Scoring {
   constructor() {
-    this._scores = [];
+    this._frameScores = [];
+    this._cumulativeScores = [];
   }
 
   calculateScore(frames) {
@@ -15,7 +16,18 @@ class Scoring {
         ? this._incompleteFrame(frame)
         : this._completeFrame(frame);
     }
-    return this._scores;
+    return this._frameScores;
+  }
+
+  cumulativeScores(frames) {
+    for (let currentIndex = 0; currentIndex < frames.length; currentIndex++) {
+      let scores = frames.slice(0, currentIndex + 1);
+      let sum = scores.reduce((a, b) => {
+        return a + b;
+      });
+      this._cumulativeScores.push(sum);
+    }
+    return this._cumulativeScores;
   }
 
   _getFrameValues(frame, frames) {
@@ -25,7 +37,7 @@ class Scoring {
   }
 
   _incompleteFrame(frame) {
-    this._scores.push(frame.rollOne());
+    this._frameScores.push(frame.rollOne());
   }
 
   _completeFrame(frame) {
@@ -36,7 +48,7 @@ class Scoring {
   }
 
   _addFrameScore(bonuses = 0) {
-    this._scores.push(this._totalFrameScore + bonuses);
+    this._frameScores.push(this._totalFrameScore + bonuses);
   }
 
   _bonusFrame(frame) {

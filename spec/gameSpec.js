@@ -45,10 +45,16 @@ describe("Game", () => {
     expect(frames[0].add).toHaveBeenCalledWith(7);
   });
 
-  it("calls scoring.cumulativeScore method to obtain scores", () => {
-    scoring = jasmine.createSpyObj("scoring", ["cumulativeScore"]);
+  it("calls scorings methods to obtain scores", () => {
+    scoring = jasmine.createSpyObj("scoring", [
+      "calculateScore",
+      "cumulativeScores",
+    ]);
     game.scorecard(scoring);
-    expect(scoring.cumulativeScore).toHaveBeenCalledWith(frames);
+    expect(scoring.calculateScore).toHaveBeenCalledWith(frames);
+    expect(scoring.cumulativeScores).toHaveBeenCalledWith(
+      scoring.calculateScore(frames)
+    );
   });
 
   it("increments frame when frame full", () => {
@@ -61,9 +67,7 @@ describe("Game", () => {
     for (let index = 0; index < 9; index++) {
       frames[index].isFull.and.returnValue(true);
       game.bowl(10);
-      console.log(index);
     }
-    console.log(game);
     frames[9].isFull.and.returnValue(true);
     expect(() => {
       game.bowl(10);

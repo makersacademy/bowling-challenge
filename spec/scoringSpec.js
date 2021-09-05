@@ -192,5 +192,13 @@ describe("Scoring", () => {
         expect(scoring.calculateScore([frame10])).toEqual([30]);
       });
     });
+
+    describe("cumulative score", () => {
+      it("calculates cumulative scores of a score array", () => {
+        let testInput = [30, 30, 30, 30];
+        let expectedOutput = [30, 60, 90, 120];
+        expect(scoring.cumulativeScores(testInput)).toEqual(expectedOutput);
+      });
+    });
   });
 });

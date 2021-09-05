@@ -1,5 +1,4 @@
 class Frame {
-
   constructor () {
     this.rolls = []
     this.bonus_score = 0
@@ -59,7 +58,7 @@ class Game {
   }
   
   _isNotFirstFrame() {
-    if (this.frames.length >= 1)  { return true } 
+    if (this.frames.length >= 1)  {return true } 
     else {return false }
   }
 
@@ -120,41 +119,41 @@ my_game = new Game;
 });
 
 
-// my_game.roll(1)
-// my_game.roll(4)
+my_game.roll(1)
+my_game.roll(4)
 
-// // puts my_game.score_total
+// puts my_game.score_total
 
-// my_game.roll(4)
-// my_game.roll(5)
-// // puts my_game.score_total
+my_game.roll(4)
+my_game.roll(5)
+// puts my_game.score_total
 
-// my_game.roll(6)
-// my_game.roll(4)
-// //  puts my_game.score_total
-// // puts my_game.spare_bonus?
+my_game.roll(6)
+my_game.roll(4)
+//  puts my_game.score_total
+// puts my_game.spare_bonus?
 
-// my_game.roll(5)
-// my_game.roll(5)
-// // puts my_game.score_total
-// // puts my_game.spare_bonus?
+my_game.roll(5)
+my_game.roll(5)
+// puts my_game.score_total
+// puts my_game.spare_bonus?
 
-// my_game.roll(10)
+my_game.roll(10)
 
-// my_game.roll(0)
-// my_game.roll(1)
+my_game.roll(0)
+my_game.roll(1)
 
-// my_game.roll(7)
-// my_game.roll(3)
+my_game.roll(7)
+my_game.roll(3)
 
-// my_game.roll(6)
-// my_game.roll(4)
+my_game.roll(6)
+my_game.roll(4)
 
-// my_game.roll(10)
+my_game.roll(10)
 
-// my_game.roll(2)
-// my_game.roll(8)
-// my_game.roll(6)
+my_game.roll(2)
+my_game.roll(8)
+my_game.roll(6)
 
-console.log(my_game.frames)
-console.log(my_game.scoreTotal())
+// console.log(my_game.frames)
+// console.log(my_game.scoreTotal())

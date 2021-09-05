@@ -5,6 +5,9 @@ describe('Game', function () {
   beforeEach(function () {
     frame = { 
       addRoll: () => {},
+      addBonusSCore: () => {},
+      calcFrameTotal: () => {},
+      setFrameTotal: () => {},
     };
     game = new Game(frame);
   });
@@ -23,6 +26,10 @@ describe('Game', function () {
     it('adds score to current frame', function () {
       game.roll(5);
     });
+  });
 
+  describe('scores games correctly', function () {
+    it('returns correct score for gutter game', function () {
+    });
   });
 })

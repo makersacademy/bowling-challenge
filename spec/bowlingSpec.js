@@ -6,7 +6,7 @@ let game;
   });
 
   it('should roll a gutter game', function() {
-    for(let i=0,; i<20; i++){
+    for(let i=0; i<20; i++){
       game.roll(0)
     }
     expect(game.score_total).toEqual(0);

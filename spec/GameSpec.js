@@ -73,23 +73,24 @@ describe("Game", () => {
 		game.rollBall(3);
 		game.rollBall(4);
 		game.score();
-		console;
 		expect(game.currentscore).toEqual(47);
 	});
 
-	// it("can score multiple strikes in a row", () => {
-	// 	game.rollBall(10);
-	// 	game.rollBall(10);
-	// 	game.score();
-	// 	expect(game.currentscore).toEqual(20);
-	// });
-
-	it("create the final frame", () => {
+	it("can create the final frame", () => {
 		spyOn(game, "finalFrame");
 		for (let i = 0; i < 9; i++) {
 			game.rollBall(5);
 			game.rollBall(4);
 		}
 		expect(game.finalFrame).toHaveBeenCalled();
+	});
+
+	it("can score a perfect game", () => {
+		for (let i = 0; i < 12; i++) {
+			game.rollBall(10);
+		}
+		console.log(game.frames)
+		game.score();
+		expect(game.currentscore).toEqual(300);
 	});
 });

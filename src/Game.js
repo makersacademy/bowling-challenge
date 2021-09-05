@@ -7,12 +7,16 @@ class Game {
 	}
 
 	nextFrame(frame = new Frame()) {
-		this.frames.push(this.currentFrame);
-		this.frameNo++;
-		if (this.frameNo < 10) {
-			this.currentFrame = frame;
-		} else if (this.frameNo === 10) {
-			this.finalFrame();
+		if (this.frameNo > 10) {
+			return
+		} else {
+			this.frames.push(this.currentFrame);
+			this.frameNo++;
+			if (this.frameNo < 10) {
+				this.currentFrame = frame;
+			} else if (this.frameNo === 10) {
+				this.finalFrame();
+			}
 		}
 	}
 
@@ -29,18 +33,23 @@ class Game {
 
 	score() {
 		for (let i = 0; i < this.frameNo - 1; i++) {
-			if (i < this.frameNo) {
-				if (this.isSpare(i)) {
-					this.currentscore += this.frames[i + 1]["rollOne"];
-				}
+			if (i === 9) {
+				this.currentscore += this.frames[i]["rollOne"] + this.frames[i]["rollTwo"] + this.frames[i]["rollThree"]
 			}
-			if (i < this.frameNo - 2) {
-				if (this.isStrike(i)) {
-					this.scoreStrike(i);
+			else {
+				if (i < this.frameNo) {
+					if (this.isSpare(i)) {
+						this.currentscore += this.frames[i + 1]["rollOne"];
+					}
 				}
+				if (i < this.frameNo - 2) {
+					if (this.isStrike(i)) {
+						this.scoreStrike(i);
+					}
+				}
+				this.currentscore +=
+					this.frames[i]["rollOne"] + this.frames[i]["rollTwo"];
 			}
-			this.currentscore +=
-				this.frames[i]["rollOne"] + this.frames[i]["rollTwo"];
 		}
 		return this.currentscore;
 	}

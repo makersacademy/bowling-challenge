@@ -5,6 +5,7 @@ class Score {
          this.strike = false;
          this.spare = false;
          this.score = 0;
+         this.savedScore = 0;
      };
 
      firstBowl(pins) {
@@ -24,6 +25,10 @@ class Score {
         }
     }
     calculateScore() {
-        this.score = (this.firstBowlPins + this.secondBowlPins)
+        if ((this.strike === true) || (this.spare === true)) {
+            this.savedScore += 10;
+        } else {
+            this.score = (this.firstBowlPins + this.secondBowlPins)
+        }
     }
 };

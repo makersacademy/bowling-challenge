@@ -44,7 +44,22 @@ describe ("Score", () => {
             score.calculateScore();
             expect(score.score).toEqual(9); 
         });
+
+        it ('saves the score if a strike', () => {
+            score.firstBowl(10);
+            score.isStrike();  
+            score.calculateScore();
+            expect(score.savedScore).toEqual(10);
+        })
+        it ('saves the score if a spare', () => {
+            score.firstBowl(5);
+            score.secondBowl(5);
+            score.isSpare();  
+            score.calculateScore();
+            expect(score.savedScore).toEqual(10);
+        })
     });
+       
 
 
 

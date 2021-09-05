@@ -29,4 +29,11 @@ describe('Frame', () => {
       expect(frame.frameScore).toEqual(2);
     })
   })
+
+  describe('isStrike', () => {
+    it('returns true if last roll is strike condition', () => {
+      frame.addRoll(10);
+      expect(frame.isStrike()).toEqual(true);
+    })
+  })
 })

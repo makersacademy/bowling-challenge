@@ -19,14 +19,26 @@ describe('Game', () => {
   })
 
   describe('addFrame', () => {
-    it('adds a new frame to the game', () => {
-      game.addFrame();
+    it('adds a new frame to the game, following 2 normal rolls', () => {
+      game.roll(2);
+      game.roll(4);
+      expect(game.frames.length).toEqual(2);
+    })
+
+    it('adds a new frame following a strike', () => {
+      game.roll(10);
+      expect(game.frames.length).toEqual(2);
+    })
+
+    it('adds a new frame following a split', () => {
+      game.roll(5);
+      game.roll(5);
       expect(game.frames.length).toEqual(2);
     })
 
     it('does nothing if 10 frames already in game', () => {
       for (let i = 0; i < 10; i++) {
-        game.addFrame();
+        game.roll(10);
       }
       expect(game.frames.length).toEqual(10);
     })

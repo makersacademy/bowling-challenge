@@ -13,11 +13,15 @@ class Game {
       this.frames[i].addRoll(pins);
     }
     this.checkFrameOver();
+    this.addFrame();
   }
 
   addFrame() {
-    if (this.frames.length < 10) {
-      this.frames.push(new Frame());
+    let last = this.frames.length - 1; 
+    if (this.frames[last].isStrike() === true || this.frames[last].currentRoll === 2) {
+      if (this.frames.length != 10) {
+        this.frames.push(new Frame());
+      }
     }
   }
 

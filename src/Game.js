@@ -1,3 +1,5 @@
+console.dir(document);
+
 class Game {
 
   constructor() {

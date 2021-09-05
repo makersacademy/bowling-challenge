@@ -8,9 +8,21 @@ describe ("Score", () => {
             score.firstBowl(5);
             expect(score.firstBowlPins).toEqual(5);
         });
+    });   
+    describe ('secondBowlPins', () => {
+            it ('shows number of pins knocked down by second bowl', () => {
+                score.secondBowl(9);
+                expect(score.secondBowlPins).toEqual(9);
+            });
     });
 
-
+    describe ('isStrike', () => {
+        it ('checks if bowl is a strike', () => {
+        score.firstBowl(10);
+        score.isStrike();
+        expect(score.strike).toEqual(true);
+        });
+    });
 
 
 

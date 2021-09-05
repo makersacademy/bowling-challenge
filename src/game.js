@@ -18,10 +18,10 @@ class Game {
     this._currentFrame.add(pins);
   }
 
-  scorecard(scoreGenerator = new Scoring()) {
+  scorecard(scoreGenerator = new Scoring(), stringifier = new ScorePrinter()) {
     const scores = scoreGenerator.calculateScore(this._frames);
     this._frameScores = scoreGenerator.cumulativeScores(scores);
-    return this._frameScores;
+    return stringifier.stringify(this._frames, this._frameScores);
   }
 
   getCurrentFrame() {

@@ -3,6 +3,7 @@
 describe("Game", () => {
   let game;
   let scoring;
+  let stringifier;
   let frame1;
   let frame2;
   let frame3;
@@ -45,18 +46,6 @@ describe("Game", () => {
     expect(frames[0].add).toHaveBeenCalledWith(7);
   });
 
-  it("calls scorings methods to obtain scores", () => {
-    scoring = jasmine.createSpyObj("scoring", [
-      "calculateScore",
-      "cumulativeScores",
-    ]);
-    game.scorecard(scoring);
-    expect(scoring.calculateScore).toHaveBeenCalledWith(frames);
-    expect(scoring.cumulativeScores).toHaveBeenCalledWith(
-      scoring.calculateScore(frames)
-    );
-  });
-
   it("increments frame when frame full", () => {
     frames[0].isFull.and.returnValue(true);
     game.bowl(10);
@@ -72,5 +61,31 @@ describe("Game", () => {
     expect(() => {
       game.bowl(10);
     }).toThrow("Game is complete");
+  });
+
+  describe("scorecard operations", () => {
+    beforeEach(() => {
+      scoring = jasmine.createSpyObj("scoring", [
+        "calculateScore",
+        "cumulativeScores",
+      ]);
+      stringifier = jasmine.createSpyObj("stringifier", ["stringify"]);
+    });
+
+    it("calls scoring methods to obtain scores", () => {
+      game.scorecard(scoring, stringifier);
+      expect(scoring.calculateScore).toHaveBeenCalledWith(frames);
+      expect(scoring.cumulativeScores).toHaveBeenCalledWith(
+        scoring.calculateScore(frames)
+      );
+    });
+
+    it("calls scorecard methods to stringify scores", () => {
+      game.scorecard(scoring, stringifier);
+      expect(stringifier.stringify).toHaveBeenCalledWith(
+        frames,
+        scoring.cumulativeScores(frames)
+      );
+    });
   });
 });

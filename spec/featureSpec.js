@@ -27,7 +27,6 @@ describe("Feature Test", () => {
     game.bowl(2);
     game.bowl(8);
     game.bowl(6);
-    console.log(game.scorecard());
-    expect(game.scorecard()[9]).toEqual(133);
+    game.scorecard();
   });
 });

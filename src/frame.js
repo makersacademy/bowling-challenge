@@ -1,14 +1,14 @@
 "use strict";
 
 class Frame {
-  constructor(id) {
+  constructor(finalFrame = false) {
     this.TOTAL_PINS = 10;
     this._remainingPins = this.TOTAL_PINS;
-    this._frameId = id;
+    this._finalFrame = finalFrame;
     this._isFull = false;
     this._rollOne = null;
     this._rollTwo = null;
-    if (id === 10) {
+    if (finalFrame) {
       this._rollThree = null;
     }
   }
@@ -17,11 +17,11 @@ class Frame {
     if (this._isValidRoll(pins) === false || this.isFull()) {
       return;
     }
-    this._frameId === 10 ? this._lastFrame(pins) : this._normalFrame(pins);
+    this._finalFrame ? this._lastFrame(pins) : this._normalFrame(pins);
   }
 
-  getId() {
-    return this._frameId;
+  isFinalFrame() {
+    return this._finalFrame;
   }
 
   rollOne() {
@@ -38,6 +38,15 @@ class Frame {
 
   isFull() {
     return this._isFull;
+  }
+
+  generateFramesArray() {
+    const frameArray = [];
+    for (let index = 0; index < 9; index++) {
+      frameArray.push(new Frame());
+    }
+    frameArray.push(new Frame(true));
+    return frameArray;
   }
 
   _normalFrame(pins) {

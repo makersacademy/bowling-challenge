@@ -5,11 +5,11 @@ describe("Frame", () => {
 
   describe("Frames 1 to 9", () => {
     beforeEach(() => {
-      frame = new Frame(1);
+      frame = new Frame();
     });
 
-    it("initializes with a frame_id", () => {
-      expect(frame.getId()).toEqual(1);
+    it("initializes as not final frame", () => {
+      expect(frame.isFinalFrame()).toEqual(false);
     });
 
     it("does not create 3rd roll", () => {
@@ -73,7 +73,11 @@ describe("Frame", () => {
 
   describe("Frame 10", () => {
     beforeEach(() => {
-      frame = new Frame(10);
+      frame = new Frame(true);
+    });
+
+    it("initializes as final frame", () => {
+      expect(frame.isFinalFrame()).toEqual(true);
     });
 
     it("initializes with _rollThree", () => {
@@ -120,6 +124,22 @@ describe("Frame", () => {
       frame.add(10);
       expect(frame.rollThree()).toEqual(10);
       expect(frame.isFull()).toBeTruthy();
+    });
+  });
+
+  describe("Frame array generation", () => {
+    it("generates array of 10 frame objects", () => {
+      console.log("here:", frame.generateFramesArray());
+      expect(frame.generateFramesArray().length).toEqual(10);
+    });
+
+    it("sets first to ninth array objects as normal frames", () => {
+      expect(frame.generateFramesArray()[0].isFinalFrame()).toEqual(false);
+      expect(frame.generateFramesArray()[8].isFinalFrame()).toEqual(false);
+    });
+
+    it("sets tenth array object as final frame", () => {
+      expect(frame.generateFramesArray()[9].isFinalFrame()).toEqual(true);
     });
   });
 });

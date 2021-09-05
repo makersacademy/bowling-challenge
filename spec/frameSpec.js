@@ -72,7 +72,6 @@ describe("Frame", () => {
 
     describe("Frame array generation", () => {
       it("generates array of 10 frame objects", () => {
-        console.log("here:", frame.generateFramesArray());
         expect(frame.generateFramesArray().length).toEqual(10);
       });
 

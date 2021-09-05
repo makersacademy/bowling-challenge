@@ -54,7 +54,7 @@ describe('CalculateScore', () => {
       expect(calculateScore._score).toEqual(150)
     })
 
-    it('is expected to calculate only spares', () => {
+    it('is expected to calculate a game of only spares', () => {
       for(let i = 1; i <= 9; i++) {
         frame.addBowl(9);
         frame.addBowl(1);
@@ -66,6 +66,20 @@ describe('CalculateScore', () => {
       calculateScore.addFrame(frame.bowls());
       calculateScore.total();
       expect(calculateScore._score).toEqual(190)
+    })
+
+    it('is expected to calculate a game of only strikes', () => {
+      for(let i = 1; i <= 9; i++) {
+        frame.addBowl(10);
+        frame.addBowl(0);
+        calculateScore.addFrame(frame.bowls());
+      };
+      frame.addBowl(10);
+      frame.addBowl(10);
+      frame.addBowl(10);
+      calculateScore.addFrame(frame.bowls());
+      calculateScore.total();
+      expect(calculateScore._score).toEqual(300)
     })
   })
 

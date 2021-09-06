@@ -1,3 +1,56 @@
+# Bowling Challenge in JavaScript
+
+The project is a translation of last weeks weekend challenge which was written in Ruby to JavaScript.<br>
+The program acts as a electronic score card for a game of bowling which allows users to input the pins they<br>
+knock down in a frame frame over 2 rolls and displays the score on a per frame and culmulative basis.
+
+## Project Planning
+
+[Project Planning Draft Notes Page 1](https://github.com/Battery0/bowling-challenge/blob/main/public/planning1.jpg)
+
+[Project Planning Draft Notes Page 2](https://github.com/Battery0/bowling-challenge/blob/main/public/planning2.jpg)
+
+## To Do
+
+1. Account for spares bonus points
+2. Account for strike bonus points
+3. Include stubs & doubles to issolate tests
+4. Add test for console output on 'game over'
+
+## Getting started
+
+`git clone https://github.com/Battery0/bowling-challenge.git`
+
+## Usage
+
+Open SpecRunner.html inside the project directory in chrome. Open the dev tools in chrome.<br>
+under the Console or Sources tab, enter the following method calls:
+
+1. Create a new game instance
+
+    `game = new Game`
+
+2. Enter the number of pins knocked down in both rolls for your frame. Eg:
+
+    `game.frameRolls(5, 1);`
+
+3. Keep adding frame rolls. If at any time you want to see your current frame score
+
+    `game.frameScore();`
+
+3.  If you want to see your culmulative score for the frames played so far
+
+    `game.totalScore();`
+
+4. The game will output 'Game Over' after you've entered your last 2 rolls for the 10'th frame
+
+
+## Running tests
+
+Open SpecRunner.html inside the project directory in chrome. Jasmine tests will automatically run
+
+
+
 
 Bowling Challenge
 =================

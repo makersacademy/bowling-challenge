@@ -21,7 +21,7 @@ describe('Score', () => {
     expect(score.frameScore).toEqual(8);
   });
 
-  it('calculates the total game score so far', () => {
+  it('calculates the culmulative game score so far', () => {
     game.frameRolls(2, 3);
     game.frameRolls(1, 4);
     game.frameRolls(6, 3);

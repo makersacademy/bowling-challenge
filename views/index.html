@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <script src="../src/Scoring.js"></script>
+        <script src="../src/Game.js"></script>
+        <script src="../src/ScoreBoard.js"></script>
+        <script src="../src/Validation.js"></script>
+        <script src="../src/interface.js"></script>
+        <link rel="stylesheet" type="text/css" href="../public/style.css" />
+    </head>
+
+    <body>
+
+    <h1>Bowling :D</h1>
+
+    <div id="rollInput">
+        Roll one: <input type="text" placeholder="Enter roll one score..." id="rollOneScoreInput"><br>
+        Roll two: <input type="text" placeholder="Enter roll two score..." id="rollTwoScoreInput"><br>
+        <button type="button" id="submitScore">Submit frame rolls</button><br>
+    </div>
+
+    <h2>Score board</h2>
+
+    <div>
+        <table>
+            <tr id="headers">
+                <th></th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th>Total score</th>
+            </tr>
+            <tr id="rolls">
+                <td>Rolls</td>
+            </tr>
+            <tr id="frameScore">
+                <td id="rolls">Score</td>
+                <td id="frame1Score"></td>
+                <td id="frame2Score"></td>
+                <td id="frame3Score"></td>
+                <td id="frame4Score"></td>
+                <td id="frame5Score"></td>
+                <td id="frame6Score"></td>
+                <td id="frame7Score"></td>
+                <td id="frame8Score"></td>
+                <td id="frame9Score"></td>
+                <td id="frame10Score"></td>
+                <td id="totalScore"></td>
+              </tr>
+          </table>
+    </div>
+
+    <div id="bonusRolls">
+        <!-- Roll one: <input type="text" placeholder="Enter roll one score..." id="rollOneScoreInput"><br>
+        Roll two: <input type="text" placeholder="Enter roll two score..." id="rollTwoScoreInput"><br>
+        <button type="button" id="submitScore">Submit frame rolls</button><br> -->
+    </div>
+
+    </body>
+</html>

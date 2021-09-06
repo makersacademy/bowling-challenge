@@ -1,13 +1,17 @@
 # Bowling Challenge
 
+> **"Donny, you're out of your HTML element"**
+
 ## Introduction
 
-This is a simple bowling scorecard program, written in JavaScript and HTML, and tested with Jasmine. The user can enter rolls via buttons and the scorecard in their browser will automatically update.
+This is a simple bowling scorecard program, written in JavaScript and HTML, and tested with Jasmine. The user can enter rolls via buttons and the scorecard in their browser will automatically update. Here it is displaying the complete Makers example game:
 
-I enjoyed this challenge a lot more than last week's Ruby bowling scorecard challenge, mainly because I spent much more time planning, especially the scoring logic. I have included my
+![Bowling Scorecard](images/bowling.png)
+
+I enjoyed this challenge a lot more than last week's Ruby bowling scorecard challenge, mainly because I spent much more time planning, especially the scoring logic. The coding was therefore much more straightforward, even though it was in a relatively new language for me! I have included my
 [planning - including user stories - below](#planning).
 
-All of the classes are comprehensively tested with Jasmine except for scoreprinter.js. I was running low on time and wanted to get my scorecard displayed, so I created a basic 'stringifier' without test-driving it.
+All of the classes are comprehensively tested with Jasmine except for `scoreprinter.js`. I was running low on time and wanted to get my scorecard displayed, so I created a basic 'stringifier' without test-driving it.
 
 Future possibilities:
 

@@ -9,9 +9,9 @@
       body{background-color:#f6fafd;}
       .framenumber::before{content:"Frame: "; color:rgba(255, 255, 255, .9); margin-right:-0.25rem;}
       .framenumber::after{content:attr(data-framenumber); color:white; margin-left:0.125rem;}
-      .roll1::after{content:attr(data-roll1) "  " attr(data-rollmess1);}
-      .roll2::after{content:attr(data-roll2) "  " attr(data-rollmess2);}
-      .roll3::after{content:attr(data-roll3) "  " attr(data-rollmess3);}
+      .roll1::before{content:attr(data-roll1) "  " attr(data-rollmess1);}
+      .roll2::before{content:attr(data-roll2) "  " attr(data-rollmess2);}
+      .roll3::before{content:attr(data-roll3) "  " attr(data-rollmess3);}
 
       .score::after{content:attr(data-score);}
       .framebonus[data-framebonus]:not([data-framebonus="0"])::after{content:" .. " attr(data-scorebefore) " + " attr(data-framebonus) " .. bonus ";}
@@ -49,6 +49,8 @@
         }
       }
       body > #frame{display:none;}
+      #frame_10 div[data-rollmess1="  Strike"] ~ div.body::after{content:"Extra roll.. ..Strike in frame 10";}
+      #frame_10 div[data-rollmess2="  Spare"] ~ div.body::after{content:"Extra roll.. ..Spare in frame 10";}
     </style>
     <!-- include source files here... -->
     <script>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chitter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <style>
+      body{background-color:#f6fafd;}
+      .framenumber::before{content:"Frame: "; color:rgba(255, 255, 255, .9); margin-right:-0.25rem;}
+      .framenumber::after{content:attr(data-framenumber); color:white; margin-left:0.125rem;}
+      .roll1::after{content:attr(data-roll1) "  " attr(data-rollmess1);}
+      .roll2::after{content:attr(data-roll2) "  " attr(data-rollmess2);}
+      .roll3::after{content:attr(data-roll3) "  " attr(data-rollmess3);}
+
+      .score::after{content:attr(data-score);}
+      .framebonus[data-framebonus]:not([data-framebonus="0"])::after{content:" .. " attr(data-scorebefore) " + " attr(data-framebonus) " .. bonus ";}
+      .gameended{padding-right:1rem;}
+      .gameended[data-gameended]::after{content:"Your score: " attr(data-gameended) " points";}
+
+      .logo{font-family:"Caveat"}
+      .button{cursor:pointer; display:inline-block;padding:0.25rem 0.5rem; border:solid 1px rgba(0, 0, 0, .3); border-radius: .25rem; text-decoration: none; position:relative; transition: all 200ms; background-color:white; color:#222426;}
+      .button:hover, input[type="submit"]:hover{box-shadow:inset 0 0 0 10rem rgba(0, 0, 0, .1);}
+      .blue{background-color:#007bff !important; color:white !important; border:none !important;}
+      .green{background-color:#6c757d !important; color:white !important; border:none !important;}
+      .round{border-radius:5rem !important;padding-left:2.5rem !important;padding-right:2.5rem !important;}
+      .left{float:left;}
+      .right{float:right;}
+      .keep-center{text-align:center; vertical-align:middle;}
+      .keep-right{text-align:right;}
+      hr{opacity:0; border-top:rgba(0, 0, 0, 0.1); margin-bottom:2rem; margin-left:3.33rem;}
+      .peep{display:block; margin-top: .2rem; padding:0.25rem 0.5rem 0.5rem 1.5rem;border:solid 1px rgba(0, 0, 0, .2); border-radius: .5rem; background-color:rgba(0, 15, 30, .8);}
+      .peep:hover{animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;}
+      section > .peep > .header{color:#424446; padding-left:2rem;text-align:right}
+      section > .peep > .body{color:#fffaef;}
+      section > .peep > .footer{color:#848688; text-align:right; }
+      @keyframes shake {
+        10%, 90% {
+            transform: translate3d(-1px, 0, 0);
+        }
+        20%, 80% {
+            transform: translate3d(2px, 0, 0);
+        }
+        30%, 50%, 70% {
+            transform: translate3d(-4px, 0, 0);
+        }
+        40%, 60% {
+            transform: translate3d(4px, 0, 0);
+        }
+      }
+      body > #frame{display:none;}
+    </style>
+    <!-- include source files here... -->
+    <script>
+<%= File.read('./src/game.js') %>
+
+<%= File.read('./src/frame.js') %>
+
+<%= File.read('./src/loadingFrames.js') %>
+
+<%= File.read('./src/framesHtml.js') %>
+
+<%= File.read('./src/interface.js') %>
+    </script>
+  </head>
+  <body>
+
+    <section class="keep-center" name="Login">
+      <a class="button left logo" href="/">Bowling Alley</a>
+      <a id="newGame" class="button right" >New Game</a>
+    </section>
+    <hr>
+          <section id="frame" name="peeps">
+
+          <div class="peep">
+          <h4 style="margin-top:0.1rem; margin-bottom:0.2rem;">
+            <div class="header framenumber"></div>
+          </h4>
+          <div class="body roll1 rollmess1"></div>
+          <div class="body roll2 rollmess2"></div>
+          <div class="body roll3 rollmess3"></div>
+          <div class="footer framescore"></div>
+          <div class="footer framebonus scorebefore left" style="margin-left:25%;"></div>
+          <div class="footer frametotal"></div>
+          <div class="footer score"></div>
+          </div>
+
+        </section>
+  <section id="frames" name="peeps">
+
+  </section>
+  <h3 class="gameended keep-right"></h3>
+  <section name="footer" class="keep-center">
+    <input id="pinsDown" type="text" placeholder="pins down" class="button" style="width:3.7rem; text-align:center;">
+    <a id="addRoll" class="button blue">Add roll</a>
+  </section
+
+  </body>
+</html>

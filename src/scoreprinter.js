@@ -6,7 +6,10 @@ class ScorePrinter {
     for (let index = 0; index < frames.length; index++) {
       scorecard.push(this.frameString(index, frames[index], scores[index]));
     }
-    scorecard.push(`TOTAL SCORE: ${scores[scores.length - 1]}`.padStart(26));
+    let totalScore = scores[scores.length - 1];
+    scorecard.push(
+      `TOTAL SCORE: ${totalScore > 0 ? totalScore : 0}`.padStart(26)
+    );
     return scorecard.join("\r\n");
   }
 

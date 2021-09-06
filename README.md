@@ -14,7 +14,7 @@ knock down in a frame frame over 2 rolls and displays the score on a per frame a
 
 1. Account for spares bonus points
 2. Account for strike bonus points
-3. Include stubs & doubles to issolate tests
+3. Include stubs & doubles to isolate tests
 4. Add test for console output on 'game over'
 
 ## Getting started
@@ -49,10 +49,11 @@ under the Console or Sources tab, enter the following method calls:
 
 Open SpecRunner.html inside the project directory in chrome. Jasmine tests will automatically run
 
+<br>
+<br>
+<br>
 
-
-
-Bowling Challenge
+Bowling Challenge - Brief
 =================
 
 * Feel free to use google, your notes, books, etc. but work on your own

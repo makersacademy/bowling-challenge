@@ -9,7 +9,9 @@
           +addRoll() undefined
           +after() Frame
           +afterNext() Frame
+          +before() Frame
           +baseScore() Int
+          +complete() Bool
           +hasTwoRolls() Bool
           +isBoring() Bool
           +isSpare() Bool
@@ -33,9 +35,11 @@
         +ScoreCard scoreCard
         +String turn
 
+        +over() bool
         +roll(pinsDown) undefined
         +score() int
 
+        _nextFrame() undefined
         _spareBonus() int
         _strikeBonus() int
       }

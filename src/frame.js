@@ -18,7 +18,6 @@ class Frame {
   }
 
   afterNext() {
-    let after = this.after()
     let afterNext = this.after() ? this.after().after() : null
 
     return afterNext;
@@ -33,12 +32,30 @@ class Frame {
     return score;
   }
 
+  before() {
+    let before = this.scoreCard.getFrameNumber(this.number - 1)
+    
+    return before ? before : null
+  }
+
+  complete() {
+    return (
+      this.hasTwoRolls() ||
+      this.isStrike() ||
+      (this.number == 11 && this.firstRoll && this.before().isSpare())
+      )
+  }
+
   hasTwoRolls() {
     return this.secondRoll != null;
   }
 
   isBoring() {
     return this.baseScore() < 10;
+  }
+
+  isComplete() {
+    return (this.hasTwoRolls() || this.isStrike())
   }
 
   isSpare() {

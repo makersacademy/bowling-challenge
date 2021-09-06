@@ -38,6 +38,40 @@ describe('Game', () => {
     expect(game.scoreCard.getFrameNumber(4).firstRoll).toEqual(2);
   });
 
+  describe('the over function', () => {
+    it("knows the game's not over until it's over", () => {
+      for(let i = 0; i < 19; i++) {
+        game.roll(1);
+      }
+
+      expect(game.over()).toBe(false);
+    });
+
+    it('knows the game is over after a boring 10th frame', () => {
+      for(let i = 0; i < 20; i++) {
+        game.roll(1);
+      }
+
+      expect(game.over()).toBe(true);
+    });
+
+    it('knows the game is over after a spare in the 10th frame + one bonus roll', () => {
+      for(let i = 0; i < 21; i++) {
+        game.roll(5);
+      }
+
+      expect(game.over()).toBe(true);
+    });
+
+    it('knows the game is over after a strike in the 10th frame + two bonus rolls', () => {
+      for(let i = 0; i < 12; i++) {
+        game.roll(10);
+      }
+
+      expect(game.over()).toBe(true);
+    });
+  });
+
   describe('the score function', () => {
     it('calculates the correct score for a single incomplete frame', () => {
       game.roll(3);

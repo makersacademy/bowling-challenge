@@ -34,6 +34,31 @@ describe('Frame', () => {
     expect(frame.secondRoll).toBe(2);
   });
 
+  it('is incomplete when it contains one non-strike roll', () => {
+    frame.addRoll(5);
+
+    expect(frame.complete()).toBe(false);
+  });  
+  
+  it('is complete when it contains two rolls', () => {
+    frame.addRoll(5);
+    frame.addRoll(5);
+
+    expect(frame.complete()).toBe(true);
+  });
+
+  it('is complete when it contains a strike', () => {
+    frame.addRoll(10);
+
+    expect(frame.complete()).toBe(true);
+  });
+
+  it('can access the previous frame', () => {
+    frame2 = new Frame(scoreCard);
+
+    expect(frame2.before()).toBe(frame);
+  });
+
   it('can access the next frame', () => {
     frame2 = new Frame(scoreCard);
 

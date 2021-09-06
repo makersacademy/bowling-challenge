@@ -15,14 +15,16 @@ function createButton(num) {
 }
 
 function generateButtons() {
-  document.querySelectorAll('.rollButton').forEach((b) => {
-    document.querySelector('#buttons').removeChild(b)
-  })
+  if (!game.over()) {
+    document.querySelectorAll('.rollButton').forEach((b) => {
+      document.querySelector('#buttons').removeChild(b)
+    })
 
-  for (let i = 0; i <= game.pinsRemaining; i++) {
-    rollButton = createButton(i);
+    for (let i = 0; i <= game.pinsRemaining; i++) {
+      rollButton = createButton(i);
 
-    document.querySelector('#buttons').appendChild(rollButton);
+      document.querySelector('#buttons').appendChild(rollButton);
+    }
   }
 }
 
@@ -39,14 +41,30 @@ function showTurn() {
   document.querySelector('#turn').innerHTML = `Enter ${game.turn} roll:`;
 }
 
+function showGameOver() {
+  document.querySelector('body').removeChild(score);
+  document.querySelector('body').removeChild(rollContainer);
+
+  document.querySelector('#game-over')
+  .innerHTML = `Game over! Final score ${game.score()}`;
+}
+
 function updateInfo() {
-  showScore();
-  showFrame();
-  showTurn();
-  generateButtons();
+  if (game.over()) {
+    showGameOver()
+  } else {
+    showScore();
+    showFrame();
+    showTurn();
+    generateButtons();
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  gameOver = document.createElement("div");
+  gameOver.setAttribute('id', 'game-over');
+  document.querySelector('body').appendChild(gameOver);
+
   score = document.createElement("div");
   score.setAttribute('id', 'score');
   document.querySelector('body').appendChild(score);

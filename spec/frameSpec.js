@@ -22,13 +22,15 @@ describe("Frame", () => {
     });
 
     it("cannot add an invalid roll: out of range number", () => {
-      frame.add(11);
-      expect(frame.rollOne()).toBeNull();
+      expect(() => {
+        frame.add(11);
+      }).toThrow("Invalid Roll");
     });
 
     it("cannot add an invalid roll: not an integer", () => {
-      frame.add("a");
-      expect(frame.rollOne()).toBeNull();
+      expect(() => {
+        frame.add("a");
+      }).toThrow("Invalid Roll");
     });
 
     it("can add two valid rolls", () => {
@@ -39,8 +41,9 @@ describe("Frame", () => {
 
     it("cannot add two rolls that exceed maximum pin number", () => {
       frame.add(3);
-      frame.add(8);
-      expect(frame.rollTwo()).toBeNull();
+      expect(() => {
+        frame.add(8);
+      }).toThrow("Invalid Roll");
     });
 
     it("sets 2nd roll to zero if strike", () => {
@@ -60,8 +63,9 @@ describe("Frame", () => {
 
     it("cannot add two strikes to same frame", () => {
       frame.add(10);
-      frame.add(10);
-      expect(frame.rollTwo()).toEqual(0);
+      expect(() => {
+        frame.add(10);
+      }).toThrow("Invalid Roll");
     });
 
     it("is full if two valid rolls added", () => {
@@ -128,9 +132,11 @@ describe("Frame", () => {
     it("will not allow third roll if first two rolls total less than 10", () => {
       frame.add(3);
       frame.add(2);
-      frame.add(9);
-      expect(frame.rollThree()).toBeNull();
       expect(frame.isFull()).toBeTruthy();
+      expect(() => {
+        frame.add(9);
+      }).toThrow("Invalid Roll");
+      expect(frame.rollThree()).toBeNull();
     });
 
     it("can accept three strikes in final frame", () => {

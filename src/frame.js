@@ -15,7 +15,7 @@ class Frame {
 
   add(pins) {
     if (this._isValidRoll(pins) === false || this.isFull()) {
-      return;
+      throw "Invalid Roll";
     }
     this._finalFrame ? this._lastFrame(pins) : this._normalFrame(pins);
   }

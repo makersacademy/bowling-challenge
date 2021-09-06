@@ -8,7 +8,6 @@ class Frame {
   constructor() {
     this._bowls = [];
     this._frameCount = 1;
-
   }
 
   bowls() {

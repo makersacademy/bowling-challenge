@@ -16,26 +16,25 @@ class CalculateScore {
 
   total() {
     let currentFrame = 0;
+
     this._frames.forEach((frame, index, frames) => {
+
       if (this.#strike(frame)) {
         if (currentFrame <= 7) {
-          let arr = frames[index].concat(frames[index + 1][0], frames[index + 2][0]);
-          this._score += arr.reduce((a, b) => a + b);
+          this.#addSumToScore(frames[index].concat(frames[index + 1][0], frames[index + 2][0]));
         } else if (currentFrame === 8) {
-          let arr = frames[index].concat(frames[index + 1][0], frames[index + 1][1]);
-          this._score += arr.reduce((a, b) => a + b);
+          this.#addSumToScore(frames[index].concat(frames[index + 1][0], frames[index + 1][1]));
         } else {
-          this._score += frame.reduce((a, b) => a + b);
+          this.#addSumToScore(frame);
         }
       } else if (this.#spare(frame)) {
         if (currentFrame <= 8) {
-          let arr = frames[index].concat(frames[index + 1][0]);
-          this._score += arr.reduce((a, b) => a + b);
+          this.#addSumToScore(frames[index].concat(frames[index + 1][0]));
         } else {
-          this._score += frame.reduce((a, b) => a + b);
+          this.#addSumToScore(frame);
         }
       } else {
-        this._score += frame.reduce((a, b) => a + b);
+        this.#addSumToScore(frame);
       }
       currentFrame += 1;
     });
@@ -49,4 +48,9 @@ class CalculateScore {
   #spare(frame) {
     return (frame[0] + frame[1]) === this.#maxPins;
   }
+
+  #addSumToScore(array) {
+    this._score += array.reduce((a, b) => a + b);
+  }
+
 }

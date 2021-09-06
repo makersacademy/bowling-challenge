@@ -1,0 +1,40 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#rollContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#score, #frame, #turn {
+  font-size: 3em;
+  margin-bottom: 1.4em;
+}
+
+#turn, .rollButton {
+  font-size: 2em;
+}
+
+#frame {
+  font-size: 2.4em;;
+  width: 20%;
+  align-content: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.rollButton {
+  border-radius: 20px;
+  padding: 0.4em;
+  margin: 0.2em;
+}
+
+#game-over {
+  font-size: 5em;
+}
+
+#buttons {
+  width: 50%;
+}

@@ -142,7 +142,7 @@ Takes score array and calculates cumulative score per frame, i.e.:
 
 scores = 4, 9, 16, 9, 15, 5, 13
 
-cumulative scores = 4, 13, 29, 38, 53, 58, 61
+cumulative scores = 4, 13, 29, 38, 53, 58, 71
 
 This would negate need for total score function, as final element in list will always be total.
 

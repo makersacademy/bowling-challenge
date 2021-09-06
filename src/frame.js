@@ -76,7 +76,7 @@ class FrameNotTen {
   }
 
   addBonusSentFromFutureRolls(bonusPoints) {
-    if (this.frameBonus.count >= 2) return false;
+    if (this.frameBonus.length >= 2) return false;
     this.frameBonus = this.frameBonus.concat([bonusPoints]);
   }
 

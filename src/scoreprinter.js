@@ -7,7 +7,7 @@ class ScorePrinter {
       scorecard.push(this.frameString(index, frames[index], scores[index]));
     }
     scorecard.push(`TOTAL SCORE: ${scores[scores.length - 1]}`.padStart(26));
-    console.log(scorecard.join("\r\n"));
+    return scorecard.join("\r\n");
   }
 
   frameString(index, frame, score) {

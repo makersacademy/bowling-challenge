@@ -27,7 +27,7 @@ describe("Feature Test", () => {
     game.bowl(2);
     game.bowl(8);
     game.bowl(6);
-    game.scorecard();
+    expect(game.scorecard()).toContain("TOTAL SCORE: 133");
   });
 
   it("bowls a perfect game", () => {
@@ -43,7 +43,7 @@ describe("Feature Test", () => {
     game.bowl(10);
     game.bowl(10);
     game.bowl(10);
-    game.scorecard();
+    expect(game.scorecard()).toContain("TOTAL SCORE: 300");
   });
 
   it("bowls an incomplete game", () => {
@@ -52,6 +52,6 @@ describe("Feature Test", () => {
     game.bowl(2);
     game.bowl(4);
     game.bowl(10);
-    game.scorecard();
+    expect(game.scorecard()).toContain("TOTAL SCORE: 28");
   });
 });

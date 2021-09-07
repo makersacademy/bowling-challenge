@@ -29,7 +29,6 @@ My goal was to create an interface that calculated the score of the frame and up
 - Jasmine
 - TDD
 - Debugging (following the flow and getting visibility)
-- Console
 
 ## Screens
 

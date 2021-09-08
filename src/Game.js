@@ -36,6 +36,7 @@ class Game {
   scoreTotal() {
     let score = 0;
     this.frames.forEach(frame => {
+      // this can change to : score += frame.calcFrameTotal();
       score += frame.frameTotal;
   });
   return score;
@@ -46,6 +47,7 @@ class Game {
     this.recalculateFrameTotals();
   }
 
+  // this can probably be removed
   recalculateFrameTotals() {
     this.currentFrame.calcFrameTotal() && this.currentFrame.setFrameTotal();
     if (this._isNotFirstFrame()) { this.frames.slice(-1)[0].calcFrameTotal() && this.frames.slice(-1)[0].setFrameTotal(); }
@@ -86,11 +88,13 @@ class Game {
     return (this.frames.length > 1 && this.frames.slice(-1)[0].rolls[0] == 10 && this.frames.slice(-2)[0].rolls[0] == 10);
   }
 
+  // change name to is last Frame strike
   _isStrike() {
     if (this.frames.slice(-1)[0].rolls[0] == 10) { return true; }
     else {return false;}
   }
 
+  // change name to is last Frame spare
   _isSpare() {
     if (this.frames.slice(-1)[0].rolls.slice(0, 2).reduce((a, b) => a + b, 0) == 10) { return true; }
   }

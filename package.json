@@ -8,11 +8,13 @@
     "lib": "lib"
   },
   "dependencies": {
-    "eslint": "^7.32.0",
     "eslint-config-google": "^0.14.0",
+    "eslint": "^7.32.0",
     "npm": "^7.22.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jasmine-browser-runner": "^0.8.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

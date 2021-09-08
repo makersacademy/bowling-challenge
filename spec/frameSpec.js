@@ -108,6 +108,13 @@ describe("Frame", () => {
       expect(frame.rollOne()).toEqual(5);
     });
 
+    it("does not allow an invalid second roll", () => {
+      frame.add(7);
+      expect(() => {
+        frame.add(4);
+      }).toThrow("Invalid Roll");
+    });
+
     it("is full after two rolls totalling less than 10", () => {
       frame.add(3);
       frame.add(2);

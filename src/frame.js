@@ -69,7 +69,17 @@ class Frame {
   }
 
   _lastFrame(pins) {
-    this._rollOne === null ? (this._rollOne = pins) : this._isBonusRoll(pins);
+    // needs to adjust remaining pins after roll one
+    this._rollOne === null
+      ? this._finalFirstRoll(pins)
+      : this._isBonusRoll(pins);
+  }
+
+  _finalFirstRoll(pins) {
+    this._rollOne += pins;
+    pins === 10
+      ? (this._remainingPinsPins = this.TOTAL_PINS)
+      : (this._remainingPins -= pins);
   }
 
   _isBonusRoll(pins) {

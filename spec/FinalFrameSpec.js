@@ -1,6 +1,6 @@
 describe("FinalFrame", () => {
-	let finalFrame
-	// var finalFrame = new FinalFrame();
+	let finalFrame;
+
 	beforeEach(() => {
 		finalFrame = new FinalFrame();
 	});

@@ -1,6 +1,5 @@
 describe('Game', () => {
   let game;
-  let frame;
   beforeEach(() => {
     game = new Game();
   });

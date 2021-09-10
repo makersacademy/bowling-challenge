@@ -1,0 +1,11 @@
+{
+	"browser": {
+		"name": "firefox"
+	},
+	"srcDir": "src",
+	"srcFiles": ["**/Frame.js", "**/FinalFrame.js", "**/Game.js"],
+	"specDir": "spec",
+	"specFiles": ["**/*[Ss]pec.?(m)js"],
+	"helpers": ["helpers/asyncAwait.js"],
+	"random": true
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bowling scorecard</title>
+	</head>
+	<body>
+		<section>
+			<h1>Bowling Score app</h1>
+			<h2>Frame no: <span id="game"></span></h2>
+			<div>
+				Ball no: <span id="ballno"></span>
+				<input type="number" id="ballOne" min="0" max="10" />
+				<button id="balls">Pins Knocked Down</button>
+			</div>
+			<p>
+				<button id="score">Scoring</button>
+				Score is <span id="current-score"></span>
+			</p>
+		</section>
+		<script src="src/Game.js"></script>
+		<script src="src/Frame.js"></script>
+		<script src="src/FinalFrame.js"></script>
+		<script src="src/Interface.js"></script>
+	</body>
+</html>

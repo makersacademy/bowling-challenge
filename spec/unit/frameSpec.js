@@ -39,9 +39,7 @@ describe("Frame", function () {
       frame.addRoll(5);
       frame.addRoll(5);
       frame.addBonusScore(5);
-      frame.calcFrameTotal();
-      frame.setFrameTotal();
-      expect(frame.frameTotal).toEqual(15);
+      expect(frame.calcFrameTotal()).toEqual(15);
     });
   });
 });

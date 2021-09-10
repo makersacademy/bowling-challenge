@@ -32,6 +32,7 @@ export class Frame {
   calcFrameTotal() {
     return this.rolls.reduce((a, b) => a + b, 0) + this.bonus_score;
   }
+  
 
   // remove this method
   setFrameTotal() {

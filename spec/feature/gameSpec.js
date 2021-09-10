@@ -4,13 +4,11 @@ describe("Game", function () {
   // https://www.sportcalculators.com/bowling-score-calculator
 
   let game;
-  let frame;
 
   beforeEach(function () {
-    frame = new Frame;
-    game = new Game(frame);
-
+    game = new Game(Frame);
   });
+  
   describe("full game score", function () {
     it("gutter game to equal 0", function () {
       const times = 20;

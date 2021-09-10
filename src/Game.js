@@ -47,9 +47,10 @@ class Frame {
 }
 
 class Game {
-  constructor (frame = new Frame()) {
+  constructor (frame_class) {
     this.frames = [];
-    this.currentFrame = frame;
+    this.frame_class = frame_class;
+    this.currentFrame = new frame_class;
   }
 
   roll(score) {
@@ -79,10 +80,10 @@ class Game {
     else {return false; }
   }
 
-  _completeFrame(frame = new Frame()) {
+  _completeFrame() {
     this.updateFrameTotals();
     this.frames.push(this.currentFrame);
-    this.currentFrame = frame;
+    this.currentFrame = new this.frame_class;
     if (this.frames.length == 10) {console.log("GAME OVER! You're score is: " + (this.scoreTotal())); }
   }
 
@@ -123,7 +124,7 @@ class Game {
 }
 
 let game;
-game = new Game;
+game = new Game(Frame);
 
 const times = 12;
 for(let i=0; i < times; i++){

@@ -7,21 +7,21 @@ describe("Frame", function () {
 
   describe("any new instances of thermostat class have empty rolls array", function () {
     it("rolls array is empty for frame instance", function () {
-      expect(frame.rolls).toEqual([]);
+      expect(frame._rolls).toEqual([]);
     });
   });
 
   describe("adds score after a bowl", function () {
     it("adds score into rolls array", function () {
       frame.addRoll(5);
-      expect(frame.rolls.length).toEqual(1);
+      expect(frame._rolls.length).toEqual(1);
     });
   });
 
   describe("adds bonus score to bonus score variable", function () {
     it("correctly updates bonus score", function () {
       frame.addBonusScore(5);
-      expect(frame.bonus_score).toEqual(5);
+      expect(frame._bonus_score).toEqual(5);
     });
   });
 

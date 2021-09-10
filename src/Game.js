@@ -1,49 +1,48 @@
 class Frame {
   constructor () {
-    // rolls should be private
-    this.rolls = [];
-    this.bonus_score = 0;
+    this._rolls = [];
+    this._bonus_score = 0;
   }
 
   isStrike() {
-    return (this.rolls[0] == 10);
+    return (this._rolls[0] == 10);
   }
 
   isSpare() {
-    return (this.rolls[0] + this.rolls[1]== 10);
+    return (this._rolls[0] + this._rolls[1]== 10);
   }
 
   isFrameComplete() {
     if (this.isStrike()) { return true; }
-    else if (this.rolls.length == 2 ) {return true;}
+    else if (this._rolls.length == 2 ) {return true;}
   }
 
   isFinalFrameComplete() {
-    if (this.rolls.length == 3) {return true;}
+    if (this._rolls.length == 3) {return true;}
   }
 
  // changing data
   addRoll(score) {
-    this.rolls.push(score);
+    this._rolls.push(score);
   }
 
   // changing data
   // input method which usually have a parameter
   addBonusScore(bonus) {
-    this.bonus_score += bonus;
+    this._bonus_score += bonus;
   }
 
   // output method which returns something 
   calcFrameTotal() {
-    return this.rolls.reduce((a, b) => a + b, 0) + this.bonus_score;
+    return this._rolls.reduce((a, b) => a + b, 0) + this._bonus_score;
   }
 
   calcFrameTotalForFirstTwoRolls() {
-    return this.rolls.slice(0, 2).reduce((a, b) => a + b, 0);
+    return this._rolls.slice(0, 2).reduce((a, b) => a + b, 0);
   }
 
   firstRollValue() {
-    return this.rolls[0];
+    return this._rolls[0];
   }
 }
 
@@ -121,4 +120,12 @@ class Game {
     let spareBonus = this.currentFrame.firstRollValue();
     this.frames.slice(-1)[0].addBonusScore(spareBonus);
   }
+}
+
+let game;
+game = new Game;
+
+const times = 12;
+for(let i=0; i < times; i++){
+  game.roll(10);
 }

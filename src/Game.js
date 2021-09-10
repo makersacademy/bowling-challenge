@@ -71,8 +71,8 @@ class Game {
   }
 
   _addAnyBonuses(){
-    if (this._isStrike()) { this._addStrikeBonus(); }
-    else if (this._isSpare()) { this._addSpareBonus(); }
+    if (this._isLastFrameStrike()) { this._addStrikeBonus(); }
+    else if (this._isLastFrameSpare()) { this._addSpareBonus(); }
   }
   
   _isNotFirstFrame() {
@@ -97,14 +97,12 @@ class Game {
     return (this.frames.length > 1 && this.frames.slice(-1)[0].isStrike() && this.frames.slice(-2)[0].isStrike());
   }
 
-  // change name to is last Frame strike
-  _isStrike() {
+  _isLastFrameStrike() {
     if (this.frames.slice(-1)[0].isStrike()) { return true; }
     else {return false;}
   }
 
-  // change name to is last Frame spare
-  _isSpare() {
+  _isLastFrameSpare() {
     if (this.frames.slice(-1)[0].isSpare()) { return true; }
   }
 
@@ -124,12 +122,3 @@ class Game {
     this.frames.slice(-1)[0].addBonusScore(spareBonus);
   }
 }
-
-new_game = new Game();
-
-const times = 12;
-for(let i=0; i < times; i++){
-  new_game.roll(10);
-}
-
-console.log(new_game.frames);

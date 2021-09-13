@@ -1,1 +1,9 @@
-// frameFactory class to go here
+const Frame = require("./Frame");
+
+class frameFactory {
+  static createFrame() {
+    return new Frame();
+ }
+}
+
+module.exports = frameFactory;

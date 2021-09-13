@@ -1,6 +1,7 @@
 describe("Game", function () {
   let game;
   let frame;
+  let frameFactory;
 
   beforeEach(function () {
     frame = { 

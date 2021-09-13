@@ -1,6 +1,6 @@
 Bowling Challenge in Javascript
 =================
-Makers academy week 6 challenge to score a game of bowling.
+Makers academy week 6 challenge to score a game of bowling with a command line app.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 Prerequisites
@@ -10,9 +10,8 @@ Prerequisites
 How to install
 -------
 
-1. Fork this repo, and clone to your local machine.
-2. COMPLETE
-3. COMPLETE
+1. Fork this repo and clone to your local machine.
+2. ```open SpecRunner.html``` to run the tests
 
 How to use this program
 -------

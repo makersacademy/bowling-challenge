@@ -21,18 +21,14 @@ class Frame {
     if (this._rolls.length == 3) {return true;}
   }
 
- // changing data
   addRoll(score) {
     this._rolls.push(score);
   }
-
-  // changing data
-  // input method which usually have a parameter
+  
   addBonusScore(bonus) {
     this._bonus_score += bonus;
   }
-
-  // output method which returns something 
+  
   calcFrameTotal() {
     return this._rolls.reduce((a, b) => a + b, 0) + this._bonus_score;
   }
@@ -46,11 +42,16 @@ class Frame {
   }
 }
 
+class frameFactory {
+  static createFrame() {
+     return new Frame();
+  }
+}
+
 class Game {
-  constructor (frame_class) {
+  constructor () {
     this.frames = [];
-    this.frame_class = frame_class;
-    this.currentFrame = new frame_class;
+    this.currentFrame = frameFactory.createFrame();
   }
 
   roll(score) {
@@ -66,7 +67,7 @@ class Game {
   return score;
   }
 
-  updateFrameTotals() {
+  _updateFrameTotals() {
     if (this._isNotFirstFrame()) { this._addAnyBonuses();}
   }
 
@@ -81,9 +82,9 @@ class Game {
   }
 
   _completeFrame() {
-    this.updateFrameTotals();
+    this._updateFrameTotals();
     this.frames.push(this.currentFrame);
-    this.currentFrame = new this.frame_class;
+    this.currentFrame = frameFactory.createFrame();
     if (this.frames.length == 10) {console.log("GAME OVER! You're score is: " + (this.scoreTotal())); }
   }
 
@@ -121,12 +122,4 @@ class Game {
     let spareBonus = this.currentFrame.firstRollValue();
     this.frames.slice(-1)[0].addBonusScore(spareBonus);
   }
-}
-
-let game;
-game = new Game(Frame);
-
-const times = 12;
-for(let i=0; i < times; i++){
-  game.roll(10);
 }

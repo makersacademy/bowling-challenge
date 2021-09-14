@@ -1,5 +1,3 @@
-const frameFactory = require("./frameFactory");
-
 class Game {
   constructor () {
     this.frames = [];

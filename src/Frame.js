@@ -41,5 +41,3 @@ class Frame {
     return this._rolls[0];
   }
 }
-
-module.exports = Frame;

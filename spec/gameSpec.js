@@ -1,30 +1,15 @@
 describe("Game", function () {
   let game;
-  let frame;
 
   beforeEach(function () {
     frame = { 
       addRoll: () => {},
-      addBonusScore: () => {},
       calcFrameTotal: () => {},
-      setFrameTotal: () => {},
-      isFinalFrameComplete: () => {},
-      isFrameComplete: () => {},
       isStrike: () => {},
       isSpare: () => {}
     };
     spyOn(frameFactory, "createFrame").and.returnValue(frame);
-    game = new Game();
-  });
-
-  describe("new instancs of game class", function () {
-    it("frame array is empty for frame instance", function () {
-      expect(game.frames).toEqual([]);
-    });
-
-    it("have current frame set to frame passed in", function () {
-      expect(game.currentFrame).toEqual(frame);
-    });
+    game = new Game(frameFactory);
   });
 
   describe("method for each bowl", function () {

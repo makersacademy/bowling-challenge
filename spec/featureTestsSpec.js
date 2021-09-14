@@ -4,11 +4,9 @@ describe("Game", function () {
   // https://www.sportcalculators.com/bowling-score-calculator
 
   let game;
-  let frame;
 
   beforeEach(function () {
-    frame = frameFactory.createFrame();
-    game = new Game(frame);
+    game = new Game(frameFactory);
   });
   
   describe("full game score", function () {

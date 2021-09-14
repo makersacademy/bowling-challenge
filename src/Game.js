@@ -1,7 +1,8 @@
 class Game {
-  constructor () {
+  constructor (frameFactory) {
     this.frames = [];
-    this.currentFrame = frameFactory.createFrame();
+    this.frame_class = frameFactory;
+    this.currentFrame = this.frame_class.createFrame();
   }
 
   roll(score) {
@@ -13,8 +14,8 @@ class Game {
     let score = 0;
     this.frames.forEach(frame => {
       score += frame.calcFrameTotal();
-  });
-  return score;
+    });
+    return score;
   }
 
   _updateFrameTotals() {
@@ -49,12 +50,11 @@ class Game {
   }
 
   _isLastFrameStrike() {
-    if (this.frames.slice(-1)[0].isStrike()) { return true; }
-    else {return false;}
+    return this.frames.slice(-1)[0].isStrike();
   }
 
   _isLastFrameSpare() {
-    if (this.frames.slice(-1)[0].isSpare()) { return true; }
+    return this.frames.slice(-1)[0].isSpare();
   }
 
   _doubleStrikeBonus() {

@@ -16,29 +16,24 @@ describe("Game", function () {
 
   describe("method for each bowl", function () {
 
-    // Test to check that frames length has increased by 1? 
-    // Test to check that this_completeFrame has been called correctly?
-    // Is it possible to do a behaviour test on rol method?
-    it("correctly adds 1 frame to frames array", function () {
+    // Is it possible to do a behaviour test on roll method?
+    it("tbc", function () {
       game.roll(5);
       game.roll(4);
     });
 
-    it("correctly adds 2 frames to frames array", function () {
-      //  test behaviour
+    it("tbc", function () {
       for(let i=0; i < 2; i++){
         game.roll(5);
         game.roll(4);
       }
     });
 
-    it("correctly adds 2 frames to frames array", function () {
-      //  test behaviour
+    it("tbc", function () {
       for(let i=0; i < 3; i++){
         game.roll(5);
         game.roll(4);
       }
-      // expect(game.frames.length).toEqual(3);
     });
   });
 
@@ -83,7 +78,7 @@ describe("Game", function () {
     });
 
     it("returns correct score for two frames with a strike", function () {
-
+      // add test here
     });
   });
 });

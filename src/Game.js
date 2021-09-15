@@ -18,22 +18,13 @@ class Game {
     return score;
   }
 
-  _updateFrameTotals() {
-    if (this._isNotFirstFrame()) { this._addAnyBonuses();}
-  }
-
   _addAnyBonuses(){
     if (this._isLastFrameStrike()) { this._addStrikeBonus(); }
     else if (this._isLastFrameSpare()) { this._addSpareBonus(); }
   }
   
-  _isNotFirstFrame() {
-    if (this.frames.length >= 1)  {return true; } 
-    else {return false; }
-  }
-
   _completeFrame() {
-    this._updateFrameTotals();
+    this._addAnyBonuses();
     this.frames.push(this.currentFrame);
     this.currentFrame = frameFactory.createFrame();
     if (this.frames.length == 10) {console.log("GAME OVER! You're score is: " + (this.scoreTotal())); }
@@ -50,10 +41,12 @@ class Game {
   }
 
   _isLastFrameStrike() {
+    if (this.frames.length < 1)  {return false; } 
     return this.frames.slice(-1)[0].isStrike();
   }
 
   _isLastFrameSpare() {
+    if (this.frames.length < 1)  {return false; } 
     return this.frames.slice(-1)[0].isSpare();
   }
 

@@ -1,3 +1,21 @@
+Will's Readme
+=================
+
+I didn't have a lot of time this weekend, and couldn't go any further on translating my ruby program to JS because of the below issue.
+
+I wanted to get to a point where I could test my understanding of mocking in Jasmine. I thought I wasn't understanding it, then I found out that my Game.frames was filled with 10 frames of the same instance (which was probably affecting my attempts and wouldn't have worked for my game anyway).
+* 1 - I want to pass new Frame() as an argument in the constructor (allowing me to isolate game tests from the frame class) and yet still call it 10 separate times to create 10 unique Frame instances in the array. How?
+* 2 - Then move on to isolating printScorecard test (and subsequent tests) from the frame class.
+* 3 - Then continue to complete translation of ruby program into JS.
+
+### To run:
+- Open SpecRunner.html in the browser
+- Inspect and open the console. Type in the following commands:
+```
+gameName = new Game();
+gameName.play();
+```
+
 
 Bowling Challenge
 =================

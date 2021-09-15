@@ -5,13 +5,6 @@ describe("Frame", function () {
     frame = new Frame();
   });
 
-  describe("any new instances of Frame class have empty rolls array", function () {
-    it("rolls array is empty for frame instance", function () {
-      expect(frame._rolls).toEqual([]);
-      expect(frame._bonus_score).toEqual(0);
-    });
-  });
-
   describe("calculates the score for the frame", function () {
     it("returns correct score for frame", function () {
       frame.addRoll(5);
@@ -41,12 +34,37 @@ describe("Frame", function () {
       frame.addRoll(8);
       expect(frame.isSpare()).toEqual(true);
     });
+
+    it("isStrike returns 'false' when a 2 and an 8 are rolled", function () {
+      frame.addRoll(2);
+      frame.addRoll(8);
+      expect(frame.isStrike()).toEqual(false);
+    });
   });
 
   describe("expects to capture when a strike has been scored", function () {
     it("isStrike returns 'true' when a 10 is rolled", function () {
       frame.addRoll(10);
       expect(frame.isStrike()).toEqual(true);
+    });
+
+    it("isSpare returns 'false' when a 10 is rolled", function () {
+      frame.addRoll(10);
+      expect(frame.isSpare()).toEqual(false);
+    });
+  });
+
+  describe("expects to return false for Spare and Strike when neither has been scores", function () {
+    it("returns false for isSpare() when an 8 has been rolled", function () {
+      frame.addRoll(4);
+      frame.addRoll(4);
+      expect(frame.isSpare()).toEqual(false);
+    });
+    
+    it("returns false for isStrike() when an 8 has been rolled", function () {
+      frame.addRoll(4);
+      frame.addRoll(4);
+      expect(frame.isStrike()).toEqual(false);
     });
   });
 });

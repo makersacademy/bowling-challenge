@@ -1,8 +1,8 @@
 class Game {
-  constructor (frameFactory) {
+  constructor (frameFactory = FrameFactory) {
     this.frames = [];
-    this.frame_class = frameFactory;
-    this.currentFrame = this.frame_class.createFrame();
+    this.frameClass = frameFactory;
+    this.currentFrame = this.frameClass.createFrame();
   }
 
   roll(score) {
@@ -26,7 +26,7 @@ class Game {
   _completeFrame() {
     this._addAnyBonuses();
     this.frames.push(this.currentFrame);
-    this.currentFrame = frameFactory.createFrame();
+    this.currentFrame = this.frameClass.createFrame();
     if (this.frames.length == 10) {console.log("GAME OVER! You're score is: " + (this.scoreTotal())); }
   }
 

@@ -6,7 +6,7 @@ describe("Game", function () {
   let game;
 
   beforeEach(function () {
-    game = new Game(frameFactory);
+    game = new Game();
   });
   
   describe("full game score", function () {

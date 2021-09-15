@@ -10,8 +10,8 @@ describe("Game", function () {
       isStrike: () => {},
       isSpare: () => {}
     };
-    spyOn(frameFactory, "createFrame").and.returnValue(frame);
-    game = new Game(frameFactory);
+    spyOn(FrameFactory, "createFrame").and.returnValue(frame);
+    game = new Game(FrameFactory);
   });
 
   describe("method for each bowl", function () {

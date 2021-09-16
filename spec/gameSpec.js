@@ -14,26 +14,24 @@ describe("Game", function () {
     game = new Game(FrameFactory);
   });
 
-  describe("method for each bowl", function () {
+  describe("correctly calls methods after a roll", function () {
 
-    // Is it possible to do a behaviour test on roll method?
-    it("tbc", function () {
-      game.roll(5);
+    it("call frame method addRoll with correct argument", function () {
+      spyOn(frame, "addRoll").and.returnValues(true);
       game.roll(4);
+      expect(frame.addRoll).toHaveBeenCalledWith(4);
     });
 
-    it("tbc", function () {
-      for(let i=0; i < 2; i++){
-        game.roll(5);
-        game.roll(4);
-      }
+    it("call frame method addRoll with correct argument when strike scored", function () {
+      spyOn(frame, "addRoll").and.returnValues(true);
+      game.roll(10);
+      expect(frame.addRoll).toHaveBeenCalledWith(10);
     });
 
-    it("tbc", function () {
-      for(let i=0; i < 3; i++){
-        game.roll(5);
-        game.roll(4);
-      }
+    it("call frame method addRoll with correct argument when 0 scored", function () {
+      spyOn(frame, "addRoll").and.returnValues(true);
+      game.roll(0);
+      expect(frame.addRoll).toHaveBeenCalledWith(0);
     });
   });
 
@@ -78,7 +76,11 @@ describe("Game", function () {
     });
 
     it("returns correct score for two frames with a strike", function () {
-      // add test here
+      spyOn(frame, "isFrameComplete").and.returnValues(true, true);
+      spyOn(frame, "calcFrameTotal").and.returnValues(20, 10);
+      game.roll(10);
+      game.roll(10);
+      expect(game.scoreTotal()).toEqual(30);
     });
   });
 });

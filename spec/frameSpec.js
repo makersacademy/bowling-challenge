@@ -67,4 +67,89 @@ describe("Frame", function () {
       expect(frame.isStrike()).toEqual(false);
     });
   });
+
+  describe("tells Game class whether frame is completed", function () {
+    it("returns true after two rolls", function () {
+      frame.addRoll(4);
+      frame.addRoll(4);
+      expect(frame.isFrameComplete()).toEqual(true);
+    });
+
+    it("returns false after one roll", function () {
+      frame.addRoll(4);
+      expect(frame.isFrameComplete()).toEqual(false);
+    });
+
+
+    it("returns true after strike", function () {
+      frame.addRoll(10);
+      expect(frame.isFrameComplete()).toEqual(true);
+    });
+  });
+
+  describe("tells Game class whether final frame is completed", function () {
+    it("returns true after two rolls when spare not scored", function () {
+      frame.addRoll(4);
+      frame.addRoll(4);
+      expect(frame.isFinalFrameComplete()).toEqual(true);
+    });
+
+    it("returns false after one roll", function () {
+      frame.addRoll(4);
+      expect(frame.isFinalFrameComplete()).toEqual(false);
+    });
+
+    it("returns false after two rolls with a spare", function () {
+      frame.addRoll(5);
+      frame.addRoll(5);
+      expect(frame.isFinalFrameComplete()).toEqual(false);
+    });
+
+    it("returns false after one strike", function () {
+      frame.addRoll(10);
+      expect(frame.isFinalFrameComplete()).toEqual(false);
+    });
+
+    it("returns false after two strikes", function () {
+      frame.addRoll(10);
+      frame.addRoll(10);
+      expect(frame.isFinalFrameComplete()).toEqual(false);
+    });
+
+    it("returns true after a strike and then third roll", function () {
+      frame.addRoll(6);
+      frame.addRoll(4);
+      frame.addRoll(4);
+      expect(frame.isFinalFrameComplete()).toEqual(true);
+    });
+
+    it("returns true after two strikes and then third roll", function () {
+      frame.addRoll(10);
+      frame.addRoll(10);
+      frame.addRoll(4);
+      expect(frame.isFinalFrameComplete()).toEqual(true);
+    });
+
+    it("returns true after three strikes", function () {
+      frame.addRoll(10);
+      frame.addRoll(10);
+      frame.addRoll(10);
+      expect(frame.isFinalFrameComplete()).toEqual(true);
+    });
+  });
+
+  describe("tells Game class total for first two rolls", function () {
+    it("returns correct score after two rolls", function () {
+      frame.addRoll(4);
+      frame.addRoll(4);
+      expect(frame.calcFrameTotalForFirstTwoRolls()).toEqual(8);
+    });
+  });
+
+  describe("tells Game class total for first roll", function () {
+    it("returns correct score after first roll", function () {
+      frame.addRoll(4);
+      expect(frame.firstRollValue()).toEqual(4);
+    });
+  });
 });

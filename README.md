@@ -2,6 +2,29 @@
 Bowling Challenge
 =================
 
+## Notes
+* The code covers all the basic rules of a game of bowling
+* I connected it to a UI where the user can enter in their rolls to calculate their score 
+
+## To improve
+* I would have liked to create a table which logs each roll as the person plays on the webpage
+
+## How to run
+* `git clone` this repo
+* `cd` into `bowling-challenge`
+* To run the tests run `open SpecRunner.html` Jasmine should be working from the get-go
+* To see the webpage run `open index.html`
+
+## Check it out
+* It can calculate a spare <br />
+![spare](https://github.com/kerrimcm/bowling-challenge/blob/master/images/calculate-spare.gif)
+* It can calculate a strike <br />
+![strike](https://github.com/kerrimcm/bowling-challenge/blob/master/images/calculate-strike.gif)
+* It can record a perfect game, 12 rolls of 10 <br />
+![perfectgame](https://github.com/kerrimcm/bowling-challenge/blob/master/images/perfect-game.gif) 
+
+## Original Instructions
+
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**

@@ -6,7 +6,11 @@ class Bowling {
   }
 
   roll(pins) {
-    this.rolls.push(pins);
+    if (pins < 0 || pins > 10) {
+      throw 'Can only roll numbers between 0 and 10';
+    } else {
+      this.rolls.push(pins);
+    }
   }
 
   score() {
@@ -17,16 +21,25 @@ class Bowling {
       const frameScore = this.rolls[rollIndex] + this.rolls[rollIndex + 1];
 
       if (this.rolls[rollIndex] === 10) {
-        score += 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+        score += this.strikeBonus(rollIndex);
         rollIndex++;
         continue;
       } else if (frameScore === 10) {
-        score += 10 + this.rolls[rollIndex + 2];
+        score += this.spareBonus(rollIndex);
       } else {
         score += frameScore;
       }
       rollIndex += 2;
     }
+
     return score;
+  }
+
+  spareBonus(rollIndex) {
+    return 10 + this.rolls[rollIndex + 2];
+  }
+
+  strikeBonus(rollIndex) {
+    return 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
   }
 }

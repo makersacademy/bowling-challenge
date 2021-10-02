@@ -52,4 +52,9 @@ describe ('Bowling', () => {
     rollLoop(10, 12);
     expect(bowling.score()).toEqual(300);
   });
+
+  it('only accepts rolls from 0 to 10', () => {
+    expect(function() { bowling.roll(12) } ).toThrow('Can only roll numbers between 0 and 10');  
+    expect(function() { bowling.roll(-1) } ).toThrow('Can only roll numbers between 0 and 10');  
+  });
 });

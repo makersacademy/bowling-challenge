@@ -16,7 +16,17 @@ class Bowling {
   }
 
   score() {
-    return this.rolls.flat().reduce((partial_sum, a) => partial_sum + a, 0);
+    let total = [];
+
+    for (let i = 0; i < this.rolls.length; i++) {
+      if (this.rolls[i].reduce((pv, cv) => pv + cv, 0) === 10) {
+        total.push(this.rolls[i].reduce((pv, cv) => pv + cv, 0) + this.rolls[i+1][0]);
+      } else {
+        total.push(this.rolls[i].reduce((pv, cv) => pv + cv, 0));
+      }
+    }
+    
+    return total.flat().reduce((pv, cv) => pv + cv, 0);
   }
 
 }

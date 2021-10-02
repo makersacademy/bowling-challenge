@@ -30,6 +30,4 @@ describe ('Bowling', () => {
     rollLoop(0, 17);
     expect(bowling.score()).toEqual(16);
   });
-
-  
 });

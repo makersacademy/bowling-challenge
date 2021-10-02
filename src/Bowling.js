@@ -6,27 +6,23 @@ class Bowling {
   }
 
   roll(pins) {
-    if (pins === 10) {
-      this.rolls.push([pins, 0])
-    } else if (this.rolls.length === 0 || this.rolls[this.rolls.length - 1].length === 2) {
-      this.rolls.push([pins])
-    } else if (this.rolls[this.rolls.length - 1].length == 1) {
-      this.rolls[this.rolls.length - 1].push(pins);
-    }
+    this.rolls.push(pins);
   }
 
   score() {
-    let total = [];
+    let score = 0;
+    let rollIndex = 0;
 
-    for (let i = 0; i < this.rolls.length; i++) {
-      if (this.rolls[i].reduce((pv, cv) => pv + cv, 0) === 10) {
-        total.push(this.rolls[i].reduce((pv, cv) => pv + cv, 0) + this.rolls[i+1][0]);
+    for (let frameIndex = 0; frameIndex < 10; frameIndex++) {
+      const frameScore = this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+
+      if (frameScore === 10) {
+        score += 10 + this.rolls[rollIndex + 2];
       } else {
-        total.push(this.rolls[i].reduce((pv, cv) => pv + cv, 0));
+        score += frameScore;
       }
+      rollIndex += 2;
     }
-    
-    return total.flat().reduce((pv, cv) => pv + cv, 0);
+    return score
   }
-
 }

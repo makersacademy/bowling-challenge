@@ -30,4 +30,26 @@ describe ('Bowling', () => {
     rollLoop(0, 17);
     expect(bowling.score()).toEqual(16);
   });
+
+  it('can score 1 Strike', () => {
+    bowling.roll(10);
+    bowling.roll(5);
+    bowling.roll(2);
+    rollLoop(0, 17);
+    expect(bowling.score()).toEqual(24);
+  });
+
+  it('can score 2 Strikes in a row', () => {
+    bowling.roll(10);
+    bowling.roll(10);
+    bowling.roll(3);
+    bowling.roll(3);
+    rollLoop(0, 16);
+    expect(bowling.score()).toEqual(45);
+  });
+
+  it('can play a perfect game', () => {
+    rollLoop(10, 12);
+    expect(bowling.score()).toEqual(300);
+  });
 });

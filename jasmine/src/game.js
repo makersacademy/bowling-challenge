@@ -11,9 +11,9 @@ class Game {
   roll(bowl1, bowl2 = 0) {
     this.index += 1;
     this.bowlCard.push([bowl1, bowl2]);
-    // calculateScore();
-    this.runningScore += (bowl1 + bowl2);
     this.scoreCard.push(bowl1 + bowl2);
+    this.runningScore += (bowl1 + bowl2);
+    this.calculateScore();
     return bowl1 + bowl2;
   }
  
@@ -33,27 +33,20 @@ class Game {
     } return;
   }
 
-  // calculateScore() {
-  //   this.runningScore += (bowl1 + bowl2);
-  //   this.scoreCard.push(bowl1 + bowl2);
-  //   if (this.index == 0) {
-  //     return;
-  //   }
-  //   calculateStrikePoints();
-  //   calculateSparePoints();
-  //   return this.runningScore;
-  // }
+  calculateScore() {
+    if (this.index == 0) {
+      return;
+    }
+    this.calculateStrikePoints();
+    this.calculateSparePoints();
+  }
 
-  // How to call calculateScore() within the roll() function?
-  // How to use calculateStrikePoints() and calculateSparePoints() within a calculateScore() function?
-  
 }
  
 let game = new Game();
 
-console.log(game.roll(3, 4));
-console.log(game.roll(5, 5));
-console.log(game.roll(3, 4));
-console.log(game.calculateSparePoints());
+console.log(game.roll(10, 0));
+console.log(game.roll(4, 4));
+console.log(game);
  
  

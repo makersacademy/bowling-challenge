@@ -35,4 +35,9 @@ describe("Bowling Scorecard", () => {
     rollMany(0, 16);
     expect(game.score()).toBe(28);
   });
+
+  it("can roll a perfect game", () => {
+    rollMany(10, 12);
+    expect(game.score()).toBe(300);
+  });
 });

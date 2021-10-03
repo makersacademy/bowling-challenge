@@ -6,7 +6,7 @@ class Frame{
     this.frameScore = 0;
   }
 
-  addPins(num) {
+  storePins(num) {
     this.rolls.push(num)
   }
 
@@ -21,5 +21,9 @@ class Frame{
 
   isSpare() {
     return this.rolls[0] + this.rolls[1] === 10 && this.rolls[0] !== 10
+  }
+
+  isComplete() {
+    return this.rolls.length === 2 || this.isStrike();
   }
 }

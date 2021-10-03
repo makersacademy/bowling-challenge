@@ -19,4 +19,12 @@ describe("Bowling Scorecard", () => {
     rollMany(1, 20);
     expect(game.score()).toBe(20);
   });
+
+  it("can roll a spare", () => {
+    game.roll(6)
+    game.roll(4)
+    game.roll(3)
+    rollMany(0, 17);
+    expect(game.score()).toBe(16);
+  });
 });

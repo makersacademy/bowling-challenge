@@ -15,4 +15,8 @@ class Scorecard{
     this.score = this.frame.reduce((a, b) => a + b, 0);
     return this.score
   }
+
+  moveToNextFrame() {
+    this.frameNum ++;
+  }
 };

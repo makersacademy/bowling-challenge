@@ -21,10 +21,18 @@ describe("Bowling Scorecard", () => {
   });
 
   it("can roll a spare", () => {
-    game.roll(6)
-    game.roll(4)
-    game.roll(3)
+    game.roll(6);
+    game.roll(4);
+    game.roll(3);
     rollMany(0, 17);
     expect(game.score()).toBe(16);
+  });
+
+  it("can roll a strike with bonus", () => {
+    game.roll(10);
+    game.roll(7);
+    game.roll(2);
+    rollMany(0, 16);
+    expect(game.score()).toBe(28);
   });
 });

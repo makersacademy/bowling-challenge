@@ -1,5 +1,6 @@
 class Game {
-  methodName() {
-  // codeblock goes here
+  score() {
+    return 1;
   }
 }
+

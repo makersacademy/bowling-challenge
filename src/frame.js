@@ -40,7 +40,7 @@ class Frame {
       console.log(`Your second roll: ${this.roll2}`)
       this.frameFinished = true;
       this._spare();
-      this._tenthFrameBonusRoll();
+      // this._tenthFrameBonusRoll();
       this._addRoll2ScoreToPreviousFrames();
     }
   }
@@ -85,9 +85,9 @@ class Frame {
     }
   }
 
-  _tenthFrameBonusRoll() {
-    if (this.roll1 === 10 ||)
-  }
+  // _tenthFrameBonusRoll() {
+  //   if (this.roll1 === 10 ||)
+  // }
 
   _frameNumber() {
     return Scorecard.currentGame.frames.length;

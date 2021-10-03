@@ -18,4 +18,8 @@ class Frame{
   isStrike() {
     return this.rolls[0] === 10;
   }
+
+  isSpare() {
+    return this.rolls[0] + this.rolls[1] === 10 && this.rolls[0] !== 10
+  }
 }

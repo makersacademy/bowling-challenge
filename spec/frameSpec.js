@@ -28,8 +28,14 @@ describe (Frame, () => {
     expect(frame.calculateTotal()).toEqual(6);
   });
 
-  it('returns true if roll is a strike', () => {
+  it('returns true if a strike was rolled', () => {
     frame.addPins(10);
     expect(frame.isStrike()).toBe(true)
+  });
+
+  it('returns true if a spare was rolled', () => {
+    frame.addPins(1);
+    frame.addPins(9);
+    expect(frame.isSpare()).toBe(true);
   });
 });

@@ -1,4 +1,3 @@
-
 Bowling Challenge
 =================
 
@@ -73,3 +72,17 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+
+
+
+
+
+
+INPUT || OUTPUT
+
+[0,0] || 0 
+[1,2] || 3 
+[1,2], [7,2] || (3+9) -> 12 
+[1,9], [7,2] || (1+9+7) + (7 + 2) -> 26 
+[1,2], [X], [3,4] || (3 + (10 + 3 + 4) + (3 + 4)) -> 27 

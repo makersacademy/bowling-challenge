@@ -27,4 +27,9 @@ describe (Frame, () => {
     frame.addPins(5);
     expect(frame.calculateTotal()).toEqual(6);
   });
+
+  it('returns true if roll is a strike', () => {
+    frame.addPins(10);
+    expect(frame.isStrike()).toBe(true)
+  });
 });

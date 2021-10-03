@@ -14,4 +14,8 @@ class Frame{
     this.frameScore = this.rolls.reduce((a, b) => a + b, 0);
     return this.frameScore
   }
+
+  isStrike() {
+    return this.rolls[0] === 10;
+  }
 }

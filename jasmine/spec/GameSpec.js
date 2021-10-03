@@ -30,8 +30,13 @@ describe("Scorecard", function () {
     game.roll(1); //roll a 1
     rollMany(17, 0); //roll 17 0's
     expect(game.score).toEqual(14); //check that the score = 14
-})
-
+  })
+  
+  it('max score is 300', () => {
+    rollMany(1000000, 10);
+    expect(game.score).toEqual(300);
+  })
+  
   function rollMany(rolls, pins){
     for(let i=0;i<rolls;i++){ //for number of rolls specified
         game.roll(pins); //roll the number of pins specified

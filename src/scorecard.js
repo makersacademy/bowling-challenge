@@ -3,6 +3,7 @@
 class Scorecard{
   constructor() {
     this.frame = [];
+    this.frameNum = 0;
     this.score = 0;
   }
 

@@ -27,4 +27,8 @@ describe (Scorecard, () => {
     scorecard.addPins(5);
     expect(scorecard.calculateTotal()).toEqual(6);
   });
+
+  it('when initiated, the first frame should have index 0', () => {
+    expect(scorecard.frameNum).toEqual(0);
+  });
 });

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+      <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+      <title>Bowling Game</title>
+    </head>
+    <body>
+      <div class="container">
+        <h1>Play a game of bowling</h1>
+        <section>
+            <h2>Current score: <span id="score"></span></h2>
+            <p>
+                <form id="roll-ball">
+                  <input id="current-number" type="number" min="0" max="10" placeholder="Enter your roll"></input>
+                  <input type="submit" value="Roll it!"></input>
+                </form>
+            </p>
+        </section> 
+      </div>
+        <script src="src/bowling.js"></script>
+        <script src="src/gameInterface.js"></script>
+    </body>
+</html>

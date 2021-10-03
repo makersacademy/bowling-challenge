@@ -2,14 +2,16 @@
 
 class Bowling {
   constructor() {
-    this.rolls = [];
+    this.rolls = new Array(21).fill(null);
+    this.index = 0;  
   }
 
   roll(pins) {
     if (pins < 0 || pins > 10) {
       throw 'Can only roll numbers between 0 and 10';
     } else {
-      this.rolls.push(pins);
+      this.rolls[this.index] = parseInt(pins);
+      this.index++
     }
   }
 

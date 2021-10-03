@@ -57,4 +57,20 @@ describe ('Bowling', () => {
     expect(function() { bowling.roll(12) } ).toThrow('Can only roll numbers between 0 and 10');  
     expect(function() { bowling.roll(-1) } ).toThrow('Can only roll numbers between 0 and 10');  
   });
+
+  it('calculates a strike in the 10th frame', () => {
+    rollLoop(3, 18);
+    bowling.roll(10);
+    bowling.roll(4);
+    bowling.roll(5);
+    expect(bowling.score()).toEqual(73);
+  });
+
+  it('calculates a spare in the 10th frame', () => {
+    rollLoop(4, 18);
+    bowling.roll(8);
+    bowling.roll(2);
+    bowling.roll(5);
+    expect(bowling.score()).toEqual(87);
+  });
 });

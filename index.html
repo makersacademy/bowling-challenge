@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bowling Scorecard</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header>Bowling Scorecard</header>
+    <div class="page">
+      <div class="score-banner">
+        <!-- reset button, Total score-->
+        <div class="reset-section">
+          <svg class="reset" id="reset-score" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-rotate-right" class="svg-inline--fa fa-arrow-rotate-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M496 48V192c0 17.69-14.31 32-32 32H320c-17.69 0-32-14.31-32-32s14.31-32 32-32h63.39c-29.97-39.7-77.25-63.78-127.6-63.78C167.7 96.22 96 167.9 96 256s71.69 159.8 159.8 159.8c34.88 0 68.03-11.03 95.88-31.94c14.22-10.53 34.22-7.75 44.81 6.375c10.59 14.16 7.75 34.22-6.375 44.81c-39.03 29.28-85.36 44.86-134.2 44.86C132.5 479.9 32 379.4 32 256s100.5-223.9 223.9-223.9c69.15 0 134 32.47 176.1 86.12V48c0-17.69 14.31-32 32-32S496 30.31 496 48z"></path></svg>
+        </div>
+        <div class="scores-section">
+          <h3 class="total-score">Total Score:</h3>
+          <h3 class="score" id="total-score">300</h3>
+        </div>
+      </div>
+
+      </div>
+      <div class="score-card-container">
+        <div class="standard_frame_container">
+          <div class="rolls">
+            <div class="input-container">
+              <input id="fr-1-r-1" type="text" />
+            </div>
+            <div class="input-container">
+              <input id="fr-1-r-2" type="text" />
+            </div>
+          </div>
+          <div id="fr-1 total" class="frame-score">
+            <p id="fr-1"></p>
+          </div>
+        </div>
+
+        <div class="standard_frame_container">
+          <div class="rolls">
+            <div class="input-container">
+              <input id="fr-2-r-1" type="text" />
+            </div>
+            <div class="input-container">
+              <input id="fr-2-r-2" type="text" />
+            </div>
+          </div>
+          <div id="fr-2 total" class="frame-score">
+            <p id="fr-2"></p>
+          </div>
+        </div>
+
+        <div class="standard_frame_container">
+          <div class="rolls">
+            <div class="input-container">
+              <input id="fr-3-r-1" type="text" />
+            </div>
+            <div class="input-container">
+              <input id="fr-3-r-2" type="text" />
+            </div>
+          </div>
+          <div id="fr-3 total" class="frame-score">
+            <p id="fr-3"></p>
+          </div>
+        </div>
+
+        <div class="standard_frame_container">
+          <div class="rolls">
+            <div class="input-container">
+              <input id="fr-4-r-1" type="text" />
+            </div>
+            <div class="input-container">
+              <input id="fr-4-r-2" type="text" />
+            </div>
+          </div>
+          <div id="fr-4 total" class="frame-score">
+            <p id="fr-4"></p>
+          </div>
+        </div>
+
+        <div class="standard_frame_container">
+          <div class="rolls">
+            <div class="input-container">
+              <input id="fr-5-r-1" type="text" />
+            </div>
+            <div class="input-container">
+              <input id="fr-5-r-2" type="text" />
+            </div>
+          </div>
+          <div id="fr-5 total" class="frame-score">
+            <p id="fr-5"></p>
+          </div>
+        </div>
+
+        <div class="standard_frame_container">
+          <div class="rolls">
+            <div class="input-container">
+              <input id="fr-6-r-1" type="text" />
+            </div>
+            <div class="input-container">
+              <input id="fr-6-r-2" type="text" />
+            </div>
+          </div>
+          <div id="fr-6 total" class="frame-score">
+            <p id="fr-6"></p>
+          </div>
+        </div>
+
+        <div class="standard_frame_container">
+          <div class="rolls">
+            <div class="input-container">
+              <input id="fr-7-r-1" type="text" />
+            </div>
+            <div class="input-container">
+              <input id="fr-7-r-2" type="text" />
+            </div>
+          </div>
+          <div id="fr-7 total" class="frame-score">
+            <p id="fr-7"></p>
+          </div>
+        </div>
+
+        <div class="standard_frame_container">
+          <div class="rolls">
+            <div class="input-container">
+              <input id="fr-8-r-1" type="text" />
+            </div>
+            <div class="input-container">
+              <input id="fr-8-r-2" type="text" />
+            </div>
+          </div>
+          <div id="fr-8 total" class="frame-score">
+            <p id="fr-8"></p>
+          </div>
+        </div>
+
+        <div class="standard_frame_container">
+          <div class="rolls">
+            <div class="input-container">
+              <input id="fr-9-r-1" type="text" />
+            </div>
+            <div class="input-container">
+              <input id="fr-9-r-2" type="text" />
+            </div>
+          </div>
+          <div id="fr-9 total" class="frame-score">
+            <p id="fr-9"></p>
+          </div>
+        </div>
+
+        <div class="last_frame_container">
+          <div class="rolls">
+            <div class="input-container">
+              <input id="fr-10-r-1" type="text" />
+            </div>
+            <div class="input-container">
+              <input id="fr-10-r-2" type="text" />
+            </div>
+            <div class="input-container">
+              <input id="fr-10-r-3" type="text" />
+            </div>
+          </div>
+          <div id="fr-10 total" class="frame-score">
+            <p id="fr-10"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/Game.js"></script>
+    <script src="src/Frame.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

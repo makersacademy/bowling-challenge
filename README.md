@@ -14,21 +14,28 @@ Bowling Challenge
 
 5. Strike: The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
 
-## The Task
+### Credits
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+- OwenLamb - https://codepen.io/owenjam/pen/reeLWN
+- Joe Kadi - https://medium.com/geekculture/solving-the-bowling-game-kata-in-vanilla-javascript-37e25d6d2305
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+### Comments
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+1. I would like to be able to edit interface.js so that the numbers show up within the scorecard. I had played around with this so that numbers were coming up, but for each '#pinHit' I would have to specify which frame the input text would be in. This needs to be more in the order of:
 
-As usual please start by
+'frame1' > 'frame1' > then the total of them both in 'marker0'
+'frame2' > 'frame2' > then the total of them both in 'marker1' etc. etc. 
 
-* Forking this repo
+```
+document.querySelector('#pinHit-1').addEventListener('click', () => {
+game.roll(1);
+document.querySelector('#frame1').innerText = game.rolls;
+    });
+```
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+2. Edit Game.js so that the maximum total for a frame is 10. Incorporate a message saying 'Invalid roll - there are only ten pins!' if the player rolls 5 and 6 (total 11) for example in one frame. 
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+3. The total score shows up on the 12th bowl but the player can continue to click the buttons, which doesn't make sense. The game should end once the player as clicked 12 pinHits, giving the option to restart. 
 
 ### Optional Extras
 
@@ -38,45 +45,3 @@ In any order you like:
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
 * Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

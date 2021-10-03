@@ -7,7 +7,7 @@ class Game {
   roll(pins) {
     this.rolls.push(pins); //save number of pins knocked every roll
   }
-
+  
   get score() {
     let score = 0; //to keep track of total score
     let rollIndex = 0; //to keep track of which roll
@@ -36,7 +36,5 @@ class Game {
 
     return score;
   }
-
-  
-  
-}
+      
+};

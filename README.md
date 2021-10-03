@@ -18,3 +18,6 @@ Wireframe made using figma
 
 ---
 
+## Assumptions
+
+- The user will only input a whole number.

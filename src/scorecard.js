@@ -31,11 +31,14 @@ class Scorecard{
 
   calculateBonus(num) {
     let i = this.currentFrame;
-    if (i >= 2 && this.frames[i - 2].isStrike() && this.frames[i - 2].showStrikeBonus().length < 2) {
-      this.frame[i - 2].addStrikeBonus(num);
-    }
     if (i >= 1 && this.frames[i - 1].isStrike()) {
       this.frames[i - 1].addStrikeBonus(num);
+      if (i >= 2 && this.frames[i - 2].isStrike() && this.frames[i - 2].showStrikeBonus().length < 2) {
+        this.frames[i - 2].addStrikeBonus(num);
+      }
+    }
+    if (i >= 1 && this.frames[i - 1].isSpare() && this.frames[i - 1].showSpareBonus().length < 1) {
+      this.frames[i - 1].addSpareBonus(num);
     }
   }
 };

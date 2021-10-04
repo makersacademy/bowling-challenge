@@ -4,7 +4,8 @@ class Frame{
   constructor() {
     this.rolls = [];
     this.frameScore = 0;
-    this.strikeBonus = []
+    this.strikeBonus = [];
+    this.spareBonus = [];
   }
 
   storePins(num) {
@@ -28,15 +29,23 @@ class Frame{
     return this.rolls.length === 2 || this.isStrike();
   }
 
-  addStrikeBonus(num) {
-    this.strikeBonus.push(num);
-  }
-
   showFrameRolls() {
     return this.rolls;
   }
 
   showStrikeBonus() {
     return this.strikeBonus;
+  }
+
+  addStrikeBonus(num) {
+    this.strikeBonus.push(num);
+  }
+
+  showSpareBonus() {
+    return this.strikeBonus;
+  }
+
+  addSpareBonus(num) {
+    this.strikeBonus.push(num);
   }
 }

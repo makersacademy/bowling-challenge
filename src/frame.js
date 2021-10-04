@@ -14,6 +14,8 @@ class Frame{
 
   calculateTotal() {
     this.frameScore = this.rolls.reduce((a, b) => a + b, 0);
+    this.frameScore += this.strikeBonus.reduce((a, b) => a + b, 0);
+    this.frameScore += this.spareBonus.reduce((a, b) => a + b, 0);
     return this.frameScore
   }
 
@@ -42,10 +44,10 @@ class Frame{
   }
 
   showSpareBonus() {
-    return this.strikeBonus;
+    return this.spareBonus;
   }
 
   addSpareBonus(num) {
-    this.strikeBonus.push(num);
+    this.spareBonus.push(num);
   }
 }

@@ -1,6 +1,61 @@
 Bowling Challenge
 =================
 
+
+***** 
+
+
+# Instructions
+
+To test the game locally, clone this repository on your local machine. 
+
+- $ git clone https://github.com/Odrakes1992/bowling-challenge.git
+- change into the directory and run the test (SpecRunner.html)
+
+
+# Completed tasks
+
+- Count and sum the scores of a bowling for one player 
+- Calculate running total if a strike or spare is bowled
+- Calculate running total if multiple strikes are bowled
+- Calculate total sum and notify player if they bowl a perfect game or gutter game
+- All tests passing
+
+
+# To do List 
+
+- Create a front end and use CSS 
+- refactor the code to have a running array with total score + frames, model on strikeCount array
+- refactor code to account for user input 
+- create an js interface file
+- Check that the logic for 9th frame works i.e a player has a spare
+- improve readability 
+- test for edge cases
+- review this repo to model classes and code - https://github.com/ejbyne/bowling-scorecard 
+
+
+
+****** 
+
+
+INPUT | OUTPUT TABLE 
+
+--- | ---
+
+[0,0] | 0 
+[1,2] | 3 
+[1,2], [7,2] | (3+9) -> 12 
+[1,9], [7,2] | (1+9+7) + (7 + 2) -> 26 
+[1,2], [X], [3,4] | (3 + (10 + 3 + 4) + (3 + 4)) -> 27 
+
+
+******
+
+
+Bowling Challenge
+=================
+
+
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**
@@ -73,16 +128,9 @@ In code review we'll be hoping to see:
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
 
+****
 
 
 
 
 
-
-INPUT || OUTPUT
-
-[0,0] || 0 
-[1,2] || 3 
-[1,2], [7,2] || (3+9) -> 12 
-[1,9], [7,2] || (1+9+7) + (7 + 2) -> 26 
-[1,2], [X], [3,4] || (3 + (10 + 3 + 4) + (3 + 4)) -> 27 

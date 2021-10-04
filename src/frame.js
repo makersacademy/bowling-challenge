@@ -2,6 +2,7 @@ class Frame {
   constructor() {
     this.roll1 = null;
     this.roll2 = null;
+    this.roll3 = null;
     this.frameScore = null;
     this.strike = false;
     this.spare = false;
@@ -20,6 +21,8 @@ class Frame {
   calculateFrameScore() {
     if (this.roll2 === null) {
       this.frameScore = this.roll1;
+    } else if (this.roll3 != null) {
+      this.frameScore = this.roll1 + this.roll2 + this.roll3;
     } else {
       this.frameScore = this.roll1 + this.roll2;
     }
@@ -27,7 +30,7 @@ class Frame {
 
   _roll() {
     if (this.roll1 === null) {
-      console.log(`This is frame number ${this.frameNumber}`);
+      console.log(`This is frame number ${this._frameNumber()}`);
       console.log('First roll of the frame: ');
       this.roll1 = parseInt(window.prompt());
       console.log(`Your first roll: ${this.roll1}.`);
@@ -38,18 +41,16 @@ class Frame {
       console.log("Second roll of the frame: ");
       this.roll2 = parseInt(window.prompt());
       console.log(`Your second roll: ${this.roll2}`)
+      this._tenthFrameBonusRoll();
       this.frameFinished = true;
       this._spare();
-      // this._tenthFrameBonusRoll();
       this._addRoll2ScoreToPreviousFrames();
     }
   }
 
   _strike() {
-    if (this.roll1 === 10) // && this._frameNumber() === 10) 
-    {
+    if (this.roll1 === 10 && this._frameNumber() === 10){
       this.strike = true;
-      this.frameFinished = true;
     } else if (this.roll1 === 10) {
       this.strike = true;
       this.frameFinished = true;
@@ -65,6 +66,10 @@ class Frame {
   _endOfFrameMessage() {
     if (this._frameNumber === 10) {
       console.log(`You scored ${this.frameScore} points in your final frame. Your final score was ${Scorecard.currentGame.score()}.`)
+    } else if (this.strike === true) {
+      console.log("You scored a strike!") 
+    } else if (this.spare === true) {
+      console.log("You scored a spare!")
     } else {
       console.log(`You scored ${this.frameScore} points this frame.`)
     }
@@ -85,9 +90,12 @@ class Frame {
     }
   }
 
-  // _tenthFrameBonusRoll() {
-  //   if (this.roll1 === 10 ||)
-  // }
+  _tenthFrameBonusRoll() {
+    if ((this.roll1 === 10 || this.roll1 + this.roll2 === 10) && this._frameNumber() === 10) {
+      console.log("Your bonus 10th frame roll: ");
+      this.roll3 = parseInt(window.prompt());
+    }
+  }
 
   _frameNumber() {
     return Scorecard.currentGame.frames.length;

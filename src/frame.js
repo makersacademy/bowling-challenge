@@ -4,10 +4,11 @@ class Frame{
   constructor() {
     this.rolls = [];
     this.frameScore = 0;
+    this.strikeBonus = []
   }
 
   storePins(num) {
-    this.rolls.push(num)
+    this.rolls.push(num);
   }
 
   calculateTotal() {
@@ -25,5 +26,17 @@ class Frame{
 
   isComplete() {
     return this.rolls.length === 2 || this.isStrike();
+  }
+
+  addStrikeBonus(num) {
+    this.strikeBonus.push(num);
+  }
+
+  showFrameRolls() {
+    return this.rolls;
+  }
+
+  showStrikeBonus() {
+    return this.strikeBonus;
   }
 }

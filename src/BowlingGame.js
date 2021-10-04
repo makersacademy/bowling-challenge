@@ -1,3 +1,5 @@
-var BowlingGame = function () {
-
+class BowlingGame {
+  constructor(score){
+    this.score = []
+  }
 };

@@ -39,9 +39,7 @@ To test the game locally, clone this repository on your local machine.
 
 
 INPUT | OUTPUT TABLE 
-
 --- | ---
-
 [0,0] | 0 
 [1,2] | 3 
 [1,2], [7,2] | (3+9) -> 12 

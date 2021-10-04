@@ -121,16 +121,26 @@ describe("Scorecard",() => {
 	});
 
 
-	// describe("calcScore", () => {
+	describe("calcScore", () => {
 
-	// 	it("should calculate the score of the frame", () => {
-	// 		let roll1 = scorecard.inputRoll(5);
-	// 		let roll2 = scorecard.inputRoll(5);
-	// 		scorecard.addToFrame(roll1);
-	// 		scorecard.addToFrame(roll2);
-	// 		scorecard.calcScore();
-	// 		expect(scorecard.currentScore()).toEqual(10);
-	// 	});
+		it("should calculate the score of the frame", () => {
+			let roll1 = scorecard.inputRoll(5);
+			let roll2 = scorecard.inputRoll(5);
+			scorecard.addToFrame(roll1);
+			scorecard.addToFrame(roll2);
+			scorecard.calcScore();
+			expect(scorecard.currentScore()).toEqual(10);
+		});
 
-	// });
+	});
+
+	describe("play", () =>{
+		it("should allow user to input 10 frames", () => {
+			let rand = Math.floor(Math.random()*10) + 1;
+			for(let i = 0; i < 10; i++){
+				scorecard.play(rand);
+			}			
+			expect(scorecard.framecard.length).toEqual(10);
+		});
+	});
 });

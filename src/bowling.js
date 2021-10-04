@@ -13,11 +13,20 @@ class Scorecard {
 	getFramecard(){
 		return this.framecard;
 	}
+	
+	setFramecard(framecard){
+		this.framecard = framecard;
+		return this.framecard;
+	}
 
 	getScorecard(){
 		return this.scorecard;
 	}
 
+	setScorecard(score){
+		this.scorecard = score;
+		return this.scorecard;
+	}
 
 	inputRoll(num){
 		if(num >= 0 && num <= 10){
@@ -28,69 +37,118 @@ class Scorecard {
 	}
 
 	addToFrame(roll){
-		if(this.framecard.length < (this.frame + 1)){
+		let frame = this.getFrame();
+		let framecard = this.getFramecard();
+
+		if(framecard.length < (frame + 1)){
 			if(roll == 10){
-				this.framecard.push([roll,0])
+				framecard.push([roll,0])
 			}else{
-				this.framecard.push([roll]);
+				framecard.push([roll]);
 			}
-		}else{
-			let res = this.equalsOrUnder10(this.framecard[this.frame][0],roll);
-			if(res){
-				this.framecard[this.frame].push(roll);
+		}else if(framecard[frame].length < 2 && frame < 9){
+			let res = this.equalsOrUnder10(framecard[frame][0],roll);
+			if(res && framecard[frame].length < 2){
+				framecard[frame].push(roll);
 			}else{
-				console.log(`You'll have to enter roll 2 for frame ${this.frame + 1} again`)
+				console.log(`You'll have to enter roll 2 for frame ${frame + 1} again`)
+			}
+		}else if (framecard[frame].length == 2 && frame < 9){
+			frame++;
+			if(framecard.length < (frame + 1)){
+				if(roll == 10){
+					framecard.push([roll,0])
+				}else{
+					framecard.push([roll]);
+				}
+			}else if(framecard[frame].length < 2 && frame < 9){
+				let res = this.equalsOrUnder10(framecard[frame][0],roll);
+				if(res && framecard[frame].length < 2){
+					framecard[frame].push(roll);
+				}else{
+					console.log(`You'll have to enter roll 2 for frame ${frame + 1} again`)
+				}
 			}
 		}
+		return this.setFramecard(framecard);
 	}
 
-	// calcScore(){
-	// 	let x = 0;
-	// 	let sum;
-	// 	let score = [];
-	// 	let framecard = this.getFramecard();
+	calcScore(){
+		let frame = this.getFrame();
+		let sum;
+		let score = [];
+		let framecard = this.getFramecard();
+		const finalFrame = 9;
 
-	// 	/* I'm hoping there's a simpler way to do this, it feels like there must be a simpler way
-	// 	probably a recursive method */
+		/* I'm hoping there's a simpler way to do this, it feels like there must be a simpler way
+		probably a recursive method */
 
-	// 	while(x < framecard.length){
-	// 		let finalFrame = 9
-	// 		if(this.isStrike(framecard,x)){
-	// 			if(x == finalFrame){
-	// 				sum = 10 + framecard[x][1] + framecard[x][2]
-	// 				score.push(sum);
-	// 			}else if(framecard.length <= (x+2)){
-	// 				if(framecard.length <= (x+1)){
-	// 					score.push(10);
-	// 				}else{
-	// 					sum = 10 + framecard[x+1][0];
-	// 					score.push(sum);
-	// 				}
-	// 			}else	if(this.isStrike(framecard,(x+1))){
-	// 				sum = 20 + framecard[x+2][0];
-	// 				score.push(sum);
-	// 			}else{
-	// 				sum = 10 + framecard[x+1][0] + framecard[x+1][1]; 
-	// 				score.push(sum);
-	// 			}
-	// 		}else if(this.isSpare(framecard,x)){
-	// 			if(x == finalFrame){
-	// 				sum = 10 + framecard[x][1];
-	// 				score.push(sum); 
-	// 			}else if(framecard.length <= (x+1)){
-	// 				sum = this.sumFrame(framecard[x]);
-	// 				score.push(sum); 
-	// 			}else{
-	// 				sum = 10 + framecard[x+1][0];
-	// 				score.push(sum); 
-	// 			}
-	// 		}else{
-	// 			sum = this.sumFrame(framecard[x]);
-	// 			score.push(sum); 
-	// 		}
-	// 	}
-	// 	return score;
-	// }
+		console.log(score, framecard)
+		while(frame < framecard.length){
+
+			if(this.isStrike(framecard,frame)){
+
+				if(frame == finalFrame){
+					console.log("I am the last frame")
+					sum = 10 + framecard[frame][1] + framecard[frame][2]
+					score.push(sum);
+
+				}else if(framecard.length <= (frame+2)){
+
+					if(framecard.length <= (frame+1)){
+
+					console.log("I am longer than the frame I'm in by 1")
+						score.push(10);
+
+					}else{
+
+					console.log("I am longer than the frame I'm in by at least 2")
+						sum = 10 + framecard[frame+1][0];
+						score.push(sum);
+
+					}
+				}else	if(this.isStrike(framecard,(frame+1))){
+
+
+					console.log("The roll after me was also a strike")
+					sum = 20 + framecard[frame+2][0];
+					score.push(sum);
+
+				}else{
+					console.log("The roll after me was not a strike")
+					sum = 10 + framecard[frame+1][0] + framecard[frame+1][1]; 
+					score.push(sum);
+
+				}
+			}else if(this.isSpare(framecard,frame)){
+				console.log("This frame is a spare")
+				if(frame == finalFrame){
+
+					sum = 10 + framecard[frame][1];
+					score.push(sum); 
+
+				}else if(framecard.length <= (frame+1)){
+
+					sum = this.sumFrame(framecard[frame]);
+					score.push(sum); 
+
+				}else{
+
+					sum = 10 + framecard[frame+1][0];
+					score.push(sum); 
+
+				}
+			}else{
+
+				sum = this.sumFrame(framecard[frame]);
+				score.push(sum); 
+
+			}
+			this.nextFrame();
+			frame = this.getFrame();
+		}
+		return score;
+	}
 
 	equalsOrUnder10(roll1,roll2){
 		let sum = roll1 + roll2;
@@ -124,7 +182,7 @@ class Scorecard {
 
 	currentScore(){
 		let score = this.calcScore();
-		let currentScore = score[scoreArr.length - 1]
+		let currentScore = score[score.length - 1]
 		return currentScore;
 	}
 }

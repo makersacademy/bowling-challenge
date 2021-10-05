@@ -5,7 +5,7 @@ describe (Scorecard, () => {
   let frame;
 
   beforeEach(() => {
-    frame = jasmine.createSpyObj('frame', ['storePins', 'isComplete']);
+    frame = jasmine.createSpyObj('frame', ['storePins', 'isComplete','showStrikeBonus', 'showSpareBonus', 'addStrikeBonus', 'addSpareBonus', 'isStrike', 'isSpare', 'calculateTotal']);
     scorecard = new Scorecard(frame);
   });
 
@@ -27,7 +27,7 @@ describe (Scorecard, () => {
       scorecard.addPins(10);
       frame.isComplete.and.callFake(() => {
         return true;
-      })
+      });
       scorecard.addPins(1);
       expect(scorecard.currentFrame).toEqual(1);
     });
@@ -37,7 +37,7 @@ describe (Scorecard, () => {
       scorecard.addPins(4);
       frame.isComplete.and.callFake(() => {
         return true;
-      })
+      });
       scorecard.addPins(4);
       expect(scorecard.currentFrame).toEqual(1);
     });

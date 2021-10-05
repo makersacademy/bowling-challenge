@@ -4,14 +4,14 @@ class Scorecard{
   constructor(frame = new Frame()) {
     this.frames = [frame];
     this.currentFrame = 0;
+    this.gameTotalScore = 0;
   }
 
   addPins(num) {
     this._isNewFrameNeeded();
-    // this.checkStrikePreviousFrame(num);
-    // this.spareCheck();
     this.frames[this.currentFrame].storePins(num);
     this.calculateBonus(num);
+    this.calculateScorecardTotal();
   }
 
   moveToNextFrame() {
@@ -40,6 +40,14 @@ class Scorecard{
     if (i >= 1 && this.frames[i - 1].isSpare() && this.frames[i - 1].showSpareBonus().length < 1) {
       this.frames[i - 1].addSpareBonus(num);
     }
+  }
+
+  calculateScorecardTotal() {
+    this.gameTotalScore = 0;
+    for (let i = 0; i < this.currentFrame; i++) {
+      this.gameTotalScore += this.frames[i].calculateTotal();
+    }
+    return this.gameTotalScore;
   }
 };
   //   for (let i = 0; i < this.frames.length; i++) {

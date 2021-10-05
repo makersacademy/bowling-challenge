@@ -5,7 +5,7 @@ describe (Scorecard, () => {
   let frame;
 
   beforeEach(() => {
-    frame = jasmine.createSpyObj('frame', ['storePins', 'isComplete','showStrikeBonus', 'showSpareBonus', 'addStrikeBonus', 'addSpareBonus', 'isStrike', 'isSpare', 'calculateTotal']);
+    frame = jasmine.createSpyObj('frame', ['storePins', 'isComplete','showStrikeBonus', 'showSpareBonus', 'addStrikeBonus', 'addSpareBonus', 'isStrike', 'isSpare', 'calculateTotal', 'lastFrameCheck']);
     scorecard = new Scorecard(frame);
   });
 

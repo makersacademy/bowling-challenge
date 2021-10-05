@@ -12,6 +12,7 @@ class Scorecard{
     this.frames[this.currentFrame].storePins(num);
     this.calculateBonus(num);
     this.calculateScorecardTotal();
+    this.isGameOver();
   }
 
   moveToNextFrame() {
@@ -23,6 +24,9 @@ class Scorecard{
   }
 
   _isNewFrameNeeded() {
+    if (this.currentFrame === 9) {
+      return;
+    }
     if (this.frames[this.currentFrame].isComplete()) {
       this.moveToNextFrame();
       this.createFrame();
@@ -31,7 +35,7 @@ class Scorecard{
 
   calculateBonus(num) {
     let i = this.currentFrame;
-    if (i >= 1 && this.frames[i - 1].isStrike()) {
+    if (i >= 1 && this.frames[i - 1].isStrike() && this.frames[i - 1].showStrikeBonus().length < 2) {
       this.frames[i - 1].addStrikeBonus(num);
       if (i >= 2 && this.frames[i - 2].isStrike() && this.frames[i - 2].showStrikeBonus().length < 2) {
         this.frames[i - 2].addStrikeBonus(num);
@@ -44,10 +48,16 @@ class Scorecard{
 
   calculateScorecardTotal() {
     this.gameTotalScore = 0;
-    for (let i = 0; i < this.currentFrame; i++) {
+    for (let i = 0; i < this.frames.length; i++) {
       this.gameTotalScore += this.frames[i].calculateTotal();
     }
     return this.gameTotalScore;
+  }
+
+  isGameOver() {
+    if (this.currentFrame === 9 && this.frames[this.currentFrame].lastFrameCheck()) {
+      console.log(`Game Over, you scored ${this.gameTotalScore}`)
+    }
   }
 };
   //   for (let i = 0; i < this.frames.length; i++) {

@@ -50,4 +50,12 @@ class Frame{
   addSpareBonus(num) {
     this.spareBonus.push(num);
   }
+
+  lastFrameCheck() {
+    if (this.rolls.length < 3 && this.rolls[0] + this.rolls[1] < 10) {
+      return true;
+    } else if (this.rolls.length === 3) {
+      return true;
+    }
+  }
 }

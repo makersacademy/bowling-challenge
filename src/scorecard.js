@@ -1,6 +1,6 @@
 'use strict';
 
-class Scorecard{
+class Scorecard {
   constructor(frame = new Frame()) {
     this.frames = [frame];
     this.currentFrame = 0;
@@ -16,7 +16,7 @@ class Scorecard{
   }
 
   moveToNextFrame() {
-    this.currentFrame ++;
+    this.currentFrame++;
   }
 
   createFrame(frame = new Frame()) {
@@ -35,13 +35,25 @@ class Scorecard{
 
   calculateBonus(num) {
     let i = this.currentFrame;
-    if (i >= 1 && this.frames[i - 1].isStrike() && this.frames[i - 1].showStrikeBonus().length < 2) {
+    if (
+      i >= 1 &&
+      this.frames[i - 1].isStrike() &&
+      this.frames[i - 1].showStrikeBonus().length < 2
+    ) {
       this.frames[i - 1].addStrikeBonus(num);
-      if (i >= 2 && this.frames[i - 2].isStrike() && this.frames[i - 2].showStrikeBonus().length < 2) {
+      if (
+        i >= 2 &&
+        this.frames[i - 2].isStrike() &&
+        this.frames[i - 2].showStrikeBonus().length < 2
+      ) {
         this.frames[i - 2].addStrikeBonus(num);
       }
     }
-    if (i >= 1 && this.frames[i - 1].isSpare() && this.frames[i - 1].showSpareBonus().length < 1) {
+    if (
+      i >= 1 &&
+      this.frames[i - 1].isSpare() &&
+      this.frames[i - 1].showSpareBonus().length < 1
+    ) {
       this.frames[i - 1].addSpareBonus(num);
     }
   }
@@ -55,38 +67,18 @@ class Scorecard{
   }
 
   isGameOver() {
-    if (this.currentFrame === 9 && this.frames[this.currentFrame].lastFrameCheck()) {
-      console.log(`Game Over, you scored ${this.gameTotalScore}`)
+    if (
+      this.currentFrame === 9 &&
+      this.frames[this.currentFrame].lastFrameCheck()
+    ) {
+      console.log(`Game Over, you scored ${this.gameTotalScore}`);
     }
   }
-};
-  //   for (let i = 0; i < this.frames.length; i++) {
-  //     if (this.frames[i + 1]) {
-  //       console.log(this.frames[i + 1].showFrameRolls()[0])
-      
-  //       if (this.frames[i].isStrike) {
-  //         this.frames[i].addStrikeBonus(this.frames[i + 1].showFrameRolls()[0])
-  //         // if (this.frames[this.currentFrame + 1].isStrike) {
-  
-  //         // }
-  //       }
-  //     }
-  //   }
-  // }
-  // checkStrikePreviousFrame(num) {
-  //   if (this.frames.length > 1 && this.frames[this.currentFrame -1].isStrike()) {
-  //     this.frames[this.currentFrame -1].addStrikeBonus(num);
-  //   }
-  // }
 
-  // checkDoubleStrike() {
-  //   if (this.frames.length > 2) {
-  //     return checkSingleStrike() && this.frames[this.currentFrame -2].isStrike();
-  //   }
-  // }
-
-  // checkSingleStrike() {
-  //   if (this.frames.length > 1) {
-  //     return this.frames[this.currentFrame -1].isStrike()
-  //   }
-  // }
+  resetGame() {
+    this.frames = [];
+    this.createFrame();
+    this.currentFrame = 0;
+    this.gameTotalScore = 0;
+  }
+}

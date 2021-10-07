@@ -1,6 +1,6 @@
 'use strict';
 
-class Frame{
+class Frame {
   constructor() {
     this.rolls = [];
     this.frameScore = 0;
@@ -16,7 +16,7 @@ class Frame{
     this.frameScore = this.rolls.reduce((a, b) => a + b, 0);
     this.frameScore += this.strikeBonus.reduce((a, b) => a + b, 0);
     this.frameScore += this.spareBonus.reduce((a, b) => a + b, 0);
-    return this.frameScore
+    return this.frameScore;
   }
 
   isStrike() {
@@ -24,7 +24,7 @@ class Frame{
   }
 
   isSpare() {
-    return this.rolls[0] + this.rolls[1] === 10 && this.rolls[0] !== 10
+    return this.rolls[0] + this.rolls[1] === 10 && this.rolls[0] !== 10;
   }
 
   isComplete() {

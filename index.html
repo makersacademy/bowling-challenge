@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./public/styles/style.css" />
+    <script src="src/frame.js"></script>
+    <script src="src/scorecard.js"></script>
+    <script src="src/interfaces.js"></script>
+    <title>Bowling Scorecard</title>
+
+  </head>
+  <body>
+    <center><h1>Let's play some bowling</h1></center>
+    <div class="scorecard .d-flex justify-content-center">
+        <div class="frame" id="0">
+         <div class="frame-number">Frame 1</div>
+         <div class="top">
+          <div class="first-bowl" id="0"></div>
+          <div class="second-bowl" id="0"></div>
+        </div>
+        <div class="bottom" id="0"></div>
+      </div>
+      <div class="frame" id="1">
+        <div class="frame-number">Frame 2</div>
+        <div class="top">
+          <div class="first-bowl" id="1"></div>
+          <div class="second-bowl" id="1"></div>
+        </div>
+        <div class="bottom" id="1"></div>
+      </div>
+      <div class="frame" id="2">
+        <div class="frame-number">Frame 3</div>
+        <div class="top">
+          <div class="first-bowl" id="2"></div>
+          <div class="second-bowl" id="2"></div>
+        </div>
+        <div class="bottom" id="2"></div>
+      </div>
+      <div class="frame" id="3">
+        <div class="frame-number">Frame 4</div>
+        <div class="top">
+          <div class="first-bowl" id="3"></div>
+          <div class="second-bowl" id="3"></div>
+        </div>
+        <div class="bottom" id="3"></div>
+      </div>
+      <div class="frame" id="4">
+        <div class="frame-number">Frame 5</div>
+        <div class="top">
+          <div class="first-bowl" id="4"></div>
+          <div class="second-bowl" id="4"></div>
+        </div>
+        <div class="bottom" id="4"></div>
+      </div>
+      <div class="frame" id="5">
+        <div class="frame-number">Frame 6</div>
+        <div class="top">
+          <div class="first-bowl" id="5"></div>
+          <div class="second-bowl" id="5"></div>
+        </div>
+        <div class="bottom" id="5"></div>
+      </div>
+      <div class="frame" id="6">
+        <div class="frame-number">Frame 7</div>
+        <div class="top">
+          <div class="first-bowl" id="6"></div>
+          <div class="second-bowl" id="6"></div>
+        </div>
+        <div class="bottom" id="6"></div>
+      </div>
+      <div class="frame" id="7">
+        <div class="frame-number">Frame 8</div>
+        <div class="top">
+          <div class="first-bowl" id="7"></div>
+          <div class="second-bowl" id="7"></div>
+        </div>
+        <div class="bottom" id="7"></div>
+      </div>
+      <div class="frame" id="8">
+        <div class="frame-number">Frame 9</div>
+        <div class="top">
+          <div class="first-bowl" id="8"></div>
+          <div class="second-bowl" id="8"></div>
+        </div>
+        <div class="bottom" id="8"></div>
+      </div>
+      <div class="frame" id="9">
+        <div class="frame-number">Frame 10</div>
+        <div class="top">
+          <div class="first-bowl" id="9"></div>
+          <div class="second-bowl" id="9"></div>
+          <div class="bonus-bowl" id="9"></div>
+        </div>
+        <div class="bottom" id="9"></div>
+      </div>
+      <div class="frame" id="total-score">
+        <div class="frame-number">Score</div>
+        <div class="total" id="game-total"></div>
+      </div>
+    </div>
+
+    <div class="pins-hit">
+      <button class="pins" id="pin-0" value="0">0</button>
+      <button class="pins" id="pin-1" value="1">1</button>
+      <button class="pins" id="pin-2" value="2">2</button>
+      <button class="pins" id="pin-3" value="3">3</button>
+      <button class="pins" id="pin-4" value="4">4</button>
+      <button class="pins" id="pin-5" value="5">5</button>
+      <button class="pins" id="pin-6" value="6">6</button>
+      <button class="pins" id="pin-7" value="7">7</button>
+      <button class="pins" id="pin-8" value="8">8</button>
+      <button class="pins" id="pin-9" value="9">9</button>
+      <button class="pins" id="pin-10" value="10">10</button>
+    </div>
+    <br />
+    <button class="reset" id="reset-button">Reset Card</button>
+  </body>
+</html>

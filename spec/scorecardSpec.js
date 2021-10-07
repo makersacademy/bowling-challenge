@@ -1,16 +1,27 @@
 'use strict';
 
-describe (Scorecard, () => {
+describe(Scorecard, () => {
   let scorecard;
   let frame;
 
   beforeEach(() => {
-    frame = jasmine.createSpyObj('frame', ['storePins', 'isComplete','showStrikeBonus', 'showSpareBonus', 'addStrikeBonus', 'addSpareBonus', 'isStrike', 'isSpare', 'calculateTotal', 'lastFrameCheck']);
+    frame = jasmine.createSpyObj('frame', [
+      'storePins',
+      'isComplete',
+      'showStrikeBonus',
+      'showSpareBonus',
+      'addStrikeBonus',
+      'addSpareBonus',
+      'isStrike',
+      'isSpare',
+      'calculateTotal',
+      'lastFrameCheck',
+    ]);
     scorecard = new Scorecard(frame);
   });
 
   it('returns an empty scorecard array', () => {
-    expect(scorecard.frames).toEqual([frame])
+    expect(scorecard.frames).toEqual([frame]);
   });
 
   it('when initiated, the first frame should have index 0', () => {
@@ -42,4 +53,6 @@ describe (Scorecard, () => {
       expect(scorecard.currentFrame).toEqual(1);
     });
   });
+
+  it('should reset the game', () => {});
 });

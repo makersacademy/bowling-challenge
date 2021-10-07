@@ -1,0 +1,65 @@
+.scorecard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.frame {
+  display: flex;
+  border: 2px solid black;
+  height: 100px;
+  width: 80px;
+  flex-direction: column;
+}
+
+.top {
+  display: flex;
+  height: 40px;
+  width: 80px;
+}
+
+.first-bowl {
+  height: 40px;
+  width: 40px;
+}
+
+.second-bowl {
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  height: 40px;
+  width: 40px;
+}
+
+.bonus-bowl {
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  height: 40px;
+  width: 40px;
+}
+
+.bottom {
+  height: 40px;
+  width: 80px;
+}
+
+.frame-number {
+  background-color: rgb(245, 222, 179);
+  height: 20px;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+.pins-hit {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.total {
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  font-size: large;
+}
+
+.hidden {
+  visibility: hidden;
+}

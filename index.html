@@ -1,0 +1,95 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Bowling Scorecard</title>
+    <link rel="stylesheet" href="public/style.css">
+  </head>
+  <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>   
+<section>
+      <!-- <h1 class ='container'>Temperature</h1> -->
+      Frame: <span id='frame'>1</span>
+      <form class = 'rolls'>
+        Roll 1:
+        <input id='roll1' type="text" name="roll1">
+        <!-- <button id='roll_1'>Roll 1</button> -->
+        Roll 2:
+        <!-- <input id='roll2' type="text" name="roll2"> -->
+        <!-- <button id='roll_2'>Roll 2</button> -->
+        Bonus Roll:
+        <!-- <input id='bonusroll' type="text" name="bonusroll"> -->
+        <button id='submit'>Submit</button>
+    </section>
+    <div class="grid-container">
+      <div class="grid-item"><b>Frame</b></div>
+      <div class="grid-item"><b>1st Roll</b></div>
+      <div class="grid-item"><b>2nd Roll</b></div>
+      <div class="grid-item"><b>Bonus Roll</b></div>
+      <div class="grid-item"><b>Frame Score</b></div>
+
+      <div class="grid-item">1</div>
+      <div class="grid-item" id="f1r1"></div>
+      <div class="grid-item" id="f1r2"></div>
+      <div class="grid-item" id="f1br"></div>
+      <div class="grid-item" id="f1sc"></div>
+
+      <div class="grid-item">2</div>
+      <div class="grid-item" id="f2r1"></div>
+      <div class="grid-item" id="f2r2"></div>
+      <div class="grid-item" id="f2br"></div>
+      <div class="grid-item" id="f2sc"></div>
+
+      <div class="grid-item">3</div>
+      <div class="grid-item" id="f3r1"></div>
+      <div class="grid-item" id="f3r2"></div>
+      <div class="grid-item" id="f3br"></div>
+      <div class="grid-item" id="f3sc"></div>
+
+      <div class="grid-item">4</div>
+      <div class="grid-item" id="f4r1"></div>
+      <div class="grid-item" id="f4r2"></div>
+      <div class="grid-item" id="f4br"></div>
+      <div class="grid-item" id="f4sc"></div>
+
+      <div class="grid-item">5</div>
+      <div class="grid-item" id="f5r1"></div>
+      <div class="grid-item" id="f5r2"></div>
+      <div class="grid-item" id="f5br"></div>
+      <div class="grid-item" id="f5sc"></div>
+
+      <div class="grid-item">6</div>
+      <div class="grid-item" id="f6r1"></div>
+      <div class="grid-item" id="f6r2"></div>
+      <div class="grid-item" id="f6br"></div>
+      <div class="grid-item" id="f6sc"></div>
+
+      <div class="grid-item">7</div>
+      <div class="grid-item" id="f7r1"></div>
+      <div class="grid-item" id="f7r2"></div>
+      <div class="grid-item" id="f7br"></div>
+      <div class="grid-item" id="f7sc"></div>
+
+      <div class="grid-item">8</div>
+      <div class="grid-item" id="f8r1"></div>
+      <div class="grid-item" id="f8r2"></div>
+      <div class="grid-item" id="f8br"></div>
+      <div class="grid-item" id="f8sc"></div>
+
+      <div class="grid-item">9</div>
+      <div class="grid-item" id="f9r1"></div>
+      <div class="grid-item" id="f9r2"></div>
+      <div class="grid-item" id="f9br"></div>
+      <div class="grid-item" id="f9sc"></div>
+
+      <div class="grid-item">10</div>
+      <div class="grid-item" id="f10r1"></div>
+      <div class="grid-item" id="f10r2"></div>
+      <div class="grid-item" id="f10br"></div>
+      <div class="grid-item" id="f10sc"></div>
+    </div>
+    <script src='src/Frame.js'></script>
+    <script src='src/Game.js'></script>
+    <script src='src/LastFrame.js'></script>
+    <script src='interface.js'></script>
+  </body>
+</html>

@@ -46,4 +46,38 @@ describe('.regularScorePerFrame', () => {
       ]
     );
   });
+  // it('calculates bonus score for first frame', () => {
+  //   let mockScorecard = { pins: [
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 10, 10]
+  //   ]}
+  //   scoring = new Scoring(mockScorecard.pins)
+  //   scoring.bonusScore1stFrame()
+  //   expect(scoring.bonusScore[0]).toEqual(20);
+  // });
+  // it('calculates bonus score for first 8 frames', () => {
+  //   let mockScorecard = { pins: [
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 0],
+  //     [10, 10, 10]
+  //   ]}
+  //   scoring = new Scoring(mockScorecard.pins)
+  //   scoring.bonusScore1stFrame()
+  //   expect(scoring.bonusScore[0]).toEqual(160);
+  // });
 });

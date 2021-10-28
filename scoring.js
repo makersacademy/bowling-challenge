@@ -3,6 +3,8 @@ class Scoring {
     this.scorecard = scorecard
     this.bonusScore = []
     this.regularScore = []
+    this.totalScorePerFrame = []
+    this.totalScore = null
     this.n = 0
   }
   regularScorePerFrame() { 
@@ -10,7 +12,6 @@ class Scoring {
     this.regularScore = this.scorecard.map( element => element.reduce(function(a,b){ return a + b }, 0) )
     if ( this.scorecard[9][0] === 10) { this.regularScore[9] = 10 }
     else { this.regularScore[9] = this.scorecard[9][0] + this.scorecard[9][1] }
-    return this.regularScore
   }
   bonusScore8Frames() {
     var frameBonus = 0
@@ -59,8 +60,23 @@ class Scoring {
     this.bonusScore8Frames();
     this.bonusScoreFrame9();
     this.bonusScoreFrame10();
+
     // DO the below
-    this.bonusScore.map( element => element.reduce(function(a,b){ return a + b }, 0) )
+    // return this.bonusScore = this.bonusScore.map( element => element.reduce(function(a,b){ return a + b }, 0) )
+    // this.regularScore = this.scorecard.map( element => element.reduce(function(a,b){ return a + b }, 0) )
+
+  }
+  totalScoreAllFrames() {
+    let n = 0
+    while ( n < 10 ) {
+      this.totalScorePerFrame.push( this.regularScore[n] + this.bonusScore[0] );
+      n += 1
+    }
+  }
+  findTotalScore() {
+    for (let i = 0; i < 10; i++) {
+      this.totalScore += this.totalScorePerFrame[i]
+    }
   }
 }
 
@@ -81,6 +97,23 @@ scoring = new Scoring(mockScorecard.pins)
 // console.log(scoring.bonusScore8Frames())
 // console.log(scoring.bonusScoreFrame9())
 // console.log(scoring.bonusScoreFrame10())
-console.log(scoring.bonusScoreAllFrames())
+// console.log('bonus scores below')
+
+
+scoring.regularScorePerFrame()
+console.log('regular scores below')
+console.log(scoring.regularScore)
+
+scoring.bonusScoreAllFrames()
+console.log('bonus scores below')
 console.log(scoring.bonusScore)
+
+scoring.totalScoreAllFrames()
+console.log('total scores below')
+console.log(scoring.totalScorePerFrame)
+
+scoring.findTotalScore()
+console.log('total score below')
+console.log(scoring.totalScore)
+
 module.exports = Scoring;

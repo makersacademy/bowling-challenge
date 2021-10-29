@@ -20,8 +20,15 @@ describe("addFirstBowl function", () => {
   })
 })
 describe("addSecondBowl function", () => {
-  test("should give secondBowl a value of 7", () => {
-    bowling.addSecondBowl(7);
-    expect(bowling.secondBowl).toEqual(7);
+  test("should call finishRound function", () => {
+    bowling.addSecondBowl(6);
+    expect(bowling.gameArray).toEqual([[6]]);
+  })
+})
+describe("finishRound function", () => {
+  test("should push roundArray into gameArray", () => {
+    bowling.roundArray = [4, 6];
+    bowling.finishRound();
+    expect(bowling.gameArray).toEqual([[4,6]]);
   })
 })

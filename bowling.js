@@ -12,7 +12,13 @@ class Bowling {
   }
   addSecondBowl(pins) {
     this.secondBowl = pins;
-    this.roundArray.push(this.secondBowl)
+    this.roundArray.push(this.secondBowl);
+    this.finishRound();
+  }
+  finishRound() {
+    this.gameArray.push(this.roundArray);
+    this.firstBowl = null;
+    this.secondBowl = null;
   }
 }
 

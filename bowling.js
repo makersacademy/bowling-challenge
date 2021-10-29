@@ -9,6 +9,7 @@ class Bowling {
   addFirstBowl(pins) {
     this.firstBowl = pins;
     this.roundArray.push(this.firstBowl)
+    if (this.firstBowl === 10) { this.finishRound(); }
   }
   addSecondBowl(pins) {
     this.secondBowl = pins;
@@ -19,6 +20,10 @@ class Bowling {
     this.gameArray.push(this.roundArray);
     this.firstBowl = null;
     this.secondBowl = null;
+  }
+  isStrike(round) {
+    let roundIndex = round - 1;
+    return this.gameArray[roundIndex][0] === 10 ? true : false;
   }
 }
 

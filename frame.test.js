@@ -8,3 +8,10 @@ describe("addRoll", () => {
     expect(frame.rolls).toContain(6);
   })
 })
+
+describe("isStrike", () => {
+  it("returns true when the first roll is a 10", () => {
+    frame.addRoll(10);
+    expect(frame.isStrike()).toBe(true);
+  })
+})

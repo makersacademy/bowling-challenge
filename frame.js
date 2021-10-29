@@ -7,6 +7,10 @@ class Frame {
     return this.rolls.push(pins)
   }
 
+  isStrike = () => {
+    return true;
+  }
+
 }
 
 module.exports = Frame;

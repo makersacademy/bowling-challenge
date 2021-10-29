@@ -36,10 +36,17 @@ describe("finishRound function", () => {
     expect(bowling.gameArray).toEqual([[4,6]]);
   })
 })
-describe("strike function", () => {
+describe("isStrike function", () => {
   test("test whether a round is a strike", () => {
     bowling.addFirstBowl(10);
-    console.log(bowling.gameArray);
     expect(bowling.isStrike(1)).toEqual(true);
+  })
+})
+describe("isSpare function", () => {
+  test("test whether a round is a spare", () => {
+    bowling.addFirstBowl(6);
+    bowling.addSecondBowl(4);
+    console.log(bowling.gameArray);
+    expect(bowling.isSpare(1)).toEqual(true);
   })
 })

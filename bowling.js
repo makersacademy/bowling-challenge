@@ -25,6 +25,17 @@ class Bowling {
     let roundIndex = round - 1;
     return this.gameArray[roundIndex][0] === 10 ? true : false;
   }
+  isSpare(round) {
+    let roundIndex = round - 1;
+    if (this.isStrike(round)) { return false };
+    if (this.gameArray[roundIndex][0] + this.gameArray[roundIndex][1] === 10) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 }
 
 

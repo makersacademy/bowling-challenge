@@ -1,3 +1,10 @@
+## Process
+TDD each of the following:
+* Gutterball game (all zeros)
+* All ones
+* Getting a spare
+* Getting a strike
+* Max score
 
 Bowling Challenge
 =================

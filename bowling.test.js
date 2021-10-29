@@ -1,19 +1,24 @@
 const Bowling = require('./bowling')
 
+let game;
+beforeEach(() => {
+  game = new Bowling();
+});
+
 describe('Bowling', () => {
 
   it('should return a score of 0 for a game of all zeros (guttergame)', () => {
-    const game = new Bowling();
-    for (let i = 0; i < 20; i++) {
-      game.roll(0);
-    }
+    rollMany(0, 20);
     expect(game.score).toEqual(0);
   });
   it('should return a score of 20 for a game of all ones', () => {
-    const game = new Bowling();
-    for (let i = 0; i < 20; i++) {
-      game.roll(1);
-    }
+    rollMany(1, 20);
     expect(game.score).toEqual(20);
   })
 });
+
+function rollMany(pins, rolls) {
+  for (let i = 0; i < rolls; i++) {
+    game.roll(pins);
+  }
+}

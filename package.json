@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/ConorButler/bowling-challenge/issues"
   },
-  "homepage": "https://github.com/ConorButler/bowling-challenge#readme"
+  "homepage": "https://github.com/ConorButler/bowling-challenge#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
 }

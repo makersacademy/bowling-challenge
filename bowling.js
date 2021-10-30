@@ -5,12 +5,20 @@ class Bowling {
     this.frames = [];
   }
 
+  scorecard() {
+    let total = 0
+    return this.frames.map(frame => {
+      total += frame.total
+      return `|${frame.pins.join('|')}|   ${total}`
+    });
+  }
+
   totalScore() {
     return this.frames.reduce((sum, frame) => sum + frame.total, 0);
   }
 
   inputFullGame(arrayOfRolls) {
-    arrayOfRolls.forEach((pins) => this.roll(pins));
+    arrayOfRolls.forEach(pins => this.roll(pins));
   }
 
   roll(pins) {
@@ -21,6 +29,7 @@ class Bowling {
     } else {
       this.updateFrames(pins);
       if (this.currentFrame.isComplete()) {
+        this.currentFrame.calculateBonus()
         this.storeFrame();
       }
     }
@@ -35,11 +44,11 @@ class Bowling {
   }
 
   bonusFrames() {
-    return this.frames.filter((frame) => frame.hasActiveBonus());
+    return this.frames.filter(frame => frame.hasActiveBonus());
   }
 
   updateBonusFrames(pins) {
-    this.bonusFrames().forEach(function (bonusframe) {
+    this.bonusFrames().forEach(bonusframe => {
       bonusframe.updateTotal(pins), bonusframe.deductBonusRoll();
     });
   }
@@ -59,7 +68,6 @@ class Bowling {
   }
 
   storeFrame() {
-    this.currentFrame.calculateBonus();
     this.frames.push(this.currentFrame);
     this.currentFrame = null;
   }

@@ -1,10 +1,20 @@
 class Game {
   constructor() {
     this.rolls = [];
+    this.visual_scores = [];
   }
-  roll(pins, callback) {
+  roll(pins) {
+    if (pins === 10 && this.visual_scores.length % 2 === 0) {
+      this.visual_scores.push(" ");
+      this.visual_scores.push("x");
+    } else if (pins === 10 && this.visual_scores.length % 2 !== 0) {
+      this.visual_scores.push("/");
+    } else {
+      this.visual_scores.push(pins);
+    };
+
     this.rolls.push(pins);
-    callback;
+    
   }
   get score() {
     let score = 0;

@@ -8,7 +8,8 @@ const frames = () => {
 };
 
 const rolls = () => {
-  let each_roll = game.rolls;
+  console.log("Rolls length = " + game.visual_scores.length)
+  let each_roll = game.visual_scores;
   let each_space = Array(20).fill(' ')
   let each_pin = each_roll.concat(each_space)
   each_pin.length = 20;
@@ -18,7 +19,7 @@ const rolls = () => {
 
 let rlSync = require("readline-sync");
 
-for(let i = 0; i < 10; i++){
+for(let i = 0; i < 20; i++){
   let firstRoll = Number(rlSync.question("Enter your roll\n"));
   game.roll(firstRoll);
   console.log(frames())

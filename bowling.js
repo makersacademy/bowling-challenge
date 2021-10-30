@@ -28,15 +28,13 @@ class Bowling {
     this.rolls.push(pins);
   }
 
-  spare(rollIndex) {
-    if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
-      return true
-    }
-  }
+  // spare(rollIndex) {
+  //   return ((this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) ? true : false);
+  // }
 
-  spareScore(rollIndex) {
-    result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
-  }
+  // spareScore(rollIndex) {
+  //   result += this.rolls[rollIndex] + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+  // }
 }
 
 module.exports = Bowling;

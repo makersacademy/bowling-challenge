@@ -2,8 +2,9 @@ class Game {
   constructor() {
     this.rolls = [];
   }
-  roll(pins) {
+  roll(pins, callback) {
     this.rolls.push(pins);
+    callback;
   }
   get score() {
     let score = 0;

@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/arthurfincham/bowling-challenge#readme",
   "dependencies": {
-    "jest": "^27.3.1"
+    "jest": "^27.3.1",
+    "readline-sync": "^1.4.10"
   }
 }

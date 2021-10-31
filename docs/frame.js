@@ -12,13 +12,15 @@ class Frame{
     return this.rolls;
   }
 
+  // returns the first roll of the frame
   getFirstRoll() {
     return this.rolls[0];
-  };
+  }
 
+  // returns the second roll of the frame
   getSecondRoll() {
     return this.rolls[1];
-  };
+  }
 
   // calculates the total score of the frame
   calcFrameTotal() {
@@ -29,12 +31,15 @@ class Frame{
     return sum;
   }
 
-
-
-
-
-
-
+  getBonus() {
+    if (getFirstRoll() === 10) {
+      return next_frame._strikeBonus(next_but_next_frame);
+    }
+    if (this._isSpare()) {
+      return next_frame._spareBonus();
+    }
+    return 0;
+  }
 
 }
 

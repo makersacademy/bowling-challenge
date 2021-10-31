@@ -24,4 +24,8 @@ describe("Frame", function() {
     expect(frame.getSecondRoll()).toEqual(2);
   });
 
+
+
+
+  
 });

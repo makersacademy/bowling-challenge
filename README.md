@@ -1,3 +1,5 @@
+SEE README2.md
+
 
 Bowling Challenge
 =================

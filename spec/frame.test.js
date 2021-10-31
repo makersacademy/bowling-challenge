@@ -9,11 +9,6 @@ describe("Frame", function() {
     expect(frame.getRolls()).toEqual([1,2]);
   });
 
-  it("returns the total of two rolls in a frame", function(){
-    var next = new Frame([0,0]);
-    expect(frame.calcFrameTotal()).toEqual(3);
-  });
-
   it("returns the first roll of the frame", function(){
     var next = new Frame([0,0]);
     expect(frame.getFirstRoll()).toEqual(1);
@@ -24,8 +19,9 @@ describe("Frame", function() {
     expect(frame.getSecondRoll()).toEqual(2);
   });
 
+  it("returns the total of two rolls in a frame", function(){
+    var next = new Frame([0,0]);
+    expect(frame.calcRollsTotal()).toEqual(3);
+  });
 
-
-
-  
 });

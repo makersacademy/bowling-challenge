@@ -1,0 +1,28 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ConorButler/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ConorButler/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/ConorButler/bowling-challenge#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}

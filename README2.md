@@ -8,4 +8,6 @@ The code is built so that one can interrogate total score, regular score, or bon
 
 I researched how to, for example, iterate and sum in JS.
 
-To validate the code, make use of the automated tests via jest. The file 'functional_tests.js' contains some lines of code that allow you to interact with the codebase via a reply such as node.
+To validate the code, make use of the automated tests via jest. The file 'functional_tests.js' contains some lines of code that allow you to interact with the codebase via a repl such as node.
+
+The next step is to produce a web interface.

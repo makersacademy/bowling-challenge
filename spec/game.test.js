@@ -12,7 +12,7 @@ describe("Game", () => {
 
   test("adds a frame to the array", () => {
     frame = { first_roll: null, second_roll: null, score: 0 };
-    game._createFrame(frame);
+    game._newFrame(frame);
     expect(game.frames.length).toEqual(1);
   });
 });
@@ -67,3 +67,28 @@ describe("input is a negative number", () => {
     }).toThrow("You cannot throw a negative roll!");
   });
 });
+
+describe("test cases", () => {
+
+  beforeEach(() => {
+    game = new Game();
+
+    multiRoll = (num, one, two) => {
+      for (let i = 0; i < num; i++) {
+        game.roll(one, two);
+      }
+    };
+  });
+
+  
+
+  it('returns 0 for a gutter game', () => {
+    multiRoll(10, 0, 0)
+    expect(game.fetchScore()).toEqual(0);
+  });
+
+  it('returns 300 for a perfect game', () => {
+    multiRoll(12, 10, null)
+    expect(game.fetchScore()).toEqual(300)
+  })
+})

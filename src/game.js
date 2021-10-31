@@ -5,18 +5,24 @@ class Game {
     this.frames = [];
   }
 
-  roll(firstPins, secondPins) {
-    this._rollParams(firstPins, secondPins);
-    this._createFrame(firstPins, secondPins);
-    if(this.frames.length > 3){
+  roll(one, two) {
+    this._rollParams(one, two);
+    this._newFrame(one, two);
+    if (this.frames.length > 3) {
       this._bonusScan();
     }
   }
 
-  _createFrame(firstPins, secondPins) {
+  fetchScore() {
+    var score = 0;
+    this.frames.map (x => score += x.score )
+    return score;
+  }
+
+  _newFrame(one, two) {
     var frame = new Frame();
-    frame.firstRoll(firstPins);
-    frame.secondRoll(secondPins);
+    frame.firstRoll(one);
+    frame.secondRoll(two);
     this.frames.push(frame);
   }
 
@@ -26,11 +32,13 @@ class Game {
     }
   }
 
-  _strikeBonus(frame){
-    if (!this._isStrike(this.frames[this.frames.length - 2])){
-      this.frames[this.frames.length - 3].score += this.frames[this.frames.length - 2].score
+  _strikeBonus(frame) {
+    if (!this._isStrike(this.frames[this.frames.length - 2])) {
+      this.frames[this.frames.length - 3].score +=
+      this.frames[this.frames.length - 2].score;
     } else {
-      this.frames[this.frames.length - 3].score += 10 + this.frames[this.frames.length - 1].firstRoll
+      this.frames[this.frames.length - 3].score +=
+        10 + this.frames[this.frames.length - 1].first_roll;
     }
   }
 
@@ -40,23 +48,22 @@ class Game {
     }
   }
 
-  _spareBonus(frame){
-    this.frames[this.frames.length - 3].score += this.frames[this.frames.length - 2].first_roll
+  _spareBonus(frame) {
+    this.frames[this.frames.length - 3].score +=
+      this.frames[this.frames.length - 2].first_roll;
   }
 
-  _bonusScan(){
-    console.log(this.frames[this.frames.length - 3]);
-    if (this._isStrike(this.frames[this.frames.length - 3])){
-      this._strikeBonus(this.frames[this.frames.length - 3])
-    } else if (this._isSpare(this.frames[this.frames.length - 3])){
-      this._spareBonus(this.frames[this.frames.length - 3])
+  _bonusScan() {
+    if (this._isStrike(this.frames[this.frames.length - 3])) {
+      this._strikeBonus(this.frames[this.frames.length - 3]);
+    } else if (this._isSpare(this.frames[this.frames.length - 3])) {
+      this._spareBonus(this.frames[this.frames.length - 3]);
     }
   }
 
-
-  _rollParams(firstPins, secondPins) {
-    var pins = firstPins + secondPins;
-    if (!Number.isInteger(firstPins)) {
+  _rollParams(one, two) {
+    var pins = one + two;
+    if (!Number.isInteger(one)) {
       throw Error("Please enter a number!");
     } else if (pins < 0) {
       throw Error("You cannot throw a negative roll!");

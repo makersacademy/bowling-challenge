@@ -12,8 +12,11 @@ class Frame {
   }
 
   secondRoll(pins){
-    this.second_roll = pins;
-    this.score += pins;
+    
+    if( pins != null ){
+      this.score += pins;
+      this.second_roll = pins;
+    }
   }
 
 

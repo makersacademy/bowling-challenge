@@ -52,10 +52,8 @@ class Scorecard {
     } else {
       formattedFrame = frame.pins
     }
-
     return formattedFrame.join(' ')
   }
 }
 
 module.exports = Scorecard;
-

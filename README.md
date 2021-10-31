@@ -1,6 +1,6 @@
 <div align="center">
 
-### bowling scorecard
+<img src="images/logo.png" width="200px">
 
 ![](https://img.shields.io/github/last-commit/arthurfincham/bowling-challenge)
 ![](https://img.shields.io/github/languages/count/arthurfincham/bowling-challenge)
@@ -15,7 +15,7 @@
 
 <img src="images/bowling_preview.gif" width="400px">
 <p>command line interface for the game</p>
-&nbsp;
+
 
 <h2>Stack</h2>
 
@@ -29,24 +29,22 @@
 
 <img src="images/bowling_coverage.gif" width="400px">
 <p>test coverage for the project</p>
-&nbsp;
 
 </div>
 
 
-<details>
-  <summary>Click to see full assignment!</summary>
+## Assignment
   
 
-Bowling Challenge
-=================
+## Bowling Challenge
+
 
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
 
-## The Task
+### The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
@@ -112,5 +110,3 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
-
-</details>

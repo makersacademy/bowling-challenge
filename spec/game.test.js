@@ -73,7 +73,7 @@ describe('test cases', () => {
     game = new Game();
 
     multiRoll = (num, one, two) => {
-      for (let i = 0; i < num; i++) {
+      for (let i = 0; i < num; i += 1) {
         game.roll(one, two);
       }
     };

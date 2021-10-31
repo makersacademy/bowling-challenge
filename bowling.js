@@ -1,16 +1,15 @@
 const Frame = require('./frame');
+const Scorecard = require('./scorecard');
 
 class Bowling {
   constructor() {
     this.frames = [];
+    this.scorecardClass = new Scorecard
   }
 
   scorecard() {
-    let total = 0
-    return this.frames.map(frame => {
-      total += frame.total
-      return `|${frame.pins.join('|')}|   ${total}`
-    });
+    return [this.scorecardClass.showPins(this.frames),
+      this.scorecardClass.showTotals(this.frames)].join('\n')
   }
 
   totalScore() {

@@ -19,7 +19,7 @@ describe("Game", () => {
 
 describe("Strikes", () => {
   test("strike returns true", () => {
-    frame = { first_roll: 10, second_roll: null, score: 10 };
+    frame = { first_roll: 10, second_roll: 'x', score: 10 };
     expect(game._isStrike(frame)).toEqual(true);
   });
 
@@ -81,14 +81,23 @@ describe("test cases", () => {
   });
 
   
-
   it('returns 0 for a gutter game', () => {
     multiRoll(10, 0, 0)
     expect(game.fetchScore()).toEqual(0);
   });
 
+   it("returns 10 for a game of ones", () => {
+     multiRoll(10, 1, 0);
+     expect(game.fetchScore()).toEqual(10);
+   });
+
+   it("returns 150 for a game of fives", () => {
+     multiRoll(11, 5, 5);
+     expect(game.fetchScore()).toEqual(150);
+   });
+
   it('returns 300 for a perfect game', () => {
-    multiRoll(12, 10, null)
+    multiRoll(12, 10, 'x')
     expect(game.fetchScore()).toEqual(300)
   })
 })

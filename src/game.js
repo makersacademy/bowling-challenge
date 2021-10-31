@@ -27,7 +27,7 @@ class Game {
   }
 
   _isStrike(frame) {
-    if (frame.first_roll === 10 && frame.second_roll === null) {
+    if (frame.first_roll === 10 && frame.second_roll === 'x') {
       return true;
     }
   }
@@ -43,7 +43,7 @@ class Game {
   }
 
   _isSpare(frame) {
-    if (frame.score === 10 && frame.second_roll !== null) {
+    if (frame.score === 10 && frame.second_roll !== 'x') {
       return true;
     }
   }

@@ -16,15 +16,15 @@ class Game {
 
   finalRoll(one, two) {
     var final = new finalFrame();
-    final.firstRoll(one)
+    final.firstRoll(one);
     final.secondRoll(two);
-    this.frames.push(final)
+    this.frames.push(final);
     this._bonusScan();
   }
 
-  bonusRoll(final){
-    this.frames.at(-1).finalRoll(final)
-    this._bonusScan();
+  bonusRoll(final) {
+    this.frames.at(-1).finalRoll(final);
+    this._finalBonusScan();
   }
 
   fetchScore() {
@@ -48,11 +48,9 @@ class Game {
 
   _strikeBonus(frame) {
     if (!this._isStrike(this.frames.at(-2))) {
-      this.frames.at(-3).score +=
-        this.frames.at(-2).score;
+      this.frames.at(-3).score += this.frames.at(-2).score;
     } else {
-      this.frames.at(-3).score +=
-        10 + this.frames.at(-1).first_roll;
+      this.frames.at(-3).score += 10 + this.frames.at(-1).first_roll;
     }
   }
 
@@ -63,8 +61,7 @@ class Game {
   }
 
   _spareBonus(frame) {
-    this.frames.at(-3).score +=
-      this.frames.at(-2).first_roll;
+    this.frames.at(-3).score += this.frames.at(-2).first_roll;
   }
 
   _bonusScan() {
@@ -72,6 +69,14 @@ class Game {
       this._strikeBonus(this.frames.at(-3));
     } else if (this._isSpare(this.frames.at(-3))) {
       this._spareBonus(this.frames.at(-3));
+    }
+  }
+
+  _finalBonusScan() {
+    if (this._isStrike(this.frames.at(-2))) {
+      this._strikeBonus(this.frames.at(-2));
+    } else if (this._isSpare(this.frames.at(-2))) {
+      this._spareBonus(this.frames.at(-2));
     }
   }
 

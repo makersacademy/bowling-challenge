@@ -82,22 +82,28 @@ describe("test cases", () => {
 
   
   it('returns 0 for a gutter game', () => {
-    multiRoll(10, 0, 0)
+    multiRoll(9, 0, 0)
+    game.finalRoll(0, 0);
     expect(game.fetchScore()).toEqual(0);
   });
 
    it("returns 10 for a game of ones", () => {
-     multiRoll(10, 1, 0);
+     multiRoll(9, 1, 0);
+     game.finalRoll(1, 0);
      expect(game.fetchScore()).toEqual(10);
    });
 
    it("returns 150 for a game of fives", () => {
-     multiRoll(11, 5, 5);
+     multiRoll(9, 5, 5);
+     game.finalRoll(5, 5);
+     game.bonusRoll(5)
      expect(game.fetchScore()).toEqual(150);
    });
 
   it('returns 300 for a perfect game', () => {
-    multiRoll(12, 10, 'x')
+    multiRoll(9, 10, 'x')
+    game.finalRoll(10, 10);
+    game.bonusRoll(10);
     expect(game.fetchScore()).toEqual(300)
   })
 })

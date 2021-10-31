@@ -21,7 +21,9 @@ let rlSync = require("readline-sync");
 
 for(let i = 0; i < 20; i++){
   let firstRoll = Number(rlSync.question("Enter your roll\n"));
+
   game.roll(firstRoll);
+  console.log(game.rollIndex)
   console.log(frames())
   console.log(rolls())
 }

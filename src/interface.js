@@ -15,7 +15,9 @@ const rolls = () => {
   let each_space = Array(20).fill(' ')
   let each_pin = theRolls.concat(each_space)
   each_pin.length = 20;
-  return each_pin.map(x => x.toString().padStart(2)).join("|");
+  return each_pin
+    .map((x) => x.toString().padStart(2))
+    .join("|");
 };
 
 const scores = () => {
@@ -34,7 +36,8 @@ for(let i = 0; i < 20; i++){
   let firstRoll = Number(rlSync.question("Enter your first roll\n"));
   let secondRoll = (firstRoll === 10) ? 'x' : Number(rlSync.question("Enter your second roll\n"));
   game.roll(firstRoll, secondRoll);
-  console.log(frames())
-  console.log(rolls())
-  console.log(scores());
+  console.log(`${"FRAMES:".padStart(8)}` + frames());
+  console.log(`${"ROLLS:".padStart(8)}` + rolls());
+  console.log(`${"SCORES:".padStart(8)}` + scores());
 }
+

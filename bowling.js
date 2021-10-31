@@ -27,6 +27,12 @@ class Bowling {
       this.totalScore += this.frame.firstRoll;
     }
   };
+  lastFrame = () => {
+    if (this.frames.length == 10 && this.frame.open == false) {
+      this.totalScore +=
+        this.frame.firstRoll + this.frame.secondRoll + this.frame.thirdRoll;
+    }
+  };
 }
 
 module.exports = Bowling;

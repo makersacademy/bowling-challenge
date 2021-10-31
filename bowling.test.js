@@ -50,7 +50,14 @@ describe(Bowling, () => {
       expect(secondMatch.totalScore).toBe(25);
     });
   });
-  xdescribe("#", () => {
-    it("", () => {});
+  describe("#lastFrame", () => {
+    it("calculates the points for the last round", () => {
+      let lastRound = new Bowling();
+      lastRound.frames = this.frames;
+      lastRound.newFrame(this.frames[9]);
+      lastRound.frame.spare = true;
+      lastRound.lastFrame();
+      expect(lastRound.totalScore).toBe(16);
+    });
   });
 });

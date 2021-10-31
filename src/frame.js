@@ -9,12 +9,14 @@ class Frame {
   firstRoll(pins){
     this._rollParams(pins);
     this.first_roll = pins;
+    this.score += pins;
   }
 
   secondRoll(pins){
     this._rollParams(pins);
     this._secondRollParams(pins);
     this.second_roll = pins;
+    this.score += pins;
   }
 
   _rollParams(pins){

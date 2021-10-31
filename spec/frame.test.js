@@ -14,4 +14,14 @@ describe("Frame", function() {
     expect(frame.calcFrameTotal()).toEqual(3);
   });
 
+  it("returns the first roll of the frame", function(){
+    var next = new Frame([0,0]);
+    expect(frame.getFirstRoll()).toEqual(1);
+  });
+
+  it("returns the second roll of the frame", function(){
+    var next = new Frame([0,0]);
+    expect(frame.getSecondRoll()).toEqual(2);
+  });
+
 });

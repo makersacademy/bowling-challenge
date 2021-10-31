@@ -12,6 +12,13 @@ class Frame{
     return this.rolls;
   }
 
+  getFirstRoll() {
+    return this.rolls[0];
+  };
+
+  getSecondRoll() {
+    return this.rolls[1];
+  };
 
   // calculates the total score of the frame
   calcFrameTotal() {
@@ -21,6 +28,13 @@ class Frame{
     }
     return sum;
   }
+
+
+
+
+
+
+
 
 }
 

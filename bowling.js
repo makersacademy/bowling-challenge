@@ -1,4 +1,4 @@
-const reducer = (previousValue, currentValue) => previousValue + currentValue;
+// const reducer = (previousValue, currentValue) => previousValue + currentValue;
 
 class Bowling {
   constructor() {
@@ -7,7 +7,6 @@ class Bowling {
   }
 
   score() {
-    // let result = 0;
     let rollIndex = 0;
     for (let i = 0; i < 10; i++) {
       if (this.IsAStrike(rollIndex)) {

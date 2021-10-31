@@ -1,4 +1,5 @@
 const Frame = require("./frame");
+const finalFrame = require("./final_frame");
 
 class Game {
   constructor() {
@@ -13,9 +14,20 @@ class Game {
     }
   }
 
+  finalRoll(one, two) {
+    var final = new finalFrame();
+    final.firstRoll(one)
+    final.secondRoll(one);
+    this.frames.push(final)
+  }
+
+  bonusRoll(final){
+    this.frames.at(-1).finalRoll(final)
+  }
+
   fetchScore() {
     var score = 0;
-    this.frames.map (x => score += x.score )
+    this.frames.map((x) => (score += x.score));
     return score;
   }
 
@@ -27,37 +39,37 @@ class Game {
   }
 
   _isStrike(frame) {
-    if (frame.first_roll === 10 && frame.second_roll === 'x') {
+    if (frame.first_roll === 10 && frame.second_roll === "x") {
       return true;
     }
   }
 
   _strikeBonus(frame) {
-    if (!this._isStrike(this.frames[this.frames.length - 2])) {
-      this.frames[this.frames.length - 3].score +=
-      this.frames[this.frames.length - 2].score;
+    if (!this._isStrike(this.frames.at(-2))) {
+      this.frames.at(-3).score +=
+        this.frames.at(-2).score;
     } else {
-      this.frames[this.frames.length - 3].score +=
-        10 + this.frames[this.frames.length - 1].first_roll;
+      this.frames.at(-3).score +=
+        10 + this.frames.at(-1).first_roll;
     }
   }
 
   _isSpare(frame) {
-    if (frame.score === 10 && frame.second_roll !== 'x') {
+    if (frame.score === 10 && frame.second_roll !== "x") {
       return true;
     }
   }
 
   _spareBonus(frame) {
-    this.frames[this.frames.length - 3].score +=
-      this.frames[this.frames.length - 2].first_roll;
+    this.frames.at(-3).score +=
+      this.frames.at(-2).first_roll;
   }
 
   _bonusScan() {
-    if (this._isStrike(this.frames[this.frames.length - 3])) {
-      this._strikeBonus(this.frames[this.frames.length - 3]);
-    } else if (this._isSpare(this.frames[this.frames.length - 3])) {
-      this._spareBonus(this.frames[this.frames.length - 3]);
+    if (this._isStrike(this.frames.at(-3))) {
+      this._strikeBonus(this.frames.at(-3));
+    } else if (this._isSpare(this.frames.at(-3))) {
+      this._spareBonus(this.frames.at(-3));
     }
   }
 

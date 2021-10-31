@@ -16,7 +16,7 @@ class finalFrame {
     this.score += pins;
   }
 
-  thirdRoll(pins) {
+  finalRoll(pins) {
     this.third_roll = pins;
     this.score += pins;
   }

@@ -9,7 +9,7 @@ class Game {
   roll(one, two) {
     this._rollParams(one, two);
     this._newFrame(one, two);
-    if (this.frames.length > 3) {
+    if (this.frames.length > 2) {
       this._bonusScan();
     }
   }
@@ -17,12 +17,14 @@ class Game {
   finalRoll(one, two) {
     var final = new finalFrame();
     final.firstRoll(one)
-    final.secondRoll(one);
+    final.secondRoll(two);
     this.frames.push(final)
+    this._bonusScan();
   }
 
   bonusRoll(final){
     this.frames.at(-1).finalRoll(final)
+    this._bonusScan();
   }
 
   fetchScore() {

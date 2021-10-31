@@ -51,8 +51,10 @@ for(let i = 0; i < 9; i++){
   console.log(`${"\n FRAMES:".padStart(8)}` + frames());
   console.log(`${"ROLLS:".padStart(8)}` + rolls());
   console.log(`${"SCORES:".padStart(8)}` + scores() + "\n");
-
-  let finalRoll = Number(rlSync.question("Enter your final roll\n"));
+  if (firstRoll === 10 || firstRoll + secondRoll === 10){
+    let finalRoll = Number(rlSync.question("Enter your final roll\n"));
+    game.bonusRoll(finalRoll)
+  }
 
 
 console.log("Total Score = " + game.fetchScore());

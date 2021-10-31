@@ -1,5 +1,6 @@
-const Frame = require("./frame");
-const FinalFrame = require("./final_frame");
+/* eslint-disable class-methods-use-this */
+const Frame = require('./frame');
+const FinalFrame = require('./final_frame');
 
 class Game {
   constructor() {
@@ -7,87 +8,87 @@ class Game {
   }
 
   roll(one, two) {
-    this._rollParams(one, two);
-    this._newFrame(one, two);
+    this.rollParams(one, two);
+    this.newFrame(one, two);
     if (this.frames.length > 2) {
-      this._bonusScan();
+      this.bonusScan();
     }
   }
 
   finalRoll(one, two) {
-    var final = new FinalFrame();
+    const final = new FinalFrame();
     final.firstRoll(one);
     final.secondRoll(two);
     this.frames.push(final);
-    this._bonusScan();
+    this.bonusScan();
   }
 
   bonusRoll(final) {
     this.frames.at(-1).finalRoll(final);
-    this._finalBonusScan();
+    this.finalBonusScan();
   }
 
   fetchScore() {
-    var score = 0;
+    let score = 0;
     this.frames.map((x) => (score += x.score));
     return score;
   }
 
-  _newFrame(one, two) {
-    var frame = new Frame();
+  newFrame(one, two) {
+    const frame = new Frame();
     frame.firstRoll(one);
     frame.secondRoll(two);
     this.frames.push(frame);
   }
 
-  _isStrike(frame) {
-    if (frame.first_roll === 10 && frame.second_roll === "x") {
+  isStrike(frame) {
+    if (frame.first_roll === 10 && frame.second_roll === 'x') {
       return true;
     }
   }
 
-  _strikeBonus(frame) {
-    if (!this._isStrike(this.frames.at(-2))) {
+  strikeBonus() {
+    if (!this.isStrike(this.frames.at(-2))) {
       this.frames.at(-3).score += this.frames.at(-2).score;
     } else {
       this.frames.at(-3).score += 10 + this.frames.at(-1).first_roll;
     }
   }
 
-  _isSpare(frame) {
-    if (frame.score === 10 && frame.second_roll !== "x") {
+  isSpare(frame) {
+    if (frame.score === 10 && frame.second_roll !== 'x') {
       return true;
     }
   }
 
-  _spareBonus(frame) {
+  spareBonus() {
     this.frames.at(-3).score += this.frames.at(-2).first_roll;
   }
 
-  _bonusScan() {
-    if (this._isStrike(this.frames.at(-3))) {
-      this._strikeBonus(this.frames.at(-3));
-    } else if (this._isSpare(this.frames.at(-3))) {
-      this._spareBonus(this.frames.at(-3));
+  bonusScan() {
+    if (this.isStrike(this.frames.at(-3))) {
+      this.strikeBonus();
+    } else if (this.isSpare(this.frames.at(-3))) {
+      this.spareBonus();
     }
   }
 
-  _finalBonusScan() {
-    if (this._isStrike(this.frames.at(-2))) {
-      this._strikeBonus(this.frames.at(-2));
-    } else if (this._isSpare(this.frames.at(-2))) {
-      this._spareBonus(this.frames.at(-2));
+  finalBonusScan() {
+    if (this.isStrike(this.frames.at(-2))) {
+      this.strikeBonus();
+    } else if (this.isSpare(this.frames.at(-2))) {
+      this.spareBonus();
     }
   }
 
-  _rollParams(one, two) {
-    var pins = one + two;
+  rollParams(one, two) {
+    const pins = one + two;
     if (!Number.isInteger(one)) {
-      throw Error("Please enter a number!");
+      throw Error('Please enter a number!');
     } else if (pins < 0) {
-      throw Error("You cannot throw a negative roll!");
+      throw Error('You cannot throw a negative roll!');
     } else if (pins > 10) {
-      throw Error("There are only 10 pins!");
+      throw Error('There are only 10 pins!');
     }
   }
 }

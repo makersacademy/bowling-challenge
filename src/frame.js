@@ -1,19 +1,18 @@
 class Frame {
-
-  constructor(){
+  constructor() {
     this.first_roll = null;
     this.second_roll = null;
     this.score = 0;
   }
 
-  firstRoll(pins){
+  firstRoll(pins) {
     this.first_roll = pins;
     this.score += pins;
   }
 
-  secondRoll(pins){
+  secondRoll(pins) {
     this.second_roll = pins;
-    if( pins != 'x' ){
+    if (pins !== 'x') {
       this.score += pins;
     }
   }

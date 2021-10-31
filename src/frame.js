@@ -17,8 +17,6 @@ class Frame {
       this.score += pins;
     }
   }
-
-
 }
 
 module.exports = Frame;

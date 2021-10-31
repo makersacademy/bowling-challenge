@@ -1,4 +1,4 @@
-class finalFrame {
+class FinalFrame {
   constructor() {
     this.first_roll = null;
     this.second_roll = null;
@@ -22,4 +22,4 @@ class finalFrame {
   }
 }
 
-module.exports = finalFrame;
+module.exports = FinalFrame;

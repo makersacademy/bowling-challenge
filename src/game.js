@@ -1,5 +1,5 @@
 const Frame = require("./frame");
-const finalFrame = require("./final_frame");
+const FinalFrame = require("./final_frame");
 
 class Game {
   constructor() {
@@ -15,7 +15,7 @@ class Game {
   }
 
   finalRoll(one, two) {
-    var final = new finalFrame();
+    var final = new FinalFrame();
     final.firstRoll(one);
     final.secondRoll(two);
     this.frames.push(final);

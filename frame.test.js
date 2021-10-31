@@ -22,4 +22,10 @@ describe(Frame, () => {
       expect(strike_frame.strike).toBe(true);
     });
   });
+  xdescribe("#", () => {
+    it("", () => {});
+  });
+  xdescribe("#", () => {
+    it("", () => {});
+  });
 });

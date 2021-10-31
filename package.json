@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/serenabertozzi/bowling-challenge/issues"
   },
-  "homepage": "https://github.com/serenabertozzi/bowling-challenge#readme"
+  "homepage": "https://github.com/serenabertozzi/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^8.1.0"
+  },
+  "dependencies": {
+    "eslint-plugin-jest": "^25.2.2"
+  }
 }

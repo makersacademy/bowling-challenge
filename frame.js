@@ -1,7 +1,8 @@
 class Frame {
-  constructor(firstRoll, secondRoll = 0) {
+  constructor(firstRoll, secondRoll = 0, thirdRoll = 0) {
     this.firstRoll = firstRoll;
     this.secondRoll = secondRoll;
+    this.thirdRoll = thirdRoll;
     this.open = false;
     this.spare = false;
     this.strike = false;

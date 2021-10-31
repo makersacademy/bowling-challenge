@@ -1,0 +1,28 @@
+{
+  "name": "takeaway-challenge-javascript",
+  "version": "1.0.0",
+  "description": "weekend-challage",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matt-Warnock/bowling-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matt-Warnock/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/Matt-Warnock/bowling-challenge#readme",
+  "dependencies": {
+    "jest": "^27.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.1.0"
+  }
+}

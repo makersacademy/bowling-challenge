@@ -7,54 +7,54 @@ const frames = () => {
   return frame_nums.map((x) => x.toString().padStart(5)).join("|");
 };
 
-const bonusFrames = () => {
-  var final_frame = game.frames.at(-1);
-  if ( game._isStrike(final_frame) || game._isSpare(final_frame) ){
-  return true;
-}}
-
 const rolls = () => {
   let theRolls = [];
-  let each_roll = game.frames.map(x => theRolls.push(x.first_roll, x.second_roll))
-  let each_space = Array(20).fill(' ')
-  let each_pin = theRolls.concat(each_space)
+  game.frames.map((x) =>
+    theRolls.push(x.first_roll, x.second_roll)
+  );
+  let each_space = Array(20).fill(" ");
+  let each_pin = theRolls.concat(each_space);
   each_pin.length = 20;
-  return each_pin
-    .map((x) => x.toString().padStart(2))
-    .join("|");
+  return each_pin.map((x) => x.toString().padStart(2)).join("|");
 };
 
 const scores = () => {
   let theScores = [];
-  let each_score = game.frames.map(x => theScores.push(x.score))
-  let each_space = Array(10).fill(' ')
-  let each_pin = theScores.concat(each_space)
+  game.frames.map((x) => theScores.push(x.score));
+  let each_space = Array(10).fill(" ");
+  let each_pin = theScores.concat(each_space);
   each_pin.length = 10;
   return each_pin.map((x) => x.toString().padStart(5)).join("|");
 };
 
+const scorecard = () => {
+  console.log(`${"\n FRAMES:".padStart(8)}` + frames());
+  console.log(`${"ROLLS:".padStart(8)}` + rolls());
+  console.log(`${"SCORES:".padStart(8)}` + scores() + "\n");
+};
+
+const readlineQ = (text) => {
+  return Number(rlSync.question(text));
+}
 
 let rlSync = require("readline-sync");
-const { ArcElement } = require("chart.js");
 
-for(let i = 0; i < 9; i++){
-  let firstRoll = Number(rlSync.question("Enter your first roll\n"));
-  let secondRoll = (firstRoll === 10) ? 'x' : Number(rlSync.question("Enter your second roll\n"));
-  game.roll(firstRoll, secondRoll);
-  console.log(`${"\n FRAMES:".padStart(8)}` + frames());
-  console.log(`${"ROLLS:".padStart(8)}` + rolls());
-  console.log(`${"SCORES:".padStart(8)}` + scores() + "\n");
+for (let i = 0; i < 9; i++) {
+  let rollOne = readlineQ("First roll\n");
+  let rollTwo =
+    rollOne === 10
+      ? "x"
+      : readlineQ("Second roll\n");
+  game.roll(rollOne, rollTwo);
+  scorecard();
 }
-  let firstRoll = Number(rlSync.question("Enter your first roll\n"));
-  let secondRoll = Number(rlSync.question("Enter your second roll\n"));
-  game.finalRoll(firstRoll, secondRoll);
-  console.log(`${"\n FRAMES:".padStart(8)}` + frames());
-  console.log(`${"ROLLS:".padStart(8)}` + rolls());
-  console.log(`${"SCORES:".padStart(8)}` + scores() + "\n");
-  if (firstRoll === 10 || firstRoll + secondRoll === 10){
-    let finalRoll = Number(rlSync.question("Enter your final roll\n"));
-    game.bonusRoll(finalRoll)
-  }
-
+let rollOne = readlineQ("First roll\n");
+let rollTwo = readlineQ("Second roll\n");
+game.finalRoll(rollOne, rollTwo);
+scorecard();
+if (rollOne === 10 || rollOne + rollTwo === 10) {
+  let finalRoll = readlineQ("Final roll\n");
+  game.bonusRoll(finalRoll);
+}
 
 console.log("Total Score = " + game.fetchScore());

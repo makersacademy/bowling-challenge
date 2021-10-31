@@ -56,7 +56,6 @@ describe('Bowling', () => {
       // example from README
       rolls = [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6];
       game.inputFullGame(rolls);
-      console.log(game.scorecard())
       expect(game.totalScore()).toBe(133);
     });
 

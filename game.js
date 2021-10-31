@@ -3,13 +3,13 @@ const Frame = require('./frame');
 const rl = require('readline-sync');
 
 const game = new Bowling();
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 console.log(
   'Welcome to Bowling! For each roll, enter how many pins you knocked down. Good Luck!'
 );
 while (!game.gameOver) {
-  let input = rl.question('Enter your roll: ');
+  let input = rl.question('\nEnter your roll: ');
   input = parseInt(input, 10);
   if (numbers.includes(input)) {
     if (!game.currentFrame || validRoll(input)) {
@@ -27,7 +27,7 @@ while (!game.gameOver) {
   }
 }
 
-console.log(`Game Over! Your total score was ${game.totalScore()}`);
+console.log(`\nGame Over! Your total score was ${game.totalScore()}`);
 
 function validRoll(inputPin) {
   if (game.currentFrame instanceof Frame.FinalFrame) {

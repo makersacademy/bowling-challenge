@@ -1,3 +1,42 @@
+<div align="center">
+
+### bowling scorecard
+
+![](https://img.shields.io/github/last-commit/arthurfincham/bowling-challenge)
+![](https://img.shields.io/github/languages/count/arthurfincham/bowling-challenge)
+![](https://img.shields.io/github/languages/code-size/arthurfincham/bowling-challenge)
+
+</div>
+
+
+<div align="center" >
+
+<h2>Preview</h2>
+
+<img src="images/bowling_preview.gif" width="400px">
+<p>command line interface for the game</p>
+&nbsp;
+
+<h2>Stack</h2>
+
+|                                                        | Tool                                                 | Use?                                       | Where can I see it?                                                  |
+|--------------------------------------------------------|------------------------------------------------------|--------------------------------------------|----------------------------------------------------------------------|
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" height="auto" width="60">       | [Javascript](https://www.javascript.com/)                         | Needs no introduction!                     | Everywhere.                              |
+| <img src="https://seeklogo.com/images/J/jest-logo-F9901EBBF7-seeklogo.com.png" height="auto" width="60">    | [Jest](https://jestjs.io/) | JavaScript testing framework maintained by Facebook.    |  ```spec/*``` Unit testing for the project.                |
+| <img src="https://authy.com/wp-content/uploads/npm-logo.png" height="auto" width="70">       | [readlineSync](https://www.npmjs.com/package/readline-sync)                         | readlineSync tries to let your script have a conversation with the user via a console                   | ```/src/interface.js``` In the CLI for the project.                             |
+
+<h2>Test Suite</h2>
+
+<img src="images/bowling_coverage.gif" width="400px">
+<p>test coverage for the project</p>
+&nbsp;
+
+</div>
+
+
+<details>
+  <summary>Click to see full assignment!</summary>
+  
 
 Bowling Challenge
 =================
@@ -73,3 +112,5 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+</details>

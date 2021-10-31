@@ -8,7 +8,11 @@ class Frame {
     this.strike = false;
   }
   isOpen = () => {
-    if (this.firstRoll < 10 && this.secondRoll < 10) {
+    if (
+      this.firstRoll < 10 &&
+      this.secondRoll < 10 &&
+      this.firstRoll + this.secondRoll < 10
+    ) {
       this.open = true;
     }
   };

@@ -17,20 +17,37 @@ describe(Bowling, () => {
     ];
 
     this.exampleFrame = new Frame(1, 4);
+    this.match = match = new Bowling();
+
+    this.firstBonusFrame = this.frames[2];
+    this.secondBonusFrame = this.frames[3];
   });
 
   describe("#regularScoring", () => {
     it("use regular scoring when in open frame", () => {
-      let match = new Bowling(this.exampleFrame);
-      match.regularScoring();
-      expect(match.totalScore).toBe(5);
+      this.match.newFrame(this.exampleFrame);
+      this.match.regularScoring();
+      expect(this.match.totalScore).toBe(5);
     });
   });
   describe("#recordFrames", () => {
     it("pushes the frame inside the frames array", () => {
-      let secondMatch = new Bowling(this.exampleFrame);
-      secondMatch.recordFrames();
-      expect(secondMatch.frames).toEqual([this.exampleFrame]);
+      this.match.newFrame(this.exampleFrame);
+      this.match.recordFrames();
+      expect(this.match.frames).toEqual([this.match.frame]);
+    });
+  });
+
+  describe("#bonusScoring", () => {
+    it("adds a bonus calculated from the first roll, if previous frame is spare", () => {
+      let secondMatch = new Bowling();
+      secondMatch.newFrame(this.firstBonusFrame);
+      secondMatch.regularScoring();
+      expect(secondMatch.totalScore).toBe(10);
+      secondMatch.newFrame(this.secondBonusFrame);
+      secondMatch.regularScoring();
+      secondMatch.bonusScoring();
+      expect(secondMatch.totalScore).toBe(25);
     });
   });
   xdescribe("#", () => {

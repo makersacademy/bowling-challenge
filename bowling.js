@@ -4,12 +4,14 @@ const Scorecard = require('./scorecard');
 class Bowling {
   constructor() {
     this.frames = [];
-    this.scorecardClass = new Scorecard
+    this.scorecardClass = new Scorecard();
   }
 
   scorecard() {
-    return [this.scorecardClass.showPins(this.frames),
-      this.scorecardClass.showTotals(this.frames)].join('\n')
+    return [
+      this.scorecardClass.showPins(this.frames),
+      this.scorecardClass.showTotals(this.frames),
+    ].join('\n');
   }
 
   totalScore() {
@@ -17,7 +19,7 @@ class Bowling {
   }
 
   inputFullGame(arrayOfRolls) {
-    arrayOfRolls.forEach(pins => this.roll(pins));
+    arrayOfRolls.forEach((pins) => this.roll(pins));
   }
 
   roll(pins) {
@@ -28,7 +30,7 @@ class Bowling {
     } else {
       this.updateFrames(pins);
       if (this.currentFrame.isComplete()) {
-        this.currentFrame.calculateBonus()
+        this.currentFrame.calculateBonus();
         this.storeFrame();
       }
     }
@@ -43,11 +45,11 @@ class Bowling {
   }
 
   bonusFrames() {
-    return this.frames.filter(frame => frame.hasActiveBonus());
+    return this.frames.filter((frame) => frame.hasActiveBonus());
   }
 
   updateBonusFrames(pins) {
-    this.bonusFrames().forEach(bonusframe => {
+    this.bonusFrames().forEach((bonusframe) => {
       bonusframe.updateTotal(pins), bonusframe.deductBonusRoll();
     });
   }

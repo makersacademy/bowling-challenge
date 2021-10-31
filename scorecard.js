@@ -1,58 +1,57 @@
 const Frame = require('./frame');
 
 class Scorecard {
-
   showPins(frames) {
-    return frames.map(frame =>
-      this.format(frame)
-      ).join(' | ');
+    return frames.map((frame) => this.format(frame)).join(' | ');
   }
 
   showTotals(frames) {
-    let cumulativeTotal = 0
-    return frames.map(frame => {
-      cumulativeTotal += frame.total
-      if (!frame.hasActiveBonus() || frame instanceof Frame.FinalFrame) {
-        return `${cumulativeTotal}`.padStart(3, ' ')
-      } else {
-        return ''.padStart(3, ' ')
-      }
-    }).join(' | ');
+    let cumulativeTotal = 0;
+    return frames
+      .map((frame) => {
+        cumulativeTotal += frame.total;
+        if (!frame.hasActiveBonus() || frame instanceof Frame.FinalFrame) {
+          return `${cumulativeTotal}`.padStart(4, ' ');
+        } else {
+          return ''.padStart(4, ' ');
+        }
+      })
+      .join(' | ');
   }
 
   format(frame) {
     if (frame instanceof Frame.FinalFrame) {
-      return this.formatFinalFrame(frame)
+      return this.formatFinalFrame(frame);
     } else if (frame.isStrike()) {
-      return ['X -']
+      return ['X  -'];
     } else if (frame.isSpare()) {
-      return [`${frame.pins[0]} /`]
+      return [`${frame.pins[0]}  /`];
     } else {
-      return frame.pins.join(' ')
+      return frame.pins.join('  ');
     }
   }
 
   formatFinalFrame(frame) {
-    let formattedFrame
+    let formattedFrame;
     if (frame.isSpare()) {
-      formattedFrame = [frame.pins[0], '/']
+      formattedFrame = [frame.pins[0], '/'];
       if (frame.pins[2] === 10) {
-        formattedFrame.push('X')
+        formattedFrame.push('X');
       } else {
-        formattedFrame.push(frame.pins[2])
+        formattedFrame.push(frame.pins[2]);
       }
     } else if (frame.isStrike()) {
-      formattedFrame = frame.pins.map(pin => {
+      formattedFrame = frame.pins.map((pin) => {
         if (pin === 10) {
-          return 'X'
+          return 'X';
         } else {
-          return pin
+          return pin;
         }
       });
     } else {
-      formattedFrame = frame.pins
+      formattedFrame = frame.pins;
     }
-    return formattedFrame.join(' ')
+    return formattedFrame.join('  ');
   }
 }
 

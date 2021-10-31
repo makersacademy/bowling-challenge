@@ -2,12 +2,23 @@
 Bowling Challenge
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Usage
 
-## The Task
+```
+$ git clone git@github.com:s-palmer/bowling-challenge.git
+$ npm install
+$ node
+$ .load bowling.js
+$ game = new Bowling();
+$ game.roll(x); to enter your scores.
+
+Once all rolls have been completed:
+
+$ game.score();
+
+```
+
+## Notes
 
 * I didn't complete the challenge in Ruby the previous weekend, so I first recreated that inside the /ruby directory.
 * I used a video tutorial by Adam Coder to helo me understand the logic of the scorecard. [YouTube](https://www.youtube.com/watch?v=EyMwodeq1h4)

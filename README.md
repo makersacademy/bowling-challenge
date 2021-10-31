@@ -9,14 +9,14 @@
 
 <h2>Preview</h2>
 
-<img src="images/bowling_preview.gif" width="400px">
+<img src="images/preview.gif" width="400px">
 
 _command line interface for the game_
 
 </div>
 
 ## Install
-
+e
 Clone the repository
 ``` shell
 % git clone https://github.com/arthurfincham/bowling-challenge

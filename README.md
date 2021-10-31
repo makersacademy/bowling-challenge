@@ -6,17 +6,30 @@
 ![](https://img.shields.io/github/languages/count/arthurfincham/bowling-challenge)
 ![](https://img.shields.io/github/languages/code-size/arthurfincham/bowling-challenge)
 
-</div>
-
-
-<div align="center" >
 
 <h2>Preview</h2>
 
 <img src="images/bowling_preview.gif" width="400px">
-<p>command line interface for the game</p>
 
+_command line interface for the game_
 
+</div>
+
+## Install
+
+Clone the repository
+``` shell
+% git clone https://github.com/arthurfincham/bowling-challenge
+```
+Install dependencies
+``` shell
+% npm install
+```
+Run the project
+``` shell
+% node src/interface.js
+```
+<div align="center">
 <h2>Stack</h2>
 
 |                                                        | Tool                                                 | Use?                                       | Where can I see it?                                                  |
@@ -28,17 +41,14 @@
 <h2>Test Suite</h2>
 
 <img src="images/bowling_coverage.gif" width="400px">
-<p>test coverage for the project</p>
+
+_test coverage for the project_
 
 </div>
 
 
 ## Assignment
   
-
-## Bowling Challenge
-
-
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**

@@ -15,6 +15,14 @@ describe('Bowling', () => {
     rollMany(1, 20);
     expect(game.score).toEqual(20);
   })
+  it('should calculate a spare correctly', () => {
+    game.roll(9)
+    game.roll(1) // spare
+    game.roll(1) // part of spare bonus calculation
+    rollMany(0, 17) // remaining rolls are gutter balls
+    // above combination of balls should give a score of (9+1+1)+1 = 12
+    expect(game.score).toEqual(12);
+  })
 });
 
 function rollMany(pins, rolls) {

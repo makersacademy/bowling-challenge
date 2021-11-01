@@ -2,16 +2,9 @@ var readlineSync = require('readline-sync')
 
 my_score_sheet = [] 
 
-function bowl(score) {
-  my_score_sheet.push(score)
+function bowl(pins) {
+  my_score_sheet.push(pins)
 }
-
-bowl(8)
-bowl(1)
-bowl(7)
-bowl(2)
-console.log(my_score_sheet)
-console.log(totalScore(my_score_sheet))
 
 function totalScore(score_sheet) {
   var frame = 1;  // Game starts at Frame 1
@@ -38,7 +31,7 @@ function totalScore(score_sheet) {
       return total_score + pins;
     } 
 
-    ///////// Everything below = Bowling score calculators /////////
+    ///////// Bowling score calculators are listed below /////////
 
     // Bowl a Strike    
     if(pins === 10) {                        
@@ -47,37 +40,15 @@ function totalScore(score_sheet) {
     }
 
     // Second Roll of a Frame
-    if(frame % 1 !== 0) {  
+    if(frame % 1 !== 0) {  // Frame 1.5, 2.5, 3.5... are all 2nd rolls in each frame 
       frame += .5
-      if(pins + pins_of[roll-1] === 10) 
-      return total_score + pins + pins_of[roll+1];  // 2nd roll is a Spare
-      return total_score + pins;                  // 2nd roll is NOT a spare
+      if(pins + pins_of[roll-1] === 10) // 2nd roll is a Spare
+      return total_score + pins + pins_of[roll+1];   
+      return total_score + pins;        // When 2nd roll is NOT a spare
     }   
-    frame += .5;  // First Roll of a Frame
+    // First Roll of a Frame
+    frame += .5;  
     return total_score + pins;
-  }, 0); // Starting score is 0
+  }, 
+  0); // closing score_sheet.reduce method.  Initial score is 0
 }
-
-// console.log(bowlingScore([0, 10, 5, 5]))
-
-console.log(totalScore([10, 10, 10, 10, 10, 10, 10, 10, 10,   4, 6, 10]))
-
-console.log(totalScore([10, 10, 10, 10, 10, 10, 10, 10, 10,   4, 5]))
-
-console.log(totalScore([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]))  // 10 frame strikes
-
-console.log(totalScore([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]))  // 11 frame strikes
-
-var test1 = totalScore([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-var test2 = totalScore([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]); // 10 frame strikes
-var test3 = totalScore([9,1, 9,1, 9,1, 9,1, 9,1, 9,1, 9,1, 9,1, 9,1, 9,0]);
-var test4 = totalScore([0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 10, 1,0]);
-var test5 = totalScore([0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 10,1,0]);
-var test6 = totalScore([10, 3,1, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
-
-console.log("result:", test1, "expected:", 0, test1 === 0 ? "PASSED!" : "FAILED!" );
-console.log("result:", test2, "expected:", 300, test2 === 300 ? "PASSED!" : "FAILED!" );
-console.log("result:", test3, "expected:", 180, test3 === 180 ? "PASSED!" : "FAILED!" );
-console.log("result:", test4, "expected:", 12, test4 === 12 ? "PASSED!" : "FAILED!" );
-console.log("result:", test5, "expected:", 11, test5 === 11 ? "PASSED!" : "FAILED!" );
-console.log("result:", test6, "expected:", 258, test6 === 258 ? "PASSED!" : "FAILED!" );

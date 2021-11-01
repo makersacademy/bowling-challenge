@@ -32,6 +32,15 @@ describe("nextFrame", () => {
 });
 
 describe("spareBonus", () => {
-  game2.addFrame(sevenThree);
-  expect(game2.spareBonus(fiveFive)).toBe(7);
+  it("returns the first roll of the next frame", () => {
+    game2.addFrame(sevenThree);
+    expect(game2.spareBonus(fiveFive)).toBe(7);
+  })
+});
+
+describe("strike", () => {
+  it("returns a sum of the next 2 rolls", () => {
+    game2.addFrame(sevenThree);
+    expect(game2.strikeBonus(fiveFive)).toBe(10);
+  })
 });

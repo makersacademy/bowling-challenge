@@ -12,11 +12,11 @@ class BowlingGame {
   }
 
   strikeBonus(frame){
-    if (nextFrame(frame).isStrike()) {
+    if (this.nextFrame(frame).isStrike()) {
       return (frame.rolls[0] + this.nextFrame(this.nextFrame(frame)));
     }
     else {
-      return this.nextFrame(frame).frameSum;
+      return this.nextFrame(frame).frameSum();
     }
   }
 

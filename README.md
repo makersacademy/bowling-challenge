@@ -16,17 +16,16 @@ _command line interface for the game_
 </div>
 
 ## Install
-e
 Clone the repository
-``` shell
+``` bash
 % git clone https://github.com/arthurfincham/bowling-challenge
 ```
 Install dependencies
-``` shell
+``` bash
 % npm install
 ```
 Run the project
-``` shell
+``` bash
 % node src/interface.js
 ```
 <div align="center">

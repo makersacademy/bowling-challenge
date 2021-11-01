@@ -90,3 +90,13 @@ describe(".calculate_total_score", () => {
     expect(bowling.calculateTotalScore()).toEqual(27)
   })
 })
+describe("endGame function", () => {
+  test("should end the game after 10 rounds have been completed", () => {
+    for(let i = 0; i < 9; i++){
+      bowling.addFirstBowl(10);
+    }
+    bowling.addFirstBowl(5)
+    bowling.addSecondBowl(4)
+    expect(bowling.endGame()).toEqual("You have finished your game! Your final score was: 263")
+  })
+})

@@ -72,7 +72,9 @@ class Bowling {
     }
     return score;
   }
-
+  endGame() {
+    return `You have finished your game! Your final score was: ${this.calculateTotalScore()}`;
+  }
 }
 
 

@@ -52,3 +52,12 @@ function totalScore(score_sheet) {
   }, 
   0); // closing score_sheet.reduce method.  Initial score is 0
 }
+
+bowl(8)
+bowl(1)
+bowl(5)
+bowl(2)
+bowl(5)
+bowl(2)
+console.log(my_score_sheet)
+console.log(totalScore(my_score_sheet))

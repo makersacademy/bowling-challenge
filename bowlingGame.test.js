@@ -74,7 +74,7 @@ describe(BowlingGame, () => {
       this.game.roll(12)
     }).toThrowError('Invalid Roll')
   });
-  it("doesn't let you knock down more than 10 in a frame", () => {
+  xit("doesn't let you knock down more than 10 in a frame", () => {
     expect(() => {
       this.game.roll(5);
       this.game.roll(6);

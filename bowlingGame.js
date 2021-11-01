@@ -54,9 +54,6 @@ class BowlingGame {
   frameIsStrike(currentRoll){
     return this.rolls[currentRoll].value == 10;
   };
-  finalFrame(currentRoll){
-    
-  };
   bonusScoring(currentRoll){
     return this.rolls[currentRoll].value + this.rolls[currentRoll + 1].value + this.rolls[currentRoll + 2].value;
   }; 

@@ -28,7 +28,6 @@ class Frame{
     return total;
   }
 
-  
 }
 
 module.exports = Frame;

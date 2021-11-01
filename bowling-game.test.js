@@ -13,23 +13,25 @@ sevenThree.addRoll(7);
 sevenThree.addRoll(3);
 
 
-let game = new BowlingGame()
+let game1 = new BowlingGame()
+let game2 = new BowlingGame()
 
 describe("addFrame", () => {
   it('adds an object to the frames array', () => {
-    game.addFrame(fiveFive);
-    expect(game.frames[0]).toBe(fiveFive);
+    game1.addFrame(fiveFive);
+    expect(game1.frames[0]).toBe(fiveFive);
   });
 });
 
-describe("spareBonus", () => {
+describe("nextFrame", () => {
   it('accesses the next frame in the frame array to the one passed', () => {
-    game.addFrame(sevenThree);
-    expect(game.nextFrame(game.frames[0]).toBe(sevenThree));
+    game2.addFrame(fiveFive);
+    game2.addFrame(sevenThree);
+    expect(game2.nextFrame(fiveFive)).toBe(sevenThree);
   })
 });
 
 describe("spareBonus", () => {
-  game.addFrame(sevenThree);
-  expect(game.spareBonus(game.frames[0]).toBe(6));
+  game2.addFrame(sevenThree);
+  expect(game2.spareBonus(fiveFive)).toBe(7);
 });

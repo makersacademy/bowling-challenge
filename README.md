@@ -1,10 +1,56 @@
-## Process
-TDD each of the following:
-* Gutterball game (all zeros)
-* All ones
-* Getting a spare
-* Getting a strike
-* Max score
+Bowling Challenge
+=================
+[![starf0g](https://circleci.com/gh/starf0g/bowling-challenge.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
+
+Implementation of a bowling scorecard in Javascript.
+
+## Features
+- [x] Gutterball game
+- [x] one frame
+- [x] multiple frames
+- [x] spares
+- [x] strikes
+- [x] final frame
+
+Bonus features:
+- [ ] UI
+- [x] CircleCI
+- [x] ESLint
+
+## Approach
+* Spent some time familiarising myself with the scoring rules
+* Took a TDD process to create the scoring system
+* Started with the gutterball game
+    * Roll only zeros expect score to be zero
+    * Score function returns 0
+* All ones game
+    * Implemented basic score functionailtiy based on number of pins knocked down
+* Spare scoring
+    * Score function not fit for purpose, switched to adding pins to array
+    * Score calculated by iterating through frames/pins
+    * Check if a spare has been acheived by checking if framescore is 10
+    * Logic to calculate bonus score if spare, regular calculation otherwise
+    * Refactored to use isSpare and spareBonus methods
+* Strike scoring
+    * Similar logic to spares
+    * Check if strike has been acheived and calculate score accordingly
+    * Can handle third roll in final frame
+* Testing
+    * One test for each game type/outcome: all zeros, all ones, spare, strike, perfect game
+    * Two tests for final frame: all strikes, spare then strike
+* Other
+    * Set up and ran ESLint
+    * Set up CircleCI for automated testing
+
+## Thoughts
+* I'm happy with how this challenge turned out but would have liked to add a UI 
+
+## Outstanding issues
+* Roll doesn't have any validation i.e. you can enter values outside of 0-10 and non numeric characters
+
+# Original readme
+<details>
+    <summary>Click to expand!</summary>
 
 Bowling Challenge
 =================
@@ -80,3 +126,4 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+</details>

@@ -11,11 +11,11 @@ class Frame {
     return this.rolls[0] === 10;
   }
 
-  isSpare() {
+  isSpare = () => {
     return (!this.isStrike() && this.frameSum() === 10);
   }
 
-  frameSum() {
+  frameSum = () => {
     return this.rolls.reduce((partial_sum, a) => partial_sum + a, 0);
   }
 }

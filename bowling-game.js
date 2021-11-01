@@ -7,11 +7,11 @@ class BowlingGame {
     this.frames.push(frame);
   }
 
-  spareBonus = (frame) =>{
+  spareBonus = (frame) => {
     return this.nextFrame(frame).rolls[0];
   }
 
-  strikeBonus = (frame) =>{
+  strikeBonus = (frame) => {
     if (this.nextFrame(frame).isStrike()) {
       return (frame.rolls[0] + this.nextFrame(this.nextFrame(frame)).rolls[0]);
     }

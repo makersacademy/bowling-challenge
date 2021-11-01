@@ -3,6 +3,7 @@ class Bowling {
     this.frames = [];
     this.frame;
     this.totalScore = 0;
+    this.bonus = 0;
   }
   newFrame = (frame) => {
     this.frame = frame;
@@ -12,6 +13,7 @@ class Bowling {
     this.frame.isOpen();
     this.frame.isSpare();
     this.frame.isStrike();
+    7;
     this.frames.push(this.frame);
   };
 
@@ -22,9 +24,13 @@ class Bowling {
 
   bonusScoring = () => {
     let i = this.frames.indexOf(this.frame);
-    let previousframe = this.frames[i - 1];
-    if (previousframe.spare == true) {
+    let previousFrame = this.frames[i - 1];
+    if (previousFrame.spare == true) {
       this.totalScore += this.frame.firstRoll;
+      this.bonus += this.frame.firstRoll;
+    } else if (previousFrame.strike == true) {
+      this.totalScore += this.frame.firstRoll + this.frame.secondRoll;
+      this.bonus += this.frame.firstRoll + this.frame.secondRoll;
     }
   };
   lastFrame = () => {

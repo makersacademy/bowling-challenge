@@ -24,6 +24,7 @@
     "eslint": "^8.1.0"
   },
   "dependencies": {
-    "eslint-plugin-jest": "^25.2.2"
+    "eslint-plugin-jest": "^25.2.2",
+    "readline-sync": "^1.4.10"
   }
 }

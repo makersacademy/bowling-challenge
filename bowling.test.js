@@ -46,7 +46,47 @@ describe("isSpare function", () => {
   test("test whether a round is a spare", () => {
     bowling.addFirstBowl(6);
     bowling.addSecondBowl(4);
-    console.log(bowling.gameArray);
     expect(bowling.isSpare(1)).toEqual(true);
+  })
+})
+describe(".calculateRoundScore", () => {
+  test("should add scores from round with any bonus points", () => {
+    bowling.addFirstBowl(5)
+    bowling.addSecondBowl(4)
+    expect(bowling.calculateRoundScore(1)).toEqual(9)
+  })
+  test("should return incomplete if round is not finished", () => {
+    bowling.addFirstBowl(5)
+    expect(bowling.calculateRoundScore(1)).toEqual(null)
+  })
+  test("should return incomplete if bonus points are not calculated by next round yet", () => {
+    bowling.addFirstBowl(10)
+    expect(bowling.calculateRoundScore(1)).toEqual(null)
+  })
+  test("should return add scores and give bonus point if round was a spare", () => {
+    bowling.addFirstBowl(5)
+    bowling.addSecondBowl(5)
+    bowling.addFirstBowl(5)
+  expect(bowling.calculateRoundScore(1)).toEqual(15)
+  })
+  test("should return add scores and give bonus points if round was a strike", () => {
+    bowling.addFirstBowl(10)
+    bowling.addFirstBowl(5)
+    bowling.addSecondBowl(4)
+    console.log(bowling.gameArray);
+    expect(bowling.calculateRoundScore(1)).toEqual(19)
+  })
+})
+describe(".calculate_total_score", () => {
+  test("should sum all elements of the game_array and save to total_score", () => {
+    bowling.addFirstBowl(5)
+    bowling.addSecondBowl(4)
+    bowling.addFirstBowl(5)
+    bowling.addSecondBowl(4)
+    bowling.addFirstBowl(5)
+    bowling.addSecondBowl(4)
+    console.log(bowling.gameArray);
+    console.log(bowling.roundCounter);
+    expect(bowling.calculateTotalScore()).toEqual(27)
   })
 })

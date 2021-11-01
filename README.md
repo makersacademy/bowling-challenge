@@ -1,40 +1,48 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
+User Stories
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+```
+As a bowling player,
+So that I can start my match,
+I want to be able to record a frame with two rolls.
 
-## The Task
+As a bowling player,
+So that I can record points,
+I want to be able to record points when I score an open frame.
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+As a bowling player,
+So that I can record points,
+I want to be able to record points when I score a spare frame.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+As a bowling player,
+So that I can record points,
+I want to be able to record points when I score a strike.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+As a bowling player,
+So that I can recieve a correct number of points,
+I want to be able to record bonus points when scoring an open frame or a strike.
 
-As usual please start by
+As a bowling player,
+So that I can end my game,
+I want to be able to throw a correct number of rolls for my last turn.
 
-* Forking this repo
+As a bowling player,
+So that I can end my game and get a fair scoring,
+I want to be able to record all the points of the last round.
+```
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+# DOMAIN MODELING
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+![Installation](bowling.drawio.svg)
 
-### Optional Extras
+# APPROACH
 
-In any order you like:
+- I created a Frame class, which accepts three rolls, and can be determined to be Open, Spare or Strike.
+- Bowling class is the main one, and has the responsability to store all the frames of a match and to calculate score and bonuses.
+- At last, I created a CLI with "readline-sync".
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
+# RULES
 
 ### Strikes
 
@@ -58,18 +66,3 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ### Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

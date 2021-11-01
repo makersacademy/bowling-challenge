@@ -27,4 +27,13 @@ describe('final frame', () => {
   test('score updates with second roll', () => {
     expect(frame.score).toEqual(7);
   });
+
+  test('updates final roll', () => {
+    frame.finalRoll(5);
+    expect(frame.third_roll).toEqual(5);
+  });
+
+  test('score updates with final roll', () => {
+    expect(frame.score).toEqual(12);
+  });
 });

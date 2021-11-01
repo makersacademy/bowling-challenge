@@ -24,7 +24,6 @@ describe("isStrike", () => {
 describe("isSpare", () => {
   it("returns true when the first 2 rolls are ten", () => {
     frame.addRoll(4);
-    console.log(frame.rolls);
     expect(frame.isSpare()).toBe(true);
   })
 

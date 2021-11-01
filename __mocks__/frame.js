@@ -4,7 +4,7 @@ class Frame {
   }
 
   addRoll = (pins) => {
-    this.rolls.push(pins)
+    return this.rolls.push(pins)
   }
 
   isStrike = () => {

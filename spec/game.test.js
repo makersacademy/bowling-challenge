@@ -6,10 +6,6 @@ beforeEach(() => {
 });
 
 describe('Game', () => {
-  test('has an empty array of frames', () => {
-    expect(game.frames).toEqual([]);
-  });
-
   test('adds a frame to the array', () => {
     const mockFrame = { first_roll: null, second_roll: null, score: 0 };
     game.newFrame(mockFrame);

@@ -44,3 +44,16 @@ describe("strike", () => {
     expect(game2.strikeBonus(fiveFive)).toBe(10);
   })
 });
+
+describe("score", () => {
+  it("returns the score of a bowling game", () => {
+    let strike = new Frame()
+    strike.addRoll(10);
+    let finalStrike = new Frame()
+    finalStrike.addRoll(10);
+    finalStrike.addRoll(10);
+    finalStrike.addRoll(10);
+    let perfectGame = new BowlingGame([strike, strike, strike, strike, strike, strike, strike, strike, strike, finalStrike]);
+    expect(perfectGame.score()).toBe(300);
+  })
+});

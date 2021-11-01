@@ -31,3 +31,9 @@ describe("isSpare", () => {
     expect(strike.isSpare()).toBe(false);
   })
 })
+
+describe("frameSum", () => {
+  it("returns false when the sum of the rolls is a 10 but not a strike", () =>{
+    expect(frame.frameSum()).toBe(10);
+  })
+})

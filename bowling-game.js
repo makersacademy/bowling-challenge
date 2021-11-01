@@ -3,39 +3,39 @@ class BowlingGame {
     this.frames = frames;
   }
 
-  addFrame(frame) {
+  addFrame = (frame) => {
     this.frames.push(frame);
   }
 
-  spareBonus(frame){
+  spareBonus = (frame) =>{
     return this.nextFrame(frame).rolls[0];
   }
 
-  strikeBonus(frame){
+  strikeBonus = (frame) =>{
     if (this.nextFrame(frame).isStrike()) {
-      return (frame.rolls[0] + this.nextFrame(this.nextFrame(frame)));
+      return (frame.rolls[0] + this.nextFrame(this.nextFrame(frame)).rolls[0]);
     }
     else {
       return this.nextFrame(frame).frameSum();
     }
   }
 
-  nextFrame(frame){
+  nextFrame = (frame) => {
     return this.frames[this.frames.indexOf(frame) + 1];
   }
   
-  score(){
-    score = 0;
+  score = () => {
+    let score = 0;
     this.frames.forEach(frame => {
       if (frame.isStrike() && frame != this.frames.at(-1)) {
-        score += frame.rolls[0] + this.strikeBonus(frame);
+        score += (frame.rolls[0] + this.strikeBonus(frame));
       } else if (frame.isSpare() && frame != this.frames.at(-1)) {
-        score += frame.frameSum() + this.spareBonus(frame);
+        score += (frame.frameSum() + this.spareBonus(frame));
       } else {
-        score += frame.frameSum()
+        score += frame.frameSum();
       }
-    })
-    return this.score
+    });
+    return score;
   }
 }
 

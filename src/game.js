@@ -29,9 +29,9 @@ class Game {
   }
 
   fetchScore() {
-    let score = 0;
-    this.frames.map((x) => (score += x.score));
-    return score;
+    const score = [];
+    this.frames.map((x) => (score.push(x.score)));
+    return score.reduce((a, b) => a + b);
   }
 
   newFrame(one, two) {

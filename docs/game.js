@@ -3,82 +3,82 @@ var Frame = require('../docs/frame');
 class Game {
 
   constructor(){
-  this.frames = [];
-  this.rollsTotals = [];
-  this.bonuses = [0,0,0,0,0,0,0,0,0,0,0,0];
-  this.totalsAfterBonuses = [];
+  this.scorecard = [];
+  this.frameCount = 0;
   }
 
-  getFrames() {
-    return this.frames;
+  getCurrentScorecard() {
+    return this.scorecard;
   }
 
-  getRollsTotals() {
-    return this.rollsTotals;
+  getFrameCount() {
+    return this.frameCount;
   }
 
-  getBonuses() {
-    return this.bonuses;
-  }
-
-  gettotalAfterBonuses() {
-    return this.totalAfterBonuses;
-  }
-
-  // creates a frame with the rolls enteres and pushes into the frames array.
+  // creates a frame with the rolls entered and pushes into the scorecard array.
   enterFrame(roll1, roll2){
+    this.frameCount += 1;
     var frame = new Frame(roll1, roll2);
-    this.frames.push(frame.getRolls());
-    this.rollsTotals.push(frame.calcRollsTotal());
-    this.calcFrameBonuses();
-    this.calcTotalsAfterBonuses();
+    var object = frame.getFrame();
+    object.Number = this.frameCount;
+    if (this.frameCount < 10){
+      if (roll1 === 10 || roll1+roll2 === 10){
+        object.bonus = 'pending';
+      }
+    }
+    this.scorecard.push(object);
   }
 
-  calcFrameBonuses(){
-    for (var i=0; i < this.frames.length; i++){
-      if (i % 2 === 0 && this.frames[i] === 10)
+  decideBonus(){
+    for (var i=0; i < this.scorecard.length; i++){
+      if (this.scorecard[i].roll1 === 10)
         this.addStrikeBonus(i);
-      else if (this.rollsTotals[i] === 10)
+      else if (this.scorecard[i].rollsTotal === 10)
         this.addSpareBonus(i);
     }
   }
 
-  addStrikeBonus(element){
-    this.bonuses[element] = this.rollsTotals[element/2];
+  addStrikeBonus(i){
+    this.scorecard[i].bonus = this.scorecard[i+1].rollsTotal;
   }
 
-  addSpareBonus(element){
-    if (element % 2 === 0)
-      this.bonuses[element] = this.frames[element+2];
-    else if (element % 2 === 1)
-      this.bonuses[element] = this.frames[element+1];
+  addSpareBonus(i){
+    this.scorecard[i].bonus = this.scorecard[i+1].roll1;
   }
 
-  calcTotalsAfterBonuses(){
-    for (var i=0; i < this.rollsTotals.length; i++){
-      var total = this.rollsTotals[i] + this.bonuses[i];
-      this.totalsAfterBonuses[i] = total;
+  calcFrameTotal(){
+    for (var i=0; i < this.scorecard.length; i++){
+      var framebonus = this.scorecard[i].bonus;
+      if (typeof(framebonus) == 'number'){
+        this.scorecard[i].frameTotal = this.scorecard[i].rollsTotal + this.scorecard[i].bonus;
+      }
     }
   }
 
-  calcTotalOfAllFrames(){
+  calcGrandTotal(){
     var sum = 0;
-    for (var i=0; i < this.totalAfterBonuses.length; i++){
-      sum += this.rolls[i];
+    for (var i=0; i < this.scorecard.length; i++){
+      sum += this.scorecard[i].frameTotal;
     }
     return sum;
   }
 
 }
 
+
 module.exports = Game;
 
 
 
 // for testing the methods in node
-var game = new Game
-console.log(game.enterFrame(1,2));
-console.log(game.enterFrame(10,0));
-console.log(game.enterFrame(5,0));
-console.log(game.getBonuses());
-console.log(game.gettotalsAfterBonuses());
+// .load ./docs/frame.js
+// .load ./docs/game.js
+// var game = new Game;
+// game.enterFrame(1,2);
+// game.enterFrame(2,8);
+// game.enterFrame(10,0);
+// game.enterFrame(5,2);
+// game.getCurrentScorecard();
+// game.decideBonus();
+// game.calcFrameTotal();
+// game.calcGrandTotal;

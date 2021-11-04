@@ -3,25 +3,14 @@ var Frame = require("../docs/frame");
 describe("Frame", function() {
 
   let frame = new Frame(1,2);
+  let obj = {Number: 0, roll1: 1, roll2: 2, rollsTotal: 3, bonus: 0, frameTotal: 3 };
+  
+  let finalObject = {Number: 11, roll1: 10, roll2: 10, rollsTotal: 20 };
 
-  it("returns frame array", function(){
-    var next = new Frame([0,0]);
-    expect(frame.getRolls()).toEqual([1,2]);
+  it("returns the current frame object", function(){
+    expect(frame.getFrame()).toEqual(obj);
   });
 
-  it("returns the first roll of the frame", function(){
-    var next = new Frame([0,0]);
-    expect(frame.getFirstRoll()).toEqual(1);
-  });
-
-  it("returns the second roll of the frame", function(){
-    var next = new Frame([0,0]);
-    expect(frame.getSecondRoll()).toEqual(2);
-  });
-
-  it("returns the total of two rolls in a frame", function(){
-    var next = new Frame([0,0]);
-    expect(frame.calcRollsTotal()).toEqual(3);
-  });
 
 });
+

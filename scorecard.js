@@ -6,6 +6,23 @@ class Scorecard {
     this.frames = this.toFrames(this.sliceBowlsArray());
   }
 
+  // Maps the individual scores of frames 0 - 9
+  frameScores = (frames = this.frames) => {
+    let allScores = [];
+    for (let i = 0; i < this.maxFrames(); i += 1) {
+      allScores.push(frames[i].score());
+    }
+    return allScores;
+  };
+
+  maxFrames = (frames = this.frames) => {
+    if (frames.length >= 10) {
+      return 10;
+    } else {
+      return frames.length;
+    }
+  };
+
   // Converts a sliced bowls array into an array of Frame objects
   toFrames = (baseArr) => {
     return baseArr.map((_f, index) => {
@@ -72,3 +89,5 @@ let mySc = new Scorecard([
 // );
 
 // console.log(mySc.myFrames());
+
+// console.log(mySc.frameScores());

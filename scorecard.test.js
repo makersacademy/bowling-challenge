@@ -12,7 +12,19 @@ const gamePerfect = new Scorecard([
 const gameUnfinished = new Scorecard([3, 4, 5, 2, 10, 1, 2]);
 
 describe(".score", () => {
-  it("returns the score value", () => {
+  it("returns the score value for a normal game", () => {
     expect(gameNormal.score()).toEqual(133);
+  });
+
+  it("returns the score value for a gutter game", () => {
+    expect(gameGutter.score()).toEqual(0);
+  });
+
+  it("returns the score value for a perfect game", () => {
+    expect(gamePerfect.score()).toEqual(300);
+  });
+
+  it("returns the score value for an unfinished game", () => {
+    expect(gameUnfinished.score()).toEqual(30);
   });
 });

@@ -6,6 +6,23 @@ class Scorecard {
     this.frames = this.toFrames(this.sliceBowlsArray());
   }
 
+  score = () => {
+    let total = 0;
+    let allscores = this.frameScores();
+    for (let i = 0; i < allscores.length; i++) {
+      total += allscores[i];
+    }
+    return total;
+  };
+
+  sumFrame = (frame) => {
+    let sum = 0;
+    for (let i = 0; i < frame.length; i++) {
+      sum += frame[i];
+    }
+    return sum;
+  };
+
   // Maps the individual scores of frames 0 - 9
   frameScores = (frames = this.frames) => {
     let allScores = [];

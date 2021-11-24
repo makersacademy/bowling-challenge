@@ -3,7 +3,19 @@ const Frame = require("./frame");
 class Scorecard {
   constructor(bowls = []) {
     this.bowls = bowls;
+    this.frames = this.toFrames(this.sliceBowlsArray());
   }
+
+  // Converts a sliced bowls array into an array of Frame objects
+  toFrames = (baseArr) => {
+    return baseArr.map((_f, index) => {
+      return this.createFrame(baseArr, index);
+    });
+  };
+
+  createFrame = (baseArr, index) => {
+    return new Frame(baseArr[index], baseArr[index + 1], baseArr[index + 2]);
+  };
 
   // Slices a bowls array into 2-value arrays, e.g. [1,2,10,3,4] => [[1,2],[10,0],[3,4]]
   sliceBowlsArray = (bowls = this.bowls) => {
@@ -31,6 +43,8 @@ class Scorecard {
   };
 
   myBowls = () => this.bowls;
+
+  myFrames = () => this.frames;
 }
 
 module.exports = Scorecard;
@@ -38,4 +52,23 @@ module.exports = Scorecard;
 let mySc = new Scorecard([
   1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6,
 ]);
-mySc.showBowls(mySc.sliceBowlsArray());
+
+// let newFrame = mySc.createFrame(
+//   [
+//     [2, 2],
+//     [3, 5],
+//     [1, 7],
+//   ],
+//   0
+// );
+// console.log(newFrame.score());
+
+// console.log(
+//   mySc.toFrames([
+//     [3, 3],
+//     [2, 2],
+//     [4, 3],
+//   ])
+// );
+
+// console.log(mySc.myFrames());

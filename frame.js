@@ -20,6 +20,16 @@ class Frame {
     }
   };
 
+  score = () => {
+    if (this.bonusType() == "no_bonus") {
+      return this.sumFrame(this.frame);
+    } else if (this.bonusType() == "spare") {
+      return this.calcSpare(this.nextFrame);
+    } else if (this.bonusType() == "strike") {
+      return this.calcStrike(this.nextFrame, this.nextNextFrame);
+    }
+  };
+
   sumFrame = (frame) => {
     let sum = 0;
     for (let i = 0; i < frame.length; i++) {
@@ -30,6 +40,18 @@ class Frame {
 
   inFrame = (frame, num) => {
     return frame.includes(num);
+  };
+
+  calcSpare = (frame) => {
+    return 10 + frame[0];
+  };
+
+  calcStrike = (nframe, nnframe) => {
+    if (this.inFrame(nframe, 10) && nnframe != null) {
+      return 20 + nnframe[0];
+    } else {
+      return 10 + this.sumFrame(nframe);
+    }
   };
 }
 

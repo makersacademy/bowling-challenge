@@ -10,7 +10,7 @@ const frames = [
   new Frame([10, 0]),
 ];
 
-describe(".bonus_type", () => {
+describe(".bonusType", () => {
   it("returns the type of bonus the frame should receive", () => {
     let expectations = [
       "no_bonus",
@@ -21,8 +21,17 @@ describe(".bonus_type", () => {
       "strike",
       "no_bonus",
     ];
-    expectations.forEach((roll, index) => {
-      expect(frames[index].bonusType()).toEqual(roll);
+    expectations.forEach((bonus, index) => {
+      expect(frames[index].bonusType()).toEqual(bonus);
+    });
+  });
+});
+
+describe(".score", () => {
+  it("returns the score value of the frame", () => {
+    let expectations = [0, 8, 13, 10, 16, 23, 10];
+    expectations.forEach((score, index) => {
+      expect(frames[index].score()).toEqual(score);
     });
   });
 });

@@ -3,12 +3,12 @@ const Frame = require("./frame");
 class Scorecard {
   constructor(bowls = []) {
     this.bowls = bowls;
-    this.frames = this.toFrames(this.sliceBowlsArray());
+    this.frames = this.toFrames(this.sliceBowlsArray(this.bowls));
   }
 
-  score = () => {
+  score = (frames = this.frames) => {
     let total = 0;
-    let allscores = this.frameScores();
+    let allscores = this.frameScores(frames);
     for (let i = 0; i < allscores.length; i++) {
       total += allscores[i];
     }
@@ -26,7 +26,7 @@ class Scorecard {
   // Maps the individual scores of frames 0 - 9
   frameScores = (frames = this.frames) => {
     let allScores = [];
-    for (let i = 0; i < this.maxFrames(); i += 1) {
+    for (let i = 0; i < this.maxFrames(frames); i += 1) {
       allScores.push(frames[i].score());
     }
     return allScores;

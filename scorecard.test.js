@@ -53,6 +53,14 @@ describe(".sliceBowlsArray", () => {
       [3, 4],
     ]);
   });
+
+  it("can slice an empty array", () => {
+    expect(game.sliceBowlsArray([])).toEqual([]);
+  });
+
+  it("can slice an array with only one value", () => {
+    expect(game.sliceBowlsArray([1])).toEqual([[1]]);
+  });
 });
 
 describe(".board", () => {

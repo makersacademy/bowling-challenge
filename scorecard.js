@@ -11,11 +11,8 @@ class Scorecard {
   };
 
   sumArr = (baseArr) => {
-    if (baseArr.length === 0) {
-      return 0;
-    } else {
-      return baseArr.reduce((prev, next) => prev + next);
-    }
+    if (baseArr.length === 0) return 0;
+    return baseArr.reduce((prev, next) => prev + next);
   };
 
   board = (frames = this.frames) => {
@@ -47,14 +44,18 @@ class Scorecard {
   };
 
   // Converts a sliced bowls array into an array of Frame objects
-  toFrames = (baseArr) => {
-    return baseArr.map((_f, index) => {
-      return this.createFrame(baseArr, index);
+  toFrames = (slicedArr) => {
+    return slicedArr.map((_f, index) => {
+      return this.createFrame(slicedArr, index);
     });
   };
 
-  createFrame = (baseArr, index) => {
-    return new Frame(baseArr[index], baseArr[index + 1], baseArr[index + 2]);
+  createFrame = (slicedArr, index) => {
+    return new Frame(
+      slicedArr[index],
+      slicedArr[index + 1],
+      slicedArr[index + 2]
+    );
   };
 
   // Slices a bowls array into 2-value arrays, e.g. [1,2,10,3,4] => [[1,2],[10,0],[3,4]]

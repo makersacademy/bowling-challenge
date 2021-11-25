@@ -31,11 +31,7 @@ class Frame {
   };
 
   sumFrame = (frame) => {
-    let sum = 0;
-    for (let i = 0; i < frame.length; i++) {
-      sum += frame[i];
-    }
-    return sum;
+    return frame.reduce((prev, next) => prev + next);
   };
 
   inFrame = (frame, num) => {

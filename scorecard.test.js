@@ -42,6 +42,16 @@ describe(".score", () => {
   });
 });
 
+describe(".sliceBowlsArray", () => {
+  it("slices arrays into an array of frame bowls, e.g. converts [1,2,10,3,4] to [[1,2],[10,0],[3,4]] ", () => {
+    expect(game.sliceBowlsArray([1, 2, 10, 3, 4])).toEqual([
+      [1, 2],
+      [10, 0],
+      [3, 4],
+    ]);
+  });
+});
+
 // describe(".board", () => {
 //   it("returns an array counting up to the score with each frame", () => {
 //     expect(gameNormal.board()).toEqual([

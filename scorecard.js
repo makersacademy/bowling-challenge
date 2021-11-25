@@ -11,7 +11,11 @@ class Scorecard {
   };
 
   sumArr = (baseArr) => {
-    return baseArr.reduce((prev, next) => prev + next);
+    if (baseArr.length === 0) {
+      return 0;
+    } else {
+      return baseArr.reduce((prev, next) => prev + next);
+    }
   };
 
   board = (frames = this.frames) => {
@@ -85,9 +89,9 @@ class Scorecard {
 
 module.exports = Scorecard;
 
-let mySc = new Scorecard([
-  1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6,
-]);
+// let mySc = new Scorecard([
+//   1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6,
+// ]);
 
 // let newFrame = mySc.createFrame(
 //   [

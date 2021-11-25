@@ -6,22 +6,17 @@ class Scorecard {
     this.setFrames();
   }
 
+  setFrames = (bowls = this.bowls) =>
+    (this.frames = this.covertArrToFrames(bowls));
+
+  covertArrToFrames = (bowls) => this.toFrames(this.sliceBowlsArray(bowls));
+
   addBowl = (knockdowns) => {
     this.bowls.push(knockdowns);
     this.setFrames();
   };
 
-  setFrames = (bowls = this.bowls) => {
-    return (this.frames = this.covertArrToFrames(bowls));
-  };
-
-  covertArrToFrames = (bowls) => {
-    return this.toFrames(this.sliceBowlsArray(bowls));
-  };
-
-  score = (frames = this.frames) => {
-    return this.sumArr(this.frameScores(frames));
-  };
+  score = (frames = this.frames) => this.sumArr(this.frameScores(frames));
 
   sumArr = (baseArr) => {
     if (baseArr.length === 0) return 0;
@@ -31,9 +26,8 @@ class Scorecard {
   board = (frames = this.frames) => {
     let allscores = this.frameScores(frames);
     let accumulator = [];
-    let value = 0;
     for (let i = 0; i < allscores.length; i++) {
-      value += allscores[i];
+      let value = this.sumArr(allscores.slice(0, i + 1));
       accumulator.push(value);
     }
     return accumulator;
@@ -90,41 +84,6 @@ class Scorecard {
     }
     return newBowls;
   };
-
-  // Display functions to test if functions are working correctly
-  showBowls = (bowls = this.bowls) => {
-    console.log(bowls);
-  };
-
-  myBowls = () => this.bowls;
-
-  myFrames = () => this.frames;
 }
 
 module.exports = Scorecard;
-
-// let mySc = new Scorecard([
-//   1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6,
-// ]);
-
-// let newFrame = mySc.createFrame(
-//   [
-//     [2, 2],
-//     [3, 5],
-//     [1, 7],
-//   ],
-//   0
-// );
-// console.log(newFrame.score());
-
-// console.log(
-//   mySc.toFrames([
-//     [3, 3],
-//     [2, 2],
-//     [4, 3],
-//   ])
-// );
-
-// console.log(mySc.myFrames());
-
-// console.log(mySc.frameScores());

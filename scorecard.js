@@ -11,11 +11,7 @@ class Scorecard {
   };
 
   sumArr = (baseArr) => {
-    let sum = 0;
-    for (let i = 0; i < baseArr.length; i++) {
-      sum += baseArr[i];
-    }
-    return sum;
+    return baseArr.reduce((prev, next) => prev + next);
   };
 
   board = (frames = this.frames) => {

@@ -7,20 +7,26 @@ class Scorecard {
   }
 
   score = (frames = this.frames) => {
-    let total = 0;
-    let allscores = this.frameScores(frames);
-    for (let i = 0; i < allscores.length; i++) {
-      total += allscores[i];
-    }
-    return total;
+    return this.sumArr(this.frameScores(frames));
   };
 
-  sumFrame = (frame) => {
+  sumArr = (baseArr) => {
     let sum = 0;
-    for (let i = 0; i < frame.length; i++) {
-      sum += frame[i];
+    for (let i = 0; i < baseArr.length; i++) {
+      sum += baseArr[i];
     }
     return sum;
+  };
+
+  board = (frames = this.frames) => {
+    let allscores = this.frameScores(frames);
+    let accumulator = [];
+    let value = 0;
+    for (let i = 0; i < allscores.length; i++) {
+      value += allscores[i];
+      accumulator.push(value);
+    }
+    return accumulator;
   };
 
   // Maps the individual scores of frames 0 - 9

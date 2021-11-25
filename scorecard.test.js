@@ -9,24 +9,23 @@ const frame15 = { score: () => 15 };
 const frame16 = { score: () => 16 };
 const frame20 = { score: () => 20 };
 const frame30 = { score: () => 30 };
+const game133 = [
+  frame5,
+  frame9,
+  frame15,
+  frame20,
+  frame11,
+  frame1,
+  frame16,
+  frame20,
+  frame20,
+  frame16,
+];
 const game = new Scorecard();
 
 describe(".score", () => {
   it("returns the score value for a normal game", () => {
-    expect(
-      game.score([
-        frame5,
-        frame9,
-        frame15,
-        frame20,
-        frame11,
-        frame1,
-        frame16,
-        frame20,
-        frame20,
-        frame16,
-      ])
-    ).toEqual(133);
+    expect(game.score(game133)).toEqual(133);
   });
 
   it("returns the score value for a gutter game", () => {
@@ -52,13 +51,13 @@ describe(".sliceBowlsArray", () => {
   });
 });
 
-// describe(".board", () => {
-//   it("returns an array counting up to the score with each frame", () => {
-//     expect(gameNormal.board()).toEqual([
-//       5, 14, 29, 49, 60, 61, 77, 97, 117, 133,
-//     ]);
-//   });
-// });
+describe(".board", () => {
+  it("returns an array counting up to the score with each frame", () => {
+    expect(game.board(game133)).toEqual([
+      5, 14, 29, 49, 60, 61, 77, 97, 117, 133,
+    ]);
+  });
+});
 
 // const gameNormal = new Scorecard([
 //   1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6,

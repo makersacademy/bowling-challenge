@@ -3,11 +3,12 @@ class Frame {
     this.frame = frame;
     this.nextFrame = nextFrame;
     this.nextNextFrame = nextNextFrame;
+    this.noNext = nextFrame == null;
+    this.hasNextNext = nextNextFrame != null;
   }
 
   bonusType = () => {
-    if (this.nextFrame == null || this.sumFrame(this.frame) < 10)
-      return "no_bonus";
+    if (this.noNext || this.sumFrame(this.frame) < 10) return "no_bonus";
     if (this.inFrame(this.frame, 10)) return "strike";
     return "spare";
   };
@@ -18,20 +19,14 @@ class Frame {
     return this.calcSpare();
   };
 
-  sumFrame = (frame) => {
-    return frame.reduce((prev, next) => prev + next);
-  };
+  sumFrame = (frame) => frame.reduce((prev, next) => prev + next);
 
-  inFrame = (frame, num) => {
-    return frame.includes(num);
-  };
+  inFrame = (frame, num) => frame.includes(num);
 
-  calcSpare = (frame = this.nextFrame) => {
-    return 10 + frame[0];
-  };
+  calcSpare = (frame = this.nextFrame) => 10 + frame[0];
 
   calcStrike = (nframe = this.nextFrame, nnframe = this.nextNextFrame) => {
-    if (this.inFrame(nframe, 10) && nnframe != null) return 20 + nnframe[0];
+    if (this.inFrame(nframe, 10) && this.hasNextNext) return 20 + nnframe[0];
     return 10 + this.sumFrame(nframe);
   };
 }

@@ -71,9 +71,15 @@ describe(".board", () => {
   });
 });
 
-// describe(".addBowl", () => {
-//   let newGame = new Scorecard();
-//   it("adds a bowl to the game", () => {
-//     expect(newGame.score()).toBe(0);
-//   });
-// });
+describe(".addBowl", () => {
+  it("Adds a bowl to the bowls array", () => {
+    let newGame = new Scorecard();
+    expect(newGame.score()).toBe(0);
+    newGame.addBowl(5);
+    expect(newGame.score()).toBe(5); // frames: [5]
+    newGame.addBowl(5);
+    expect(newGame.score()).toBe(10); // frames: [5, 5]
+    newGame.addBowl(5);
+    expect(newGame.score()).toBe(20); // frames: [5, 5], [5]
+  });
+});

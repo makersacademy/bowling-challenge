@@ -3,8 +3,21 @@ const Frame = require("./frame");
 class Scorecard {
   constructor(bowls = []) {
     this.bowls = bowls;
-    this.frames = this.toFrames(this.sliceBowlsArray(this.bowls));
+    this.setFrames();
   }
+
+  addBowl = (knockdowns) => {
+    this.bowls.push(knockdowns);
+    this.setFrames();
+  };
+
+  setFrames = (bowls = this.bowls) => {
+    return (this.frames = this.covertArrToFrames(bowls));
+  };
+
+  covertArrToFrames = (bowls) => {
+    return this.toFrames(this.sliceBowlsArray(bowls));
+  };
 
   score = (frames = this.frames) => {
     return this.sumArr(this.frameScores(frames));

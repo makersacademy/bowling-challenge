@@ -20,8 +20,8 @@ class Scorecard {
     );
   };
 
-  setFrames = (bowls = this.bowls) =>
-    (this.frames = this.covertArrToFrames(bowls));
+  setFrames = (bowlsArray = this.bowls) =>
+    (this.frames = this.covertArrToFrames(bowlsArray));
 
   covertArrToFrames = (bowls) => this.toFrames(this.sliceBowlsArray(bowls));
 
@@ -32,26 +32,17 @@ class Scorecard {
 
   // Maps the individual scores of frames 0 - 9
   frameScores = (frames = this.frames) => {
-    let blankArray = new Array(this.maxFrames(frames)).fill(0);
+    let blankArray = new Array(this.frameCount(frames)).fill(0);
     return blankArray.map((_n, ind) => frames[ind].score());
   };
 
-  maxFrames = (frames = this.frames) => {
-    if (frames.length >= 10) return 10;
-    return frames.length;
-  };
+  frameCount = (frames) => (frames.length >= 10 ? 10 : frames.length);
 
   // Converts a sliced bowls array into an array of Frame objects
   toFrames = (slicedArr) =>
-    slicedArr.map((_f, index) => this.createFrame(slicedArr, index));
-
-  createFrame = (slicedArr, index) => {
-    return new Frame(
-      slicedArr[index],
-      slicedArr[index + 1],
-      slicedArr[index + 2]
+    slicedArr.map(
+      (_f, i) => new Frame(slicedArr[i], slicedArr[i + 1], slicedArr[i + 2])
     );
-  };
 
   // Slices a bowls array into 2-value arrays, e.g. [1,2,10,3,4] => [[1,2],[10,0],[3,4]]
   sliceBowlsArray = (bowls = this.bowls) => {

@@ -6,11 +6,6 @@ class Scorecard {
     this.setFrames();
   }
 
-  setFrames = (bowls = this.bowls) =>
-    (this.frames = this.covertArrToFrames(bowls));
-
-  covertArrToFrames = (bowls) => this.toFrames(this.sliceBowlsArray(bowls));
-
   addBowl = (knockdowns) => {
     this.bowls.push(knockdowns);
     this.setFrames();
@@ -18,44 +13,37 @@ class Scorecard {
 
   score = (frames = this.frames) => this.sumArr(this.frameScores(frames));
 
+  board = (frames = this.frames) => {
+    let allscores = this.frameScores(frames);
+    return allscores.map((_s, index) =>
+      this.sumArr(allscores.slice(0, index + 1))
+    );
+  };
+
+  setFrames = (bowls = this.bowls) =>
+    (this.frames = this.covertArrToFrames(bowls));
+
+  covertArrToFrames = (bowls) => this.toFrames(this.sliceBowlsArray(bowls));
+
   sumArr = (baseArr) => {
     if (baseArr.length === 0) return 0;
     return baseArr.reduce((prev, next) => prev + next);
   };
 
-  board = (frames = this.frames) => {
-    let allscores = this.frameScores(frames);
-    let accumulator = [];
-    for (let i = 0; i < allscores.length; i++) {
-      let value = this.sumArr(allscores.slice(0, i + 1));
-      accumulator.push(value);
-    }
-    return accumulator;
-  };
-
   // Maps the individual scores of frames 0 - 9
   frameScores = (frames = this.frames) => {
-    let allScores = [];
-    for (let i = 0; i < this.maxFrames(frames); i += 1) {
-      allScores.push(frames[i].score());
-    }
-    return allScores;
+    let blankArray = new Array(this.maxFrames(frames)).fill(0);
+    return blankArray.map((_n, ind) => frames[ind].score());
   };
 
   maxFrames = (frames = this.frames) => {
-    if (frames.length >= 10) {
-      return 10;
-    } else {
-      return frames.length;
-    }
+    if (frames.length >= 10) return 10;
+    return frames.length;
   };
 
   // Converts a sliced bowls array into an array of Frame objects
-  toFrames = (slicedArr) => {
-    return slicedArr.map((_f, index) => {
-      return this.createFrame(slicedArr, index);
-    });
-  };
+  toFrames = (slicedArr) =>
+    slicedArr.map((_f, index) => this.createFrame(slicedArr, index));
 
   createFrame = (slicedArr, index) => {
     return new Frame(
@@ -78,9 +66,7 @@ class Scorecard {
   addZerosAfterTens = (bowls) => {
     let newBowls = bowls;
     for (let i = 0; i < bowls.length; i++) {
-      if (newBowls[i] == 10) {
-        newBowls.splice(i + 1, 0, 0);
-      }
+      if (newBowls[i] == 10) newBowls.splice(i + 1, 0, 0);
     }
     return newBowls;
   };

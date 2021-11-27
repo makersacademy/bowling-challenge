@@ -41,12 +41,15 @@ const gamePerfect = [
 
 // Score for game with strikes and spares:
 const scorecard = new Scorecard(game);
-console.log(scorecard.calculateScore());
+scorecard.calculateScore();
+console.log(scorecard.score);
 
 // Score for Gutter game:
 const scorecard2 = new Scorecard(gameGutter);
-console.log(scorecard2.calculateScore());
+scorecard2.calculateScore();
+console.log(scorecard2.score);
 
 // Score for Perfect game:
 const scorecard3 = new Scorecard(gamePerfect);
-console.log(scorecard3.calculateScore());
+scorecard3.calculateScore();
+console.log(scorecard3.score);

@@ -19,3 +19,13 @@ test('calculates all ones', () => {
   }
   expect(game.points).toEqual(20);
 });
+
+test ('calculates a spare', () => {
+  game.roll(5);
+  game.roll(5);
+  game.roll(3);
+  for(let i = 0; i < 17; i++) {
+    game.roll(0);
+  }
+  expect(game.points).toEqual(16);
+});

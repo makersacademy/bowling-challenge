@@ -7,9 +7,10 @@ class Frame {
         this.frame_array = [];
     }
 
-
+    ball1(pins) {
+        this.frame_array.push(pins);
+    }
 }
 
 
-
-// module.exports = Frame;
+module.exports = Frame;

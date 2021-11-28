@@ -15,11 +15,17 @@ class Frame {
         let currentPinsR1 = readline.question('How many pins did you knock down on roll 1? ');
         currentPinsR1 = parseInt(currentPinsR1);
         console.log(`You entered ${currentPinsR1}`);
-        if (currentPinsR1 > 10) {
+        if (currentPinsR1 == 10) {
+                console.log('Strike!')
+        }
+        else if (currentPinsR1 > 10) {
             console.log('Maximum pins is 10, please enter again');
             currentPinsR1 = readline.question('How many pins did you knock down on roll 1? ');
             currentPinsR1 = parseInt(currentPinsR1);
             console.log(`You entered ${currentPinsR1}`);
+        }
+        else {
+
         }
         this.ball1 = currentPinsR1;
         this.pins += currentPinsR1;
@@ -32,7 +38,11 @@ class Frame {
             currentPinsR2 = parseInt(currentPinsR2);
             console.log(`You entered ${currentPinsR2}`);
 
-        if (this.pins + currentPinsR2 > 10) {
+        if (this.pins + currentPinsR2 == 10) {
+            console.log('Spare!')
+            this.ball2 = currentPinsR2;
+        }
+        else if (this.pins + currentPinsR2 > 10) {
             console.log('Please recount pins knocked down (2nd ball only) and enter again');
             currentPinsR2 = readline.question('How many pins did you knock down on roll 2? ');
             currentPinsR2 = parseInt(currentPinsR2);
@@ -40,13 +50,13 @@ class Frame {
         } else {
             //TODO: fix this code to work = currently it seems to run no matter what
             this.ball2 = currentPinsR2;
-            return this.ball2
         }
+        return this.ball2
 
     };
 };
-frame = new Frame;
-frame.roll1();
-frame.roll2();
+// frame = new Frame;
+// frame.roll1();
+// frame.roll2();
 
 module.exports = Frame;

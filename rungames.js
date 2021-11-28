@@ -13,7 +13,7 @@ const game = [
   [2, 8, 6]
 ];
 
-const gameGutter = [
+const gutterGame = [
   [0,0],
   [0,0],
   [0,0],
@@ -26,7 +26,7 @@ const gameGutter = [
   [0,0],
 ];
 
-const gamePerfect = [
+const perfectGame = [
   [10],
   [10],
   [10],
@@ -45,11 +45,11 @@ scorecard.calculateScore();
 console.log(scorecard.score);
 
 // Score for Gutter game:
-const scorecard2 = new Scorecard(gameGutter);
+const scorecard2 = new Scorecard(gutterGame);
 scorecard2.calculateScore();
 console.log(scorecard2.score);
 
 // Score for Perfect game:
-const scorecard3 = new Scorecard(gamePerfect);
+const scorecard3 = new Scorecard(perfectGame);
 scorecard3.calculateScore();
 console.log(scorecard3.score);

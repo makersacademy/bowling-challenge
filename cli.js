@@ -21,6 +21,7 @@ while (loop == true) {
     console.log("Goodbye!");
   } else {
     newScorecard.addBowl(Number(command));
-    console.log(`${optionsMessage(command)}\n`);
+    console.log(`Bowls: ${newScorecard.bowls}`);
+    console.log(`Scoreboard:\n${newScorecard.board()}\n`);
   }
 }

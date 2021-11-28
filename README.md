@@ -1,75 +1,39 @@
+## Introduction
 
-Bowling Challenge
-=================
+This repo contains the code I wrote for the JavaScript Bowling Challenge, the Makers Academy Week 6 end-of-week challenge. The goal of this challenge was to convert the Ruby code I wrote for the [Week 5 end-of-week challenge](https://github.com/Zimmja/bowling-challenge-ruby) into JavaScript.
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## My approach
 
-## The Task
+For this project, I intended to use exactly the same logic as in the Ruby version. I didn't plan to use any additional classes or functionality. To begin, I created the necessary .js files with corresponding .test.js files for testing with Jest. Using a TDD approach, I began by translating a Ruby Rspec test into a JavaScript (JS) Jest test. I then wrote JS code based on my previous Ruby code to pass this test. I repeated this for all steps until the full functionality I was aiming for was achieved. Then I refactored all code to make it more readable.
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+I successfully translated all my Ruby code into JavaScript.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+In my Ruby version, I initiated the Scorecard class with a pre-filled array of values. For this version, I initiated a blank Scorecard and added a new functionality to add bowls one-by-one. In this way, I extended the functionality of this simple program beyond the previous version. This did introduce some issues: for example, it is now possible to add non-numerical bowl values, or values that don't make sense (e.g. a bowling round of 6 and 6, which would sum to over the maximum value of 10). With more time, I would have added more functionality to defend against these issues. However, as the code currently stands, it does not throw errors when tested, so these errors do not break functionality.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+Once all classes were established, I created a simple cli.js file in which a user can input successive bowls and receive a scoreboard with the total score at the end.
 
-As usual please start by
+I then ran the scorecard in cli.js to test functionality and found a big issue. I followed a debugging process, using the cli.js output to print various values with successive inputs. This led me to realise that the addZerosAfterTens function on my Scorecard class wasn't functioning as planned. I realised this was because of how arrays were being called, which led me to learn more about calling array with JS. I fixed the issue and created a new Jest test to monitor it through a TDD approach.
 
-* Forking this repo
+## Technologies used
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+The following technologies were used in this repo
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+1. VS Code was used for all coding requirements
+2. Prettier - Code formatter was used to improve JavaScript readability
+3. I used node to test functionality in the terminal
+4. Jest was used to test logic functionality
+5. I used readline-sync to create the cli.js file
 
-### Optional Extras
+## Instructions for use
 
-In any order you like:
+### Setup:
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+- Clone this repo to a local repository
+- Ensure nvm is installed
+- Open the directory in a terminal and enter "npm install readline-sync"
+- While still in the terminal directory, enter "node cli.js" to begin a bowling scorecard
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+### Interaction:
 
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+- With a bowling scorecard running, enter the number of bowls score with a single throw. You will then be presented with a scoreboard showing your accumulating score across several rounds, with your current score at the end
+- Leave the input field blank and press enter to exit

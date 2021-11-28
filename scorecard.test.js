@@ -75,12 +75,12 @@ describe(".addBowl", () => {
   it("Adds a bowl to the bowls array", () => {
     let newGame = new Scorecard();
     expect(newGame.score()).toBe(0);
-    let addBowlTest = (addition, expected) => {
-      newGame.addBowl(addition);
-      expect(newGame.score()).toBe(expected);
-    };
-    addBowlTest(5, 5);
-    addBowlTest(5, 10);
-    addBowlTest(5, 20);
+
+    [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6].forEach(
+      (bowl) => {
+        newGame.addBowl(bowl);
+      }
+    );
+    expect(newGame.score()).toBe(133);
   });
 });

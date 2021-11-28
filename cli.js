@@ -19,7 +19,7 @@ while (loop == true) {
     loop = false;
     console.log(`\nFINAL SCORE: ${myGame.getScore()}\nGoodbye!`);
   } else {
-    response = myGame.rollBowl(Number(command));
+    response = myGame.rollBowl(command);
     console.log(response);
     console.log(`You have ${myGame.bowlsLeft} more rolls remaining.`);
     console.log(`Scoreboard:\n${myGame.getBoard()}\n`);

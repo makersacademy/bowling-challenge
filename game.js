@@ -18,7 +18,7 @@ class Game {
       return "Invalid input: please choose a number between 0 and 10.";
     if (this.bowlsLeft <= 0) return "You can't roll any more bowls.";
     this.resolveBowl(pinsHit);
-    return `Successful roll! You hit ${pinsHit} pin(s).`;
+    return `Successful roll! You hit ${pinsHit} pins.`;
   };
 
   resolveBowl = (pinsHit) => {

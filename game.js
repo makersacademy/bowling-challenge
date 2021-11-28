@@ -1,11 +1,16 @@
 class Game {
 
-  roll(){
+  constructor() {
+    this.rolls = 0;
+  }
   
+  
+  roll(pins){
+    this.rolls += pins;
   }
 
   get points() {
-    return 0;
+    return this.rolls;
   }
 
 

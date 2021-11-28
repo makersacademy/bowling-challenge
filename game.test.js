@@ -1,7 +1,12 @@
 const Game = require('./game');
-  
+
+let game;
+
+beforeEach(() => {
+  game = new Game;
+});
+
 test('calculates a gutter game', () => {
-  const game = new Game;
   for(let i = 0; i < 20; i++) {
     game.roll(0); 
   }
@@ -9,7 +14,6 @@ test('calculates a gutter game', () => {
 });
 
 test('calculates all ones', () => {
-  const game = new Game;
   for(let i = 0; i < 20; i++) {
     game.roll(1);
   }

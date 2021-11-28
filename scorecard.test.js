@@ -29,11 +29,18 @@ describe('Scorecard class', () => {
     expect(scorecard.score).toEqual(67);
   });
 
-  // it('add the pins for a game that includes strikes and spares', () => {
-  //   const scorecard = new Scorecard([ [1, 4], [4, 5], [6, 4], [5, 5], [10], [0, 1], [7, 3], [6, 4], [10], [2, 8, 6] ]);
-  //   scorecard.calculateScore()
-  //   expect(scorecard.game).toEqual([ [1, 4], [4, 5], [6, 4], [5, 5], [10], [0, 1], [7, 3], [6, 4], [10], [2, 8, 6] ]);
-  //   expect(scorecard.score).toEqual(133);
-  // });
+  it('add the pins for a game that includes strikes and spares', () => {
+    const scorecard = new Scorecard([ [1, 4], [4, 5], [6, 4], [5, 5], [10], [0, 1], [7, 3], [6, 4], [10], [2, 8, 6] ]);
+    scorecard.calculateScore()
+    expect(scorecard.game).toEqual([ [1, 4], [4, 5], [6, 4], [5, 5], [10], [0, 1], [7, 3], [6, 4], [10], [2, 8, 6] ]);
+    expect(scorecard.score).toEqual(133);
+  });
+
+  it('add the pins for another game that includes strikes and spares', () => {
+    const scorecard = new Scorecard([ [3, 0], [5, 3], [0, 4], [10], [5, 2], [6, 4], [10], [2, 1], [10], [2, 8, 4] ]);
+    scorecard.calculateScore()
+    expect(scorecard.game).toEqual([ [3, 0], [5, 3], [0, 4], [10], [5, 2], [6, 4], [10], [2, 1], [10], [2, 8, 4] ]);
+    expect(scorecard.score).toEqual(109);
+  });
 
 });

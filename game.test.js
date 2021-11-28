@@ -49,3 +49,12 @@ describe('strike', () => {
     expect(game.points).toEqual(26);
   });
 });
+
+describe('perfect game', () => {
+  it('calculates a perfect game', () => {
+    for (let i = 0; i < 12; i++){
+      game.roll(10);
+    }
+    expect(game.points).toEqual(300);
+  });
+});

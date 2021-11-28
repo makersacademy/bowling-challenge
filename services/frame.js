@@ -1,10 +1,9 @@
 class Frame {
 
-    constructor(ball1, ball2) {
-        this.maxPins = 10;
+    constructor() {
         this.pins = 0;
-        this.ball1 = ball1;
-        this.ball2 = ball2;
+        this.ball1 = 0;
+        this.ball2 = 0;
         // this.frameTotal = 0;
         // this.frame_array = [];
     }
@@ -12,10 +11,11 @@ class Frame {
     roll1(currentPins) {
         this.ball1 = currentPins;
         this.pins += currentPins;
+
     }
 
     roll2(currentPins) {
-        if (this.pins + currentPins <= this.maxPins) {
+        if (this.pins + currentPins <= 10) {
             this.ball2 = currentPins;
             this.pins += currentPins;
         }

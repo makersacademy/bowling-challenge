@@ -1,8 +1,7 @@
 let readlineSync = require("readline-sync");
-const Scorecard = require("./scorecard");
-const Frame = require("./frame");
+const Game = require("./game");
 
-const newScorecard = new Scorecard();
+const myGame = new Game();
 
 const optionsMessage = (pins) => {
   return `Knocked down ${pins} pins. Scorebard:\n${newScorecard.board()}`;
@@ -15,13 +14,14 @@ console.log(
   "Enter the number of pins knocked down with each bowl below.\nLeave input blank and press enter to exit.\n"
 );
 while (loop == true) {
-  let command = readlineSync.question("Pins knocked down: ");
+  let command = readlineSync.question("Enter number: ");
   if (command == "") {
     loop = false;
-    console.log("Goodbye!");
+    console.log(`\nFINAL SCORE: ${myGame.getScore()}\nGoodbye!`);
   } else {
-    newScorecard.addBowl(Number(command));
-    console.log(`Bowls: ${newScorecard.bowls}`);
-    console.log(`Scoreboard:\n${newScorecard.board()}\n`);
+    response = myGame.rollBowl(Number(command));
+    console.log(response);
+    console.log(`You have ${myGame.bowlsLeft} more rolls remaining.`);
+    console.log(`Scoreboard:\n${myGame.getBoard()}\n`);
   }
 }

@@ -1,0 +1,25 @@
+{
+  "name": "bowling-challenge-js",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tatiananantes/bowling-challenge-JS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tatiananantes/bowling-challenge-JS/issues"
+  },
+  "homepage": "https://github.com/tatiananantes/bowling-challenge-JS#readme",
+  "dependencies": {
+    "jest": "^27.3.1"
+  }
+}

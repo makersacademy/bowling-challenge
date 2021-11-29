@@ -44,6 +44,26 @@ describe('bowling', () => {
       expect(bowling.Roll(5)).toBe("Game over, you scored 156.");
     });
 
+    const newGame = new Bowling;
+
+    describe('getRoll', () => {
+      it('gets the current roll', () => {
+        newGame.Roll(4);
+        expect(newGame.getRoll()).toBe(2);
+      });
+    })
+ 
+    const gutterGame = new Bowling;
+
+    describe('GutterGame', () => {
+      it('Scores the game as a gutter game', () => {
+        for (let i = 0 ; i < 20 ; i++) {
+          gutterGame.Roll(0);
+        }
+        gutterGame.Roll(0)
+        expect(gutterGame.Roll(0)).toBe("Gutter Game");
+      })
+    });
 
   });
 });

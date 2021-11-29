@@ -10,7 +10,7 @@ while (bowling.getFrame() < 10) {
   if(command != "quit") {
     bowling.Roll(command)
     if(bowling.getRoll() === 1) {
-      console.log(`Score so far: ${bowling.getTotalScore}.`)
+      console.log(`Score so far: ${bowling.getTotalScore()}.`)
     } else {
       console.log("Awaiting 2nd roll")
     }

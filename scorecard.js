@@ -56,7 +56,7 @@ class Scorecard {
 
   addZerosAfterTens = (bowls) => {
     let newBowls = bowls.slice();
-    for (let i = 0; i < bowls.length; i++) {
+    for (let i = 0; i < newBowls.length; i++) {
       if (newBowls[i] == 10) newBowls.splice(i + 1, 0, 0);
     }
     return newBowls;

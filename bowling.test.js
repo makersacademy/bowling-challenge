@@ -7,7 +7,7 @@ describe('bowling', () => {
     it('adds the roll score to the total score', () => {
       bowling.Roll(1);
       bowling.Roll(4);
-      expect(bowling.getTotalScore()).toBe(5);
+      expect(bowling.getTotalScore()).toEqual(5);
     });
 
     it('only adds the score when both rolls have been done', () => {

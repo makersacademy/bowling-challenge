@@ -12,6 +12,10 @@ class Bowling {
     return this.frame;
   }
 
+  getRoll() {
+    return this.roll;
+  }
+
   getTotalScore() {
     return this.totalScore;
   }

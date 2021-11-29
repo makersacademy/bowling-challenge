@@ -30,7 +30,7 @@ class Game:
 - Prevents user from inputting values that would produce frames with a sum over 10
 ```
 
-I was able to implement the first 4 of these goals through a TDD approach, and I integrated this into the cli.js file successfully. Had I had more time, I would have implemented the last 2 goals as well.
+I was able to implement the first 5 of these goals through a TDD approach, and I integrated this into the cli.js file successfully. Had I had more time, I would have implemented the last goal as well.
 
 ## Technologies used
 

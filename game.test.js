@@ -47,7 +47,7 @@ describe(".rollBowl", () => {
   };
 
   it("doesn't decrease the value of bowls if a number isn't passed", () => {
-    rollExpect("", 20);
+    rollExpect("ten", 20);
   });
 
   it("decreases the values of bowls by 1 if < 10", () => {

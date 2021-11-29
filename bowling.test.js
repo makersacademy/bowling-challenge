@@ -32,7 +32,17 @@ describe('bowling', () => {
       bowling.Roll(5);
       bowling.Roll(4);
       expect(bowling.getTotalScore()).toBe(55);
-    })
+    });
+
+    it('shows final score and stops further rolls', () => {
+      for (let i = 0 ; i < 8 ; i++) {
+        bowling.Roll(4);
+      }
+      expect(bowling.getFrame()).toBe(9);
+      bowling.Roll(5);
+      bowling.Roll(4);
+      expect(bowling.Roll(5)).toBe("Game over, you scored 156.");
+    });
 
 
   });

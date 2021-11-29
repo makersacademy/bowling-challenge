@@ -8,6 +8,10 @@ class Bowling {
     this.isStrike = false;
   }
 
+  getFrame() {
+    return this.frame;
+  }
+
   getTotalScore() {
     return this.totalScore;
   }
@@ -18,7 +22,7 @@ class Bowling {
 
   isSpare(pins) {
     if(this.frame != 0) {
-      if ((this.frames[this.frame - 1].reduce(this.addFrame)) === 10) {
+      if ((this.frames[this.frame - 1].reduce(this.addFrame) === 10) && (this.frames[this.frame -1].length > 1)) {
         return pins * 2;
       } else {
         return pins;
@@ -45,11 +49,32 @@ class Bowling {
   }
 
   Roll(pins) {
-    if (this.isStrike) {
-      this.addStrikeRoll(pins);
+    if (this.frame <= 9) {
+      if (this.isStrike) {
+        this.addStrikeRoll(pins);
+      } else {
+        this.addRoll(pins);
+      }
     } else {
-      this.addRoll(pins);
+      if (this.getTotalScore() === 0) {
+        return "Gutter Game";
+      } else if (this.getTotalScore() === 300) {
+        return "Perfect game";
+      } else {
+        return `Game over, you scored ${this.getTotalScore()}.`;
+      }
+      
     }
+
+  }
+
+  additionalRoll() {
+    if ((this.frame === 9) && (this.roll === 2) && (this.frames[this.frame].reduce(this.addFrame) === 10)) {
+      return true;
+    } else {
+      return false;
+    }
+    
   }
 
   addRoll(pins) {
@@ -57,12 +82,17 @@ class Bowling {
       this.frames.push([pins]);
       this.scoreFrames.push([this.isSpare(pins)]);
       this.setIsStrike(pins);
-    } else if (this.roll === 2) {
+    } else {
       this.frames[this.frame].push(pins);
       this.scoreFrames[this.frame].push(pins);
-      this.roll = 1;
-      this.addToScore(this.scoreFrames[this.frame].reduce(this.addFrame));
-      this.frame += 1;
+      if (!this.additionalRoll()) {
+        this.roll = 1;
+        this.addToScore(this.scoreFrames[this.frame].reduce(this.addFrame));
+        this.frame += 1;
+      } else {
+        this.roll = 3;
+      }
+
     }
   }
 
@@ -72,7 +102,7 @@ class Bowling {
       this.frames.push([pins]);
       this.scoreFrames.push([pins + 2]);
       this.setIsStrike(pins);
-    } else if (this.roll === 2) {
+    } else {
       this.frames[this.frame].push(pins);
       this.scoreFrames[this.frame].push(pins);
       this.roll = 1;

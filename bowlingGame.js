@@ -3,6 +3,14 @@ class BowlingGame {
     this.rolls = [];
     this.currentFrame = 1;
   };
+
+  finished(){
+    if(this.rolls.length === 10){
+      return true;
+    }
+    return false;
+  };
+
   roll(number){
     if(number > 10){
       throw "Invalid Roll";

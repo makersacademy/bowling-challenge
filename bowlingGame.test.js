@@ -80,6 +80,18 @@ describe(BowlingGame, () => {
       this.game.roll(6);
     }).toThrowError('Invalid Roll')
   });
+
+  describe("#finished", () => {
+    it("returns false when game begins", () => {
+      expect(this.game.finished()).toEqual(false);
+    });
+    it("returns false when game is over", () => {
+      for(i=0; i<10; i++){
+        this.game.roll(3);
+      };
+      expect(this.game.finished()).toEqual(true)
+    });
+  });
 });
 
 

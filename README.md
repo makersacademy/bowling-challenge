@@ -3,7 +3,7 @@ Bowling Challenge
 =================
 Makers Academy Week 6 Weekend Challenge
 ---------------------------------------
-* Bowling Game Kata in Javascript - converting from the Ruby challenge from [previous week](https://github.com/tatiananantes/bowling-challenge-ruby)
+* Bowling Game Kata in JavaScript - converting from the Ruby challenge from [previous week](https://github.com/tatiananantes/bowling-challenge-ruby)
 * TDD approach using Jest - 100% coverage
 * Node used to test functionality in terminal
 

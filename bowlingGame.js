@@ -3,7 +3,10 @@ class Bowling {
     this.totalScore = 0;
   }
   getTotalScore() {
-    return this.totalScore
+    return this.totalScore;
+  }
+  roll(pins) {
+    this.totalScore += pins;
   }
 }
 

@@ -19,8 +19,13 @@ class Bowling {
   }
 
   strikeBonusPoints(index) {
-    if (!this.rolls[index + 1]) return 0; 
-    return this.rolls[index + 1] + this.rolls[index + 2]
+    if (!this.rolls[index + 2]) return 0; 
+    return this.rolls[index + 1] + this.rolls[index + 2];
+  }
+
+  spareBonusPoints(index) {
+    if (!this.rolls[index + 2]) return 0; 
+    return this.rolls[index + 2];
   }
 
   reset() {

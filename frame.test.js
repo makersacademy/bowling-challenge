@@ -1,4 +1,3 @@
-const { hasUncaughtExceptionCaptureCallback } = require('process');
 const Frame = require('./frame')
 
 let frame = new Frame();

@@ -42,6 +42,12 @@ class Frame {
     return this.bonus;
   }
 
+  addExtraRoll() {
+    if (this.maxRolls < 3) {
+      this.maxRolls++;
+    }
+  }
+
 }
 
 frame = new Frame();

@@ -25,7 +25,7 @@ describe("Frame", () => {
     it("should be able to know if it is a strike", () => {
       frame = new Frame();
       frame.roll(10);
-      expect(frame.isStrike()).toBe(true);
+      expect(frame.isStrike()).toBe(true); 
     })
   })
 
@@ -64,4 +64,20 @@ describe("Frame", () => {
       expect(frame.getBonus()).toBe(10);
     })
   })
+
+  describe("#addExtraRoll", () => {
+    it("should be able to add extra roll", () => {
+      frame = new Frame();
+      frame.addExtraRoll();
+      expect(frame.maxRolls).toBe(3);
+    })
+    it("should never have a max rolls of more than 3", () => {
+      frame = new Frame();
+      frame.addExtraRoll();
+      frame.addExtraRoll();
+      frame.addExtraRoll();
+      expect(frame.maxRolls).toBe(3);
+    })
+  })
+
 })

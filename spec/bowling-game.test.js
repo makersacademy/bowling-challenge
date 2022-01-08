@@ -22,6 +22,19 @@ describe( 'Bowling Game', () => {
         expect(game.score()).toEqual(0);
       })
     })
+
+    describe('when player rolls a spare', () => {
+      it('calculates score after a spare is rolled', () => {
+        game.roll(6)
+        game.roll(4) 
+        game.roll(3)
+        game.roll(2)
+        for (let i = 0; i < 16; i++) {
+          game.roll(0);
+        }
+        expect(game.score()).toEqual(18);
+      })
+    })
   })
 
 })

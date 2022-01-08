@@ -54,4 +54,8 @@ describe("BowlingGame", ()=>{
 		expect(game.isSpare(frameScore)).toBe(true)
 	})
 
+	it("has a calculateScore method()", ()=>{
+		expect(typeof game.calculateScore).toBe("function")
+	})
+
 })

@@ -19,6 +19,8 @@ class BowlingGame{
 				this.score[this.frameNum - 1].push(pins);
 				this.frameNum++;
 			}
+		}else{ // this else block accounts for the last throw/roll
+			this.score[9].push(pins)
 		}
 	}
 
@@ -30,6 +32,9 @@ class BowlingGame{
 		return !frame.includes(10) && frame.reduce((el, acc) => el + acc, 0) ? true : false
 	}
 
+	calculateScore(){
+		
+	}
 }
 
 export default BowlingGame;

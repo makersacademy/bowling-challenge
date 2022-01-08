@@ -26,7 +26,8 @@ class Bowling {
     };
   }
   changeFrame() {
-    this.frame += 1
+    if(this.frame < 10) { this.frame += 1 }
+    return "You are already on the last frame"
   }
   getFrame() {
     return this.frame;

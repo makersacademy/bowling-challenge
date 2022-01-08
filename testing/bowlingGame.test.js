@@ -33,6 +33,12 @@ describe('class Bowling', () => {
       bowling.roll(2);
       expect(bowling.getFrame()).toEqual(2);
     })
+    it('stops at 10', () => {
+      for(let i = 0; i < 20 ; i++) {
+        bowling.roll(0);
+      }
+      expect(bowling.changeFrame()).toEqual("You are already on the last frame")
+    })
   })
   describe('validInput', () => {
     it('returns false for pins outside of 0 to 10', () => {

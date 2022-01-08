@@ -18,11 +18,12 @@ describe('Game class', () => {
       game.addRolls(1, 4)
       expect(game.frames).toEqual([[1, 4]])
     })
-  })
-
-  describe('maxTen', () => {
-    it('log sum of rolls is over 10', () => {
-      expect(game.maxTen(6, 5)).toEqual('Sum of the rolls cannot exceed 10')
+    
+    it('does not add the rolls and logs Sum of the rolls cannot exceed 10', () => {
+      const consoleSpy = jest.spyOn(console, 'log');
+      game.addRolls(5,6)
+      expect(consoleSpy).toHaveBeenCalledWith('Sum of the rolls cannot exceed 10')
+      expect(game.frames).toEqual([])
     })
   })
 })

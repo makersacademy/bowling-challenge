@@ -2,11 +2,17 @@ class Frame {
 
   constructor() {
     this.rolls = [];
+    this.scoringRolls = [];
     this.maxRolls = 2;
     this.bonus = 0;
   }
 
   roll(pins) {
+    this.rolls.push(pins);
+    this.scoringRolls.push(pins);
+  }
+
+  nonScoringRoll(pins) {
     this.rolls.push(pins);
   }
 
@@ -14,8 +20,16 @@ class Frame {
     return [...this.rolls];
   }
 
+  getScoringRolls() {
+    return [...this.scoringRolls];
+  }
+
   getTotal() {
     return this.getRolls().reduce((previousValue, currentValue) => previousValue + currentValue);
+  }
+
+  getScore() {
+    return this.getScoringRolls().reduce((previousValue, currentValue) =>  previousValue + currentValue);
   }
 
   isStrike() {

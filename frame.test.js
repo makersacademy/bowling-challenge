@@ -15,9 +15,29 @@ describe("Frame", () => {
     })
   })
 
+  describe("#nonScoringRoll", () => {
+    it("should be able to roll a non-scoring roll (for bonus round at end)", () => {
+      frame = new Frame();
+      frame.nonScoringRoll(5);
+      expect(frame.getRolls()[0]).toBe(5);
+      expect(frame.getScoringRolls().length).toBe(0);
+    })
+  })
+
   describe("#getTotal", () => {
     it("should be able to calculate the sum of all the rolls", () => {
+      frame = new Frame ();
+      frame.roll(3);
       expect(frame.getTotal()).toBe(3);
+    })
+  })
+
+  describe("#getScore", () => {
+    it("should be able to calculate score of scoring rolls only", () => {
+      frame = new Frame();
+      frame.roll(4);
+      frame.nonScoringRoll(5);
+      expect(frame.getScore()).toBe(4);
     })
   })
 

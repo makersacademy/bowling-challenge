@@ -47,6 +47,15 @@ describe( 'Bowling Game', () => {
         expect(game.score()).toEqual(22);
       })
     })
+
+    describe('when player rolls 12 strikes', () => {
+      it('scores a perfect game with 300 points', () => {
+        for (let i = 0; i < 12; i++) {
+          game.roll(10);
+        }
+        expect(game.score()).toEqual(300);
+      })
+    })
   })
 
 })

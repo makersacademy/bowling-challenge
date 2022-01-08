@@ -23,5 +23,8 @@
   "homepage": "https://github.com/zidehen/bowling-challenge-js#readme",
   "dependencies": {
     "jest": "^27.4.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.6.0"
   }
 }

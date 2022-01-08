@@ -7,7 +7,7 @@ class Bowling {
   roll(frameRolls) {
     if (this.frame === 10) this.reset();
     this.rolls.push(...frameRolls);
-    this.frame = 1;
+    this.frame++;
   }
 
   checkStrike(index) {
@@ -16,6 +16,11 @@ class Bowling {
 
   checkSpare(index) {
     return this.rolls[index] + this.rolls[index + 1] === 10 ? true : false;
+  }
+
+  strikeBonusPoints(index) {
+    if (!this.rolls[index + 1]) return 0; 
+    return this.rolls[index + 1] + this.rolls[index + 2]
   }
 
   reset() {

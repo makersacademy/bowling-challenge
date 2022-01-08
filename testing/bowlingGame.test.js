@@ -1,9 +1,8 @@
 const Bowling = require('../bowlingGame.js');
-const BowlingScore = require('../bowlingScore.js');
 
 describe('class Bowling', () => {
+  const score = { whatever: () => 'double for bowlingScore' }
   beforeEach(()=> {
-    score = new BowlingScore()
     bowling = new Bowling(score);
   })
 

@@ -1,4 +1,3 @@
-// const BowlingScore = require('./bowlingScore.js')
 
 class Bowling {
   constructor(score) {

@@ -60,6 +60,7 @@ describe('Scorecard', () => {
       scorecard.addRoll(5);
       scorecard.addRoll(5);
       scorecard.addRoll(5);
+      scorecard.addRoll(5);
       expect(scorecard.framesArray.length).toEqual(10);
       expect(scorecard.framesArray[9]).toEqual([5,5,5]);
     });

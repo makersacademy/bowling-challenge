@@ -17,7 +17,10 @@ const rl = readline.createInterface({
         }
         else if (Number.isInteger(parseInt(answer))){
           const answerInteger = parseInt(answer)
-          if(bowling.roll(answerInteger) === "Invalid input") {
+          if(bowling.roll(answerInteger) === "Game Over. No more rolls.") {
+            console.log("Game Over. No more rolls.")
+          }
+          else if(bowling.roll(answerInteger) === "Invalid input") {
             console.log("Invalid input")
           }
           else {console.log(`You bowled a ${answerInteger}`)}

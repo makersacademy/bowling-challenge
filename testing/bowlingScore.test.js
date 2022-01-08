@@ -25,6 +25,19 @@ describe('class BowlingScore', () => {
       }
       expect(bowlingScore.getTotalScore()).toEqual(40);
     })
+    it('has a correct total for a game with spares', () => {
+      bowlingScore.addToScorecard([1, 1]);
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([1, 1]);
+      bowlingScore.addToScorecard([1, 1]);
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([1, 1]);
+      bowlingScore.addToScorecard([1, 1]);
+      bowlingScore.addToScorecard([1, 1]);
+      bowlingScore.addToScorecard([1, 1]);
+      bowlingScore.addToScorecard([1, 1]);
+      expect(bowlingScore.getTotalScore()).toEqual(38);
+    })
   })
   describe('addToScorecard', () => {
     it('adds the frame to the scorecard', () => {
@@ -35,6 +48,17 @@ describe('class BowlingScore', () => {
       bowlingScore.addToScorecard([5, 2]);
       bowlingScore.addToScorecard([4, 3])
       expect(bowlingScore.getScorecard()).toEqual([[5, 2], [4, 3]]);
+    })
+  })
+  describe('calcBonus', () => {
+    it('calcs the correct bonus for a single spare', () => {
+      expect(bowlingScore.calcBonus([[4, 6], [5, 4]])).toBe(5)
+    })
+    it('calcs the correct bonus for a single spare', () => {
+      expect(bowlingScore.calcBonus([[4, 3], [5, 5], [9, 1]])).toBe(9)
+    })
+    it('calcs the correct bonus for multiple spares', () => {
+      expect(bowlingScore.calcBonus([[4, 6], [5, 5], [9, 1]])).toBe(14)
     })
   })
 })

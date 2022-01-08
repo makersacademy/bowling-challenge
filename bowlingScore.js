@@ -2,6 +2,7 @@ class BowlingScore {
   constructor() {
     this.totalScore = 0;
     this.scorecard = [];
+    this.bonus = 0;
   }
   getTotalScore() {
     this.addToTotal();
@@ -15,8 +16,21 @@ class BowlingScore {
   }
   addToTotal() {
     this.totalScore = 0;
-    const sum = (previousValue, nextValue) => previousValue + nextValue;
-    if(this.scorecard.length > 0) { this.totalScore += this.scorecard.flat(1).reduce(sum);}
+    if(this.scorecard.length > 0) 
+      this.scorecard.forEach(element => {
+      this.totalScore += element[0] + element[1] 
+      }
+      )
+      this.totalScore += this.calcBonus(this.scorecard)
+    }
+  calcBonus(frames) {
+    this.bonus = 0
+    if (frames.length >= 2) {
+      for(let i = 0; i < frames.length - 1; i++) {
+        if(frames[i][0] + frames[i][1] === 10) { this.bonus += frames[i + 1][0]}
+      }
+    }
+    return(this.bonus)
   }
 }
 

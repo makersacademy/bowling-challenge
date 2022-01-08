@@ -15,6 +15,7 @@ class Bowling {
     else if(this.validInput(pins)) {
       this.updateCurrentFrame(pins)
       this.changeTurn();
+      return `Your roll of ${pins} was added.`
     }
     else { return "Invalid input" }
   }

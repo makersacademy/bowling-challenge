@@ -38,6 +38,19 @@ describe('class BowlingScore', () => {
       bowlingScore.addToScorecard([1, 1]);
       expect(bowlingScore.getTotalScore()).toEqual(38);
     })
+    it('has a correct total for a game with multiple spares in a row', () => {
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([5, 2]);
+      expect(bowlingScore.getTotalScore()).toEqual(142);
+    })
   })
   describe('addToScorecard', () => {
     it('adds the frame to the scorecard', () => {

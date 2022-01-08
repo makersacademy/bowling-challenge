@@ -3,13 +3,22 @@ class Frame {
     this.score = 0;
   }
 
-  countRolls() {
+  getRollScore() {
+    return prompt();
+  }
+
+  playFrame() {
     let rollcount = 1;
 
     while (rollcount < 3) {
-    //kanei pragmata
-    score += rollscore
-    rollcount += 1
+      //kanei pragmata
+      let rollScore = this.getRollScore();
+      this.addRollScore(rollScore);
+      if (this.score === 10 && rollcount === 1) {
+        return;
+      } else {
+        rollcount += 1;
+      }
     }
   }
 

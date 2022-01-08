@@ -1,7 +1,7 @@
-const BowlingGame = require("./bowlingGame");
+const BowlingGame = require('./bowlingGame');
 
-describe("BowlingGame class", () => {
-  it("creates a new bowling game", () => {
+describe('BowlingGame class', () => {
+  it('creates a new bowling game', () => {
     expect(new BowlingGame()).toBeInstanceOf(BowlingGame);
   });
 });

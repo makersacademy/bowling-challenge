@@ -13,4 +13,15 @@ describe( 'Bowling Game', () => {
     })
   })
 
+  describe('.score', () => {
+    describe('when player rolls a spare', () => {
+      it('rolls a gutter game', () => {
+        for (let i = 0; i < 20; i++) {
+          game.roll(0);
+        }
+        expect(game.score()).toEqual(0);
+      })
+    })
+  })
+
 })

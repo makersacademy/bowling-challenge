@@ -26,4 +26,10 @@ describe('class BowlingScore', () => {
       expect(bowlingScore.getTotalScore()).toEqual(40);
     })
   })
+  describe('addToScorecard', () => {
+    it('adds the roll to the scorecard', () => {
+      bowlingScore.addToScorecard(5);
+      expect(bowlingScore.getScorecard()).toEqual([5]);
+    })
+  })
 })

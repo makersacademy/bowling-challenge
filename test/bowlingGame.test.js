@@ -6,10 +6,9 @@ describe("BowlingGame", () => {
   const game = new BowlingGame();
 
   it("can be initialised with no argument", () => {
-    const gameTwo = new BowlingGame();
     // can't find matcher to compare to empty array like Rspec
     /* eslint-disable no-undef */
-    expect(gameTwo.rollList).toEqual([]);
+    expect(game.rollList).toEqual([]);
   });
 
   it("can store the rolls as an array", () => {
@@ -17,5 +16,15 @@ describe("BowlingGame", () => {
     game.roll(1);
     game.roll(3);
     expect(game.rollList).toEqual([8, 1, 3]);
+  });
+
+  it("can roll a gutter game", () => {
+    const gameTest = new BowlingGame();
+
+    for (i = 0; i < 20; i++) {
+      gameTest.roll(0);
+    }
+  
+    expect(gameTest.getFinalScore()).toEqual(0)
   });
 });

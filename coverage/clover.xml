@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1641654995355" clover="3.2.0">
-  <project timestamp="1641654995355" name="All files">
+<coverage generated="1641655051379" clover="3.2.0">
+  <project timestamp="1641655051379" name="All files">
     <metrics statements="13" coveredstatements="13" conditionals="10" coveredconditionals="9" methods="3" coveredmethods="3" elements="26" coveredelements="25" complexity="0" loc="13" ncloc="13" packages="1" files="1" classes="1"/>
     <file name="bowling.js" path="/Users/giorgigutsaevi/Projects/JS-bowling-challenge/main/bowling.js">
       <metrics statements="13" coveredstatements="13" conditionals="10" coveredconditionals="9" methods="3" coveredmethods="3"/>

@@ -22,6 +22,10 @@ class BowlingGame{
 		}
 	}
 
+	isStrike(frame){
+		return frame.includes(10) ? true : false
+	}
+
 
 }
 

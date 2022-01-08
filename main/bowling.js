@@ -26,6 +26,9 @@ class BowlingGame{
 		return frame.includes(10) ? true : false
 	}
 
+	isSpare(frame){
+		return !frame.includes(10) && frame.reduce((el, acc) => el + acc, 0) ? true : false
+	}
 
 }
 

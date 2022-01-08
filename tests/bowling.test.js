@@ -39,9 +39,19 @@ describe("BowlingGame", ()=>{
 
 	it("isStrike() method returns true if the current frame score contains a 10", ()=>{
 		game.roll(10)
-		let firstFrameScore = game.score[0];
-		console.log(firstFrameScore);
-		expect(game.isStrike(firstFrameScore)).toBe(true)
+		let frameScore = game.score[0];
+		expect(game.isStrike(frameScore)).toBe(true)
+	})
+
+	it('has an isSpare() method', ()=>{
+		expect(typeof game.isSpare).toBe("function")
+	});
+
+	it("isSpare() method returns true if the current frame's combined score equals to 10", ()=>{
+		game.roll(4) // first roll
+		game.roll(6) // second roll
+		let frameScore = game.score[0];
+		expect(game.isSpare(frameScore)).toBe(true)
 	})
 
 })

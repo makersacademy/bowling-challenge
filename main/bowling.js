@@ -1,7 +1,7 @@
 
 class BowlingGame{
 	constructor(){
-		this.score = Array.from( new Array(10), function() { return []; } ); // starts with an array.length of 10, filled with a sub_arr of 0s
+		this.score = Array.from( new Array(10), () => { return []; } ); // starts with an array.length of 10, filled with a sub_arr of 0s
 		this.rollNum = 1; // this variable will fluctuate between 1 and 2, to account for two rolls in one frame
 		this.frameNum = 1; // this means the game starts with a default frame of 1
 	}

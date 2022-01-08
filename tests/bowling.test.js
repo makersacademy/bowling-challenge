@@ -27,5 +27,11 @@ describe("BowlingGame", ()=>{
 		expect(game.score[0]).toEqual([4, 4])
 	})
 
+	it("In any frame, when roll() if 10 pins are hit, it will automatically advance to a next frame", ()=>{
+		game.roll(10)
+		expect(game.score[0]).toEqual([10])
+		expect(game.frameNum).toEqual(2)
+	})
+
 
 })

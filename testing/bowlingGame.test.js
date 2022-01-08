@@ -42,4 +42,9 @@ describe('class Bowling', () => {
       expect(bowling.validInput(7)).toEqual(true);
     })
   })
+  describe('roll', () => {
+    it('return Invalid input if pins outside of 0 to 10 given on first roll', () => {
+      expect(bowling.roll(14)).toEqual("Invalid input");
+    })
+  })
 })

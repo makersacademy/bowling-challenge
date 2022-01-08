@@ -6,8 +6,11 @@ class Bowling {
     this.score = score;
   }
   roll(pins) {
-    this.score.totalScore += pins;
-    this.changeTurn();
+    if(this.validInput(pins)) {
+      this.score.totalScore += pins;
+      this.changeTurn();
+    }
+    return "Invalid input"
   }
   validInput(pins) {
     { return pins >= 0 && pins <= 10 } 

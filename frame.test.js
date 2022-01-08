@@ -57,4 +57,12 @@ describe("Frame", () => {
       expect(frame.isComplete()).toBe(true);
     })
   })
+
+  describe("#addBonus", () => {
+    it("should be able to add bonus points", () => {
+      frame = new Frame();
+      frame.addBonus(10);
+      expect(frame.getBonus()).toBe(10);
+    })
+  })
 })

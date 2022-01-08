@@ -3,6 +3,7 @@ class Frame {
   constructor() {
     this.rolls = [];
     this.maxRolls = 2;
+    this.bonus = 0;
   }
 
   roll(pins) {
@@ -31,6 +32,14 @@ class Frame {
 
   isComplete() {
     return this.numberOfRolls() === this.maxRolls || this.isStrike();
+  }
+
+  addBonus(points) {
+    this.bonus += points;
+  }
+
+  getBonus() {
+    return this.bonus;
   }
 
 }

@@ -1,5 +1,5 @@
 const BowlingGame = require('./bowlingGame.js')
-const bowling = new BowlingGame();
+bowling = new BowlingGame();
 const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
@@ -16,7 +16,11 @@ const rl = readline.createInterface({
           console.log(bowling.bowlingScore.getTotalScore())
         }
         else if (Number.isInteger(parseInt(answer))){
-          console.log("What did you roll?")
+          const answerInteger = parseInt(answer)
+          if(bowling.roll(answerInteger) === "Invalid input") {
+            console.log("Invalid input")
+          }
+          else {console.log(`You bowled a ${answerInteger}`)}
         }
         else {
           console.log("I did not recognise that input.")

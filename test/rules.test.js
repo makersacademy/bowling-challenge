@@ -6,6 +6,9 @@ describe('Rules', () => {
     rules = new Rules();
   });
 
+  test('maxFrames default to 10', () => {
+    expect(rules.maxFrames).toEqual(10);
+  });
 
   describe('.isStrike', () => {
     test('returns true if input is 10', () => {

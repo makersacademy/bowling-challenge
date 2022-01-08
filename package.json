@@ -21,5 +21,9 @@
   "homepage": "https://github.com/EviePalaiochorinou/bowling-challenge-js#readme",
   "dependencies": {
     "jest": "^27.4.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.6.0",
+    "eslint-config-google": "^0.14.0"
   }
 }

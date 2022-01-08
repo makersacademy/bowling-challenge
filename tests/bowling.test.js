@@ -1,6 +1,6 @@
 const Bowling = require('../bowling');
 
-const finishedBowling = new Bowling([1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6], 10);
+const finishedBowling = new Bowling([1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6], 11);
 const bowling = new Bowling();
 
 describe('Bowling', () => {
@@ -15,7 +15,7 @@ describe('Bowling', () => {
     bowlingReset.roll([8,1]);
     bowlingReset.reset();
     expect(bowlingReset.rolls).toEqual([]);
-    expect(bowlingReset.frame).toBe(0);
+    expect(bowlingReset.frame).toBe(1);
   })
   
   it('add rolls', () => {
@@ -61,13 +61,13 @@ describe('Bowling', () => {
 
   it('calculate the score of a perfect game', () => {
     const perfectRolls = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
-    const perfectGame = new Bowling(perfectRolls, 10);
+    const perfectGame = new Bowling(perfectRolls, 11);
     expect(perfectGame.score()).toBe(300);
   })
 
   it('calculate the score of a gutter game', () => {
     const gutterRolls = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    const gutterGame = new Bowling(gutterRolls, 10);
+    const gutterGame = new Bowling(gutterRolls, 11);
     expect(gutterGame.score()).toBe(0);
   })
 })

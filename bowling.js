@@ -1,11 +1,11 @@
 class Bowling {
-  constructor(rolls = [], frame = 0) {
+  constructor(rolls = [], frame = 1) {
     this.rolls = rolls;
     this.frame = frame;
   }
 
   roll(frameRolls) {
-    if (this.frame === 10) this.reset();
+    if (this.frame > 10) this.reset();
     this.rolls.push(...frameRolls);
     this.frame++;
   }
@@ -13,7 +13,7 @@ class Bowling {
   score() {
     let index = 0;
     let score = 0;
-    for(let i = 1; i <= this.frame; i++) {
+    for(let i = 1; i < this.frame; i++) {
       if (this.checkStrike(index)) {
         score += (10 + this.strikeBonusPoints(index));
       } else if (this.checkSpare(index)) {
@@ -45,7 +45,7 @@ class Bowling {
   }
 
   reset() {
-    this.frame = 0;
+    this.frame = 1;
     this.rolls = [];
   }
 }

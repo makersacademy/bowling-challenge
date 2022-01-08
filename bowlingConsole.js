@@ -12,11 +12,11 @@ const rl = readline.createInterface({
         if (answer === 'get score'){
           console.log(bowling.bowlingScore.getScorecard())
         }
-        else if (answer === 'roll'){
-          console.log("What did you roll?")
-        }
         else if(answer === 'total') {
           console.log(bowling.bowlingScore.getTotalScore())
+        }
+        else if (Number.isInteger(parseInt(answer))){
+          console.log("What did you roll?")
         }
         else {
           console.log("I did not recognise that input.")

@@ -23,4 +23,10 @@ describe('Bowling', () => {
     bowling.roll([10])
     expect(bowling.checkStrike(0)).toBe(true)
   })
+
+  it('can check if roll a strike', () => {
+    const bowling = new Bowling()
+    bowling.roll([9, 1])
+    expect(bowling.checkSpare(0)).toBe(true)
+  })
 })

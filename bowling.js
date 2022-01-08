@@ -14,6 +14,10 @@ class Bowling {
    return this.rolls[index] === 10 ? true : false;
   }
 
+  checkSpare(index) {
+    return this.rolls[index] + this.rolls[index + 1] === 10 ? true : false;
+  }
+
   reset() {
     this.frame = 0;
     this.rolls = [];

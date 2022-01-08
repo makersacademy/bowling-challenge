@@ -32,5 +32,4 @@ describe('Rules', () => {
       expect(rules.isSpare([1])).toEqual(false);
     });
   });
-
 });

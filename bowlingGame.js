@@ -9,6 +9,9 @@ class Bowling {
     this.score.totalScore += pins;
     this.changeTurn();
   }
+  validInput(pins) {
+    { return pins >= 0 && pins <= 10 } 
+  }
   getTurn() {
     return this.turn;
   }

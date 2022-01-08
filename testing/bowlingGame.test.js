@@ -34,4 +34,12 @@ describe('class Bowling', () => {
       expect(bowling.getFrame()).toEqual(2);
     })
   })
+  describe('validInput', () => {
+    it('returns false for pins outside of 0 to 10', () => {
+      expect(bowling.validInput(11)).toEqual(false);
+    })
+    it('returns true for pins within range of 0 to 10 on first turn', () => {
+      expect(bowling.validInput(7)).toEqual(true);
+    })
+  })
 })

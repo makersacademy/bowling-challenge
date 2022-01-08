@@ -8,19 +8,18 @@ class BowlingGame {
 
   play() {
     let prevFrame = new Frame();
-    while (this.framecount < 10) {
+    for (let i = 0; i<10; i++) {
       const currentFrame = this.playFrame();
       let currScore = 0;
-      if prevFrame.isStrike() {
-        currScore = 10 + currentFrame.score
-      } else if prevFrame.isSpare() {
-        currScore = 5 + currentFrame.score
+      if (prevFrame.isStrike) {
+        currScore = 10 + currentFrame.score;
+      } else if (prevFrame.isSpare) {
+        currScore = 5 + currentFrame.score;
       } else {
-        currScore = currentFrame.score
+        currScore = currentFrame.score;
       }
       this.scoreSum.push(currScore);
-      framecount += 1;
-      prevFrame = currentFrame
+      prevFrame = currentFrame;
     }
   }
 
@@ -30,17 +29,10 @@ class BowlingGame {
 
   playFrame() {
     const currentFrame = new Frame();
-    let rollcount = 1;
-    while (rollcount <= 2) {
+    for (let i = 0; i<2; i++) {
       currentFrame.addRollScore(this.getRollScore());
-      if (currentFrame.score === 10 && rollcount === 1) {
-        // it's a strike
-        currentFrame.strike = true;
+      if (currentFrame.isStrike()) {
         break;
-      } else if (currentFrame.score === 10 && rollcount === 2) {
-        currentFrame.spare = true;
-      }else {
-        rollcount += 1;
       }
     }
     return currentFrame;

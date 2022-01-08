@@ -88,14 +88,26 @@ ESLint Quickstart: https://www.youtube.com/watch?v=qhuFviJn-es
 
 Specifications for Bowling Scorecard Program:
 
-- can start a game (bowl 10 frames)
-- promt for player's name
-  (- if 2 or more players, players can take turns)
-- count number of pins knocked down: .roll(number_of_knockdown_pins)
-- get user's input to enter the number of pins knockdown for each roll
-- caculates the final score (sum)
-- checks for gutter game (0pts)
-- checks for spares (1 bonus from the 1st roll of next frame)
-- checks for strikes (2 bonus from the two rolls of next frame)
-- shows 300pts for a perfect game
-- shows 150pts for a 'all' spares game
+- [x] can start a game (bowl 10 frames)
+- [x] count number of pins knocked down: .roll(number_of_knockdown_pins)
+- [ ] get user's input to enter the number of pins knockdown for each roll
+- [ ] caculates the final score (sum)
+- [ ] checks for gutter game (0pts)
+- [ ] checks for spares (1 bonus from the 1st roll of next frame)
+- [ ] checks for strikes (2 bonus from the two rolls of next frame)
+- [ ] shows 300pts for a perfect game
+- [ ] shows 150pts for a 'all' spares game
+
+! ESLint:
+
+```
+/Users/Swa/Desktop/Projects/solo-challenges/bowling-challenge/test/bowlingGame.test.js
+   4:1  error  'describe' is not defined  no-undef
+  11:5  error  'expect' is not defined    no-undef
+  18:5  error  'expect' is not defined    no-undef
+
+```
+
+https://eslint.org/docs/rules/no-undef
+I used `/* eslint-disable no-undef */`, to disable it in the whole file, and hopefully not in my bowlingGame.js file.
+Not sure how this all works, usually VSCode + Prettier adds missing `;` and greys out methods that are not defined and variables that haven't been used yet.

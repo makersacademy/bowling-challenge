@@ -9,6 +9,8 @@
     "test": "test"
   },
   "scripts": {
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "npm run lint -- --fix",
     "test": "jest"
   },
   "repository": {

@@ -58,4 +58,16 @@ describe('Bowling', () => {
   it('calculate the score of a finished game', () => {
     expect(finishedBowling.score()).toBe(133);
   })
+
+  it('calculate the score of a perfect game', () => {
+    const perfectRolls = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+    const perfectGame = new Bowling(perfectRolls, 10);
+    expect(perfectGame.score()).toBe(300);
+  })
+
+  it('calculate the score of a gutter game', () => {
+    const gutterRolls = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    const gutterGame = new Bowling(gutterRolls, 10);
+    expect(gutterGame.score()).toBe(0);
+  })
 })

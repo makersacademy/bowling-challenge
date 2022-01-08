@@ -1,8 +1,28 @@
 
 class BowlingGame{
 	constructor(){
-		this.score = [];
+		this.score = Array.from( new Array(10), function() { return []; } ); // starts with an array.length of 10, filled with a sub_arr of 0s
+		this.rollNum = 1; // this variable will fluctuate between 1 and 2, to account for two rolls in one frame
+		this.frameNum = 1; // this means the game starts with a default frame of 1
 	}
+
+	roll(pins){
+		if(this.frameNum < 10){
+			if(pins < 10 && this.rollNum === 1){
+				this.score[this.frameNum - 1].push(pins)
+				this.rollNum++;
+			}else if(pins < 10 && this.rollNum === 2){
+				this.score[this.frameNum - 1].push(pins)
+				this.frameNum++;
+				this.rollNum--;
+			}else{	// this `else block` accounts for a strike
+				this.score[this.frameNum - 1].push(pins);
+				this.frameNum++;
+			}
+		}
+	}
+
+
 }
 
 export default BowlingGame;

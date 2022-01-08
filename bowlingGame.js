@@ -1,8 +1,6 @@
 
 const BowlingScore = require('./bowlingScore.js')
 
-// const bowlingScore = new BowlingScore()
-
 class Bowling {
   constructor() {
     this.turn = 1;
@@ -15,7 +13,6 @@ class Bowling {
       return "Game Over. No more rolls."
     }
     else if(this.validInput(pins)) {
-      // this.score.totalScore += pins;
       this.updateCurrentFrame(pins)
       this.changeTurn();
     }

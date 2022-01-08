@@ -10,6 +10,10 @@ class Bowling {
     this.frame = 1;
   }
 
+  checkStrike(index) {
+   return this.rolls[index] === 10 ? true : false;
+  }
+
   reset() {
     this.frame = 0;
     this.rolls = [];

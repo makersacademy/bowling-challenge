@@ -17,4 +17,10 @@ describe('Bowling', () => {
     finishedBowling.reset();
     expect(finishedBowling.rolls).toEqual([]);
   })
+
+  it('can check if roll a strike', () => {
+    const bowling = new Bowling()
+    bowling.roll([10])
+    expect(bowling.checkStrike(0)).toBe(true)
+  })
 })

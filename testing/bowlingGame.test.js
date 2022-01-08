@@ -1,28 +1,30 @@
-const Bowling = require('../bowlingGame.js')
+const Bowling = require('../bowlingGame.js');
+const BowlingScore = require('../bowlingScore.js');
 
 describe('class Bowling', () => {
   beforeEach(()=> {
-    bowling = new Bowling();
+    score = new BowlingScore()
+    bowling = new Bowling(score);
   })
   describe('total score', () => {
     it('starts with a total score of 0', () => {
-      expect(bowling.getTotalScore()).toEqual(0);
+      expect(bowling.score.getTotalScore()).toEqual(0);
     })
     it('increases by the number of pins knocked down on roll', () => {
       bowling.roll(5)
-      expect(bowling.getTotalScore()).toEqual(5);
+      expect(bowling.score.getTotalScore()).toEqual(5);
     })
     it('has a total of 0 for a gutter game', () => {
       for(let i = 0; i < 20 ; i++) {
         bowling.roll(0);
       }
-      expect(bowling.getTotalScore()).toEqual(0);
+      expect(bowling.score.getTotalScore()).toEqual(0);
     })
     it('has a correct total for a game without spares and strikes', () => {
       for(let i = 0; i < 20 ; i++) {
         bowling.roll(2);
       }
-      expect(bowling.getTotalScore()).toEqual(40);
+      expect(bowling.score.getTotalScore()).toEqual(40);
     })
   })
   describe('turn', () => {

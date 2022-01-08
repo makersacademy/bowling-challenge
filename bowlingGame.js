@@ -1,14 +1,13 @@
+const BowlingScore = require('./bowlingScore.js')
+
 class Bowling {
-  constructor() {
-    this.totalScore = 0;
+  constructor(score) {
     this.turn = 1;
     this.frame = 1;
-  }
-  getTotalScore() {
-    return this.totalScore;
+    this.score = score;
   }
   roll(pins) {
-    this.totalScore += pins;
+    this.score.totalScore += pins;
     this.changeTurn();
   }
   getTurn() {

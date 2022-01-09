@@ -20,6 +20,14 @@ describe('Scorecard', () => {
       expect(scorecard._frame).toEqual([]);
     })
 
+    test('consecutive strikes added', () => {
+      scorecard.addRoll(10);
+      scorecard.addRoll(10);
+      expect(scorecard.framesArray.length).toEqual(2);
+      expect(scorecard.framesArray[0]).toEqual([10]);  
+      expect(scorecard.framesArray[1]).toEqual([10]);  
+    })
+
     test('if frame is 2 rolls long it is added to framesArray', () => {
       scorecard.addRoll(2);
       scorecard.addRoll(4);

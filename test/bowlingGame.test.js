@@ -40,11 +40,16 @@ describe("BowlingGame", () => {
 
   it("can roll a spare", () => {
     const game = new BowlingGame();
+
     game.roll(8);
     game.roll(2);
     game.roll(3);
+
+    for (i = 0; i < 19; i++) {
+      game.roll(0);
+    }
     // console.log(game.rollList);
-    expect(game.getFinalScore()).toEqual(13);
+    expect(game.getFinalScore()).toEqual(16);
   });
 
   it("can roll all spares", () => {
@@ -54,6 +59,6 @@ describe("BowlingGame", () => {
     }
 
     console.log(game.rollList);
-    expect(game.getFinalScore()).toEqual(13);
+    expect(game.getFinalScore()).toEqual(150);
   });
 });

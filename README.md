@@ -96,7 +96,7 @@ Specifications for Bowling Scorecard Program:
 - [x] checks for spares (1 bonus from the 1st roll of next frame)
 - [ ] checks for strikes (2 bonus from the two rolls of next frame)
 - [ ] shows 300pts for a perfect game
-- [ ] shows 150pts for a 'all' spares game
+- [x] shows 150pts for a 'all' spares game
 
 ! ESLint:
 
@@ -114,10 +114,11 @@ Not sure how this all works, usually VSCode + Prettier adds missing `;` and grey
 
 getFinalScore flow : (Ruby)
 [index of rollList use] (images/diagram2.png)
+
 ```
 getFinalScore()
 calculate score frame by frame
-    10 frames (use index of rollList) 
+    10 frames (use index of rollList)
         (i = 0)
         if strike ? (checking first roll of the frame : rollList[i] = 10)
           sum = 10pts (strike) + bonus1 (first roll next frame => rollList[i+1]) + bonus2 (second roll next frame => rollList[i+2])
@@ -132,3 +133,14 @@ calculate score frame by frame
         end
     end
 ```
+
+not so sure what's happening here, having a nightmare to get place the return at the right line to get sum back... and not undefined or NaN
+
+also I tried to use a function from the Class within another function of the same Class and it said undefined function so I will have to look into this.
+
+I uninstalled ESLint, it was bloking prettier and as I am new to JS prettier is just a lifesaver and I don't feel confortable working without it yet..
+
+Hard time debugging this one, my loop for iterating over all the 10 frames wasn't working:
+I need to return the value of sum in the if statement after calculatin the score for each frame. but then I couldn't change the index of my rollList after the return. so I created another variable (frameI) that I could change frame before calculating the score and return it.
+after struggling a bit it look like I can use this.sum when declare in the constructor function => I don't need to return the sum to update it
+

@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/s-dousse/bowling-challenge/issues"
   },
-  "homepage": "https://github.com/s-dousse/bowling-challenge#readme"
+  "homepage": "https://github.com/s-dousse/bowling-challenge#readme",
+  "dependencies": {
+    "readline": "^1.3.0"
+  }
 }

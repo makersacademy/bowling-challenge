@@ -112,7 +112,7 @@ https://eslint.org/docs/rules/no-undef
 I used `/* eslint-disable no-undef */`, to disable it in the whole file, and hopefully not in my bowlingGame.js file.
 Not sure how this all works, usually VSCode + Prettier adds missing `;` and greys out methods that are not defined and variables that haven't been used yet.
 
-getFinalScore flow : (Ruby)
+getFinalScore flow : pseudo code + ruby mix
 [index of rollList use] (images/diagram2.png)
 
 ```
@@ -155,7 +155,7 @@ Yay all tests passing : let's see how I can refactor my big chunky method getTot
 
 We can call these functions as methods within the getTotalScore function, but we use the `this` keyword!
 I think this is how it works:
-so `this` will point to the object that is calling the method 
+so `this` will point to the object that is calling the method
 in tests we do `game.getTotalScore()` (before const game = new BowlingGame())
 so in getTotalScore() we do
 `this.isAStrike(i)` will be like `game.isAStrike(i)`?
@@ -163,3 +163,76 @@ also `this` behaves differently with arrow functions, I haven't used them here ,
 
 also not sure that having `this.sum` as class property is the best? but then I can pass it around the different function without using a argument
 or this is bad practice ? or I should do the same for the `this.rollList[?]`?
+
+### adding a CLI
+
+so I've done it with my thermostat project and setting it up was not as difficult as I expeted
+I now have a weird error:
+
+```
+Swa@Swas-MacBook-Pro bowling-challenge % node cli.js
+Enter command > 11
+sorry, enter a valid roll or command
+Enter command > -2
+sorry, enter a valid roll or command
+Enter command > 10
+added roll #1
+Enter command > 10
+added roll #2
+Enter command > 10
+added roll #3
+Enter command > 10
+added roll #4
+Enter command > 10
+added roll #5
+Enter command > 10
+added roll #6
+Enter command > 10
+added roll #7
+Enter command > 10
+added roll #8
+Enter command > 10
+added roll #9
+Enter command > 10
+added roll #10
+Enter command > 10
+added roll #11
+Enter command > 10
+added roll #12
+Enter command > my rolls
+[
+  '10', '10', '10',
+  '10', '10', '10',
+  '10', '10', '10',
+  '10', '10', '10'
+]
+Enter command > score
+strike
+calculating strike score
+strike
+calculating strike score
+strike
+calculating strike score
+strike
+calculating strike score
+strike
+calculating strike score
+strike
+calculating strike score
+strike
+calculating strike score
+strike
+calculating strike score
+strike
+calculating strike score
+strike
+calculating strike score
+0101010101010101010101010101010101010101010101010101010101010
+0101010101010101010101010101010101010101010101010101010101010
+Enter command >
+```
+
+to debug this I tried to add a few console.log in my getTotalScore (console.log("strike") when in isAStrike is true) and calculateStrikeScore (console.log("calculating strike score")) methods
+maybe `this.sum` is not updated
+I am unsure as doing `game.rollList` in the cli.js file let me access the class property
+when I console.log `game.sum`, I get the same as console.log `game.getTotalScore` which I expected but didn't solve the problem

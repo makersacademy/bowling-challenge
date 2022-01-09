@@ -144,3 +144,22 @@ Hard time debugging this one, my loop for iterating over all the 10 frames wasn'
 I need to return the value of sum in the if statement after calculatin the score for each frame. but then I couldn't change the index of my rollList after the return. so I created another variable (frameI) that I could change frame before calculating the score and return it.
 after struggling a bit it look like I can use this.sum when declare in the constructor function => I don't need to return the sum to update it
 
+Yay all tests passing : let's see how I can refactor my big chunky method getTotalScore to have clear responsability for each method + break in shorter methods:
+
+- isAStrike(i) => check the first roll of a frame
+- isASpare(i) => check if the sum of both rolls of a frame equal to 10
+- calulateStrikeScore()
+- calculateSpareScore()
+- caculateBasicScore()
+- moveToNextFrame(str)
+
+We can call these functions as methods within the getTotalScore function, but we use the `this` keyword!
+I think this is how it works:
+so `this` will point to the object that is calling the method 
+in tests we do `game.getTotalScore()` (before const game = new BowlingGame())
+so in getTotalScore() we do
+`this.isAStrike(i)` will be like `game.isAStrike(i)`?
+also `this` behaves differently with arrow functions, I haven't used them here , but that's just luck and the tests are still passing after refactoring
+
+also not sure that having `this.sum` as class property is the best? but then I can pass it around the different function without using a argument
+or this is bad practice ? or I should do the same for the `this.rollList[?]`?

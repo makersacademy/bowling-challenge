@@ -1,13 +1,9 @@
-// const { it } = require("eslint/lib/rule-tester/rule-tester");
 const BowlingGame = require("../bowlingGame");
 
-/* eslint-disable no-undef */
 describe("BowlingGame", () => {
   const game = new BowlingGame();
 
   it("can be initialised with no argument", () => {
-    // can't find matcher to compare to empty array like Rspec
-    /* eslint-disable no-undef */
     expect(game.rollList).toEqual([]);
   });
 
@@ -19,16 +15,17 @@ describe("BowlingGame", () => {
   });
 
   it("can roll a gutter game", () => {
-    const gameTest = new BowlingGame();
+    const game = new BowlingGame();
 
-    for (i = 0; i < 22; i++) {
-      gameTest.roll(0);
+    for (i = 0; i < 20; i++) {
+      game.roll(0);
     }
 
-    expect(gameTest.getFinalScore()).toEqual(0);
+    // console.log(game.rollList.length); // 20
+    expect(game.getFinalScore()).toBe(0);
   });
 
-  it("can roll a spare", () => {
+  it("can roll a spare and then 9 frames with 0 pts", () => {
     const game = new BowlingGame();
 
     game.roll(8);
@@ -39,20 +36,36 @@ describe("BowlingGame", () => {
       game.roll(0);
     }
 
-    expect(game.getFinalScore()).toEqual(16);
+    // console.log(game.rollList.length); // 20
+    expect(game.getFinalScore()).toBe(16);
+  });
+
+  it("can roll 9 frames with 0 pts and then roll 1 spare (10th frame)", () => {
+    const game = new BowlingGame();
+
+    for (i = 0; i < 18; i++) {
+      game.roll(0);
+    }
+
+    game.roll(8);
+    game.roll(2);
+    game.roll(3);
+
+    // console.log(game.rollList.length); // 21
+    expect(game.getFinalScore()).toBe(13);
   });
 
   it("can roll all spares", () => {
-    const game = new BowlingGame();
+    const gameAllSpares = new BowlingGame();
     for (i = 0; i < 21; i++) {
-      game.roll(5);
+      gameAllSpares.roll(5);
     }
 
-    // console.log(game.rollList);
-    expect(game.getFinalScore()).toEqual(150);
+    // console.log(gameAllSpares.rollList.length); // 21
+    expect(gameAllSpares.getFinalScore()).toBe(150);
   });
 
-  it("can roll a strike", () => {
+  it("can roll a strike and then 9 frames with 0pts", () => {
     const game = new BowlingGame();
     game.roll(10);
     game.roll(1);
@@ -61,8 +74,22 @@ describe("BowlingGame", () => {
     for (i = 0; i < 16; i++) {
       game.roll(0);
     }
-    console.log(game.rollList);
-    expect(game.getFinalScore()).toEqual(14);
+    // console.log(game.rollList.length); // 19 (1 strike)
+    expect(game.getFinalScore()).toBe(14);
+  });
+
+  it("can roll 9 frames with 0 pts, then roll a strike (10th frame)", () => {
+    const game = new BowlingGame();
+
+    for (i = 0; i < 18; i++) {
+      game.roll(0);
+    }
+    game.roll(10);
+    game.roll(1);
+    game.roll(1);
+
+    // console.log(game.rollList.length); // 21 (1 strike)
+    expect(game.getFinalScore()).toBe(12);
   });
 
   it("can roll a perfect game", () => {
@@ -72,6 +99,7 @@ describe("BowlingGame", () => {
       perfectGame.roll(10);
     }
 
-    expect(perfectGame.getFinalScore()).toEqual(300);
+    // console.log(perfectGame.rollList.length); // 12 (10 strikes + 2 bonus rolls)
+    expect(perfectGame.getFinalScore()).toBe(300);
   });
 });

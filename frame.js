@@ -3,8 +3,13 @@ class Frame {
     this.rolls = [];
   }
 
-  add_roll(points) {
+  addRoll(points) {
     this.rolls.push(points);
+  }
+
+  totalScore() {
+    const reducer = (previousValue, currentValue) => previousValue + currentValue;
+    return this.rolls.reduce(reducer, 0);
   }
 }
 

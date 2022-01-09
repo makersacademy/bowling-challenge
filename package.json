@@ -1,0 +1,26 @@
+{
+  "name": "js-bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giorgigutsaevi/JS-bowling-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/giorgigutsaevi/JS-bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/giorgigutsaevi/JS-bowling-challenge#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.7",
+    "babel-jest": "^27.4.6",
+    "jest": "^27.4.7"
+  }
+}

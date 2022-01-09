@@ -75,8 +75,6 @@ describe('class BowlingScore', () => {
       bowlingScore.addToScorecard([5, 5]);
       bowlingScore.addToScorecard([4, 4]);
       bowlingScore.addToScorecard([4, 4]);
-      // GETTING 132 EXPECTING 137
-      // 90 normal. 10 + 4 spare bonus. 8 + 15 + 10 strike bonus. Issue is strike isnt taking next two throws
       expect(bowlingScore.getTotalScore()).toEqual(137);
     })
   })

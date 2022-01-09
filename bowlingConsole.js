@@ -29,6 +29,10 @@ const rl = readline.createInterface({
   
   async function run() {
       console.log("Welcome to the bowling game")
+      console.log("Commands are as follows:")
+      console.log("'get score' => shows current scorecard")
+      console.log("'total' => shows total score so far")
+      console.log("otherwise enter a number to represent how many pins you knocked down")
       while (true) {
         await bowlingScorecard();
         console.log(`Frame: ${bowling.getFrame()}. Turn: ${bowling.getTurn()}`);

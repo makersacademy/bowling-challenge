@@ -19,6 +19,10 @@ const rl = readline.createInterface({
           const answerInteger = parseInt(answer)
           console.log(bowling.roll(answerInteger))
           }
+        else if(answer === 'new game') {
+          bowling = new BowlingGame();
+          console.log("New bowling game created")
+        }
         else {
           console.log("I did not recognise that input.")
         }
@@ -32,6 +36,7 @@ const rl = readline.createInterface({
       console.log("Commands are as follows:")
       console.log("'get score' => shows current scorecard")
       console.log("'total' => shows total score so far")
+      console.log("'new game' => starts a new game")
       console.log("otherwise enter a number to represent how many pins you knocked down")
       while (true) {
         await bowlingScorecard();

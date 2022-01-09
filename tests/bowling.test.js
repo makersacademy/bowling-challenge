@@ -53,9 +53,27 @@ describe("BowlingGame", ()=>{
 		let frameScore = game.score[0];
 		expect(game.isSpare(frameScore)).toBe(true)
 	})
+	
+
+	it('has an isPerfectGame() method', ()=>{
+		expect(typeof game.isPerfectGame).toBe("function")
+	});
+
+	it("isPerfectGame()() method checks if the game is a perfect game", ()=>{
+		Array.from({length: 10}, (a, b)=>{
+			game.roll(10)
+		})
+		expect(game.isPerfectGame()).toBe(true)
+	})
 
 	it("has a calculateScore method()", ()=>{
 		expect(typeof game.calculateScore).toBe("function")
 	})
+
+	it("calculateScore() calculates the score based on user's performance/throws", ()=>{
+		game.score = [[1,4], [4,5], [6,4], [5,5], [10], [0,1], [7,3], [6,4], [10], [2,8,6]]
+		expect(game.calculateScore()).toEqual(133)
+	})
+
 
 })

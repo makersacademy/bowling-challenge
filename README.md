@@ -77,6 +77,6 @@ I decided to extract this challenge into 4 classes:
     Your score: 300
     ```
 
-### Missing
+### TODO
 
-- Currently assumes user will input correct data --> implement checks to avoid a hostile user.
+- [ ] Currently assumes user will input correct data --> implement checks to avoid a hostile user.

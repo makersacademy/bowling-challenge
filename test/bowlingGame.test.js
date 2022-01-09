@@ -21,22 +21,12 @@ describe("BowlingGame", () => {
   it("can roll a gutter game", () => {
     const gameTest = new BowlingGame();
 
-    for (i = 0; i < 20; i++) {
+    for (i = 0; i < 22; i++) {
       gameTest.roll(0);
     }
 
     expect(gameTest.getFinalScore()).toEqual(0);
   });
-
-  // it("can roll a perfect game", () => {
-  //   const game = new BowlingGame();
-
-  //   for (i = 0; i < 10; i++) {
-  //     game.roll(10);
-  //   }
-
-  //   expect(game.getFinalScore()).toEqual(300);
-  // });
 
   it("can roll a spare", () => {
     const game = new BowlingGame();
@@ -45,20 +35,43 @@ describe("BowlingGame", () => {
     game.roll(2);
     game.roll(3);
 
-    for (i = 0; i < 19; i++) {
+    for (i = 0; i < 17; i++) {
       game.roll(0);
     }
-    // console.log(game.rollList);
+
     expect(game.getFinalScore()).toEqual(16);
   });
 
   it("can roll all spares", () => {
     const game = new BowlingGame();
-    for (i = 0; i < 20; i++) {
+    for (i = 0; i < 21; i++) {
       game.roll(5);
     }
 
-    console.log(game.rollList);
+    // console.log(game.rollList);
     expect(game.getFinalScore()).toEqual(150);
+  });
+
+  it("can roll a strike", () => {
+    const game = new BowlingGame();
+    game.roll(10);
+    game.roll(1);
+    game.roll(1);
+
+    for (i = 0; i < 16; i++) {
+      game.roll(0);
+    }
+    console.log(game.rollList);
+    expect(game.getFinalScore()).toEqual(14);
+  });
+
+  it("can roll a perfect game", () => {
+    const perfectGame = new BowlingGame();
+
+    for (i = 0; i < 12; i++) {
+      perfectGame.roll(10);
+    }
+
+    expect(perfectGame.getFinalScore()).toEqual(300);
   });
 });

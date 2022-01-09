@@ -91,11 +91,11 @@ Specifications for Bowling Scorecard Program:
 - [x] can start a game (bowl 10 frames)
 - [x] count number of pins knocked down: .roll(number_of_knockdown_pins)
 - [ ] get user's input to enter the number of pins knockdown for each roll
-- [ ] caculates the final score (sum)
+- [x] caculates the final score (sum)
 - [x] checks for gutter game (0pts)
 - [x] checks for spares (1 bonus from the 1st roll of next frame)
-- [ ] checks for strikes (2 bonus from the two rolls of next frame)
-- [ ] shows 300pts for a perfect game
+- [x] checks for strikes (2 bonus from the two rolls of next frame)
+- [x] shows 300pts for a perfect game
 - [x] shows 150pts for a 'all' spares game
 
 ! ESLint:

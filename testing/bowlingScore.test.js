@@ -51,6 +51,34 @@ describe('class BowlingScore', () => {
       bowlingScore.addToScorecard([5, 2]);
       expect(bowlingScore.getTotalScore()).toEqual(142);
     })
+    it('has a correct total for a game with a single strike in it', () => {
+      bowlingScore.addToScorecard([4, 4]);
+      bowlingScore.addToScorecard([4, 4]);
+      bowlingScore.addToScorecard([4, 4]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([3, 3]);
+      bowlingScore.addToScorecard([3, 3]);
+      bowlingScore.addToScorecard([3, 3]);
+      bowlingScore.addToScorecard([3, 3]);
+      bowlingScore.addToScorecard([3, 3]);
+      bowlingScore.addToScorecard([3, 3]);
+      expect(bowlingScore.getTotalScore()).toEqual(76);
+    })
+    it('has a correct total for a game with a multiple strikes and spares in it', () => {
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([4, 4]);
+      bowlingScore.addToScorecard([4, 4]);
+      bowlingScore.addToScorecard([4, 4]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([5, 5]);
+      bowlingScore.addToScorecard([4, 4]);
+      bowlingScore.addToScorecard([4, 4]);
+      // GETTING 132 EXPECTING 137
+      // 90 normal. 10 + 4 spare bonus. 8 + 15 + 10 strike bonus. Issue is strike isnt taking next two throws
+      expect(bowlingScore.getTotalScore()).toEqual(137);
+    })
   })
   describe('addToScorecard', () => {
     it('adds the frame to the scorecard', () => {

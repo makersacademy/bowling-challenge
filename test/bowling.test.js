@@ -1,0 +1,187 @@
+const Bowling = require('../lib/bowling.js');
+
+describe('Bowling class', () => {
+  it('can bowl a ball', () => {
+    bowling = new Bowling()
+    expect(bowling.myRoll(5)).toEqual({'1' : [5]});
+  });
+  it('Will not bowl if it has a value of over 10', () => {
+    bowling = new Bowling()
+    expect(bowling.myRoll(15)).toEqual('Invalid roll');
+  });
+  it('Will not bowl if this bowl plus the previous will be over 10', () => {
+    bowling = new Bowling()
+    bowling.myRoll(6)
+    expect(bowling.myRoll(5)).toEqual('Invalid roll');
+  });
+  it('Will bowl and move to the next turn after doing so', () => {
+    bowling = new Bowling()
+    bowling.myRoll(6)
+    bowling.myRoll(3)
+    expect(bowling.myRoll(5)).toEqual({'1' : [6, 3], '2' : [5]});
+  });
+  it('Will do the bowls correctly if an incorrect bowl is given inbetween valid rolls', () => {
+    bowling = new Bowling()
+    bowling.myRoll(6)
+    bowling.myRoll(6)
+    bowling.myRoll(3)
+    expect(bowling.myRoll(5)).toEqual({'1' : [6, 3], '2' : [5]});
+  })
+  it('Will add up the scores when asked to', () => {
+    bowling = new Bowling()
+    bowling.myRoll(6)
+    bowling.myRoll(3)
+    bowling.myRoll(3)
+    expect(bowling.calculateBasic()).toEqual(12);
+  })
+
+  it('Will add up strikes and spares correctly', () => {
+    bowling = new Bowling()
+    bowling.myRoll(10)
+    bowling.myRoll(3)
+    expect(bowling.calculateStrikes()).toEqual(3)
+    bowling2 = new Bowling()
+    bowling2.myRoll(7)
+    bowling2.myRoll(3)
+    bowling2.myRoll(4)
+    expect(bowling2.calculateStrikes()).toEqual(4)
+    bowling3 = new Bowling()
+    bowling3.myRoll(10)
+    bowling3.myRoll(10)
+    bowling3.myRoll(4)
+    expect(bowling3.calculateStrikes()).toEqual(18)
+  })
+
+  it('Can fully add up the current score', () => {
+    bowling = new Bowling()
+    bowling.myRoll(10)
+    bowling.myRoll(3)
+    bowling.myRoll(7)
+    bowling.myRoll(4)
+    expect(bowling.totalScore()).toEqual(38)
+  })
+
+  it('Will not let you bowl past 10 + bonus', () => {
+    bowling = new Bowling()
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(5)
+    bowling.myRoll(4)
+    expect(bowling.myRoll(1)).toEqual("The game is over! No more rolls")
+  })
+
+  it('Will not let you bowl past 10 if you do not get the bonus', () => {
+    bowling = new Bowling()
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    expect(bowling.myRoll(1)).toEqual("The game is over! No more rolls")
+  })
+
+
+  it ('Feature test 1', () => {
+    bowling = new Bowling()
+    bowling.myRoll(5)
+    bowling.myRoll(4)
+    bowling.myRoll(7)
+    bowling.myRoll(2)
+    bowling.myRoll(8)
+    bowling.myRoll(2)
+    bowling.myRoll(10)
+    bowling.myRoll(7)
+    bowling.myRoll(2)
+    bowling.myRoll(8)
+    bowling.myRoll(1)
+    bowling.myRoll(6)
+    bowling.myRoll(4)
+    bowling.myRoll(9)
+    bowling.myRoll(1)
+    bowling.myRoll(5)
+    bowling.myRoll(3)
+    bowling.myRoll(3)
+    bowling.myRoll(5)
+    expect(bowling.totalScore()).toEqual(125)
+  })
+
+  it ('Feature test 2 - perfect game', () => {
+    bowling = new Bowling()
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    bowling.myRoll(10)
+    expect(bowling.myRoll(10)).toEqual({"1": [10], "10": [10, 10, 10], "2": [10], "3": [10], "4": [10], "5": [10], "6": [10], "7": [10], "8": [10], "9": [10]})
+    expect(bowling.totalScore()).toEqual(300)
+  })
+
+  it ('Feature test 3', () => {
+    bowling = new Bowling()
+    bowling.myRoll(0)
+    bowling.myRoll(5)
+    bowling.myRoll(3)
+    bowling.myRoll(4)
+    bowling.myRoll(10)
+    bowling.myRoll(7)
+    bowling.myRoll(2)
+    bowling.myRoll(4)
+    bowling.myRoll(6)
+    bowling.myRoll(9)
+    bowling.myRoll(1)
+    bowling.myRoll(10)
+    bowling.myRoll(5)
+    bowling.myRoll(5)
+    bowling.myRoll(3)
+    bowling.myRoll(6)
+    bowling.myRoll(10)
+    bowling.myRoll(7)
+    expect(bowling.myRoll(2)).toEqual({"1": [0, 5], "10": [10, 7, 2], "2": [3, 4], "3": [10], "4": [7, 2], "5": [4, 6], "6": [9, 1], "7": [10], "8": [5, 5], "9": [3, 6]})
+    expect(bowling.totalScore()).toEqual(140)
+  })
+
+  it ('Feature test 4 - gutter game', () => {
+    bowling = new Bowling()
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    bowling.myRoll(0)
+    expect(bowling.myRoll(0)).toEqual({"1": [0, 0], "10": [0, 0], "2": [0, 0], "3": [0, 0], "4": [0, 0], "5": [0, 0], "6": [0, 0], "7": [0, 0], "8": [0, 0], "9": [0, 0]})
+    expect(bowling.totalScore()).toEqual(0)
+  })
+})

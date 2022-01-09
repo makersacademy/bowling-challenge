@@ -1,5 +1,5 @@
 const prompt = require("prompt-sync")();
-const reducer = (a, b) => (a + b,0);
+const lodash = require('lodash')
 
 const readScoreOfRoll = (rollNum, frameNum) => {
   let score = 0;
@@ -47,39 +47,35 @@ const recordTenFrames = () => {
 
 const calculateScore = (listOfScores) => {
   let total = 0;
-  let i = 0;
-  while (i < 9) {
+  // Iterate until 9th frame
+  for (let i = 0;i < 9;i++) {
     console.log(`Frame ${i + 1} - ${total}`);
     // Spare bonus
+    let spare_bonus
     if (
       listOfScores[i].length === 2 &&
-      listOfScores[i].reduce(reducer) === 10
+      (lodash.sum(listOfScores[i])) === 10
     ) {
-      let spare_bonus = spare_bonus[i + 1][0];
+      spare_bonus = listOfScores[i + 1][0];
       total += spare_bonus;
     }
     // Strike bonus
     else if (listOfScores[i].length === 1) {
       let strike_bonus = 0;
-      if (listOfScores[i + 1] != 1) {
-        strike_bonus = listOfScores[i + 1].slice(0, 2).reduce(reducer);
+      if (listOfScores[i + 1].length != 1) {
+        strike_bonus = lodash.sum(listOfScores[i + 1].slice(0, 2))
       } else {
-        strike_bonus = (listOfScores[i + 1], listOfScores[i + 2][0]).reduce(
-          reducer
-        );
+        strike_bonus = lodash.sum(listOfScores[i + 1],listOfScores[i + 2][0])
       }
       total += strike_bonus;
     }
     // Frame score
-    total += listOfScores[i].reduce(reducer);
-    i += 1;
+    total += lodash.sum(listOfScores[i]);
   }
-  total += listOfScores[listOfScores.length-1].reduce(reducer);
-
+  total += lodash.sum(listOfScores[listOfScores.length-1])
   return total;
 };
 
-const game = recordTenFrames()
+let game = recordTenFrames()
 console.log(game)
-// console.log(scores)
 console.log(calculateScore(game))

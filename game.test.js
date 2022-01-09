@@ -35,9 +35,51 @@ describe("Game", () => {
     })
   })
 
-  describe("#calculateScore", () => {
-    it("can play one vanilla frame and score correctly", () => {
-
+  describe("#calculateSpareBonus", () => {
+    it("can calculate a spare bonus (not last frame)", () => {
+      game = new Game();
+      game.inputRoll(9);
+      game.inputRoll(1);
+      game.inputRoll(3);
+      game.inputRoll(4);
+      game.calculateSpareBonus();
+      expect(game.getFrames()[0].bonus).toBe(3);
     })
   })
+
+  describe("#calculateStrikeBonus", () => {
+    it("can calculate a strike bonus (not last round)", () => {
+      game = new Game();
+      game.inputRoll(10);
+      game.inputRoll(1);
+      game.inputRoll(3);
+      game.calculateStrikeBonus();
+      expect(game.getFrames()[0].bonus).toBe(4);
+    })
+  })
+
+  describe("#calculateScore", () => {
+    it("can play one vanilla frame and score correctly", () => {
+      game = new Game();
+      game.inputRoll(1);
+      game.inputRoll(2);
+      expect(game.totalScore()).toBe(3);
+    })
+    it("can play two vanilla frames and score correctly", () => {
+      game = new Game();
+      game.inputRoll(1);
+      game.inputRoll(2);
+      game.inputRoll(2);
+      game.inputRoll(2);
+      expect(game.totalScore()).toBe(7);
+    })
+    it("can play a spare followed by a vanilla frame and score correctly", () => {
+      game.inputRoll(9);
+      game.inputRoll(1);
+      game.inputRoll(3);
+      game.inputRoll(4);
+      expect(game.totalScore()).toBe(20);
+    })
+  })
+
 })

@@ -11,4 +11,9 @@ describe('Frame', () => {
   it('returns the frame score', () => {
     expect(frame.totalScore()).toEqual(1);
   })
+
+  it('adds bonuses to the frame score', () => {
+    frame.bonus = 1;
+    expect(frame.totalScore()).toEqual(2);
+  })
 })

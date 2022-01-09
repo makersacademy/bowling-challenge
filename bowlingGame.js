@@ -2,8 +2,7 @@ const Frame = require('./frame');
 
 class BowlingGame {
   constructor() {
-    this.framecount = 1;
-    this.scoreSum = [];
+    this.frames = [];
   }
 
   play() {
@@ -16,10 +15,23 @@ class BowlingGame {
       } else if (prevFrame.isSpare) {
         currScore = 5 + currentFrame.score;
       } else {
-        currScore = currentFrame.score;
+        currScore = currentFrame.getFrameScoresSum;
       }
-      this.scoreSum.push(currScore);
+      this.frames.push(currScore);
       prevFrame = currentFrame;
+    }
+  }
+
+  play() {
+    for (let i = 0; i<10; i++) {
+      const currentFrame = this.playFrame();
+      if (this.frames.at(-1).isSpare) {
+        this.frames.at(-1).frameScores.push(currentFrame.frameScores[0]);
+      } else if (this.frames.at(-1).isStrike) {
+
+      }
+
+      this.frames.push(currentFrame);
     }
   }
 

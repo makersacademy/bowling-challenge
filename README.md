@@ -113,7 +113,7 @@ I used `/* eslint-disable no-undef */`, to disable it in the whole file, and hop
 Not sure how this all works, usually VSCode + Prettier adds missing `;` and greys out methods that are not defined and variables that haven't been used yet.
 
 getFinalScore flow : pseudo code + ruby mix
-[index of rollList use] (images/diagram2.png)
+[index of rollList use] (https://github.com/s-dousse/bowling-challenge_JS/blob/main/images/diagram2.png)
 
 ```
 getFinalScore()

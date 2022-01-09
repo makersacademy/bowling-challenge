@@ -77,6 +77,19 @@ describe('class BowlingScore', () => {
       bowlingScore.addToScorecard([4, 4]);
       expect(bowlingScore.getTotalScore()).toEqual(137);
     })
+    it('has a correct total for a game with a multiple strikes in a row until 10th frame', () => {
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([10, 0]);
+      bowlingScore.addToScorecard([5, 4]);
+      expect(bowlingScore.getTotalScore()).toEqual(263);
+    })
   })
   describe('addToScorecard', () => {
     it('adds the frame to the scorecard', () => {

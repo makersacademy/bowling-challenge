@@ -92,8 +92,8 @@ Specifications for Bowling Scorecard Program:
 - [x] count number of pins knocked down: .roll(number_of_knockdown_pins)
 - [ ] get user's input to enter the number of pins knockdown for each roll
 - [ ] caculates the final score (sum)
-- [ ] checks for gutter game (0pts)
-- [ ] checks for spares (1 bonus from the 1st roll of next frame)
+- [x] checks for gutter game (0pts)
+- [x] checks for spares (1 bonus from the 1st roll of next frame)
 - [ ] checks for strikes (2 bonus from the two rolls of next frame)
 - [ ] shows 300pts for a perfect game
 - [ ] shows 150pts for a 'all' spares game
@@ -111,3 +111,24 @@ Specifications for Bowling Scorecard Program:
 https://eslint.org/docs/rules/no-undef
 I used `/* eslint-disable no-undef */`, to disable it in the whole file, and hopefully not in my bowlingGame.js file.
 Not sure how this all works, usually VSCode + Prettier adds missing `;` and greys out methods that are not defined and variables that haven't been used yet.
+
+getFinalScore flow : (Ruby)
+[index of rollList use] (images/diagram2.png)
+```
+getFinalScore()
+calculate score frame by frame
+    10 frames (use index of rollList) 
+        (i = 0)
+        if strike ? (checking first roll of the frame : rollList[i] = 10)
+          sum = 10pts (strike) + bonus1 (first roll next frame => rollList[i+1]) + bonus2 (second roll next frame => rollList[i+2])
+          i + 1 (there is no 2nd roll : move to next frame)
+        else
+          if spare? (checking both rolls of the frame : rollList[i] + rollList[i+1] == 10 )
+            sum = 10ps + bonus1 (first roll next frame => rollList[i+1])
+          else
+            sum = total of both rolls: rollList[i] + rollList[i+1]
+          end
+          i + 2 (skip second roll of the current frame + move to the next frame (1st roll))
+        end
+    end
+```

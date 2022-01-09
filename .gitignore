@@ -3,3 +3,4 @@ node_modules
 images
 docs
 .eslintrc.json
+coverage

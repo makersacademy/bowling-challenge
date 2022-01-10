@@ -1,0 +1,30 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zidehen/bowling-challenge-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zidehen/bowling-challenge-js/issues"
+  },
+  "homepage": "https://github.com/zidehen/bowling-challenge-js#readme",
+  "dependencies": {
+    "jest": "^27.4.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.6.0"
+  }
+}

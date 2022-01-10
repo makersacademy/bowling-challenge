@@ -1,2 +1,3 @@
-/**/.DS_Store
+# Ignore node_modules folder
 node_modules
+>>>>>>> 6133d82 (Setup project with Jest)

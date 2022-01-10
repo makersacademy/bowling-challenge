@@ -13,12 +13,16 @@ const question = util.promisify(rl.question).bind(rl);
 const game = new Game()
 const score = new Score(game)
 
+console.log('WELCOME TO Bowling.JS')
+
 async function bowlingScoreCard() {
-  console.log(`-----> The score is ${score.total} <-----`)
+  console.log('')
+  console.log(`-----> Score: ${score.total} <-----`)
+  console.log('')
   try {
-    const answer1 = await question('Enter rolls ')
-    const asnwer2 = await question('Enter second roll ')
-    const answer3 = await question('Enter bonus roll ')
+    const answer1 = await question('Enter first roll: ')
+    const asnwer2 = await question('Enter second roll: ')
+    const answer3 = await question('Enter bonus roll: ')
     
     let roll1 = parseInt(answer1)
     let roll2 = parseInt(asnwer2)
@@ -27,7 +31,10 @@ async function bowlingScoreCard() {
     game.addRolls(roll1, roll2, bonusRoll)
     score.addToTotal()
     if (game.frames.length === 10) {
-      console.log(`GAME OVER! Your total score is ---> ${score.total}`)
+      console.log('')
+      console.log(`Final Score ---> ${score.total}`)
+      console.log('GAME OVER!')
+      process.exit(0);
     } else {
       bowlingScoreCard()
     }

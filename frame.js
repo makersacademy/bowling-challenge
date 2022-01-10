@@ -5,6 +5,7 @@ class Frame {
     this.scoringRolls = [];
     this.maxRolls = 2;
     this.bonus = 0;
+    this.extra = false;
   }
 
   roll(pins) {
@@ -45,7 +46,7 @@ class Frame {
   }
 
   isComplete() {
-    return this.numberOfRolls() === this.maxRolls || this.isStrike();
+    return this.numberOfRolls() === this.maxRolls || (this.isStrike() && !this.isExtra());
   }
 
   addBonus(points) {
@@ -59,7 +60,12 @@ class Frame {
   addExtraRoll() {
     if (this.maxRolls < 3) {
       this.maxRolls++;
+      this.extra = true;
     }
+  }
+
+  isExtra() {
+    return this.extra;
   }
 
 }

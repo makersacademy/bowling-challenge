@@ -100,4 +100,16 @@ describe("Frame", () => {
     })
   })
 
+  describe("isExtra", () => {
+    it("should be able to tell if a roll is extra", () => {
+      frame = new Frame();
+      frame.addExtraRoll();
+      expect(frame.isExtra()).toBe(true);
+    })
+    it("extra is off by default", () => {
+      frame = new Frame();
+      expect(frame.isExtra()).toBe(false);
+    })
+  })
+
 })

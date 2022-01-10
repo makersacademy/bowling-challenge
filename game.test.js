@@ -35,6 +35,20 @@ describe("Game", () => {
     })
   })
 
+  describe("#decisionOnExtraRoll", () => {
+    it("adds an extra roll if the final round is a spare", () => {
+      game = new Game();
+      for (let i = 0; i < 18; i++) {
+        game.inputRoll(0);
+      }
+      game.inputRoll(8);
+      game.inputRoll(2);
+      game.inputRoll(3);
+      expect(game.getFrames().length).toBe(10);
+      expect(game.getFrames()[9].maxRolls).toBe(3);
+    })
+  })
+
   describe("#calculateSpareBonus", () => {
     it("can calculate a spare bonus (not last frame)", () => {
       game = new Game();
@@ -74,11 +88,106 @@ describe("Game", () => {
       expect(game.totalScore()).toBe(7);
     })
     it("can play a spare followed by a vanilla frame and score correctly", () => {
+      game = new Game();
       game.inputRoll(9);
       game.inputRoll(1);
       game.inputRoll(3);
       game.inputRoll(4);
       expect(game.totalScore()).toBe(20);
+    })
+    it("can play a strike followed by a vanilla frame and score correctly", () => {
+      game = new Game();
+      game.inputRoll(10);
+      game.inputRoll(3);
+      game.inputRoll(4);
+      expect(game.totalScore()).toBe(24);
+    })
+    it("can play a strike followed by a strike followed by a vanilla frame and score correctly", () => {
+      game = new Game();
+      game.inputRoll(10);
+      game.inputRoll(10);
+      game.inputRoll(3);
+      game.inputRoll(4);
+      expect(game.totalScore()).toBe(47);
+    })
+    it("can play a spare followed by a strike followed by a spare followed by a vanilla frame and score correctly", () => {
+      game = new Game();
+      game.inputRoll(9);
+      game.inputRoll(1);
+      game.inputRoll(10);
+      game.inputRoll(9);
+      game.inputRoll(1);
+      game.inputRoll(3);
+      game.inputRoll(4);
+      expect(game.totalScore()).toBe(60);
+    })
+    it("can play a full game with a vanilla last round and score correctly", () => {
+      game = new Game();
+      game.inputRoll(1);
+      game.inputRoll(2);
+
+      game.inputRoll(10);
+
+      game.inputRoll(3);
+      game.inputRoll(4);
+
+      game.inputRoll(10);
+
+      game.inputRoll(5);
+      game.inputRoll(5);
+
+      game.inputRoll(10);
+
+      game.inputRoll(3);
+      game.inputRoll(0);
+
+      game.inputRoll(2);
+      game.inputRoll(8);
+
+      game.inputRoll(10);
+
+      game.inputRoll(1);
+      game.inputRoll(2);
+
+      expect(game.totalScore()).toBe(119);
+    })
+    it("can score a game with a spare in the last round correctly", () => {
+      game = new Game();
+      game.inputRoll(1);
+      game.inputRoll(2);
+
+      game.inputRoll(10);
+
+      game.inputRoll(3);
+      game.inputRoll(4);
+
+      game.inputRoll(10);
+
+      game.inputRoll(5);
+      game.inputRoll(5);
+
+      game.inputRoll(10);
+
+      game.inputRoll(3);
+      game.inputRoll(0);
+
+      game.inputRoll(2);
+      game.inputRoll(8);
+
+      game.inputRoll(10);
+
+      game.inputRoll(8);
+      game.inputRoll(2);
+      game.inputRoll(8);
+
+      expect(game.totalScore()).toBe(141);
+    })
+    it ("can play perfect game and score correctly", () => {
+      game = new Game();
+      for (let i = 0; i < 12; i++) {
+        game.inputRoll(10);
+      }
+      expect(game.totalScore()).toBe(300);
     })
   })
 

@@ -7,6 +7,15 @@ Bowling Challenge
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
 
+## My Approach
+
+* The Bowling class is initialised by default with an empty array `this.rolls` and `frame` set to 1
+* The Bowling class can be initialised with an array with the rolls of a full game and frame need to be set to 11 in order to then grab the proper score of the game 
+* the method `roll(frameRolls)` accept an array with rolls for that frame. E.g, [8, 1] or [10] for a strike.
+* the method `score()` calculate the partial score or the full score of a game
+* `checkStrike(), checkSpare(), strikeBonusPoints(), spareBonusPoints()` are helper methods to use in `score()` to make it more clean and readable
+* the method `reset()` set Bowling class to the initial condition  
+
 ## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**

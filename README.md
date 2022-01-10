@@ -36,7 +36,7 @@ I decided to extract this challenge into 4 classes:
     - `addRoll` takes an input and adds it to a temporary frame while checking with `addToFramesArray` that if it is a valid frame it gets added. Valid frames =
         - A strike
         - A frame with 2 rolls
-        - A frame with 3 rolls if its the final frame(10th)
+        - A frame with 3 rolls if its the final frame(10th) --> if a strike or spare are rolled 
 
 <br>
 

@@ -10,7 +10,6 @@ class Frame {
   }
 
   totalScore() {
-    
     return this.rolls.reduce(this.reducer, 0) + this.bonus;
   }
 

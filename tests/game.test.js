@@ -1,16 +1,18 @@
-const Frame = require('../frame');
 const Game = require('../game');
-jest.mock('../frame');
 
 describe('Game', () => {
   const game = new Game();
 
   it('plays 10 frames', () => {
-    game.roll(1);
-    expect(Frame).toHaveBeenCalledTimes(10);
+    expect(game.frames.length).toEqual(10);
   })
 
   it('can record a roll', () => {
     game.roll(1);
   });
+
+  it('returns the total score', () => {
+    game.roll(1)
+    expect(game.score()).toEqual(2);
+  })
 });

@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-My implementation of a bowling scorecard using node.js.
+My implementation of a bowling scorecard using node.js, I aimed to extract the logic into multiple classes.
 
 ### Setup
 ```

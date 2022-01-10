@@ -51,19 +51,19 @@ describe('Game class', () => {
 
   describe('isSpare', () => {
     it('should return true', () => {
-      expect(game.isSpare([6,4])).toEqual(true)
+      expect(game.isSpare(6,4)).toEqual(true)
     })
     it('should return false', () => {
-      expect(game.isSpare([3,1])).toEqual(false)
+      expect(game.isSpare(3,1)).toEqual(false)
     })
   })
 
   describe('isStrike', () => {
     it('should return true', () => {
-      expect(game.isStrike([10,0])).toEqual(true)
+      expect(game.isStrike(10,0)).toEqual(true)
     })
     it('should return false', () => {
-      expect(game.isStrike([5,5])).toEqual(false)
+      expect(game.isStrike(5,5)).toEqual(false)
     })
   })
 })

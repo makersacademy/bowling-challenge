@@ -2,7 +2,6 @@ class Frame {
   constructor() {
     this.rolls = [];
     this.bonus = 0;
-    this.reducer = (previousValue, currentValue) => previousValue + currentValue;
   }
 
   addRoll(points) {
@@ -10,11 +9,13 @@ class Frame {
   }
 
   totalScore() {
-    return this.rolls.reduce(this.reducer, 0) + this.bonus;
+    let reducer = (previousValue, currentValue) => previousValue + currentValue;
+    return this.rolls.reduce(reducer, 0) + this.bonus;
   }
 
   isSpare() {
-    return this.rolls.reduce(this.reducer, 0) == 10;
+    let reducer = (previousValue, currentValue) => previousValue + currentValue;
+    return this.rolls.reduce(reducer, 0) == 10 && this.rolls.length > 1;
   }
 
   isStrike() {

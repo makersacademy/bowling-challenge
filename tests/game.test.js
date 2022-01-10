@@ -15,4 +15,19 @@ describe('Game', () => {
     game.roll(1)
     expect(game.score()).toEqual(2);
   })
+
+  it('sets spare bonus', () => {
+    game.roll(1);
+    game.roll(9);
+    game.roll(1);
+    game.roll(1);
+    expect(game.score()).toEqual(15)
+  })
+
+  it('sets strike bonus', () => {
+    game.roll(10);
+    game.roll(1);
+    game.roll(1);
+    expect(game.score()).toEqual(29)
+  })
 });

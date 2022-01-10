@@ -33,9 +33,10 @@ describe('Game', () => {
   });
 
   it('can record a perfect game', () => {
+    const perfectGame = new Game();
     for (let i = 0; i < 12; i++) {
-      game.roll(10);
+      perfectGame.roll(10);
     }
-    expect(game.score()).toEqual(300);
+    expect(perfectGame.score()).toEqual(300);
   });
 });

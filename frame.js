@@ -9,6 +9,9 @@ class Frame {
   }
 
   totalScore() {
+    if (Number.isNaN(this.bonus)) {
+      this.bonus = 20;
+    }
     const reducer = (previousValue, currentValue) => previousValue + currentValue;
     return this.rolls.reduce(reducer, 0) + this.bonus;
   }

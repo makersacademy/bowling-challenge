@@ -27,11 +27,11 @@ class Bowling {
   }
 
   checkStrike(index) {
-   return this.rolls[index] === 10 ? true : false;
+   return this.rolls[index] === 10;
   }
 
   checkSpare(index) {
-    return this.rolls[index] + this.rolls[index + 1] === 10 ? true : false;
+    return this.rolls[index] + this.rolls[index + 1] === 10;
   }
 
   strikeBonusPoints(index) {

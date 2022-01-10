@@ -1,13 +1,9 @@
 class Frame {
   constructor() {
     this.frameScores = [];
-    // this.rolls = 0;
-    // this.spare = false;
-    // this.strike = false;
   }
 
   addRollScore(rollscore) {
-    // this.rolls += 1;
     this.frameScores.push(rollscore);
   }
 

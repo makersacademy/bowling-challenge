@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-My implementation of a bowling scorecard using node.js.
+My implementation of a bowling scorecard using node.js, I aimed to extract the logic into multiple classes.
 
 ### Setup
 ```
@@ -50,15 +50,15 @@ I decided to extract this challenge into 4 classes:
         [[10],[5,5],[2,2]] flattened --> [10,5,5,2,2]
         
         # Frame1 [10] - index = 0
-        Splits 1d array into [10,5,5] to score 2 bonus rolls (20 total)
+        Splits 1d array into [10,5,5] to score 2 bonus rolls --> 20 total
         advances index by 1
 
         #Frame2 [5,5] - index = 1
-        Splits 1d array into [5,5,2] to score first frame and  1 bonus roll (12 total)
+        Splits 1d array into [5,5,2] to score first frame and  1 bonus roll --> 12 total
         advances index by 2
 
         #Frame3 [2,2] - index = 3
-        Splits 1d array into [2,2] to score just the frame (4 total)
+        No bonus points to score so doesn't check flattened array just sum of frame [2,2] --> (4 total)
         advances index by 2
 
         ```
@@ -77,6 +77,6 @@ I decided to extract this challenge into 4 classes:
     Your score: 300
     ```
 
-### Missing
+### TODO
 
-- Currently assumes user will input correct data --> implement checks to avoid a hostile user.
+- [ ] Currently assumes user will input correct data --> implement checks to avoid a hostile user.

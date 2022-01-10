@@ -1,6 +1,6 @@
 # Bowling Challenge
 
-A bowling game scorecard program built with JavaScript.
+A simple bowling game scorecard program built with JavaScript.
 (Translation from my previous scorecard built with Ruby)
 
 ## Getting Started
@@ -104,3 +104,5 @@ GAME OVER!
 ```
 We score a SPARE in the first 2 rolls of the last frame, so we can finally add the bonus roll.  
 GAME OVER. The cli will quit automatically.
+
+ps: no consecutive strike bonus implemented.

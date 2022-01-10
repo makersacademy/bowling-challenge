@@ -63,4 +63,16 @@ describe("bowlingGame", () => {
     }
     expect(bowlingGame.getScore()).toBe(300);
   })
+
+  it("can play a spare followed by a strike",() => {
+    bowlingGame.roll(5);
+    bowlingGame.roll(5);
+    bowlingGame.roll(10);
+    bowlingGame.roll(5);
+    bowlingGame.roll(3);
+    for (i = 0; i < 14; i++) {
+      bowlingGame.roll(0);
+    }
+    expect(bowlingGame.getScore()).toBe(46);
+  })
 });

@@ -1,20 +1,15 @@
 const FrameClass = require('./frame')
 
 class Game {
-  constructor() {
+  constructor(Frame = FrameClass) {
     this.frames = [];
-    this.newFrame = true;
-  }
-
-  addFrame(Frame = FrameClass) {
-    this.frames.push(new Frame());
+    for (let i = 0; i < 10; i++) {
+      this.frames.push(new Frame())
+    }
   }
 
   roll() {
-    if (this.newFrame == true) {
-      this.addFrame();
-    }
-    this.frames.at(-1).addRoll()
+    this.frames[0].addRoll()
   }
 }
 

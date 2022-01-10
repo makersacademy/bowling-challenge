@@ -5,9 +5,9 @@ jest.mock('../frame');
 describe('Game', () => {
   const game = new Game();
 
-  it('can create a frame', () => {
+  it('plays 10 frames', () => {
     game.roll(1);
-    expect(Frame).toHaveBeenCalledTimes(1);
+    expect(Frame).toHaveBeenCalledTimes(10);
   })
 
   it('can record a roll', () => {

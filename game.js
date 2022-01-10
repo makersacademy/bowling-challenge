@@ -23,7 +23,7 @@ class Game {
       if (frame.isSpare() == true) {
         frame.bonus = this.frames[index+1].rolls[0];
       } else if (frame.isStrike() == true) {
-        frame.bonus = this.frames[index+1].totalScore();
+        frame.bonus = this.frames[index+1].rolls[0] + this.frames[index+1].rolls[1];;
       }
     })
   }

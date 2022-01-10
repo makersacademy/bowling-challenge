@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/EviePalaiochorinou/bowling-challenge-js#readme",
   "dependencies": {
-    "jest": "^27.4.7"
+    "jest": "^27.4.7",
+    "prompt": "^1.2.0"
   },
   "devDependencies": {
     "eslint": "^8.6.0",

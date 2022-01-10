@@ -12,6 +12,7 @@
     },
     "rules": {
         "require-jsdoc":0,
-        "quotes": [2, "single", { "avoidEscape": true }]
+        "quotes": [2, "single", { "avoidEscape": true }],
+        "max-len":"off",
     }
 }

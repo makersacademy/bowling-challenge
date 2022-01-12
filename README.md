@@ -236,3 +236,14 @@ to debug this I tried to add a few console.log in my getTotalScore (console.log(
 maybe `this.sum` is not updated
 I am unsure as doing `game.rollList` in the cli.js file let me access the class property
 when I console.log `game.sum`, I get the same as console.log `game.getTotalScore` which I expected but didn't solve the problem
+
+## Code review
+
+1. remove the `moveToNextFrame()` method as we already know when it's a strike or spare/basic roll
+2. remove `this.sum` as instance variable as we already have `this.rollList` which describes already the state of our system. We will not pass it as an argument to the other methods:
+
+our calculatingStrikeScore()/calculatingSpareScore()/calculatingBasicScore() should be only calculating the score (= calculating something based on the state of the system and either returning it or printing it and NOT changing the state of the system (changing an instance variable))
+
+3. DO NOT TEST THE STATE OF THE CLASS ! We should only be testing behaviours: test a class thourgh its methods that either print or return based on the state of the class (remove 2 tests)
+
+4. separate private from public methods

@@ -1,59 +1,52 @@
 class BowlingGame {
   constructor(rollList = []) {
     this.rollList = rollList;
-    this.sum = 0;
   }
 
   roll(pins) {
     return this.rollList.push(pins);
   }
 
-  isAStrike(i) {
+  _isAStrike(i) {
     return this.rollList[i] == 10;
   }
 
-  isASpare(i) {
-    return this.rollList[i] + this.rollList[i + 1] == 10;
+  _isASpare(i) {
+    return this.rollList[i] + this.rollList[i + 1] === 10;
   }
 
   calculateStrikeScore(i) {
-    console.log("calculating strike score");
-    return (this.sum +=
-      this.rollList[i] + this.rollList[i + 1] + this.rollList[i + 2]);
+    return 10 + this.rollList[i + 1] + this.rollList[i + 2];
   }
 
   calculateSpareScore(i) {
-    return (this.sum += 10 + this.rollList[i + 2]);
+    return 10 + this.rollList[i + 2];
   }
 
   calculateBasicScore(i) {
-    return (this.sum += this.rollList[i] + this.rollList[i + 1]);
-  }
-
-  moveToNextFrame(str) {
-    return str === "strike" ? 1 : 2;
+    return this.rollList[i] + this.rollList[i + 1];
   }
 
   getFinalScore() {
+    let sum = 0;
     let rI = 0; // rollList Index
     for (let i = 0; i < 10; i++) {
-      if (this.isAStrike(rI)) {
-        console.log("strike");
-        this.calculateStrikeScore(rI);
-        // console.log(this.sum);
-        rI += this.moveToNextFrame("strike");
+      if (this._isAStrike(rI)) {
+        // console.log("strike");
+        sum += this.calculateStrikeScore(rI);
+        rI += 1;
       } else {
-        if (this.isASpare(rI)) {
-          console.log("spare");
-          this.calculateSpareScore(rI);
+        if (this._isASpare(rI)) {
+          // console.log("spare");
+          sum += this.calculateSpareScore(rI);
         } else {
-          console.log("neither strike nor spare");
-          this.calculateBasicScore(rI);
+          // console.log("neither strike nor spare");
+          sum += this.calculateBasicScore(rI);
         }
-        rI += this.moveToNextFrame("not strike");
+        rI += 2;
       }
     }
-    return this.sum;
+    return sum;
   }
 }
 

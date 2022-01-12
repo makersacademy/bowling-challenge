@@ -7,11 +7,11 @@ class BowlingGame {
     return this.rollList.push(pins);
   }
 
-  _isAStrike(i) {
+  #isAStrike(i) {
     return this.rollList[i] == 10;
   }
 
-  _isASpare(i) {
+  #isASpare(i) {
     return this.rollList[i] + this.rollList[i + 1] === 10;
   }
 
@@ -31,12 +31,12 @@ class BowlingGame {
     let sum = 0;
     let rI = 0; // rollList Index
     for (let i = 0; i < 10; i++) {
-      if (this._isAStrike(rI)) {
+      if (this.#isAStrike(rI)) {
         // console.log("strike");
         sum += this.calculateStrikeScore(rI);
         rI += 1;
       } else {
-        if (this._isASpare(rI)) {
+        if (this.#isASpare(rI)) {
           // console.log("spare");
           sum += this.calculateSpareScore(rI);
         } else {
@@ -50,12 +50,12 @@ class BowlingGame {
   }
 }
 
-// const perfectGame = new BowlingGame();
+const perfectGame = new BowlingGame();
 
-// for (i = 0; i < 12; i++) {
-//   perfectGame.roll(10);
-// }
+for (i = 0; i < 12; i++) {
+  perfectGame.roll(10);
+}
 
-// console.log(perfectGame.getFinalScore());
+console.log(perfectGame.getFinalScore());
 
 module.exports = BowlingGame;

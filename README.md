@@ -46,7 +46,7 @@ I was able to implement the first 5 of these goals through a TDD approach, and I
 - With a bowling scorecard running, enter the number of bowls score with a single throw. You will then be presented with a scoreboard showing your accumulating score across several rounds, with your current score at the end
 - Leave the input field blank and press enter to exit
 
-## Technologies used
+## Technologies
 
 The following technologies were used in this repo
 

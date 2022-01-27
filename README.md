@@ -32,17 +32,7 @@ class Game:
 
 I was able to implement the first 5 of these goals through a TDD approach, and I integrated this into the cli.js file successfully. Had I had more time, I would have implemented the last goal as well.
 
-## Technologies used
-
-The following technologies were used in this repo
-
-1. VS Code was used for all coding requirements
-2. Prettier - Code formatter was used to improve JavaScript readability
-3. I used node to test functionality in the terminal
-4. Jest was used to test logic functionality
-5. I used readline-sync to create the cli.js file
-
-## Instructions for use
+## Instructions
 
 ### Setup:
 
@@ -56,6 +46,12 @@ The following technologies were used in this repo
 - With a bowling scorecard running, enter the number of bowls score with a single throw. You will then be presented with a scoreboard showing your accumulating score across several rounds, with your current score at the end
 - Leave the input field blank and press enter to exit
 
-```
+## Technologies used
 
-```
+The following technologies were used in this repo
+
+1. VS Code was used for all coding requirements
+2. Prettier - Code formatter was used to improve JavaScript readability
+3. I used Node to test functionality in the terminal
+4. Jest was used to test logic functionality
+5. I used readline-sync to create the cli.js file

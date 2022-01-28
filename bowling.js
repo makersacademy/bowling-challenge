@@ -5,12 +5,17 @@ class Bowling {
   }
 
   roll(pins) {
-    
+    this.rolls.push(pins)
   }
 
   calculateScore(){
-    return 0
-  }
+    let total = 0;
+    let index = 0;
+    while (index <  this.rolls.length) {
+      total += this.rolls[index] + this.rolls[index ++]
+    }
+    return total
+    }
 }
 
 module.exports = Bowling;

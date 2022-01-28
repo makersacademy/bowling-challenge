@@ -13,14 +13,13 @@ class Bowling {
     let index = 0;
 
     for(let i = 0; i < 10; i ++){
-
-      if (this.spare(index)){
-        total += this.bonusScore(index)
-        index += 2
-      } else if (this.strike(index)) {
+      if (this.strike(index)) {
         total += this.bonusScore(index)
         index += 1
-      } else {
+      } else if (this.spare(index)){
+        total += this.bonusScore(index)
+        index += 2
+      }  else {
         total += this.standardFrame(index);
         index += 2
       }

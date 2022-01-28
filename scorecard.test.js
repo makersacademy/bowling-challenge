@@ -18,4 +18,10 @@ describe('Scorecard', () => {
 
     expect(spareGame.getScore()).toEqual(23);
   })
+
+  it('can roll a strike', () => {
+    const strikeGame = new Scorecard([10, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+    expect(strikeGame.getScore()).toEqual(24);
+  })
 })

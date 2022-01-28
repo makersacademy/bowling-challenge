@@ -23,6 +23,3 @@ class Scorecard {
 }
 
 module.exports = Scorecard;
-
-// const boringGame = new Scorecard([1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5])
-// console.log(boringGame.getScore());

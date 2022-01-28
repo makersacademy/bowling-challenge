@@ -24,4 +24,10 @@ describe('Scorecard', () => {
 
     expect(strikeGame.getScore()).toEqual(24);
   })
+
+  it('can roll a perfect game', () => {
+    const perfectGame = new Scorecard([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
+
+    expect(perfectGame.getScore()).toEqual(300);
+  })
 })

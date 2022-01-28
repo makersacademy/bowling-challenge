@@ -4,7 +4,7 @@ class Scorecard {
   }
 
   getScore() {
-    return this.scores.reduce((a,b) => a+b)
+    return this.scores.reduce((a, b) => a + b)
   }
 }
 

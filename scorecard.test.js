@@ -2,7 +2,7 @@ const Scorecard = require('./Scorecard');
 
 describe('Scorecard', () => {
   it('handles a gutter game', () => {
-    const gutterGame = new Scorecard([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    const gutterGame = new Scorecard([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
     expect(gutterGame.getScore()).toEqual(0);
   })
@@ -14,8 +14,8 @@ describe('Scorecard', () => {
   })
 
   it('can roll a game with spares', () => {
-    const spareGame = new Scorecard([5, 5, 6, 1, 0, 0, 0, 0, 0, 0])
+    const spareGame = new Scorecard([5, 5, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
-    expect(boringGame.getScore()).toEqual(23);
+    expect(spareGame.getScore()).toEqual(23);
   })
 })

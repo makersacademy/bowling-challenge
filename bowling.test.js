@@ -34,6 +34,16 @@ describe('Bowling', () => {
       expect(game.calculateScore()).toBe(14);
 
     });
+
+    it('can roll a strike', () => {
+      game.roll(10);
+      game.roll(3);
+      game.roll(2);
+      for(let i = 0; i < 17; i ++){
+        game.roll(0)
+      }
+      expect(game.calculateScore()).toBe(20);
+    });
   })
   
 

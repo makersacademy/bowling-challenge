@@ -2,32 +2,51 @@ const Scorecard = require('./Scorecard');
 
 describe('Scorecard', () => {
   it('handles a gutter game', () => {
-    const gutterGame = new Scorecard([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    const gutterGame = new Scorecard();
+    for(let i = 0; i < 20; i ++) {
+      gutterGame.roll(0);
+    }
 
-    expect(gutterGame.getScore()).toEqual(0);
+    expect(gutterGame.calculateScore()).toEqual(0);
   })
 
   it('can roll a game with no spares or strikes', () => {
-    const boringGame = new Scorecard([1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5])
+    const boringGame = new Scorecard();
+    for(let i = 0; i < 20; i ++) {
+      boringGame.roll(4);
+    }
 
-    expect(boringGame.getScore()).toEqual(60);
+    expect(boringGame.calculateScore()).toEqual(80);
   })
 
   it('can roll a game with spares', () => {
-    const spareGame = new Scorecard([5, 5, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    const spareGame = new Scorecard();
+    spareGame.roll(5);
+    spareGame.roll(5);
+    for(let i = 0; i < 18; i ++) {
+      spareGame.roll(4);
+    }
 
-    expect(spareGame.getScore()).toEqual(23);
+    expect(spareGame.calculateScore()).toEqual(86);
   })
 
   it('can roll a strike', () => {
-    const strikeGame = new Scorecard([10, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    const strikeGame = new Scorecard();
+    strikeGame.roll(10);
+    for(let i = 0; i < 18; i ++) {
+      strikeGame.roll(4);
+    }
 
-    expect(strikeGame.getScore()).toEqual(24);
+    expect(strikeGame.calculateScore()).toEqual(90);
   })
 
   it('can roll a perfect game', () => {
-    const perfectGame = new Scorecard([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
+    const perfectGame = new Scorecard();
+    for(let i = 0; i < 12; i ++) {
+      perfectGame.roll(10);
+    }
 
-    expect(perfectGame.getScore()).toEqual(300);
+
+    expect(perfectGame.calculateScore()).toEqual(300);
   })
 })

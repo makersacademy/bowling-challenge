@@ -1,9 +1,13 @@
 class Scorecard {
-  constructor(scores) {
-    this.scores = scores;
+  constructor() {
+    this.scores = [];
   }
 
-  getScore() {
+  roll(pins) {
+    this.scores.push(pins);
+  }
+
+  calculateScore() {
     let totalScore = 0;
     let rollNumber = 0
     for(var i = 0; i < 10; i++) {

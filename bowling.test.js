@@ -28,15 +28,22 @@ describe('Bowling', () => {
       game.roll(4)
       expect(game.calculateCurrentScore()).toBe(24)
     })
+
+    it('can calculate the current score with consecutive strikes', () => {
+      game.roll(10)
+      game.roll(10)
+      game.roll(10)
+      expect(game.calculateCurrentScore()).toBe(60)
+    })
   })
 
-  describe('calculateScore', () => {
+  describe('calculateTotalScore', () => {
 
     it('can score a gutter game', () => {
       for(let i = 0; i < 20; i ++) {
         game.roll(0);
       }
-      expect(game.calculateScore()).toBe(0);
+      expect(game.calculateTotalScore()).toBe(0);
     });
 
     it('can score all ones', () => {
@@ -44,7 +51,7 @@ describe('Bowling', () => {
         game.roll(1);
         
       }
-      expect(game.calculateScore()).toBe(20);
+      expect(game.calculateTotalScore()).toBe(20);
     });
 
     it('can roll a spare', () => {
@@ -54,7 +61,7 @@ describe('Bowling', () => {
       for(let i = 0; i < 17; i ++){
         game.roll(0)
       }
-      expect(game.calculateScore()).toBe(14);
+      expect(game.calculateTotalScore()).toBe(14);
 
     });
 
@@ -65,37 +72,20 @@ describe('Bowling', () => {
       for(let i = 0; i < 17; i ++){
         game.roll(0);
       }
-      expect(game.calculateScore()).toBe(20);
+      expect(game.calculateTotalScore()).toBe(20);
     });
 
     it('can roll a perfect game', () => {
       for(i = 0; i < 21; i++) {
         game.roll(10);
       }
-      expect(game.calculateScore()).toBe(300);
+      expect(game.calculateTotalScore()).toBe(300);
     });
 
     it('can roll an average game', () => {
-      game.roll(1);
-      game.roll(4);
-      game.roll(4);
-      game.roll(5);
-      game.roll(6);
-      game.roll(4);
-      game.roll(5);
-      game.roll(5);
-      game.roll(10);
-      game.roll(0);
-      game.roll(1);
-      game.roll(7);
-      game.roll(3);
-      game.roll(6);
-      game.roll(4);
-      game.roll(10);
-      game.roll(2);
-      game.roll(8);
-      game.roll(6);
-      expect(game.calculateScore()).toBe(133);
+      const scoreArray = [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6];
+      scoreArray.forEach(score => game.roll(score))
+      expect(game.calculateTotalScore()).toBe(133);
     })
   })
   

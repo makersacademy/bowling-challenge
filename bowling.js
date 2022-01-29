@@ -6,6 +6,7 @@ class Bowling {
 
   roll(pins) {
     this.rolls.push(pins)
+    return `current score: ${this.calculateCurrentScore}`
   }
 
   calculateCurrentScore(){
@@ -13,7 +14,7 @@ class Bowling {
     let currentTotal = 0
     let index = 0
 
-    for(let i = 0; i < (20 - this.rolls.length); i++){
+    for(let i = 0; i < (21 - this.rolls.length); i++){
       currentRolls.push(0)
     }
 
@@ -21,15 +22,13 @@ class Bowling {
     
   }
 
-  calculateScore(){
+  calculateTotalScore(){
     let total = 0;
     let index = 0;
 
     return this.#scoring(this.rolls, index, total)
     
     }
-
-    //stop
     
     #scoring(arr, index, total){
 
@@ -67,5 +66,6 @@ class Bowling {
     }
 
 }
+
 
 module.exports = Bowling;

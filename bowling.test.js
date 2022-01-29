@@ -3,8 +3,32 @@ const Bowling = require('./bowling')
 describe('Bowling', () => {
 
   beforeEach(() => {
-    game = new Bowling;
+     game = new Bowling;
   });
+
+  describe('calculateCurrentScore', () => {
+    it('can calculate the current score', () => {
+      game.roll(5)
+      game.roll(2)
+      game.roll(4)
+      game.roll(4)
+      expect(game.calculateCurrentScore()).toBe(15)
+    })
+
+    it('can calculate the current score with spare', () => {
+      game.roll(5)
+      game.roll(5)
+      game.roll(4)
+      expect(game.calculateCurrentScore()).toBe(18)
+    })
+
+    it('can calculate the current score with strike', () => {
+      game.roll(10)
+      game.roll(3)
+      game.roll(4)
+      expect(game.calculateCurrentScore()).toBe(24)
+    })
+  })
 
   describe('calculateScore', () => {
 
@@ -20,7 +44,6 @@ describe('Bowling', () => {
         game.roll(1);
         
       }
-      console.log(game.rolls)
       expect(game.calculateScore()).toBe(20);
     });
 
@@ -76,5 +99,4 @@ describe('Bowling', () => {
     })
   })
   
-
 })

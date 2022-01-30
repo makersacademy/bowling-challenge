@@ -5,8 +5,32 @@ describe('Frame', () => {
     frame = new Frame([3,3]);
     strike_frame = new Frame([10]);
     spare_frame = new Frame([5,5]);
+    next_frame = new Frame([1,7]);
+    next_next_frame = new Frame([2,3]);
+    final_frame = new Frame([10, 8, 3])
   });
   
+  it('calculates score of the 10th frame', () => {
+    expect(final_frame.score(undefined, undefined)).toBe(21);
+  });
+  it('calculates score of the 9th frame', () => {
+    expect(frame.score(next_frame, undefined)).toBe(6);
+  });
+  
+  it('calculates score of a strike frame, including bonus', () => {
+    expect(strike_frame.score(next_frame, next_next_frame)).toBe(18);
+  });
+
+  it('calculates score of a strike frame, when also followed by a strike, including bonus', () => {
+    next_frame_strike = new Frame([10])
+    
+    expect(strike_frame.score(next_frame_strike, next_next_frame)).toBe(22);
+  });
+
+  it('calculates score of a spare frame, including bonus', () => {
+    expect(spare_frame.score(next_frame, next_next_frame)).toBe(11);
+  });
+
   it('knows if strike', () => {
     expect(strike_frame._isStrike()).toBe(true);
   });
@@ -16,18 +40,13 @@ describe('Frame', () => {
   });
 
   it('calculates bonus if strike', () => {
-    const next_frame = new Frame([0,8]);
-    const next_next_frame = new Frame([2,0]);
-    expect(strike_frame._bonus(next_frame, next_next_frame)).toBe(10);
+   
+    expect(strike_frame._bonus(next_frame, next_next_frame)).toBe(8);
   });
 
   it('calculates bonus if spare', () => {
-    const next_frame = new Frame([0,8]);
-    const next_next_frame = new Frame([2,0]);
-    expect(spare_frame._bonus(next_frame, next_next_frame)).toBe(8);
+ 
+    expect(spare_frame._bonus(next_frame, next_next_frame)).toBe(1);
   });
-  
-  it('sums the frame rolls', () => {
-    expect(frame._sumFrame()).toBe(6);
-  });
+
 });

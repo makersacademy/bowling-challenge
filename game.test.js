@@ -56,3 +56,16 @@ describe('spare logic', () => {
     })
 })
 
+describe('strike logic', () => {
+    it('returns the correct score when a strike is scored', () => {
+        const game = new BowlingGame();
+        game.roll(10);
+        game.roll(3);
+        game.roll(5)
+        for (let i=0; i < 17; i++) {
+            game.roll(0)
+        }
+        expect(game.calculateScore()).toBe(26);
+    })
+})
+

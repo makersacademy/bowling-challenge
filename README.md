@@ -64,24 +64,33 @@ I want to know if I reached the 10th frame
 
 ----
 ## IMPLEMENTATION 
-Create a Bowling class
-In the class, create at least three methods: 
+Created a Bowling class.
+
+With 4 private methods:
+* '_isStrike', checks for a strike.
+* '_strikeBonus', returns the correct score for a strike.
+* '_isSpare', checks for a spare.
+* '_spareBonus', returns the correct score for a spare.
+
+And 2 public methods:
 * 'roll', to emulate a player rolling a ball.
-* 'isSpare', to check for spares
-* 'score', to be called once the game ends. Should return the score for the current game.
+* 'score (getter)', to be called once the game ends. Returns the score for the current game.
 ---
 ## TESTS TO PASS
-#### GUTTER GAME
+#### GUTTER GAME:
 -/- -/- -/- -/- -/- -/- -/- -/- -/- -/-  = 0 POINTS
 
-#### ALL ONES
+#### ALL ONES:
 1/1 1/1 1/1 1/1 1/1 1/1 1/1 1/1 1/1 1/1  = 20 POINTS
 
-#### GAME WITH A SPARE
+#### GAME WITH A SPARE:
 4/6 4/- -/- -/- -/- -/- -/- -/- -/- -/-  = 18 POINTS
 
-#### GAME WITH A STRIKE
+#### GAME WITH A STRIKE:
 10  2/5 -/- -/- -/- -/- -/- -/- -/- -/-  = 24 POINTS
+
+#### 10 FRAMES GAME:
+10  2/5 2/2 2/2 2/2 2/2 2/2 2/2 2/2 2/2  = 56 POINTS
 
 ---
 ---

@@ -64,9 +64,10 @@ I want to know if I reached the 10th frame
 
 ----
 ## IMPLEMENTATION 
-Create a Bowlings class
-In the class, create at least two methods: 
+Create a Bowling class
+In the class, create at least three methods: 
 * 'roll', to emulate a player rolling a ball.
+* 'isSpare', to check for spares
 * 'score', to be called once the game ends. Should return the score for the current game.
 ---
 ## TESTS TO PASS
@@ -79,7 +80,7 @@ In the class, create at least two methods:
 #### GAME WITH A SPARE
 4/6 4/- -/- -/- -/- -/- -/- -/- -/- -/-  = 18 POINTS
 
-#### GAME WITH A STRIKES
+#### GAME WITH A STRIKE
 10  2/5 -/- -/- -/- -/- -/- -/- -/- -/-  = 24 POINTS
 
 ---

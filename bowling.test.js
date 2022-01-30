@@ -2,6 +2,8 @@ const Bowling = require('./bowling')
 
 describe('Bowling', () => {
 
+let game 
+
   beforeEach(() => {
      game = new Bowling;
   });
@@ -19,6 +21,16 @@ describe('Bowling', () => {
 
       } catch (error) {
       expect(error).toBeInstanceOf(Error);
+      expect(error.message).toBe("Invalid Entry - Number must be between 0 and 10");
+      }
+    })
+
+    it('raises an error if the parameter is a decimal', () => {
+      try {
+        game.roll(1.4);
+      } catch (error) {
+        expect(error).toBeInstanceOf(Error);
+        expect(error.message).toBe("Invalid Entry - Number must not be a decimal");
       }
     })
 
@@ -28,6 +40,7 @@ describe('Bowling', () => {
 
       } catch (error) {
         expect(error).toBeInstanceOf(Error);
+        expect(error.message).toBe("Invalid Entry - Must be a Number");
       }
     })
   })
@@ -102,7 +115,7 @@ describe('Bowling', () => {
     });
 
     it('can roll a perfect game', () => {
-      for(i = 0; i < 21; i++) {
+      for(let i = 0; i < 21; i++) {
         game.roll(10);
       }
       expect(game.calculateTotalScore()).toBe(300);

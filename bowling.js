@@ -5,14 +5,16 @@ class Bowling {
   }
 
   roll(pins) {
-    if (pins > 10 || pins < 0){
+    if (pins > 10 || pins < 0) {
       throw new Error("Invalid Entry - Number must be between 0 and 10");
 
-    } else if (isNaN(pins)){
+    } else if (isNaN(pins)) {
         throw new Error("Invalid Entry - Must be a Number");
         
-    } else {
+    } else if (pins % 1 != 0) {
+      throw new Error("Invalid Entry - Number must not be a decimal")
 
+    } else {
       this.rolls.push(pins)
     }
   

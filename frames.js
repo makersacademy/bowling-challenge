@@ -1,4 +1,4 @@
-class Frame {
+class Frames {
   constructor() {
     this.frames = [];
   }
@@ -6,16 +6,24 @@ class Frame {
   createNewFrame(rollsArr) {
     this.#addBonusPoints(rollsArr);
 
-    this.frames.push({
-      rolls: rollsArr,
-      total: rollsArr.reduce((a, b) => a + b, 0)
-    });
+    if (this.tenthFrame()) {
+      this.frames.at(-1).rolls.concat(rollsArr);
+    } else {
+      this.frames.push({
+        rolls: rollsArr,
+        total: rollsArr.reduce((a, b) => a + b, 0)
+      });
+    }
   }
 
   totalPoints() {
     let result = 0;
     this.frames.forEach((frame) => (result += frame.total));
     return result;
+  }
+
+  tenthFrame() {
+   return this.frames.length === 10;
   }
 
   #addBonusPoints(rollsArr) {
@@ -27,12 +35,15 @@ class Frame {
   }
 
   #previousWasStrike() {
-    return this.frames.length > 0 && this.frames.at(-1).rolls.length === 1;
+    return this.frames.length > 0 && 
+    this.frames.at(-1).rolls.at(-1) === 10;
   }
 
   #previousWasSpare() {
-    return this.frames.length > 0 && this.frames.at(-1).total === 10;
+    return this.frames.length > 0 && 
+    this.frames.at(-1).total === 10 &&
+    this.frames.at(-1).rolls[0] !== 10;
   }
 }
 
-module.exports = Frame;
+module.exports = Frames;

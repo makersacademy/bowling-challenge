@@ -1,25 +1,32 @@
 const ScoreCard = require("./scoreCard.js");
 
 describe(".addKnockedPins", () => {
-  const scorecard = new ScoreCard();
+  let scoreCard;
+  beforeEach(() => { scoreCard = new ScoreCard });
 
-  it("adds knocked pins number", () => {
-    scorecard.addKnockedPins(4);
-    expect(scorecard.getTotalPoints()).toEqual(4);
+  it("adds knocked pins number score after a frame", () => {
+    scoreCard.addKnockedPins(4);
+    scoreCard.addKnockedPins(4);
+    expect(scoreCard.getTotalPoints()).toEqual(8);
   });
 
   it("adds maximum of 10 pins", () => {
-    expect(() => scorecard.addKnockedPins(11)).toThrow(
+    expect(() => scoreCard.addKnockedPins(11)).toThrow(
       "this is a 10 pins bowling game!"
     );
   });
 
   it("adds maximum of 10 pins across two throws or a frame", () => {
-    const anotherCard = new ScoreCard;
-
-    anotherCard.addKnockedPins(5);
-    expect(() => anotherCard.addKnockedPins(6)).toThrow(
+    scoreCard.addKnockedPins(6);
+    expect(() => scoreCard.addKnockedPins(6)).toThrow(
       "this is a 10 pins bowling game!"
     );
+  });
+
+  it("closes frame after strike", () => {
+    scoreCard.addKnockedPins(4);
+    scoreCard.addKnockedPins(4);
+    scoreCard.addKnockedPins(10);
+    expect(scoreCard.getTotalPoints()).toEqual(18);
   });
 });

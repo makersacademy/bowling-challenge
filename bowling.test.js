@@ -40,8 +40,16 @@ beforeEach(() => {
     bowling.roll(10);
     bowling.roll(2);
     bowling.roll(5);
-    multipleRolls(17, 0);
+    multipleRolls(16, 0);
     expect(bowling.score).toEqual(24);
+  });
+
+  it('returns the correct score for a 10 frames game', () => {
+    bowling.roll(10);
+    bowling.roll(2);
+    bowling.roll(5);
+    multipleRolls(16, 2);
+    expect(bowling.score).toEqual(56);
   });
 
 });

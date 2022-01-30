@@ -46,7 +46,6 @@ describe('Scorecard', () => {
       perfectGame.roll(10);
     }
 
-
     expect(perfectGame.calculateScore()).toEqual(300);
-  })
+  }) 
 })

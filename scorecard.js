@@ -15,7 +15,7 @@ class Scorecard {
     let totalScore = 0;
     let rollNumber = 0;
 
-    for(let i = 0; i < this.#frameNumber(); i++) {
+    for(let i = 0; i < this.frameNumber(); i++) {
       if(this.#isStrike(rollNumber)) { 
         totalScore += this.#strikeScore(rollNumber)
         rollNumber++;
@@ -30,7 +30,7 @@ class Scorecard {
     return totalScore;
   }
 
-  #frameNumber() {
+  frameNumber() {
     if(this.#getScores().length + this.#strikeCount() > 20) {
       return 10;
     } else {
@@ -65,22 +65,22 @@ class Scorecard {
 
 module.exports = Scorecard;
 
-game = new Scorecard;
-game.roll(10);
-game.roll(10);
-game.roll(10);
-game.roll(10);
-game.roll(3);
-game.roll(4);
-game.roll(3);
-game.roll(4);
-game.roll(3);
-game.roll(4);
-game.roll(3);
-game.roll(4);
-game.roll(3);
-game.roll(4);
-game.roll(10);
-game.roll(3);
-game.roll(3);
-console.log(game.calculateScore());
+// game = new Scorecard;
+// game.roll(10);
+// game.roll(10);
+// game.roll(10);
+// game.roll(10);
+// game.roll(3);
+// game.roll(4);
+// game.roll(3);
+// game.roll(4);
+// game.roll(3);
+// game.roll(4);
+// game.roll(3);
+// game.roll(4);
+// game.roll(3);
+// game.roll(4);
+// game.roll(7);
+// game.roll(3);
+// game.roll(7);
+// console.log(game.calculateScore());

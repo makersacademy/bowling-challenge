@@ -1,0 +1,30 @@
+{
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "jest": "^27.4.7",
+    "prettier": "^2.5.1"
+  },
+  "name": "bowling-challenge",
+  "description": "Bowling Challenge =================",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikitaro-27/bowling-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikitaro-27/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/mikitaro-27/bowling-challenge#readme"
+}

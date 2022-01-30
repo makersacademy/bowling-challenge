@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-This is my attempt at a Bowling Scorecard Program built in Javascript. I used TDD approach (via Jest) which I hope will reflect in my tests. 
+This is my attempt at a Bowling Scorecard Program built in Javascript. I used a TDD approach (via Jest) which I hope will reflect in my tests. 
 
 User Stories
 ------------
@@ -13,6 +13,8 @@ Main User Story:
 As a bowler 
 So I can see my results
 I want to be able to count and sum the scores of my bowling game.
+
+Sub-Stories:
 
 As a bowler
 So I can track my total score

@@ -5,17 +5,9 @@ class Bowling {
   }
 
   roll(pins) {
-
-    if (pins > 10 || pins < 0) {
-      throw new Error("Invalid Entry - Number must be between 0 and 10");
-    } else if (isNaN(pins)) {
-        throw new Error("Invalid Entry - Must be a Number");
-    } else if (pins % 1 != 0) {
-        throw new Error("Invalid Entry - Number must not be a decimal")
-    } else {
-        this.rolls.push(pins)
-    }
-
+    this.#errorCheck(pins)
+    this.rolls.push(pins)
+    
     if (this.checkGameOver()) {
       console.log(`Game Over! You Scored: ${this.calculateScore()}`) 
     }
@@ -76,6 +68,21 @@ class Bowling {
       }
     }
     return strikeCount
+  }
+
+  #errorCheck(pins){
+
+    switch(pins){
+      case (pins > 10 || pins < 0):
+        throw new Error("Invalid Entry - Number must be between 0 and 10");
+        
+      case (isNaN(pins)):
+        throw new Error("Invalid Entry - Must be a Number");
+      
+      case (pins % 1 != 0):
+        throw new Error("Invalid Entry - Number must not be a decimal");
+    
+      }
   }
 
 }

@@ -36,5 +36,13 @@ beforeEach(() => {
     expect(bowling.score).toEqual(18);
   });
 
+  it('returns the correct score when a strike is rolled', () => {
+    bowling.roll(10);
+    bowling.roll(2);
+    bowling.roll(5);
+    multipleRolls(17, 0);
+    expect(bowling.score).toEqual(24);
+  });
+
 });
 

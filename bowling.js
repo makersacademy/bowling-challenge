@@ -11,18 +11,25 @@ class Bowling {
     return this.rolls[i] + this.rolls[i+1] === 10;
   }
 
+  isStrike(i) {
+    return this.rolls[i] === 10;
+  }
+
   get score() {
-    let gameScore = 0, i = 0, frame = 1;
-    while(frame <= 10) {
-      gameScore += this.rolls[i] + this.rolls[i+1];
-      if(this.isSpare(i)) {
-        gameScore += this.rolls[i+2];
+    let gameScore = 0, i = 0;
+    for (let frame = 0; frame < 10; frame++) {
+      console.log(gameScore);
+      if (this.isStrike(i)) {
+        gameScore += 10 + this.rolls[i+1] + this.rolls[i+2];
+      } else if (this.isSpare(i)) {
+        gameScore += 10 + this.rolls[i+2];
         i++;
-        frame++;
+      } else {
+        gameScore += this.rolls[i] + this.rolls[i+1];
+        i++;
       }
       i++;
-      frame++;
-    }
+    } 
     return gameScore;
   }
 

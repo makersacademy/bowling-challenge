@@ -1,5 +1,4 @@
 const Frame = require('./frame');
-const Roll = require('./roll');
 
 describe('Frame class', () => {
   const frame = new Frame();
@@ -13,7 +12,7 @@ describe('Frame class', () => {
     expect(frame.frameScores).toEqual([ 8 ]);
   });
 
-  it ('updates frame total with pins amount if pins under 10', () => {
+  it ('updates frame bonus when pins amount if pins under 10', () => {
     expect(frame.bonus).toBe('none');
   });
 

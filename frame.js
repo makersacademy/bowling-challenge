@@ -8,12 +8,16 @@ class Frame {
     this.frameScores = [];
   };
 
-  startRoll = (pins) => {
-    // pins + this.frameTotal <= 10 ? roll(pins) : throw 'Too many pins';
+  pinsRoll(pins) {
+    this.frameScores = this.frameScores.concat(pins);
+    this.frameTotal = this.roll.roll(pins);
+    this.bonus = this.roll.strikeOrSpare();
+  };
+
+
+  startRoll(pins) {
     if (pins + this.frameTotal <= 10) {
-      this.frameScores = this.frameScores.concat(pins);
-      this.frameTotal = this.roll.roll(pins);
-      this.bonus = this.roll.strikeOrSpare();
+      this.pinsRoll(pins);
     } else {
       throw 'Too many pins';
     }

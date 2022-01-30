@@ -69,11 +69,9 @@ class Game {
             if(frameScore === 10) {
               console.log('Woo, a spare!')
               this.enterRoll(answer2);
-              this.bonusRoll();
+              this.bonusRoll(1);
             } else {
               this.enterRoll(answer2);
-              let score = this.scorecard.calculateScore();
-              console.log(`Your current score is ${score}`)
               this.endOfGame();
             }
           })
@@ -83,7 +81,10 @@ class Game {
   }
 
   endOfGame() {
-    console.log('The End!');
+    let score = this.scorecard.calculateScore();
+    console.log(`Your final score is ${score}!!`)
+    this.gameOverDisplay();
+    this.rl.close();
   }
   
   lastFrame() {
@@ -115,6 +116,10 @@ class Game {
   titleDisplay() {
     console.log("  _          _   _        _____         ____                _ _             _ \r\n | |        | | ( )      \/ ____|       |  _ \\              | (_)           | |\r\n | |     ___| |_|\/ ___  | |  __  ___   | |_) | _____      _| |_ _ __   __ _| |\r\n | |    \/ _ \\ __| \/ __| | | |_ |\/ _ \\  |  _ < \/ _ \\ \\ \/\\ \/ \/ | | \'_ \\ \/ _` | |\r\n | |___|  __\/ |_  \\__ \\ | |__| | (_) | | |_) | (_) \\ V  V \/| | | | | | (_| |_|\r\n |______\\___|\\__| |___\/  \\_____|\\___\/  |____\/ \\___\/ \\_\/\\_\/ |_|_|_| |_|\\__, (_)\r\n                                                                       __\/ |  \r\n                                                                      |___\/   ");
     console.log(`         .-.\r\n      .-.\\ \/    .-.\r\n      \\ \/|=|    \\ \/\r\n      |=|   \\   |=|\r\n     \/   \\ ---.\/   \\\r\n     |   \/ ..  \\   |\r\n     |  |#  \'   |  |\r\n      \'._\\     \/_.\'\r\n          \'---\'\r\n`);
+  }
+
+  gameOverDisplay() {
+    console.log(`   _____                                            _ \r\n  \/ ____|                                          | |\r\n | |  __  __ _ _ __ ___   ___    _____   _____ _ __| |\r\n | | |_ |\/ _\` | \'_ \` _ \\ \/ _ \\  \/ _ \\ \\ \/ \/ _ \\ \'__| |\r\n | |__| | (_| | | | | | |  __\/ | (_) \\ V \/  __\/ |  |_|\r\n  \\_____|\\__,_|_| |_| |_|\\___|  \\___\/ \\_\/ \\___|_|  (_)\r\n                                                      \r\n                                                      `);
   }
 }
 

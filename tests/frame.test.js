@@ -20,6 +20,50 @@ describe("frame", () => {
       expect(frame.roll1).toEqual(3);
       expect(frame.roll2).toEqual(7);
     });
+
+    describe('#summariseFrame', () => {
+      describe('when strike', () => {
+        it('sets roll2 as null', () => {
+          const frame = new Frame();
+          frame.addRoll(10)
+          expect(frame.roll2).toEqual(null)
+        })
+
+        it('assigns 2 bonus points', () => {
+          const frame = new Frame();
+          frame.addRoll(10)
+          expect(frame.bonusPoints).toEqual(2)
+        })
+      })
+
+      describe('when spare', () => {
+        it('assigns 1 bonus points', () => {
+          const frame = new Frame();
+          frame.addRoll(5)
+          frame.addRoll(5)
+          expect(frame.bonusPoints).toEqual(1)
+        })
+      })
+      
+      describe('when open', () => {
+        it('assigns 0 bonus points', () => {
+          const frame = new Frame();
+          frame.addRoll(5)
+          frame.addRoll(4)
+          expect(frame.bonusPoints).toEqual(0)
+        })
+      })
+    })
+
+    describe('#countScore', () => {
+      it('updates score each roll', () => {
+        const frame = new Frame();
+        frame.addRoll(5)
+        expect(frame.score).toEqual(5)
+        frame.addRoll(4)
+        expect(frame.score).toEqual(9)
+      })
+    })
   });
 
   describe('addBonus', () => {
@@ -36,6 +80,22 @@ describe("frame", () => {
       frame.addBonus(7)
       frame.addBonus(3)
       expect(frame.bonus2).toEqual(3)
+    })
+
+    it('deducts a bonus point each time', () => {
+      const frame = new Frame();
+      frame.addRoll(5)
+      frame.addRoll(5)
+      frame.addBonus(10)
+      expect(frame.bonusPoints).toEqual(0)
+    })
+    describe('when no bonus points', () => {
+      it('throws no bonus points', () => {
+        const frame = new Frame();
+        frame.addRoll(5)
+        frame.addRoll(4)
+        expect(() => frame.addBonus(3)).toThrow('no bonus points')
+      })
     })
   })
 

@@ -17,11 +17,7 @@ class Game {
         case '10':
           this.strikeDisplay();
           this.enterRoll(answer1);
-          if(this.lastFrame()) {
-            this.frameTen();
-          } else {
-            this.letsGoBowling();
-          }
+          this.nextFrame();
           break;
         default:
           frameScore += parseInt(answer1);
@@ -31,27 +27,19 @@ class Game {
             if(frameScore === 10) {
               console.log('Woo, a spare!')
               this.enterRoll(answer2);
-              if(this.lastFrame()) {
-                this.frameTen();
-              } else {
-                this.letsGoBowling();
-              };
+              this.nextFrame();
             } else {
               this.enterRoll(answer2);
               let score = this.scorecard.calculateScore();
               console.log(`Your current score is ${score}`);
-              if(this.lastFrame()) {
-                this.frameTen();
-              } else {
-                this.letsGoBowling();
-              };
+              this.nextFrame();
             }
           })
           break;
         }
     })
   }
-  
+
   frameTen() {
     let frameScore = 0
     this.rl.question(`Last frame! How many pins did you knock down on roll 1? `, (answer1) => {
@@ -78,6 +66,14 @@ class Game {
           break;
         }
     })
+  }
+
+  nextFrame() {
+    if (this.lastFrame()) {
+      this.frameTen();
+    } else {
+      this.letsGoBowling();
+    };
   }
 
   endOfGame() {

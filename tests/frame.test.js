@@ -22,6 +22,23 @@ describe("frame", () => {
     });
   });
 
+  describe('addBonus', () => {
+    it('adds first bonus to roll', () => {
+      const frame = new Frame();
+      frame.addRoll(7)
+      frame.addRoll(3)
+      frame.addBonus(7)
+      expect(frame.bonus1).toEqual(7)
+    })
+    it('adds second bonus to roll', () => {
+      const frame = new Frame();
+      frame.addRoll(10)
+      frame.addBonus(7)
+      frame.addBonus(3)
+      expect(frame.bonus2).toEqual(3)
+    })
+  })
+
   describe('isComplete', () => {
     describe('when strike', () => {
       it('returns true', () => {

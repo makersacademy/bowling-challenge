@@ -3,8 +3,15 @@ class Frame {
     this.score = 0;
   }
 
-  addRoll(knockedPins) {
-    this.roll1 ? (this.roll2 = knockedPins) : (this.roll1 = knockedPins);
+  addRoll(points) {
+    //  create roll1 or roll2
+    this.roll1 ? (this.roll2 = points) : (this.roll1 = points);
+    // if strike make roll_2 null
+    //summarise frame
+  }
+
+  addBonus(points) {
+    this.bonus1 ? (this.bonus2 = points) : (this.bonus1 = points)
   }
 
   isStrike() {
@@ -16,7 +23,7 @@ class Frame {
   }
 
   isComplete() {
-    return this.roll2 != undefined || this.isStrike()
+    return !!this.roll2 || this.isStrike()
   }
 }
 

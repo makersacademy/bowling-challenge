@@ -17,3 +17,22 @@ describe('Gutter Game - all 10 frames as 0', () => {
         expect(game.calculateScore()).toBe(0);
     })
 })
+
+describe('Multiple Frame Scores', () => {
+    it('returns the correct score across frames', () => {
+        const game = new BowlingGame();
+        game.roll(6);
+        game.roll(7);
+        expect(game.calculateScore()).toBe(13);
+    })
+
+    it('returns the correct score across frames', () => {
+        const game = new BowlingGame();
+        game.roll(1);
+        game.roll(9);
+        game.roll(7);
+        game.roll(2);
+        expect(game.calculateScore()).toBe(19);
+    })
+})
+

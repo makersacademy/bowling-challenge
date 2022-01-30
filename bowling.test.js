@@ -45,44 +45,44 @@ let game
     })
   })
 
-  describe('calculateCurrentScore', () => {
+  describe('calculateScore: scoring partial games', () => {
     it('can calculate the current score', () => {
       game.roll(5);
       game.roll(2);
       game.roll(4);
       game.roll(4);
-      expect(game.calculateCurrentScore()).toBe(15);
+      expect(game.calculateScore()).toBe(15);
     })
 
     it('can calculate the current score with spare', () => {
       game.roll(5);
       game.roll(5);
       game.roll(4);
-      expect(game.calculateCurrentScore()).toBe(18);
+      expect(game.calculateScore()).toBe(18);
     })
 
     it('can calculate the current score with strike', () => {
       game.roll(10);
       game.roll(3);
       game.roll(4);
-      expect(game.calculateCurrentScore()).toBe(24);
+      expect(game.calculateScore()).toBe(24);
     })
 
     it('can calculate the current score with consecutive strikes', () => {
       game.roll(10);
       game.roll(10);
       game.roll(10);
-      expect(game.calculateCurrentScore()).toBe(60);
+      expect(game.calculateScore()).toBe(60);
     })
   })
 
-  describe('calculateTotalScore', () => {
+  describe('calculateScore: scoring full games', () => {
 
     it('can score a gutter game', () => {
       for(let i = 0; i < 20; i ++) {
         game.roll(0);
       }
-      expect(game.calculateTotalScore()).toBe(0);
+      expect(game.calculateScore()).toBe(0);
     });
 
     it('can score all ones', () => {
@@ -90,7 +90,7 @@ let game
         game.roll(1);
         
       }
-      expect(game.calculateTotalScore()).toBe(20);
+      expect(game.calculateScore()).toBe(20);
     });
 
     it('can roll a spare', () => {
@@ -100,7 +100,7 @@ let game
       for(let i = 0; i < 17; i ++){
         game.roll(0)
       }
-      expect(game.calculateTotalScore()).toBe(14);
+      expect(game.calculateScore()).toBe(14);
 
     });
 
@@ -111,20 +111,20 @@ let game
       for(let i = 0; i < 17; i ++){
         game.roll(0);
       }
-      expect(game.calculateTotalScore()).toBe(20);
+      expect(game.calculateScore()).toBe(20);
     });
 
     it('can roll a perfect game', () => {
       for(let i = 0; i < 21; i++) {
         game.roll(10);
       }
-      expect(game.calculateTotalScore()).toBe(300);
+      expect(game.calculateScore()).toBe(300);
     });
 
     it('can roll an average game', () => {
       const scoreArray = [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6];
       scoreArray.forEach(score => game.roll(score));
-      expect(game.calculateTotalScore()).toBe(133);
+      expect(game.calculateScore()).toBe(133);
     })
   })
   

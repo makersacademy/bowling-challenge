@@ -2,37 +2,110 @@
 Bowling Challenge
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
 ## The Task
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD PROGRAM. THE USER INPUTS THE ROLLS.**
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Count and sum the scores of a bowling game for one player. For this challenge, just focus on the logic for bowling.
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
+## GAME FLOW DIAGRAM
 
-* Forking this repo
+![Bowling Game Diagram](./images/bowling_game_diagram.png)
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+## USER STORIES
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+As a Player
 
-### Optional Extras
+So that I can play a bowling game
 
-In any order you like:
+I want to roll a ball
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+---
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+As a Player
+
+So that I know my score
+
+I want to count the pins I throw
+
+---
+
+As a Player
+
+So that I know if I have to throw once or twice in a frame
+
+I want to know if I have knock down all 10 pins on current frame
+
+---
+
+As a Player 
+
+So I that I can update my score throughout the game
+
+I want to sum the score of each frame
+
+---
+
+As a player
+
+So that I can keep my score thru the game
+
+I want to know what's the current frame
+
+---
+
+As a player
+
+So that I know if the game ended
+
+I want to know if I reached the 10th frame
+
+----
+## IMPLEMENTATION 
+Created a Bowling class.
+
+With 4 private methods:
+* '_isStrike', checks for a strike.
+* '_strikeBonus', returns the correct score for a strike.
+* '_isSpare', checks for a spare.
+* '_spareBonus', returns the correct score for a spare.
+
+And 2 public methods:
+* 'roll', to emulate a player rolling a ball.
+* 'score (getter)', to be called once the game ends. Returns the score for the current game.
+---
+## TESTS TO PASS
+#### GUTTER GAME:
+-/- -/- -/- -/- -/- -/- -/- -/- -/- -/-  = 0 POINTS
+
+#### ALL ONES:
+1/1 1/1 1/1 1/1 1/1 1/1 1/1 1/1 1/1 1/1  = 20 POINTS
+
+#### GAME WITH A SPARE:
+4/6 4/- -/- -/- -/- -/- -/- -/- -/- -/-  = 18 POINTS
+
+#### GAME WITH A STRIKE:
+10  2/5 -/- -/- -/- -/- -/- -/- -/- -/-  = 24 POINTS
+
+#### 10 FRAMES GAME:
+10  2/5 2/2 2/2 2/2 2/2 2/2 2/2 2/2 2/2  = 56 POINTS
+
+---
+---
+### EXTRA INFO
+
+## Focus for this challenge
+The focus for this challenge is to write high-quality code.
+
+In order to do this, I will pay particular attention to the following:
+* Using diagramming to plan your approach to the challenge
+* TDD your code
+* Focus on testing behaviour rather than state
+* Commit often, with good commit messages
+* Single Responsibility Principle and encapsulation
+* Clear and readable code
 
 ## Bowling — how does it work?
 
@@ -64,12 +137,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

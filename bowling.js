@@ -1,11 +1,14 @@
 class Bowling {
+  constructor() {
+    this.currentScore = 0;
+  }
 
-  roll() {
-
+  roll(pins) {
+    this.currentScore += pins;
   }
 
   get score() {
-    return 0;
+    return this.currentScore;
   }
 }
 

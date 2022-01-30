@@ -4,18 +4,18 @@ class Frame {
   }
 
   addRoll(points) {
-    //  create roll1 or roll2
+    this.#validateRoll(points)
     this.roll1 ? (this.roll2 = points) : (this.roll1 = points);
-    //summarise frame
     this.#summariseFrame()
-    // check if strike? and then fill the 2nd roll as null
-    // if complete we want to get bonus rolls
+    return this
   }
 
   addBonus(points) {
+    this.#validateBonus(points);
     if (this.bonusPoints > 0) {
       this.bonus1 ? (this.bonus2 = points) : (this.bonus1 = points)
       this.bonusPoints -= 1
+      this.#updateScore(this.roll1, this.roll2, this.bonus1, this.bonus2)
     } else {
       throw new Error('no bonus points')
     }
@@ -30,8 +30,19 @@ class Frame {
   }
 
   isComplete() {
-    // returns true if it was a strike or has second roll
-    return !!this.roll2 || this.isStrike()
+    return !!this.roll2 || this.isStrike();
+  }
+
+  #validateRoll(points) {
+    if (points > 10) throw 'invalid roll'
+    if (this.roll1 + points > 10) throw 'invalid roll'
+  }
+
+  #validateBonus(points) {
+    if (points > 10) throw 'invalid bonus'
+    if (this.bonus1 != 10) {
+      if (this.bonus1 + points > 10) throw 'invalid bonus'
+    }
   }
 
   #summariseFrame() {

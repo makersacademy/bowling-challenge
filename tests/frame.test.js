@@ -6,6 +6,11 @@ describe("frame", () => {
     expect(frame.score).toEqual(0);
   });
 
+  it('returns the frame', () => {
+    const frame = new Frame();
+    expect(frame.addRoll(5)).toBeInstanceOf(Frame)
+  })
+
   describe("addRoll", () => {
     it("adds first roll to frame", () => {
       const frame = new Frame();
@@ -20,6 +25,24 @@ describe("frame", () => {
       expect(frame.roll1).toEqual(3);
       expect(frame.roll2).toEqual(7);
     });
+
+    describe('#validateRoll', () => {
+      describe('when invalid 2nd roll', () => {
+        it('throws an error', () => {
+          const frame = new Frame();
+          frame.addRoll(5)
+          expect(() => { frame.addRoll(6) }).toThrow('invalid roll')
+        })
+      })
+
+      describe('when given 11', () => {
+        it('throws an error', () => {
+          const frame = new Frame();
+          expect(() => {frame.addRoll(11)}).toThrow('invalid roll')
+          
+        })
+      })
+    })
 
     describe('#summariseFrame', () => {
       describe('when strike', () => {
@@ -55,7 +78,7 @@ describe("frame", () => {
       })
     })
 
-    describe('#countScore', () => {
+    describe('#updateScore', () => {
       it('updates score each roll', () => {
         const frame = new Frame();
         frame.addRoll(5)
@@ -89,12 +112,47 @@ describe("frame", () => {
       frame.addBonus(10)
       expect(frame.bonusPoints).toEqual(0)
     })
+
+    it('updates score', () => {
+      const frame = new Frame();
+      frame.addRoll(10)
+      frame.addBonus(7)
+      expect(frame.score).toEqual(17)
+      frame.addBonus(3)
+      expect(frame.score).toEqual(20)
+    })
     describe('when no bonus points', () => {
       it('throws no bonus points', () => {
         const frame = new Frame();
         frame.addRoll(5)
         frame.addRoll(4)
         expect(() => frame.addBonus(3)).toThrow('no bonus points')
+      })
+    })
+
+    describe('#validate_bonus', () => {
+      describe('when bonus1(!=10) and bonus2 larger than 10', () => {
+        it('throws an error', () => {
+          const frame = new Frame();
+          frame.addRoll(10)
+          frame.addBonus(3)
+          expect(() => {frame.addBonus(8)}).toThrow('invalid bonus')
+        })
+      })
+
+      describe('when given 11', () => {
+        const frame = new Frame();
+        frame.addRoll(10)
+        expect(() => { frame.addBonus(11) }).toThrow('invalid bonus')
+      })
+
+      describe('when strike-->10-->10', () => {
+        it('does not throw error', () => {
+          const frame = new Frame();
+          frame.addRoll(10)
+          frame.addBonus(10)
+          expect(() => {frame.addBonus(10)}).not.toThrow('invalid bonus')
+        })
       })
     })
   })

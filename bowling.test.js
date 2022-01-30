@@ -43,6 +43,14 @@ let game
         expect(error.message).toBe("Invalid Entry - Must be a Number");
       }
     })
+
+    it('stops counting rolls when the game is over', () => {
+      for(let i = 0; i < 20; i++) {
+        game.roll(2);
+      }
+      expect(game.checkGameOver()).toBeTruthy;
+
+    }) 
   })
 
   describe('calculateScore: scoring partial games', () => {

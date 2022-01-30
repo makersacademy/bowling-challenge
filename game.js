@@ -1,0 +1,121 @@
+const Scorecard = require('./Scorecard');
+const readline = require('readline');
+
+class Game {
+  constructor() {
+    this.scorecard = new Scorecard();
+    this.rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+  }
+
+  letsGoBowling() {
+    let frameScore = 0
+    this.rl.question(`Frame ${this.scorecard.frameNumber() + 1}. How many pins did you knock down on roll 1? `, (answer1) => {
+      switch(answer1) {
+        case '10':
+          this.strikeDisplay();
+          this.enterRoll(answer1);
+          if(this.lastFrame()) {
+            this.frameTen();
+          } else {
+            this.letsGoBowling();
+          }
+          break;
+        default:
+          frameScore += parseInt(answer1);
+          this.enterRoll(answer1);
+          this.rl.question('And how many did you knock down on roll 2? ', (answer2) => {
+            frameScore += parseInt(answer2);
+            if(frameScore === 10) {
+              console.log('Woo, a spare!')
+              this.enterRoll(answer2);
+              if(this.lastFrame()) {
+                this.frameTen();
+              } else {
+                this.letsGoBowling();
+              };
+            } else {
+              this.enterRoll(answer2);
+              let score = this.scorecard.calculateScore();
+              console.log(`Your current score is ${score}`);
+              if(this.lastFrame()) {
+                this.frameTen();
+              } else {
+                this.letsGoBowling();
+              };
+            }
+          })
+          break;
+        }
+    })
+  }
+  
+  frameTen() {
+    let frameScore = 0
+    this.rl.question(`Last frame! How many pins did you knock down on roll 1? `, (answer1) => {
+      switch(answer1) {
+        case '10':
+          this.strikeDisplay();
+          this.enterRoll(answer1);
+          this.bonusRoll(2);
+          break;
+        default:
+          frameScore += parseInt(answer1);
+          this.enterRoll(answer1);
+          this.rl.question('And how many did you knock down on roll 2? ', (answer2) => {
+            frameScore += parseInt(answer2)
+            if(frameScore === 10) {
+              console.log('Woo, a spare!')
+              this.enterRoll(answer2);
+              this.bonusRoll();
+            } else {
+              this.enterRoll(answer2);
+              let score = this.scorecard.calculateScore();
+              console.log(`Your current score is ${score}`)
+              this.endOfGame();
+            }
+          })
+          break;
+        }
+    })
+  }
+
+  endOfGame() {
+    console.log('The End!');
+  }
+  
+  lastFrame() {
+    return this.scorecard.frameNumber() + 1 === 10;
+  }
+  
+  bonusRoll(howManyTimes) {
+    if(howManyTimes === 2) {
+      this.rl.question(`How many pins did you knock down on the bonus roll? `, (answer) => {
+        this.enterRoll(answer);
+        this.bonusRoll(1)
+      })
+    } else {
+      this.rl.question('How many pins did you knock down on your bonus roll? ', (answer) => {
+        this.enterRoll(answer);
+        this.endOfGame();
+      })
+    }
+  }
+  
+  enterRoll(answer) {
+    this.scorecard.roll(parseInt(answer));
+  }
+  
+  strikeDisplay() {
+    console.log(`   _____ _        _ _        _ \r\n  \/ ____| |      (_) |      | |\r\n | (___ | |_ _ __ _| | _____| |\r\n  \\___ \\| __| \'__| | |\/ \/ _ \\ |\r\n  ____) | |_| |  | |   <  __\/_|\r\n |_____\/ \\__|_|  |_|_|\\_\\___(_)\r\n`);
+  }
+  
+  titleDisplay() {
+    console.log("  _          _   _        _____         ____                _ _             _ \r\n | |        | | ( )      \/ ____|       |  _ \\              | (_)           | |\r\n | |     ___| |_|\/ ___  | |  __  ___   | |_) | _____      _| |_ _ __   __ _| |\r\n | |    \/ _ \\ __| \/ __| | | |_ |\/ _ \\  |  _ < \/ _ \\ \\ \/\\ \/ \/ | | \'_ \\ \/ _` | |\r\n | |___|  __\/ |_  \\__ \\ | |__| | (_) | | |_) | (_) \\ V  V \/| | | | | | (_| |_|\r\n |______\\___|\\__| |___\/  \\_____|\\___\/  |____\/ \\___\/ \\_\/\\_\/ |_|_|_| |_|\\__, (_)\r\n                                                                       __\/ |  \r\n                                                                      |___\/   ");
+    console.log(`         .-.\r\n      .-.\\ \/    .-.\r\n      \\ \/|=|    \\ \/\r\n      |=|   \\   |=|\r\n     \/   \\ ---.\/   \\\r\n     |   \/ ..  \\   |\r\n     |  |#  \'   |  |\r\n      \'._\\     \/_.\'\r\n          \'---\'\r\n`);
+  }
+}
+
+module.exports = Game

@@ -7,11 +7,11 @@ class Bowling {
   roll(pins) {
     this.#errorCheck(pins)
     this.rolls.push(pins)
-    
+
     if (this.checkGameOver()) {
       console.log(`Game Over! You Scored: ${this.calculateScore()}`) 
     }
-  } 
+  }
 
   calculateScore(){
     let currentRolls = [...this.rolls]
@@ -88,3 +88,4 @@ class Bowling {
 }
 
 module.exports = Bowling;
+

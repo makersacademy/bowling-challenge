@@ -64,23 +64,3 @@ class Scorecard {
 }
 
 module.exports = Scorecard;
-
-// game = new Scorecard;
-// game.roll(10);
-// game.roll(10);
-// game.roll(10);
-// game.roll(10);
-// game.roll(3);
-// game.roll(4);
-// game.roll(3);
-// game.roll(4);
-// game.roll(3);
-// game.roll(4);
-// game.roll(3);
-// game.roll(4);
-// game.roll(3);
-// game.roll(4);
-// game.roll(7);
-// game.roll(3);
-// game.roll(7);
-// console.log(game.calculateScore());

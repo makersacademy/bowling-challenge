@@ -25,10 +25,9 @@ class Frame {
 
   _bonus(next_frame, next_next_frame) { //frame class does not need to know what next_frame and next_next_frame are, because these params will be passed in when scorecard methods are called
     if (this._isStrike() && next_frame._isStrike()) {
-      if (next_next_frame == undefined) {
-        console.log('should only print in 9th frame strike' + next_frame.rolls[1]);
+      if (next_next_frame == undefined) { // i.e. 9th frame
         return 10 + next_frame.rolls[1];
-        } // i.e. 9th frame
+        } 
       else {
         return 10 + next_next_frame.rolls[0];
       }

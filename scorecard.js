@@ -5,8 +5,8 @@ class Scorecard {
     this.frames = []
   }
 
-  input_frame(rolls) { //rolls will be e.g. [2,3]
-    const frame = new Frame(rolls);
+  inputFrame(rolls) { //rolls will be e.g. [2,3]
+    const frame = new Frame(rolls); // would it be better to inject this in? If I inject it, would I then need to use a double in the tests?
     this.frames.push(frame);
   }
 

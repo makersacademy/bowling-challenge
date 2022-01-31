@@ -23,7 +23,6 @@ describe('Frame', () => {
 
   it('calculates score of a strike frame, when also followed by a strike, including bonus', () => {
     next_frame_strike = new Frame([10])
-    
     expect(strike_frame.score(next_frame_strike, next_next_frame)).toBe(22);
   });
 
@@ -40,12 +39,10 @@ describe('Frame', () => {
   });
 
   it('calculates bonus if strike', () => {
-   
     expect(strike_frame._bonus(next_frame, next_next_frame)).toBe(8);
   });
 
   it('calculates bonus if spare', () => {
- 
     expect(spare_frame._bonus(next_frame, next_next_frame)).toBe(1);
   });
 

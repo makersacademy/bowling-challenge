@@ -24,11 +24,11 @@ class Game {
   }
 
   runFrame() {
-    this.pinsRequest(this.frame.startRoll()); // needs a callback?
+    this.pinsRequest(); // needs a callback?
     if (this.frame.bonus === 'strike') {
       this.frame.frameScores.push(0);
     } else {
-      this.pinsRequest(this.frame.startRoll()); // needs a callback
+      this.pinsRequest(); // needs a callback
     }
     this.finishFrame();
   }
@@ -50,7 +50,7 @@ class Game {
   }
 
   pinsRequest() {
-    return 10
+    this.frame.startRoll(10)
   }
 
   // pinsRequest(callback) {
@@ -75,7 +75,7 @@ class Game {
 }
 
 // uncode the below to run the game
-// game = new Game();
-// game.startGame();
+game = new Game();
+game.startGame();
 
 module.exports = Game;

@@ -13,31 +13,29 @@ class Game {
   letsGoBowling() {
     let frameScore = 0
     this.rl.question(`Frame ${this.scorecard.frameNumber() + 1}. How many pins did you knock down on roll 1? `, (answer1) => {
+      this.#enterRoll(answer1);
       switch(answer1) {
         case '10':
           this.#strikeDisplay();
-          this.#enterRoll(answer1);
           this.#nextFrame();
           break;
         default:
           frameScore += parseInt(answer1);
-          this.#enterRoll(answer1);
           this.rl.question('And how many did you knock down on roll 2? ', (answer2) => {
+            this.#enterRoll(answer2);
             frameScore += parseInt(answer2);
-            this.#secondRoll(frameScore, answer2);
+            this.#secondRoll(frameScore);
           })
           break;
         }
     })
   }
 
-  #secondRoll(frameScore, answer2) {
+  #secondRoll(frameScore) {
     if (frameScore === 10) {
       console.log('Woo, a spare!');
-      this.#enterRoll(answer2);
       this.#nextFrame();
     } else {
-      this.#enterRoll(answer2);
       let score = this.scorecard.calculateScore();
       console.log(`Your current score is ${score}`);
       this.#nextFrame();
@@ -47,16 +45,16 @@ class Game {
   #frameTen() {
     let frameScore = 0
     this.rl.question(`Last frame! How many pins did you knock down on roll 1? `, (answer1) => {
+      this.#enterRoll(answer1);
       switch(answer1) {
         case '10':
           this.#strikeDisplay();
-          this.#enterRoll(answer1);
           this.#bonusRoll(2);
           break;
         default:
           frameScore += parseInt(answer1);
-          this.#enterRoll(answer1);
           this.rl.question('And how many did you knock down on roll 2? ', (answer2) => {
+            this.#enterRoll(answer2);
             frameScore += parseInt(answer2)
             this.#lastSecondRoll(frameScore, answer2);
           })
@@ -65,13 +63,11 @@ class Game {
     })
   }
 
-  #lastSecondRoll(frameScore, answer2) {
+  #lastSecondRoll(frameScore) {
     if (frameScore === 10) {
       console.log('Woo, a spare!');
-      this.#enterRoll(answer2);
       this.#bonusRoll(1);
     } else {
-      this.#enterRoll(answer2);
       this.#endOfGame();
     }
   }

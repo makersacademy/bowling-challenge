@@ -1,75 +1,126 @@
+## To run:
 
-Bowling Challenge
-=================
+(go into main directory) (./main)
+```
+node
+ > .load ./main
+```
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Demo:
 
-## The Task
+For the purpose of this demo, I created a showBreakdown function. To use this you need to uncomment a few lines in round.js. 
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+```js
+Welcome to Node.js v17.4.0.
+Type ".help" for more information.
+> .load round.js
+  [round.js content - deleted]
+> const round = new Round();
+undefined
+> round.addRoll(4)
+| 4    |
+| 4    |
+'The current score is: 4'
+> round.addRoll(3)
+| 4 3  |
+| 7    |
+'The current score is: 7'
+> round.addRoll(10)
+| 4 3  | 10 X |
+| 7    | 10   |
+'The current score is: 17'
+> round.addRoll(1)
+| 4 3  | 10 X | 1    |
+| 7    | 11   | 1    |
+'The current score is: 19'
+> round.addRoll(9)
+| 4 3  | 10 X | 1 /  |
+| 7    | 20   | 10   |
+'The current score is: 37'
+> round.addRoll(10)
+| 4 3  | 10 X | 1 /  | 10 X |
+| 7    | 20   | 20   | 10   |
+'The current score is: 57'
+> round.addRoll(10)
+| 4 3  | 10 X | 1 /  | 10 X | 10 X |
+| 7    | 20   | 20   | 20   | 10   |
+'The current score is: 77'
+> round.addRoll(7)
+| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7    |
+| 7    | 20   | 20   | 27   | 17   | 7    |
+'The current score is: 98'
+> round.addRoll(2)
+| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  |
+| 7    | 20   | 20   | 27   | 19   | 9    |
+'The current score is: 102'
+> round.addRoll(8)
+| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8    |
+| 7    | 20   | 20   | 27   | 19   | 9    | 8    |
+'The current score is: 110'
+> round.addRoll(3)
+Uncaught 'invalid roll'
+> round.addRoll(2)
+| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  |
+| 7    | 20   | 20   | 27   | 19   | 9    | 10   |
+'The current score is: 112'
+> round.addRoll(9)
+| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9    |
+| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 9    |
+'The current score is: 130'
+> round.addRoll(1)
+| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9 /  |
+| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 10   |
+'The current score is: 131'
+> round.addRoll(10)
+| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9 /  | 10 X |
+| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 20   | 10   |
+'The current score is: 151'
+> round.addRoll(10)
+| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9 /  | 10 X | 10 X |
+| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 20   | 20   | 10   |
+'The current score is: 171'
+> round.addRoll(9)
+| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9 /  | 10 X | 10 X |
+| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 20   | 29   | 19   |
+'The current score is: 189'
+> round.addRoll(1)
+| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9 /  | 10 X | 10 X |
+| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 20   | 29   | 20   |
+'The current score is: 190'
+> round.addRoll(0)
+Uncaught 'round finished'
+```
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+## Features:
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+- user starts a round
+- user can add a roll at a time using ‘addRoll(points) method’
+- for the purpose of the demo, you can see a scorecard and final score
+- 
 
-As usual please start by
+## In development:
 
-* Forking this repo
+- there is bugs when you input 0 as your points
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+## How the score is counted
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+1. The user inputs the roll
+2. The program checks all existing frames for outstanding bonus rolls
+3. The program creates a Frame if it is a strike, awaits another roll otherwise.
 
-### Optional Extras
+## Reflections:
 
-In any order you like:
+Edge cases:
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+- given 2 strikes in a row, the first strike still has one bonus roll left
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+- given a strike in the 10th frame, 2 bonus rolls are allowed
 
-## Bowling — how does it work?
+(TBC)...
 
-### Strikes
+Notes:
+- I did not know how to go about mocking in jest, need to look at that.
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+## Bowling rules model:
 
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+![alt text](https://i.imgur.com/z4arXW4.jpg)

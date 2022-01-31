@@ -11,7 +11,7 @@ Clone the repo and run
 > npm install
 > node cli.js
 ```
-Then input your scores one by one.
+then input your scores one by one.
 
 ## Demo
 
@@ -94,7 +94,7 @@ Frame 1. How many pins did you knock down on roll 1? banana
 And how many did you knock down on roll 2? 12984172834
 Your current score is NaN
 Frame 2. How many pins did you knock down on roll 1? can I have a double espresso please?
-And how many did you knock down on roll 2? you know the thing about a shark? he's got lifeless eyes, black eyes, like a doll's eyes. when he come at ya, don't seem to be livin'
+And how many did you knock down on roll 2? you know the thing about a shark? he's got lifeless eyes, black eyes, like a doll's eyes. when he come at ya, don't seem to be livin'. Till he bites ya. And those black eyes roll over white, and then, oh, then you hear that terrible high-pitch screamin', the ocean turns red, and spite of all the poundin' and the hollerin', they all come in and they rip you to pieces
 Your current score is NaN
 Frame 3. How many pins did you knock down on roll 1? 10
    _____ _        _ _        _ 

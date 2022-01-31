@@ -2,7 +2,9 @@ const Frames = require("./frames.js");
 
 describe("Frame", () => {
   let frame;
-  beforeEach(() => { frame = new Frames });
+  beforeEach(() => {
+    frame = new Frames();
+  });
 
   it("adds rolls points to frame's total points", () => {
     frame.createNewFrame([3, 4]);
@@ -25,7 +27,9 @@ describe("Frame", () => {
   });
 
   it("adds bonus points for strike on tenth frame", () => {
-    for(let i = 0; i < 9; i++) { frame.createNewFrame([4, 4]) };
+    for (let i = 0; i < 9; i++) {
+      frame.createNewFrame([4, 4]);
+    }
     frame.createNewFrame([10]);
     frame.createNewFrame([10]);
     frame.createNewFrame([8]);
@@ -34,7 +38,9 @@ describe("Frame", () => {
   });
 
   it("adds bonus points for spare on tenth frame", () => {
-    for(let i = 0; i < 9; i++) { frame.createNewFrame([4, 4]) };
+    for (let i = 0; i < 9; i++) {
+      frame.createNewFrame([4, 4]);
+    }
     frame.createNewFrame([4, 6]);
     frame.createNewFrame([8]);
 

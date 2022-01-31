@@ -2,7 +2,9 @@ const ScoreCard = require("./scoreCard.js");
 
 describe(".addKnockedPins", () => {
   let scoreCard;
-  beforeEach(() => { scoreCard = new ScoreCard });
+  beforeEach(() => {
+    scoreCard = new ScoreCard();
+  });
 
   it("adds knocked pins number score after a frame", () => {
     scoreCard.addKnockedPins(4);

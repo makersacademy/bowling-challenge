@@ -1,7 +1,7 @@
 const Frames = require("./frames.js");
 
 class ScoreCard {
-  constructor(frames = new Frames) {
+  constructor(frames = new Frames()) {
     this.rolls = [];
     this.frames = frames;
   }
@@ -23,9 +23,7 @@ class ScoreCard {
   }
 
   #frameIsSet(pins) {
-    return this.rolls.length === 2 ||
-    pins === 10 ||
-    this.frames.tenthFrame();
+    return this.rolls.length === 2 || pins === 10 || this.frames.tenthFrame();
   }
 
   #tooManyPins(pins) {

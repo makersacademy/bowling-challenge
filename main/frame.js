@@ -17,7 +17,7 @@ class Frame {
       this.bonusPoints -= 1
       this.#updateScore(this.roll1, this.roll2, this.bonus1, this.bonus2)
     } else {
-      throw new Error('no bonus points')
+      throw 'no bonus points'
     }
   }
 

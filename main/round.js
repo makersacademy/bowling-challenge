@@ -1,4 +1,6 @@
 const Frame = require('./frame')
+// Uncomment line below for node demo
+// const showBreakdown = require('./showbreakdown')
 
 class Round {
   constructor(input = []) {
@@ -17,6 +19,11 @@ class Round {
     if (this.#isFinished()) throw 'round finished'
     this.#allocateBonusPoints(points)
     if (!this.#hasTenFrames()) this.#fillOrCreateFrame(points)
+    
+    // uncomment the 3 lines below for node demo
+    // console.log(showBreakdown.generateTopstring(this.frames))
+    // console.log(showBreakdown.generateBottomstring(this.frames))
+    // return `The current score is: ${this.getTotalScore()}`
   }
 
   #fillOrCreateFrame(points) {
@@ -41,7 +48,7 @@ class Round {
     if (this.frames.length === 0) {
       return false
     } else {
-      return this.frames[this.frames.length - 1].bonusPoints === 0
+      return this.frames[this.frames.length - 1].bonusPoints === 0  && this.#hasTenFrames()
     }
   }
 

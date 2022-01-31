@@ -1,0 +1,22 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^27.4.0",
+    "hound": "^1.0.5",
+    "jest": "^27.4.7",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "jshint": "^2.13.4"
+  }
+}

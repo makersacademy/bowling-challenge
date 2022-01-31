@@ -24,20 +24,24 @@ class Game {
           this.#enterRoll(answer1);
           this.rl.question('And how many did you knock down on roll 2? ', (answer2) => {
             frameScore += parseInt(answer2);
-            if(frameScore === 10) {
-              console.log('Woo, a spare!')
-              this.#enterRoll(answer2);
-              this.#nextFrame();
-            } else {
-              this.#enterRoll(answer2);
-              let score = this.scorecard.calculateScore();
-              console.log(`Your current score is ${score}`);
-              this.#nextFrame();
-            }
+            this.#secondRoll(frameScore, answer2);
           })
           break;
         }
     })
+  }
+
+  #secondRoll(frameScore, answer2) {
+    if (frameScore === 10) {
+      console.log('Woo, a spare!');
+      this.#enterRoll(answer2);
+      this.#nextFrame();
+    } else {
+      this.#enterRoll(answer2);
+      let score = this.scorecard.calculateScore();
+      console.log(`Your current score is ${score}`);
+      this.#nextFrame();
+    }
   }
 
   #frameTen() {
@@ -54,18 +58,22 @@ class Game {
           this.#enterRoll(answer1);
           this.rl.question('And how many did you knock down on roll 2? ', (answer2) => {
             frameScore += parseInt(answer2)
-            if(frameScore === 10) {
-              console.log('Woo, a spare!')
-              this.#enterRoll(answer2);
-              this.#bonusRoll(1);
-            } else {
-              this.#enterRoll(answer2);
-              this.#endOfGame();
-            }
+            this.#lastSecondRoll(frameScore, answer2);
           })
           break;
         }
     })
+  }
+
+  #lastSecondRoll(frameScore, answer2) {
+    if (frameScore === 10) {
+      console.log('Woo, a spare!');
+      this.#enterRoll(answer2);
+      this.#bonusRoll(1);
+    } else {
+      this.#enterRoll(answer2);
+      this.#endOfGame();
+    }
   }
 
   #nextFrame() {

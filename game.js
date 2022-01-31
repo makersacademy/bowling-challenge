@@ -24,11 +24,11 @@ class Game {
   }
 
   runFrame() {
-    this.frame.startRoll(this.pinsRequest());
+    this.pinsRequest(this.frame.startRoll()); // needs a callback?
     if (this.frame.bonus === 'strike') {
       this.frame.frameScores.push(0);
     } else {
-      this.frame.startRoll(pinsRequest());
+      this.pinsRequest(this.frame.startRoll()); // needs a callback
     }
     this.finishFrame();
   }
@@ -52,10 +52,12 @@ class Game {
   pinsRequest() {
     return 10
   }
-  // pinsRequest() {
-  //   rl.question("How many pins did you knock down? >", (pins) => {
-  //     return pins
-  //   }); // needs a callback function to work - should cli be in sererat file??
+
+  // pinsRequest(callback) {
+  //   rl.question('How many pins did you knock down?', (pins) => {
+  //     console.log(`pins: ${pins}`);
+  //     callback(pins);
+  //   });
   // }
 
   bonus(bonusType, frameRound) {
@@ -72,7 +74,8 @@ class Game {
 
 }
 
-game = new Game();
-game.startGame();
+// uncode the below to run the game
+// game = new Game();
+// game.startGame();
 
 module.exports = Game;

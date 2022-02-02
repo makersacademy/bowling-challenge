@@ -13,9 +13,9 @@ class Frame {
     return next_frame == undefined && next_next_frame == undefined;
   }
   score(next_frame, next_next_frame) {
-    console.log(this._isFinalFrame(next_frame, next_next_frame))
+    //console.log(this._isFinalFrame(next_frame, next_next_frame))
     if (this._isFinalFrame(next_frame, next_next_frame)) { 
-      console.log(this._sumFrame());
+      //console.log(this._sumFrame());
         return this._sumFrame();
     }
     else {

@@ -1,7 +1,10 @@
 
 Bowling Challenge
 =================
-My bowling scorecard program in JavaScript calculates the scores of a bowling game. For this challenge, I was instructed to just focus on the logic for bowling, following the scoring rules below. 
+My bowling scorecard program in JavaScript calculates the scores of a bowling game. For this challenge, I was instructed to just focus on the logic for bowling, following the scoring rules below.
+
+#### With more time, I would have...
+- added in guard clauses or something similar to stop the user entering invalid rolls e.g. '0' when they should enter '0,0' or entering something that isn't a number
 
 ## Instructions and Functionality
 1. The user interacts with the Scorecard class only. This class calls on the methods of Frame class.
@@ -13,7 +16,12 @@ My bowling scorecard program in JavaScript calculates the scores of a bowling ga
    - isStrike or isSpare checks if a frame is a strike or a spare
    - bonus calculcates bonus points
    - isFinalFrame to check if the frame is the 10th frame
+4. cli.js file is the user interface. It asks the user to enter the number of pins they rolled for each frame
 
+## CLI
+- first i tried wrapping the cli.question in a function and then calling it multiple times. However the problem with this is that the questions repeat immediately without waiting for user response. 
+- tried a for loop
+- next try var recursive
 ## Bowling scoring rules
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 

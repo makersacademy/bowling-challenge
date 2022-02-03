@@ -5,7 +5,7 @@ class Frame {
 
   addRoll(points) {
     this.#validateRoll(points)
-    this.roll1 ? (this.roll2 = points) : (this.roll1 = points);
+    this.roll1 || this.roll1 === 0? (this.roll2 = points) : (this.roll1 = points);
     this.#summariseFrame()
     return this
   }
@@ -13,7 +13,7 @@ class Frame {
   addBonus(points) {
     this.#validateBonus(points);
     if (this.bonusPoints > 0) {
-      this.bonus1 ? (this.bonus2 = points) : (this.bonus1 = points)
+      this.bonus1? (this.bonus2 = points) : (this.bonus1 = points)
       this.bonusPoints -= 1
       this.#updateScore(this.roll1, this.roll2, this.bonus1, this.bonus2)
     } else {
@@ -30,7 +30,7 @@ class Frame {
   }
 
   isComplete() {
-    return !!this.roll2 || this.isStrike();
+    return !!this.roll2 || this.roll2 === 0 || this.isStrike();
   }
 
   #validateRoll(points) {

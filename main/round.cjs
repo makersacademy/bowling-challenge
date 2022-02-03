@@ -18,7 +18,7 @@ class Round {
     this.#allocateBonusPoints(points);
     if (
       this.frames.length === 0 ||
-      !this.frames.at(-1).isComplete() ||
+      !this.#latestFrame().isComplete() ||
       !this.#hasTenFrames()
     ) {
       this.#fillOrCreateFrame(points);
@@ -26,14 +26,10 @@ class Round {
   }
 
   #fillOrCreateFrame(points) {
-    // console.log('Hello from fillorcreate')
-    let mostRecentFrame = this.frames.at(-1);
-    if (this.frames.length === 0 || mostRecentFrame.isComplete()) {
-      this.frames.push(new Frame());
-      this.frames.at(-1).addRoll(points);
-    } else {
-      mostRecentFrame.addRoll(points);
+    if (this.frames.length === 0 || this.#latestFrame().isComplete()) {
+      this.frames.push(new Frame()); 
     }
+    this.#latestFrame().addRoll(points);
   }
 
   #allocateBonusPoints(points) {
@@ -49,8 +45,8 @@ class Round {
       return false;
     } else {
       return (
-        this.frames.at(-1).bonusPoints === 0 &&
-        this.frames.at(-1).isComplete() &&
+        this.#latestFrame().bonusPoints === 0 &&
+        this.#latestFrame().isComplete() &&
         this.#hasTenFrames()
       );
     }
@@ -58,6 +54,10 @@ class Round {
 
   #hasTenFrames() {
     return this.frames.length === 10;
+  }
+
+  #latestFrame() {
+    return this.frames.at(-1)
   }
 }
 

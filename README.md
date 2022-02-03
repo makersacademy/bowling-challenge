@@ -6,6 +6,8 @@ node
  > .load runRound.cjs
 ```
 
+If you uncommented lines for node demo, comment them out when running tests.
+
 ## Demo:
 
 For the purpose of this demo, I created a showBreakdown function. To use this you need to uncomment an import statement and 3 lines in addRoll method of round.js.

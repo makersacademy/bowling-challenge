@@ -100,8 +100,11 @@ Uncaught 'round finished'
 ## Features:
 
 - user can add one roll at a time using ‘addRoll(points) method’
+  - the points are validated
+  - when the round is complete, 'round complete' will be thrown
 - for the purpose of the demo, you can see a scorecard and final score (the project was create the logic without a UI)
 - the score will be updated each roll
+
 
 ## How the score is counted
 

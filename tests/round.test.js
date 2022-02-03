@@ -19,65 +19,65 @@ describe("Round", () => {
       expect(round.getTotalScore()).toEqual(61);
     });
   });
-
+  
   // TEST - Round FINISHED?
-
-  describe("#isFinished", () => {
-    describe("when frames empty", () => {
-      it("does not throw an error", () => {
-        const round = new Round();
-        expect(() => {
-          round.addRoll(5);
-        }).not.toThrow("round finished");
-      });
-    });
-    describe("when 10 frames and no bonus", () => {
-      it("throws 'round finished'", () => {
-        let frames = [];
-        for (let i = 0; i < 10; i++) {
-          frames.push(new Frame());
-        }
-        Frame.mock.instances.at(-1).bonusPoints = 0;
-        Frame.mock.instances.at(-1).isComplete = jest.fn(() => true);
-
-        const round = new Round(frames);
-        expect(() => {
-          round.addRoll(5);
-        }).toThrow("round finished");
-      });
-    });
-  });
-
-  // TEST - Allocate bonus POINTS
-
-  describe("#allocateBonusPoints", () => {
-    describe("when frame has bonusPoints", () => {
-      it("calls addBonus on frame", () => {
-        let strike1 = new Frame();
-        strike1.isComplete = jest.fn(() => true);
-        strike1.bonusPoints = 1;
-
-        let strike2 = new Frame();
-        strike2.isComplete = jest.fn(() => true);
-        strike2.bonusPoints = 2;
-
-        const round = new Round([strike1, strike2]);
-
-        round.addRoll(1);
-        expect(strike1.addBonus).toHaveBeenCalledWith(1);
-        expect(strike2.addBonus).toHaveBeenCalledWith(1);
-
-        strike1.bonusPoints = 0;
-        strike2.bonusPoints = 1;
-
-        round.addRoll(2);
-        expect(strike1.addBonus).not.toHaveBeenCalledWith(2);
-        expect(strike2.addBonus).toHaveBeenCalledWith(2);
-      });
-    });
-  });
-
+  
   describe("addRoll", () => {
+    describe("#isFinished", () => {
+      describe("when frames empty", () => {
+        it("does not throw an error", () => {
+          const round = new Round();
+          expect(() => {
+            round.addRoll(5);
+          }).not.toThrow("round finished");
+        });
+      });
+      describe("when 10 frames and no bonus", () => {
+        it("throws 'round finished'", () => {
+          let frames = [];
+          for (let i = 0; i < 10; i++) {
+            frames.push(new Frame());
+          }
+          Frame.mock.instances.at(-1).bonusPoints = 0;
+          Frame.mock.instances.at(-1).isComplete = jest.fn(() => true);
+
+          const round = new Round(frames);
+          expect(() => {
+            round.addRoll(5);
+          }).toThrow("round finished");
+        });
+      });
+    });
+
+    // TEST - Allocate bonus POINTS
+
+    describe("#allocateBonusPoints", () => {
+      describe("when frame has bonusPoints", () => {
+        it("calls addBonus on frame", () => {
+          let strike1 = new Frame();
+          strike1.isComplete = jest.fn(() => true);
+          strike1.bonusPoints = 1;
+
+          let strike2 = new Frame();
+          strike2.isComplete = jest.fn(() => true);
+          strike2.bonusPoints = 2;
+
+          const round = new Round([strike1, strike2]);
+
+          round.addRoll(1);
+          expect(strike1.addBonus).toHaveBeenCalledWith(1);
+          expect(strike2.addBonus).toHaveBeenCalledWith(1);
+
+          strike1.bonusPoints = 0;
+          strike2.bonusPoints = 1;
+
+          round.addRoll(2);
+          expect(strike1.addBonus).not.toHaveBeenCalledWith(2);
+          expect(strike2.addBonus).toHaveBeenCalledWith(2);
+        });
+      });
+    });
+
     describe("#fillOrCreateFrame", () => {
       describe("when no frames", () => {
         it("adds a new frame", () => {

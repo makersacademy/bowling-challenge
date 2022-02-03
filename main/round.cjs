@@ -1,5 +1,6 @@
 const Frame = require("./frame.cjs");
-const ShowBreakdown = require('./showbreakdown.cjs')
+// Uncomment this line and 3 lines in addRoll method for node demo
+// const ShowBreakdown = require('./showbreakdown.cjs')
 
 class Round {
   constructor(input = []) {
@@ -15,7 +16,7 @@ class Round {
   }
 
   addRoll(points) {
-    if (this.isFinished()) throw "round finished";
+    if (this.#isFinished()) throw "round finished";
     this.#allocateBonusPoints(points);
     if (
       this.frames.length === 0 ||
@@ -25,9 +26,9 @@ class Round {
       this.#fillOrCreateFrame(points);
     }
     // Uncomment 3 lines below for node demo
-    console.log(ShowBreakdown.generateTopstring(this.frames))
-    console.log(ShowBreakdown.generateBottomstring(this.frames))
-    return `Total score is: ${this.getTotalScore()}`
+    // console.log(ShowBreakdown.generateTopstring(this.frames))
+    // console.log(ShowBreakdown.generateBottomstring(this.frames))
+    // return `Total score is: ${this.getTotalScore()}`
   }
 
   #fillOrCreateFrame(points) {
@@ -45,7 +46,7 @@ class Round {
     });
   }
 
-  isFinished() {
+  #isFinished() {
     if (this.frames.length === 0) {
       return false;
     } else {

@@ -1,4 +1,5 @@
 const Frame = require("./frame.cjs");
+const ShowBreakdown = require('./showbreakdown.cjs')
 
 class Round {
   constructor(input = []) {
@@ -23,6 +24,10 @@ class Round {
     ) {
       this.#fillOrCreateFrame(points);
     }
+    // Uncomment 3 lines below for node demo
+    console.log(ShowBreakdown.generateTopstring(this.frames))
+    console.log(ShowBreakdown.generateBottomstring(this.frames))
+    return `Total score is: ${this.getTotalScore()}`
   }
 
   #fillOrCreateFrame(points) {

@@ -1,106 +1,107 @@
 ## To run:
 
-(go into main directory) (./main)
 ```
+npm install
 node
- > .load ./main
+ > .load runRound.cjs
 ```
 
 ## Demo:
 
-For the purpose of this demo, I created a showBreakdown function. To use this you need to uncomment a few lines in round.js. 
+For the purpose of this demo, I created a showBreakdown function. To use this you need to uncomment an import statement and 3 lines in addRoll method of round.js.
 
 ```js
 Welcome to Node.js v17.4.0.
 Type ".help" for more information.
 > .load round.js
   [round.js content - deleted]
-> const round = new Round();
+> let round = new Round();
 undefined
-> round.addRoll(4)
-| 4    |
-| 4    |
-'The current score is: 4'
+> round = new Round();
+Round { frames: [] }
 > round.addRoll(3)
-| 4 3  |
-| 7    |
-'The current score is: 7'
-> round.addRoll(10)
-| 4 3  | 10 X |
-| 7    | 10   |
-'The current score is: 17'
-> round.addRoll(1)
-| 4 3  | 10 X | 1    |
-| 7    | 11   | 1    |
-'The current score is: 19'
-> round.addRoll(9)
-| 4 3  | 10 X | 1 /  |
-| 7    | 20   | 10   |
-'The current score is: 37'
-> round.addRoll(10)
-| 4 3  | 10 X | 1 /  | 10 X |
-| 7    | 20   | 20   | 10   |
-'The current score is: 57'
-> round.addRoll(10)
-| 4 3  | 10 X | 1 /  | 10 X | 10 X |
-| 7    | 20   | 20   | 20   | 10   |
-'The current score is: 77'
+| 3    |
+| 3    |
+'Total score is: 3'
 > round.addRoll(7)
-| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7    |
-| 7    | 20   | 20   | 27   | 17   | 7    |
-'The current score is: 98'
-> round.addRoll(2)
-| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  |
-| 7    | 20   | 20   | 27   | 19   | 9    |
-'The current score is: 102'
-> round.addRoll(8)
-| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8    |
-| 7    | 20   | 20   | 27   | 19   | 9    | 8    |
-'The current score is: 110'
-> round.addRoll(3)
-Uncaught 'invalid roll'
-> round.addRoll(2)
-| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  |
-| 7    | 20   | 20   | 27   | 19   | 9    | 10   |
-'The current score is: 112'
-> round.addRoll(9)
-| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9    |
-| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 9    |
-'The current score is: 130'
-> round.addRoll(1)
-| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9 /  |
-| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 10   |
-'The current score is: 131'
+| 3 /  |
+| 10   |
+'Total score is: 10'
+> round.addRoll(5)
+| 3 /  | 5    |
+| 15   | 5    |
+'Total score is: 20'
+> round.addRoll(4)
+| 3 /  | 5 4  |
+| 15   | 9    |
+'Total score is: 24'
 > round.addRoll(10)
-| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9 /  | 10 X |
-| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 20   | 10   |
-'The current score is: 151'
+| 3 /  | 5 4  | 10 X |
+| 15   | 9    | 10   |
+'Total score is: 34'
 > round.addRoll(10)
-| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9 /  | 10 X | 10 X |
-| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 20   | 20   | 10   |
-'The current score is: 171'
-> round.addRoll(9)
-| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9 /  | 10 X | 10 X |
-| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 20   | 29   | 19   |
-'The current score is: 189'
-> round.addRoll(1)
-| 4 3  | 10 X | 1 /  | 10 X | 10 X | 7 2  | 8 /  | 9 /  | 10 X | 10 X |
-| 7    | 20   | 20   | 27   | 19   | 9    | 19   | 20   | 29   | 20   |
-'The current score is: 190'
+| 3 /  | 5 4  | 10 X | 10 X |
+| 15   | 9    | 20   | 10   |
+'Total score is: 54'
+> round.addRoll(7)
+| 3 /  | 5 4  | 10 X | 10 X | 7    |
+| 15   | 9    | 27   | 17   | 7    |
+'Total score is: 75'
+> round.addRoll(2)
+| 3 /  | 5 4  | 10 X | 10 X | 7 2  |
+| 15   | 9    | 27   | 19   | 9    |
+'Total score is: 79'
 > round.addRoll(0)
+| 3 /  | 5 4  | 10 X | 10 X | 7 2  | 0    |
+| 15   | 9    | 27   | 19   | 9    | 0    |
+'Total score is: 79'
+> round.addRoll(0)
+| 3 /  | 5 4  | 10 X | 10 X | 7 2  | 0 0  |
+| 15   | 9    | 27   | 19   | 9    | 0    |
+'Total score is: 79'
+> round.addRoll(0)
+| 3 /  | 5 4  | 10 X | 10 X | 7 2  | 0 0  | 0    |
+| 15   | 9    | 27   | 19   | 9    | 0    | 0    |
+'Total score is: 79'
+> round.addRoll(10)
+| 3 /  | 5 4  | 10 X | 10 X | 7 2  | 0 0  | 0 /  |
+| 15   | 9    | 27   | 19   | 9    | 0    | 10   |
+'Total score is: 89'
+> round.addRoll(7)
+| 3 /  | 5 4  | 10 X | 10 X | 7 2  | 0 0  | 0 /  | 7    |
+| 15   | 9    | 27   | 19   | 9    | 0    | 17   | 7    |
+'Total score is: 103'
+> round.addRoll(1)
+| 3 /  | 5 4  | 10 X | 10 X | 7 2  | 0 0  | 0 /  | 7 1  |
+| 15   | 9    | 27   | 19   | 9    | 0    | 17   | 8    |
+'Total score is: 104'
+> round.addRoll(10)
+| 3 /  | 5 4  | 10 X | 10 X | 7 2  | 0 0  | 0 /  | 7 1  | 10 X |
+| 15   | 9    | 27   | 19   | 9    | 0    | 17   | 8    | 10   |
+'Total score is: 114'
+> round.addRoll(10)
+| 3 /  | 5 4  | 10 X | 10 X | 7 2  | 0 0  | 0 /  | 7 1  | 10 X | 10 X |
+| 15   | 9    | 27   | 19   | 9    | 0    | 17   | 8    | 20   | 10   |
+'Total score is: 134'
+> round.addRoll(5)
+| 3 /  | 5 4  | 10 X | 10 X | 7 2  | 0 0  | 0 /  | 7 1  | 10 X | 10 X |
+| 15   | 9    | 27   | 19   | 9    | 0    | 17   | 8    | 25   | 15   |
+'Total score is: 144'
+> round.addRoll(10)
+Uncaught 'invalid bonus'
+> round.addRoll(5)
+| 3 /  | 5 4  | 10 X | 10 X | 7 2  | 0 0  | 0 /  | 7 1  | 10 X | 10 X |
+| 15   | 9    | 27   | 19   | 9    | 0    | 17   | 8    | 25   | 20   |
+'Total score is: 149'
+> round.addRoll(5)
 Uncaught 'round finished'
 ```
 
 ## Features:
 
-- user starts a round
-- user can add a roll at a time using ‘addRoll(points) method’
-- for the purpose of the demo, you can see a scorecard and final score
-- 
-
-## In development:
-
-- there is bugs when you input 0 as your points
+- user can add one roll at a time using ‘addRoll(points) method’
+- for the purpose of the demo, you can see a scorecard and final score (the project was create the logic without a UI)
+- the score will be updated each roll
 
 ## How the score is counted
 
@@ -117,9 +118,6 @@ Edge cases:
 - given a strike in the 10th frame, 2 bonus rolls are allowed
 
 (TBC)...
-
-Notes:
-- I did not know how to go about mocking in jest, need to look at that.
 
 ## Bowling rules model:
 

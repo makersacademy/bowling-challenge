@@ -1,4 +1,4 @@
-const Frame = require("../main/frame");
+const Frame = require("../main/frame.cjs");
 
 describe("frame", () => {
   it("has a score property of 0", () => {

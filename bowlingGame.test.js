@@ -7,7 +7,8 @@ describe(BowlingGame, () => {
       bowlingGame.roll(0)
     }), 20)
     expect(bowlingGame.getScore()).toBe(0)
-  })
+  });
+
   it('Can roll gutter game', () => {
     const bowlingGame = new BowlingGame()
     R.call(R.times(() => {
@@ -25,6 +26,22 @@ describe(BowlingGame, () => {
     }), 17)
     expect(bowlingGame.getScore()).toBe(16)
   })
+
+  it('Can roll 2 spares', () => {
+    const bowlingGame = new BowlingGame()
+    bowlingGame.roll(5)
+    bowlingGame.roll(5)
+    bowlingGame.roll(3)
+    
+    R.call(R.times(() => {
+      bowlingGame.roll(0)
+    }), 15)
+    bowlingGame.roll(5)
+    bowlingGame.roll(5)
+    bowlingGame.roll(3)
+    expect(bowlingGame.getScore()).toBe(29)
+  })
+
   it('Can roll all 5/s game', () => {
     const bowlingGame = new BowlingGame()
     R.call(R.times(() => {
@@ -32,11 +49,11 @@ describe(BowlingGame, () => {
     }), 21)
     expect(bowlingGame.getScore()).toBe(150)
   })
-  // it ('Can roll the Perfect Game',()=>{
-  //   const bowlingGame = new BowlingGame;
-  //   R.call(R.times(() => {
-  //       bowlingGame.roll(10);
-  //   }), 12);
-  //   expect(bowlingGame.getScore()).toBe(300);
-  // });
+  it ('Can roll the Perfect Game',()=>{
+    const bowlingGame = new BowlingGame;
+    R.call(R.times(() => {
+        bowlingGame.roll(10);
+    }), 12);
+    expect(bowlingGame.getScore()).toBe(300);
+  });
 })

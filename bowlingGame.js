@@ -10,8 +10,8 @@ class BowlingGame {
   }
 
   getScore () {
-    var res = parseInt(0);
-    var bowlIndex = parseInt(0);
+    var res = 0;
+    var bowlIndex = 0;
     var framecount = 0; //count of the frames (zero based)
     var frametotal = 0; // total score so far on this frame
     var nextissecondofframe = false // boolean - true if next bowl is second of frame

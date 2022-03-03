@@ -29,4 +29,16 @@ describe("Frame class", () => {
     expect(frame.sumFrame()).toBe(9);
   });
 
+  it("is an open frame", () => {
+    frame.logRoll(3);
+    frame.logRoll(6);
+    expect(frame.openFrame()).toBe(true);
+  });
+
+  it("shows game is a spare game", () => {
+    frame.logRoll(3);
+    frame.logRoll(7);
+    expect(frame.spareFrame()).toBe(true);
+  });
+
 });

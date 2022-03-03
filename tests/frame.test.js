@@ -41,4 +41,22 @@ describe("Frame class", () => {
     expect(frame.spareFrame()).toBe(true);
   });
 
+  it("shows game is a strike game", () => {
+    frame.logRoll(10);
+    expect(frame.strikeFrame()).toBe(true);
+  });
+  
+  it("shows game is not a strike game after a spare", () => {
+    frame.logRoll(3);
+    frame.logRoll(7);
+    expect(frame.strikeFrame()).toBe(false);
+  });
+
+  it("shows rolls with a spare on second roll", () => {
+    frame.logRoll(0);
+    frame.logRoll(10);
+    expect(frame.allRolls()).toEqual(expect.arrayContaining([0,10]))
+    expect(frame.allRolls()).toHaveLength(2)
+
+  });
 });

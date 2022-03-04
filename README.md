@@ -15,7 +15,7 @@ Install node via your favourite package manager if required, see [here](https://
 
 To install this code from the latest source
 ~~~~
-git clone ggit@github.com:nyahehnagi/bowling-challenge.git
+git clone git@github.com:nyahehnagi/bowling-challenge.git
 ~~~~
 
 

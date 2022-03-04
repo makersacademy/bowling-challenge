@@ -33,5 +33,15 @@ describe(BowlingGame, () => {
       };
       expect(game.score()).toBe(14)
     });
+
+    it('can roll a strike', () => {
+      game.roll(10);
+      game.roll(3);
+      game.roll(2);
+      for (times = 0; times < 16; times++) {
+        game.roll(0)
+      };     
+      expect(game.score()).toBe(20)
+    });
   });
 });

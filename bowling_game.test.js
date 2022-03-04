@@ -2,13 +2,13 @@ const BowlingGame = require('./bowling_game');
 
 describe(BowlingGame, () => {
 
+  let game;
+
+  beforeEach(() => {
+    game = new BowlingGame;
+  });
+
   describe('roll', () => {
-
-    let game;
-
-    beforeEach(() => {
-      game = new BowlingGame;
-    });
 
     it('can roll a gutter game', () => {
       for (times = 0; times < 20; times++) {
@@ -42,6 +42,13 @@ describe(BowlingGame, () => {
         game.roll(0)
       };     
       expect(game.score()).toBe(20)
+    });
+
+    it('can roll a perfect game', () => {
+      for (times = 0; times < 12; times++) {
+        game.roll(10)
+      };
+      expect(game.score()).toBe(300)
     });
   });
 });

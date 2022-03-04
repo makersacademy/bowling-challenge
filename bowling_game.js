@@ -1,12 +1,17 @@
 class BowlingGame {
 
-roll(pins) {
+  constructor() {
+    this.rolls = []
+  }
 
-};
+  roll(pins) {
+    this.rolls.push(pins)
+    // console.log(this.rolls)
+  };
 
-score() {
-  return 0
-};
+  score() {
+    return this.rolls.reduce((a, b) => a + b)
+  };
 
 };
 

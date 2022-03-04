@@ -66,4 +66,14 @@ describe("ScoreCard class", () => {
     }
     expect(scorecard.score()).toBe(0);
   });
+
+  it("game is over", () => {
+    for (i = 0; i < 12; i++){
+      scorecard.logRoll(10)
+    }
+    expect(() => {
+      scorecard.logRoll(10);
+    }).toThrow("Game is over");
+  });
+
 })

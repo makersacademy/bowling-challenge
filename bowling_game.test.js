@@ -4,7 +4,11 @@ describe(BowlingGame, () => {
 
   describe('roll', () => {
 
-    let game = new BowlingGame
+    let game;
+
+    beforeEach(() => {
+      game = new BowlingGame;
+    });
 
     it('can roll a gutter game', () => {
       for (times = 0; times < 20; times++) {
@@ -18,6 +22,16 @@ describe(BowlingGame, () => {
         game.roll(1)
       };
       expect(game.score()).toBe(20);
+    });
+
+    it('can roll a spare', () => {
+      game.roll(5);
+      game.roll(5);
+      game.roll(2);
+      for (times = 0; times < 17; times++) {
+        game.roll(0)
+      };
+      expect(game.score()).toBe(14)
     });
   });
 });

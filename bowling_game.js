@@ -11,18 +11,25 @@ class BowlingGame {
 
   score() {
     let score = 0
-    let scoreIndex = 0
+    let index = 0
     for (times = 0; times < 10; times++) {
-      if ((this.rolls[scoreIndex] + this.rolls[scoreIndex + 1]) === 10) {
-        score += this.rolls[scoreIndex] + this.rolls[scoreIndex + 1] + this.rolls[scoreIndex + 2]
-      } else {
-        score += this.rolls[scoreIndex] + this.rolls[scoreIndex + 1]
+      if (this.spare(index)) {
+        score += this.spareScore(index)
+    } else {
+        score += this.rolls[index] + this.rolls[index + 1]
       };
-      scoreIndex += 2
+      index += 2
     };
-    // return this.rolls.reduce((a, b) => a + b)
     return score
   };
+
+  spare(index) {
+    return this.rolls[index] + this.rolls[index + 1] === 10 
+  };
+
+  spareScore(index) {
+    return this.rolls[index] + this.rolls[index + 1] + this.rolls[index + 2]
+  }
 
 };
 

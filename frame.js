@@ -2,37 +2,74 @@ class Frame {
   constructor() {
     this.rollCounter = 1
     this.rolls = []
+    this.score = 0
+    this.live = true
   }
 
   getRollCounter() {
     return this.rollCounter;
   }
+  getScore() {
+    return this.score;
+  }
+  isLive() {
+    return this.live;
+  }
   addRoll() {
-    this.rollCounter++;
+    return this.rollCounter++;
+  }
+  addPinsToScore(pins) {
+    return this.score += pins;
   }
   minusRoll() {
-    this.rollCounter--;
+    return this.rollCounter--;
   }
   getRolls() {
     return this.rolls;
   }
-  addPins(pins) {
-    if((pins) > 10) {
-      throw 'You wish!';
-    } else if((pins) < 0) {
-      throw 'Pas possible';
-    }
-    return this.rolls.push(pins);
+  addPinsToRolls(pins) {
+  return this.rolls.push(pins);
   }
   isStrike() {
     return this.rolls[0] === 10;
   }
   isSpare() {
-    return this.rolls.reduce((roll_one, roll_two) => roll_one + roll_two) === 10 & !this.isStrike();
+    return this.rolls.reduce((roll_one, roll_two) => roll_one + roll_two) === 10 && !this.isStrike();
   }
-  getTotal() {
-    return this.rolls.reduce((roll_one, roll_two) => roll_one + roll_two);
+
+  checkEndOfFrame() {
+    if (this.isStrike() || this.rollCounter === 3) {
+      this.live = false;
+     }
+  }
+
+  incorrectRollCheck(pins) {
+    if((pins) > 10) {
+      throw 'You wish!';
+    } else if((pins) < 0) {
+      throw 'Pas possible';
+    }
+  }
+  processOfTheRoll(pins) {
+    this.incorrectRollCheck(pins)
+    this.addPinsToRolls(pins);
+    this.addPinsToScore(pins);
+    this.addRoll();
+    this.checkEndOfFrame();
   }
 }
 
 module.exports = Frame
+let frame = new Frame
+// console.log(frame.processOfTheRoll(10))
+// console.log(frame.getRollCounter())
+// console.log(frame.isStrike())
+// console.log(frame.isSpare())
+// console.log(frame.isLive())
+console.log(frame. processOfTheRoll(2))
+console.log(frame. processOfTheRoll(8))
+console.log(frame.getRollCounter())
+console.log(frame.isStrike())
+console.log(frame.isSpare())
+console.log(frame.isLive())
+

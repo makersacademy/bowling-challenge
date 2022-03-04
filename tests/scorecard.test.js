@@ -19,10 +19,10 @@ describe("ScoreCard class", () => {
   });
 
   it("logs a full game of strikes", () => {
-    for (i = 0; i < 13; i++){
+    for (i = 0; i < 12; i++){
       scorecard.logRoll(10)
     }
-    expect(scorecard.currentFrameNumber()).toBe(10);
+    expect(scorecard.score()).toBe(300);
   });
 
   it("logs a full game of all sorts", () => {
@@ -45,8 +45,25 @@ describe("ScoreCard class", () => {
     scorecard.logRoll(1)
     scorecard.logRoll(1)
     scorecard.logRoll(3)
-    expect(scorecard.currentFrameNumber()).toBe(10);
+    expect(scorecard.score()).toBe(84);
   });
 
+  
+  it("a spare and strike on the last frame of the game", () => {
+    for (i = 0; i < 9; i++){
+      scorecard.logRoll(10)
+    }
+    scorecard.logRoll(7)
+    scorecard.logRoll(3)
+    scorecard.logRoll(10)
 
+    expect(scorecard.score()).toBe(277);
+  });
+
+  it("Gutter game", () => {
+    for (i = 0; i < 20; i++){
+      scorecard.logRoll(0)
+    }
+    expect(scorecard.score()).toBe(0);
+  });
 })

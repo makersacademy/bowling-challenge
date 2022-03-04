@@ -49,6 +49,10 @@ describe('frame', () => {
   it('doesnt add the pins if pin count is negative number', () => {
     expect(function(){  frame.processOfTheRoll(-1); } ).toThrow('Pas possible');
   })
+  it('doesnt add the pins if combined score is over 10', () => {
+    frame.processOfTheRoll(8)
+    expect(function(){  frame.processOfTheRoll(3); } ).toThrow('Pas possible');
+  })
   it('changes frame to closed if first roll is a strike', () => {
     frame.addPinsToRolls(10)
     frame.checkEndOfFrame()

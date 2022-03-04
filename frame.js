@@ -42,11 +42,11 @@ class Frame {
       this.live = false;
      }
   }
-
+  
   incorrectRollCheck(pins) {
     if((pins) > 10) {
       throw 'You wish!';
-    } else if((pins) < 0) {
+    } else if(((pins) < 0) || (this.rolls[0] + (pins) > 10)) {
       throw 'Pas possible';
     }
   }
@@ -72,4 +72,5 @@ console.log(frame.getRollCounter())
 console.log(frame.isStrike())
 console.log(frame.isSpare())
 console.log(frame.isLive())
+console.log(frame.getScore())
 

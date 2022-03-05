@@ -8,9 +8,9 @@ Remeber when you were little and you went to your friend's birthday party down a
 
 The dreaded shutdown just before you rolled your last ball? The sound of rock hitting metal as the guards came down at the last minute and the lights went off??
 
-Well guess what. thats life. And thatd this game too.
+Well guess what. thats life. And thats this game too.
 
-Enjoy a lovely game of regular bowling and then see where life takes you on the final frame. Maybe you'll score that perfect 300. But you probably won't. Cause thats life.
+Enjoy a lovely game of regular bowling and then see where life takes you on the final frame. Maybe you'll score that perfect 300.... But you probably won't. Cause thats life.
 
 Enjoy!
 
@@ -20,6 +20,8 @@ Please have ```node.js``` and ```npm``` installed through the terminal.
 # Install
 please clone this repo at https://github.com/eddiearnoldz/bowling-challenge
 cd into the directory
-run the code ```node scorecard.js```
+run the code ```node scorecard.js```... to watch a perfect game fall apart at the end.
+
+
 
 

@@ -102,20 +102,21 @@ class Scorecard {
     }
   }
 }
-
-
 module.exports = Scorecard
-
 let scorecard = new Scorecard
-console.log(scorecard.roll(10))
-console.log(scorecard.roll(10))
-console.log(scorecard.roll(10))
-console.log(scorecard.roll(10))
-console.log(scorecard.roll(10))
-console.log(scorecard.roll(10))
-console.log(scorecard.roll(10))
-console.log(scorecard.roll(10))
-console.log(scorecard.roll(10))
-console.log(scorecard.roll(10))
-console.log(scorecard.getFrames())
-console.log(scorecard.getTotal())
+
+ const printMessage = () => {
+  console.log(scorecard.roll(10))
+  console.log(scorecard.getFrames())
+  console.log(scorecard.getTotal())
+}
+  (function theNotSoPerfectGame(){
+    times = 10; 
+    (function run(){
+      console.log(scorecard.roll(10))
+      console.log(scorecard.getFrames())
+      console.log(scorecard.getTotal())
+      if( --times )
+        setTimeout(run, 2000);
+    })();
+  })();

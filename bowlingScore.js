@@ -4,9 +4,13 @@ class BowlingGame {
  } 
   
 knockedPins(pins) {
-   this.frames.push(pins)
-   return this.frames
+   return this.frames.push(pins)
+
 }
+getScore() {
+return 0 
+}
+
 
 }
 

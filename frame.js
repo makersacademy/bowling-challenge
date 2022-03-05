@@ -1,21 +1,25 @@
 class Frame {
-  constructor(rollOne = 0, rollTwo = 0, frameTotal = 0) {
-    this.rollOne = rollOne;
-    this.rollTwo = rollTwo;
-    this.frameTotal = frameTotal;
+  constructor(frameCounter = 0) {
+    this.rollOne = [];
+    this.rollTwo = [];
+    this.frameTotal = [];
+    this.frameCounter = frameCounter
   }
 
   firstRoll(pinfall) {
-    this.rollOne = pinfall
+    this.rollOne[this.frameCounter] = pinfall
   }
 
   secondRoll(pinfall) {
-    this.rollTwo = pinfall
+    this.rollTwo[this.frameCounter] = pinfall
     this.endOfRound()
   }
 
   endOfRound() {
-    this.frameTotal = this.rollOne + this.rollTwo;
+    this.frameTotal[this.frameCounter] = this.rollOne[this.frameCounter] + this.rollTwo[this.frameCounter];
+    this.frameCounter ++;
+    this.rollOne[this.frameCounter] = 0; 
+    this.rollTwo[this.frameCounter] = 0;
   }
 }
 

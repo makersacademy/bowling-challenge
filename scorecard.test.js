@@ -14,7 +14,15 @@ describe('scorecard', () => {
   })
   it('adds a score to the frame if the current frame', () => {
     scorecard.roll(7)
-    expect(scorecard.this.frame[0]).toBe(7)
+    expect(scorecard.currentFrame().getScore()).toBe(7)
+  })
+  it('returns true if it is the first frame', () => {
+    expect(scorecard.firstFrame()).toBe(true)
+  })
+  it('returns false if it is the second frame', () => {
+    scorecard.roll(10)
+    scorecard.roll(1)
+    expect(scorecard.firstFrame()).toBe(false)
   })
   it('returns the current frame', () => {
     scorecard.roll(3)

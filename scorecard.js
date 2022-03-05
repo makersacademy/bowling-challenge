@@ -19,7 +19,7 @@ class Scorecard {
     return this.frames[this.frames.length - 2];
   }
   firstFrame() {
-    return this.frames.length === 1
+    return this.getFrameCount() === 1;
   }
   createNewFrame() {
       this.frames.push(new this.frame());
@@ -35,23 +35,21 @@ class Scorecard {
     if (this.firstFrame()) {
       return;
     }
-    if (this.lastFrame().isSpare() === true ) {
+    else if (this.lastFrame().isSpare() === true ) {
       this.lastFrame().addPinsToScore(pins);
     }
   }
   strikeBonus(pins) {
     if (this.firstFrame()) {
       return;
-    }
-    if (this.lastFrame().isStrike() === true ) {
+    } else if (this.lastFrame().isStrike()) {
       this.lastFrame().addPinsToScore(pins);
     }
   }
   doubleStrikeBonus(pins) {
     if (this.firstFrame()) {
       return;
-    }
-    if (this.lastFrame().isSpare() === true ) {
+    } else if (this.lastFrame().isStrike() === true && pins === 10) {
       this.lastFrame().addPinsToScore(pins);
     }
   }
@@ -71,14 +69,17 @@ class Scorecard {
       let lastFrameRollTwo = Math.floor(Math.random() * 10)
       if (this.lastFrame().isStrike()) {
         console.log(`You scored an extra ${lastFrameRollOne + lastFrameRollTwo} points cause why not`)
-        this.currentFrame().push(lastFrameRollOne)
-        this.currentFrame().push(lastFrameRollTwo)
+        this.currentFrame().addPinsToScore(lastFrameRollOne)
+        this.currentFrame().addPinsToScore(lastFrameRollTwo)
+        // getTotal(array = this.frames)
       }else if (this.lastFrame().isSpare()) {
         console.log(`You got a spare last go? Don't care. You scored an extra ${lastFrameRollOne} points`)
-        this.currentFrame().push(lastFrameRollOne)
-      } else {
-        console.log(`Here some extra points just for shits... ${lastFrameRollOne}!!`)
         this.currentFrame().addPinsToScore(lastFrameRollOne)
+        // getTotal(array = this.frames)
+      } else {
+        console.log(`Here some extra points just for the crack like... ${lastFrameRollOne}!!`)
+        this.currentFrame().addPinsToScore(lastFrameRollOne)
+        // getTotal(array = this.frames)
       }
     }
   }
@@ -88,6 +89,17 @@ class Scorecard {
 module.exports = Scorecard
 
 let scorecard = new Scorecard
+// console.log(scorecard.roll(5))
+// console.log(scorecard.roll(5))
+// console.log(scorecard.roll(6))
+// console.log(scorecard.roll(3))
+console.log(scorecard.roll(10))
+console.log(scorecard.roll(10))
+console.log(scorecard.roll(10))
+console.log(scorecard.roll(10))
+console.log(scorecard.roll(10))
+console.log(scorecard.roll(10))
+console.log(scorecard.roll(10))
 console.log(scorecard.roll(10))
 console.log(scorecard.roll(10))
 console.log(scorecard.roll(10))

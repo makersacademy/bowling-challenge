@@ -19,6 +19,7 @@ Bowling Challenge
    - Commit
 
 * First test, frame 1, roll 1.
+* Next, test for frame 1, roll 2.
 
 
 =================

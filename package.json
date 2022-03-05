@@ -2,7 +2,7 @@
   "name": "bowling-challenge",
   "version": "1.0.0",
   "description": "Bowling Challenge =================",
-  "main": "index.js",
+  "main": "lib/index.js",
   "directories": {
     "doc": "docs"
   },
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/nyahehnagi/bowling-challenge#readme",
   "dependencies": {
+    "boxen": "^6.2.1",
     "jest": "^27.5.1",
     "lodash": "^4.17.21"
   }

@@ -18,7 +18,8 @@ Bowling Challenge
    - Refactor
    - Commit
 
-![Process](images/ProcessOutline.png)
+* First test, frame 1, roll 1.
+
 
 =================
 

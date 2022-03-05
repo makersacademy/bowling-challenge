@@ -9,7 +9,14 @@ class Frame{
       return true
     }
     return false
-  }
+  };
+
+  spare(frame) {
+    if (frame.length === 2 && frame.reduce((a,b) => a + b, 0) === 10) {
+      return true
+    }
+    return false
+  };
 }
 
 module.exports = Frame;

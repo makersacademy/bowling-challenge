@@ -1,15 +1,28 @@
 class Game {
 constructor() {
-    this.score = 0;
-    this.maxscore = 300;
+    this.rolls = []; //array to store dropped pins
+
 };
-getScore() {
-    return this.score;
+
+roll(pins){
+    this.rolls.push(pins);
 }
 
-getMaxscore() {
-    return this.maxscore;
+get score(){
+    let score = 0;
+    let rollIndex = 0;
+
+    for(let frameIndex = 0; frameIndex < 10; frameIndex++) {
+        let frameScore = this.rolls[rollIndex] + this.rolls[rollIndex+1];
+    
+        score=frameScore;
+        rollIndex +=2;
+
+    };
+  
+    return score
 };
+
 
 
 };

@@ -12,8 +12,6 @@ class Frame {
     this.rollOne[this.frameCounter] = pinfall
     if (pinfall === 10) {
       this.strike();
-    // } else {
-    //   this.secondRoll(userInput)
     }
   }
 
@@ -38,6 +36,10 @@ class Frame {
   checkBonus() {
     if (this.frameBonus[this.frameCounter - 1] === "Spare") {
        this.spareBonus();
+      } else if (
+        this.frameBonus[this.frameCounter - 1] === "Strike" 
+        ) {
+        this.singleStrikeBonus();
       } else {
         this.bonusPoints[this.frameCounter] = 0
       }
@@ -47,6 +49,12 @@ class Frame {
     this.bonusPoints[this.frameCounter - 1] = this.rollOne[this.frameCounter]
     this.frameTotal[this.frameCounter -1] = this.rollOne[this.frameCounter -1] + this.rollTwo[this.frameCounter -1] + this.bonusPoints[this.frameCounter - 1];
   }
+
+  singleStrikeBonus() {
+    this.bonusPoints[this.frameCounter - 1] = this.rollOne[this.frameCounter] + this.rollTwo[this.frameCounter]
+    this.frameTotal[this.frameCounter -1] = this.rollOne[this.frameCounter -1] + this.rollTwo[this.frameCounter -1] + this.bonusPoints[this.frameCounter - 1];
+  }
+
 
   strike() {
     this.frameBonus[this.frameCounter] = "Strike"

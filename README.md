@@ -112,9 +112,11 @@ Bowling Challenge
         - }
 
 
-    * Next, caluclate bonus points for a strike and revise round total at the end of following frame or frames.
+    * Next, caluclate bonus points for a single strike and revise round total at the end of following frame.
 
-    
+    * Next, caluclate bonus points for two strikes in a row and revise round totals at the end of following frames.
+
+
 =================
 
 ## Project Brief

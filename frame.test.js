@@ -56,4 +56,18 @@ describe('Frame',() => {
     expect(frame.frameTotal[0]).toBe(14)
   })
 
+  it('records strike bonus points for next two rolls and adds to previous frame totals', () => {
+    const frame = new Frame();
+    frame.firstRoll(10);
+    expect(frame.frameBonus[0]).toBe("Strike")
+    expect(frame.frameTotal[0]).toBe(10)
+    frame.firstRoll(5);
+    frame.secondRoll(1);
+    expect(frame.frameBonus[1]).toBe(0)
+    expect(frame.frameTotal[1]).toBe(6)
+
+    expect(frame.bonusPoints[0]).toBe(6)
+    expect(frame.frameTotal[0]).toBe(16)
+  })
+
 })

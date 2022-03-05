@@ -1,5 +1,7 @@
 # Bowling Challenge
 
+![alt text](https://github.com/nyahehnagi/bowlingr-challenge/blob/main/docs/bowling.png)
+
 This is a program which calculates the score of a game of 10 pin bowling
 
 The following API is exposed from the ScoreCard class

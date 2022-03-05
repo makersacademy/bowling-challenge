@@ -1,4 +1,4 @@
-const LastFrame = require("../lib/lastFrame");
+const LastFrame = require("../lib/lastFrame.cjs");
 
 describe ("Last Frame class", () => {
   let lastFrame

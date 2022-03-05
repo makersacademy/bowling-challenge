@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Bowling Challenge =================",
   "main": "lib/index.js",
+  "type": "module",
   "directories": {
     "doc": "docs"
   },

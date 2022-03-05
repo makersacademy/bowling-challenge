@@ -1,4 +1,4 @@
-const Frame = require("../lib/frame");
+const Frame = require("../lib/frame.cjs");
 
 describe("Frame class", () => {
   let frame;
@@ -70,6 +70,28 @@ describe("Frame class", () => {
     expect(() => {
       frame.logRoll(11);
     }).toThrow("Pins downed must be between 0 and 10");
+  });
+
+  it("returns a formatted string for a spare ", () => {
+    frame.logRoll(3);
+    frame.logRoll(7);
+    expect(frame.formatFrame()).toBe('3 |/ ');
+  });
+
+  it("returns a formatted string for a strike ", () => {
+    frame.logRoll(10);
+    expect(frame.formatFrame()).toBe('X |  ');
+  });
+
+  it("returns a formatted string for an open frame ", () => {
+    frame.logRoll(1);
+    frame.logRoll(2);
+    expect(frame.formatFrame()).toBe('1 |2 ');
+  });
+
+  it("returns a formatted string for one roll ", () => {
+    frame.logRoll(1);
+    expect(frame.formatFrame()).toBe('1 |  ');
   });
 
 });

@@ -1,6 +1,6 @@
-const ScoreCard = require("../lib/scorecard");
-const Frame = require("../lib/frame");
-const LastFrame = require("../lib/lastFrame");
+const ScoreCard = require("../lib/scorecard.cjs");
+const Frame = require("../lib/frame.cjs");
+const LastFrame = require("../lib/lastFrame.cjs");
 
 describe("ScoreCard class", () => {
   let scorecard
@@ -79,6 +79,20 @@ describe("ScoreCard class", () => {
     expect(() => {
       scorecard.logRoll(10);
     }).toThrow("Game is over");
+  });
+
+  it("returns a formatted string for 1 frame ", () => {
+    scorecard.logRoll(1);
+    scorecard.logRoll(2);
+    expect(scorecard.formatFrames()).toBe('|1 |2 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ');
+  });
+
+  it("returns a formatted string for 2 frames ", () => {
+    scorecard.logRoll(1);
+    scorecard.logRoll(2);
+    scorecard.logRoll(1);
+    scorecard.logRoll(2);
+    expect(scorecard.formatFrames()).toBe('|1 |2 |1 |2 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ');
   });
 
 })

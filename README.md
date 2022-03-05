@@ -22,6 +22,18 @@ Bowling Challenge
 * Next, test for frame 1, roll 2.
 * Next, test that total for Frame is calculated.
 
+* Node Testing in Terminal:
+    - node
+    - load Frame class
+    - > const frame = new Frame;
+    - > frame.firstRoll(4);
+    - > frame.secondRoll(5);
+    - > frame.frameTotal;
+    - > 9
+    - > frame
+    - Frame { rollOne: 4, rollTwo: 5, frameTotal: 9 }
+
+* Next, save frame score and reset rollOne & rollTwo for next frame.
 =================
 
 

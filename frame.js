@@ -1,7 +1,8 @@
 class Frame {
-  constructor(rollOne = 0, rollTwo = 0) {
-    this.rollOne = rollOne
-    this.rollTwo = rollTwo
+  constructor(rollOne = 0, rollTwo = 0, frameTotal = 0) {
+    this.rollOne = rollOne;
+    this.rollTwo = rollTwo;
+    this.frameTotal = frameTotal;
   }
 
   firstRoll(pinfall) {
@@ -10,6 +11,11 @@ class Frame {
 
   secondRoll(pinfall) {
     this.rollTwo = pinfall
+    this.endOfRound()
+  }
+
+  endOfRound() {
+    this.frameTotal = this.rollOne + this.rollTwo;
   }
 }
 

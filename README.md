@@ -20,7 +20,7 @@ Bowling Challenge
 
 * First test, frame 1, roll 1.
 * Next, test for frame 1, roll 2.
-
+* Next, test that total for Frame is calculated.
 
 =================
 

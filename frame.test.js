@@ -44,4 +44,16 @@ describe('Frame',() => {
     expect(frame.frameBonus[0]).toBe("Spare")
   })
 
+  it('records a spare bonus points for first roll in following round and adds to previous frame total', () => {
+    const frame = new Frame();
+    frame.firstRoll(5);
+    frame.secondRoll(5);
+    expect(frame.frameTotal[0]).toBe(10)
+    frame.firstRoll(4);
+    frame.secondRoll(4);
+    expect(frame.frameBonus[0]).toBe("Spare")
+    expect(frame.bonusPoints[0]).toBe(4)
+    expect(frame.frameTotal[0]).toBe(14)
+  })
+
 })

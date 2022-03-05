@@ -24,7 +24,7 @@ Bowling Challenge
 
 * Node Testing in Terminal:
     - node
-    - load Frame class
+    - > const Frame = require('./frame');
     - > const frame = new Frame;
     - > frame.firstRoll(4);
     - > frame.secondRoll(5);
@@ -37,6 +37,8 @@ Bowling Challenge
 
 * Next, save a strike if 10 pins knocked on rollOne.
 * Node Testing in Terminal:
+    - node
+    - > const Frame = require('./frame');
     - > const frame = new Frame;
     - > frame
     - Frame {
@@ -59,6 +61,8 @@ Bowling Challenge
 
 * Next, save a spare if 10 pins are knocked over in rollOne and rollTwo.
 * Node Testing in Terminal:
+    - node
+    - > const Frame = require('./frame');
     - > const frame = new Frame;
     - > frame
     - Frame {
@@ -80,8 +84,37 @@ Bowling Challenge
     - }
     - > 
 
-    * Next, caluclate bonus points for a spare and revise round total, at the end of following frame.
+    * Next, caluclate bonus points for a spare and revise round total at the end of following frame.
+    * Node Testing in Terminal:
+        - node
+        - > const Frame = require('./frame');
+        - > const frame = new Frame;
+        - > frame.firstRoll(4);
+        - > frame.secondRoll(6);
+        - > frame
+        - Frame {
+        - rollOne: [ 4, 0 ],
+        - rollTwo: [ 6, 0 ],
+        - frameTotal: [ 10 ],
+        - frameBonus: [ 'Spare' ],
+        - frameCounter: 1
+        - }
+        - > frame.firstRoll(2)
+        - > frame.secondRoll(2)
+        - > frame
+        - Frame {
+        - rollOne: [ 4, 2, 0 ],
+        - rollTwo: [ 6, 2, 0 ],
+        - frameTotal: [ 12, 4 ],
+        - frameBonus: [ 'Spare', 0 ],
+        - bonusPoints: [ 2 ],
+        - frameCounter: 2
+        - }
 
+
+    * Next, caluclate bonus points for a strike and revise round total at the end of following frame or frames.
+
+    
 =================
 
 ## Project Brief

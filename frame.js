@@ -4,13 +4,16 @@ class Frame {
     this.rollTwo = [];
     this.frameTotal = [];
     this.frameBonus = [];
-    this.frameCounter = frameCounter
+    this.bonusPoints = [];
+    this.frameCounter = frameCounter;
   }
 
   firstRoll(pinfall) {
     this.rollOne[this.frameCounter] = pinfall
     if (pinfall === 10) {
       this.strike();
+    // } else {
+    //   this.secondRoll(userInput)
     }
   }
 
@@ -26,9 +29,23 @@ class Frame {
 
   endOfRound() {
     this.frameTotal[this.frameCounter] = this.rollOne[this.frameCounter] + this.rollTwo[this.frameCounter];
+    this.checkBonus();
     this.frameCounter ++;
     this.rollOne[this.frameCounter] = 0; 
     this.rollTwo[this.frameCounter] = 0;
+  }
+
+  checkBonus() {
+    if (this.frameBonus[this.frameCounter - 1] === "Spare") {
+       this.spareBonus();
+      } else {
+        this.bonusPoints[this.frameCounter] = 0
+      }
+  }
+
+  spareBonus() {
+    this.bonusPoints[this.frameCounter - 1] = this.rollOne[this.frameCounter]
+    this.frameTotal[this.frameCounter -1] = this.rollOne[this.frameCounter -1] + this.rollTwo[this.frameCounter -1] + this.bonusPoints[this.frameCounter - 1];
   }
 
   strike() {
@@ -43,7 +60,5 @@ class Frame {
   }
 
 }
-
-
 
 module.exports = Frame

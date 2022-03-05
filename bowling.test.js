@@ -8,6 +8,14 @@ describe(BowlingCard, () => {
       expect(bowlingCard.getScore()).toBe(0)
     });
   });
+
+  describe('roll', () => {
+    let bowlingCard = new BowlingCard
+    it('should add the score to the scorecard', () => {
+      bowlingCard.roll(5)
+      expect(bowlingCard.getScore()).toBe(5)
+    });
+  });
   
 });
 

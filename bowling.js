@@ -7,6 +7,10 @@ class BowlingCard{
   getScore(){
     return this.score
   }
+
+  roll(pins){
+    this.score += pins
+  }
 }
 
 

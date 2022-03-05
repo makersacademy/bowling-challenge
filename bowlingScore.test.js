@@ -3,15 +3,18 @@ const BowlingGame = require('./bowlingScore')
 describe('bowlingGame', () => {
   it('makes a bowling class', () => {
     const bowlingGame = new BowlingGame();
-    // expect(bowlingGame.frames()).toEqual([])
   })
   it('han an empty array for frames', () => {
     const bowlingGame = new BowlingGame();
     expect(bowlingGame.frames).toEqual([])
   })
-  // it('roll once', () => {
+  it('roll once', () => {
+    const bowlingGame = new BowlingGame();
+    expect(bowlingGame.knockedPins(1)).toEqual([1])
+  })
+  // it('adds a score for two rolls', () => {
   //   const bowlingGame = new BowlingGame();
-  //   expect(bowlingGame.frames()).toEqual([])
+  //   expect(bowlingGame.knockedPins(1)).toEqual([1])
   // })
 })
 

@@ -1,9 +1,12 @@
 class BowlingGame {
- constructor(frames) {
+ constructor() {
    this.frames = []
  } 
   
-
+knockedPins(pins) {
+   this.frames.push(pins)
+   return this.frames
+}
 
 }
 

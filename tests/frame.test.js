@@ -59,4 +59,11 @@ describe("Frame class", () => {
     expect(frame.allRolls()).toHaveLength(2)
 
   });
+
+  it("does not allow rolls less than 0", () => {
+    expect(() => {
+      frame.logRoll(-1);
+    }).toThrow("Pins downed must be between 0 and 10");
+  });
+
 });

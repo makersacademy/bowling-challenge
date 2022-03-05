@@ -48,8 +48,10 @@ End of Frame 3: Current Score: 38
 Enter Roll> 
 ~~~~
 
-The game will end
-
+The game will end when 10 Frames have been completed.
+~~~~
+Game Over, you scored: 300
+~~~~
 
 ## In the Node REPL
 -----------------------

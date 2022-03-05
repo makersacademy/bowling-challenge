@@ -35,12 +35,16 @@ to start the game.
 Playing the game, enter rolls at the prompt
 ~~~~
 Welcome to 10 Pin Bowling
+Enter Roll> 3
+Next Roll :Current Score: 0
+Enter Roll> 7
+SPARE! :Current Score: 0
+Enter Roll> 3
+Next Roll :Current Score: 13
+Enter Roll> 4
+End of Frame :Current Score: 20
 Enter Roll> 10
-Current Score: 0
-Enter Roll> 10
-Current Score: 0
-Enter Roll> 10
-Current Score: 30
+STRIKE! :Current Score: 20
 Enter Roll> 
 ~~~~
 

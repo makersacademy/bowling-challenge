@@ -42,6 +42,16 @@ describe("Game", () => {
             expect(game.score).toEqual(37); 
     })
 
+    it("adds bonus when strike", () => {
+        const game = new Game();
+        game.roll(10);
+        game.roll(5);
+        game.roll(4)
+        for (let i = 0; i < 16; i++){
+            game.roll(1);
+            }
+            expect(game.score).toEqual(44);
+    })
 //   it("max score for perfect game ", () => {
 //       const game = new Game;
 //       expect(game.getMaxscore()).toEqual(300)

@@ -1,6 +1,6 @@
 # Bowling Challenge
 
-![alt text](https://github.com/nyahehnagi/bowlingr-challenge/blob/main/docs/bowling.png)
+![alt text](https://github.com/nyahehnagi/bowling-challenge/blob/main/docs/bowling.png)
 
 This is a program which calculates the score of a game of 10 pin bowling
 

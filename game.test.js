@@ -5,11 +5,20 @@ describe("Game", () => {
         for (let i = 0; i < 20; i++){
         game.roll(0);
         }
-        console.log(game.score);
+    
        expect(game.score).toEqual(0); 
     
     });
 
+    it("returns 20 for 20  games", () => {
+        const game = new Game();
+        for (let i = 0; i < 20; i++){
+        game.roll(1);
+        }
+    
+       expect(game.score).toEqual(20); 
+    
+    });
 
 //   it("max score for perfect game ", () => {
 //       const game = new Game;

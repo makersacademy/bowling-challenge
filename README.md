@@ -4,7 +4,7 @@ Bowling Challenge
 
 ## My Process
 
-* Clone Repo
+* Fork Repo
 * Setup Jest within project directory
 * Install ESLint within project directory
 * Start with idea for domain model 

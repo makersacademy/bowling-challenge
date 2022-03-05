@@ -58,7 +58,29 @@ Bowling Challenge
     - > 
 
 * Next, save a spare if 10 pins are knocked over in rollOne and rollTwo.
+* Node Testing in Terminal:
+    - > const frame = new Frame;
+    - > frame
+    - Frame {
+    - rollOne: [],
+    - rollTwo: [],
+    - frameTotal: [],
+    - frameBonus: [],
+    - frameCounter: 0
+    - }
+    - > frame.firstRoll(4);
+    - > frame.secondRoll(6);
+    - > frame
+    - Frame {
+    - rollOne: [ 4, 0 ],
+    - rollTwo: [ 6, 0 ],
+    - frameTotal: [ 10 ],
+    - frameBonus: [ 'Spare' ],
+    - frameCounter: 1
+    - }
+    - > 
 
+    * Next, caluclate bonus points for a spare and revise round total, at the end of following frame.
 
 =================
 

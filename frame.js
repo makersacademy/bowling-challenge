@@ -16,7 +16,12 @@ class Frame {
 
   secondRoll(pinfall) {
     this.rollTwo[this.frameCounter] = pinfall
-    this.endOfRound()
+    if (this.rollOne[this.frameCounter] + pinfall === 10) {
+      this.spare();
+    } else {
+      this.frameBonus[this.frameCounter] = 0
+      this.endOfRound()
+    }
   }
 
   endOfRound() {
@@ -29,6 +34,11 @@ class Frame {
   strike() {
     this.frameBonus[this.frameCounter] = "Strike"
     this.rollTwo[this.frameCounter] = 0;
+    this.endOfRound()
+  }
+
+  spare() {
+    this.frameBonus[this.frameCounter] = "Spare"
     this.endOfRound()
   }
 

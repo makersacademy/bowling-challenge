@@ -116,6 +116,15 @@ Bowling Challenge
 
     * Next, caluclate bonus points for two strikes in a row and revise round totals at the end of following frames.
 
+    * To do:
+    - set up a `currentTotalPoints` to print at end of each frame
+    - set up a full game of bowling conisting of 10 rounds
+    - set up functionality for tenth frame conditions
+    - Print full scoresheet at end of game
+    - could use readline or similar to allow user input from CLI
+    - noted, a lot of repetition in tests, need to refactor tests to group frames etc.
+    - noted, a lot of repetition in frame class, need to refactor and consider pulling out a game class to reduce responsibility.
+
 
 =================
 

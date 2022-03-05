@@ -56,7 +56,7 @@ describe('Frame',() => {
     expect(frame.frameTotal[0]).toBe(14)
   })
 
-  it('records strike bonus points for next two rolls and adds to previous frame totals', () => {
+  it('records strike bonus points for next two rolls(single frame) and adds to previous frame total', () => {
     const frame = new Frame();
     frame.firstRoll(10);
     expect(frame.frameBonus[0]).toBe("Strike")
@@ -69,5 +69,23 @@ describe('Frame',() => {
     expect(frame.bonusPoints[0]).toBe(6)
     expect(frame.frameTotal[0]).toBe(16)
   })
+
+  it('records two strikes in a row and calculates bonus points for next two rolls', () => {
+    const frame = new Frame();
+    frame.firstRoll(10);
+    expect(frame.frameBonus[0]).toBe("Strike")
+    expect(frame.frameTotal[0]).toBe(10)
+    frame.firstRoll(10);
+    expect(frame.frameBonus[1]).toBe("Strike")
+    expect(frame.frameTotal[1]).toBe(10)
+    expect(frame.frameTotal[0]).toBe(20)
+    frame.firstRoll(5);
+    frame.secondRoll(1);
+    expect(frame.frameBonus[2]).toBe(0)
+    expect(frame.frameTotal[2]).toBe(6)
+    expect(frame.frameTotal[1]).toBe(16)
+    expect(frame.frameTotal[0]).toBe(25)
+  })
+
 
 })

@@ -37,9 +37,14 @@ class Frame {
     if (this.frameBonus[this.frameCounter - 1] === "Spare") {
        this.spareBonus();
       } else if (
-        this.frameBonus[this.frameCounter - 1] === "Strike" 
+        this.frameBonus[this.frameCounter - 1] === "Strike" && this.frameBonus[this.frameCounter - 2] !== "Strike"
         ) {
         this.singleStrikeBonus();
+      } else if (
+        this.frameBonus[this.frameCounter - 1] === "Strike" && this.frameBonus[this.frameCounter - 2] === "Strike"
+        ) {
+        this.singleStrikeBonus();
+        this.doubleStrikeBonus();
       } else {
         this.bonusPoints[this.frameCounter] = 0
       }
@@ -53,6 +58,11 @@ class Frame {
   singleStrikeBonus() {
     this.bonusPoints[this.frameCounter - 1] = this.rollOne[this.frameCounter] + this.rollTwo[this.frameCounter]
     this.frameTotal[this.frameCounter -1] = this.rollOne[this.frameCounter -1] + this.rollTwo[this.frameCounter -1] + this.bonusPoints[this.frameCounter - 1];
+  }
+
+  doubleStrikeBonus() {
+    this.bonusPoints[this.frameCounter - 2] += this.rollOne[this.frameCounter]
+    this.frameTotal[this.frameCounter -2] = this.rollOne[this.frameCounter -2] + this.rollTwo[this.frameCounter -2] + this.bonusPoints[this.frameCounter - 2];
   }
 
 

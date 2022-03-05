@@ -52,35 +52,3 @@ The game will end when 10 Frames have been completed.
 ~~~~
 Game Over, you scored: 300
 ~~~~
-
-## In the Node REPL
------------------------
-Start your node REPL
-~~~~
-$> node
-~~~~
-In the REPL
-~~~~
-// load the code in the REPL
-> .load ./lib/scorecard.js
-
-// create an instance of scorecard
-> scorecard = new ScoreCard(Frame, LastFrame)
-ScoreCard {
-  frameClass: [class Frame],
-  lastFrameClass: [class LastFrame extends Frame],
-  frames: []
-}
-
-// Play the game
-> scorecard.logRoll(3)
-undefined
-> scorecard.logRoll(7)
-undefined
-> scorecard.logRoll(4)
-undefined
-> scorecard.score()
-14
-And so forth until the game ends
-
-~~~~

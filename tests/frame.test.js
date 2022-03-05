@@ -66,4 +66,10 @@ describe("Frame class", () => {
     }).toThrow("Pins downed must be between 0 and 10");
   });
 
+  it("does not allow rolls greater than 10", () => {
+    expect(() => {
+      frame.logRoll(11);
+    }).toThrow("Pins downed must be between 0 and 10");
+  });
+
 });

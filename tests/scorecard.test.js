@@ -13,6 +13,11 @@ describe("ScoreCard class", () => {
     expect(scorecard.currentFrameNumber()).toBe(0);
   });
 
+  it("returns the current frame", () => {
+    scorecard.logRoll(10)
+    expect(scorecard.currentFrame().strikeFrame()).toBe(true);
+  });
+
   it("logs a roll to the score card", () => {
     scorecard.logRoll(7)
     expect(scorecard.currentFrameNumber()).toBe(1);

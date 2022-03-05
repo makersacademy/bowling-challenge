@@ -20,6 +20,28 @@ describe("Game", () => {
     
     });
 
+    it("returns score ", () => {
+        const game = new Game();
+        game.roll(5);
+        game.roll(4);
+        game.roll(5)
+        for (let i = 0; i < 17; i++){
+            game.roll(1);
+            }
+            expect(game.score).toEqual(31); 
+    })
+
+    it("adds bonus when spare", () => {
+        const game = new Game();
+        game.roll(5);
+        game.roll(5);
+        game.roll(5)
+        for (let i = 0; i < 17; i++){
+            game.roll(1);
+            }
+            expect(game.score).toEqual(37); 
+    })
+
 //   it("max score for perfect game ", () => {
 //       const game = new Game;
 //       expect(game.getMaxscore()).toEqual(300)

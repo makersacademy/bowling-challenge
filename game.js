@@ -14,7 +14,16 @@ get score(){
 
     for(let frameIndex = 0; frameIndex < 10; frameIndex++) {
         let frameScore = this.rolls[rollIndex] + this.rolls[rollIndex+1];
-       score += frameScore;
+
+
+    if(frameScore == 10){
+        score = score + 10 + this.rolls[rollIndex+2]
+    }
+
+    else {
+        score += frameScore;
+    }
+    
   
         rollIndex += 2;
 

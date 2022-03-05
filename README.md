@@ -26,6 +26,27 @@ To run jest tests
 $> npx jest
 ~~~~
 
+## To run the game in command line
+~~~~
+$> node .
+~~~~
+to start the game.
+
+Playing the game, enter rolls at the prompt
+~~~~
+Welcome to 10 Pin Bowling
+Enter Roll> 10
+Current Score: 0
+Enter Roll> 10
+Current Score: 0
+Enter Roll> 10
+Current Score: 30
+Enter Roll> 
+~~~~
+
+The game will end
+
+
 ## In the Node REPL
 -----------------------
 Start your node REPL

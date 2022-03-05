@@ -3,11 +3,15 @@ class Frame {
     this.rollOne = [];
     this.rollTwo = [];
     this.frameTotal = [];
+    this.frameBonus = [];
     this.frameCounter = frameCounter
   }
 
   firstRoll(pinfall) {
     this.rollOne[this.frameCounter] = pinfall
+    if (pinfall === 10) {
+      this.strike();
+    }
   }
 
   secondRoll(pinfall) {
@@ -21,7 +25,15 @@ class Frame {
     this.rollOne[this.frameCounter] = 0; 
     this.rollTwo[this.frameCounter] = 0;
   }
+
+  strike() {
+    this.frameBonus[this.frameCounter] = "Strike"
+    this.rollTwo[this.frameCounter] = 0;
+    this.endOfRound()
+  }
+
 }
+
 
 
 module.exports = Frame

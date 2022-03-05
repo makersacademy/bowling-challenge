@@ -25,20 +25,42 @@ Bowling Challenge
 * Node Testing in Terminal:
     - node
     - load Frame class
-    > const frame = new Frame;
-    > frame.firstRoll(4);
-    > frame.secondRoll(5);
-    > frame.frameTotal;
-    > 9
-    > frame
-    > Frame { rollOne: 4, rollTwo: 5, frameTotal: 9 }
+    - > const frame = new Frame;
+    - > frame.firstRoll(4);
+    - > frame.secondRoll(5);
+    - > frame.frameTotal;
+    - > 9
+    - > frame
+    - Frame { rollOne: 4, rollTwo: 5, frameTotal: 9 }
 
 * Next, save frame score and reset rollOne & rollTwo for next frame.
 
 * Next, save a strike if 10 pins knocked on rollOne.
+* Node Testing in Terminal:
+    - > const frame = new Frame;
+    - > frame
+    - Frame {
+    - rollOne: [],
+    - rollTwo: [],
+    - frameTotal: [],
+    - frameBonus: [],
+    - frameCounter: 0
+    - }
+    - > frame.firstRoll(10);
+    - > frame
+    - Frame {
+    - rollOne: [ 10, 0 ],
+    - rollTwo: [ 0, 0 ],
+    - frameTotal: [ 10 ],
+    - frameBonus: [ 'Strike' ],
+    - frameCounter: 1
+    - }
+    - > 
+
+* Next, save a spare if 10 pins are knocked over in rollOne and rollTwo.
 
 
-
+=================
 
 ## Project Brief
 

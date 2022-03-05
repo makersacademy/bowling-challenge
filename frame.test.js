@@ -30,4 +30,11 @@ describe('Frame',() => {
     expect(frame.rollOne[1]).toBe(0)
     expect(frame.rollTwo[1]).toBe(0)
   })
+
+  it('records a strike bonus when 10 pins are knocked over in first roll of frame', () => {
+    let frame = new Frame();
+    frame.firstRoll(10);
+    expect(frame.frameBonus[0]).toBe("Strike")
+  })
+
 })

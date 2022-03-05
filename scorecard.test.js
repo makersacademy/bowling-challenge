@@ -19,6 +19,20 @@ describe('scorecard', () => {
   it('returns true if it is the first frame', () => {
     expect(scorecard.firstFrame()).toBe(true)
   })
+  it('returns the last frame', () => {
+    scorecard.roll(2)
+    scorecard.roll(5)
+    scorecard.roll(5)
+    expect(scorecard.lastFrame().getScore()).toBe(7)
+  })
+  it('returns the double-last frame', () => {
+    scorecard.roll(2)
+    scorecard.roll(5)
+    scorecard.roll(5)
+    scorecard.roll(5)
+    scorecard.roll(5)
+    expect(scorecard.doubleLastFrame().getScore()).toBe(7)
+  })
   it('returns false if it is the second frame', () => {
     scorecard.roll(10)
     scorecard.roll(1)
@@ -28,7 +42,7 @@ describe('scorecard', () => {
     scorecard.roll(3)
     scorecard.roll(3)
     scorecard.roll(10)
-    expect(scorecard.currentFrame()).toBe()
+    expect(scorecard.currentFrame().getScore()).toEqual(10)
   })
   it('returns the last frame', () => {
     scorecard.roll(10)

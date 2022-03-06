@@ -40,7 +40,13 @@ describe(BowlingCard, () => {
     });
   });
 
-  // describe(isStrike)
+  describe('isStrike', () => {
+    it('should return true if it is a strike', () => {
+      let bowlingCard = new BowlingCard
+      bowlingCard.roll(10)
+      expect(bowlingCard.isStrike()).toBe(true)
+    });
+  });
   
 });
 

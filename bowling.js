@@ -23,6 +23,12 @@ class BowlingCard{
       return true
     }
   }
+
+  isStrike(){
+    if(this.frame[0] === 10){
+      return true
+    }
+  }
 }
 
 

@@ -17,6 +17,12 @@ class BowlingCard{
     this.score += pins
     this.frame.push(pins)
   }
+
+  isSpare(){
+    if (this.frame[0] + this.frame[1] === 10){
+      return true
+    }
+  }
 }
 
 

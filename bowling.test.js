@@ -29,8 +29,18 @@ describe(BowlingCard, () => {
     it('should return an empty array', () => {
       expect(bowlingCard.getFrame()).toStrictEqual([])
     });
-
   });
+
+  describe('isSpare', () => {
+    it('should return true if it is a spare', () => {
+      let bowlingCard = new BowlingCard
+      bowlingCard.roll(5)
+      bowlingCard.roll(5)
+      expect(bowlingCard.isSpare()).toBe(true)
+    });
+  });
+
+  // describe(isStrike)
   
 });
 

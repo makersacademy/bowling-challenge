@@ -1,7 +1,12 @@
 
 class BowlingCard{
   constructor(){
+    this.frame = []
     this.score = 0
+  }
+
+  getFrame(){
+    return this.frame
   }
 
   getScore(){

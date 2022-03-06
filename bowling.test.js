@@ -16,6 +16,13 @@ describe(BowlingCard, () => {
       expect(bowlingCard.getScore()).toBe(5)
     });
   });
+
+  describe('getFrame', () => {
+    let bowlingCard = new BowlingCard
+    it('should return an empty array', () => {
+      expect(bowlingCard.getFrame()).toStrictEqual([])
+    });
+  });
   
 });
 

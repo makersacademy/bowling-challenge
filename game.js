@@ -21,13 +21,14 @@ class Game {
   score(){
     let total = 0
     this.frames.forEach((frame, index) => {
-      frame.score();
+      
+      let frameScore = frame.score();
       if (frame.strike){
         total += this._strikeBonus(index);
       }else if(frame.spare){
         total += this._spareBonus(index); 
       }else{
-        total += frame.score() 
+        total += frameScore; 
       }
     })
     return total;

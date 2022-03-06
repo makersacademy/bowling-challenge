@@ -66,6 +66,13 @@ describe("Game", () => {
       game.roll(0); game.roll(0);
       expect(game.score()).toEqual(40);
     })
+
+    // it('scores a perfect game', () => {
+    //   for(let i = 0; i < 12; i++){
+    //     game.roll(10);
+    //   }
+    //   expect(game.score()).toEqual(300);
+    // })
   })
   
 });

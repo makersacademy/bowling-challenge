@@ -15,6 +15,7 @@ class BowlingCard{
 
   roll(pins){
     this.score += pins
+    this.frame.push(pins)
   }
 }
 

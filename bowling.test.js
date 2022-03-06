@@ -10,11 +10,18 @@ describe(BowlingCard, () => {
   });
 
   describe('roll', () => {
-    let bowlingCard = new BowlingCard
+    
     it('should add the score to the scorecard', () => {
+      let bowlingCard = new BowlingCard
       bowlingCard.roll(5)
       expect(bowlingCard.getScore()).toBe(5)
     });
+
+      it('should add to the frame', () => {
+        let bowlingCard = new BowlingCard
+        bowlingCard.roll(5)
+        expect(bowlingCard.getFrame()).toStrictEqual([5])
+      });
   });
 
   describe('getFrame', () => {
@@ -22,6 +29,7 @@ describe(BowlingCard, () => {
     it('should return an empty array', () => {
       expect(bowlingCard.getFrame()).toStrictEqual([])
     });
+
   });
   
 });

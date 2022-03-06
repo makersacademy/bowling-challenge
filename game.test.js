@@ -1,4 +1,3 @@
-const { expect } = require("@jest/globals");
 const Game = require("./game");
 
 describe("Game", () => {
@@ -34,13 +33,18 @@ describe("Game", () => {
         game.roll(2);
       }
       expect(game.score()).toEqual(40);
-      
     })
 
     it('includes a bonus after a spare', () => {
       game.roll(5); game.roll(5);
       game.roll(2); game.roll(0);
-      expect(game.score()).toEqual((10) + (2+0) + 2)
+      expect(game.score()).toEqual((10) + (2+0) + 2);
+    })
+
+    it('includes a bonus after a strike', () => {
+      game.roll(10); game.roll(0);
+      game.roll(2); game.roll(2);
+      expect(game.score()).toEqual((10) + (2+2) + (2+2));
     })
   })
   

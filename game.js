@@ -5,6 +5,7 @@ class Game {
     this.frames = [];
     this.rolls = [];
   }
+
   roll(pins_knocked_down) {
     this.rolls.push(pins_knocked_down);
     if(this.rolls.length == 2){
@@ -28,15 +29,24 @@ class Game {
     return newFrame;
   }
 
-  bonus(index){
-    if (index < 1){
+  bonus(idx){
+    if (idx < 1){
       return 0;
-    }else if (this.frames[index - 1].spare){
-      return this.frames[index].ball1;
+    }else if (this._previousFrame(idx).spare){
+      return this._currentFrame(idx).ball1;
+    }else if (this._previousFrame(idx).strike){
+      return this._currentFrame(idx).ball1 + this._currentFrame(idx).ball2;
     }else{
       return 0;
     }
-    
+  }
+
+  _currentFrame(idx){
+    return this.frames[idx]
+  }
+
+  _previousFrame(idx){
+    return this.frames[idx-1]
   }
 
 }

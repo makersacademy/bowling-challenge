@@ -10,7 +10,7 @@ class Frame {
     if(this.ball1 === 10){
       this.strike = true;
     }
-    if(this.ball1 + this.ball2 === 10){
+    else if(this.ball1 + this.ball2 === 10){
       this.spare = true;
     }
     return this.ball1 + this.ball2;

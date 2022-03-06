@@ -95,6 +95,13 @@ describe("ScoreCard class", () => {
     expect(scorecard.formatFrames()).toBe('|1 |2 |1 |2 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ');
   });
 
+  it("returns a formatted string of scores for 2 frames ", () => {
+    scorecard.logRoll(1);
+    scorecard.logRoll(2);
+    scorecard.logRoll(1);
+    scorecard.logRoll(2); 
+    expect(scorecard.formatScores()).toBe(' |3    |6    |     |     |     |     |     |     |     |     ');
+  });
 
   
 })

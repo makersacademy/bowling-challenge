@@ -36,13 +36,16 @@ to start the game.
 
 Playing the game, enter rolls at the prompt
 
-Start of a game
+* Start of a game
+
 ![alt text](https://github.com/nyahehnagi/bowling-challenge/blob/main/docs/start_bowling.png)
 
-During a game
+* During a game
+
 ![alt text](https://github.com/nyahehnagi/bowling-challenge/blob/main/docs/mid_bowling.png)
 
-End of the game
+* End of the game
+
 ![alt text](https://github.com/nyahehnagi/bowling-challenge/blob/main/docs/end_bowling.png)
 
 

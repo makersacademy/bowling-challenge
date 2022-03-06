@@ -31,18 +31,20 @@ describe('bowling', () => {
         expect(bowling.score).toEqual(16);
       });
 
+      test('it can roll a strike', () => {
+        bowling.roll(10);
+        bowling.roll(5);
+        bowling.roll(3);
+        for (let i = 0; i < 16; i++) {
+            bowling.roll(0);
+        }
+        expect(bowling.score).toEqual(26);
+      });
+
+      test('it can have a perfect game', () => {
+        for (let i = 0; i < 12; i++) {
+          bowling.roll(10);
+        }
+        expect(bowling.score).toEqual(300);
+      });
 });
-
-
-//   it 'can roll a strike' do
-//     @game.roll(10)
-//     @game.roll(5)
-//     @game.roll(3)
-//     16.times{@game.roll(0)}
-//     expect(@game.score).to eq(26)
-//   end
-
-//   it 'can have a perfect game' do 
-//     12.times{@game.roll(10)}
-//     expect(@game.score).to eq(300)
-//   end

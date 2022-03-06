@@ -1,0 +1,23 @@
+{
+  "name": "javascriptfundamentals1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fizzbuzz.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdoesprogramming/Javascript-fundamentals.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cdoesprogramming/Javascript-fundamentals/issues"
+  },
+  "homepage": "https://github.com/cdoesprogramming/Javascript-fundamentals#readme",
+  "dependencies": {
+    "jest": "^27.5.1"
+  }
+}

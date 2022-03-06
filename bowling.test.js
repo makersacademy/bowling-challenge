@@ -27,17 +27,16 @@ describe("Bowling", () => {
         game.newRoll(2);
         game.newRoll(3);
         game.newRoll(0);
-        console.log(game.results);
         expect(game.getScore()).toBe(6);
     });
     
-    it('returns a string informing that the game had ended, after the 10th frames has been scored', () =>{
+    it('returns a  string after when rolls after game is over', () => {
         const game = new Bowling;
-        for(i = 0; i < 21; i++){ 
+        for(i = 1; i < 21; i++){ 
             game.newRoll(0);
         };
-        expect(game.frame_no).toEqual(11);
-        expect(game.newRoll(0)).toEqual('The game is over');
+      
+        expect(game.newRoll(1)).toBe('GAME OVER');
     });
 
     it('recognises a spare', () =>{
@@ -45,12 +44,6 @@ describe("Bowling", () => {
         game.newRoll(5);
         game.newRoll(5);
         expect(game.spare).toEqual(true);
-    });
-
-    it('recognises a strike', () =>{
-        const game = new Bowling;
-        game.newRoll(10);
-        expect(game.strike).toEqual(true)
     });
 
     it('a strike only has one roll in frame', () => {
@@ -70,4 +63,31 @@ describe("Bowling", () => {
         expect(game.getScore()).toEqual(20);
     });
 
+    it('it calculates the strike bonus', () => {
+        const game = new Bowling;
+        game.newRoll(10);
+        game.newRoll(1);
+        game.newRoll(1);
+        expect(game.getScore()).toEqual(14);
+    });
+
+    it('allows an extra roll, when spare in 10th frame', () => {
+        const game = new Bowling;
+        for(i = 0; i < 18; i++){ 
+           game.newRoll(0)
+        };
+        game.newRoll(5);
+        game.newRoll(5);
+        game.newRoll(5);
+        expect(game.getScore()).toEqual(15);
+    });
+
+    it('takes a perfect game', () => {
+        const game = new Bowling;
+        for(i = 1; i < 13; i++){ 
+            game.newRoll(10);
+        };
+        game.newRoll(1)
+    expect(game.getScore()).toEqual(300);
+    });
 });

@@ -4,24 +4,42 @@ class Bowling{
         this.score = 0;
         this.frame_no = 1;
         this.frame = [];
-        this.max_frame = 11
+        this.max_frame = 11;
         this.spare = false
-        this.strike = false
         this.results = [];
+        this.extra_rolls = false;
     };
 
+
     newRoll(pins) {
-        if(this.frame_no === this.max_frame) {
-            return 'The game is over';
+        this.results.push(pins);
+        if(this.extra_rolls > 0){
+            this.finalFrameClac();
+        } else if (this.frame_no >= this.max_frame) {
+            this.extraRoll();
         } else {
-            this.results.push(pins);
             this.frameType();
         };
     };
 
+    extraRoll() {
+        let strike_ind = (this.results.length - 3);
+        if(this.spare === true){
+            this.finalFrameClac(); 
+        } else if(this.results[strike_ind] === 10){
+            this.extra_rolls = 2;
+            this.finalFrameClac();
+        } else {
+            this.finishGame();
+        };
+    };
+
     frameType() {
+        let strike_ind = (this.results.length - 3);
         if(this.spare === true){
             this.spareBonusCalc(); 
+        } else if((this.results[strike_ind] === 10) && (this.results.length >= 3)){
+            this.strikeBonusCalc();
         } else {
             this.strikeChecker();
         };
@@ -30,7 +48,7 @@ class Bowling{
     strikeChecker() {
         let last = (this.results.length - 1);
         if(this.results[last] === 10){
-            this.strikeSwitch();
+            this.frameFinisher(); 
         } else {
             this.frame.push(this.results[last]);
             this.frameCompleteChecker();
@@ -38,8 +56,8 @@ class Bowling{
     };
 
     frameCompleteChecker() {
-        let flength = this.frame.length
-        if(flength === 2) {
+        let frlength = this.frame.length
+        if(frlength === 2) {
             this.spareChecker();
         };
     };
@@ -53,11 +71,13 @@ class Bowling{
             this.frameFinisher();
         };
     };
-   
-    strikeSwitch() {
-        this.strike = true;
-        this.frameFinisher();
-    };
+
+    strikeBonusCalc() {
+        let first_last = (this.results.length - 1);
+        let second_last = (this.results.length - 2);
+        this.score += (10 + this.results[first_last] + this.results[second_last]);
+        this.strikeChecker();
+    }
 
     spareSwitch() {
         this.spare = true;
@@ -68,7 +88,22 @@ class Bowling{
         let spare_bonus = 10 + (this.results[this.results.length - 1]);
         this.score += spare_bonus;
         this.spare = false;
-        this.strikeChecker();
+        if(this.frame_no < this.max_frame) {
+            this.strikeChecker();
+        };
+    };
+
+    finalFrameClac() {
+        let strike_ind = (this.results.length - 3);
+        let spare_bonus = 10 + (this.results[this.results.length - 1]);
+        this.extra_rolls -= 1;
+
+        if (this.spare === true) {
+            this.score += spare_bonus;
+            this.spare = false;
+        } else if (this.results[strike_ind] === 10) {
+            this.score += (10 + this.results[strike_ind + 1] + this.results[strike_ind + 2]);
+        };
     };
 
     frameFinisher() {
@@ -78,6 +113,11 @@ class Bowling{
 
     getScore() {
         return this.score;
+    };
+
+    finishGame() {
+        this.results.pop();
+        return "GAME OVER";
     };
 
 };

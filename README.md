@@ -15,6 +15,11 @@ The following API is exposed from the ScoreCard class
 ----------------------
 Install node via your favourite package manager if required, see [here](https://nodejs.org/en/ "Node") for more details
 
+Install jest if not already
+~~~~
+npm install --save-dev jest
+~~~~
+
 To install this code from the latest source
 ~~~~
 git clone git@github.com:nyahehnagi/bowling-challenge.git

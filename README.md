@@ -1,11 +1,9 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+- Feel free to use google, your notes, books, etc. but work on your own
+- If you refer to the solution of another coach or student, please put a link to that in your README
+- If you have a partial solution, **still check in a partial solution**
+- You must submit a pull request to this repo with your code by 9am Monday week
 
 ## The Task
 
@@ -17,19 +15,19 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 As usual please start by
 
-* Forking this repo
+- Forking this repo
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+- Finally submit a pull request before Monday week at 9am with your solution or partial solution. However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+**_STRONG HINT, IGNORE AT YOUR PERIL:_** Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
 ### Optional Extras
 
 In any order you like:
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+- Create a nice interactive animated interface with jQuery.
+- Set up [Travis CI](https://travis-ci.org) to run your tests.
+- Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
 
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.
@@ -69,16 +67,14 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 In code review we'll be hoping to see:
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+- All tests passing
+- The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+Reviewers will potentially be using this [code review rubric](docs/review.md). Note that referring to this rubric in advance may make the challenge somewhat easier. You should be the judge of how much challenge you want.
 
+# My attempt at the bowling challenge.
 
-My attempt at the bowling challenge.
-=================
-
-Before attempting the challenge, I created a table to incorporate the main bits of information about the bowling game. This consists of the idea of strikes and spares, as well as scenarios which may occur in the game. The ones I have included are rolling a strike/spare in the 10th frame, a gutter game and the perfect game. There are many other scenarios which can occur in this game, however these are the main ones I have included. I have attached the table below. 
+Before attempting the challenge, I created a table to incorporate the main bits of information about the bowling game. This consists of the idea of strikes and spares, as well as scenarios which may occur in the game. The ones I have included are rolling a strike/spare in the 10th frame, a gutter game and the perfect game. There are many other scenarios which can occur in this game, however these are the main ones I have included. I have attached the table below.
 
 <img src='./images/bowling_challenge_table.png'>
 

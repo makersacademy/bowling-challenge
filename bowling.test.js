@@ -87,7 +87,15 @@ describe("Bowling", () => {
         for(i = 1; i < 13; i++){ 
             game.newRoll(10);
         };
-        game.newRoll(1)
+    expect(game.getScore()).toEqual(300);
+    });
+
+    it('takes a perfect game, and will not accept any further rolls', () => {
+        const game = new Bowling;
+        for(i = 1; i < 13; i++){ 
+            game.newRoll(10);
+        };
+        console.log(game.newRoll(1));
     expect(game.getScore()).toEqual(300);
     });
 });

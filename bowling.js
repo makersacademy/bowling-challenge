@@ -13,7 +13,7 @@ class Bowling{
 
     newRoll(pins) {
         this.results.push(pins);
-        if(this.extra_rolls > 0){
+        if(this.extra_rolls === 1){
             this.finalFrameClac();
         } else if (this.frame_no >= this.max_frame) {
             this.extraRoll();
@@ -26,11 +26,11 @@ class Bowling{
         let strike_ind = (this.results.length - 3);
         if(this.spare === true){
             this.finalFrameClac(); 
-        } else if(this.results[strike_ind] === 10){
-            this.extra_rolls = 2;
-            this.finalFrameClac();
-        } else {
+        } else if(this.extra_rolls < 0){
             this.finishGame();
+        } else if(this.results[strike_ind] === 10){
+            this.extra_rolls = 3;
+            this.finalFrameClac();
         };
     };
 
@@ -96,7 +96,7 @@ class Bowling{
     finalFrameClac() {
         let strike_ind = (this.results.length - 3);
         let spare_bonus = 10 + (this.results[this.results.length - 1]);
-        this.extra_rolls -= 1;
+        this.extra_rolls -= 2;
 
         if (this.spare === true) {
             this.score += spare_bonus;

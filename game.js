@@ -8,7 +8,10 @@ class Game {
 
   roll(pins_knocked_down) {
     this.rolls.push(pins_knocked_down);
-    if(this.rolls.length == 2){
+    if(pins_knocked_down == 10){
+      this.createFrame(pins_knocked_down, 0);
+      this.rolls = [];
+    }else if(this.rolls.length == 2){
       this.createFrame(this.rolls[0],this.rolls[1]);
       this.rolls = [];
     }
@@ -18,7 +21,14 @@ class Game {
   score(){
     let total = 0
     this.frames.forEach((frame, index) => {
-      total += frame.score() + this.bonus(index);
+      frame.score();
+      if (frame.strike){
+        total += this._strikeBonus(index);
+      }else if(frame.spare){
+        total += this._spareBonus(index); 
+      }else{
+        total += frame.score() 
+      }
     })
     return total;
   }
@@ -29,24 +39,19 @@ class Game {
     return newFrame;
   }
 
-  bonus(idx){
-    if (idx < 1){
-      return 0;
-    }else if (this._previousFrame(idx).spare){
-      return this._currentFrame(idx).ball1;
-    }else if (this._previousFrame(idx).strike){
-      return this._currentFrame(idx).ball1 + this._currentFrame(idx).ball2;
-    }else{
-      return 0;
+  _strikeBonus(idx){
+    if(this._nextFrame(idx).ball1 === 10){
+      return 10 + this._nextFrame(idx).ball1 + this.frames[idx+2].ball1;
     }
+    return 10 + this._nextFrame(idx).ball1 + this._nextFrame(idx).ball2;
   }
 
-  _currentFrame(idx){
-    return this.frames[idx]
+  _spareBonus(idx){
+    return 10 + this._nextFrame(idx).ball1;
   }
 
-  _previousFrame(idx){
-    return this.frames[idx-1]
+  _nextFrame(idx){
+    return this.frames[idx+1]
   }
 
 }

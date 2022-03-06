@@ -6,10 +6,10 @@ This is a program which calculates the score of a game of 10 pin bowling
 
 The following API is exposed from the ScoreCard class
 
-* `#currentFrameNumber` - shows the current frame
-* `#logRoll(pinsDowned)` - logs a roll from the player, pass in a number from 0-10
-* `#score` - shows the current score at any point in the game
-
+* `currentFrameNumber()` - shows the current frame
+* `logRoll(pinsDowned)` - logs a roll from the player, pass in a number from 0-10
+* `score()` - shows the current score at any point in the game
+* `gameComplete()` - returns true if the game has finished, false otherwise
 ----------------------
 ## Installation
 ----------------------

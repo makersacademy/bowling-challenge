@@ -73,3 +73,16 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+
+My attempt at the bowling challenge.
+=================
+
+Before attempting the challenge, I created a table to incorporate the main bits of information about the bowling game. This consists of the idea of strikes and spares, as well as scenarios which may occur in the game. The ones I have included are rolling a strike/spare in the 10th frame, a gutter game and the perfect game. There are many other scenarios which can occur in this game, however these are the main ones I have included. I have attached the table below. 
+
+<img src='./images/bowling_challenge_table.png'>
+
+### Main things to remember about the game
+
+- for 9 frames, the player gets a maximum of 2 rolls, this changes in the 10th frame if player scores a strike or spare.
+- maximum amount of possible rolls in a game is 21.

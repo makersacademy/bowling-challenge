@@ -6,14 +6,12 @@ class BowlingGame {
 
   roll(pins) {
     this.rolls.push(pins)
-    // console.log(this.rolls)
   };
 
   score() {
     let score = 0
     let index = 0
-
-    for (times = 0; times < 10; times++) {
+    for (let times = 0; times != 10; times++) {
       if (this.strike(index)) {
         score += this.strikeScore(index)
         index += 1
@@ -23,6 +21,7 @@ class BowlingGame {
     } else {
         score += this.frameScore(index)
         index += 2
+        console.log(score)
       };
     };
     return score

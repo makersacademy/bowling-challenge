@@ -39,4 +39,28 @@ describe ("Last Frame class", () => {
     expect(lastFrame.frameComplete()).toBe(true);
   });
 
+
+  it("returns a formatted string for a strike ", () => {
+    lastFrame.logRoll(10);
+    expect(lastFrame.formatFrame()).toBe('X |');
+  });
+
+  it("returns a formatted string for 2 strikes ", () => {
+    lastFrame.logRoll(10);
+    lastFrame.logRoll(10);
+    expect(lastFrame.formatFrame()).toBe('X |X ');
+  });
+
+  
+  it("returns a formatted string for a spare ", () => {
+    lastFrame.logRoll(3);
+    lastFrame.logRoll(7);
+    expect(lastFrame.formatFrame()).toBe('3 |/ ');
+  });
+
+  it("returns a formatted string for an open game ", () => {
+    lastFrame.logRoll(3);
+    lastFrame.logRoll(3);
+    expect(lastFrame.formatFrame()).toBe('3 |3 ');
+  });
 })

@@ -14,4 +14,11 @@ describe('BowlingGame', () => {
     }
     expect(game.score()).toBe(0);
   })
+
+  it('returns 20 as the final score for a game of all 1 rolls', () => {
+    for(let i = 0; i<20; i++) {
+      game.roll(1);
+    }
+    expect(game.score()).toBe(20);
+  })
 })

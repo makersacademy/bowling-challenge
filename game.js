@@ -16,8 +16,8 @@ class Game {
 
   score(){
     let total = 0
-    this.frames.forEach(frame => {
-      total += frame.score();
+    this.frames.forEach((frame, index) => {
+      total += frame.score() + this.bonus(index);
     })
     return total;
   }
@@ -26,6 +26,17 @@ class Game {
     let newFrame = new Frame(roll1,roll2);
     this.frames.push(newFrame);
     return newFrame;
+  }
+
+  bonus(index){
+    if (index < 1){
+      return 0;
+    }else if (this.frames[index - 1].spare){
+      return this.frames[index].ball1;
+    }else{
+      return 0;
+    }
+    
   }
 
 }

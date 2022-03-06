@@ -103,5 +103,28 @@ describe("ScoreCard class", () => {
     expect(scorecard.formatScores()).toBe(' |3    |6    |     |     |     |     |     |     |     |     ');
   });
 
+  it("returns a formatted string of scores for 2 frames one with a strike and partial frame", () => {
+    scorecard.logRoll(10);
+    scorecard.logRoll(1);
+    expect(scorecard.formatScores()).toBe(' |-    |-    |     |     |     |     |     |     |     |     ');
+  });
   
+  it("returns a formatted string of scores for 3 frames strike and spare", () => {
+    scorecard.logRoll(10);
+    scorecard.logRoll(1);
+    scorecard.logRoll(9);
+    scorecard.logRoll(1);
+    expect(scorecard.formatScores()).toBe(' |20   |31   |-    |     |     |     |     |     |     |     ');
+  });
+
+  it("testing triple figures for a score", () => {
+    scorecard.logRoll(10);
+    scorecard.logRoll(10);
+    scorecard.logRoll(10);
+    scorecard.logRoll(10);
+    scorecard.logRoll(1);
+    scorecard.logRoll(9);
+    
+    expect(scorecard.formatScores()).toBe(' |30   |60   |81   |101  |-    |     |     |     |     |     ');
+  });
 })

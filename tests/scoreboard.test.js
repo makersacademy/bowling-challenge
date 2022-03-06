@@ -1,4 +1,4 @@
-const Scoreboard = require('./scoreboard')
+const Scoreboard = require('../scoreboard')
 
 let scoreboard;
 
@@ -17,6 +17,10 @@ describe (Scoreboard, () => {
   describe ('singleRoll', () => {
     it ('should return an error if a single roll is greater than 10', () => {
       expect(() => scoreboard.singleRoll(14)).toThrow('Score recorded for throw 1 is invalid');
+    });
+
+    it ('should throw an error if a single roll is less than 0', () => {
+      expect(() => scoreboard.singleRoll(-1)).toThrow('Score recorded for throw 1 is invalid');
     });
   });
 });

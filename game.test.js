@@ -11,7 +11,7 @@ describe("Game", () => {
   });
   describe('createFrame', () => {
     it("creates a new frame", () => {
-      const frameDouble = { ball1: 5, ball2: 2}
+      const frameDouble = { ball1: 5, ball2: 2, spare: false, strike: false }
       expect(game.createFrame(game.roll(5), game.roll(2))).toEqual(frameDouble);
     })
   })

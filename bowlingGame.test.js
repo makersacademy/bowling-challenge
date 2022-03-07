@@ -42,4 +42,11 @@ describe('BowlingGame', () => {
     }
     expect(game.score()).toBe(26);
   })
+
+  it('returns 300 as final score for a perfect game', () => {
+    for(let i = 0; i< 20; i++) {
+      game.roll(10);
+    }
+    expect(game.score()).toBe(300)
+  })
 })

@@ -35,7 +35,7 @@ describe("Game", () => {
         const game = new Game();
         game.roll(5);
         game.roll(5);
-        game.roll(5)
+        game.roll(5);
         for (let i = 0; i < 17; i++){
             game.roll(1);
             }

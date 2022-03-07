@@ -12,7 +12,6 @@ class Scorecard{
       this.bonus = false;
       this.spareCount = 0;
       this.bonusRoll = 0;
-      this.gameScorecard = [];
     }
 
     roll(pins){
@@ -27,10 +26,8 @@ class Scorecard{
             this.frameCount += 1; 
             this.tallyScore();
             if (this.frameCount < 11){
-              console.log(`Your Score for frame : ${this.frameCount} is :`);
-              this.gameScorecard = [];
-              this.theScorecard();
-              console.log(this.gameScorecard);
+              console.log(`Your Score for frame : ${this.frameCount} is ${this.runningTotal}`);
+              console.log(this.frames);
             }
             if (this.frameCount < 10){
                 this.frame = new Frame();
@@ -145,23 +142,11 @@ class Scorecard{
     total() {
       return this.runningTotal 
     };
-    theScorecard() {
-     let times = this.frames.length;
-       for(var i = 0; i < times; i++){
-        let theFrame = []
-        theFrame[0]= this.frames[i][0];
-        theFrame[1]= this.frames[i][2]; 
-        this.gameScorecard.push(theFrame);
-      }
-    }
 
     gameOver() {
         console.log(`The Game has Ended! Your END OF GAME SCORE IS ${this.runningTotal}`); 
         if (this.frame.spare() || this.frame.strike()){
-          console.log(`Your FINAL Scorecard including any Bonus rolls for frame: ${this.frameCount} is :`);
-          this.gameScorecard = [];
-          this.theScorecard();
-          console.log(this.gameScorecard);
+          console.log(this.frames);
       }
     };
 };

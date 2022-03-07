@@ -12,6 +12,7 @@ Bowling Challenge
 
 - Javascript
 - Jest (test framework)
+- ESLint (code checker)
 
 
 
@@ -28,9 +29,21 @@ Bowling Challenge
 
 1. After cloning run `npm init -y`
 
-2. run `npm install jest`
+2. Run `npm install jest`
 
 2. Run `jest` directly in root of your local project
+
+## To install ESLint
+
+1. Run `npm install eslint --save-dev`
+
+2. Install configuration file by running `npm init @eslint/config` (do this after you have package.json installed by running `npm init`)
+
+3. Run `npx eslint yourfile.js` directly in root of your local project
+
+## To run using readfile
+
+1. Run `node index.js`
 
 
 ## My approach
@@ -50,6 +63,10 @@ Bowling Challenge
 - Models: `.js`
 
 #### What I know I need to work on
+
+- Checking all scenarios up to last frame
+- Finish the tenth frame code and test
+- Completing using readfile to input rolls and produce a scorecard
 
 Bowling Challenge
 =================

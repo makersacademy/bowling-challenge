@@ -2,6 +2,134 @@
 Bowling Challenge
 =================
 
+## My Process
+
+* Fork Repo
+* Setup Jest within project directory
+* Install ESLint within project directory
+* Start with idea for domain model 
+
+![domain model](images/DomainModel.png)
+
+* Aim to use a TDD approach to completing the project, as set out below:
+   - Plan
+   - Test
+   - Implement
+   - Refactor
+   - Commit
+
+* First test, frame 1, roll 1.
+* Next, test for frame 1, roll 2.
+* Next, test that total for Frame is calculated.
+
+* Node Testing in Terminal:
+    - node
+    - > const Frame = require('./frame');
+    - > const frame = new Frame;
+    - > frame.firstRoll(4);
+    - > frame.secondRoll(5);
+    - > frame.frameTotal;
+    - > 9
+    - > frame
+    - Frame { rollOne: 4, rollTwo: 5, frameTotal: 9 }
+
+* Next, save frame score and reset rollOne & rollTwo for next frame.
+
+* Next, save a strike if 10 pins knocked on rollOne.
+* Node Testing in Terminal:
+    - node
+    - > const Frame = require('./frame');
+    - > const frame = new Frame;
+    - > frame
+    - Frame {
+    - rollOne: [],
+    - rollTwo: [],
+    - frameTotal: [],
+    - frameBonus: [],
+    - frameCounter: 0
+    - }
+    - > frame.firstRoll(10);
+    - > frame
+    - Frame {
+    - rollOne: [ 10, 0 ],
+    - rollTwo: [ 0, 0 ],
+    - frameTotal: [ 10 ],
+    - frameBonus: [ 'Strike' ],
+    - frameCounter: 1
+    - }
+    - > 
+
+* Next, save a spare if 10 pins are knocked over in rollOne and rollTwo.
+* Node Testing in Terminal:
+    - node
+    - > const Frame = require('./frame');
+    - > const frame = new Frame;
+    - > frame
+    - Frame {
+    - rollOne: [],
+    - rollTwo: [],
+    - frameTotal: [],
+    - frameBonus: [],
+    - frameCounter: 0
+    - }
+    - > frame.firstRoll(4);
+    - > frame.secondRoll(6);
+    - > frame
+    - Frame {
+    - rollOne: [ 4, 0 ],
+    - rollTwo: [ 6, 0 ],
+    - frameTotal: [ 10 ],
+    - frameBonus: [ 'Spare' ],
+    - frameCounter: 1
+    - }
+    - > 
+
+    * Next, caluclate bonus points for a spare and revise round total at the end of following frame.
+    * Node Testing in Terminal:
+        - node
+        - > const Frame = require('./frame');
+        - > const frame = new Frame;
+        - > frame.firstRoll(4);
+        - > frame.secondRoll(6);
+        - > frame
+        - Frame {
+        - rollOne: [ 4, 0 ],
+        - rollTwo: [ 6, 0 ],
+        - frameTotal: [ 10 ],
+        - frameBonus: [ 'Spare' ],
+        - frameCounter: 1
+        - }
+        - > frame.firstRoll(2)
+        - > frame.secondRoll(2)
+        - > frame
+        - Frame {
+        - rollOne: [ 4, 2, 0 ],
+        - rollTwo: [ 6, 2, 0 ],
+        - frameTotal: [ 12, 4 ],
+        - frameBonus: [ 'Spare', 0 ],
+        - bonusPoints: [ 2 ],
+        - frameCounter: 2
+        - }
+
+
+    * Next, caluclate bonus points for a single strike and revise round total at the end of following frame.
+
+    * Next, caluclate bonus points for two strikes in a row and revise round totals at the end of following frames.
+
+    * To do:
+    - set up a `currentTotalPoints` to print at end of each frame
+    - set up a full game of bowling conisting of 10 rounds
+    - set up functionality for tenth frame conditions
+    - Print full scoresheet at end of game
+    - could use readline or similar to allow user input from CLI
+    - noted, a lot of repetition in tests, need to refactor tests to group frames etc.
+    - noted, a lot of repetition in frame class, need to refactor and consider pulling out a game class to reduce responsibility.
+
+
+=================
+
+## Project Brief
+
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**

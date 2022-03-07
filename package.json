@@ -1,0 +1,26 @@
+{
+  "name": "bowling-challenge-javascript",
+  "version": "1.0.0",
+  "description": "- Feel free to use google, your notes, books, etc. but work on your own - If you refer to the solution of another coach or student, please put a link to that in your README - If you have a partial solution, **still check in a partial solution** - You must submit a pull request to this repo with your code by 9am Monday week",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaroslaw-Roman-Cudzich/bowling-challenge-javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jaroslaw-Roman-Cudzich/bowling-challenge-javascript/issues"
+  },
+  "homepage": "https://github.com/Jaroslaw-Roman-Cudzich/bowling-challenge-javascript#readme",
+  "dependencies": {
+    "jest": "^27.5.1"
+  }
+}

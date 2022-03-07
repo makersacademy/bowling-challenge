@@ -21,4 +21,15 @@ describe('BowlingGame', () => {
     }
     expect(game.score()).toBe(20);
   })
+
+  it('can apply a spare correctly', () => {
+    game.roll(4);
+    game.roll(6);
+    game.roll(3);
+    game.roll(5);
+    for(let i = 0; i<16; i++) {
+      game.roll(0);
+    }
+    expect(game.score()).toBe(21);
+  })
 })

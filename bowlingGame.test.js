@@ -32,4 +32,14 @@ describe('BowlingGame', () => {
     }
     expect(game.score()).toBe(21);
   })
+
+  it('can apply a strike correctly', () => {
+    game.roll(10);
+    game.roll(3);
+    game.roll(5);
+    for(let i = 0; i<16; i++) {
+      game.roll(0);
+    }
+    expect(game.score()).toBe(26);
+  })
 })

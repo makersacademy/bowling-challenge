@@ -32,5 +32,24 @@ describe('Frame class', () => {
     expect(frame.isStrike()).toBe(true)
   })
 
+  it('returns true if frame is finished', () => {
+    const frame = new Frame()
+    frame.roll(4)
+    frame.roll(6)
+    expect(frame.isFrameFinished()).toBe(true)
+  })
+
+  it('returns false if frame is unfinished', () => {
+    const frame = new Frame()
+    frame.roll(4)
+    expect(frame.isFrameFinished()).toBe(false)
+  })  
+
+  it('returns true if frame is finished', () => {
+    const frame = new Frame()
+    frame.roll(10)
+    expect(frame.isFrameFinished()).toBe(true)
+  })
+
 
 })

@@ -18,7 +18,7 @@ describe("Bowling", () => {
         game.newRoll(1);
         game.newRoll(2);
         game.newRoll(3);
-        expect(game.frame_no).toEqual(2);
+        expect(game.frameNo).toEqual(2);
     });
 
     it('has a method that can return score, after each frame', () => {
@@ -27,7 +27,7 @@ describe("Bowling", () => {
         game.newRoll(2);
         game.newRoll(3);
         game.newRoll(0);
-        expect(game.getScore()).toBe(6);
+        expect(game.getScore()).toEqual(6);
     });
     
     it('returns a  string after when rolls after game is over', () => {
@@ -35,8 +35,8 @@ describe("Bowling", () => {
         for(i = 1; i < 21; i++){ 
             game.newRoll(0);
         };
-      
-        expect(game.newRoll(1)).toBe('GAME OVER');
+       
+        expect(game.newRoll(1)).toEqual('GAME OVER');
     });
 
     it('recognises a spare', () =>{
@@ -50,7 +50,7 @@ describe("Bowling", () => {
         const game = new Bowling;
         game.newRoll(10);
         game.newRoll(1);
-        expect(game.frame_no).toEqual(2);
+        expect(game.frameNo).toEqual(2);
         expect(game.frame).toEqual([1]);
     });
 

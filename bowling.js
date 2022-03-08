@@ -2,43 +2,51 @@
 class Bowling{
     constructor() {
         this.score = 0;
-        this.frame_no = 1;
+        this.frameNo = 1;
         this.frame = [];
-        this.max_frame = 11;
+        this.maxFrame = 11;
         this.spare = false
         this.results = [];
-        this.extra_rolls = false;
+        this.extraRolls = 0;
+        this.gameOver = false
     };
 
 
     newRoll(pins) {
+        if(this.gameOver === true){
+            return 'GAME OVER';
+        };
+        
         this.results.push(pins);
-        if(this.extra_rolls === 1){
-            this.finalFrameClac();
-        } else if (this.frame_no >= this.max_frame) {
-            this.extraRoll();
+        if(this.extraRolls === 1){
+            this.gameOver = true
+            this.finalFrameCalc();
+        } else if (this.frameNo >= this.maxFrame) {
+            return this.extraRoll();
         } else {
-            this.frameType();
+           this.frameType();
         };
     };
 
     extraRoll() {
-        let strike_ind = (this.results.length - 3);
+        let strikeInd = (this.results.length - 3);
         if(this.spare === true){
-            this.finalFrameClac(); 
-        } else if(this.extra_rolls < 0){
-            this.finishGame();
-        } else if(this.results[strike_ind] === 10){
-            this.extra_rolls = 3;
-            this.finalFrameClac();
+            this.gameOver = true;
+            this.finalFrameCalc(); 
+        } else if(this.results[strikeInd] === 10){
+            this.extraRolls = 3;
+            this.finalFrameCalc();
+        } else if(this.extraRolls === 0){
+            this.gameOver = true;
+            return this.newRoll(0);
         };
     };
 
     frameType() {
-        let strike_ind = (this.results.length - 3);
+        let strikeInd = (this.results.length - 3);
         if(this.spare === true){
-            this.spareBonusCalc(); 
-        } else if((this.results[strike_ind] === 10) && (this.results.length >= 3)){
+           this.spareBonusCalc(); 
+        } else if((this.results[strikeInd] === 10) && (this.results.length >= 3)){
             this.strikeBonusCalc();
         } else {
             this.strikeChecker();
@@ -56,26 +64,26 @@ class Bowling{
     };
 
     frameCompleteChecker() {
-        let frlength = this.frame.length
-        if(frlength === 2) {
+        let frLength = this.frame.length
+        if(frLength === 2) {
             this.spareChecker();
         };
     };
 
     spareChecker() {
-        let frame_score = this.frame[0] + this.frame[1];
-        if( frame_score === 10 ){
+        let frameScore = this.frame[0] + this.frame[1];
+        if( frameScore === 10 ){
             this.spareSwitch();
         } else {
-            this.score += frame_score;
+            this.score += frameScore;
             this.frameFinisher();
         };
     };
 
     strikeBonusCalc() {
-        let first_last = (this.results.length - 1);
-        let second_last = (this.results.length - 2);
-        this.score += (10 + this.results[first_last] + this.results[second_last]);
+        let firstLast = (this.results.length - 1);
+        let secondLast = (this.results.length - 2);
+        this.score += (10 + this.results[firstLast] + this.results[secondLast]);
         this.strikeChecker();
     }
 
@@ -85,39 +93,34 @@ class Bowling{
     };
 
     spareBonusCalc() {
-        let spare_bonus = 10 + (this.results[this.results.length - 1]);
-        this.score += spare_bonus;
+        let spareBonus = 10 + (this.results[this.results.length - 1]);
+        this.score += spareBonus;
         this.spare = false;
-        if(this.frame_no < this.max_frame) {
+        if(this.frameNo < this.maxFrame) {
             this.strikeChecker();
         };
     };
 
-    finalFrameClac() {
-        let strike_ind = (this.results.length - 3);
-        let spare_bonus = 10 + (this.results[this.results.length - 1]);
-        this.extra_rolls -= 2;
+    finalFrameCalc() {
+        let strikeInd = (this.results.length - 3);
+        let spareBonus = 10 + (this.results[this.results.length - 1]);
+        this.extraRolls -= 2;
 
         if (this.spare === true) {
-            this.score += spare_bonus;
+            this.score += spareBonus;
             this.spare = false;
-        } else if (this.results[strike_ind] === 10) {
-            this.score += (10 + this.results[strike_ind + 1] + this.results[strike_ind + 2]);
+        } else if (this.results[strikeInd] === 10) {
+            this.score += (10 + this.results[strikeInd + 1] + this.results[strikeInd + 2]);
         };
     };
 
     frameFinisher() {
-        this.frame_no++;
+        this.frameNo++;
         this.frame = [];
     };
 
     getScore() {
         return this.score;
-    };
-
-    finishGame() {
-        this.results.pop();
-        return "GAME OVER";
     };
 
 };

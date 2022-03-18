@@ -1,9 +1,9 @@
 
 Bowling Challenge
 =================
-JavaScript | Jest
+**JavaScript | Jest**
 
-My bowling scorecard program in JavaScript calculates the scores of a bowling game. For this challenge, I was instructed to focus primarily on the logic for bowling, following the scoring rules detailed below.
+My bowling scorecard program calculates the scores of a bowling game. For this challenge, I was instructed to focus primarily on the logic for bowling, following the scoring rules detailed below.
 
 #### With more time, I would have...
 - added in guard clauses or something similar to stop the user entering invalid rolls e.g. '0' when they should enter '0,0' or entering something that isn't a number

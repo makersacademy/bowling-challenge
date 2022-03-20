@@ -1,0 +1,9 @@
+.main-table {
+  border: 1px solid black;
+  width: 80%;
+}
+
+.table-header, .roll-points, .frame-points {
+  border: 1px solid black;
+  text-align: center;
+}

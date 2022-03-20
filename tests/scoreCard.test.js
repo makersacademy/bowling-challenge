@@ -1,4 +1,4 @@
-const ScoreCard = require("./scoreCard.js");
+const ScoreCard = require("../lib/model/scoreCard.js");
 
 describe(".addKnockedPins", () => {
   let scoreCard;

@@ -1,4 +1,4 @@
-const Frames = require("./frames.js");
+const Frames = require("../lib/model/frames.js");
 
 describe("Frame", () => {
   let frame;

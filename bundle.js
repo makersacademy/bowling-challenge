@@ -55,12 +55,17 @@
       var ScoreCard2 = class {
         constructor(frames = new Frames()) {
           this.rolls = [];
+          this.pins = [];
           this.frames = frames;
         }
         addKnockedPins(pins) {
           if (this.#tooManyPins(pins))
             throw "this is a 10 pins bowling game!";
           this.rolls.push(pins);
+          this.pins.push(pins);
+          if (pins === 10 && this.rolls.length === 1) {
+            this.pins.push("X");
+          }
           if (this.#frameIsSet(pins))
             this.#setNewFrame();
         }
@@ -82,7 +87,40 @@
     }
   });
 
+  // lib/scoreCardView.js
+  var require_scoreCardView = __commonJS({
+    "lib/scoreCardView.js"(exports, module) {
+      var ScoreCard2 = require_scoreCard();
+      var ScoreCardView2 = class {
+        constructor(model2) {
+          this.model = model2;
+          const submitButtonEl = document.querySelector("#submit-button");
+          const pinsInputEl = document.querySelector("#pins-input");
+          submitButtonEl.addEventListener("click", () => {
+            this.model.addKnockedPins(parseInt(pinsInputEl.value));
+            const pins = this.model.pins;
+            const totals = this.model.frames.frames;
+            const tableCells = document.querySelectorAll(".roll-points");
+            const totalCells = document.querySelectorAll(".frame-points");
+            console.log(tableCells);
+            console.log(pins);
+            for (let i = 0; i < pins.length; i++) {
+              tableCells[i].innerText = pins[i].toString();
+            }
+            for (let i = 0; i < totals.length; i++) {
+              totalCells[i].innerText = totals[i].total.toString();
+            }
+          });
+        }
+      };
+      module.exports = ScoreCardView2;
+    }
+  });
+
   // lib/index.js
   var ScoreCard = require_scoreCard();
-  var scoreCard = new ScoreCard();
+  var ScoreCardView = require_scoreCardView();
+  var model = new ScoreCard();
+  var view = new ScoreCardView(model);
+  console.log("Hello");
 })();

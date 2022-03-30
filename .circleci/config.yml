@@ -1,4 +1,10 @@
-steps:
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7
+
+workflows:
+  steps:
   - run:
       name: Install JUnit coverage reporter
       command: yarn add --dev jest-junit

@@ -7,7 +7,6 @@ orbs:
 workflows:
   sample:
     jobs:
-      - jest/test
       - node/test:
           version: '16.10'
           pkg-manager: npm

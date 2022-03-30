@@ -2,10 +2,12 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.7
+  jest: blimmer/jest@1.0.0
 
 workflows:
   sample:
     jobs:
+      - jest/test
       - node/test:
           version: '16.10'
           pkg-manager: npm

@@ -1,27 +1,64 @@
 class Frame {
   constructor(score) {
+    this.max_pins = 10
     this.score = [];
   }
 
   getScore() {
-    let score = 0
-    this.score.forEach( roll => score += roll );
-    return score
-  }
+    return this._gameNotStarted() || this._rolledOnce() || this._rolledTwice();
+  };
 
   rollPins(pins) {
-    if (this.score.length < 2) {
-    this.score.push(pins)} else {
-    throw new Error('cannot roll more than twice')};
-  }
-}
+    if (this.score.length >= 2) throw new Error('cannot roll more than twice');
+    if (pins < 0) throw new Error('cannot roll negative amount of pins');
+    if (pins > this.max_pins) throw new Error('cannot roll more than a maximum amount of pins');
+    if (pins > this.max_pins - this._firstScore()) throw new Error('the roll input exceeds the amount of pins left');
+    this.score.push(pins);
+  };
 
-const frame = new Frame;
+  // private methods below
 
-console.log(frame.getScore());
-console.log(frame.rollPins(4));
-console.log(frame.rollPins(4));
+  _gameNotStarted() {
+    if (this.score.length === 0) return "The ball is yet to be rolled";
+  };
 
-console.log(frame.getScore());
+  _rolledOnce() {
+    if (this.score.length === 1) {
+      return this._firstScore() === 10 ? this._strikeMessage() : 
+      (this._firstScore() === 0 ? this._gutterMessage() : this._firstScore());
+    };
+  };
+
+  _rolledTwice() {
+    if (this.score.length === 2) {
+      return this._totalScore() === 10 ? this._spareMessage() : 
+      (this._totalScore() === 0 ? this._gutterMessage() : this._totalScore());
+    };
+  };
+
+  _firstScore() {
+    return this.score[0];
+  };
+
+  _secondScore() {
+    return this.score[1];
+  };
+
+  _totalScore() {
+    return this._firstScore() + this._secondScore();
+  };
+
+  _gutterMessage() {
+    return "Unlucky!";
+  };
+
+  _strikeMessage() {
+    return "Strike!";
+  };
+
+  _spareMessage() {
+    return "Spare!";
+  };
+};
 
 module.exports = Frame

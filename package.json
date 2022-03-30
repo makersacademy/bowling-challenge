@@ -1,0 +1,23 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "[![Tests](https://github.com/ruiined/bowling-challenge-ruby/actions/workflows/main.yml/badge.svg)](https://github.com/ruiined/bowling-challenge/actions/workflows/main.yml)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruiined/bowling-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruiined/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/ruiined/bowling-challenge#readme"
+}

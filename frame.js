@@ -9,12 +9,16 @@ class Frame {
   };
 
   rollPins(pins) {
-    if (this.score.length >= 2) throw new Error('cannot roll more than twice');
+    if (this.frameOver()) throw new Error('cannot roll more than twice'); 
     if (pins < 0) throw new Error('cannot roll negative amount of pins');
     if (pins > this.max_pins) throw new Error('cannot roll more than a maximum amount of pins');
     if (pins > this.max_pins - this._firstScore()) throw new Error('the roll input exceeds the amount of pins left');
     this.score.push(pins);
   };
+
+  frameOver() {
+    return this.score.length >= 2
+  }
 
   // private methods below
 

@@ -1,17 +1,13 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@4.7
+  # node: circleci/node@4.7
+  jest: blimmer/jest@1.0.0
 
 workflows:
-  steps:
-  - run:
-      name: Install JUnit coverage reporter
-      command: yarn add --dev jest-junit
-  - run:
-      name: Run tests with JUnit as reporter
-      command: jest --ci --runInBand --reporters=default --reporters=jest-junit
-      environment:
-        JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
-  - store_test_results:
-      path: ./reports/junit/
+  sample:
+    jobs:
+      - jest/test
+      # - node/test:
+      #     version: '16.10'
+      #     pkg-manager: npm

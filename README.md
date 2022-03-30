@@ -1,8 +1,8 @@
 # Bowling Challenge in Ruby
-[![Tests](https://github.com/ruiined/bowling-challenge-ruby/actions/workflows/main.yml/badge.svg)](https://github.com/ruiined/bowling-challenge/actions/workflows/main.yml)
+[![CircleCI](https://circleci.com/gh/ruiined/bowling-challenge/tree/main.svg?style=svg)](https://circleci.com/gh/ruiined/bowling-challenge/tree/main)
 
 ## Overview
-Bowling challenge provided by [Makers](https://). This challenge was attempted in ruby before [here](https://).
+Bowling challenge provided by [Makers](https://github.com/makersacademy/bowling-challenge). This challenge was attempted in Ruby before [here](https://github.com/ruiined/bowling-challenge-ruby).
 
 ## How to Install
 

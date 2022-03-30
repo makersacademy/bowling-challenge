@@ -4,6 +4,10 @@ class Frame {
     this.score = [];
   }
 
+  finalScore() {
+    return this.score;
+  };
+  
   getScore() {
     return this._gameNotStarted() || this._rolledOnce() || this._rolledTwice();
   };
@@ -17,7 +21,7 @@ class Frame {
   };
 
   frameOver() {
-    return this.score.length >= 2
+    return this.score.length >= 2 || this._rolledOnce() === 'Strike!'
   }
 
   // private methods below

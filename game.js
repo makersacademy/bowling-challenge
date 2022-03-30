@@ -7,21 +7,38 @@ class Game {
   };
 
   rollPins(pins) {
-    if (this.frame.frameOver()) this.frame = new Frame;
     this.frame.rollPins(pins);
+
+    if (this.frame.frameOver()) {
+      this.score.push(this.frame.finalScore());
+      this.frame = new Frame;
+    };
   };
 
-  getScore() {
-    return this.frame.getScore();
+  totalScore() {
+    return this.score
   };
-}
+};
 
-// const game = new Game;
-// game.rollPins(4);
-// console.log(game.getScore());
-// game.rollPins(7);
-// console.log(game.getScore());
-// game.rollPins(7);
-// console.log(game.getScore());
+const game = new Game;
+game.rollPins(4);
+console.log(game.totalScore());
+game.rollPins(3);
+console.log(game.totalScore());
+game.rollPins(7);
+console.log(game.totalScore());
+game.rollPins(3);
+console.log(game.totalScore());
+game.rollPins(10);
+console.log(game.totalScore());
+game.rollPins(6);
+console.log(game.totalScore());
+game.rollPins(4);
+console.log(game.totalScore());
+game.rollPins(4);
+console.log(game.totalScore());
+game.rollPins(4);
+
+console.log(game.totalScore());
 
 module.exports = Game

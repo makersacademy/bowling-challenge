@@ -12,4 +12,7 @@ module.exports = {
   },
   rules: {
   },
+  env: {
+    jest: true
+}
 };

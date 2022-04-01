@@ -8,7 +8,7 @@ class Game {
   };
 
   rollPins(pins) {
-    if (this.totalScore().length === this.max_frames) this._gameOver();
+    if (this.totalScore().length === this.max_frames) return this._gameOver();
     this.frame.rollPins(pins);
 
     if (this.frame.frameOver()) {
@@ -22,7 +22,7 @@ class Game {
   };
 
   _frameScore() {
-    return this.frame.finalScore();
+    return this.frame.getScore();
   }
 
   _gameOver() {

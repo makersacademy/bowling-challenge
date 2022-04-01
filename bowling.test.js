@@ -15,12 +15,12 @@ describe('Bowling', () => {
     }
     expect(sut.score()).toStrictEqual(20)
   });
-  it('can roll a spare', () => {
-    const sut = new Bowling();
-    sut.roll(5);
-    sut.roll(5);
-    sut.roll(7);
-    expect(sut.score()).toStrictEqual(24)
-  });
+  // it('can roll a spare', () => {
+  //   const sut = new Bowling();
+  //   sut.roll(5);
+  //   sut.roll(5);
+  //   sut.roll(7);
+  //   expect(sut.score()).toStrictEqual(24)
+  // });
 
 });

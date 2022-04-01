@@ -1,4 +1,5 @@
 import Scorecard from './scorecard';
+import Frame from './frame.js';
 
 describe('Scorecard', () => {
   let scorecard;
@@ -16,5 +17,17 @@ describe('Scorecard', () => {
     scorecard.roll(2);
     scorecard.roll(5);
     expect(scorecard.calculateScore()).toBe(7);
+  });
+
+  it('returns the current frame total score when rolling twice', () => {
+    const frame = new Frame(3, 4);
+    scorecard.playBowling(frame);
+    expect(scorecard.frames[0].frameTotalScore).toBe(7);
+  });
+
+  it('returns the current frame total score when there is a strike', () => {
+    const frame = new Frame(10, 0);
+    scorecard.playBowling(frame);
+    expect(scorecard.frames[0].frameTotalScore).toBe(10);
   });
 });

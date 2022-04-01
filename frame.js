@@ -1,6 +1,7 @@
 export default class Frame {
   constructor(firstRoll, secondRoll = 0) {
-    firstRoll = firstRoll;
-    secondRoll = secondRoll;
+    this.firstRoll = firstRoll;
+    this.secondRoll = secondRoll;
+    this.frameTotalScore = firstRoll + secondRoll;
   }
 }

@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ruiined/bowling-challenge/issues"
   },
-  "homepage": "https://github.com/ruiined/bowling-challenge#readme"
+  "homepage": "https://github.com/ruiined/bowling-challenge#readme",
+  "dependencies": {
+    "jest": "^27.5.1"
+  }
 }

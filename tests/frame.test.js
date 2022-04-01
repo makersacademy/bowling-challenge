@@ -1,4 +1,4 @@
-const Frame = require('./frame')
+const Frame = require('../frame')
 
 describe('frame', () => {
   const frame = new Frame();

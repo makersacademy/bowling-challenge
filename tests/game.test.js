@@ -1,5 +1,5 @@
-const Game = require('./game');
-const Frame = require('./frame')
+const Game = require('../game');
+const Frame = require('../frame')
 // jest.mock('./frame');
 
 describe('bowling game', () => {

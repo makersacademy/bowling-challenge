@@ -163,8 +163,8 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "coveralls": "jest --coverage && ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info",
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",

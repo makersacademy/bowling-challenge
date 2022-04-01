@@ -14,15 +14,20 @@ describe('Scorecard', () => {
     frame3 = new Frame(5, 5);
   });
 
-  it('uses the number of pins in roll to calculate the score', () => {
-    scorecard.roll(2);
-    expect(scorecard.calculateScore()).toBe(2);
+  it('returns the total score (pins) for the current frame', () => {
+    scorecard.playBowling(frame1);
+    expect(scorecard.calculateScore()).toBe(7);
   });
 
-  it('adds up the score for pins knocked down in multiple rolls', () => {
-    scorecard.roll(2);
-    scorecard.roll(5);
-    expect(scorecard.calculateScore()).toBe(7);
+  it('increases the turn when playing one frame', () => {
+    scorecard.playBowling(frame1);
+    expect(scorecard.turn).toBe(1);
+  });
+
+  it('increases the turns when playing two frames', () => {
+    scorecard.playBowling(frame1);
+    scorecard.playBowling(frame2);
+    expect(scorecard.turn).toBe(2);
   });
 
   it('returns the current frame total score when rolling twice', () => {

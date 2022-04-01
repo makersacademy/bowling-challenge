@@ -1,23 +1,23 @@
-// import Frame from './frame.js';
+import Frame from './frame.js';
 
 export default class ScoreCard {
   constructor() {
     this.frames = [];
     this.isStrike = false;
     this.isSpare = false;
-  }
-
-  roll(pins) {
-    this.frames.push(pins);
+    this.turn = 0;
   }
 
   calculateScore() {
-    return this.frames.reduce((sum, curr) => sum + curr, 0);
+    return this.frames.reduce((sum, frame) => sum + frame.frameTotalScore, 0);
   }
 
   playBowling(frame) {
+    this.turn += 1;
+    this.saveStrike(frame);
+    this.saveSpare(frame);
     this.frames.push(frame);
-    return this.frames.frameTotalScore;
+    return this.calculateScore();
   }
 
   saveStrike(frame) {

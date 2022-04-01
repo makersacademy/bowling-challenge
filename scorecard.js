@@ -3,6 +3,8 @@
 export default class ScoreCard {
   constructor() {
     this.frames = [];
+    this.isStrike = false;
+    this.isSpare = false;
   }
 
   roll(pins) {
@@ -16,5 +18,21 @@ export default class ScoreCard {
   playBowling(frame) {
     this.frames.push(frame);
     return this.frames.frameTotalScore;
+  }
+
+  saveStrike(frame) {
+    if (frame.firstRoll === 10) {
+      this.isStrike = true;
+    } else {
+      this.isStrike = false;
+    }
+  }
+
+  saveSpare(frame) {
+    if (frame.frameTotalScore === 10 && frame.firstRoll < 10) {
+      this.isSpare = true;
+    } else {
+      this.isSpare = false;
+    }
   }
 }

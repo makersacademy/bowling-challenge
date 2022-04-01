@@ -4,7 +4,7 @@ const rollMultiple = (pins, rolls) => {
   for (let i = 0; i < rolls; i++) {
     game.roll(pins);
   }
-}
+} 
 
 let game;
 
@@ -27,7 +27,21 @@ describe('Bowling', () => {
     game.roll(5);
     game.roll(5);
     game.roll(7);
+    rollMultiple(0, 17);
     expect(game.score()).toEqual(24);
+  });
+
+  it('can roll a strike', () => {
+    game.roll(10);
+    game.roll(5);
+    game.roll(3);
+    rollMultiple(0, 17);
+    expect(game.score()).toEqual(26);
+  });
+
+  it('can roll a perfect game', () => {
+    rollMultiple(10, 12);
+    expect(game.score()).toEqual(300);
   });
 
 });

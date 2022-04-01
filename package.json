@@ -22,5 +22,8 @@
   "homepage": "https://github.com/ruiined/bowling-challenge#readme",
   "dependencies": {
     "jest": "^27.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.12.0"
   }
 }

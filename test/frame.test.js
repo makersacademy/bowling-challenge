@@ -45,6 +45,13 @@ describe("Frame Class", () => {
       frame.addRoll(5);
       expect(frame.isSpare()).toBe(true);
     });
+
+    it("returns false if roll1 and roll2 are not equal to 10", () => {
+      const frame = new Frame();
+      frame.addRoll(5);
+      frame.addRoll(4);
+      expect(frame.isSpare()).toBe(false);
+    });
   });
 
   describe("isStrike function", () => {
@@ -52,6 +59,39 @@ describe("Frame Class", () => {
       const frame = new Frame();
       frame.addRoll(10);
       expect(frame.isStrike()).toBe(true);
+    });
+
+    it("returns false if roll1 is not equal to 10", () => {
+      const frame = new Frame();
+      frame.addRoll(4);
+      expect(frame.isStrike()).toBe(false);
+    });
+  });
+
+  describe("isRegularFrameComplete function", () => {
+    it("knows it is not the tenth frame", () => {
+      const frame = new Frame();
+      frame.setTenthFrame();
+      expect(frame.isRegularFrameComplete()).toBe(false);
+    });
+
+    it("knows it is complete if roll1 is a strike", () => {
+      const frame = new Frame();
+      frame.addRoll(10);
+      expect(frame.isRegularFrameComplete()).toBe(true);
+    });
+
+    it("knows it is complete if roll1 and roll2 have been played", () => {
+      const frame = new Frame();
+      frame.addRoll(3);
+      frame.addRoll(5);
+      expect(frame.isRegularFrameComplete()).toBe(true);
+    });
+
+    it("knows it's not complete if only roll1 has been played and is not a strike", () => {
+      const frame = new Frame();
+      frame.addRoll(3);
+      expect(frame.isRegularFrameComplete()).toBe(false);
     });
   });
 });

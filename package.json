@@ -164,7 +164,7 @@
   },
   "scripts": {
     "coveralls": "jest --coverage && ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info",
-    "test": "jest --coverage"
+    "test": "jest --coverage --verbose"
   },
   "repository": {
     "type": "git",

@@ -5,4 +5,3 @@ export default class Frame {
     this.frameTotalScore = firstRoll + secondRoll;
   }
 }
-

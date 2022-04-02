@@ -13,6 +13,6 @@ module.exports = {
   rules: {
   },
   env: {
-    jest: true
-}
+    jest: true,
+  },
 };

@@ -1,10 +1,10 @@
 import Frame from '../src/frame';
 
 describe('Frame', () => {
- let frame;
+  let frame;
 
- beforeEach(() => {
-   frame = new Frame(3, 4);
+  beforeEach(() => {
+    frame = new Frame(3, 4);
   });
 
   it('creates a new instance of the class Frame', () => {
@@ -13,5 +13,5 @@ describe('Frame', () => {
 
   it('calculates the sum of the first and second roll', () => {
     expect(frame.frameTotalScore).toEqual(7);
-  })
+  });
 });

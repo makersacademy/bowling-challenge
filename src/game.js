@@ -19,7 +19,7 @@ class Game {
 
   totalScore() {
     let total = 0
-    this.score.map ( frame => frame.map( score => total += score) )
+    this.score.map (frame => frame.map(score => total += score))
     return total
   }
 
@@ -28,7 +28,7 @@ class Game {
   }
 
   _newFrame() {
-    if (this.score.length >=1) this._calculateBonuses()
+    if (this.score.length >= 1) this._calculateBonuses()
     this.score.push(this._frameScore());
     this.frame = new Frame;
   }

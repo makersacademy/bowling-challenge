@@ -21,4 +21,4 @@ class Frame {
   }
 }
 
-module.exports = Frame
+module.exports = Frame;

@@ -1,6 +1,7 @@
 export default class ScoreCard {
   constructor() {
     this.frames = [];
+    this.turn = 0;
     this.isStrike = false;
     this.isSpare = false;
     this.score = 0;
@@ -12,6 +13,7 @@ export default class ScoreCard {
   }
 
   playBowling(frame) {
+    this.turn += 1;
     this.updatePastScore(frame);
     this.saveStrike(frame);
     this.saveSpare(frame);

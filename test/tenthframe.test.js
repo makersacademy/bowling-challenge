@@ -10,8 +10,4 @@ describe('TenthFrame', () => {
   it('creates a new instance of the class TenthFrame', () => {
     expect(tenthFrame).toBeInstanceOf(TenthFrame);
   });
-
-  it('calculates the sum of the first and second roll', () => {
-    expect(tenthFrame.finalFrameScore).toEqual(24);
-  });
 });

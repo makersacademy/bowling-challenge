@@ -15,10 +15,16 @@ export default class ScoreCard {
   playBowling(frame) {
     this.turn += 1;
     this.updatePastScore(frame);
-    this.saveStrike(frame);
-    this.saveSpare(frame);
-    this.frames.push(frame);
-    return this.calculateScore();
+    if (this.turn < 10) {
+      this.saveStrike(frame);
+      this.saveSpare(frame);
+      this.frames.push(frame);
+      this.calculateScore();
+    } else if (this.turn === 10) {
+      return this.calculateFinalFrame(frame);
+    } else {
+      throw new Error('You have played the last frame. Start a new game!');
+    }
   }
 
   saveStrike(frame) {
@@ -38,11 +44,26 @@ export default class ScoreCard {
   }
 
   updatePastScore(frame) {
-    const pastFrame = this.frames[this.frames.length - 1];
     if (this.isStrike === true) {
+      const pastFrame = this.frames[this.frames.length - 1];
       pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
     } else if (this.isSpare === true) {
+      const pastFrame = this.frames[this.frames.length - 1];
       pastFrame.frameTotalScore += (frame.firstRoll);
+    }
+  }
+
+  calculateFinalFrame(frame) {
+    if (frame.frameTotalScore < 10) {
+      this.frames.push(frame);
+      this.calculateScore();
+      return;
+    }
+    if ((frame.firstRoll === 10) || (frame.frameTotalScore === 10)) {
+      frame.frameTotalScore += frame.thirdRoll;
+      this.frames.push(frame);
+      this.calculateScore();
+      return;
     }
   }
 }

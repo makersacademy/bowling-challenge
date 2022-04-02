@@ -1,17 +1,20 @@
 import Scorecard from '../src/scorecard';
 import Frame from '../src/frame';
+import TenthFrame from '../src/tenthframe';
 
 describe('Scorecard', () => {
   let scorecard;
   let frame1;
   let frame2;
   let frame3;
+  let finalframe;
 
   beforeEach(() => {
     scorecard = new Scorecard();
     frame1 = new Frame(3, 4);
     frame2 = new Frame(10, 0);
     frame3 = new Frame(5, 5);
+    finalframe = new TenthFrame(10, 10, 2);
   });
 
   it('returns the total score (pins) for the current frame', () => {
@@ -69,11 +72,30 @@ describe('Scorecard', () => {
 
   it('adds up the rolls from the current frame to the previous one if strike', () => {
     scorecard.playBowling(frame2);
-    expect(scorecard.playBowling(frame1)).toBe(24);
+    scorecard.playBowling(frame1);
+    expect(scorecard.score).toBe(24);
   });
 
   it('adds the following first roll to the previous frame total if spare', () => {
     scorecard.playBowling(frame3);
-    expect(scorecard.playBowling(frame1)).toBe(20);
+    scorecard.playBowling(frame1)
+    expect(scorecard.score).toBe(20);
+  });
+
+  it('Stops the game and returns a message if player tries to play more than 10 frames', () => {
+    for (let step = 1; step < 11; step++) {
+      scorecard.playBowling(frame1);
+    }
+    expect(() => {
+      scorecard.playBowling(frame1);
+    }).toThrow('You have played the last frame. Start a new game!');
+  });
+
+  it('calculates the score after the final frame', () => {
+    for (let step = 1; step < 10; step++) {
+      scorecard.playBowling(frame1);
+    }
+    scorecard.playBowling(finalframe);
+    expect(scorecard.score).toBe(85);
   });
 });

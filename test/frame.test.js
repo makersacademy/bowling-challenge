@@ -94,4 +94,52 @@ describe("Frame Class", () => {
       expect(frame.isRegularFrameComplete()).toBe(false);
     });
   });
+
+  describe("isTenthFrameComplete function", () => {
+    it("knows it is not complete if it's not the tenth frame", () => {
+      const frame = new Frame();
+      frame.setTenthFrame();
+      expect(frame.isTenthFrameComplete()).toBe(false);
+    });
+
+    it("knows it is complete if 3 rolls have been played", () => {
+      const frame = new Frame();
+      frame.setTenthFrame();
+      frame.addRoll(5);
+      frame.addRoll(5);
+      frame.addRoll(5);
+      expect(frame.isTenthFrameComplete()).toBe(true);
+    });
+
+    it("knows it is not complete if roll3 has not been played and roll1 is a strike", () => {
+      const frame = new Frame();
+      frame.setTenthFrame();
+      frame.addRoll(10);
+      frame.addRoll(5);
+      expect(frame.isTenthFrameComplete()).toBe(false);
+    });
+
+    it("knows it is not complete if roll3 has not been played and roll2 is a spare", () => {
+      const frame = new Frame();
+      frame.setTenthFrame();
+      frame.addRoll(5);
+      frame.addRoll(5);
+      expect(frame.isTenthFrameComplete()).toBe(false);
+    });
+
+    it("knows it is not complete if roll2 has not been played and it is not a strike", () => {
+      const frame = new Frame();
+      frame.setTenthFrame();
+      frame.addRoll(9);
+      expect(frame.isTenthFrameComplete()).toBe(false);
+    });
+
+    it("knows it is complete if roll1 and roll2 did not make a spare", () => {
+      const frame = new Frame();
+      frame.setTenthFrame();
+      frame.addRoll(4);
+      frame.addRoll(4);
+      expect(frame.isTenthFrameComplete()).toBe(true);
+    });
+  });
 });

@@ -1,0 +1,19 @@
+body {
+  background-color: rgb(230, 236, 235);
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+b {
+  text-align: center;
+  font-size: 4vw;
+  color: white;
+  padding: 0vw 1vw;
+  text-transform: uppercase;
+  background-color: rgb(191, 212, 210) ;
+}
+a {
+  color: rgb(49, 48, 46);
+}
+div.main {
+  padding-top: 10vw;
+  text-align: center;
+}

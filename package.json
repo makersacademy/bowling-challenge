@@ -2,11 +2,12 @@
   "name": "bowling-challenge",
   "version": "1.0.0",
   "description": "[![Tests](https://github.com/ruiined/bowling-challenge-ruby/actions/workflows/main.yml/badge.svg)](https://github.com/ruiined/bowling-challenge/actions/workflows/main.yml)",
-  "main": "index.js",
+  "main": "app.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
+    "start": "node ./bin/www",
     "test": "jest"
   },
   "repository": {
@@ -21,7 +22,13 @@
   },
   "homepage": "https://github.com/ruiined/bowling-challenge#readme",
   "dependencies": {
-    "jest": "^27.5.1"
+    "express": "^4.17.3",
+    "cookie-parser": "~1.4.4",
+    "http-errors": "~1.6.3",
+    "debug": "~2.6.9",
+    "morgan": "~1.9.1",
+    "jest": "^27.5.1",
+    "pug": "^3.0.2"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.17.7",

@@ -27,15 +27,15 @@ describe('Frame', () => {
   });
   test('#completed - returns true when strike', () => {
     frame.roll(10);
-    expect(frame.completed()).toBe(true);
+    expect(frame.completed()).toBeTruthy();
   });
-  test('#completed - returns true when 2 rolls have been made', () => {
+  test('#completed - returns a truthy value when 2 rolls have been made', () => {
     frame.roll(2);
     frame.roll(1);
-    expect(frame.completed()).toBe(true);
+    expect(frame.completed()).toBeTruthy();
   });
-  test('#completed - returns false when 1 rolls have been made', () => {
+  test('#completed - returns falsy value when 1 rolls have been made', () => {
     frame.roll(2);
-    expect(frame.completed()).toBe(false);
+    expect(frame.completed()).toBeNull();
   });
 });

@@ -25,6 +25,10 @@ describe('Frame', () => {
   test('#roll - does not return a Bonus instance if no strike/spare', () => {
     expect(frame.roll(3)).toBeNull();
   });
+  test('#roll - does not return a Bonus instance on any bonus rolls', () => {
+    frame.roll(10)
+    expect(frame.roll(4)).toBeNull();
+  });
   test('#completed - returns true when strike', () => {
     frame.roll(10);
     expect(frame.completed()).toBeTruthy();

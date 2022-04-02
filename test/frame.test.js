@@ -142,4 +142,28 @@ describe("Frame Class", () => {
       expect(frame.isTenthFrameComplete()).toBe(true);
     });
   });
+
+  describe("getFrameScore function", () => {
+    it("returns score of a frame if roll1 is a strike", () => {
+      const frame = new Frame();
+      frame.addRoll(10);
+      expect(frame.getFrameScore()).toBe(10);
+    });
+
+    it("returns score of a frame if roll1 is not a strike", () => {
+      const frame = new Frame();
+      frame.addRoll(6);
+      frame.addRoll(3);
+      expect(frame.getFrameScore()).toBe(9);
+    });
+
+    it("returns score of a frame if roll3 played", () => {
+      const frame = new Frame();
+      frame.setTenthFrame();
+      frame.addRoll(5);
+      frame.addRoll(5);
+      frame.addRoll(8);
+      expect(frame.getFrameScore()).toBe(18);
+    });
+  });
 });

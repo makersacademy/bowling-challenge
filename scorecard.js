@@ -1,19 +1,18 @@
-import Frame from './frame.js';
-
 export default class ScoreCard {
   constructor() {
     this.frames = [];
     this.isStrike = false;
     this.isSpare = false;
-    this.turn = 0;
+    this.score = 0;
   }
 
   calculateScore() {
-    return this.frames.reduce((sum, frame) => sum + frame.frameTotalScore, 0);
+    this.score = this.frames.reduce((sum, frame) => sum + frame.frameTotalScore, 0);
+    return this.score;
   }
 
   playBowling(frame) {
-    this.turn += 1;
+    this.updatePastScore(frame);
     this.saveStrike(frame);
     this.saveSpare(frame);
     this.frames.push(frame);
@@ -33,6 +32,15 @@ export default class ScoreCard {
       this.isSpare = true;
     } else {
       this.isSpare = false;
+    }
+  }
+
+  updatePastScore(frame) {
+    const pastFrame = this.frames[this.frames.length - 1];
+    if (this.isStrike === true) {
+      pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
+    } else if (this.isSpare === true) {
+      pastFrame.frameTotalScore += (frame.firstRoll);
     }
   }
 }

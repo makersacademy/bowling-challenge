@@ -66,4 +66,14 @@ describe('Scorecard', () => {
     scorecard.saveSpare(frame1);
     expect(scorecard.isSpare).toBe(false);
   });
+
+  it('adds up the rolls from the current frame to the previous one if strike', () => {
+    scorecard.playBowling(frame2);
+    expect(scorecard.playBowling(frame1)).toBe(24);
+  });
+
+  it('adds the following first roll to the previous frame total if spare', () => {
+    scorecard.playBowling(frame3);
+    expect(scorecard.playBowling(frame1)).toBe(20);
+  });
 });

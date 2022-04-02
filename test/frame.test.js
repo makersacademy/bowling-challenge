@@ -37,4 +37,21 @@ describe("Frame Class", () => {
       }).toThrow("Maximum score of 10 allowed");
     });
   });
+
+  describe("isSpare function", () => {
+    it("returns true if roll1 and roll2 are equal to 10", () => {
+      const frame = new Frame();
+      frame.addRoll(5);
+      frame.addRoll(5);
+      expect(frame.isSpare()).toBe(true);
+    });
+  });
+
+  describe("isStrike function", () => {
+    it("returns true if roll1 is equal to 10", () => {
+      const frame = new Frame();
+      frame.addRoll(10);
+      expect(frame.isStrike()).toBe(true);
+    });
+  });
 });

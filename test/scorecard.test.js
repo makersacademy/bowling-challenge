@@ -1,5 +1,5 @@
-import Scorecard from './scorecard';
-import Frame from './frame';
+import Scorecard from '../src/scorecard';
+import Frame from '../src/frame';
 
 describe('Scorecard', () => {
   let scorecard;

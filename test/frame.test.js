@@ -1,4 +1,4 @@
-import Frame from './frame';
+import Frame from '../src/frame';
 
 describe('Frame', () => {
  let frame;

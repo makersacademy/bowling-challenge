@@ -1,6 +1,6 @@
 # Bowling Challenge - JavaScript
 
-Our weekend challenge for the sixth week of the Makers Academy boot camp was to revisit the Bowling Challenge we'd previously completed, but this time in JavaScript.
+Our weekend challenge for the sixth week of the Makers Academy boot camp was to revisit the Bowling Challenge we'd previously completed in Ruby, but this time in JavaScript.
 
 This marked my introduction to JS, so the code here might contain a number of inadvertently flaunted conventions.
 

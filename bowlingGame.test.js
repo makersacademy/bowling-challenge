@@ -1,14 +1,30 @@
-const BowlingGame = require ('./bowlingGame')
+const BowlingGame = require ('./bowlingGame');
 
 describe ('Bowling game', () => {
-  test ('Creates a game', () => {
-    const game = new BowlingGame();
-  });
+  
+  let game;
+  beforeEach(() => {
+    game = new BowlingGame();
+  })
+
   test ('Can roll a gutter game', () => {
-    const game = new BowlingGame();
     for (let i=0; i<20; i++) {
-      game.roll(0);
+      rollAmount(0,20)
     }
     expect(game.score()).toBe(0);
-  })
+  });
+
+  test ('Can roll all ones', () => {
+    for (let i=0; i<20; i++) {
+      rollAmount(1,20)
+    }
+    expect(game.score()).toBe(20);
+  });
+  //Helper method, didnt know how to require it from another file
+  const rollAmount = (pins, rolls) => {
+    for (let i = 0; i <rolls ; i++) {
+      game.roll(pins);
+    }
+  };
+
 })

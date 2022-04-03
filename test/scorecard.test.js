@@ -7,6 +7,8 @@ describe('Scorecard', () => {
   let frame1;
   let frame2;
   let frame3;
+  let frame4;
+  let frame5;
   let finalframe;
 
   beforeEach(() => {
@@ -14,6 +16,8 @@ describe('Scorecard', () => {
     frame1 = new Frame(3, 4);
     frame2 = new Frame(10, 0);
     frame3 = new Frame(5, 5);
+    frame4 = new Frame(10, 0);
+    frame5 = new Frame(0, 0);
     finalframe = new TenthFrame(10, 10, 2);
   });
 
@@ -73,6 +77,7 @@ describe('Scorecard', () => {
   it('adds up the rolls from the current frame to the previous one if strike', () => {
     scorecard.playBowling(frame2);
     scorecard.playBowling(frame1);
+    scorecard.playBowling(frame5);
     expect(scorecard.score).toBe(24);
   });
 
@@ -80,6 +85,13 @@ describe('Scorecard', () => {
     scorecard.playBowling(frame3);
     scorecard.playBowling(frame1)
     expect(scorecard.score).toBe(20);
+  });
+
+  it('updates the previous frame score and total score if it was strike', () => {
+    scorecard.playBowling(frame2);
+    scorecard.playBowling(frame4);
+    scorecard.playBowling(frame1);
+    expect(scorecard.score).toBe(47);
   });
 
   it('Stops the game and returns a message if player tries to play more than 10 frames', () => {

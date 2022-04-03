@@ -21,6 +21,8 @@ export default class ScoreCard {
       this.frames.push(frame);
       this.calculateScore();
     } else if (this.turn === 10) {
+      this.saveStrike(frame);
+      this.saveSpare(frame);
       return this.calculateFinalFrame(frame);
     } else {
       throw new Error('You have played the last frame. Start a new game!');
@@ -44,10 +46,22 @@ export default class ScoreCard {
   }
 
   updatePastScore(frame) {
-    if (this.isStrike === true) {
-      const pastFrame = this.frames[this.frames.length - 1];
+    if ((this.turn === 2) && (this.isStrike === true) && (frame.firstRoll != 10)) {
+      const pastFrame = this.frames[this.frames.length - 1]; 
       pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
-    } else if (this.isSpare === true) {
+    } else if ((this.turn > 2) && (this.isStrike === true)) {
+      const pastFrame = this.frames[this.frames.length - 1]; 
+      const pastPastFrame = this.frames[this.frames.length - 2];
+      if (frame.firstRoll != 10) {
+        pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
+        pastPastFrame.frameTotalScore += (pastFrame.firstRoll + frame.firstRoll);
+      } else if (frame.firstRoll === 10) {
+        pastFrame.frameTotalScore = frame.frameTotalScore;
+        if (pastPastFrame.frameTotalScore === 10) {
+          pastPastFrame.frameTotalScore = 30; 
+        }
+      }
+    } else if ((this.turn > 1) && (this.isSpare === true)) {
       const pastFrame = this.frames[this.frames.length - 1];
       pastFrame.frameTotalScore += (frame.firstRoll);
     }

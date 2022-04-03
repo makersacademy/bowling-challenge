@@ -1,0 +1,29 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - name: Install & Test
+        run: |
+          npm install
+          npm run test
+
+      - name: Codecov
+        uses: codecov/codecov-action@v2.1.0

@@ -13,11 +13,11 @@ Intending to make the web app for the scorecard. However, at this point, only th
 3. Run `npm install`
 
 ## How to Run
-`cd src` & `node game.js`
+***`cd src` & `node game.js`:***
   - `const game = new Game;`
   - `game.rollPins(4)` etc, as many times as you like
-  - `game.getScore()` to get frame scores in an array form
-  - `game.totalScore()` to get the total sum of the score
+  - `console.log(game.getScore())` to get frame scores in an array form
+  - `console.log(game.totalScore())` to get the total sum of the score
 
 ## How to Test
 1. To get the test & coverage results: `npm test -- --coverage`

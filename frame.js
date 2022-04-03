@@ -1,9 +1,12 @@
 class Frame {
-  constructor(rollOne, rollTwo = 0) {
-    this.rollOne = rollOne;
-    this.rollTwo = rollTwo;
-    this.frameTotal = rollOne + rollTwo;
+  constructor(round = 1) {
+    this.round = round
+    this.rollOne = null;
+    this.rollTwo = null;
+    this.score = 0
   };
+
+
 };
 
 module.exports = Frame;

@@ -10,6 +10,8 @@ describe('Scorecard', () => {
   let frame4;
   let frame5;
   let finalframe;
+  let finalframe2;
+  let finalframe3;
 
   beforeEach(() => {
     scorecard = new Scorecard();
@@ -19,6 +21,8 @@ describe('Scorecard', () => {
     frame4 = new Frame(10, 0);
     frame5 = new Frame(0, 0);
     finalframe = new TenthFrame(10, 10, 2);
+    finalframe2 = new TenthFrame(10, 10, 10);
+    finalframe3 = new TenthFrame(5, 2, 0);
   });
 
   it('returns the total score (pins) for the current frame', () => {
@@ -110,4 +114,24 @@ describe('Scorecard', () => {
     scorecard.playBowling(finalframe);
     expect(scorecard.score).toBe(85);
   });
+
+  it('returns 300 for a perfect game', () => {
+    for (let step = 1; step < 10; step++) {
+      scorecard.playBowling(frame2);
+    }
+    scorecard.playBowling(finalframe2);
+    expect(scorecard.score).toBe(300);
+  });
+
+  it('returns the correct final score', () => {
+    for (let step = 1; step < 8; step++) {
+      scorecard.playBowling(frame5);
+    }
+    scorecard.playBowling(frame2);
+    scorecard.playBowling(frame4);
+    scorecard.playBowling(finalframe3);
+    console.log(scorecard.score);
+    expect(scorecard.score).toBe(49);
+  });
+
 });

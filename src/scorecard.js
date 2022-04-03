@@ -46,33 +46,33 @@ export default class ScoreCard {
   }
 
   updatePastScore(frame) {
-    if ((this.turn === 2) && (this.isStrike === true) && (frame.firstRoll != 10)) {
-      const pastFrame = this.frames[this.frames.length - 1]; 
+    if ((this.turn === 2) && (this.isStrike === true) && (frame.firstRoll !== 10)) {
+      const pastFrame = this.frames[this.frames.length - 1];
       pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
     } else if ((this.turn === 10) && (this.isStrike === true) && (frame.firstRoll === 10)) {
-      const pastFrame = this.frames[this.frames.length - 1]; 
+      const pastFrame = this.frames[this.frames.length - 1];
       const pastPastFrame = this.frames[this.frames.length - 2];
       pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
       if (pastPastFrame.firstRoll === 10) {
-        pastPastFrame.frameTotalScore = 30; 
+        pastPastFrame.frameTotalScore = 30;
       }
-    } else if ((this.turn === 10) && (this.isStrike === true) && (frame.firstRoll != 10)) {
-      const pastFrame = this.frames[this.frames.length - 1]; 
+    } else if ((this.turn === 10) && (this.isStrike === true) && (frame.firstRoll !== 10)) {
+      const pastFrame = this.frames[this.frames.length - 1];
       const pastPastFrame = this.frames[this.frames.length - 2];
       pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
       if (pastPastFrame.frameTotalScore === 10) {
-        pastPastFrame.frameTotalScore = (pastFrame.firstRoll + frame.firstRoll); 
+        pastPastFrame.frameTotalScore += (pastFrame.firstRoll + frame.firstRoll);
       }
     } else if ((this.turn > 2) && (this.isStrike === true)) {
-      const pastFrame = this.frames[this.frames.length - 1]; 
+      const pastFrame = this.frames[this.frames.length - 1];
       const pastPastFrame = this.frames[this.frames.length - 2];
-      if (frame.firstRoll != 10) {
+      if (frame.firstRoll !== 10) {
         pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
         pastPastFrame.frameTotalScore += (pastFrame.firstRoll + frame.firstRoll);
       } else if (frame.firstRoll === 10) {
         pastFrame.frameTotalScore = frame.frameTotalScore;
         if (pastPastFrame.firstRoll === 10) {
-          pastPastFrame.frameTotalScore = 30; 
+          pastPastFrame.frameTotalScore = 30;
         }
       }
     } else if ((this.turn > 1) && (this.isSpare === true)) {
@@ -85,13 +85,11 @@ export default class ScoreCard {
     if (frame.frameTotalScore < 10) {
       this.frames.push(frame);
       this.calculateScore();
-      return;
     }
     if ((frame.firstRoll === 10) || (frame.frameTotalScore === 10)) {
       frame.frameTotalScore += frame.thirdRoll;
       this.frames.push(frame);
       this.calculateScore();
-      return;
     }
   }
 }

@@ -7,11 +7,6 @@ export default class ScoreCard {
     this.score = 0;
   }
 
-  calculateScore() {
-    this.score = this.frames.reduce((sum, frame) => sum + frame.frameTotalScore, 0);
-    return this.score;
-  }
-
   playBowling(frame) {
     this.turn += 1;
     this.updatePastScore(frame);
@@ -24,13 +19,6 @@ export default class ScoreCard {
     } else {
       throw new Error('You have played the last frame. Start a new game!');
     }
-  }
-
-  calculateStandardFrame(frame) {
-    this.saveStrike(frame);
-    this.saveSpare(frame);
-    this.frames.push(frame);
-    this.calculateScore();
   }
 
   saveStrike(frame) {
@@ -50,39 +38,58 @@ export default class ScoreCard {
   }
 
   updatePastScore(frame) {
+    const pastFrame = this.frames[this.frames.length - 1];
+    const pastPastFrame = this.frames[this.frames.length - 2];
     if ((this.turn === 2) && (this.isStrike === true) && (frame.firstRoll !== 10)) {
-      const pastFrame = this.frames[this.frames.length - 1];
       pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
     } else if ((this.turn === 10) && (this.isStrike === true) && (frame.firstRoll === 10)) {
-      const pastFrame = this.frames[this.frames.length - 1];
-      const pastPastFrame = this.frames[this.frames.length - 2];
+      this.lastTurnWithConsecutiveStrikes(frame);
+    } else if ((this.turn === 10) && (this.isStrike === true) && (frame.firstRoll !== 10)) {
+      this.lastTurnWithOnePrevStrike(frame);
+    } else if ((this.turn > 2) && (this.isStrike === true)) {
+      this.regularTurnWithPrevStrike(frame);
+    } else if ((this.turn > 1) && (this.isSpare === true)) {
+      pastFrame.frameTotalScore += (frame.firstRoll);
+    }
+  }
+
+  lastTurnWithConsecutiveStrikes(frame) {
+    const pastFrame = this.frames[this.frames.length - 1];
+    const pastPastFrame = this.frames[this.frames.length - 2];
+    pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
+    if (pastPastFrame.firstRoll === 10) {
+      pastPastFrame.frameTotalScore = 30;
+    }
+  }
+
+  lastTurnWithOnePrevStrike(frame) {
+    const pastFrame = this.frames[this.frames.length - 1];
+    const pastPastFrame = this.frames[this.frames.length - 2];
+    pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
+    if (pastPastFrame.frameTotalScore === 10) {
+      pastPastFrame.frameTotalScore += (pastFrame.firstRoll + frame.firstRoll);
+    }
+  }
+
+  regularTurnWithPrevStrike(frame) {
+    const pastFrame = this.frames[this.frames.length - 1];
+    const pastPastFrame = this.frames[this.frames.length - 2];
+    if (frame.firstRoll !== 10) {
       pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
+      pastPastFrame.frameTotalScore += (pastFrame.firstRoll + frame.firstRoll);
+    } else if (frame.firstRoll === 10) {
+      pastFrame.frameTotalScore = frame.frameTotalScore;
       if (pastPastFrame.firstRoll === 10) {
         pastPastFrame.frameTotalScore = 30;
       }
-    } else if ((this.turn === 10) && (this.isStrike === true) && (frame.firstRoll !== 10)) {
-      const pastFrame = this.frames[this.frames.length - 1];
-      const pastPastFrame = this.frames[this.frames.length - 2];
-      pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
-      if (pastPastFrame.frameTotalScore === 10) {
-        pastPastFrame.frameTotalScore += (pastFrame.firstRoll + frame.firstRoll);
-      }
-    } else if ((this.turn > 2) && (this.isStrike === true)) {
-      const pastFrame = this.frames[this.frames.length - 1];
-      const pastPastFrame = this.frames[this.frames.length - 2];
-      if (frame.firstRoll !== 10) {
-        pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
-        pastPastFrame.frameTotalScore += (pastFrame.firstRoll + frame.firstRoll);
-      } else if (frame.firstRoll === 10) {
-        pastFrame.frameTotalScore = frame.frameTotalScore;
-        if (pastPastFrame.firstRoll === 10) {
-          pastPastFrame.frameTotalScore = 30;
-        }
-      }
-    } else if ((this.turn > 1) && (this.isSpare === true)) {
-      const pastFrame = this.frames[this.frames.length - 1];
-      pastFrame.frameTotalScore += (frame.firstRoll);
     }
+  }
+
+  calculateStandardFrame(frame) {
+    this.saveStrike(frame);
+    this.saveSpare(frame);
+    this.frames.push(frame);
+    this.calculateScore();
   }
 
   finalFrameScore(frame) {
@@ -95,5 +102,10 @@ export default class ScoreCard {
       this.frames.push(frame);
       this.calculateScore();
     }
+  }
+
+  calculateScore() {
+    this.score = this.frames.reduce((sum, frame) => sum + frame.frameTotalScore, 0);
+    return this.score;
   }
 }

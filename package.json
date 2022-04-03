@@ -1,0 +1,35 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "bin/run.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "bin": {
+    "run": "./bin/run.js"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r94o/bowling-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/r94o/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/r94o/bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}

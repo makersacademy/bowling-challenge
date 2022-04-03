@@ -26,7 +26,7 @@ describe('Frame', () => {
     expect(frame.addScore(3)).toBeUndefined();
   });
   test('#addScore - does not return a Bonus instance on any bonus rolls', () => {
-    frame.addScore(10)
+    frame.addScore(10);
     expect(frame.addScore(4)).toBeUndefined();
   });
   test('#completed - returns a truthy value when strike', () => {

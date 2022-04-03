@@ -1,5 +1,6 @@
 const Bonus = require('../lib/bonus');
 const Frame = require('../lib/frame');
+
 jest.mock('../lib/frame.js');
 
 describe('Bonus', () => {
@@ -9,7 +10,7 @@ describe('Bonus', () => {
   beforeEach(() => {
     frameDouble = new Frame();
     bonus = new Bonus(frameDouble, 2);
-  })
+  });
   test('#apply', () => {
     const rollSpy = jest.spyOn(frameDouble, 'roll').mockReturnValue();
     bonus.apply(4);
@@ -23,4 +24,4 @@ describe('Bonus', () => {
   test('#isActive is true when initialised', () => {
     expect(bonus.isActive()).toBe(true);
   });
-})
+});

@@ -73,3 +73,65 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+### My steps
+
+This week I will not be creating a User class, instead I will be creating a Game class and a Frame class rather than just a single Scorecard Class.
+
+#### Domain Modelling
+This week I used a flowchart alongside a miro board to help me navigate the complex structure of Bowling, Using this I decided I would want a Game class that has the responsibility of co-ordinating that entire game from start to finish.
+
+I would also have a Frame class, its responsibility is to calculated the score for that frame.
+
+I would like the program to run like this:
+```
+const game = new Game();
+
+game.addRollScore(5);
+game.currentScore(); // Returns 5 
+
+game.addRollScore(5);
+game.currentScore(); // Returns 10
+
+game.addRollScore(7);
+game.currentScore(); // Returns 24  --> This is because we got a spare in the last roll, which gave us a bonus of 1 roll, so the bonus is 7 which gives us 17, then add on this rolls score which gives 24
+
+game.addRollScore(1);
+game.currentScore(); // Returns 25 
+
+game.whatFrame(); // Returns 'Current Frame is 3'
+
+game.addRollScore(10);
+game.currentScore(); // Returns 35
+
+game.whatFrame(); // Returns 'Current Frame is 4' --> Should move to 4th frame because we got a strike
+
+game.addRollScore(5);
+game.currentScore(); // Returns 45 --> total added is BONUS of 5 + score of 5
+
+game.addRollScore(3);
+game.currentScore(); // Returns 51 --> total added is BONUS of 3 + score of 3 Remember Strikes have a bonus of next 2 rolls
+```
+
+For now that is how I want the game to run
+
+#### Lets start
+
+To begin, I will test drive the creation of a Game and Frame class, It should:
+
+- [x] Should create a Frame object when its instantiated
+- [x] Allow the user to add a score via addRollScore() method
+- [x] For now lets just have addRollScore() call a method on the Frame object called analyseScore() and pass an integer as an argument to it.
+
+analyseScore() is responsible to directing the program to the correct function depending on the score
+
+- [x] Use a conditional to check if a strike has happened, this should call the strike function which will is responsible for handling strikes
+    - In strike() I decided to add 10 to the frame score
+    - It will mark the frame as completed, we need some way of sending this info to the game object so that it knows to create the next frame
+    - In the future after the basic logic is completed this will deal with bonus scores
+
+- [ ] create a method called calculateScore() which is responsible for returning the current score at any point in the game.
+
+
+After we have completed this, the Game should be capable of handling strikes and displaying this score to the user.
+

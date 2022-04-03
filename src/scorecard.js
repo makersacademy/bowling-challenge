@@ -49,6 +49,20 @@ export default class ScoreCard {
     if ((this.turn === 2) && (this.isStrike === true) && (frame.firstRoll != 10)) {
       const pastFrame = this.frames[this.frames.length - 1]; 
       pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
+    } else if ((this.turn === 10) && (this.isStrike === true) && (frame.firstRoll === 10)) {
+      const pastFrame = this.frames[this.frames.length - 1]; 
+      const pastPastFrame = this.frames[this.frames.length - 2];
+      pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
+      if (pastPastFrame.firstRoll === 10) {
+        pastPastFrame.frameTotalScore = 30; 
+      }
+    } else if ((this.turn === 10) && (this.isStrike === true) && (frame.firstRoll != 10)) {
+      const pastFrame = this.frames[this.frames.length - 1]; 
+      const pastPastFrame = this.frames[this.frames.length - 2];
+      pastFrame.frameTotalScore += (frame.firstRoll + frame.secondRoll);
+      if (pastPastFrame.frameTotalScore === 10) {
+        pastPastFrame.frameTotalScore = (pastFrame.firstRoll + frame.firstRoll); 
+      }
     } else if ((this.turn > 2) && (this.isStrike === true)) {
       const pastFrame = this.frames[this.frames.length - 1]; 
       const pastPastFrame = this.frames[this.frames.length - 2];
@@ -57,7 +71,7 @@ export default class ScoreCard {
         pastPastFrame.frameTotalScore += (pastFrame.firstRoll + frame.firstRoll);
       } else if (frame.firstRoll === 10) {
         pastFrame.frameTotalScore = frame.frameTotalScore;
-        if (pastPastFrame.frameTotalScore === 10) {
+        if (pastPastFrame.firstRoll === 10) {
           pastPastFrame.frameTotalScore = 30; 
         }
       }

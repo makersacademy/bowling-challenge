@@ -13,8 +13,7 @@ Intending to make the web app for the scorecard. However, at this point, only th
 3. Run `npm install`
 
 ## How to Run
-1. `cd src`
-2. `node game.js`
+`cd src` & `node game.js`
   - `const game = new Game;`
   - `game.rollPins(4)` etc, as many times as you like
   - `game.getScore()` to get frame scores in an array form

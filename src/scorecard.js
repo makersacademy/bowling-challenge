@@ -16,17 +16,21 @@ export default class ScoreCard {
     this.turn += 1;
     this.updatePastScore(frame);
     if (this.turn < 10) {
-      this.saveStrike(frame);
-      this.saveSpare(frame);
-      this.frames.push(frame);
-      this.calculateScore();
+      this.calculateStandardFrame(frame);
     } else if (this.turn === 10) {
       this.saveStrike(frame);
       this.saveSpare(frame);
-      return this.calculateFinalFrame(frame);
+      return this.finalFrameScore(frame);
     } else {
       throw new Error('You have played the last frame. Start a new game!');
     }
+  }
+
+  calculateStandardFrame(frame) {
+    this.saveStrike(frame);
+    this.saveSpare(frame);
+    this.frames.push(frame);
+    this.calculateScore();
   }
 
   saveStrike(frame) {
@@ -81,7 +85,7 @@ export default class ScoreCard {
     }
   }
 
-  calculateFinalFrame(frame) {
+  finalFrameScore(frame) {
     if (frame.frameTotalScore < 10) {
       this.frames.push(frame);
       this.calculateScore();

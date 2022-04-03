@@ -130,8 +130,6 @@ describe('Scorecard', () => {
     scorecard.playBowling(frame2);
     scorecard.playBowling(frame4);
     scorecard.playBowling(finalframe3);
-    console.log(scorecard.score);
     expect(scorecard.score).toBe(49);
   });
-
 });

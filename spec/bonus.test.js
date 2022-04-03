@@ -12,7 +12,7 @@ describe('Bonus', () => {
     bonus = new Bonus(frameDouble, 2);
   });
   test('#apply', () => {
-    const rollSpy = jest.spyOn(frameDouble, 'roll').mockReturnValue();
+    const rollSpy = jest.spyOn(frameDouble, 'addScore').mockReturnValue();
     bonus.apply(4);
     expect(rollSpy).toHaveBeenCalledWith(4);
   });

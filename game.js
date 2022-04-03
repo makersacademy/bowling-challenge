@@ -14,13 +14,16 @@ class Game {
   }
 
   frameManager() {
-    this.frameLog.forEach((frame) => {
-      if (!frame.isFrameCompleted) {return}
-      else {
-        this.currentFrame += 1; 
-        this.frameLog.push(new Frame())
-      };
-    })
+    if (this.frameLog.at(-1).frameCompleted == false) {return}
+    else {
+      this.currentFrame += 1; 
+      this.frameLog.push(new Frame())
+    };
+  }
+
+  frameStatus() {
+    this.frameLog.forEach((frame) => console.log(frame.frameCompleted))
+
   }
 
   calculateScore() {
@@ -32,3 +35,10 @@ class Game {
 };
 
 module.exports = Game;
+
+
+
+
+
+
+

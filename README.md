@@ -130,8 +130,16 @@ analyseScore() is responsible to directing the program to the correct function d
     - It will mark the frame as completed, we need some way of sending this info to the game object so that it knows to create the next frame
     - In the future after the basic logic is completed this will deal with bonus scores
 
-- [ ] create a method called calculateScore() which is responsible for returning the current score at any point in the game.
+- [x] create a method called calculateScore() which is responsible for returning the current score at any point in the game.
 
 
 After we have completed this, the Game should be capable of handling strikes and displaying this score to the user.
 
+Now lets handle the remaining logic for:
+- [x] handling spares, should add the first roll to the frame score but not end the current frame 
+- [x] less than 10 over the entire frame, this has the same logic but doesn't have any bonus
+    - Most likely we are not going to get DRY code the first time round, but lets get the logic sorted and then we can refactor.
+
+At this point, all the basic logic if working, when the users gets a strike the current frame ends and the next begins, anything less than a strike does not end the frame, rather it waits until the second roll to end the frame.
+
+Therfore, the logic for strikes, spares and less than spares has been completed.

@@ -26,13 +26,27 @@ describe ('Bowling game', () => {
       game.roll(pins);
     }
   };
-  //helper method above
-  // test ('Can roll a spare', () => {
-  //   game.roll(5)
-  //   game.roll(5)
-  //   game.roll(1)
-  //   rollAmount(0,19)
-  //   expect(game.score()).toBe(12);
-  // });
+  // helper method above
+  test ('Can roll a spare', () => {
+    game.roll(5)
+    game.roll(5)
+    game.roll(1)
+    rollAmount(0,19)
+    expect(game.score()).toBe(12);
+  });
+
+  test ('Can roll a strike', () => {
+    game.roll(10)
+    game.roll(4)
+    game.roll(3)
+    rollAmount(0,16)
+    expect(game.score()).toBe(24);
+  });
+
+  test ('Can roll a perfect game', () => {
+    rollAmount(10,12)
+    expect(game.score()).toBe(300);
+  });
+
 
 })

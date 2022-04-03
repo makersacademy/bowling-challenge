@@ -26,5 +26,13 @@ describe ('Bowling game', () => {
       game.roll(pins);
     }
   };
+  //helper method above
+  // test ('Can roll a spare', () => {
+  //   game.roll(5)
+  //   game.roll(5)
+  //   game.roll(1)
+  //   rollAmount(0,19)
+  //   expect(game.score()).toBe(12);
+  // });
 
 })

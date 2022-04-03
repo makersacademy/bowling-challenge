@@ -17,6 +17,14 @@ describe("Bowling Score", () => {
     expect(score.getTotalScore()).toBe(150);
   });
 
+  it("scores 0 for a Gutter Game", () => {
+    const score = new BowlingScore();
+    for (let i = 0; i < 20; i++) {
+      score.addScore(0);
+    }
+    expect(score.getTotalScore()).toBe(0);
+  });
+
   it("scores 133 when given Example Game 1", () => {
     const score = new BowlingScore();
     let exampleScores = [

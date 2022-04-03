@@ -1,3 +1,113 @@
+````
+EXAMPLE OUTPUT 1: For a perfect game 
+
+Your Score for frame : 1 is 10
+[ [ 10, 0, 10 ] ]
+Your Score for frame : 2 is 30
+[ [ 10, 0, 20 ], [ 10, 0, 30 ] ]
+Your Score for frame : 3 is 60
+[ [ 10, 0, 30 ], [ 10, 0, 50 ], [ 10, 0, 60 ] ]
+Your Score for frame : 4 is 90
+[ [ 10, 0, 30 ], [ 10, 0, 60 ], [ 10, 0, 80 ], [ 10, 0, 90 ] ]
+Your Score for frame : 5 is 120
+[ [ 10, 0, 30 ], [ 10, 0, 60 ], [ 10, 0, 90 ], [ 10, 0, 110 ], [ 10, 0, 120 ]]
+Your Score for frame : 6 is 150
+[ [ 10, 0, 30 ],[ 10, 0, 60 ],[ 10, 0, 90 ],[ 10, 0, 120 ], [ 10, 0, 140 ],[ 10, 0, 150 ]]
+Your Score for frame : 7 is 180
+[ [ 10, 0, 30 ],[ 10, 0, 60 ],[ 10, 0, 90 ], [ 10, 0, 120 ],[ 10, 0, 150 ],[ 10, 0, 170 ],
+  [ 10, 0, 180 ]]
+Your Score for frame : 8 is 210
+[[ 10, 0, 30 ], [ 10, 0, 60 ],[ 10, 0, 90 ],[ 10, 0, 120 ],[ 10, 0, 150 ],
+  [ 10, 0, 180 ],[ 10, 0, 200 ],[ 10, 0, 210 ]
+]
+Your Score for frame : 9 is 240
+[ [ 10, 0, 30 ],[ 10, 0, 60 ],[ 10, 0, 90 ],[ 10, 0, 120 ],[ 10, 0, 150 ],
+  [ 10, 0, 180 ],[ 10, 0, 210 ],[ 10, 0, 230 ],[ 10, 0, 240 ]
+]
+Your Score for frame : 10 is 270
+[ [ 10, 0, 30 ],[ 10, 0, 60 ],[ 10, 0, 90 ],[ 10, 0, 120 ],[ 10, 0, 150 ],
+  [ 10, 0, 180 ], [ 10, 0, 210 ], [ 10, 0, 240 ],[ 10, 0, 260 ],
+  [ 10, 0, 270 ]
+]
+The Game has Ended! Your END OF GAME SCORE IS 300
+[[ 10, 0, 30 ], [ 10, 0, 60 ], [ 10, 0, 90 ],[ 10, 0, 120 ], [ 10, 0, 150 ],
+  [ 10, 0, 180 ], [ 10, 0, 210 ], [ 10, 0, 240 ],[ 10, 0, 260 ],
+  [ 10, 0, 300 ]
+````
+````
+EXAMPLE OUTPUT 2: For a standard game 
+Your Score for frame : 1 is 8
+[ [ 4, 4, 8 ] ]
+Your Score for frame : 2 is 16
+[ [ 4, 4, 8 ], [ 4, 4, 16 ] ]
+Your Score for frame : 3 is 24
+[ [ 4, 4, 8 ], [ 4, 4, 16 ], [ 4, 4, 24 ] ]
+Your Score for frame : 4 is 32
+[ [ 4, 4, 8 ], [ 4, 4, 16 ], [ 4, 4, 24 ], [ 4, 4, 32 ] ]
+Your Score for frame : 5 is 40
+[ [ 4, 4, 8 ], [ 4, 4, 16 ], [ 4, 4, 24 ], [ 4, 4, 32 ], [ 4, 4, 40 ] ]
+Your Score for frame : 6 is 48
+[[ 4, 4, 8 ], [ 4, 4, 16 ],[ 4, 4, 24 ],[ 4, 4, 32 ], [ 4, 4, 40 ],
+  [ 4, 4, 48 ]
+]
+Your Score for frame : 7 is 56
+[ [ 4, 4, 8 ],[ 4, 4, 16 ],
+  [ 4, 4, 24 ], [ 4, 4, 32 ],[ 4, 4, 40 ],
+  [ 4, 4, 48 ],[ 4, 4, 56 ]
+]
+Your Score for frame : 8 is 64
+[[ 4, 4, 8 ],[ 4, 4, 16 ],[ 4, 4, 24 ],[ 4, 4, 32 ],
+  [ 4, 4, 40 ], [ 4, 4, 48 ],[ 4, 4, 56 ],[ 4, 4, 64 ]
+]
+Your Score for frame : 9 is 72
+[[ 4, 4, 8 ],[ 4, 4, 16 ],[ 4, 4, 24 ], [ 4, 4, 32 ], [ 4, 4, 40 ],
+  [ 4, 4, 48 ], [ 4, 4, 56 ],[ 4, 4, 64 ],[ 4, 4, 72 ]
+]
+Your Score for frame : 10 is 80
+[[ 4, 4, 8 ],  [ 4, 4, 16 ],[ 4, 4, 24 ], [ 4, 4, 32 ],[ 4, 4, 40 ], [ 4, 4, 48 ],
+  [ 4, 4, 56 ], [ 4, 4, 64 ],[ 4, 4, 72 ], [ 4, 4, 80 ]]
+The Game has Ended! Your END OF GAME SCORE IS 80
+
+````
+````
+JEST TESTS:
+1. For the Scorecard:
+'can rolls pins'
+'can tally a frame'
+'can roll a gutter game'
+'can roll a standard game'
+'can roll a strike'
+'can roll two strikes'
+'can roll three strikes'
+'can roll four strikes'
+'can roll a 10 strikes'
+'can roll a 3 strikes and a standard roll'
+'can roll 2 strikes and a standard roll'
+'can roll a spare'
+'can roll two spares'
+'can roll 10 spares'
+'can roll 5 spares and two strikes and 1 standard roll'
+'can roll 12 strikes - two bonus balls'
+'can roll 10 spares - one bonus ball'
+
+2. For the Frame:
+'can rolls pins'
+'can roll a standard roll'
+'can negate a standard roll' (rolls a strike)
+'can negate a standard roll' (rolls a spare)
+'can roll a strike'
+'can roll a not roll a strike'
+'can complete a frame'
+'can not complete a frame'
+'can roll a spare'
+'can negate a spare'
+
+
+Test Suites: 2 passed, 2 total
+Tests:       27 passed, 27 total
+Snapshots:   0 total
+Time:        0.229 s, estimated 1 s
+````
 
 Bowling Challenge
 =================

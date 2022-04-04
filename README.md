@@ -143,3 +143,7 @@ Now lets handle the remaining logic for:
 At this point, all the basic logic if working, when the users gets a strike the current frame ends and the next begins, anything less than a strike does not end the frame, rather it waits until the second roll to end the frame.
 
 Therfore, the logic for strikes, spares and less than spares has been completed.
+
+Now I want to begin by tackling the Bonus added for strikes, this causes the score of the next two rolls to be added to that frames score as a bonus. I will attempt to create a class called Bonus which should be responsible for issuing bonus scores
+
+Unforunately, I was not able to complete the bonus section of the Bowling challenge, this had been due to lack of testing and time constrainsts which led to errors in the code.

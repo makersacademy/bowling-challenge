@@ -23,6 +23,16 @@ describe('bowling game', () => {
     for(let i=0; i<17; i++){
       sut.roll(0);
     }
-    expect(sut.score()).toStrictEqual(16)
+    expect(sut.score()).toBe(16)
+  });
+  it('can roll a strike', () => {
+    const sut = new Game;
+    sut.roll(10)
+    sut.roll(4)
+    sut.roll(3)
+    for(let i=0; i<16; i++){
+      sut.roll(0);
+    }
+    expect(sut.score()).toStrictEqual(24)
   })
 })

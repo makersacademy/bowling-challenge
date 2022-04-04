@@ -1,3 +1,6 @@
+### My README Section (Makers' below)
+
+Frame class working fine, scorecard class incomplete currently!
 
 Bowling Challenge
 =================

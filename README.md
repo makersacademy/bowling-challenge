@@ -1,38 +1,12 @@
+[![Build Status](https://app.travis-ci.com/valentina-maggio/bowling-challenge.svg?branch=main)](https://app.travis-ci.com/valentina-maggio/bowling-challenge)
 
-Bowling Challenge
+Bowling Challenge in JavaScript
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Challenge description
 
-## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
+The aim of this challenge is to count and sum the scores of a bowling game for one player. 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-As usual please start by
-
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
 
 ## Bowling — how does it work?
 
@@ -63,13 +37,143 @@ In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+## My approach to the challenge
 
-## Code Review
+* I started by defining the following stories:
 
-In code review we'll be hoping to see:
+```
+As a bowling player
+So that I can practice my skills
+I want to play a full bowling game 
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+As a bowling player
+So that I have a record of the pins I knock down
+I want to keep track of my total score for each frame
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+As a bowling player
+So that I know how the game went
+I want to see my final total score
+```
+
+* I decided to create 4 classes: 
+    * Frame: it initializes an object with first roll, second roll and total frame score as properties
+    * TenthFrame: it has the same characteristics of the Frame class, plus an extra property for the third roll
+    * Scorecard: it records the frames played and calculates the score
+    * Game: it allows the player to play a bowling game - I didn't have the time to implement this class
+     
+* I started with the Frame class following a TDD approach:
+    * the class has 3 properties:
+        * firstRoll
+        * secondRoll (initialized as 0)
+        * frameTotalScore which sums up the firstRoll and secondRoll
+
+* I then created a ScoreCard class with he same approach:
+    * the class has 5 properties:
+        * frames, an array which will store the pins rolled in each frame
+        * turn, starts at 0 and keeps track of the turns
+        * isStrike, false by default, it will change is there is a strike
+        * isSpare, false by default, it will change is there is a strike
+        * score, starts at 0 and records the cumulative score for the game
+    * and 10 methods:
+        * playBowling(frame), takes a new frame object as argument and calculates the score. After adding 10 frames it will stop the execution and return a message confirming the game has finished
+        * saveStrike(frame) and saveSpare(frame), respectively change the value of isStrike and isSpare
+        * updatePastScore(frame), update the previous frames scores in case of strikes or spares
+        * lastTurnWithConsecutiveStrikes(frame), used by updatePastScore(frame) for score calculation
+        * lastTurnWithOnePrevStrike(frame), used updatePastScore(frame) for score calculation
+        * regularTurnWithPrevStrike(frame), used updatePastScore(frame) for score calculation
+        * calculateStandardFrame(frame), calculates the score for the current frame, just for the frames from 1 to 9
+        * finalFrameScore(frame), calculates the score for the tenth frame
+        * calculateScore(), calculates the cumulate score
+
+* I added a TenthFrame class to give the user the option of rolling the pins for a third time. The class inherits from the Frame class and in addition it has a thirdRoll property (initialized as 0)
+
+* I was planning to create a Game class and extract the playBowling function from the ScoreCard class but I didn't have the time to work on this implementation.
+
+## How to run the software
+
+* Clone this repo
+* Make sure you have Node installed - installation instructions here: [](https://github.com/nvm-sh/nvm#installing-and-updating)
+* Open Node with `node`
+* Load all the files with the following commands:
+```
+.load src/frame.js
+.load src/tenthframe.js
+.load src/scorecard.js
+```
+* At the moment to play you have to first create the ten frames you want to play, create one scorecard and call the method playBowling(frame) on it for each of the ten frames. To see the total score at the end of the game call the Scorecard property score. Below is an output example for a perfect game (strike scored in each frame):
+
+```
+> card = new ScoreCard;
+ScoreCard {
+  frames: [],
+  turn: 0,
+  isStrike: false,
+  isSpare: false,
+  score: 0
+}
+> frame1 = new Frame(10);
+Frame { firstRoll: 10, secondRoll: 0, frameTotalScore: 10 }
+> frame2 = new Frame(10);
+Frame { firstRoll: 10, secondRoll: 0, frameTotalScore: 10 }
+> frame3 = new Frame(10);
+Frame { firstRoll: 10, secondRoll: 0, frameTotalScore: 10 }
+> frame4 = new Frame(10);
+Frame { firstRoll: 10, secondRoll: 0, frameTotalScore: 10 }
+> frame5 = new Frame(10);
+Frame { firstRoll: 10, secondRoll: 0, frameTotalScore: 10 }
+> frame6 = new Frame(10);
+Frame { firstRoll: 10, secondRoll: 0, frameTotalScore: 10 }
+> frame7 = new Frame(10);
+Frame { firstRoll: 10, secondRoll: 0, frameTotalScore: 10 }
+> frame8 = new Frame(10);
+Frame { firstRoll: 10, secondRoll: 0, frameTotalScore: 10 }
+> frame9 = new Frame(10);
+Frame { firstRoll: 10, secondRoll: 0, frameTotalScore: 10 }
+> frame10 = new TenthFrame(10, 10, 10);
+TenthFrame {
+  firstRoll: 10,
+  secondRoll: 10,
+  frameTotalScore: 20,
+  thirdRoll: 10
+}
+> card.playBowling(frame1);
+undefined
+> card.playBowling(frame2);
+undefined
+> card.playBowling(frame3);
+undefined
+> card.playBowling(frame4);
+undefined
+> card.playBowling(frame5);
+undefined
+> card.playBowling(frame6);
+undefined
+> card.playBowling(frame7);
+undefined
+> card.playBowling(frame8);
+undefined
+> card.playBowling(frame9);
+undefined
+> card.playBowling(frame10);
+undefined
+> card.score
+300
+```
+
+## How to test the software
+
+* Use Jest to run the test. Make sure you are in the root directory. If you don't have Jest installed yet, use the command `npm install jest`. Then run `npm test`. The output will also show a table with the test coverage.
+* To check the code syntax, run `npx eslint "src/**"` or `npx eslint (FILENAME)` to run it for a specific file.
+
+## Future improvements
+
+* The next implementation will be creating a Game class to manage the game, without having to run the code above.
+* Then some refactoring will be needed to make the code clean and more readable.
+* Finally, a user interface will need to be added, perhaps using JQuery or React.
+
+## Technologies used
+
+* JavaScript
+* Node
+* Jest
+* ESlint

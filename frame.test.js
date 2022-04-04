@@ -6,6 +6,11 @@ beforeEach(() => {
 
 
 describe('Frame', () => {
+
+  it('checks frame is a new instance of the class Frame', () => {
+    expect(frame).toBeInstanceOf(Frame);
+  });
+
  it('frame starts at score equalling 0', () => {
     expect(frame.points).toEqual(0);
   });

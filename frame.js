@@ -18,7 +18,7 @@ class Frame {
     } else if (this.rollTwo === null) {
       this.secondGoRound10(pins);
     } else {
-      this.thirdRoll(pins);
+      this.thirdGo(pins);
     }
   }
 
@@ -52,7 +52,7 @@ class Frame {
     this.frameTotal();
   }
 
-  thirdRoll(pins) {
+  thirdGo(pins) {
     this.rollThree = pins;
     this.complete = true;
     this.frameTotal();

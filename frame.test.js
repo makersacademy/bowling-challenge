@@ -1,51 +1,51 @@
 const Frame = require("./frame");
 
 beforeEach(() => {
-  frame = new Frame();
+  sut = new Frame();
 });
 
 
 describe('Frame', () => {
 
   it('checks frame is a new instance of the class Frame', () => {
-    expect(frame).toBeInstanceOf(Frame);
+    expect(sut).toBeInstanceOf(Frame);
   });
 
  it('frame starts at score equalling 0', () => {
-    expect(frame.points).toEqual(0);
+    expect(sut.points).toEqual(0);
   });
 
   it('starts with rollOne and rollTwo equalling null', () => {
-    expect(frame.rollOne).toEqual(null);
-    expect(frame.rollTwo).toEqual(null);
+    expect(sut.rollOne).toEqual(null);
+    expect(sut.rollTwo).toEqual(null);
   });
 
   it('starts with round being round 1', () => {
-    expect(frame.round).toEqual(1);
+    expect(sut.round).toEqual(1);
   });
 
   it('perform first roll and the amount of pins get added to rollOne', () => {
-    frame.roll(8);
-    expect(frame.rollOne).toEqual(8);
+    sut.roll(8);
+    expect(sut.rollOne).toEqual(8);
   });
 
   it('perform two rolls and you can shows rollTwo score and round score', () => {
-    frame.roll(1);
-    frame.roll(2);
-    expect(frame.rollTwo).toEqual(2);
+    sut.roll(1);
+    sut.roll(2);
+    expect(sut.rollTwo).toEqual(2);
   });
 
   it('performs two rolls and calculates round score', () => {
-    frame.roll(1);
-    frame.roll(2);
-    expect(frame.points).toEqual(3);
+    sut.roll(1);
+    sut.roll(2);
+    expect(sut.points).toEqual(3);
   });
 
   it('confirms neither a strike or spare has been bowled in a round', () => {
-    frame.roll(4);
-    frame.roll(3);
-    expect(frame.spare()).toEqual(false);
-    expect(frame.strike()).toEqual(false);
+    sut.roll(4);
+    sut.roll(3);
+    expect(sut.spare()).toEqual(false);
+    expect(sut.strike()).toEqual(false);
   })
 
   it('confirms whether spare has been bowled in a round', () => {
@@ -69,16 +69,16 @@ describe('Frame', () => {
   });
 
   it('checks to see if round is complete or not', () => {
-    expect(frame.complete).toEqual(false);
-    frame.roll(1);
-    expect(frame.complete).toEqual(false);
-    frame.roll(2)
-    expect(frame.complete).toEqual(true);
+    expect(sut.complete).toEqual(false);
+    sut.roll(1);
+    expect(sut.complete).toEqual(false);
+    sut.roll(2)
+    expect(sut.complete).toEqual(true);
   });
 
   it('checks to see if round is complete with a one roll strike', () => {
-    frame.roll(10);
-    expect(frame.complete).toEqual(true);
+    sut.roll(10);
+    expect(sut.complete).toEqual(true);
   });
 
   it('checks to see whether round 10 complete if spare happens or not and allows 3rd go', () => {
@@ -95,9 +95,9 @@ describe('Frame', () => {
     });
   
     it('will not allow more rolls if frame is complete', () => {
-      frame.roll(10);
+      sut.roll(10);
       expect(() => {
-        frame.roll(1).toThrow("It's over! Stop lobbing the balls!")
+        sut.roll(1).toThrow("It's over! Stop lobbing the balls!")
       });
       frame_5 = new Frame(10);
       frame_5.roll(8);

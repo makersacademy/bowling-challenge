@@ -23,6 +23,15 @@ class Frame {
     );
   }
 
+  getDetailedScore() {
+    return {
+      first: this.scores.first || 0,
+      second: this.scores[1] || 0,
+      bonus: this.getBonus(),
+      total: this.getScore(),
+    };
+  }
+
   getBonus() {
     return reduce(
       this.bonuses,

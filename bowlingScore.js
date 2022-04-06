@@ -24,6 +24,13 @@ class BowlingScore {
     return searchFrame.getScore();
   }
 
+  getFrameDetailedScore(frameNumber) {
+    let searchFrame = this.frames.find(
+      (frame) => frame.getNumber() === frameNumber
+    );
+    return searchFrame.getDetailedScore();
+  }
+
   addScore(pins) {
     this.applyBonus(pins);
     if (this.#currentFrame() === undefined) {

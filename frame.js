@@ -58,12 +58,12 @@ class Frame {
     this.roll3 = pins;
     this.complete = 'complete';
     this.calculate_total();
+    this.score += this.roll3;
   }
 
   calculate_total() {
     if (this.roll1 !== null) this.score = this.roll1;
     if (this.roll2 !== null) this.score += this.roll2;
-    if (this.roll3 !== null) this.score += this.roll3;
     return this.score;
   }
 }

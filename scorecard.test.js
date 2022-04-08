@@ -11,7 +11,7 @@ describe('Scorecard', () => {
   });
 
   it('initialises with frames as an array with one frame', () => {
-    // expect(scorecard.frames).toEqual(expect.arrayContaining([new Frame()]));
+    expect(scorecard.frames[0]).toBeInstanceOf(Frame);
     expect(scorecard.frames.length).toBe(1);
   });
 

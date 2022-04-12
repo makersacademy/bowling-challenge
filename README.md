@@ -1,75 +1,96 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+[![Build Status](https://app.travis-ci.com/PKilgarriff/bowling-challenge.svg?branch=main)](https://app.travis-ci.com/PKilgarriff/bowling-challenge)
 
 ## The Task
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+Count and sum the scores of a bowling game for one player (in JavaScript). The brief is the same as the [previous weekend challenge](https://github.com/PKilgarriff/bowling-challenge-ruby), but utilises skills learned during Week 6 (JavaScript Week) to create an implementation in JS.
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+## Setup
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+1. Fork, then clone this repository `git clone https://github.com/[your-github-username]/bowling-challenge`
+2. `cd bowling-challenge` to change into the project directory
+3. Run `npm install` to install the dependencies from the package.json
+4. Open a REPL in node with `node`
+5. Load the main class (BowlingScore) with `.load bowlingScore.js`
 
-As usual please start by
+## Using the Program
 
-* Forking this repo
+After following the steps in [setup](#setup), you can now use the program as follows:
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+- Instances of the BowlingScore class can be created and used like this:
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+```
+const score = new BowlingScore();
+score.addScore(6); // Gets put into frame 1
+score.addScore(3); // Gets put into frame 1
+score.addScore(3); // Gets put into frame 2
+score.addScore(7); // Gets put into frame 2
+score.addScore(10); // Gets put into frame 3
+score.getTotalScore();
+ => 39
+score.getFrameScore(1);
+ => 9
+score.getFrameScore(2);
+ => 20
+score.getFrameScore(3);
+ => 10
+```
 
-### Optional Extras
+- Unlike my previous implementation, the BowlingScore class does not take a name at initialisation. - You can add scores which will be assigned to the correct frame of the game.
+- You can also request the scores of an individual frame
+  - this will include the bonuses if these rolls have taken place
+    - see frame 2 in the above example, the rolls are 3 and 7 -> so a spare
+    - the next roll is a 10 and so this is alos added as bonus points to that frame -> bringing the total to 20
 
-In any order you like:
+## Testing the Program
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+- Run `jest --coverage --verbose` in the root of the repo
+  - this will demonstrate the code coverage
+  - as well as the living documentation for the program
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+## Approach
 
-## Bowling — how does it work?
+- Reviewed previous work on [Bowling Challenge - Ruby](https://github.com/PKilgarriff/bowling-challenge-ruby)
+- Set up repository with JavaScript libraries for development and testing:
+  - Jest
+  - Coveralls (Not currently integrated with online platform)
+  - ESLint -> needed to customise config to stop conflicts with Prettier
+- Added Travis config file for Continuous Integration
+- Test drove creation of Frame class (Based on previous work)
+  - getNumber
+  - getScore
+  - addScore
+  - isComplete
+    > Blocker - don't know how to assign constants in a similar way to Ruby
+    >
+    > - currently have left magic numbers in place in isComplete function
+    >   - Update: have just assigned the values to properties of the Frame class (e.g. this.totalPins)
+  - isStrike
+  - isSpare
 
-### Strikes
+At this point, the Frame class can store which number frame it is, store an array of pins that have been knocked down, have pins (scores) added to it, return the total score represented by those pins, and whether a spare or strike has occured. It also knows whether it is a complete frame (for situations outside of the final frame).
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+- Return to BowlingScore class
+  - add addScore method
+  - add getTotalScore method
+  - add #currentFrame method
+  - add #addFrame method
+  - update addScore to use the two new private methods and add a frame instance if one doesn't exist
+    - use the same thing for adding them if it's complete?
+  - update conditional block inside addScore to use Frame.isComplete()
+- add Feature tests for various example games
+  - note to add mocking for Frame in BowlingScore unit tests
+    - use a standard object?
+    - use jest mocking objects?
+- add applyBonus to BowlingScore
+- add isBonusComplete to Frame
+- update conditional in BowlingScore.addScore
+  - does not add new frame if the current frame is the final one
 
-### Spares
+Currently passes all tests including feature tests for two example games and then a perfect game, and a game of all spares (every roll a 5)
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+## Next Steps
 
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+- ~~Tidy-up Readme -> so that it is ready for a PR~~
+- Stretch Goal -> Create a nice interactive animated interface with jQuery

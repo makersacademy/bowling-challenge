@@ -14,13 +14,13 @@ class Scorecard {
     return this.frames.length + 1;
   }
   score() {
-    const scores_array = [];
-    this.frames.forEach((frame, index, frames) => {
-      console.log(frame.score(frames[index + 1], frames[index + 2]));
-      scores_array.push(frame.score(frames[index + 1], frames[index + 2]));
-    });
-    return scores_array.reduce((previousFrameScore, currentFrameScore) => {
-      return previousFrameScore + currentFrameScore;
+    return this.frames.reduce((runningScore, currentFrame, index, frames) => {
+      const currentFrameScore = currentFrame.score(
+        //in a reducer, you already have the runningScore, so all you need to do is calculdate the currentFrameScore
+        frames[index + 1],
+        frames[index + 2]
+      );
+      return runningScore + currentFrameScore;
     }, 0);
   }
 }

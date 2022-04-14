@@ -14,14 +14,20 @@ class Scorecard {
     return this.frames.length + 1;
   }
   score() {
-    return this.frames.reduce((runningScore, currentFrame, index, frames) => {
-      const currentFrameScore = currentFrame.score(
+    //not strictly necessary to pass in the frames array as an argument, but it makes it cleaner than having 'this.frames[index + 1] in the function
+    scoreAllFrames = this.frames.reduce(
+      (runningScore, currentFrame, index, frames) => {
         //in a reducer, you already have the runningScore, so all you need to do is calculdate the currentFrameScore
-        frames[index + 1],
-        frames[index + 2]
-      );
-      return runningScore + currentFrameScore;
-    }, 0);
+
+        const currentFrameScore = currentFrame.score(
+          frames[index + 1],
+          frames[index + 2]
+        );
+        return runningScore + currentFrameScore;
+      },
+      0
+    );
+    return scoreAllFrames;
   }
 }
 module.exports = Scorecard;

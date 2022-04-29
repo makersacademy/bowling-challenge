@@ -5,6 +5,7 @@ class Scorecard {
     constructor () {
         this.scorecard = []
     }
+    
 }
 
 module.exports = Scorecard;

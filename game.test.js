@@ -17,6 +17,14 @@ describe ('Game', () => {
         expect(game.frame.bowls[0]).toEqual(4)
     })
 
+    it('#addBowl will return the total score', () =>{
+        game = new Game
+        game.addBowl(6)
+        game.addBowl(2)
+        game.addBowl(4)
+        expect(game.addBowl(4)).toEqual(16)
+    })
+
     it('there is a maximum of 10 rounds on the game', () => {
         game = new Game;
         game.addBowl(6)
@@ -39,7 +47,8 @@ describe ('Game', () => {
         game.addBowl(4)
         game.addBowl(2)
         game.addBowl(4)
-        expect(game.addBowl(4)).toEqual('Game is over!')
-        
+        expect(game.scorecard.scorecard.length).toEqual(10)
     })
+
+    // it('a strike should automatically close the frame (10,0)')
 })

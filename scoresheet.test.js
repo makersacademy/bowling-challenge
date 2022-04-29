@@ -18,6 +18,8 @@ describe('Scoresheet', () => {
     mockStrike = {
       rolls: () => 1,
       firstRoll: () => 10,
+      secondRoll: () => 7,
+      bonusRoll: () => 2,
       isStrike: () => true,
       isSpare: () => false
     }
@@ -25,8 +27,17 @@ describe('Scoresheet', () => {
       rolls: () => 2,
       firstRoll: () => 3,
       secondRoll: () => 7,
+      bonusRoll: () => 5,
       isStrike: () => false,
       isSpare: () => true
+    }
+    perfectStrike = {
+      rolls: () => 1,
+      firstRoll: () => 10,
+      secondRoll: () => 10,
+      bonusRoll: () => 10,
+      isStrike: () => true,
+      isSpare: () => false
     }
    })
   
@@ -80,6 +91,20 @@ describe('Scoresheet', () => {
       scoresheet.addFrame(mockFrame);
       expect(scoresheet.frameScore(0)).toEqual(23);
     })
+
+    it('if on the 9th frame a strike is landed, it will add the first two rolls of the tenth frame even if tenth frame is a strike', () => {
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockStrike);
+      scoresheet.addFrame(mockStrike);
+      expect(scoresheet.frameScore(8)).toEqual(27)
+    })
   })
 
   describe('spareBonus', () => {
@@ -90,5 +115,46 @@ describe('Scoresheet', () => {
     })
   })
 
+  it('will have a bonus roll on the final frame if a spare is landed', () => {
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockSpare);
+    expect(scoresheet.frameScore(9)).toEqual(15);
+  })
+
+  it('will have a bonus roll on the final frame if a strike is landed', () => {
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockStrike);
+    expect(scoresheet.frameScore(9)).toEqual(19);
+  })
+
+  it('calculates score of perfect game correctly', () => {
+    scoresheet.addFrame(perfectStrike);
+    scoresheet.addFrame(perfectStrike);
+    scoresheet.addFrame(perfectStrike);
+    scoresheet.addFrame(perfectStrike);
+    scoresheet.addFrame(perfectStrike);
+    scoresheet.addFrame(perfectStrike);
+    scoresheet.addFrame(perfectStrike);
+    scoresheet.addFrame(perfectStrike);
+    scoresheet.addFrame(perfectStrike);
+    scoresheet.addFrame(perfectStrike);
+    expect(scoresheet.totalScore()).toEqual(300);
+  })
 })
 

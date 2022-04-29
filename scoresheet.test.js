@@ -25,8 +25,8 @@ describe('Scoresheet', () => {
       rolls: () => 2,
       firstRoll: () => 3,
       secondRoll: () => 7,
-      isStrike: () => true,
-      isSpare: () => false
+      isStrike: () => false,
+      isSpare: () => true
     }
    })
   

@@ -77,7 +77,7 @@ I would like the final frame to add only the bonus of the extra roll/s rather th
 ```
 
 ## Domain Modelling
-![Screenshot](https://i.imgur.com/QJcdsw3.png)
+![Screenshot](https://i.imgur.com/mNifrzM.png)
 
 ## References
 ```

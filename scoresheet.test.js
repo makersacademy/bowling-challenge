@@ -15,13 +15,6 @@ describe('Scoresheet', () => {
       isStrike: () => false,
       isSpare: () => false
     }
-    frame = {
-      rolls: () => 2,
-      firstRoll: () => 3,
-      secondRoll: () => 4,
-      isStrike: () => false,
-      isSpare: () => false
-    }
    })
   
   describe('addFrame', () => {
@@ -47,17 +40,16 @@ describe('Scoresheet', () => {
 
   describe('totalScore', () => {
     it('can calculate the total score of a game', () => {
-      scoresheet.addFrame(frame);
-      scoresheet.addFrame(frame);
-      scoresheet.addFrame(frame);
-      scoresheet.addFrame(frame);
-      scoresheet.addFrame(frame);
-      scoresheet.addFrame(frame);
-      scoresheet.addFrame(frame);
-      scoresheet.addFrame(frame);
-      scoresheet.addFrame(frame);
-      scoresheet.addFrame(frame);
-
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
+      scoresheet.addFrame(mockFrame);
       expect(scoresheet.totalScore()).toEqual(70);
     })
   })

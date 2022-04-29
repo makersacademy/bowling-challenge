@@ -26,14 +26,14 @@ class Frame {
   }
 
   isStrike() {
-    if (this.scores[0] === 10) {
+    if (this.firstRoll() === 10) {
       this.strike = true;
     }
     return this.strike;
   }
 
   isSpare() {
-    if (this.scores[0] != 10 && this.scores[0] + this.scores[1] === 10) {
+    if (this.firstRoll() != 10 && this.firstRoll() + this.secondRoll() === 10) {
       this.spare = true;
     }
     return this.spare;

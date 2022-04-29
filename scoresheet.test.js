@@ -34,7 +34,7 @@ describe('Scoresheet', () => {
   describe('frameScore', () => {
     it('can calculate the score of a frame', () => {
       scoresheet.addFrame(mockFrame);
-      expect(scoresheet.frameScore(mockFrame)).toEqual(7);
+      expect(scoresheet.frameScore(0)).toEqual(7);
     })
   })
 
@@ -52,6 +52,10 @@ describe('Scoresheet', () => {
       scoresheet.addFrame(mockFrame);
       expect(scoresheet.totalScore()).toEqual(70);
     })
+  })
+
+  describe('strikeBonus', () => {
+
   })
 
 })

@@ -11,20 +11,20 @@ class Scoresheet {
     this.currentFrame = frame;
   }
 
-  frameScore(frame) {
+  frameScore(frameNum) {
     let score = 0;
-    score += frame.firstRoll();
-    if (frame.isStrike() === false) {
-      score += frame.secondRoll();
+    score += this.frames[frameNum].firstRoll();
+    if (this.frames[frameNum].isStrike() === false) {
+      score += this.frames[frameNum].secondRoll();
     }
     return score;
   }
 
   totalScore() {
     let score = 0;
-    this.frames.forEach((frame) => {
-      score += this.frameScore(frame);
-    })
+    for (let i = 0; i < 10; i++) {
+      score += this.frameScore(i);
+    }
     return score;
   }
   

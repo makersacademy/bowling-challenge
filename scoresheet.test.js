@@ -4,6 +4,7 @@ describe('Scoresheet', () => {
   beforeEach(() => {
     scoresheet = new Scoresheet();
     mockEmptyFrame = {
+      scores: [],
       rolls: () => 0,
       isStrike: () => false,
       isSpare: () => false
@@ -156,5 +157,19 @@ describe('Scoresheet', () => {
     scoresheet.addFrame(perfectStrike);
     expect(scoresheet.totalScore()).toEqual(300);
   })
-})
 
+  it('calculates score of a random game correctly', () => {
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockSpare);
+    scoresheet.addFrame(mockStrike);
+    scoresheet.addFrame(mockStrike);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockSpare);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(mockStrike);
+    scoresheet.addFrame(mockFrame);
+    scoresheet.addFrame(perfectStrike);
+    expect(scoresheet.totalScore()).toEqual(148);
+  })
+
+})

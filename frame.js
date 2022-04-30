@@ -10,7 +10,7 @@ class Frame {
   }
 
   addRoll(num) {
-    this.scores = this.scores.concat(num);
+    this.scores.push(num);
   }
 
   firstRoll() {

@@ -4,7 +4,7 @@ class Scoresheet {
   }
 
   addFrame(frame) {
-    this.frames = this.frames.concat(frame);
+    this.frames.push(frame);
   }
 
   newFrame(frame) {
@@ -15,10 +15,10 @@ class Scoresheet {
     let score = 0;
     score += this.frames[frameNum].firstRoll();
     if (this.frames[frameNum].isStrike() === true) {
-      score += this.strikeBonus(frameNum);
+      score += this.#strikeBonus(frameNum);
     } else if (this.frames[frameNum].isSpare() === true) {
       score += this.frames[frameNum].secondRoll();
-      score += this.spareBonus(frameNum);
+      score += this.#spareBonus(frameNum);
     } else {
       score += this.frames[frameNum].secondRoll();
     }
@@ -33,7 +33,7 @@ class Scoresheet {
     return score;
   }
 
-  strikeBonus(frameNum) {
+  #strikeBonus(frameNum) {
     let bonus = 0
     if (frameNum === 9) {
       bonus += this.frames[frameNum].secondRoll() + this.frames[frameNum].bonusRoll();
@@ -47,7 +47,7 @@ class Scoresheet {
     return bonus
   }
 
-  spareBonus(frameNum) {
+  #spareBonus(frameNum) {
     let bonus = 0 
     if (frameNum === 9) {
       bonus += this.frames[frameNum].bonusRoll();

@@ -18,15 +18,15 @@ describe("A game", function() {
     expect(game.score()).toEqual(40);
   });
 
-  // it("calculates a game with spares", function() {
-  //   generateFrames([5,5], [5,5,5]);
-  //   expect(game.score()).toEqual(150);
-  // });
+  it("calculates a game with spares", function() {
+    generateFrames([5,5], [5,5,5]);
+    expect(game.score()).toEqual(150);
+  });
 
-  // it("calculates a game with strikes", function() {
-  //   generateFrames([10], [10,10,10]);
-  //   expect(game.score()).toEqual(300);
-  // });
+  it("calculates a game with strikes", function() {
+    generateFrames([10], [10,10,10]);
+    expect(game.score()).toEqual(300);
+  });
 
   function generateFrames(frame, final_frame) {
     for(i = 0; i < 9; i++) {

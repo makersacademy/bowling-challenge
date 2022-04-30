@@ -95,3 +95,5 @@ used the above to take multiple user inputs
 
 
 ## Functionality yet to be added
+Refactor code better\
+Refactor tests

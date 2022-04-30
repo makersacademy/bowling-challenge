@@ -50,7 +50,7 @@ describe(Frame, () => {
 
     frame.knocked_down_pins(10);
 
-    expect(frame.bonusRolls()).toEqual(2);
+    expect(frame.addBonusRolls()).toEqual(2);
   });
 
   it("allocates 1 bonus roll (points) if the user scores a spare", () => {
@@ -59,6 +59,19 @@ describe(Frame, () => {
     frame.knocked_down_pins(5);
     frame.knocked_down_pins(5);
 
-    expect(frame.bonusRolls()).toEqual(1);
+    expect(frame.addBonusRolls()).toEqual(1);
+  });
+
+  it("adds additional points to the score if the user scores a spare", () => {
+    const frame = new Frame();
+
+    frame.knocked_down_pins(5);
+    frame.knocked_down_pins(5);
+
+    frame.addBonusPoints(3);
+
+    frame.addScore();
+
+    expect(frame.score).toEqual(13);
   });
 });

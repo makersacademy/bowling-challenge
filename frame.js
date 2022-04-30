@@ -13,31 +13,35 @@ class Frame {
     if (
       this.pinsLog.length == 1 &&
       this.pinsLog.reduce((a, b) => a + b, 0) == 10
-    ) {
+    )
       return true;
-    }
   };
 
   isASpare = () => {
     if (
       this.pinsLog.length == 2 &&
       this.pinsLog.reduce((a, b) => a + b, 0) == 10
-    ) {
+    )
       return true;
-    }
   };
 
   addScore = () => {
-    return (this.score = this.pinsLog.reduce((a, b) => a + b, 0));
+    this.addBonusRolls();
+    this.score = this.pinsLog.reduce((a, b) => a + b, 0);
+    return this.score;
   };
 
   isComplete = () => {
     if (this.pinsLog.length == 2 || this.isAStrike()) return true;
   };
 
-  bonusRolls = () => {
+  addBonusRolls = () => {
     if (this.isASpare()) return (this.bonusPoints = 1);
     if (this.isAStrike()) return (this.bonusPoints = 2);
+  };
+
+  addBonusPoints = (bonusPoints) => {
+    this.pinsLog.push(bonusPoints);
   };
 }
 

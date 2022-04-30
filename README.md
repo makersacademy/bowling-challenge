@@ -21,7 +21,13 @@ To do this, I will be planning my program with Domain Modelling and by using TDD
 ## Instructions
 Clone this repository to your desired location using `git clone https://github.com/mcsuGH/bowling_js.git`.\
 \
-You can then run `npm add jest` whilst in the main directory in your terminal and then use the command `jest` to run the tests. Alternatively, use node.
+You can then run `npm add jest` whilst in the main directory in your terminal and then use the command `jest` to run the tests.\
+\
+To use the Command Line Interface, use `node interface.js` whilst in the main directory and enter your inputs according to the instructions.\
+\
+Alternatively, while in node, use `const Frame = require('./frame')` and `const Scoresheet = require('./scoresheet')` then create instances of frames by using `const frame1 = new Frame();`, add your scores to these frames using `frame1.addRoll(num)` with `num` being your score. Create a scoresheet by using `const scoresheet = new Scoresheet();` and add the frames you created by using `scoresheet.addFrame(frame1)`. Do this for 10 frames and then use `scoresheet.totalScore()`  to calculate your final score.
+
+![Screenshot](https://i.imgur.com/SAI2VHl.png)
 
 
 ## Specification 
@@ -82,8 +88,10 @@ I would like the final frame to add only the bonus of the extra roll/s rather th
 ## References
 ```
 https://www.asciiart.eu/sports-and-outdoors/bowling
+https://stackoverflow.com/questions/36540996/how-to-take-two-consecutive-input-with-the-readline-module-of-node-js
 ```
-used the above for ASCII art of the bowling sheet
+used the above for ASCII art of the bowling sheet\
+used the above to take multiple user inputs
 
 
 ## Functionality yet to be added

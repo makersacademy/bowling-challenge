@@ -26,6 +26,12 @@ class Frame {
     return this
   }
 
+  secondPlay(userInput) {
+    let roll = this.roll(userInput);
+    this.updateLog('secondRoll', roll);
+    return this
+  }
+
   roll(userInput) {
     if ( userInput > this.standingPins ) {
       throw new Error('User input exceeds standing pins')

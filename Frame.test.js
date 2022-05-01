@@ -79,3 +79,28 @@ describe('frame.firstPlay', () => {
     })
   })
 });
+
+describe('frame.secondPlay', () => {
+  describe('receives a user input as a second roll and updates the frame log', () => {
+    test('logs a non-spare second roll', () => {
+      let frame = new Frame();
+      frame.firstPlay(5)
+      expect(frame.secondPlay(4).log).toEqual({
+        firstRoll: 5,
+        secondRoll: 4,
+        score: 9,
+        bonus: null
+      });
+    })
+    test('logs a spare', () => {
+      let frame = new Frame();
+      frame.firstPlay(5)
+      expect(frame.secondPlay(5).log).toEqual({
+        firstRoll: 5,
+        secondRoll: 5,
+        score: null,
+        bonus: 'spare'
+      });
+    })
+  })
+});

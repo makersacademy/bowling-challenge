@@ -1,49 +1,68 @@
 var lodash = require('lodash');
-const prompt = require("prompt-sync")({ sigint: true });
 
 class Scorecard {
 
-constructor() {
-  this.currentGame = []
-  this.finishedGame = []
-}
-
-addRoll(num) {
-  if (this.currentGame.length === 20) {
-    this.sortIntoFrames();
-  } else if (this.currentGame.length < 20 ) {
-    this.currentGame.push(num);
-}
-  // do {
-  // const score = prompt(`Enter your score:`);
-  // this.currentGame.push(score)
-  // }
-  // while (this.currentGame.length < 20)
-}
-
-finalScore() {
-  let sum = lodash.sum(this.currentGame);
-  // let sum = this.frames.reduce((a, b) => a + b, 0)
-  let finalScoreCard = 0
-  return finalScoreCard += sum
-  // this.frames.forEach(scoring(frame, index) {
-
-  // })
-}
-
-sortIntoFrames() {
-  const chunkSize = 2;
-  for (let i = 0; i < this.currentGame.length; i += chunkSize) {
-    const chunk = this.currentGame.slice(i, i + chunkSize);
-    this.finishedGame.push(chunk)
+  constructor(frames) {
+    this.frames = frames
   }
-  return this.finishedGame;
-}
 
-scoring() {
-  finalScoreCard += frame
-}
+  finalScore() {
+    let finalScoreCard = 0
+    let merge = this.frames.flat(1)
+    let sum = lodash.sum(merge);
+    finalScoreCard += sum
+      this.frames.forEach((frame, index) => {
+        finalScoreCard += this.strikeBonus(index)
+        finalScoreCard += this.spareBonus(index)
+    });
 
+    return finalScoreCard
+  };
+
+  
+  private
+
+  isStrike(frame) {
+    if (frame[0] === 10) {
+      return true
+    }
+  };
+
+  strikeBonus(index) {
+    if (index === 9) {
+      return 0
+    } else if (!(this.isStrike(this.frames[index]))) {
+      return 0
+    }
+
+    let nextFrame = this.frames[index + 1]
+    let finalFrame = this.frames[9]
+
+    if (this.isStrike(nextFrame) === true ) {
+      return (nextFrame[0] + finalFrame[0])
+    } else if (this.isStrike(this.frames[index]) === true ) {
+      return lodash.sum(nextFrame)
+    }
+  };
+
+  isSpare(frame) {
+    if (frame.length > 1 && frame[0] + frame[1] == 10) {
+      return true
+    }
+  };
+
+  spareBonus(index) {
+    if (index === 9) {
+      return 0
+    }
+
+    let nextFrame = this.frames[index + 1][0]
+    
+      if (this.isSpare(this.frames[index]) === true ) {
+        return nextFrame
+    } else
+        return 0
+    };
 }
 
 module.exports = Scorecard;

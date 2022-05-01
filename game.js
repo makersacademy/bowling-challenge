@@ -11,8 +11,10 @@ class Game {
   };
 
   addFrame = (frame = new Frame()) => {
-    if (this.frames.length === 0) this.frames.push(frame);
-    else if (this.frames[this.frames.length - 1].isComplete())
+    if (
+      this.frames.length === 0 ||
+      this.frames[this.frames.length - 1].isComplete()
+    )
       this.frames.push(frame);
   };
 
@@ -27,9 +29,17 @@ class Game {
 
   addBonusPoints = () => {
     this.frames.forEach((frame, index) => {
-      if (this.frames[index].bonusPoints == 1) {
+      if (
+        this.frames[index].bonusPoints == 1 &&
+        typeof this.frames[index + 1] !== "undefined" &&
+        index !== 9
+      ) {
         this.frames[index].knocked_down_pins(this.frames[index + 1].pinsLog[0]);
-      } else if (this.frames[index].bonusPoints == 2) {
+      } else if (
+        this.frames[index].bonusPoints == 2 &&
+        typeof this.frames[index + 1] !== "undefined" &&
+        index !== 9
+      ) {
         this.frames[index].knocked_down_pins(this.frames[index + 1].pinsLog[0]);
         this.frames[index].knocked_down_pins(this.frames[index + 1].pinsLog[1]);
       }

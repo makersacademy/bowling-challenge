@@ -22,3 +22,10 @@ describe('frame.roll', () => {
     }).toThrowError();
   });
 });
+
+describe('frame.updateLog', () => {
+  test('adds a first roll to frame log', () => {
+    frame.updateLog('firstRoll', 5)
+    expect(frame.log['firstRoll']).toEqual(5);
+  });
+});

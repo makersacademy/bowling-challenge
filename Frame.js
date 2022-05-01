@@ -5,6 +5,10 @@ class Frame {
   constructor() {
     this.standingPins = 10;
     this.log = {
+      firstRoll: null,
+      secondRoll: null,
+      bonus: null,
+      score: null
     };
   }
 
@@ -16,12 +20,19 @@ class Frame {
   //   });
   // };
 
+  firstPlay(userInput) {
+    let roll = this.roll(userInput);
+    this.updateLog('firstRoll', roll);
+    return this
+  }
+
   roll(userInput) {
     if ( userInput > this.standingPins ) {
       throw new Error('User input exceeds standing pins')
     } else {
       this.standingPins -= userInput;
     };
+    return userInput;
   };
 
   updateLog(key, result) {

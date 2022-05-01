@@ -56,3 +56,15 @@ describe('frame.updateLog', () => {
     expect(frame.log['bonus']).toEqual('spare');
   });
 });
+
+describe('frame.firstPlay', () => {
+  test('receives a user input as a first roll and updates the frame log', () => {
+    let frame = new Frame();
+    expect(frame.firstPlay(5).log).toEqual({
+      firstRoll: 5,
+      secondRoll: null,
+      score: null,
+      bonus: null
+    });
+  })
+});

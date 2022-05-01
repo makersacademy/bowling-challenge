@@ -8,6 +8,13 @@ class Game {
   }
 
   addPointsScored = (num) => {
+    this.continueGame();
+    this.addFrame();
+    this.frames[this.frames.length - 1].knocked_down_pins(num);
+    this.addBonusRolls();
+  };
+
+  continueGame = () => {
     if (this.frames.length === this.lastFrame) {
       if (
         this.frames[this.frames.length - 1].pinsLog.length === 2 &&
@@ -24,9 +31,7 @@ class Game {
       (this.frames.length == this.bonusFrame &&
         this.frames[this.frames.length - 1].isASpare())
     ) {
-      this.addFrame();
-      this.frames[this.frames.length - 1].knocked_down_pins(num);
-      this.addBonusRolls();
+      return;
     } else throw "The game has finished!";
   };
 

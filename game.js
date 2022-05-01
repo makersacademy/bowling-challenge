@@ -82,10 +82,6 @@ class Game {
     });
     this.calculateScore();
   };
-
-  returnScore = () => {
-    return this.totalScore;
-  };
 }
 
 module.exports = {

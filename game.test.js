@@ -26,7 +26,7 @@ describe(Game.Game, () => {
     game.addPointsScored(3);
     game.addPointsScored(3);
 
-    expect(game.returnScore()).toEqual(10);
+    expect(game.totalScore).toEqual(10);
   });
 
   it("Adds up the scores of 2 frames with 1 spare", () => {
@@ -35,7 +35,7 @@ describe(Game.Game, () => {
     game.addPointsScored(5);
     game.addPointsScored(5);
 
-    expect(game.returnScore()).toEqual(10);
+    expect(game.totalScore).toEqual(10);
   });
 
   it("Checks each frame has it's own log of scores", () => {

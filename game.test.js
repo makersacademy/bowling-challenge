@@ -26,8 +26,6 @@ describe(Game.Game, () => {
     game.addPointsScored(3);
     game.addPointsScored(3);
 
-    game.calculateScore();
-
     expect(game.returnScore()).toEqual(10);
   });
 
@@ -36,8 +34,6 @@ describe(Game.Game, () => {
 
     game.addPointsScored(5);
     game.addPointsScored(5);
-
-    game.calculateScore();
 
     expect(game.returnScore()).toEqual(10);
   });
@@ -50,8 +46,6 @@ describe(Game.Game, () => {
 
     game.addPointsScored(1);
     game.addPointsScored(1);
-
-    game.calculateScore();
 
     expect(game.frames[0].addScore()).toEqual(6);
     expect(game.frames[1].addScore()).toEqual(2);
@@ -66,12 +60,6 @@ describe(Game.Game, () => {
     game.addPointsScored(3);
     game.addPointsScored(3);
 
-    game.addBonusRolls();
-
-    game.addBonusPoints();
-
-    game.calculateScore();
-
     expect(game.totalScore).toEqual(19);
   });
 
@@ -82,12 +70,6 @@ describe(Game.Game, () => {
 
     game.addPointsScored(3);
     game.addPointsScored(3);
-
-    game.addBonusRolls();
-
-    game.addBonusPoints();
-
-    game.calculateScore();
 
     expect(game.totalScore).toEqual(22);
   });

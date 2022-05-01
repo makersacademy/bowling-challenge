@@ -33,12 +33,6 @@ describe(Game.Game, () => {
     game.addPointsScored(8);
     game.addPointsScored(6);
 
-    game.addBonusRolls();
-
-    game.addBonusPoints();
-
-    game.calculateScore();
-
     expect(game.totalScore).toEqual(133);
   });
 });

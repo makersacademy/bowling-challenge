@@ -2,7 +2,8 @@ class Frame {
   constructor() {
     this.pinsLog = [];
     this.score = null;
-    this.bonusPoints = 0;
+    this.bonusRolls = 0;
+    this.bonusPinsLog = [];
   }
 
   knocked_down_pins = (noOfPins) => {
@@ -26,8 +27,8 @@ class Frame {
   };
 
   addScore = () => {
-    this.addBonusRolls();
-    this.score = this.pinsLog.reduce((a, b) => a + b, 0);
+    this.combineScore = this.pinsLog.concat(this.bonusPinsLog);
+    this.score = this.combineScore.reduce((a, b) => a + b, 0);
     return this.score;
   };
 
@@ -36,12 +37,16 @@ class Frame {
   };
 
   addBonusRolls = () => {
-    if (this.isASpare()) return (this.bonusPoints = 1);
-    if (this.isAStrike()) return (this.bonusPoints = 2);
+    if (this.isASpare()) return (this.bonusRolls = 1);
+    if (this.isAStrike()) return (this.bonusRolls = 2);
   };
 
   addBonusPoints = (bonusPoints) => {
-    this.pinsLog.push(bonusPoints);
+    this.bonusPinsLog.push(bonusPoints);
+  };
+
+  resetBonusPinsLog = () => {
+    this.bonusPinsLog = [];
   };
 }
 

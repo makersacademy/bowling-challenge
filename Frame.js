@@ -2,7 +2,8 @@
 
 class Frame {
 
-  constructor() {
+  constructor(frameNum) {
+    this.frameNum = frameNum;
     this.standingPins = 10;
     this.log = {
       firstRoll: null,

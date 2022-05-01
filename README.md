@@ -1,5 +1,15 @@
 ## Jordan's Bowling Scorecard
 
+```
+  _ 0
+o'-/-\--------------------------------------------
+  |\                                           . o
+  / |       '.                             . o . o
+             .'                              o . o
+            '                                    o
+__________________________________________________
+```
+
 Welcome! This is my bowling scorecard written using JavaScript. 
 
 There are two different ways this program can be run. 

@@ -30,7 +30,7 @@ Using the CLI, you are able to enter your scores one at a time and your score wi
 - This will import your scorecard into the program, to have the program calculate your final score you can use the function '.finalScore();'
 - Happy Bowling! 
 
-![Screenshot](https://imgur.com/Blw0tac.png)
+![Screenshot](https://imgur.com/pl7EkjY.png)
 
 ### CLI
 

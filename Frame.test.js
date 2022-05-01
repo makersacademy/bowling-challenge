@@ -25,23 +25,34 @@ describe('frame.roll', () => {
 
 describe('frame.updateLog', () => {
   test('adds a first roll to frame log', () => {
+    let frame = new Frame();
     frame.updateLog('firstRoll', 5);
     expect(frame.log['firstRoll']).toEqual(5);
   });
 
   test('adds a second roll to frame log', () => {
+    let frame = new Frame();
     frame.updateLog('secondRoll', 4);
     expect(frame.log['secondRoll']).toEqual(4);
   });
 
   test('logs frame score on adding second roll if total less than 10', () => {
+    let frame = new Frame();
     frame.updateLog('firstRoll', 5);
     frame.updateLog('secondRoll', 4);
     expect(frame.log['score']).toEqual(9);
   });
 
-  test('logs strike bonus if first roll is 10', () => {
+  test('logs strike bonus on adding first roll if first roll is 10', () => {
+    let frame = new Frame();
     frame.updateLog('firstRoll', 10);
     expect(frame.log['bonus']).toEqual('strike');
+  });
+
+  test('logs spare bonus on adding second roll if total is 10', () => {
+    let frame = new Frame();
+    frame.updateLog('firstRoll', 5);
+    frame.updateLog('secondRoll', 5);
+    expect(frame.log['bonus']).toEqual('spare');
   });
 });

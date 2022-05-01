@@ -29,7 +29,11 @@ class Frame {
     if (key === 'firstRoll' && result === 10) {
       this.log['bonus'] = 'strike';
     } else if (key === 'secondRoll') {
-      this.log['score'] = this.log['firstRoll'] + this.log['secondRoll']
+      if (result + this.log['firstRoll'] === 10) {
+        this.log['bonus'] = 'spare'
+      } else {
+        this.log['score'] = this.log['firstRoll'] + this.log['secondRoll']
+      }
     };
   };
 };

@@ -21,6 +21,21 @@ class Game {
     this.frames.forEach((frame) => (this.totalScore += frame.addScore()));
   };
 
+  addBonusRolls = () => {
+    this.frames.forEach((frame, index) => this.frames[index].addBonusRolls());
+  };
+
+  addBonusPoints = () => {
+    this.frames.forEach((frame, index) => {
+      if (this.frames[index].bonusPoints == 1) {
+        this.frames[index].knocked_down_pins(this.frames[index + 1].pinsLog[0]);
+      } else if (this.frames[index].bonusPoints == 2) {
+        this.frames[index].knocked_down_pins(this.frames[index + 1].pinsLog[0]);
+        this.frames[index].knocked_down_pins(this.frames[index + 1].pinsLog[1]);
+      }
+    });
+  };
+
   returnScore = () => {
     return this.totalScore;
   };

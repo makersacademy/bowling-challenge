@@ -1,7 +1,7 @@
 class Frame {
   constructor() {
     this.pinsLog = [];
-    this.score = 0;
+    this.score = null;
     this.bonusPoints = 0;
   }
 

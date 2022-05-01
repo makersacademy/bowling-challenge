@@ -66,8 +66,29 @@ describe(Game.Game, () => {
     game.addPointsScored(3);
     game.addPointsScored(3);
 
+    game.addBonusRolls();
+
+    game.addBonusPoints();
+
     game.calculateScore();
 
     expect(game.totalScore).toEqual(19);
+  });
+
+  it("adds additional points when a strike is scored", () => {
+    const game = new Game.Game();
+
+    game.addPointsScored(10);
+
+    game.addPointsScored(3);
+    game.addPointsScored(3);
+
+    game.addBonusRolls();
+
+    game.addBonusPoints();
+
+    game.calculateScore();
+
+    expect(game.totalScore).toEqual(22);
   });
 });

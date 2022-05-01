@@ -58,13 +58,24 @@ describe('frame.updateLog', () => {
 });
 
 describe('frame.firstPlay', () => {
-  test('receives a user input as a first roll and updates the frame log', () => {
-    let frame = new Frame();
-    expect(frame.firstPlay(5).log).toEqual({
-      firstRoll: 5,
-      secondRoll: null,
-      score: null,
-      bonus: null
-    });
+  describe('receives a user input as a first roll and updates the frame log', () => {
+    test('logs a non-ten first roll', () => {
+      let frame = new Frame();
+      expect(frame.firstPlay(5).log).toEqual({
+        firstRoll: 5,
+        secondRoll: null,
+        score: null,
+        bonus: null
+      });
+    })
+    test('logs a strike', () => {
+      let frame = new Frame();
+      expect(frame.firstPlay(10).log).toEqual({
+        firstRoll: 10,
+        secondRoll: null,
+        score: null,
+        bonus: 'strike'
+      });
+    })
   })
 });

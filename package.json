@@ -1,0 +1,29 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "This is Alexis Morcrette's partial solution to the Bowling Challenge in JavaScript, Makers Academy's Week 6 Weekend Challenge.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/almorcrette/bowling-challenge-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/almorcrette/bowling-challenge-js/issues"
+  },
+  "homepage": "https://github.com/almorcrette/bowling-challenge-js#readme",
+  "dependencies": {
+    "jest": "^28.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.14.0"
+  }
+}

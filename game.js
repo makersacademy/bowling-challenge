@@ -3,17 +3,26 @@ const Frame = require("./frame");
 class Game {
   constructor() {
     this.frames = [];
-    this.lastFrame = 11;
-    this.bonusFrameFrame = 11;
+    this.lastFrame = 10;
+    this.bonusFrame = 11;
   }
 
   addPointsScored = (num) => {
+    if (this.frames.length === this.lastFrame) {
+      if (
+        this.frames[this.frames.length - 1].pinsLog.length === 2 &&
+        this.frames[this.frames.length - 1].addScore() < 10
+      ) {
+        throw "The game has finished!";
+      }
+    }
+
     if (
       this.frames.length <= this.lastFrame ||
       (this.frames.length == this.bonusFrame &&
-        this.frames[this.bonusFrame].isAStrike) ||
+        this.frames[this.frames.length - 1].isAStrike()) ||
       (this.frames.length == this.bonusFrame &&
-        this.frames[this.bonusFrame].isASpare)
+        this.frames[this.frames.length - 1].isASpare())
     ) {
       this.addFrame();
       this.frames[this.frames.length - 1].knocked_down_pins(num);

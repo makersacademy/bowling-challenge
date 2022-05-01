@@ -14,16 +14,18 @@ class Frame {
     if (
       this.pinsLog.length == 1 &&
       this.pinsLog.reduce((a, b) => a + b, 0) == 10
-    )
+    ) {
       return true;
+    } else return false;
   };
 
   isASpare = () => {
     if (
       this.pinsLog.length == 2 &&
       this.pinsLog.reduce((a, b) => a + b, 0) == 10
-    )
+    ) {
       return true;
+    } else return false;
   };
 
   addScore = () => {

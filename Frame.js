@@ -43,6 +43,10 @@ class Frame {
 
   updateLog(key, result) {
     this.log[`${key}`] = result;
+    this.#privateLogScoreAndBonuses(key,result)
+  };
+
+  #privateLogScoreAndBonuses(key, result) {
     if (key === 'firstRoll' && result === 10) {
       this.log['bonus'] = 'strike';
     } else if (key === 'secondRoll') {
@@ -52,7 +56,7 @@ class Frame {
         this.log['score'] = this.log['firstRoll'] + this.log['secondRoll']
       }
     };
-  };
+  }
 };
 
 module.exports = Frame;

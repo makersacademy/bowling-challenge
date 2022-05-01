@@ -3,10 +3,9 @@
 class Frame {
 
   constructor() {
-    this.standingPins = 10
+    this.standingPins = 10;
     this.log = {
-      firstRoll: null
-    }
+    };
   }
 
   // async userInput() {
@@ -27,7 +26,10 @@ class Frame {
 
   updateLog(key, result) {
     this.log[`${key}`] = result;
-  }
+    if (key = 'secondRoll') {
+      this.log['score'] = this.log['firstRoll'] + this.log['secondRoll']
+    };
+  };
 };
 
 module.exports = Frame;

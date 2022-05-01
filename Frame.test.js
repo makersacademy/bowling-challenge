@@ -33,4 +33,12 @@ describe('frame.updateLog', () => {
     frame.updateLog('secondRoll', 4)
     expect(frame.log['secondRoll']).toEqual(4);
   })
+
+  test('logs frame score on adding second roll if total less than 10', () => {
+    frame.updateLog('firstRoll', 5)
+    frame.updateLog('secondRoll', 4)
+    expect(frame.log['score']).toEqual(9);
+
+
+  })
 });

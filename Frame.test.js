@@ -28,4 +28,9 @@ describe('frame.updateLog', () => {
     frame.updateLog('firstRoll', 5)
     expect(frame.log['firstRoll']).toEqual(5);
   });
+
+  test('adds a second roll to frame log', () => {
+    frame.updateLog('secondRoll', 4)
+    expect(frame.log['secondRoll']).toEqual(4);
+  })
 });

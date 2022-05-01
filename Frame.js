@@ -26,7 +26,7 @@ class Frame {
   };
 
   updateLog(key, result) {
-    this.log['firstRoll'] = result;
+    this.log[`${key}`] = result;
   }
 };
 

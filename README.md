@@ -2,37 +2,47 @@
 Bowling Challenge
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
-
-## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. THE USER INPUTS THE ROLLS.**
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
+## Getting Started
 
-* Forking this repo
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+### Prerequisites
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+What things you need to install the software and how to install them
 
-### Optional Extras
+```
+You will need javascript and jest installed 
+```
 
-In any order you like:
+### Installing
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+A step by step series of examples that tell you how to get a development env running
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+Say what the step will be
+
+```
+clone this repo
+```
+
+Example of a game: 
+
+![Screenshot 2022-05-02 at 12 59 34](https://user-images.githubusercontent.com/99490100/166231732-072b126d-bbc7-46fa-b6bf-d75404c35ec6.png)
+
+
+## Running the tests
+
+Run 
+```
+jest 
+```
+command in the parent directory to run all the 12 test cases (two test suits)
+
 
 ## Bowling — how does it work?
 
@@ -62,14 +72,3 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

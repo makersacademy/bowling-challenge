@@ -46,6 +46,20 @@ describe("Scorecard", () => {
     isStrike: () => true
   }
 
+  describe("getFrames", () => {
+    it("displays a / for a spare", () => {
+      const card = new Scorecard;
+      card.addFrame(3, 7, mockFrameSpare);
+      expect(card.getFrames()).toEqual([[3,"/"]]);
+    });
+
+    it("displays a X for a strike", () => {
+      const card = new Scorecard;
+      card.addFrame(10, null, mockFrameStrike);
+      expect(card.getFrames()).toEqual([["X"]]);
+    });
+  });
+
   describe("addFrame", () => {
     it("adds a new frame to the frames array with the rolls", () => {
       const card = new Scorecard;

@@ -27,6 +27,20 @@ describe("A game", function () {
     expect(game.score()).toEqual(300);
   });
 
+  it("calculated a whole game", function(){
+    game.roll([2,3]);
+    game.roll([7,3]);
+    game.roll([2,8]);
+    game.roll([3,4]);
+    game.roll([10]);
+    game.roll([3,3]);
+    game.roll([2,3]);
+    game.roll([10]);
+    game.roll([2,3]);
+    game.roll([10,10,3]);
+    expect(game.score()).toEqual(107);
+  });
+
   function generateFrames(frame, final_frame) {
     for (i = 0; i < 9; i++) {
       game.roll(frame);

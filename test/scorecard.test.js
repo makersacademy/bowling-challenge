@@ -46,6 +46,16 @@ describe("Scorecard", () => {
     isStrike: () => true
   }
 
+  const mockFrameSingle = {
+    addFirstRoll: () => undefined,
+    addSecondRoll: () => undefined,
+    getFirstRoll: () => 4,
+    getSecondRoll: () => null,
+    pins: () => 4,
+    isSpare: () => false,
+    isStrike: () => false
+  }
+
   describe("getFrames", () => {
     it("displays a / for a spare", () => {
       const card = new Scorecard;
@@ -57,6 +67,16 @@ describe("Scorecard", () => {
       const card = new Scorecard;
       card.addFrame(10, null, mockFrameStrike);
       expect(card.getFrames()).toEqual([["X"]]);
+    });
+
+    it("displays one roll for a bonus frame with one roll", () => {
+      const card = new Scorecard;
+      for (i = 0; i < 10; i++) {
+        card.addFrame(3, 7, mockFrameSpare);
+      }
+      card.addFrame(4, null, mockFrameSingle);
+      const last = card.frames.length - 1;
+      expect(card.getFrames()[last]).toEqual([4]);
     });
   });
 

@@ -55,6 +55,15 @@ describe('Frame', () => {
       expect(frame.getSecondRoll()).toEqual(null);
     });
   })
+
+  describe("pins", () => {
+    it("gives the number of pins knocked down", () => {
+      const frame = new Frame;
+      frame.addFirstRoll(3);
+      frame.addSecondRoll(6);
+      expect(frame.pins()).toEqual(9);
+    });
+  });
   
   describe("isSpare", () => {
     it("returns true when 10 pins have been knocked down using both rolls", () => {

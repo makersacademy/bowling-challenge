@@ -2,9 +2,11 @@
 Bowling Challenge
 =================
 
-# Project Title
+**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. THE USER INPUTS THE ROLLS.**
 
-One Paragraph of project description goes here
+Count and sum the scores of a bowling game for one player (in JavaScript).
+
+A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
 ## Getting Started
 
@@ -30,31 +32,17 @@ clone this repo
 
 Example of a game: 
 
+![Screenshot 2022-05-02 at 12 59 34](https://user-images.githubusercontent.com/99490100/166231732-072b126d-bbc7-46fa-b6bf-d75404c35ec6.png)
+
 
 ## Running the tests
 
-Run ''' jest ''' command in the parent directory to run 12 test cases (two test suits)
+Run 
+```
+jest 
+```
+command in the parent directory to run all the 12 test cases (two test suits)
 
-
-
-## The Task
-
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
-
-Count and sum the scores of a bowling game for one player (in JavaScript).
-
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
 
 ## Bowling — how does it work?
 
@@ -84,14 +72,3 @@ A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 str
 In the image below you can find some score examples.
 
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

@@ -4,7 +4,7 @@ Bowling Challenge
 
 This is a programme that simulates a bowling scorecard that takes the user's input as rolls from a game and calculates the total score from those rolls. Initially, the score of each frame is calculated and then used to calculate the total score of the game. The user interface was written using readLine and takes each roll at a time from the user and updates the scorecard, one frame at a time.
 
-### Get Started
+### Getting Started
 
 To begin, clone this repository:
 ```
@@ -23,7 +23,7 @@ To use this program, simply run the interface file in the [lib](https://github.c
 ```
 node scorecardInterface.js
 ```
-then begin entering the rolls for each frame.
+then begin entering the rolls for each frame. This will give you an array of all frames together as well as a total score for the game that is submitted.
 
 ### Tests
 
@@ -31,7 +31,9 @@ In order to run the tests for each class, simply run:
 ```
 jest
 ```
-These tests were written using the TDD process and cover each function including their edge cases.
+These tests in the [test](https://github.com/jmcnally17/bowling-challenge-javascript/tree/main/test) folder were written using the TDD process and cover each function including their edge cases.
+
+*Note: the user interface was not test driven and was tested purely through trial and error.*
 
 ## Bowling — how does it work?
 

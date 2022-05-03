@@ -12,9 +12,10 @@ To use, start by forking this repo. This project relies on Jest for testing. Fol
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-This project employs two methods to calculate the scores: roll() and show(). Thes methods in turn rely on a number of private methods to ensure that that the roll scores are valid, and are entered in the correct positions on the score card. I beliueve that the testing covers all of the major edge cases possible. I also believe that this mkes the code quite readbale for novices, or those unfamilar to the code.
+This project employs two methods to calculate the scores: roll() and show(). Thes methods in turn rely on a number of private methods to ensure that that the roll scores are valid, and are entered in the correct positions on the score card. I believe that the testing covers all of the major edge cases possible. I also believe that this makes the code quite readbale for novices, or those unfamilar to the code.
 
-This project will rely on ES lint to ensure standard JavaScript convetions are followed: https://eslint.org/docs/user-guide/getting-started
+This project relies on ES lint to ensure standard JavaScript convetions are followed: https://eslint.org/docs/user-guide/getting-started
+The conventions I added are based on common js.
 
 Eventually, I intend to add an interactive animated interface with jQuery.
 

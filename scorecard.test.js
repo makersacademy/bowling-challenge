@@ -22,6 +22,14 @@ describe(Scorecard, () => {
     expect(card.scores).toEqual([[10], [3]]);
   });
 
+  it("adds a strike to the next frame after a completed frame", () => {
+    const card = new Scorecard();
+    card.roll(3);
+    card.roll(5);
+    card.roll(10);
+    expect(card.scores).toEqual([[3, 5], [10]]);
+  });
+
   it("allows a third roll in the tenth frame if a spare has already been scored in the frame", () => {
     const card = new Scorecard();
     for(i = 0; i < 20; i++) {
@@ -79,7 +87,7 @@ describe(Scorecard, () => {
 
   it("throws an error if the combined number of pins in the second frame is more than 10", () => {
     const card = new Scorecard();
-    for(i = 0; i < 4; i++) {
+    for(i = 0; i < 3; i++) {
       card.roll(4);
     };
     expect(() => {
@@ -92,7 +100,6 @@ describe(Scorecard, () => {
     for(i = 0; i < 19; i++) {
       card.roll(3);
     };  
-    console.log(card.scores)   
     expect(() => {
       card.roll(8);
     }).toThrow("The maths don't work on those last two rolls! Try again...");

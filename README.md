@@ -2,37 +2,38 @@
 Bowling Challenge
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+This is a programme that simulates a bowling scorecard that takes the user's input as rolls from a game and calculates the total score from those rolls. Initially, the score of each frame is calculated and then used to calculate the total score of the game. The user interface was written using readLine and takes each roll at a time from the user and updates the scorecard, one frame at a time.
 
-## The Task
+### Getting Started
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+To begin, clone this repository:
+```
+git clone https://github.com/jmcnally17/bowling-challenge-javascript.git
+```
+Next, carry out the necessary commands to setup jest in order to setup the test environment:
+```
+npm init -y
+npm add jest
+npm install -g jest
+```
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+### How To Use
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+To use this program, simply run the interface file in the [lib](https://github.com/jmcnally17/bowling-challenge-javascript/tree/main/lib) folder:
+```
+node scorecardInterface.js
+```
+then begin entering the rolls for each frame. This will give you an array of all frames together as well as a total score for the game that is submitted.
 
-As usual please start by
+### Tests
 
-* Forking this repo
+In order to run the tests for each class, in the [main](https://github.com/jmcnally17/bowling-challenge-javascript) directory, simply run:
+```
+jest
+```
+These tests in the [test](https://github.com/jmcnally17/bowling-challenge-javascript/tree/main/test) folder were written using the TDD process and cover each function present in the classes including their edge cases.
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+*Note: the user interface was not test driven and was tested purely through trial and error.*
 
 ## Bowling — how does it work?
 

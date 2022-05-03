@@ -8,7 +8,7 @@ This is a programme that simulates a bowling scorecard that takes the user's inp
 
 To begin, clone this repository:
 ```
-git clone https://github.com/makersacademy/bowling-challenge.git
+git clone https://github.com/jmcnally17/bowling-challenge-javascript.git
 ```
 Next, carry out the necessary commands to setup jest in order to setup the test environment:
 ```
@@ -27,11 +27,11 @@ then begin entering the rolls for each frame. This will give you an array of all
 
 ### Tests
 
-In order to run the tests for each class, simply run:
+In order to run the tests for each class, in the [main](https://github.com/jmcnally17/bowling-challenge-javascript) directory, simply run:
 ```
 jest
 ```
-These tests in the [test](https://github.com/jmcnally17/bowling-challenge-javascript/tree/main/test) folder were written using the TDD process and cover each function including their edge cases.
+These tests in the [test](https://github.com/jmcnally17/bowling-challenge-javascript/tree/main/test) folder were written using the TDD process and cover each function present in the classes including their edge cases.
 
 *Note: the user interface was not test driven and was tested purely through trial and error.*
 

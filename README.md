@@ -1,38 +1,23 @@
 
-Bowling Challenge
+Bowling Challenge in JavaScript
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+* Some of the logic, particularly that pertaining to the bonuses is taken from my own attempt for a similar challenge in Ruby: https://github.com/Josenewmano/bowling-challenge-ruby
 
 ## The Task
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. THE USER INPUTS THE ROLLS.**
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+To use, start by forking this repo. This project relies on Jest for testing. Follow the following instructions to set up the Jest testing environment if you are unsure: https://github.com/makersacademy/javascript-fundamentals/blob/main/pills/setting_up_project.md
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
+This project employs two methods to calculate the scores: roll() and show(). Thes methods in turn rely on a number of private methods to ensure that that the roll scores are valid, and are entered in the correct positions on the score card. I beliueve that the testing covers all of the major edge cases possible. I also believe that this mkes the code quite readbale for novices, or those unfamilar to the code.
 
-* Forking this repo
+This project will rely on ES lint to ensure standard JavaScript convetions are followed: https://eslint.org/docs/user-guide/getting-started
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+Eventually, I intend to add an interactive animated interface with jQuery.
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
 
 ## Bowling — how does it work?
 

@@ -12,6 +12,12 @@ describe("bowlingGame", () => {
         expect(Game.calculateTotalScore()).toBe(8);
     })
 
+    it ("can roll a gutter game, zero 20 times", () => {
+        let Game = new bowlingGame();
+        rollPins(Game, 0, 20);
+        expect(Game.calculateTotalScore()).toEqual(0)
+    })
+
     function rollPins(Game, number, times)  {
         for(let i = 0; i < times; i++){
             Game.rollPin(number)

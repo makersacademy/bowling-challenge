@@ -7,6 +7,12 @@ describe('Game', () => {
     game = new BowlingGame();
   });
 
+  function rollMany(pins, rolls) {
+    for (let i = 0; i < rolls; i += 1) {
+      game.roll(pins);
+    }
+  }
+
   it('should return 0 for a game of all zeros', () => {
     rollMany(0, 20);
 
@@ -37,9 +43,9 @@ describe('Game', () => {
     expect(game.score()).toEqual(14);
   });
 
-  function rollMany(pins, rolls) {
-    for (let i = 0; i < rolls; i += 1) {
-      game.roll(pins);
-    }
-  }
+  it('should return the correct score when perfect game', () => {
+    rollMany(10, 12);
+
+    expect(game.score()).toEqual(300);
+  });
 });

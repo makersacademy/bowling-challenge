@@ -4,7 +4,7 @@ class BowlingGame {
   }
 
   roll(pins) {
-    this.rolls.push(pins);
+    return this.rolls.push(pins);
   }
 
   score() {
@@ -15,22 +15,23 @@ class BowlingGame {
       if (this.isStrike(rollIndex)) {
         score += this.strikeBonus(rollIndex);
         rollIndex += 1;
-        continue; // why and to use it
-      }
-
-      const frameScore = this.rolls[rollIndex] + this.rolls[rollIndex + 1];
-
-      if (this.isSpare(frameScore)) {
-        score += this.spareBonus(rollIndex);
       } else {
-        score += frameScore;
+        const frameScore = this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+
+        if (frameScore === 10) {
+          score += this.spareBonus(rollIndex);
+        } else {
+          score += frameScore;
+        }
+
+        rollIndex += 2;
       }
-
-      rollIndex += 2;
+      console.log(score);
     }
-
     return score;
   }
+
+  private;
 
   isStrike(rollIndex) {
     return this.rolls[rollIndex] === 10;
@@ -38,10 +39,6 @@ class BowlingGame {
 
   strikeBonus(rollIndex) {
     return 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
-  }
-
-  isSpare(frameScore) {
-    return frameScore === 10;
   }
 
   spareBonus(rollIndex) {

@@ -1,44 +1,48 @@
+const Frame = require("./frame");
+
 class Game {
   constructor() {
-    this.rolls = [];
+    this.frames = [new Frame()];
+    this.frameNumber = 0;
   }
 
   roll(numberOfPins) {
-    this.rolls.push(numberOfPins);
+    if (this.frames[this.frameNumber].completed) {
+      this.frames.push(new Frame());
+      this.frameNumber++;
+    }
+
+    this.frames[this.frameNumber].roll(numberOfPins);
   }
 
   calculateScore() {
     let score = 0;
-    let rollNumber = 0;
 
-    for (let frameNumber = 0; frameNumber < 12; frameNumber++) {
-      let currentRoll = this.rolls[rollNumber];
-      let nextRoll = this.rolls[rollNumber + 1];
-      let nextAgainRoll = this.rolls[rollNumber + 2];
-
-      if (this.isStrike(currentRoll)) {
-        score += nextRoll;
-        score += nextAgainRoll;
+    this.frames.map((frame, index) => {
+      if (frame.isStrike()) {
+        score += this.strikeBonus(index);
+      } else if (frame.isSpare()) {
+        score += this.spareBonus(index);
       }
+      score += frame.total();
+    });
 
-      if (this.isSpare(currentRoll, nextRoll)) {
-        score += nextAgainRoll;
-        rollNumber += 1;
-      }
-
-      rollNumber += 1;
-    }
-
-    score += this.rolls.reduce((sum, current) => sum + current);
     return score;
   }
 
-  isStrike(currentRoll) {
-    return currentRoll === 10;
+  strikeBonus(frameIndex) {
+    let nextFrame = this.frames[frameIndex + 1];
+    let nextAgainFrame = this.frames[frameIndex + 2];
+
+    if (nextFrame.rolls.length === 2) {
+      return nextFrame.rolls[0] + nextFrame.rolls[1];
+    } else {
+      return nextFrame.rolls[0] + nextAgainFrame.rolls[0];
+    }
   }
 
-  isSpare(currentRoll, nextRoll) {
-    return currentRoll + nextRoll === 10;
+  spareBonus(frameIndex) {
+    return this.frames[frameIndex + 1].rolls[0];
   }
 }
 

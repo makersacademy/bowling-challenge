@@ -26,7 +26,7 @@ describe("game", () => {
     expect(game.calculateScore()).toBe(12);
   });
 
-  it("should return 14 when player always rolls a strike and a 1", () => {
+  it("should return 14 when player always rolls a strike and two 1s", () => {
     game.roll(10);
     game.roll(1);
     game.roll(1);

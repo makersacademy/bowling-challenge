@@ -43,11 +43,11 @@ describe("game", () => {
     expect(game.calculateScore()).toBe(119);
   });
 
-  // it("should return 300 when a strike is rolled every time", () => {
-  //   rollMultiple(10, 20);
+  it("should return 300 when a strike is rolled every time", () => {
+    rollMultiple(10, 20);
 
-  //   expect(game.calculateScore()).toBe(300);
-  // });
+    expect(game.calculateScore()).toBe(300);
+  });
 });
 
 function rollMultiple(value, times) {

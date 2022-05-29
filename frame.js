@@ -3,9 +3,9 @@ class Frame {
     this.rolls = []
   }
 
-  input_roll(roll) {
-    if(roll <= 10 && this.sum_it(this.rolls) + roll <= 10){
-      this.rolls.push(roll)}
+  input_roll(pins) {
+    if(pins <= 10 && this.sum_it(this.rolls) + pins <= 10){
+      this.rolls.push(pins)}
     else {
       throw 'pick a lower number';
     }
@@ -25,6 +25,31 @@ class Frame {
     }
     else {
       return false}
+  }
+
+  bonus() {
+    if(this.strike === true || this.spare === true) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+
+  complete() {
+    if(this.rolls.length === 2) {
+      return true
+    }
+    else if(this.spare()) {
+      return true 
+    }
+    else if(this.strike()) {
+      return true
+    }
+
+    else {
+      return false
+    }
   }
   
   sum_it(array) {

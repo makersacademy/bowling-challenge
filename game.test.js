@@ -46,4 +46,13 @@ describe('game', () => {
     }
     expect(game.calculateScore()).toBe(30);
   });
+  
+  // 5 - Perfect Game
+  it('returns 300 when the player rolls 10 strikes plus 2 bonus strikes', () => {
+    for (let i = 0 ; i < 12 ; i++)  {
+      game.roll(10);
+    }
+    expect(game.calculateScore()).toBe(300);
+  });
+
 });

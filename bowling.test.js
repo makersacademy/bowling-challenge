@@ -26,5 +26,18 @@ describe('Bowling', () => {
       bowling.logScore(6);
       expect(bowling.totalScore).toEqual(49);
     })
+    it('knows what frame it is on', () => {
+      expect(bowling.frameNumber).toEqual(5);
+    })
+    it('knows when it is on frame 10', () => {
+      for(let i = 0; i < 9; i++) {
+        bowling.logScore(1);
+      }
+      expect(bowling.frameNumber).toEqual(10);
+    })
+    it('still knows the score', () => {
+      expect(bowling.totalScore).toEqual(64);
+    })
+    // now to write some tests for round ten!!
   })
 })

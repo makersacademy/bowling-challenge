@@ -1,6 +1,7 @@
 class Bowling {
   constructor() {
     this.totalScore = 0;
+    this.frameNumber = 1;
     this.roundTracking = [];
     for (let i = 0; i < 10; i++) {
       this.roundTracking[i] = {
@@ -11,7 +12,6 @@ class Bowling {
         running_total: 0
       }
     }
-    this.frameNumber = 1;
   }
   logScore = (score) => {
     if (this.frameNumber === 10) {

@@ -1,4 +1,4 @@
-const SpecialFrame = require('./specialFrame')
+const SpecialFrame = require('./specialFrame');
 
 describe('special frame (frame 10) class', () => {
   it('score is 0 and frame is complete when first roll and second roll are 0', () =>{

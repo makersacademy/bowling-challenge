@@ -9,12 +9,14 @@ class Frame {
   }
 
   countRoll(pinsKnocked) {
-    this.pins -= pinsKnocked;
-    this.checkPins()
-    if (this.roll === 1) {
-      this.roll = 2;
-    } else {
-      this.complete = true;
+    if ((this.pins - pinsKnocked) >= 0) {
+      this.pins -= pinsKnocked;
+      this.checkPins()
+      if (this.roll === 1) {
+        this.roll = 2;
+      } else {
+        this.complete = true;
+      }
     }
   }
 

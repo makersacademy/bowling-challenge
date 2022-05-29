@@ -1,4 +1,4 @@
-const Frame = require('./frame')
+const Frame = require('./frame');
 
 describe('frame class', () => {
   it('score is 0 and frame is complete when first roll and second roll are 0', () =>{
@@ -71,7 +71,7 @@ describe('frame class', () => {
       frame.addBonusScore(4);
       frame.addBonusScore(5);
       frame.calculateScore();
-      
+
       expect(frame.score).toEqual(14);
     })
   })

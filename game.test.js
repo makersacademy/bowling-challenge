@@ -55,4 +55,33 @@ describe('game', () => {
     expect(game.calculateScore()).toBe(300);
   });
 
+  // 6 - 10th Frame Spare 
+  it('returns 29 when the player rolls a spare in the 10th frame plus 1 for bonus', () => {
+    for (let i = 0 ; i < 18 ; i++)  {
+      game.roll(1);
+    }
+    game.roll(5);
+    game.roll(5);
+    game.roll(1);
+    expect(game.calculateScore()).toBe(29);
+  });
+
+  // 7 - 10th Frame Strike
+  it('returns 29 when the player rolls one strike in the 10th frame plus 2 x 1 for bonus', () => {
+    for (let i = 0 ; i < 18 ; i++)  {
+      game.roll(1);
+    }
+    game.roll(10);
+    game.roll(1);
+    game.roll(1);
+    expect(game.calculateScore()).toBe(30);
+  });
+
+  // Maximum Score
+  it('allows a maximum score of 300', () => {
+    for (let i = 0 ; i < 20 ; i++)  {
+      game.roll(10);
+    }
+    expect(game.calculateScore()).toBe(300);
+  });
 });

@@ -23,7 +23,7 @@ class Scorecard {
       if(this.frameScore + number <= 10 ) {
         this.frameScore += number
       } else {
-        this.frameScore = 10
+        throw ('Score exceeds maximum number of pins. Please input score again by calling frameInput.')
       }
         this.frameScoretoTotalScore()
         this.frame += 1

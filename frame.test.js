@@ -6,12 +6,14 @@ describe('frame class', () => {
     frame.countRoll(0);
     frame.countRoll(0);
     frame.calculateScore();
+
     expect(frame.score).toEqual(0);
     expect(frame.complete).toEqual(true);
   });
   it('frame incomplete if only one roll less than 10', () =>{
     const frame = new Frame;
     frame.countRoll(3);
+
     expect(frame.complete).toEqual(false);
   });
   it('score is 5 and frame is complete when first roll is 2 and second roll is 3', () =>{
@@ -19,6 +21,7 @@ describe('frame class', () => {
     frame.countRoll(2);
     frame.countRoll(3);
     frame.calculateScore();
+
     expect(frame.score).toEqual(5);
     expect(frame.complete).toEqual(true);
   });
@@ -26,6 +29,7 @@ describe('frame class', () => {
     const frame = new Frame;
     frame.countRoll(10);
     frame.calculateScore();
+
     expect(frame.score).toEqual(0);
     expect(frame.complete).toEqual(true);
     expect(frame.bonusCount).toEqual(2);
@@ -35,6 +39,7 @@ describe('frame class', () => {
     frame.countRoll(4);
     frame.countRoll(6);
     frame.calculateScore();
+
     expect(frame.score).toEqual(0);
     expect(frame.complete).toEqual(true);
     expect(frame.bonusCount).toEqual(1);
@@ -46,6 +51,7 @@ describe('frame class', () => {
       frame.countRoll(4);
       frame.addBonusScore(2);
       frame.calculateScore();
+
       expect(frame.score).toEqual(7);
     })
     it('bonus from next 2 rolls added when strike', () => {
@@ -55,6 +61,7 @@ describe('frame class', () => {
       frame.addBonusScore(5);
       frame.addBonusScore(2);
       frame.calculateScore();
+
       expect(frame.score).toEqual(19);
     })
     it('bonus from next roll added when spare', () => {
@@ -64,6 +71,7 @@ describe('frame class', () => {
       frame.addBonusScore(4);
       frame.addBonusScore(5);
       frame.calculateScore();
+      
       expect(frame.score).toEqual(14);
     })
   })

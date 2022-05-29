@@ -10,6 +10,10 @@ class Scorecard {
     this.score += this.frameScore
   }
 
+  errorTest() {
+    throw TypeError();
+  }
+
   frameInput(number) {
     if(this.roll === 1) {
       console.log(`Frame: ${this.frame}`)
@@ -17,7 +21,7 @@ class Scorecard {
         this.frameScore += number
         this.roll += 1
       } else {
-        throw 'Score exceeds maximum number of pins. Please input score again by calling frameInput.'
+        throw ('Score exceeds maximum number of pins. Please input score again by calling frameInput.')
       }
     } else {
       if(this.frameScore + number <= 10 ) {

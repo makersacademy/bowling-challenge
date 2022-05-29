@@ -22,4 +22,9 @@ describe('Scorecard', () => {
     scorecard.frameInput(1)
     expect(scorecard.frame).toEqual(3)
   })
+
+  it('Throws error if first roll score entry is greater than 10', () => {
+    const scorecard = new Scorecard;
+    expect(() => {scorecard.frameInput(11)}).toThrow('Score exceeds maximum number of pins. Please input score again by calling frameInput.')
+  }) 
 })

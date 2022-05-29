@@ -84,4 +84,12 @@ describe('game', () => {
     }
     expect(game.calculateScore()).toBe(300);
   });
+
+  // Edge Cases to test for
+    // - Maximum no of rolls 
+      // - perfect game -> 12
+      // - no bonuses -> 20
+      // - different strike/ spare combinations
+    // - only valid numbers can be entered
+    // - two numbers within frame can't be > 10
 });

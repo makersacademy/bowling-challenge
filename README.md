@@ -1,3 +1,10 @@
+Bowling Challenge
+=================
+## Setup
+```
+git clone https://github.com/laura-voss/bowling-challenge-js.git
+```
+
 ## Input - Output 
 | Title             | Input                                                                   | Output | Bonus |
 |-------------------|-------------------------------------------------------------------------|--------|-------|
@@ -9,7 +16,10 @@
 | Perfect Game      | [10], [10], [10], [10], [10], [10], [10], [10], [10], [10,10,10]        | 300    | 200   |
 
 
-Bowling Challenge
+
+
+
+Bowling Challenge - Task
 =================
 
 * Feel free to use google, your notes, books, etc. but work on your own

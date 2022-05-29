@@ -37,4 +37,13 @@ describe('game', () => {
     }
     expect(game.calculateScore()).toBe(29);
   });
-}); 
+
+  // 4 - Strike and Ones
+  it('returns 30 when the player rolls one strike and the rest all ones', () => {
+    game.roll(10);
+    for (let i = 0 ; i < 18 ; i++)  {
+      game.roll(1);
+    }
+    expect(game.calculateScore()).toBe(30);
+  });
+});

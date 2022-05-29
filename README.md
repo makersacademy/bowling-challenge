@@ -3,15 +3,16 @@ Bowling Challenge
 ## Setup & Navigation
 ```
 git clone https://github.com/laura-voss/bowling-challenge-js.git
-cd bowling-challenge-js
-code .
+```
+
+```
 % node
 > .load  game.js
 > game = new Game
 Game { rolls: [] }
 > game.roll(10)    
 ```
-enter your rolls with game.roll(pins)
+enter your rolls with game.roll(pins) <br>
 check your score with game.calculateScore()
 
 <br>

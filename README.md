@@ -1,4 +1,4 @@
-Bowling Challenge in Ruby
+Bowling Challenge in JavaScript
 =================
 
 ## The task

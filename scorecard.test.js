@@ -14,7 +14,7 @@ describe('Scorecard', () => {
     expect(scorecard.roll).toEqual(2);
   })
 
-  it('Changes from frame: 1 to frame: 2 after a roll', () => {
+  it('Changes from frame: 1 to frame: 3 after a roll', () => {
     const scorecard = new Scorecard;
     scorecard.frameInput(2)
     scorecard.frameInput(7)

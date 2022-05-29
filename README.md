@@ -1,9 +1,20 @@
 Bowling Challenge
 =================
-## Setup
+## Setup & Navigation
 ```
 git clone https://github.com/laura-voss/bowling-challenge-js.git
+cd bowling-challenge-js
+code .
+% node
+> .load  game.js
+> game = new Game
+Game { rolls: [] }
+> game.roll(10)    
 ```
+enter your rolls with game.roll(pins)
+check your score with game.calculateScore()
+
+<br>
 
 ## Input - Output 
 | Title             | Input                                                                   | Output | Bonus |
@@ -16,7 +27,7 @@ git clone https://github.com/laura-voss/bowling-challenge-js.git
 | Perfect Game      | [10], [10], [10], [10], [10], [10], [10], [10], [10], [10,10,10]        | 300    | 200   |
 
 
-
+<br>
 <br>
 <br>
 <br>

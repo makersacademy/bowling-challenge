@@ -18,8 +18,8 @@ class ScoreCard {
 
   calculateBonus(pinsKnocked) {
     if (this.currentFrame > 1) {
-      for(let i = 0; i < this.currentFrame - 1; i ++) {
-        if (i != 9){
+      for (let i = 0; i < this.currentFrame - 1; i ++) {
+        if (i != 9) {
           this.frames[i].addBonusScore(pinsKnocked);
         }
       }
@@ -29,7 +29,7 @@ class ScoreCard {
   checkFrameComplete() {
     if (this.frames[this.currentFrame - 1].complete == true) {
       this.score = 0;
-      for(let i = 0; i < this.currentFrame; i ++) {
+      for (let i = 0; i < this.currentFrame; i ++) {
         this.frames[i].calculateScore();
         this.score += this.frames[i].score;
       }

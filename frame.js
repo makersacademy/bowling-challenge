@@ -11,7 +11,7 @@ class Frame {
   countRoll(pinsKnocked) {
     if ((this.pins - pinsKnocked) >= 0) {
       this.pins -= pinsKnocked;
-      this.checkPins()
+      this.checkPins();
       if (this.roll === 1) {
         this.roll = 2;
       } else {
@@ -27,7 +27,7 @@ class Frame {
       this.score = (10 - this.pins) + this.bonusScore;
     }
   }
-  
+
   checkPins() {
     if (this.pins === 0) {
       if (this.roll === 1) {
@@ -47,4 +47,4 @@ class Frame {
   }
 }
 
-module.exports = Frame
+module.exports = Frame;

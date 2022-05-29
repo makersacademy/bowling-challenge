@@ -5,7 +5,7 @@ class Scorecard {
     this.frame = 1
   }
 
-  frameScore(number) {
+  frameInput(number) {
     this.score += number
     if(this.roll === 2) {
       this.frame += 1

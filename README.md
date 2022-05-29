@@ -17,9 +17,11 @@ git clone https://github.com/laura-voss/bowling-challenge-js.git
 
 
 
+<br>
+<br>
+<br>
 
-
-Bowling Challenge - Task
+Bowling Challenge - Task description
 =================
 
 * Feel free to use google, your notes, books, etc. but work on your own

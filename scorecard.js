@@ -10,10 +10,6 @@ class Scorecard {
     this.score += this.frameScore
   }
 
-  errorTest() {
-    throw TypeError();
-  }
-
   frameInput(number) {
     if(this.roll === 1) {
       console.log(`Frame: ${this.frame}`)

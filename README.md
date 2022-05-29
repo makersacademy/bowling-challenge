@@ -12,8 +12,8 @@ git clone https://github.com/laura-voss/bowling-challenge-js.git
 Game { rolls: [] }
 > game.roll(10)    
 ```
-enter your rolls with game.roll(pins) <br>
-check your score with game.calculateScore()
+enter your rolls with `game.roll(pins)` <br>
+check your score with `game.calculateScore()`
 
 <br>
 

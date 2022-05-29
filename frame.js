@@ -10,7 +10,7 @@ class Frame {
 
   countRoll(pinsKnocked) {
     this.pins -= pinsKnocked;
-    //checkPins()
+    this.checkPins()
     if (this.roll === 1) {
       this.roll = 2;
     } else {
@@ -23,6 +23,24 @@ class Frame {
       this.score = 0;
     } else {
       this.score = (10 - this.pins) + this.bonusScore;
+    }
+  }
+  
+  checkPins() {
+    if (this.pins === 0) {
+      if (this.roll === 1) {
+        this.bonusCount = 2;
+        this.complete = true;
+      } else {
+        this.bonusCount = 1;
+      }
+    }
+  }
+
+  addBonusScore(pinsKnocked) {
+    if (this.bonusCount > 0) {
+      this.bonusScore += pinsKnocked;
+      this.bonusCount -= 1;
     }
   }
 }

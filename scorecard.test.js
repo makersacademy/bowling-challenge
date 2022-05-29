@@ -29,8 +29,15 @@ describe('Scorecard', () => {
   })
 
   it('Throws error if second roll accumulates to a score greater than 10', () => {
-    const scorecard = new Scorecard
+    const scorecard = new Scorecard;
     scorecard.frameInput(1)
     expect(() => {scorecard.frameInput(10)}).toThrow('Score exceeds maximum number of pins. Please input score again by calling frameInput.')
+  })
+
+  it('Skips second roll when a strike is bowled', () => {
+    const scorecard = new Scorecard;
+    scorecard.frameInput(10)
+    expect(scorecard.frame).toEqual(2)
+    expect(scorecard.roll).toEqual(1)
   })
 })

@@ -14,5 +14,3 @@ To explain the logic, I've retained the pseudo-code I initially placed within th
 I learnt that the attributes I intitially set as instance variables within the initiation of the class object could just as easily be instance variables within the '#score' function itself. The initial tracking of the frame by instance/attribute, turned into a simple defined for loop that tracked the frame and would only iterate, say, when there was a strike, or when there was no strike (see scorecardIndex += 2, as to account for an entire frame).
 
 I like this solution and I'm pleased I could regurgitate and refactor it for JavaScript. The only issue with it currently is viewing a current score. The score is only viewable after the set 10 frames are over with.
-
-If you read all this congratulations to you. I've got to stop drinking wine and watching Frasier. I sound like a right highfalutin ponce :^)

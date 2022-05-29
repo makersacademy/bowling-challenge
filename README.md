@@ -36,7 +36,7 @@ Usage:
 
 On node, require ScoreCard class (`const ScoreCard = require('./scoreCard.js'`).
 
-Create a new scorecard with `new ScoreCard` and call `includingRollReuslt(pinsKnocked)` class method with the number of pins knocked down for each roll. Score is printed on the screen after each frame.
+Create a new scorecard with `new ScoreCard` and call `includingRollResult(pinsKnocked)` class method with the number of pins knocked down for each roll. Score is printed on the screen after each frame.
 
 
 Running tests:

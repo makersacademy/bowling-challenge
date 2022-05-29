@@ -17,5 +17,14 @@ describe('Bowling', () => {
       bowling.logScore(5);
       expect(bowling.totalScore).toEqual(33);
     })
+    it('does not add a spare to the total score immediately', () => {
+      bowling.logScore(4);
+      bowling.logScore(6);
+      expect(bowling.totalScore).toEqual(33);
+    })
+    it('calculates the spare score on the next roll', () => {
+      bowling.logScore(6);
+      expect(bowling.totalScore).toEqual(49);
+    })
   })
 })

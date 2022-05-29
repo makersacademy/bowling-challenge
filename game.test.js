@@ -18,4 +18,11 @@ describe('game', () => {
     }
     expect(game.calculateScore()).toBe(0);
   });
+
+  it('returns 20 when the player rolls game of all ones', () => {
+    for (let i = 0 ; i < 20 ; i++)  {
+      game.roll(1);
+    }
+    expect(game.calculateScore()).toBe(20);
+  });
 }); 

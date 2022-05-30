@@ -8,10 +8,10 @@ This system was built using the following [TDD](https://en.wikipedia.org/wiki/Te
 
 ## Installation
 Fork or download this repo.\
-Use `node` to install the correct gems to use and test this code. You can require the code from terminal, or copy & paste it in Node.\
+Use `node` to install the correct libaries to use and test this code. You can require the code from terminal, or copy & paste it in Node.\
 
 ## How To Use
-Make a new instance of takeaway with `const scorecard = new Scorecard;`.\
+Make a new instance of Scorecard with `const scorecard = new Scorecard;`.\
 Call `frameInput` to input the score.\
 Call `.score` to show your current total score after 1 completed frame.\
 Call `.frame` to show which frame you are on.\

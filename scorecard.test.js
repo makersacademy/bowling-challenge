@@ -56,4 +56,20 @@ describe('Scorecard', () => {
     const scorecard = new Scorecard;
     expect(scorecard.enter(7)).toContain('Frame: 1'); 
   });
+
+  it('Ends the game after ten frames', () => {
+    const scorecard = new Scorecard;
+    for(let i = 0 ; i < 19 ; i++) {
+      scorecard.enter(1)
+    }
+    expect(scorecard.enter(1)).toEqual('Game Over. Final Score 20')
+  });
+  
+  // it('Starts a new game when score entered after game has ended', () => {
+  //   const scorecard = new Scorecard;
+  //   for(let i = 0 ; i < 20 ; i++) {
+  //     scorecard.enter(1)
+  //   }
+  //   expect(scorecard.enter(1)).toEqual('Roll: 2 -- Frame: 1 -- Total Score: 1')
+  // });
 });

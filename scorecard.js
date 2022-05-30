@@ -1,5 +1,3 @@
-const Thermostat = require("../thermostat/thermostat")
-
 class Scorecard {
   constructor() {
     this.score = 0
@@ -20,15 +18,22 @@ class Scorecard {
   }
 
   enter(points) {
-    this.score += points
     if(this.roll === 1) {
-      this.roll = 2;
+      this.score += points
+      this.roll += 1;
     } else if(this.roll === 2) {
-      this.roll = 1;
+      this.score += points
+      this.roll -= 1;
       this.frame += 1;
+    } else if(this.frame > 10) {
+      this.score = 0
     }
-    return `Roll: ${this.roll} -- Frame: ${this.frame} -- Total Score: ${this.score}`
+    if(this.frame > 10 ) {
+      return(`Game Over. Final Score ${this.score}`);
+    } else {
+    return `Roll: ${this.roll} -- Frame: ${this.frame} -- Total Score: ${this.score}`;
   }
+  
 }
-
+}
 module.exports = Scorecard

@@ -43,6 +43,8 @@ class Game {
             //strike add the next two rolls to it and if it's a spare
             //add the next roll to it
             //how????
+           
+            }
         // }
 
     }

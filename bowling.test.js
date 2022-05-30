@@ -42,9 +42,10 @@ describe('Bowling', () => {
       bowling.logScore(10);
       expect(bowling.totalScore).toEqual(18);
     })
-    it('calculates the correct score with one strike and one low score in round ten', () => {
+    it('calculates the correct score with one strike and two low scores in round ten', () => {
       bowling.logScore(3);
-      expect(bowling.totalScore).toEqual(31);
+      bowling.logScore(2);
+      expect(bowling.totalScore).toEqual(38);
     })
   })
   describe('round ten behaviour with two strikes', () => {

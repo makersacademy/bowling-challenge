@@ -8,14 +8,15 @@ class Bowling {
         roll: 1,
         roll1_score: 0,
         roll2_score: 0,
+        roll3_score: 0,
         final_frame_score: 0,
         running_total: 0
       }
     }
   }
   logScore = (score) => {
-    if (this.frameNumber === 10) {
-      this.round_10(score);
+    if (this.frameNumber === 10){
+      this.frame_10(score);
     } else if (this.roundTracking[this.frameNumber -1].roll === 1) {
       this.roll_1(score);
     } else {
@@ -41,6 +42,27 @@ class Bowling {
     }
     this.calculate_score();
     this.frameNumber += 1;
+  }
+  frame_10 = (score) => {
+    if (this.roundTracking[this.frameNumber -1].roll === 1) {
+      this.roundTracking[this.frameNumber - 1].roll1_score = score;
+      this.calculate_score();
+      this.roundTracking[this.frameNumber - 1].roll = 2;
+    }else if (this.roundTracking[this.frameNumber -1].roll === 2){
+      if (score === 10) {
+        this.roundTracking[this.frameNumber - 1].roll2_score = 'X';
+        this.roundTracking[this.frameNumber - 1].roll = 3;
+      } else {
+      this.roundTracking[this.frameNumber - 1].roll2_score = score;
+      if (this.roundTracking[this.frameNumber - 2].roll1_score === 'X') {
+        this.roundTracking[this.frameNumber - 1].roll = 3;
+      } else {
+        this.calculate_score();
+      }
+      }
+    } else {
+      this.roundTracking[this.frameNumber - 1].roll3_score = score;
+    }
   }
   calculate_score = () => {
     if (this.roundTracking[this.frameNumber - 1].roll === 1) {

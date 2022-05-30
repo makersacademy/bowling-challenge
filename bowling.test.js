@@ -1,8 +1,8 @@
 const Bowling = require('./bowling.js');
 
 describe('Bowling', () => {
-  const bowling = new Bowling;
   describe('.logScore()', () => {
+    const bowling = new Bowling;
     it('adds score from a low scoring round to the total score', () => {
       bowling.logScore(2);
       bowling.logScore(3);
@@ -26,7 +26,48 @@ describe('Bowling', () => {
       bowling.logScore(6);
       expect(bowling.totalScore).toEqual(49);
     })
+    it('calculates the correct score with a low scoring round ten', () => {
+      for(let i = 0; i < 11; i++) {
+        bowling.logScore(1);
+      }
+      expect(bowling.totalScore).toEqual(66);
+    })
+  })
+  describe('round ten behaviour with one strike', () => {
+    const bowling = new Bowling;
+    it('calculates the correct score with one strike in round ten', () => {
+      for(let i = 0; i < 18; i++) {
+        bowling.logScore(1);
+      }
+      bowling.logScore(10);
+      expect(bowling.totalScore).toEqual(18);
+    })
+    it('calculates the correct score with one strike and one low score in round ten', () => {
+      bowling.logScore(3);
+      expect(bowling.totalScore).toEqual(31);
+    })
+  })
+  describe('round ten behaviour with two strikes', () => {
+    const bowling = new Bowling;
+    it('calculates the correct score with two strikes in round ten', () => {
+      for(let i = 0; i < 18; i++) {
+        bowling.logScore(1);
+      }
+      bowling.logScore(10);
+      bowling.logScore(10);
+      expect(bowling.totalScore).toEqual(18);
+    })
+    it('calculates the correct score with two strikes and a low score in round ten', () => {
+      bowling.logScore(2);
+      expect(bowling.totalScore).toEqual(34);
+    })
+  })
+  describe('frameNumber', () => {
+    const bowling = new Bowling;
     it('knows what frame it is on', () => {
+      for(let i = 0; i < 9; i++) {
+        bowling.logScore(1);
+      }
       expect(bowling.frameNumber).toEqual(5);
     })
     it('knows when it is on frame 10', () => {
@@ -35,9 +76,8 @@ describe('Bowling', () => {
       }
       expect(bowling.frameNumber).toEqual(10);
     })
-    it('still knows the score', () => {
-      expect(bowling.totalScore).toEqual(64);
-    })
-    // now to write some tests for round ten!!
   })
 })
+
+
+

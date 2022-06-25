@@ -1,6 +1,7 @@
 class BowlingScore {
   constructor(scoreCard) {
     this.scoreCard = scoreCard;
+    if (this.scoreCard.length < 10) this.incompleteGame();
   };
 
   result(){
@@ -21,6 +22,10 @@ class BowlingScore {
     const flatScoreCard = this.scoreCard.flat();
     return flatScoreCard.reduce((prev, current) => prev + current);
   };
+
+  incompleteGame() {
+    this.scoreCard.push([0,0]);
+  }
 
   // strike(frame) {
   //   frame.length === 1 && frame[0] === 10;

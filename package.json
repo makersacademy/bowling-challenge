@@ -1,0 +1,26 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "bowling.test.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sophiegilder/bowling-challenge-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sophiegilder/bowling-challenge-js/issues"
+  },
+  "homepage": "https://github.com/sophiegilder/bowling-challenge-js#readme",
+  "dependencies": {
+    "jest": "^28.1.1"
+  }
+}

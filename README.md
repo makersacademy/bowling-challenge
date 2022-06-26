@@ -15,7 +15,6 @@ Bowling Challenge
 | Two strikes - [[10], [1,1], [10], [1,1] * 6] | 26 |
 | Two strikes in a row - [[10], [10], [1,1] * 8] | 49 |
 
-
 ## Bowling — how does it work?
 
 ### Strikes

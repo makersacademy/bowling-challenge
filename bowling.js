@@ -1,37 +1,29 @@
 class Bowling {
-  constructor() {
-    this.score = 0;
-    this.currentRound = 0;
-    this.keepPlaying = true;
+  constructor(allFrames) {
+    this.allFrames = allFrames;
   }
 
-  getScore() {
-    return this.score;
+  scorecard() {
+    let score = 0
+    this.allFrames.map((frame, index) => {
+      if (this.isStrike(frame)) {
+        score += this.strikeBonus(index);
+      }
+      for (let frameScore of frame) {
+        score += frameScore;
+      }
+    })
+    return score;
   }
 
-  playRound(frame) {
-    frame.forEach(score => {
-      this.score += score;
-    });
-    if (this.keepPlaying) {
-      this.currentRound++;
-    } else {
-      this.keepPlaying = false;
-      return "You've reached the end of the game";
-    }
-    this.shouldContinue();
+  isStrike(frame) {
+    return frame.length === 1 && frame[0] === 10;
   }
 
-  shouldContinue() {
-    if (this.currentRound === 10) {
-      this.keepPlaying = false;
-    } else {
-      this.keepPlaying = true;
-    }
-  }
-
-  getRound() {
-    return this.currentRound;
+  strikeBonus(index) {
+    const nextFrame = this.allFrames[index + 1];
+    const bonus = nextFrame[0] + nextFrame[1];
+    return bonus;
   }
 }
 

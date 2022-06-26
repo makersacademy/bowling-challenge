@@ -1,37 +1,36 @@
 class BowlingScore {
   constructor(scoreCard) {
-    this.scoreCard = scoreCard;
-    if (this.scoreCard.length < 10) this.incompleteGame();
+    this.scoreCard = incomepleteGame(scoreCard);
+    if (this.scoreCard.length < 10) this.#incompleteGame();
   };
 
   result(){
     this.scoreCard.map((frame, index) => {
-      if (this.spare(frame)) {
+      if (this.#spare(frame)) {
         frame.push(this.scoreCard[index + 1][0]);
-      } else if (this.strike(frame)) {
-        frame.push(this.strikeBonus(index));
+      } else if (this.#strike(frame)) {
+        frame.push(this.#strikeBonus(index));
       };
     })
     const flatScoreCard = this.scoreCard.flat();
-    return flatScoreCard.reduce((prev, current) => prev + current);
+    return flatScoreCard.reduce((prev, curr) => prev + curr);
   };
 
-  incompleteGame() {
+  #incompleteGame(scoreCard) {
     this.scoreCard.push([0,0]);
   }
 
-  spare(element) {
+  #spare(element) {
     return element.length === 2 && element[0] + element[1] === 10;
   }
 
-  strike(element) {
+  #strike(element) {
     return element.length === 1 && element[0] === 10;
   }
 
-  strikeBonus(index){
+  #strikeBonus(index){
     const nextFrame = this.scoreCard[index + 1];
-    if (this.strike(nextFrame)) {
-      console.log(nextFrame)
+    if (this.#strike(nextFrame)) {
       return nextFrame[0] + this.scoreCard[index + 2][0];
     } else {
       return nextFrame[0] + nextFrame[1];

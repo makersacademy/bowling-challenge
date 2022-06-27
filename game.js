@@ -54,8 +54,31 @@ class Game {
     }
   }
 
+  checkStrike(frame) {
+    return (frame[0] === 10) ? true : false
+  }
+
+  checkSpare(frame) {
+    return ((frame[0] != 10) && (frame[0] + frame[1] === 10)) ? true : false
+  }
+
   writeToScoreboard(pinNum) {
+    // this is for basic point (1 score = 1 pin)
     this.score[this.frame - 1] += pinNum
+    if (this.frame > 1) {
+      //this will calculate additional score for  one strike
+      if (this.checkStrike(this.pinsRolled[this.frame - 2]) && this.roll == 2) {
+        this.score[this.frame - 2] = 10 + this.pinsRolled[this.frame - 1][0] + this.pinsRolled[this.frame - 1][1] 
+      }
+      //this will calculate additional score for one spare
+      if (this.checkSpare(this.pinsRolled[this.frame - 2]) && this.roll === 1) {
+        this.score[this.frame - 2] = 10 + this.pinsRolled[this.frame - 1][0]
+      }
+      // this will calculate additional scores for the first of two consecutive strikes
+      if ((this.frame > 2) && this.checkStrike(this.pinsRolled[this.frame - 3]) && this.checkStrike(this.pinsRolled[this.frame - 2])) {
+        this.score[this.frame - 3] = 20 + this.pinsRolled[this.frame - 1][0]
+      }
+    }
 
   }
 

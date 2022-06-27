@@ -142,6 +142,193 @@ describe('Game', () => {
       game.rollPin(5);
       game.rollPin(4);
       expect(game.getTotalScore()).toBe(18);
+    });
+    it('calculates score one spare then open', () => {
+      const game = new Game();
+      game.rollPin(7);
+      game.rollPin(3);
+      game.rollPin(5);
+      game.rollPin(4);
+      expect(game.getTotalScore()).toBe(24);
+    });
+    it('calculates score one strike then open', () => {
+      const game = new Game();
+      game.rollPin(10);
+      game.rollPin(5);
+      game.rollPin(4);
+      expect(game.getTotalScore()).toBe(28);
+    });
+    it('calculates score two strikes followed by an open', () => {
+      const game = new Game();
+      game.rollPin(10);
+      game.rollPin(10);
+      game.rollPin(7);
+      game.rollPin(2);
+      expect(game.getTotalScore()).toBe(55);
+    });
+    it('calculates score for a strike then a spare, then an open', () => {
+      const game = new Game();
+      game.rollPin(10);
+      game.rollPin(7);
+      game.rollPin(3);
+      game.rollPin(5);
+      expect(game.getTotalScore()).toBe(40);
+    });
+    it('calcaulates score of a sample up to 9th frame', () => {
+      const game = new Game();
+      game.rollPin(8);
+      game.rollPin(1);
+      game.rollPin(0);
+      game.rollPin(9);
+      game.rollPin(2);
+      game.rollPin(8);
+      game.rollPin(10);
+      game.rollPin(6);
+      game.rollPin(3);
+      game.rollPin(7);
+      game.rollPin(0);
+      game.rollPin(5);
+      game.rollPin(2);
+      game.rollPin(10);
+      game.rollPin(0);
+      game.rollPin(6);
+      expect(game.getTotalScore()).toBe(102);
+    });
+    it('calculates score for a full game - case 1', () => {
+      const game = new Game();
+      game.rollPin(8);
+      game.rollPin(1);
+      game.rollPin(0);
+      game.rollPin(9);
+      game.rollPin(2);
+      game.rollPin(8);
+      game.rollPin(10);
+      game.rollPin(6);
+      game.rollPin(3);
+      game.rollPin(7);
+      game.rollPin(0);
+      game.rollPin(5);
+      game.rollPin(2);
+      game.rollPin(10);
+      game.rollPin(0);
+      game.rollPin(6);
+      game.rollPin(2);
+      game.rollPin(8);
+      game.rollPin(10);
+      expect(game.getTotalScore()).toBe(122);
+    });
+    it('calculates score for a full game - case 2', () => {
+      const game = new Game();
+      game.rollPin(5)
+      game.rollPin(5)
+
+      game.rollPin(4)
+      game.rollPin(0)
+
+      game.rollPin(8)
+      game.rollPin(1)
+
+      game.rollPin(10)
+
+      game.rollPin(0)
+      game.rollPin(10)
+
+      game.rollPin(10)
+
+      game.rollPin(10)
+
+      game.rollPin(10)
+
+      game.rollPin(4)
+      game.rollPin(6)
+
+      game.rollPin(10)
+      game.rollPin(10)
+      game.rollPin(5)
+
+      expect(game.getTotalScore()).toBe(186);
+    });
+    it('calculates score for a full game - case 3', () => {
+      const game = new Game();
+      game.rollPin(8)
+      game.rollPin(1)
+
+      game.rollPin(0)
+      game.rollPin(9)
+
+      game.rollPin(2)
+      game.rollPin(8)
+
+      game.rollPin(10)
+
+      game.rollPin(6)
+      game.rollPin(3)
+
+      game.rollPin(7)
+      game.rollPin(0)
+
+      game.rollPin(5)
+      game.rollPin(2)
+
+      game.rollPin(10)
+
+      game.rollPin(0)
+      game.rollPin(6)
+
+      game.rollPin(2)
+      game.rollPin(8)
+      game.rollPin(10)
+
+      expect(game.getTotalScore()).toBe(122);
+    });
+    it('calculates scores for a full game - case 4', () => {
+      const game = new Game();
+      game.rollPin(8)
+      game.rollPin(2)
+
+      game.rollPin(9)
+      game.rollPin(0)
+
+      game.rollPin(4)
+      game.rollPin(4)
+
+      game.rollPin(7)
+      game.rollPin(2)
+
+      game.rollPin(9)
+      game.rollPin(0)
+
+      game.rollPin(10)
+
+      game.rollPin(10)
+
+      game.rollPin(8)
+      game.rollPin(0)
+
+      game.rollPin(3)
+      game.rollPin(5)
+
+      game.rollPin(9)
+      game.rollPin(1)
+      game.rollPin(7)
+
+      expect(game.getTotalScore()).toBe(133);
+    });
+    it('calculates scores for a gutter game', () => {
+      const game = new Game();
+      for (let i = 1; i <= 20; i++) {
+        game.rollPin(0);
+      }
+      expect(game.getPinsRolled()[9]).toStrictEqual([0,0]);
+      expect(game.getTotalScore()).toBe(0);
+    });
+    it('calculates socres for a perfect game', () => {
+      const game = new Game();
+      for (let i = 1; i <= 12; i++) {
+        game.rollPin(10);
+      }
+      expect(game.getPinsRolled()[9]).toStrictEqual([10, 10, 10]);
+      expect(game.getTotalScore()).toBe(300);
     })
   });
 })

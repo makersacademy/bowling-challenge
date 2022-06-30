@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1656598883780" clover="3.2.0">
+  <project timestamp="1656598883781" name="All files">
+    <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="1" coveredelements="1" complexity="0" loc="1" ncloc="1" packages="1" files="1" classes="1"/>
+    <file name="bowlingScore.js" path="/Users/aishayusuff/Makers-2022/weekend-challenge/week6/bowling-challenge-JavaScript/my-project/lib/bowlingScore.js">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <line num="3" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>

@@ -2,6 +2,17 @@
 Bowling Challenge
 =================
 
+INPUT / OUTPUT
+--------------
+[0] * 20 => 'Gutter Game: 0 points'
+[0, 2, 6, 0, 1, 0, 0, 8, 0, 0, 0, 0, 0, 1, 1, 4, 5, 3, 4, 2] => 'You scored 37 points'
+[2, 8, 6, 2] => 'You scored 24 points'
+[10, 6, 2] => 'You scored 26 points'
+[2, 8, 10, 0, 4, 5] => 'You scored 48 points'
+[10, 10, 10, 10, 10, 10, 10, 10, 10, 10] => 'Perfect Game: 300 points'
+[0, 2, 6, 0, 1, 0, 0, 8, 0, 0, 0, 0, 0, 1, 1, 4, 5, 3, 4, 2, 5] => THROWS AN ERROR (too many scores)
+
+
 * Feel free to use google, your notes, books, etc. but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**

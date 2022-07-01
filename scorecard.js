@@ -11,11 +11,8 @@ class Scorecard {
     else if (totalScore === 120) {
       return "Perfect Game: 300 points";
     }
-    else if (totalScore === 8) {
-      return "You scored 8 points";
-    }
     else {
-      return "You scored 5 points";
+      return `You scored ${totalScore} points`;
     }
   }
 

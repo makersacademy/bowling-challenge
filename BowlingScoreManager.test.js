@@ -58,13 +58,14 @@ describe( 'BowlingScoreManager', () => {
     const bsm = new BowlingScoreManager();
     expect(bsm.score_game( [1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 5,5, 1,2] )).toBe( 1+1 + 1+1 + 1+1 + 1+1 + 1+1 + 1+1 + 1+1 + 1+1 + 5+5 + 1+2 + 1);
   });
+  it( 'Successfully scores final frame when no third roll needed but preceded by a strike', () => { 
+    const bsm = new BowlingScoreManager();
+    expect(bsm.score_game( [1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 10, 1,2] )).toBe( 1+1 + 1+1 + 1+1 + 1+1 + 1+1 + 1+1 + 1+1 + 1+1 + 10 + 1+2 + 1 + 2); 
+  });
 
 });
 
 /*
-  it "Successfully scores final frame when no third roll needed but preceded by a spare" do
-    expect(BowlingScoreManager.score_game( [1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 5,5, 1,2] )).to eq ( [1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 5,5, 1,2].sum + 1) 
-  end
   it "Successfully scores final frame when no third roll needed but preceded by a strike" do
     expect(BowlingScoreManager.score_game( [1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 10, 1,2] )).to eq ( [1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 10, 1,2].sum + 1 + 2) 
   end

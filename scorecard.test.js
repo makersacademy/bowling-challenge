@@ -15,4 +15,9 @@ describe('Scorecard',() => {
     const scorecard = new Scorecard([8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 8 points');
   })
+
+  it('returns a score of 5 when score contains only 0s and one 5',() => {
+    const scorecard = new Scorecard([5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    expect(scorecard.giveFinalScore()).toEqual('You scored 5 points');
+  })
 })

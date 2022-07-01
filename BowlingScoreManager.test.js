@@ -42,13 +42,14 @@ describe( 'BowlingScoreManager', () => {
     const bsm = new BowlingScoreManager();
     expect(bsm.score_game( [0,0, 1,1, 5,3, 10, 10, 10, 4,3, 3,2, 2,1, 0,0] )).toBe(0+0 + 1+1 + 5+3 + 10 + 10 + 10 + 4+3 + 3+2 + 2+1 + 0+0 + 10 + 10 + 10 + 4 + 4 + 3);
   });
+  it( 'Successfully scores final frame in case of maximum possible score', () => {
+    const bsm = new BowlingScoreManager();
+    expect(bsm.score_game( [10, 10, 10, 10, 10, 10, 10, 10, 10, 10,10,10] )).toBe(300);
+  });
 
 });
 
 /*
-    it "Successfully scores a game including a strike followed immediately by another two strikes" do
-      expect(BowlingScoreManager.score_game( [0,0, 1,1, 5,3, 10, 10, 10, 4,3, 3,2, 2,1, 0,0] )).to eq ([0,0, 1,1, 5,3, 10, 10, 10, 4,3, 3,2, 2,1, 0,0].sum + 10 + 10 + 10 + 4 + 4 + 3)
-    end
     it "Successfully scores final frame in case of maximum possible score" do
       expect(BowlingScoreManager.score_game( [10, 10, 10, 10, 10, 10, 10, 10, 10, 10,10,10] )).to eq 300
     end

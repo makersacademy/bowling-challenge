@@ -177,7 +177,7 @@ class BowlingScoreManager {
     for( let i=1; i<=10; i++ ) {
       grand_total += frames[i].getTotal();
     }
-    console.log( frames );
+//    console.log( frames );
     return grand_total;
   }
   

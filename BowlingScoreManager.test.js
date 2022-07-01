@@ -1,8 +1,10 @@
-require('./BowlingScoreManager');
+const Frame = require('./Frame');
+const BowlingScoreManager = require('./BowlingScoreManager');
 
 describe( 'BowlingScoreManager', () => {
   it( 'Successfully scores a minimal game as zero', () => {
-    expect(BowlingScoreManager.score_game( [0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0] )).toBe(0);
+    const bsm = new BowlingScoreManager();
+    expect(bsm.score_game( [0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0] )).toBe(0);
   });
 });
 

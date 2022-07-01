@@ -1,4 +1,4 @@
-require ('./Frame');    //The frame is a smaller unit of scoring the game
+const Frame = require ('./Frame');    //The frame is a smaller unit of scoring the game
                         // Made up of one two, or possibly in the tenth and final
                         // frame, three rolls.
 
@@ -10,27 +10,27 @@ class BowlingScoreManager {
   }
   
   score_game( rolls ) {
-    this.frames = setup_frames();
-    score_frames( rolls );
-    return get_grand_total( this.frames );
+    this.frames = this.setup_frames();
+    this.score_frames( rolls );
+    return this.get_grand_total( this.frames );
   }
     
    
   score_frames( rolls ) {
-    frame_num = 1;
-    on_roll = 1;
+    let frame_num = 1;
+    let on_roll = 1;
     for ( let roll_from_start=0; roll_from_start<rolls.length; roll_from_start++ ) { 
       if ( frame_num === 10 ) {
         // In Ruby this was as below
         // handle_frame_10( rolls.drop(roll_from_start), this.frames )
         // Want to remove the elements 0..roll_from_start-1
         rolls.splice(0, roll_from_start );
-        handle_frame_10( rolls, this.frames );
+        this.handle_frame_10( rolls, this.frames );
         break;
       }
       if (on_roll === 1) {
-        manage_frame_roll1( rolls[roll_from_start], this.frames, frame_num );
-        if (this.frames[frame_num].getStatus() === Frame.strike ) {
+        this.manage_frame_roll1( rolls[roll_from_start], this.frames, frame_num );
+        if ((this.frames[frame_num]).getStatus() === Frame.strike ) {
           // Move to roll one in next frame
           frame_num += 1;
           continue;
@@ -38,7 +38,7 @@ class BowlingScoreManager {
         on_roll = 2;
       }  
       else { // on_roll == 2
-        manage_frame_roll2( rolls[roll_from_start], this.frames, frame_num );        
+        this.manage_frame_roll2( rolls[roll_from_start], this.frames, frame_num );        
         frame_num += 1;
         on_roll = 1;
       }      
@@ -49,7 +49,7 @@ class BowlingScoreManager {
 
   setup_frames() {
     // Do not use index 0 as this models the domain more closely
-    frames_array = [null];
+    const frames_array = [null];
     for( let i=1; i<=10; i++ ) {
       frames_array.push( new Frame() );
     }
@@ -59,18 +59,18 @@ class BowlingScoreManager {
   
   manage_frame_roll1( rollValue, frames, frame_num ) {
     (frames[frame_num]).setRoll1( rollValue );
-    manage_poss_prev_spare( rollValue, frames, frame_num );
-    manage_roll1_poss_prev_strike( frames, frame_num );
-    manage_poss_strike_this_frame( frames, frame_num );
+    this.manage_poss_prev_spare( rollValue, frames, frame_num );
+    this.manage_roll1_poss_prev_strike( frames, frame_num );
+    this.manage_poss_strike_this_frame( frames, frame_num );
   }
 
 
   manage_frame_roll2( rollValue, frames, frame_num ) {        
     (frames[frame_num]).setRoll2( rollValue );
-    manage_roll2_poss_prev_strike( frames, frame_num );
-    manage_poss_spare_this_frame( frames, frame_num );
+    this.manage_roll2_poss_prev_strike( frames, frame_num );
+    this.manage_poss_spare_this_frame( frames, frame_num );
     if ( frames[frame_num].getStatus() !== Frame.spare ) {
-      sum_normal_frame( frames, frame_num );
+      this.sum_normal_frame( frames, frame_num );
     }
   }
 
@@ -133,22 +133,22 @@ class BowlingScoreManager {
 
   
   handle_frame_10( last_rolls, frames ) {
-    frame_num = 10;
-    on_roll = 1;
+    let frame_num = 10;
+    let on_roll = 1;
     // Similar loop to above just slightly modified
     for( let rolls_at_end=0; rolls_at_end<last_rolls.length; rolls_at_end++ ) {
       if (on_roll === 1) {
         (frames[frame_num]).setRoll1( last_rolls[rolls_at_end] );
-        manage_poss_prev_spare( frames[frame_num].getRoll1(), frames, frame_num );
-        manage_roll1_poss_prev_strike( frames, frame_num );
-        manage_poss_strike_this_frame( frames, frame_num );
+        this.manage_poss_prev_spare( frames[frame_num].getRoll1(), frames, frame_num );
+        this.manage_roll1_poss_prev_strike( frames, frame_num );
+        this.manage_poss_strike_this_frame( frames, frame_num );
         on_roll = 2;
         continue;
       }
       else if (on_roll === 2) { 
         (frames[frame_num]).setRoll2( last_rolls[rolls_at_end] );
-        manage_roll2_poss_prev_strike( frames, frame_num );
-        manage_poss_spare_this_frame( frames, frame_num );
+        this.manage_roll2_poss_prev_strike( frames, frame_num );
+        this.manage_poss_spare_this_frame( frames, frame_num );
         if ( frames[frame_num].getStatus() === Frame.spare ) {
           on_roll = 3;
           continue;
@@ -160,7 +160,7 @@ class BowlingScoreManager {
         // No need to loop further
         break;
       }
-      sum_normal_frame( frames, frame_num );
+      this.sum_normal_frame( frames, frame_num );
     }
   }
 
@@ -173,7 +173,7 @@ class BowlingScoreManager {
   
   
   get_grand_total( frames ) {
-    grand_total = 0;
+    let grand_total = 0;
     for( let i=1; i<=10; i++ ) {
       grand_total += frames[i].getTotal();
     }

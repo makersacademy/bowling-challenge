@@ -4,9 +4,9 @@ class Frame {
 
   
   constructor() {
-    Frame.normal = new Symbol('normal');
-    Frame.spare  = new Symbol('spare');
-    Frame.strike = new Symbol('strike');
+    Frame.normal = Symbol('normal');
+    Frame.spare  = Symbol('spare');
+    Frame.strike = Symbol('strike');
     
     this.status = Frame.normal // This is 'normal' or 'spare' or 'strike'
     this.roll1 = 0             
@@ -49,7 +49,7 @@ class Frame {
 
   
   getTotal() {
-    return total;
+    return this.total;
   }
   
   

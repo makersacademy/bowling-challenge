@@ -34,13 +34,14 @@ describe( 'BowlingScoreManager', () => {
     const bsm = new BowlingScoreManager();
     expect(bsm.score_game( [0,0, 1,1, 4,6, 10, 4,4, 4,5, 4,3, 3,2, 2,1, 0,0] )).toBe(0+0 + 1+1 + 4+6 + 10 + 4+4 + 4+5 + 4+3 + 3+2 + 2+1 + 0+0 + 10 + 8);
   });
+  it( 'Successfully scores a game including a strike followed immediately by another strike', () => {
+    const bsm = new BowlingScoreManager();
+    expect(bsm.score_game( [0,0, 1,1, 5,3, 10, 10, 4,5, 4,3, 3,2, 2,1, 0,0] )).toBe(0+0 + 1+1 + 5+3 + 10 + 10 + 4+5 + 4+3 + 3+2 + 2+1 + 0+0 + 10 + 4 + 4 + 5);
+  });
 
 });
 
 /*
-    it "Successfully scores a game including a spare followed immediately by a strike" do
-      expect(BowlingScoreManager.score_game( [0,0, 1,1, 4,6, 10, 4,4, 4,5, 4,3, 3,2, 2,1, 0,0] )).to eq ([0,0, 1,1, 4,6, 10, 4,4, 4,5, 4,3, 3,2, 2,1, 0,0].sum + 10 + 8)
-    end
     it "Successfully scores a game including a strike followed immediately by another strike" do
       expect(BowlingScoreManager.score_game( [0,0, 1,1, 5,3, 10, 10, 4,5, 4,3, 3,2, 2,1, 0,0] )).to eq ([0,0, 1,1, 5,3, 10, 10, 4,5, 4,3, 3,2, 2,1, 0,0].sum + 10 + 4 + 4 + 5)
     end

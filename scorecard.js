@@ -1,7 +1,16 @@
 class Scorecard {
+  constructor(scores) {
+    this.scores = scores;
+  }
 
   total_score() {
-    return 0
+    let total = 0;
+    this.scores.map((frame) => {
+      frame.forEach(roll => {
+        total += roll;
+      });
+    })
+    return total;
   }
 
 

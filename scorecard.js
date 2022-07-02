@@ -1,9 +1,9 @@
-const Calculator = require('./calculator');
+const ScoreCalculator = require('./ScoreCalculator');
 
 class Scorecard {
   constructor(scores) {
     this.scores = scores;
-    this.calculator = new Calculator();
+    this.calculator = new ScoreCalculator();
   }
 
   giveFinalScore() {

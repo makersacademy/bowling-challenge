@@ -105,4 +105,23 @@ describe("BowlingScore", () => {
     bowlingScore.spare();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 44");
   });
+
+  it("returns the final score including points from multiple strikes scored in the game", () => {
+    const bowlingScore = new BowlingScore([
+      [0, 0],
+      [10, 0],
+      [1, 1],
+      [10, 0],
+      [2, 2],
+      [10, 0],
+      [6, 6],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+    ]);
+    bowlingScore.frame();
+    bowlingScore.spare();
+    bowlingScore.strike();
+    expect(bowlingScore.finalScore()).toEqual("Final Score: 54");
+  });
 });

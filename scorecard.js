@@ -17,6 +17,14 @@ class Scorecard {
     for (let i = 0; i < this.scores.length; i++) {
       if(i == 9 && this.scores[i][0] == 10) {
         total += this.frame_total(this.scores[i]);
+      } else if(this.scores[i][0] == 10 && this.scores[i + 1][0] == 10) {
+        if(i < 7) {
+          total += this.frame_total(this.scores[i + 2]) + 20;
+        } else {
+          total += this.frame_total(this.scores[i + 1]) + 10;
+    
+        }
+        
       } else if(this.scores[i][0] == 10) {
         total += this.frame_total(this.scores[i + 1]) + 10;
       } else if(this.frame_total(this.scores[i]) == 10) {

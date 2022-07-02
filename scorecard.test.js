@@ -36,9 +36,21 @@ describe(Scorecard, () => {
     const scorecard = new Scorecard(arr);
     expect(scorecard.total_score()).toBe(86);
   })
+
+  it("returns score for game where multiple strikes were scored in the 10th frame", () => {
+    arr = [[3,6], [2, 4], [2,4], [3, 6], [5, 2], [3, 6], [2, 4], [2, 4], [3, 6], [10, 10, 10]];
+    const scorecard = new Scorecard(arr);
+    expect(scorecard.total_score()).toBe(97);
+  })
+
+  it("returns score for game where a spare and a strike were scored in the 10th frame", () => {
+    arr = [[3,6], [2, 4], [2,4], [3, 6], [5, 2], [3, 6], [2, 4], [2, 4], [3, 6], [5, 5, 10]];
+    const scorecard = new Scorecard(arr);
+    expect(scorecard.total_score()).toBe(87);
+  })
  
-  xit("returns score for perfect game", () => {
-    arr = [[10], [10], [10], [10], [10], [10], [10], [10], [10], [10]];
+  it("returns score for perfect game", () => {
+    arr = [[10], [10], [10], [10], [10], [10], [10], [10], [10], [10, 10, 10]];
     const scorecard = new Scorecard(arr);
     expect(scorecard.total_score()).toBe(300);
   })

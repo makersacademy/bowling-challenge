@@ -33,6 +33,6 @@ describe('Scorecard',() => {
 
   it('gives the correct different bonus when a spare is scored',() => {
     const scorecard = new Scorecard([[2, 8], [4, 2]]);
-    expect(scorecard.giveFinalScore()).toEqual('You scored 22 points');
+    expect(scorecard.giveFinalScore()).toEqual('You scored 20 points');
   })
 })

@@ -24,5 +24,22 @@ describe(Scorecard, () => {
     const scorecard = new Scorecard(arr);
     expect(scorecard.total_score()).toBe(77);
   })
+
+  it("returns score for game where a spare was scored in the 10th frame", () => {
+    arr = [[3,6], [2, 4], [2,4], [3, 6], [5, 2], [3, 6], [2, 4], [2, 4], [3, 6], [5, 5, 8]];
+    const scorecard = new Scorecard(arr);
+    expect(scorecard.total_score()).toBe(85);
+  })
+
+  it("returns score for game where a strike was scored in the 10th frame", () => {
+    arr = [[3,6], [2, 4], [2,4], [3, 6], [5, 2], [3, 6], [2, 4], [2, 4], [3, 6], [10, 1, 8]];
+    const scorecard = new Scorecard(arr);
+    expect(scorecard.total_score()).toBe(86);
+  })
  
+  xit("returns score for perfect game", () => {
+    arr = [[10], [10], [10], [10], [10], [10], [10], [10], [10], [10]];
+    const scorecard = new Scorecard(arr);
+    expect(scorecard.total_score()).toBe(300);
+  })
 })

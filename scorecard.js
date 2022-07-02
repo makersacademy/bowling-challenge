@@ -20,6 +20,8 @@ class Scorecard {
     for (let i = 0; i < this.scores.length; i++) {
       if(this.scores[i][0] == 10) {
         total += this.strike_score(this.scores[i + 1]);
+      } else if(this.frame_total(this.scores[i]) == 10) {
+        total += this.frame_total(this.scores[i]) + this.scores[i + 1][0];
       } else {
         total += this.frame_total(this.scores[i]);
       }

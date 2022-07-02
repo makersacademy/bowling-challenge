@@ -6,8 +6,8 @@ describe('Scorecard',() => {
     expect(scorecard.giveFinalScore()).toEqual('Gutter Game: 0 points');    
   })
 
-  xit('returns a final score of 300 for a perfect game',() => {
-    const scorecard = new Scorecard([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
+  it('returns a final score of 300 for a perfect game',() => {
+    const scorecard = new Scorecard([[10], [10], [10], [10], [10], [10], [10], [10], [10], [10, 10, 10]]);
     expect(scorecard.giveFinalScore()).toEqual('Perfect Game: 300 points');
   })
 

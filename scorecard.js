@@ -3,26 +3,25 @@ class Scorecard {
     this.scores = scores;
   }
 
-  strike_score(next_frame) {
+  frame_total(frame) {
     let total = 0;
-    next_frame.forEach(roll => {
+    frame.forEach(roll => {
       total += roll;
     });
-    total += 10;
     return total;
+  }
+
+  strike_score(next_frame) {
+    return this.frame_total(next_frame) + 10;
   }
 
   total_score() {
     let total = 0;
-
     for (let i = 0; i < this.scores.length; i++) {
-      
       if(this.scores[i][0] == 10) {
         total += this.strike_score(this.scores[i + 1]);
       } else {
-        this.scores[i].forEach(roll => {
-          total += roll;
-        });
+        total += this.frame_total(this.scores[i]);
       }
       
     }

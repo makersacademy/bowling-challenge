@@ -11,9 +11,6 @@ class Scorecard {
     return total;
   }
 
-  strike_score(next_frame) {
-    return this.frame_total(next_frame) + 10;
-  }
 
   total_score() {
     let total = 0;
@@ -21,7 +18,7 @@ class Scorecard {
       if(i == 9 && this.scores[i][0] == 10) {
         total += this.frame_total(this.scores[i]);
       } else if(this.scores[i][0] == 10) {
-        total += this.strike_score(this.scores[i + 1]);
+        total += this.frame_total(this.scores[i + 1]) + 10;
       } else if(this.frame_total(this.scores[i]) == 10) {
         total += this.frame_total(this.scores[i]) + this.scores[i + 1][0];
       } else {

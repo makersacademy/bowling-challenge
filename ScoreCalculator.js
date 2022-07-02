@@ -21,20 +21,12 @@ class ScoreCalculator {
     return this.total;
   }
 
-  isGutterGame(scores) {
+  isGutterGame() {
     return this.total == 0;
   }
 
-  isPerfectGame(scores) {
+  isPerfectGame() {
     return this.total == 120;
-  }
-
-  isStrike(frame) {
-
-  }
-
-  isSpare(frame) {
-
   }
 }
 

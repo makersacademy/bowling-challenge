@@ -1,4 +1,4 @@
-class Calculator {
+class ScoreCalculator {
   calculateTotal(scores) {
     this.total = scores.reduce((total, amount) => total += amount);
     return this.total;
@@ -21,4 +21,4 @@ class Calculator {
   }
 }
 
-module.exports = Calculator;
+module.exports = ScoreCalculator;

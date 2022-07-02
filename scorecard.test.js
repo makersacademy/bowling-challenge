@@ -21,7 +21,7 @@ describe('Scorecard',() => {
     expect(scorecard.giveFinalScore()).toEqual('You scored 5 points');
   })
 
-  xit('returns a score of 37 when score adds up to 48 and there are no strikes or spares',() => {
+  it('returns a score of 37 when score adds up to 48 and there are no strikes or spares',() => {
     const scorecard = new Scorecard([[0, 2], [6, 0], [1, 0], [0, 8], [0, 0], [0, 0], [0, 1], [1, 4], [5, 3], [4, 2]]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 37 points');
   })

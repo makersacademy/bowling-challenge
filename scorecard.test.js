@@ -11,8 +11,8 @@ describe('Scorecard',() => {
     expect(scorecard.giveFinalScore()).toEqual('Perfect Game: 300 points');
   })
 
-  xit('returns a score of 8 when score contains only 0s and one 8',() => {
-    const scorecard = new Scorecard([8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  it('returns a score of 8 when score contains only 0s and one 8',() => {
+    const scorecard = new Scorecard([[8, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 8 points');
   })
 

@@ -87,4 +87,22 @@ describe("BowlingScore", () => {
     bowlingScore.strike();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 14");
   });
+
+  it("returns the final score including points from multiple spares scored in the game", () => {
+    const bowlingScore = new BowlingScore([
+      [0, 0],
+      [6, 4],
+      [3, 7],
+      [5, 5],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+    ]);
+    bowlingScore.frame();
+    bowlingScore.spare();
+    expect(bowlingScore.finalScore()).toEqual("Final Score: 44");
+  });
 });

@@ -11,6 +11,9 @@ tenthFrame
 - [ ] Gutter game
 - [ ] One frame
 - [ ] Multiple frames
-- [ ] Spares
-- [ ] Strikes
+- [ ] One spare
+- [ ] One strikes
+- [ ] Multiple spares
+- [ ] Multiple strikes
 - [ ] Final Frame
+- [ ] Perfect game

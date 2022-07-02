@@ -1,9 +1,15 @@
 class ScoreCalculator {
   calculateTotal(scores) {
     this.total = 0;
+    scores.forEach((frame) => {
+       if (frame[0] + frame[1] == 10) {
+         this.total += 6;
+     }});
+    console.log(this.total);
     scores.map((frame) => { 
       this.total += frame.reduce((total, amount) => total += amount) 
     });
+   
     return this.total;
   }
 

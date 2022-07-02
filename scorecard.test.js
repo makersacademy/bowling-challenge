@@ -7,7 +7,7 @@ describe('Scorecard',() => {
   })
 
   it('returns a final score of 300 for a perfect game',() => {
-    const scorecard = new Scorecard([[10], [10], [10], [10], [10], [10], [10], [10], [10], [10, 10, 10]]);
+    const scorecard = new Scorecard([[10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]]);
     expect(scorecard.giveFinalScore()).toEqual('Perfect Game: 300 points');
   })
 
@@ -44,5 +44,10 @@ describe('Scorecard',() => {
   it('gives the correct score for two spares in a row',() => {
     const scorecard = new Scorecard([[2, 8], [7, 3], [4, 3], [4, 2]]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 44 points');
+  })
+
+  it('gives a bonus for a strike',() => {
+    const scorecard = new Scorecard([[10, 0], [7, 2]]);
+    expect(scorecard.giveFinalScore()).toEqual('You scored 28 points');
   })
 })

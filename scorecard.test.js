@@ -40,4 +40,9 @@ describe('Scorecard',() => {
     const scorecard = new Scorecard([[2, 8], [4, 2], [7, 3], [4, 2]]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 40 points');
   })
+
+  it('gives the correct score for two spares in a row',() => {
+    const scorecard = new Scorecard([[2, 8], [7, 3], [4, 3], [4, 2]]);
+    expect(scorecard.giveFinalScore()).toEqual('You scored 44 points');
+  })
 })

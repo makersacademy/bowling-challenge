@@ -51,7 +51,7 @@ describe("BowlingScore", () => {
     expect(bowlingScore.finalScore()).toEqual("Final Score: 20");
   });
 
-  it("returns the final score including points from one spare scored in the game", () => {
+  it("returns the final score including points from spare scored in the game", () => {
     const bowlingScore = new BowlingScore([
       [0, 0],
       [6, 4],
@@ -67,5 +67,24 @@ describe("BowlingScore", () => {
     bowlingScore.frame();
     bowlingScore.spare();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 16");
+  });
+
+  it("returns the final score including points from strikes scored in the game", () => {
+    const bowlingScore = new BowlingScore([
+      [0, 0],
+      [10, 0],
+      [1, 1],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0],
+    ]);
+    bowlingScore.frame();
+    bowlingScore.spare();
+    bowlingScore.strike();
+    expect(bowlingScore.finalScore()).toEqual("Final Score: 14");
   });
 });

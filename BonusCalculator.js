@@ -5,7 +5,7 @@ class BonusCalculator {
     this.scores = scores;
   }
 
-  calculateSpareBonus(total) {
+  addSpareBonus(total) {
     if (this.bonusForSpares.length > 0) {
       this.bonusForSpares.map((bonusIndex) => {
         total += this.scores[bonusIndex][0];
@@ -14,7 +14,7 @@ class BonusCalculator {
     return total;
   }
 
-  calculateStrikeBonus(total) {
+  addStrikeBonus(total) {
     if (this.bonusForStrikes.length > 0) {
       this.bonusForStrikes.map((bonusIndex) => {
         total += this.scores[bonusIndex][0];

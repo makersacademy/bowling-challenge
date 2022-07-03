@@ -17,8 +17,8 @@ class ScoreCalculator {
     });
 
     const bonusCalculator = new BonusCalculator(bonusForSpares, bonusForStrikes, scores);
-    this.total = bonusCalculator.calculateSpareBonus(this.total);
-    this.total = bonusCalculator.calculateStrikeBonus(this.total);
+    this.total = bonusCalculator.addSpareBonus(this.total);
+    this.total = bonusCalculator.addStrikeBonus(this.total);
   }
 
   giveTotal(scores) {

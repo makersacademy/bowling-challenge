@@ -75,6 +75,13 @@ describe('when the final frame is 3 strikes',() => {
   }) 
 })
 
+describe('when the final frame is 2 strikes and a spare',() => {
+  it('gives a value of 20 for the final frame',() => {
+    const scorecard = new Scorecard([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [10, 8, 2]]);
+    expect(scorecard.giveFinalScore()).toEqual('You scored 20 points');
+  })
+})
+
 describe('when the strike is in the second roll of a frame',() => {
   it('adds a bonus of the value of the next frame',() => {
     const scorecard = new Scorecard([[0, 10], [7, 2]]);

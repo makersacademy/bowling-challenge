@@ -55,7 +55,7 @@ describe(Scorecard, () => {
     expect(scorecard.total_score()).toBe(164);
   })
 
-  xit("returns score for perfect game", () => {
+  it("returns score for perfect game", () => {
     arr = [[10], [10], [10], [10], [10], [10], [10], [10], [10], [10, 10, 10]];
     const scorecard = new Scorecard(arr);
     expect(scorecard.total_score()).toBe(300);

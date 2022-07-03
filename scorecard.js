@@ -31,11 +31,14 @@ class Scorecard {
       let roll2 = 1;
       let currentFrame = this.scores[i];
       let nextFrame = this.scores[i + 1];
+      let twoFramesAfter = this.scores[i + 2];
 
       if(i == 9 && this.is_strike(currentFrame[roll1])) {
         total += this.frame_total(currentFrame);
       } else if(i == 8 && this.is_strike(currentFrame[roll1])) {
         total += this.frame_total(currentFrame) + nextFrame[roll1] + nextFrame[roll2]
+      } else if(this.is_strike(currentFrame[roll1]) && this.is_strike(nextFrame[roll1])) {
+        total += this.frame_total(currentFrame) + this.frame_total(nextFrame) + twoFramesAfter[roll1];
       }
       // else if(i == 8 && this.is_strike(currentFrame[roll1])) {
       //   total += nextFrame[0] + nextFrame[1] + 10;
@@ -61,7 +64,7 @@ class Scorecard {
    
     return total;
   }
-  // [[10], [3, 7], [10], [2, 7], [5, 4], [9, 1], [4, 5], [4, 6], [10], [10, 4, 6]]
+  // [[10], [10], [10], [10], [10], [10], [10], [10], [10], [10, 10, 10]]
 
 }
 

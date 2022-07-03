@@ -72,7 +72,7 @@ describe("BowlingScore", () => {
   it("returns the final score including points from strikes scored in the game", () => {
     const bowlingScore = new BowlingScore([
       [0, 0],
-      [10, 0],
+      [10],
       [1, 1],
       [0, 0],
       [0, 0],
@@ -109,11 +109,11 @@ describe("BowlingScore", () => {
   it("returns the final score including points from multiple strikes scored in the game", () => {
     const bowlingScore = new BowlingScore([
       [0, 0],
-      [10, 0],
+      [10],
       [1, 1],
-      [10, 0],
+      [10],
       [2, 2],
-      [10, 0],
+      [10],
       [3, 3],
       [0, 0],
       [0, 0],
@@ -129,8 +129,8 @@ describe("BowlingScore", () => {
     const bowlingScore = new BowlingScore([
       [0, 0],
       [0, 0],
-      [10, 0],
-      [10, 0],
+      [10],
+      [10],
       [1, 1],
       [0, 0],
       [0, 0],
@@ -155,9 +155,9 @@ describe("BowlingScore", () => {
       [1, 1],
       [1, 1],
       [1, 1],
-      [10, 0],
-      [1, 0],
-      [1, 0],
+      [10],
+      [1],
+      [1],
     ]);
     bowlingScore.frame();
     bowlingScore.spares();
@@ -178,7 +178,7 @@ describe("BowlingScore", () => {
       [1, 1],
       [1, 1],
       [5, 5],
-      [1, 0],
+      [1],
     ]);
     bowlingScore.frame();
     bowlingScore.spares();
@@ -189,18 +189,18 @@ describe("BowlingScore", () => {
 
   it("returns the final score when a player plays a perfect game", () => {
     const bowlingScore = new BowlingScore([
-      [10, 0],
-      [10, 0],
-      [10, 0],
-      [10, 0],
-      [10, 0],
-      [10, 0],
-      [10, 0],
-      [10, 0],
-      [10, 0],
-      [10, 0],
-      [10, 0],
-      [10, 0],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
     ]);
     bowlingScore.frame();
     bowlingScore.spares();

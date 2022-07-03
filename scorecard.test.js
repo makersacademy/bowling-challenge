@@ -65,4 +65,9 @@ describe('Scorecard',() => {
     const scorecard = new Scorecard([[8, 0], [8, 0], [7, 2], [7, 2], [7, 2], [7, 2], [7, 2], [7, 2], [7, 2], [10, 10, 10]]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 109 points');
   }) 
+
+  it('recognises a strike when it is in the second roll of a frame',() => {
+    const scorecard = new Scorecard([[0, 10], [7, 2]]);
+    expect(scorecard.giveFinalScore()).toEqual('You scored 28 points');
+  })
 })

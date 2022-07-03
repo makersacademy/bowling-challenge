@@ -2,13 +2,11 @@ const ScoreCalculator = require('./ScoreCalculator');
 
 class Scorecard {
   constructor(scores) {
-    this.scores = scores;
-    this.calculator = new ScoreCalculator();
+    this.calculator = new ScoreCalculator(scores);
   }
 
   giveFinalScore() {
-    this.calculator.addBonus(this.scores);
-    let totalScore = this.calculator.giveTotal(this.scores);
+    let totalScore = this.calculator.giveTotal();
     if (totalScore == 0) {
       return "Gutter Game: 0 points";
     }

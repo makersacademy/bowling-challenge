@@ -81,12 +81,12 @@ describe('when the strike is in the second roll of a frame',() => {
     expect(scorecard.giveFinalScore()).toEqual('You scored 28 points');
   })
 
-  it('gives the correct score when the roll after a strike is a 0',() => {
+  it('gives the correct bonus when the roll after a strike is a 0',() => {
     const scorecard = new Scorecard([[0, 10], [0, 2]]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 14 points');
   })
 
-  it('gives a bonus of 0 both rolls after a strike are 0s',() => {
+  it('gives a bonus of 0 if both rolls after a strike are 0s',() => {
     const scorecard = new Scorecard([[0, 10], [0, 0]]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 10 points');
   })

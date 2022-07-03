@@ -75,4 +75,9 @@ describe('Scorecard',() => {
     const scorecard = new Scorecard([[0, 10], [0, 2]]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 14 points');
   })
+
+  it('gives the correct score when both rolls after a strike are 0s',() => {
+    const scorecard = new Scorecard([[0, 10], [0, 0]]);
+    expect(scorecard.giveFinalScore()).toEqual('You scored 10 points');
+  })
 })

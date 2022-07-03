@@ -80,4 +80,9 @@ describe('Scorecard',() => {
     const scorecard = new Scorecard([[0, 10], [0, 0]]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 10 points');
   })
+
+  it('gives the correct bonus when two strikes are rolled on the second roll in a row',() => {
+    const scorecard = new Scorecard([[0, 10], [0, 10], [5, 3]]);
+    expect(scorecard.giveFinalScore()).toEqual('You scored 51 points');
+  }) 
 })

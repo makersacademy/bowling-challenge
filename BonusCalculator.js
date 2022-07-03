@@ -18,11 +18,9 @@ class BonusCalculator {
     if (this.bonusForStrikes.length > 0) {
       this.bonusForStrikes.map((bonusIndex) => {
         total += this.scores[bonusIndex][0];
+        total += this.scores[bonusIndex][1];
         if (this.scores[bonusIndex].includes(10) && this.scores[bonusIndex + 1]) {
           total += this.scores[bonusIndex + 1][0]
-        }
-        else {
-          total += this.scores[bonusIndex][1];
         }
       })
     } 

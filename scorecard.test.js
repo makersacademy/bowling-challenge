@@ -50,4 +50,9 @@ describe('Scorecard',() => {
     const scorecard = new Scorecard([[10, 0], [7, 2]]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 28 points');
   })
+
+  it('correctly calculates two separate strikes',() => {
+    const scorecard = new Scorecard([[10, 0], [7, 2], [10, 0], [7, 2]]);
+    expect(scorecard.giveFinalScore()).toEqual('You scored 56 points');
+  })
 })

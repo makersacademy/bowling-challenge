@@ -28,25 +28,30 @@ class Scorecard {
     let total = 0;
     for (let i = 0; i < this.scores.length; i++) {
       let roll1 = 0;
+      let roll2 = 1;
       let currentFrame = this.scores[i];
       let nextFrame = this.scores[i + 1];
 
       if(i == 9 && this.is_strike(currentFrame[roll1])) {
         total += this.frame_total(currentFrame);
       } else if(i == 8 && this.is_strike(currentFrame[roll1])) {
-        total += nextFrame[0] + nextFrame[1] + 10;
-      } else if(this.is_strike(currentFrame[roll1]) && this.is_strike(nextFrame[roll1])) {
-        if(i < 7) {
-          total += this.frame_total(this.scores[i + 2]) + 20;
-        } else if(i == 7) {
-          total += this.frame_total(this.scores[i + 2]) + 20;
-        } else {
-          total += this.frame_total(nextFrame) + 10;
-        }
+        total += this.frame_total(currentFrame) + nextFrame[roll1] + nextFrame[roll2]
+      }
+      // else if(i == 8 && this.is_strike(currentFrame[roll1])) {
+      //   total += nextFrame[0] + nextFrame[1] + 10;
+      // } else if(this.is_strike(currentFrame[roll1]) && this.is_strike(nextFrame[roll1])) {
+      //   if(i < 7) {
+      //     total += this.frame_total(this.scores[i + 2]) + 20;
+      //   } else if(i == 7) {
+      //     total += this.frame_total(this.scores[i + 2]) + 20;
+      //   } else {
+      //     total += this.frame_total(nextFrame) + 10;
+      //   }
         
-      } else if(this.is_strike(currentFrame[roll1])) {
-        total += this.frame_total(nextFrame) + 10;
+       else if(this.is_strike(currentFrame[roll1])) {
+        total += this.frame_total(nextFrame) + this.frame_total(currentFrame);
       } else if(this.is_spare(this.frame_total(currentFrame))) {
+       
         total += this.frame_total(currentFrame) + nextFrame[roll1];
       } else {
         total += this.frame_total(currentFrame);
@@ -56,7 +61,7 @@ class Scorecard {
    
     return total;
   }
-
+  // [[10], [3, 7], [10], [2, 7], [5, 4], [9, 1], [4, 5], [4, 6], [10], [10, 4, 6]]
 
 }
 

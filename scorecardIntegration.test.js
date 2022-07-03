@@ -100,6 +100,6 @@ describe('when two strikes are rolled in a row',() => {
 
   it('adds a bonus of 10 for the first strike when both strikes are rolled on the second roll',() => {
     const scorecard = new Scorecard([[0, 10], [0, 10], [5, 3]]);
-    expect(scorecard.giveFinalScore()).toEqual('You scored 51 points');
+    expect(scorecard.giveFinalScore()).toEqual('You scored 46 points');
   }) 
 })

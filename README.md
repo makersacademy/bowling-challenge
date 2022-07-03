@@ -23,7 +23,7 @@ I would like to know the final score of my bowling game
 
 The calculator can also generate the final score for the following games:
 
-| Game type Input                                | Output                                                                        |
+| Game type                                      | Input                                                                         | Output           |
 | ---------------------------------------------- | ----------------------------------------------------------------------------- | ---------------- |
 | Gutter game                                    | [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0]         | Final Score: 0   |
 | A game with only one frame                     | [5,2]                                                                         | Final Score: 7   |

@@ -21,7 +21,7 @@ I would like to know the final score of my bowling game
 
 ## Inputs and Outputs
 
-The calculator can also generate the final score for the following games:
+The calculator can generate the final score for the following games:
 
 | Game type                                      | Input                                                                         | Output           |
 | ---------------------------------------------- | ----------------------------------------------------------------------------- | ---------------- |

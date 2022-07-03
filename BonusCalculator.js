@@ -18,9 +18,7 @@ class BonusCalculator {
 
   addSpareBonus(total) {
     if (this.bonusForSpares.length > 0) {
-      this.bonusForSpares.map((bonusIndex) => {
-        total += this.scores[bonusIndex][0];
-      })
+      this.bonusForSpares.map((bonusIndex) => {total += this.scores[bonusIndex][0]});
     } 
     return total;
   }

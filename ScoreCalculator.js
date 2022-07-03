@@ -14,9 +14,6 @@ class ScoreCalculator {
     scores.map((frame) => { 
       this.total += frame.reduce((total, amount) => total += amount) 
     });
-
-    console.log(this.total);
-  
     return this.total;
   }
 

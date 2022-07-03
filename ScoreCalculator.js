@@ -8,7 +8,7 @@ class ScoreCalculator {
     let bonusForStrikes = [];
 
     scores.forEach((frame) => {
-      if ((frame[0] == 10 || frame[1] == 10) && frame.length < 3) {
+      if ((frame.includes(10)) && frame.length < 3) {
         bonusForStrikes.push(scores.indexOf(frame) + 1);
       }
       else if (frame[0] + frame[1] == 10) {

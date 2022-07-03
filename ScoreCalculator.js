@@ -16,14 +16,6 @@ class ScoreCalculator {
     });
     return this.total;
   }
-
-  isGutterGame() {
-    return this.total == 0;
-  }
-
-  isPerfectGame() {
-    return this.total == 300;
-  }
 }
 
 module.exports = ScoreCalculator;

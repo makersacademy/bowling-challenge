@@ -9,10 +9,10 @@ class Scorecard {
   giveFinalScore() {
     this.calculator.addBonus(this.scores);
     let totalScore = this.calculator.giveTotal(this.scores);
-    if (this.calculator.isGutterGame()) {
+    if (totalScore == 0) {
       return "Gutter Game: 0 points";
     }
-    if (this.calculator.isPerfectGame()) {
+    if (totalScore == 300) {
       return "Perfect Game: 300 points";
     }
     else {

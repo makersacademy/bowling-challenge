@@ -6,7 +6,6 @@ class BonusCalculator {
   }
 
   findSparesAndStrikes() {
-    console.log(this.scores);
     this.scores.forEach((frame) => {
       if ((frame.includes(10)) && frame.length < 3) {
         this.bonusForStrikes.push(this.scores.indexOf(frame) + 1);

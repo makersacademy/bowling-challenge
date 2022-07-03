@@ -1,5 +1,6 @@
 class ScoreCalculator {
-  calculateTotal(scores) {
+
+  addBonus(scores) {
     this.total = 0;
     let bonusForSpares = [];
     let bonusForStrikes = [];
@@ -14,29 +15,17 @@ class ScoreCalculator {
     });
 
     const bonusCalculator = new BonusCalculator(bonusForSpares, bonusForStrikes, scores);
-
     this.total = bonusCalculator.calculateSpareBonus(this.total);
-
     this.total = bonusCalculator.calculateStrikeBonus(this.total);
+  }
 
-    // if (bonusForStrikes.length > 0) {
-    //   bonusForStrikes.map((bonusIndex) => {
-    //     this.total += scores[bonusIndex][0];
-    //     if (scores[bonusIndex][1] == 0) {
-    //       this.total += scores[bonusIndex + 1][0]
-    //     }
-    //     else {
-    //       this.total += scores[bonusIndex][1];
-    //     }
-    //   })
-    // } 
-
+  giveTotal(scores) {
     scores.map((frame) => { 
       this.total += frame.reduce((total, amount) => total += amount) 
     });
 
     console.log(this.total);
-   
+  
     return this.total;
   }
 
@@ -56,6 +45,15 @@ class BonusCalculator {
     this.scores = scores;
   }
 
+  calculateSpareBonus(total) {
+    if (this.bonusForSpares.length > 0) {
+      this.bonusForSpares.map((bonusIndex) => {
+        total += this.scores[bonusIndex][0];
+      })
+    } 
+    return total;
+  }
+
   calculateStrikeBonus(total) {
     if (this.bonusForStrikes.length > 0) {
       this.bonusForStrikes.map((bonusIndex) => {
@@ -70,17 +68,6 @@ class BonusCalculator {
     } 
     return total;
   }
-
-  calculateSpareBonus(total) {
-    if (this.bonusForSpares.length > 0) {
-      this.bonusForSpares.map((bonusIndex) => {
-        total += this.scores[bonusIndex][0];
-      })
-    } 
-    return total;
-  }
-
-
 }
 
 module.exports = ScoreCalculator;

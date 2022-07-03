@@ -7,7 +7,8 @@ class Scorecard {
   }
 
   giveFinalScore() {
-    let totalScore = this.calculator.calculateTotal(this.scores);
+    this.calculator.addBonus(this.scores);
+    let totalScore = this.calculator.giveTotal(this.scores);
     if (this.calculator.isGutterGame()) {
       return "Gutter Game: 0 points";
     }

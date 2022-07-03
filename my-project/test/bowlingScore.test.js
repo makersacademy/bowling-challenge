@@ -65,7 +65,7 @@ describe("BowlingScore", () => {
       [0, 0],
     ]);
     bowlingScore.frame();
-    bowlingScore.spare();
+    bowlingScore.spares();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 16");
   });
 
@@ -83,9 +83,8 @@ describe("BowlingScore", () => {
       [0, 0],
     ]);
     bowlingScore.frame();
-    bowlingScore.spare();
-    bowlingScore.strikesInARow();
-    bowlingScore.strike();
+    bowlingScore.spares();
+    bowlingScore.strikes();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 14");
   });
 
@@ -103,7 +102,7 @@ describe("BowlingScore", () => {
       [0, 0],
     ]);
     bowlingScore.frame();
-    bowlingScore.spare();
+    bowlingScore.spares();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 44");
   });
 
@@ -121,9 +120,8 @@ describe("BowlingScore", () => {
       [0, 0],
     ]);
     bowlingScore.frame();
-    bowlingScore.spare();
-    bowlingScore.strikesInARow();
-    bowlingScore.strike();
+    bowlingScore.spares();
+    bowlingScore.strikes();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 54");
   });
 
@@ -141,9 +139,8 @@ describe("BowlingScore", () => {
       [0, 0],
     ]);
     bowlingScore.frame();
-    bowlingScore.spare();
-    bowlingScore.strikesInARow();
-    bowlingScore.strike();
+    bowlingScore.spares();
+    bowlingScore.strikes();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 44");
   });
 
@@ -163,9 +160,8 @@ describe("BowlingScore", () => {
       [1, 0],
     ]);
     bowlingScore.frame();
-    bowlingScore.spare();
-    bowlingScore.strikesInARow();
-    bowlingScore.strike();
+    bowlingScore.spares();
+    bowlingScore.strikes();
     bowlingScore.tenthFrame();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 30");
   });
@@ -185,9 +181,8 @@ describe("BowlingScore", () => {
       [1, 0],
     ]);
     bowlingScore.frame();
-    bowlingScore.spare();
-    bowlingScore.strikesInARow();
-    bowlingScore.strike();
+    bowlingScore.spares();
+    bowlingScore.strikes();
     bowlingScore.tenthFrame();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 29");
   });
@@ -208,9 +203,8 @@ describe("BowlingScore", () => {
       [10, 0],
     ]);
     bowlingScore.frame();
-    bowlingScore.spare();
-    bowlingScore.strikesInARow();
-    bowlingScore.strike();
+    bowlingScore.spares();
+    bowlingScore.strikes();
     bowlingScore.tenthFrame();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 300");
   });

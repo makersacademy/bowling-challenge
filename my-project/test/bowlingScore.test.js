@@ -84,6 +84,7 @@ describe("BowlingScore", () => {
     ]);
     bowlingScore.frame();
     bowlingScore.spare();
+    bowlingScore.strikesInARow();
     bowlingScore.strike();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 14");
   });
@@ -108,7 +109,6 @@ describe("BowlingScore", () => {
 
   it("returns the final score including points from multiple strikes scored in the game", () => {
     const bowlingScore = new BowlingScore([
-      // 12,2, 14, 4, 16, 6
       [0, 0],
       [10, 0],
       [1, 1],
@@ -122,30 +122,9 @@ describe("BowlingScore", () => {
     ]);
     bowlingScore.frame();
     bowlingScore.spare();
+    bowlingScore.strikesInARow();
     bowlingScore.strike();
-    bowlingScore.tenthFrame;
     expect(bowlingScore.finalScore()).toEqual("Final Score: 54");
-  });
-
-  xit("returns the final score when a player scores a strike in the tenth frame", () => {
-    const bowlingScore = new BowlingScore([
-      [1, 1],
-      [1, 1],
-      [1, 1],
-      [1, 1],
-      [1, 1],
-      [1, 1],
-      [1, 1],
-      [1, 1],
-      [1, 1],
-      [10, 0],
-      [1, 1],
-      [1, 1],
-    ]);
-    bowlingScore.frame();
-    bowlingScore.spare();
-    bowlingScore.strike();
-    expect(bowlingScore.finalScore()).toEqual("Final Score: 34");
   });
 
   it("returns the final score when a player scores 2 strikes in a row", () => {
@@ -168,7 +147,52 @@ describe("BowlingScore", () => {
     expect(bowlingScore.finalScore()).toEqual("Final Score: 44");
   });
 
-  xit("returns the final score when a player plays a perfect game", () => {
+  it("returns the final score when a player scores a strike in the tenth frame", () => {
+    const bowlingScore = new BowlingScore([
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [10, 0],
+      [1, 0],
+      [1, 0],
+    ]);
+    bowlingScore.frame();
+    bowlingScore.spare();
+    bowlingScore.strikesInARow();
+    bowlingScore.strike();
+    bowlingScore.tenthFrame();
+    expect(bowlingScore.finalScore()).toEqual("Final Score: 30");
+  });
+
+  it("returns the final score when a player scores a spare in the tenth frame", () => {
+    const bowlingScore = new BowlingScore([
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [1, 1],
+      [5, 5],
+      [1, 0],
+    ]);
+    bowlingScore.frame();
+    bowlingScore.spare();
+    bowlingScore.strikesInARow();
+    bowlingScore.strike();
+    bowlingScore.tenthFrame();
+    expect(bowlingScore.finalScore()).toEqual("Final Score: 29");
+  });
+
+  it("returns the final score when a player plays a perfect game", () => {
     const bowlingScore = new BowlingScore([
       [10, 0],
       [10, 0],
@@ -185,6 +209,7 @@ describe("BowlingScore", () => {
     ]);
     bowlingScore.frame();
     bowlingScore.spare();
+    bowlingScore.strikesInARow();
     bowlingScore.strike();
     bowlingScore.tenthFrame();
     expect(bowlingScore.finalScore()).toEqual("Final Score: 300");

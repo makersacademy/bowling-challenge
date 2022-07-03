@@ -15,5 +15,6 @@ tenthFrame
 - [ ] One strikes
 - [ ] Multiple spares
 - [ ] Multiple strikes
-- [ ] Final Frame
+- [ ] Tenth Frame - Strike
+- [ ] Tenth Frame - Spare
 - [ ] Perfect game

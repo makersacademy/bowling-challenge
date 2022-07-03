@@ -39,19 +39,7 @@ class Scorecard {
         total += this.frame_total(currentFrame) + nextFrame[roll1] + nextFrame[roll2]
       } else if(this.is_strike(currentFrame[roll1]) && this.is_strike(nextFrame[roll1])) {
         total += this.frame_total(currentFrame) + this.frame_total(nextFrame) + twoFramesAfter[roll1];
-      }
-      // else if(i == 8 && this.is_strike(currentFrame[roll1])) {
-      //   total += nextFrame[0] + nextFrame[1] + 10;
-      // } else if(this.is_strike(currentFrame[roll1]) && this.is_strike(nextFrame[roll1])) {
-      //   if(i < 7) {
-      //     total += this.frame_total(this.scores[i + 2]) + 20;
-      //   } else if(i == 7) {
-      //     total += this.frame_total(this.scores[i + 2]) + 20;
-      //   } else {
-      //     total += this.frame_total(nextFrame) + 10;
-      //   }
-        
-       else if(this.is_strike(currentFrame[roll1])) {
+      } else if(this.is_strike(currentFrame[roll1])) {
         total += this.frame_total(nextFrame) + this.frame_total(currentFrame);
       } else if(this.is_spare(this.frame_total(currentFrame))) {
        
@@ -59,13 +47,10 @@ class Scorecard {
       } else {
         total += this.frame_total(currentFrame);
       }
-      console.log(i, total)
     }
    
     return total;
   }
-  // [[10], [10], [10], [10], [10], [10], [10], [10], [10], [10, 10, 10]]
-
 }
 
 

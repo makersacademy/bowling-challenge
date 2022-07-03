@@ -13,12 +13,15 @@ class ScoreCalculator {
       }
     });
 
+    const bonusCalculator = new BonusCalculator(bonusForSpares, bonusForStrikes, scores)
 
-    if (bonusForSpares.length > 0) {
-      bonusForSpares.map((bonusIndex) => {
-        this.total += scores[bonusIndex][0];
-      })
-    } 
+    this.total = bonusCalculator.calculateSpareBonus(this.total)
+
+    // if (bonusForSpares.length > 0) {
+    //   bonusForSpares.map((bonusIndex) => {
+    //     this.total += scores[bonusIndex][0];
+    //   })
+    // } 
 
     if (bonusForStrikes.length > 0) {
       bonusForStrikes.map((bonusIndex) => {
@@ -48,6 +51,29 @@ class ScoreCalculator {
   isPerfectGame() {
     return this.total == 300;
   }
+}
+
+class BonusCalculator {
+  constructor(bonusForSpares, bonusForStrikes, scores) {
+    this.bonusForSpares = bonusForSpares;
+    this.bonusForStrikes = bonusForStrikes;
+    this.scores = scores;
+  }
+
+  calculateStrikeBonus(total) {
+
+  }
+
+  calculateSpareBonus(total) {
+    if (this.bonusForSpares.length > 0) {
+      this.bonusForSpares.map((bonusIndex) => {
+        total += this.scores[bonusIndex][0];
+      })
+    } 
+    return total;
+  }
+
+
 }
 
 module.exports = ScoreCalculator;

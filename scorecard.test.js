@@ -59,5 +59,10 @@ describe('Scorecard',() => {
   it('correctly calculates two strikes in a row',() => {
     const scorecard = new Scorecard([[10, 0], [10, 0], [7, 2], [7, 2]]);
     expect(scorecard.giveFinalScore()).toEqual('You scored 64 points');
+  })
+  
+  it('correctly calculates a full length game that ends in 3 strikes',() => {
+    const scorecard = new Scorecard([[8, 0], [8, 0], [7, 2], [7, 2], [7, 2], [7, 2], [7, 2], [7, 2], [7, 2], [10, 10, 10]]);
+    expect(scorecard.giveFinalScore()).toEqual('You scored 109 points');
   }) 
 })

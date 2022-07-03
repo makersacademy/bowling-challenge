@@ -1,8 +1,20 @@
 class BonusCalculator {
-  constructor(bonusForSpares, bonusForStrikes, scores) {
-    this.bonusForSpares = bonusForSpares;
-    this.bonusForStrikes = bonusForStrikes;
+  constructor(scores) {
+    this.bonusForSpares = [];
+    this.bonusForStrikes = [];
     this.scores = scores;
+  }
+
+  findSparesAndStrikes() {
+    console.log(this.scores);
+    this.scores.forEach((frame) => {
+      if ((frame.includes(10)) && frame.length < 3) {
+        this.bonusForStrikes.push(this.scores.indexOf(frame) + 1);
+      }
+      else if (frame[0] + frame[1] == 10) {
+        this.bonusForSpares.push(this.scores.indexOf(frame) + 1);
+      }
+    });
   }
 
   addSpareBonus(total) {

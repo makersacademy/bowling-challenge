@@ -4,19 +4,8 @@ class ScoreCalculator {
 
   addBonus(scores) {
     this.total = 0;
-    let bonusForSpares = [];
-    let bonusForStrikes = [];
-
-    scores.forEach((frame) => {
-      if ((frame.includes(10)) && frame.length < 3) {
-        bonusForStrikes.push(scores.indexOf(frame) + 1);
-      }
-      else if (frame[0] + frame[1] == 10) {
-        bonusForSpares.push(scores.indexOf(frame) + 1);
-      }
-    });
-
-    const bonusCalculator = new BonusCalculator(bonusForSpares, bonusForStrikes, scores);
+    const bonusCalculator = new BonusCalculator(scores);
+    bonusCalculator.findSparesAndStrikes();
     this.total = bonusCalculator.addSpareBonus(this.total);
     this.total = bonusCalculator.addStrikeBonus(this.total);
   }

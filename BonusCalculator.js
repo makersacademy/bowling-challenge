@@ -28,8 +28,7 @@ class BonusCalculator {
   addStrikeBonus(total) {
     if (this.bonusForStrikes.length > 0) {
       this.bonusForStrikes.map((bonusIndex) => {
-        total += this.scores[bonusIndex][0];
-        total += this.scores[bonusIndex][1];
+        total += this.scores[bonusIndex][0] + this.scores[bonusIndex][1];
         if (this.scores[bonusIndex][0] == 10 && this.scores[bonusIndex + 1]) {
           total += this.scores[bonusIndex + 1][0]
         }

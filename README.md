@@ -68,5 +68,3 @@ $ npm add jest
 # Also install jest "globally"
 $ npm install -g jest
 ```
-
-## Usage

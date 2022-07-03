@@ -17,12 +17,6 @@ class ScoreCalculator {
 
     this.total = bonusCalculator.calculateSpareBonus(this.total)
 
-    // if (bonusForSpares.length > 0) {
-    //   bonusForSpares.map((bonusIndex) => {
-    //     this.total += scores[bonusIndex][0];
-    //   })
-    // } 
-
     if (bonusForStrikes.length > 0) {
       bonusForStrikes.map((bonusIndex) => {
         this.total += scores[bonusIndex][0];

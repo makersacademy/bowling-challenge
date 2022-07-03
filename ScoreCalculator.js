@@ -13,21 +13,23 @@ class ScoreCalculator {
       }
     });
 
-    const bonusCalculator = new BonusCalculator(bonusForSpares, bonusForStrikes, scores)
+    const bonusCalculator = new BonusCalculator(bonusForSpares, bonusForStrikes, scores);
 
-    this.total = bonusCalculator.calculateSpareBonus(this.total)
+    this.total = bonusCalculator.calculateSpareBonus(this.total);
 
-    if (bonusForStrikes.length > 0) {
-      bonusForStrikes.map((bonusIndex) => {
-        this.total += scores[bonusIndex][0];
-        if (scores[bonusIndex][1] == 0) {
-          this.total += scores[bonusIndex + 1][0]
-        }
-        else {
-          this.total += scores[bonusIndex][1];
-        }
-      })
-    } 
+    this.total = bonusCalculator.calculateStrikeBonus(this.total);
+
+    // if (bonusForStrikes.length > 0) {
+    //   bonusForStrikes.map((bonusIndex) => {
+    //     this.total += scores[bonusIndex][0];
+    //     if (scores[bonusIndex][1] == 0) {
+    //       this.total += scores[bonusIndex + 1][0]
+    //     }
+    //     else {
+    //       this.total += scores[bonusIndex][1];
+    //     }
+    //   })
+    // } 
 
     scores.map((frame) => { 
       this.total += frame.reduce((total, amount) => total += amount) 
@@ -55,7 +57,18 @@ class BonusCalculator {
   }
 
   calculateStrikeBonus(total) {
-
+    if (this.bonusForStrikes.length > 0) {
+      this.bonusForStrikes.map((bonusIndex) => {
+        total += this.scores[bonusIndex][0];
+        if (this.scores[bonusIndex][1] == 0) {
+          total += this.scores[bonusIndex + 1][0]
+        }
+        else {
+          total += this.scores[bonusIndex][1];
+        }
+      })
+    } 
+    return total;
   }
 
   calculateSpareBonus(total) {

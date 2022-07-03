@@ -24,10 +24,11 @@ class BowlingScore {
   spares() {
     // check if sum of each frame is 10 and if the first roll does not equal 10
     this.nineFrames.forEach((frame) => {
+      let index = this.nineFrames.indexOf(frame);
+      let nextFrame = this.scoresheet[index + 1];
       const roll = frame.reduce((a, b) => a + b, 0);
-
       if (roll === 10 && frame[0] != 10) {
-        this.sparePoints = 10 + frame[0];
+        this.sparePoints = 10 + nextFrame[0];
         this.total.push(this.sparePoints, 0);
       }
     });
@@ -36,9 +37,9 @@ class BowlingScore {
   strikes() {
     this.nineFrames.forEach((frame) => {
       // find the next frame
-      const index = this.nineFrames.indexOf(frame);
-      const nextFrame = this.scoresheet[index + 1];
-      const nextFrameSum = nextFrame.reduce((a, b) => a + b, 0);
+      let index = this.nineFrames.indexOf(frame);
+      let nextFrame = this.scoresheet[index + 1];
+      let nextFrameSum = nextFrame.reduce((a, b) => a + b, 0);
       // check if current frame is a strike and the frame after is a strike
       if (frame[0] === 10 && nextFrame[0] === 10) {
         this.strikePoints = 20 + nextFrameSum;

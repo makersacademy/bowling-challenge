@@ -1,38 +1,78 @@
-
-Bowling Challenge
+Bowling Challenge (JavaScript)
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+This is a bowling scorecard calculator. The user inputs an array of scores for each 'frame' (of which there should be 10 in total), each of which is a sub-array with the length of 1, 2 or 3 depending on the score / frame number. The output is the total score.
 
-## The Task
+The calculator will handle bonuses from strikes and spares, plus the rules around the 10th frame. It will also calculate a total score for an incomplete game without throwing errors. Scroll down to see the rules of bowling.
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+To complete this challenge, I followed TDD principles to guide me to my final result. I started with a single method as this was adequate to handle my initial test cases (i.e a gutter game), but as the cases became more complex, I felt it was necessary to move to a single class to take advantage of initialization and private methods. 
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+I could have refactored my tests to have fewer in the final version, but decided to leave all tests in place to clearly show the TDD process that I followed.
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+I have assumed that the input will always be an array of arrays containing integers, as this would typically be handled at the point of user input (which was not required for this challenge)
 
-As usual please start by
 
-* Forking this repo
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+## Planning - handling the rules
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
-### Optional Extras
 
-In any order you like:
 
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+                                     ┌───────────────┐
+                                     │               │
+                                     │ SCORES ARRAY  │
+                                     │               │
+                                     └───────┬───────┘
+                                             │
+                                             ▼
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+                                     Sum of each frame
+
+                                             │
+                                             │
+                                             │
+                                             ▼
+
+                          spare if frame == 10 && frame.length == 2
+                 ┌───────
+                 │        strike if frame == 10 && frame.length == 1
+                 │
+                 │                              │   │
+                 │                              │   │
+                 │                              │   │
+                 │              SPARE    ◄──────┘   └───────────────►    STRIKE
+                 │
+                 │    if spare, add the first roll               if strike, add the first roll of the
+                 │    of the next frame onto score               next frame onto the score
+                 │
+                 │                                                       │             │
+                 ▼                                                       │             │
+                                                          ┌──────────────┘             └────────────┐
+              10TH FRAME                                  ▼                                         ▼
+
+      3rd roll if first 2 rolls include      if strike, add the first roll            if not strike, add 2nd
+      strike(s) or spare                     next frame on                            roll of next frame on
+
+
+
+## I/O examples
+
+| input | output |
+|-------|--------|
+| Gutter game - all 0 | 0 |
+| complete game - no X or / [[1,1] * 10]| 20 |
+| complete game - one spare [[1,1] * 8, [5,5], [1,1]] | 29 |
+| complete game - two spares [[1,1] * 4, [5,5], [1,1] * 3, [3,7], [1,1]] | 38 |
+| complete game - one strike [[1,1] * 8, [10], [1,1]] | 30 |
+| complete game - two strikes [[1,1] * 4, [10], [1,1] * 3, 10, [1,1]] | 40 |
+| complete game - two spares in a row [[5,5], [5,5], [1,1] * 8] | 42 |
+| complete game - two strikes in a row [[10], [10], [1,1] * 8] | 49 |
+| complete game - mixed [[4,3], [5,5], [6,4], [10], [5,2], [10], [3,7], [4,6], [10], [4,2]] | 143 |
+| complete game - spare in 10th frame [[4,3], [5,5], [6,4], [10], [5,2], [10], [3,7], [4,6], [10], [4,6,3]] | 154 |
+| complete game - strike on first roll of 10th frame [[4,3], [5,5], [6,4], [10], [5,2], [10], [3,7], [4,6], [10], [10,6,3]] | 166 |
+| complete game - two strikes in 10th frame [[4,3], [5,5], [6,4], [10], [5,2], [10], [3,7], [4,6], [10], [10,10,3]] | 174 |
+| perfect game [[10] * 10] | 300 |
+
 
 ## Bowling — how does it work?
 
@@ -65,11 +105,29 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Code Review
+## The Task - instructions from Makers
 
-In code review we'll be hoping to see:
+**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD PROGRAM. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+Count and sum the scores of a bowling game for one player. For this challenge, you do _not_ need to build a web app with a UI, instead, just focus on the logic for bowling (you also don't need a database). Next end-of-unit challenge, you will have the chance to translate the logic to Javascript and build a user interface.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+
+As usual please start by
+
+* Forking this repo
+
+* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+
+___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+
+## Focus for this challenge
+The focus for this challenge is to write high-quality code.
+
+In order to do this, you may pay particular attention to the following:
+* Using diagramming to plan your approach to the challenge
+* TDD your code
+* Focus on testing behaviour rather than state
+* Commit often, with good commit messages
+* Single Responsibility Principle and encapsulation
+* Clear and readable code

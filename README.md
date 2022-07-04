@@ -1,40 +1,26 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
+Bowling Challenge is a JavaScript bowling score calculator. It counts and then sums the scores of a bowling game for one player.
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## About
 
-## The Task
+This is a weekend challenge from week 6 of the Makers Academy bootcamp. The focus of this challenge is to gain the ability to test-drive a simple Javascript program using Node, to write high-quality code and apply a coherent process when learning a new language.
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+## User Story
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+```bash
+As a player
+So that I can find out how well I played
+I would like to know the final score of my bowling game
+```
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+## Features
 
-As usual please start by
+- The calculator uses the rules of ten-pin bowling to calculate a player's score.
+- The calculator generates a final score for a player's game that consists of ten frames.
+- The scores for the player's game are inputted as nested arrays.
 
-* Forking this repo
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Create a nice interactive animated interface with jQuery.
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
+## Bowling Rules
 
 ### Strikes
 
@@ -46,9 +32,10 @@ The player has a spare if the knocks down all 10 pins with the two rolls of a fr
 
 ### 10th frame
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+If the player rolls a strike or spare in the 10th frame, they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
 
     10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
+
     1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
 ### Gutter Game
@@ -59,17 +46,54 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 
-In the image below you can find some score examples.
+More about ten pin bowling here: https://www.myactivesg.com/sports/bowling/how-to-play/bowling-rules/how-are-points-determined-in-bowling and http://en.wikipedia.org/wiki/Ten-pin_bowling
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+## Inputs and Outputs
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+The calculator can generate the final score for the following games:
 
-## Code Review
+| Game type                                      | Input                                                                         | Output           |
+| ---------------------------------------------- | ----------------------------------------------------------------------------- | ---------------- |
+| Gutter game                                    | [0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0]         | Final Score: 0   |
+| A game with only one frame                     | [5,2]                                                                         | Final Score: 7   |
+| A game with multiple frames                    | [1,1],[2,2],[3,3]                                                             | Final Score: 12  |
+| A game with no spares or strikes               | [1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1]         | Final Score: 20  |
+| A game that includes one spare                 | [1, 1],[6, 4],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1]         | Final Score: 29  |
+| A game that includes one strike                | [1, 1],[10],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1]           | Final Score: 30  |
+| A game that includes multiple spare            | [0, 0],[6, 4],[3, 7],[5, 5],[1, 1],[0, 0],[0, 0],[0, 0],[0, 0],[0, 0]         | Final Score: 41  |
+| A game that includes multiple strikes          | [0, 0],[10],[1, 1],[10],[2, 2],[10],[3, 3],[0, 0],[0, 0],[0, 0]               | Final Score: 54  |
+| A game with a spare scored in the tenth frame  | [1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[10], [1], [1] | Final Score: 30  |
+| A game with a strike scored in the tenth frame | [1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[5, 5], [6]    | Final Score: 34  |
+| Perfect game                                   | [10],[10],[10],[10],[10],[10],[10],[10],[10],[10]                             | Final Score: 300 |
 
-In code review we'll be hoping to see:
+## Technologies
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+This project was created with:
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+- Npm v8.12.2
+- Node v18.4.0
+- Jest v28.1.2
+
+## Getting Started
+
+To clone and run this project, you will need to enter this into your command line:
+
+```bash
+# Clone this repository
+$ git clone https://github.com/Aisha-Yusuff/bowling-challenge-JavaScript.git
+
+# Go into the repository
+$ cd bowling-challenge-JavaScript
+
+# Install npm
+$ npm install
+
+# Initialise the NPM project (this will create a file package.json)
+$ npm init -y
+
+# Add the jest package to your project
+$ npm add jest
+
+# Also install jest "globally"
+$ npm install -g jest
+```

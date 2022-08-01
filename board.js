@@ -73,7 +73,7 @@ class Board {
                     this.game_on = false;
                     console.log("if is executed");
                 } else if (strike || spare) {
-                    this.game = true;
+                    this.game_on = true;
                     console.log("else if is executed");
                 }
 

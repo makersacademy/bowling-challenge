@@ -1,8 +1,8 @@
 const Frame = require('../lib/frame')
 const Scorecard = require('../lib/scorecard')
 
-describe('Scorecard',  () => {
-  it('gets the total score of 1 frame', async () => {
+describe('Scorecard', () => {
+  it('gets the total score of 1 frame', () => {
     const scorecard = new Scorecard;
     scorecard.allFrames.push(new Frame(1, 2));
     expect(scorecard.getTotalScore()).toEqual(3);

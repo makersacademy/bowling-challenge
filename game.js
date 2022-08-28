@@ -15,7 +15,7 @@ class Game {
 
   roll(ball) {
     if (this.currentframe().done()) {
-      if (this.framenum < 10) {
+      if (this.framenum() < 9) {
         this.game.push(new Frame);
       } else {
         this.game.push(new Frame(true));

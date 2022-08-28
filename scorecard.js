@@ -25,6 +25,7 @@ class ScoreCard {
   }
 
   frameScore() {
+    this.framescores = []
     for (let i = 0; i < this.game.framenum(); i++) {
       this.framescores.push(this.game.game[i].score())
     }

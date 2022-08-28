@@ -1,4 +1,4 @@
-const Frame = require('./Frame')
+const Frame = require('./frame')
 
 class Game {
   constructor() {

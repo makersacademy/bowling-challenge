@@ -16,9 +16,7 @@ class Frame {
   done() {
     if (this.tenth && this.donetenth()) {
       return true
-    } else if (!this.tenth && this.strike()) {
-      return true;
-    } else if (!this.tenth && this.frame.length == 2) {
+    } else if (!this.tenth && (this.strike() || this.frame.length == 2)) {
       return true;
     } else {
       return false;

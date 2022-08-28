@@ -13,21 +13,37 @@ class ScoreCard {
       result += (
         `--------------\n` +
         `Frame: ${i + 1}\n` +
-        `Score: ${this.framescores[i]}\n`
+        `Pins: ${this.pins(this.game.game[i])}\n` +
+        `Running Score: ${this.framescores[i]}\n`
       );
     }
-    const sum = this.framescores.reduce((a, b) => a + b, 0);
-    result += (
-      `--------------\n` +
-      `Game Total: ${sum}`
-    )
+
+    if (this.game.game.length == 10 && this.game.currentframe().done()) {
+      result += (
+        `--------------\n` +
+        `Final Total: ${this.framescores[this.framescores.length - 1]}`
+      )
+    }
     return result
+  }
+
+  pins(frame) {
+    let pins = `${frame.frame[0]}`
+    if (frame.frame.length > 1) {
+      pins += `, ${frame.frame[1]}`
+    }
+    return pins
   }
 
   frameScore() {
     this.framescores = []
     for (let i = 0; i < this.game.framenum(); i++) {
-      this.framescores.push(this.game.game[i].score())
+      let lastFrame = 0
+      if (i > 0) {
+        lastFrame = this.framescores[i - 1]
+      }
+      const thisFrame = this.game.game[i].score()
+      this.framescores.push(lastFrame + thisFrame)
     }
   }
 

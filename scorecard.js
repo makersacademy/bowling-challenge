@@ -8,6 +8,7 @@ class ScoreCard {
 
   currentScore() {
     this.frameScore()
+    this.addbonus()
     let result = ""
     for (let i = 0; i < this.framescores.length; i++) {
       result += (
@@ -18,7 +19,7 @@ class ScoreCard {
       );
     }
 
-    if (this.game.game.length == 10 && this.game.currentframe().done()) {
+    if (this.game.framenum() == 10 && this.game.currentframe().done()) {
       result += (
         `--------------\n` +
         `Final Total: ${this.framescores[this.framescores.length - 1]}`
@@ -47,6 +48,10 @@ class ScoreCard {
     }
   }
 
+  addbonus() {
+    let frames = []
+    // f this!
+  }
 };
 
 module.exports = ScoreCard;

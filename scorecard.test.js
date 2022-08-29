@@ -63,7 +63,7 @@ describe('ScoreCard class', () => {
       `--------------\n` +
       `Game Total: 24`
     );
-    // console.log(scorecard.currentScore())
+    console.log(scorecard.currentScore())
     // expect(scorecard.currentScore()).toBe(result)
   })
 });

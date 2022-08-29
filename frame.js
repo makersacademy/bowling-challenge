@@ -9,8 +9,7 @@ class Frame {
   }
 
   score() {
-    const sum = this.frame.reduce((a, b) => a + b, 0);
-    return sum
+    return this.frame.reduce((a, b) => a + b, 0);
   }
 
   done() {

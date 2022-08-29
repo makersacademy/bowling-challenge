@@ -42,4 +42,15 @@ describe('Score', () => {
 
     expect(score.forFrame(1)).toBe(11);
   });
+
+  it('returns the result when player plays a gutter game', () => {
+    const score = new Score();
+    const mockFrame = { getSum: () => 0, isSpare: () => false, isStrike: () => false }
+    for (let i = 1; i <= 10; i++) {
+      score.add(mockFrame);
+    };
+
+    expect(score.total()).toBe(0);
+  });
+
 });

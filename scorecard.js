@@ -35,6 +35,10 @@ class ScoreCard {
     if (frame.frame.length > 1) {
       pins += `, ${frame.frame[1]}`
     }
+    // exception for strike on 10th frame
+    if (frame.tenth && frame.frame[0] == 10) {
+      pins = 10
+    }
     return pins
   }
 
@@ -64,14 +68,28 @@ class ScoreCard {
 
   addbonus() {
     let frames = this.getframes()
-    // add spares to this.framescores
-    // don't process the last available frame
+    // add the next roll if a spare
     for (let i = 0; i < this.game.framenum() - 1; i++) {
       if (frames[i].spare()) {
         // add next roll to all results
         this.framescores[i] += (frames[i + 1].frame[0]);
       }
     }
+
+    // if a strike
+    for (let i = 0; i < this.game.framenum() - 1; i++) {
+      if (frames[i].strike()) {
+        // find the next two rolls
+        // slice off current frame
+        const forStrike = frames.slice(i + 1);
+        // convert frames to list of pins
+        const canFlatten = forStrike.map((item) => { return item.frame; })
+        const flattened = canFlatten.flat();
+        // add next two rolls
+        this.framescores[i] += (flattened[0] + flattened[1]);
+      }
+    }
+
   }
 };
 

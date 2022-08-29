@@ -5,6 +5,7 @@ class ScoreCard {
     this.game = game
   }
 
+  // score game in its current state
   currentScore() {
     const scores = this.frameScore()
     let result = ""
@@ -54,19 +55,19 @@ class ScoreCard {
         framescores[i] += flattened[0];
       } else if (this.game.game[i].strike()) {
         framescores[i] += (flattened[0] + flattened[1]);
-      };
+      }
     }
-    return this.totaliser(framescores)
+    return this.totaliser(framescores);
   }
 
   // totalise scores per frame
   totaliser(bonusadded) {
-    let list = [0]
+    let list = [0];
     for (let i = 0; i < this.game.framenum(); i++) {
-      list.push(bonusadded[i] + list[i])
+      list.push(bonusadded[i] + list[i]);
     }
-    return list.slice(1)
+    return list.slice(1);
   }
-};
+}
 
 module.exports = ScoreCard;

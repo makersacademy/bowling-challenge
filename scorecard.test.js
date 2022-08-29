@@ -1,5 +1,4 @@
 const ScoreCard = require('./scorecard')
-const Game = require('./game')
 
 describe('ScoreCard class', () => {
   it('rolls a 1 and a 4', () => {
@@ -14,7 +13,7 @@ describe('ScoreCard class', () => {
     let result = ""
     for (let i = 0; i < 1; i++) {
       result += `--------------\nFrame: ${i + 1}\nPins: ${pin_score[i][0]}\nRunning Score: ${pin_score[i][1]}\n`;
-    };
+    }
 
     expect(scorecard.currentScore()).toBe(result);
   });
@@ -32,7 +31,7 @@ describe('ScoreCard class', () => {
     let result = ""
     for (let i = 0; i < 3; i++) {
       result += `--------------\nFrame: ${i + 1}\nPins: ${pin_score[i][0]}\nRunning Score: ${pin_score[i][1]}\n`;
-    };
+    }
 
     expect(scorecard.currentScore()).toBe(result)
   });
@@ -51,7 +50,7 @@ describe('ScoreCard class', () => {
     let result = ""
     for (let i = 0; i < 4; i++) {
       result += `--------------\nFrame: ${i + 1}\nPins: ${pin_score[i][0]}\nRunning Score: ${pin_score[i][1]}\n`;
-    };
+    }
 
     expect(scorecard.currentScore()).toBe(result)
   })
@@ -70,7 +69,7 @@ describe('ScoreCard class', () => {
     let result = ""
     for (let i = 0; i < 10; i++) {
       result += `--------------\nFrame: ${i + 1}\nPins: ${pin_score[i][0]}\nRunning Score: ${pin_score[i][1]}\n`;
-    };
+    }
     result += `--------------\nFinal Total: 133`
 
     expect(scorecard.currentScore()).toBe(result)
@@ -89,7 +88,7 @@ describe('ScoreCard class', () => {
     let result = ""
     for (let i = 0; i < 10; i++) {
       result += `--------------\nFrame: ${i + 1}\nPins: 10\nRunning Score: ${(i + 1) * 30}\n`;
-    };
+    }
     result += `--------------\nFinal Total: 300`
 
     expect(scorecard.currentScore()).toBe(result)
@@ -109,7 +108,7 @@ describe('ScoreCard class', () => {
     let result = ""
     for (let i = 0; i < 10; i++) {
       result += `--------------\nFrame: ${i + 1}\nPins: 0, 0\nRunning Score: 0\n`;
-    };
+    }
     result += `--------------\nFinal Total: 0`
 
     expect(scorecard.currentScore()).toBe(result)

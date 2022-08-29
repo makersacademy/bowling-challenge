@@ -10,8 +10,7 @@ class ScoreCard {
     let result = ""
     for (let i = 0; i < scores.length; i++) {
       result += (
-        `--------------\n` +
-        `Frame: ${i + 1}\n` +
+        `--------------\nFrame: ${i + 1}\n` +
         `Pins: ${this.pins(this.game.game[i])}\n` +
         `Running Score: ${scores[i]}\n`
       );
@@ -19,8 +18,7 @@ class ScoreCard {
 
     if (this.game.framenum() == 10 && this.game.currentframe().done()) {
       result += (
-        `--------------\n` +
-        `Final Total: ${scores[scores.length - 1]}`
+        `--------------\nFinal Total: ${scores[9]}`
       )
     }
     return result
@@ -29,12 +27,8 @@ class ScoreCard {
   // display pins knocked down in a frame
   pins(frame) {
     let pins = `${frame.frame[0]}`
-    if (frame.frame.length > 1) {
+    if (frame.frame.length > 1 && !frame.strike()) {
       pins += `, ${frame.frame[1]}`
-    }
-    // exception for strike on 10th frame
-    if (frame.tenth && frame.frame[0] == 10) {
-      pins = 10
     }
     return pins
   }
@@ -48,6 +42,23 @@ class ScoreCard {
     return this.addbonus(list)
   }
 
+  // add strike and spare bonus to relevant frames
+  addbonus(framescores) {
+    for (let i = 0; i < this.game.framenum() - 1; i++) {
+      // only get rolls after this frame
+      const sliced = this.game.game.slice(i + 1);
+      // flatten so rolls can be added regardless of frames they were in
+      const flattened = sliced.map((item) => { return item.frame; }).flat();
+
+      if (this.game.game[i].spare()) {
+        framescores[i] += flattened[0];
+      } else if (this.game.game[i].strike()) {
+        framescores[i] += (flattened[0] + flattened[1]);
+      };
+    }
+    return this.totaliser(framescores)
+  }
+
   // totalise scores per frame
   totaliser(bonusadded) {
     let list = [0]
@@ -55,39 +66,6 @@ class ScoreCard {
       list.push(bonusadded[i] + list[i])
     }
     return list.slice(1)
-  }
-
-  getframes() {
-    let frames = []
-    this.game.game.forEach((frame) => { frames.push(frame) })
-    return frames
-  }
-
-  // add strike and spare bonus to relevant frames
-  addbonus(framescores) {
-    let frames = this.getframes()
-    // add the next roll if a spare
-    for (let i = 0; i < this.game.framenum() - 1; i++) {
-      if (frames[i].spare()) {
-        // add next roll to all results
-        framescores[i] += (frames[i + 1].frame[0]);
-      }
-    }
-
-    // if a strike
-    for (let i = 0; i < this.game.framenum() - 1; i++) {
-      if (frames[i].strike()) {
-        // find the next two rolls
-        // slice off current frame
-        const forStrike = frames.slice(i + 1);
-        // convert frames to list of pins
-        const canFlatten = forStrike.map((item) => { return item.frame; })
-        const flattened = canFlatten.flat();
-        // add next two rolls
-        framescores[i] += (flattened[0] + flattened[1]);
-      }
-    }
-    return this.totaliser(framescores)
   }
 };
 

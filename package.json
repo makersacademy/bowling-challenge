@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/naomischlosser/bowling-challenge#readme",
   "dependencies": {
-    "jest": "^29.0.1"
+    "jest": "^29.0.1",
+    "prompt-sync": "^4.2.0"
   },
   "devDependencies": {
     "eslint": "^8.23.0",

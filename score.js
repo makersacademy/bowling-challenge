@@ -1,5 +1,3 @@
-const frame = require('./frame');
-
 class Score {
   constructor() {
     this.frames = [];

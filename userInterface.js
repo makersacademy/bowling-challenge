@@ -1,5 +1,7 @@
 const Game = require('./game')
 const prompt = require('prompt-sync')();
+const Frame = require('./frame')
+const TenthFrame = require('./tenthFrame')
 
  class UserInterface {
   constructor() {
@@ -23,7 +25,7 @@ const prompt = require('prompt-sync')();
         this.score();
         break;
       case "3":
-        console.log("The game has finished\n")
+        console.log("The game has finished")
         break;
       default:
         console.log("Please choose one of the listed options\n")
@@ -32,25 +34,26 @@ const prompt = require('prompt-sync')();
   }
 
   rolls() {
+    const [first, second, third] = ["first", "second", "third"]
     if(this.game.frames.length < 9) {
-      let firstRoll = parseInt(prompt("Enter score for first roll: "))
+      let firstRoll = this.promptForScore(first)
       if(firstRoll !== 10) {
-        let secondRoll = parseInt(prompt("Enter score for second roll: "))
+        let secondRoll = this.promptForScore(second)
         this.game.addFrame(firstRoll, secondRoll) 
       } else this.game.addFrame(firstRoll)
     } else {
-      let firstRoll = parseInt(prompt("Enter score for first roll: "))
-        if(firstRoll === 10) {
-          let secondRoll = parseInt(prompt("Enter score for second roll: "))
-          let thirdRoll = parseInt(prompt("Enter score for third roll: "))
+      let firstRoll = this.promptForScore(first)
+      if(firstRoll === 10) {
+        let secondRoll = this.promptForScore(second)
+        let thirdRoll = this.promptForScore(third)
+        this.game.addFrame(firstRoll, secondRoll, thirdRoll)
+      } else {
+        let secondRoll = this.promptForScore(second)
+        if(firstRoll + secondRoll === 10) {
+          let thirdRoll = this.promptForScore(third)
           this.game.addFrame(firstRoll, secondRoll, thirdRoll)
-        } else {
-          let secondRoll = parseInt(prompt("Enter score for second roll: "))
-            if(firstRoll + secondRoll === 10) {
-              let thirdRoll = parseInt(prompt("Enter score for third roll: "))
-              this.game.addFrame(firstRoll, secondRoll, thirdRoll)
-            } else this.game.addFrame(firstRoll, secondRoll)
-        }
+        } else this.game.addFrame(firstRoll, secondRoll)
+      }
     }
   }
 
@@ -58,11 +61,16 @@ const prompt = require('prompt-sync')();
     console.log(this.game.calculateCurrentScore())
   }
 
+  promptForScore(rollNumber) {
+    const promptString = `Enter score for ${rollNumber} roll: `
+    return parseInt(prompt(promptString))
+  }
+
   startGame() {
     console.log("Welcome to your bowling scorecard!\n")
     console.log("The game has started.\n")
     do {
-      console.log(`You're on frame number ${this.game.frames.length + 1}.\n`)
+      console.log(`\nYou're on frame number ${this.game.frames.length + 1}.\n`)
       this.printMenu()
       this.gameOption(this.option)
     }
@@ -70,8 +78,6 @@ const prompt = require('prompt-sync')();
     this.score()
     return;
   }
-
-
  }
 
 

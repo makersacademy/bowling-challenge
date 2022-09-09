@@ -50,7 +50,6 @@ class BowlingScorecard{
       } else if  (this.gameArray[i].length === 2 && this.gameArray[i][0] + this.gameArray[i][1] === 10) {
         bonus += this.gameArray[i+1][0];
       }
-      
     }
     this.score += bonus
   }

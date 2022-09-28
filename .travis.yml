@@ -1,3 +1,1 @@
 language: node_js
-nvm:
-  - 18.9.1

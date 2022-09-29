@@ -1,3 +1,7 @@
+const ScoringTable = require("../lib/scoringTable");
+
 describe("ScoringTable", () => {
-  it("", () => {});
+  it("adds first frame", () => {
+    const table = new ScoringTable();
+  });
 });

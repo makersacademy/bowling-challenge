@@ -1,3 +1,0 @@
-describe("ScoringTable", () => {
-  it("", () => {});
-});

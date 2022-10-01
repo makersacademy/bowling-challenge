@@ -1,0 +1,27 @@
+{
+  "name": "bowling-challenge-javascript",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/44jovi/bowling-challenge-javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/44jovi/bowling-challenge-javascript/issues"
+  },
+  "homepage": "https://github.com/44jovi/bowling-challenge-javascript#readme",
+  "dependencies": {
+    "jest": "^29.1.2"
+  }
+}

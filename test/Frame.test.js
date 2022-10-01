@@ -15,7 +15,7 @@ describe('Frame class', () => {
       expect(frame.strike).toEqual(false);
     });
   });
-  
+
   describe('#setBonus', () => {
     it('assigns strike as true', () => {
       frame.scoreThrow1 = 10;
@@ -23,6 +23,7 @@ describe('Frame class', () => {
       expect(frame.scoreThrow1).toEqual(10);
       expect(frame.strike).toEqual(true);
     });
+    
     it('assigns spare as true', () => {
       frame.scoreThrow1 = 5;
       frame.scoreThrow2 = 5;
@@ -31,6 +32,7 @@ describe('Frame class', () => {
       expect(frame.scoreThrow2).toEqual(5);
       expect(frame.spare).toEqual(true);
     });
+
     it('does not assign strike or spare as true', () => {
       frame.scoreThrow1 = 0;
       frame.scoreThrow2 = 1;

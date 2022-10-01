@@ -8,18 +8,58 @@ beforeEach( () => {
 });
 
 describe('Game class', () => {
-  describe('frame scores and bonus type update after ball throw(s)', () => {
-    it('normal frame - no spare, no strike', () => {      
-      // manually setting the current frame to 1 for testing purposes
+  describe('1 frame - frame score and bonus type update after ball throw(s)', () => {
+    it('1 frame - 2 throws, no spare, no strike', () => {      
       game.setCurrentFrame(1);
       game.throw1(1);
-      // game.throw2(1);
+      game.throw2(1);
+      game.setThrowsTotalScore();
+      game.setFrameBonusType();
+
       expect(game.currentFrame).toEqual(1);
-      // expect(scorecard.frame1.score).toEqual(2);
-      expect(game.scorecard.frame1.scoreThrow1).toEqual(1);
-      // expect(game.scorecard.frame1.scoreThrow2).toEqual(1);
-      // expect(scorecard.frame1.scoreThrow3).toEqual(0);
-      // expect(scorecard.frame1.bonus).toEqual('none');
+      expect(game.frameScore).toEqual(2);
+      expect(game.frameThrow1).toEqual(1);
+      expect(game.frameThrow2).toEqual(1);
+      expect(game.frameThrow3).toEqual(null);
+      expect(game.frameBonusType).toEqual('none');
+    });
+
+    it('1 frame - 2 throws, spare', () => {      
+      game.setCurrentFrame(1);
+      game.throw1(5);
+      game.throw2(5);
+      game.setThrowsTotalScore();
+      game.setFrameBonusType();
+
+      expect(game.currentFrame).toEqual(1);
+      expect(game.frameScore).toEqual(10);
+      expect(game.frameThrow1).toEqual(5);
+      expect(game.frameThrow2).toEqual(5);
+      expect(game.frameThrow3).toEqual(null);
+      expect(game.frameBonusType).toEqual('spare');
+    });
+
+    it('1 frame - 1 throw, strike', () => {      
+      game.setCurrentFrame(1);
+      game.throw1(10);
+      game.setThrowsTotalScore();
+      game.setFrameBonusType();
+
+      expect(game.currentFrame).toEqual(1);
+      expect(game.frameScore).toEqual(10);
+      expect(game.frameThrow1).toEqual(10);
+      expect(game.frameThrow2).toEqual(null);
+      expect(game.frameThrow3).toEqual(null);
+      expect(game.frameBonusType).toEqual('strike');
     });
   });
+
+  
+
+
+  // 2 frames - frame 1 spare, adds frame 2's throw1 to frame 1 score
+  // 2 frames - frame 1 strike, adds frame 2's throw1 and throw2 to frame 1 score
+  // mock previous frame bonus type?
+  // method to check prev frame bonus and use updateFrameScore(points)
+
 });

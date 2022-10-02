@@ -8,7 +8,7 @@ beforeEach( () => {
 const checkCurrentFrame1 = () => {
   scorecard.setCurrentFrame(1);
   expect(scorecard.currentFrame).toEqual(scorecard.frame1);
-  expect(scorecard.previousFrame).toEqual(null);
+  expect(scorecard.previousFrame).toEqual(0);
 };
 
 describe('Scorecard class', () => {
@@ -81,7 +81,7 @@ describe('Scorecard class', () => {
     it('2 frames, frame 1 - spare, updates frame 1 score after frame 2', () => {
       scorecard.setCurrentFrame(1);
       expect(scorecard.currentFrame).toEqual(scorecard.frame1);
-      expect(scorecard.previousFrame).toEqual(null);
+      expect(scorecard.previousFrame).toEqual(0);
       scorecard.throw1(4);
       scorecard.throw2(6);
       scorecard.updateCurrentFrameScore(
@@ -185,4 +185,50 @@ describe('Scorecard class', () => {
   // test for perfect game - 10 frames, 10 strikes, 300 points
   // test for worst game - 10 frames, 0 pins, 0 points
 
+  describe('returns total score of a game at any given point', () => {
+    it('perfect game - 10 frames, 10 strikes (plus perfect bonus throw), 300 points', () => {
+
+      const updateFrameAttributes = () => {
+        scorecard.throw1(10);
+        scorecard.updateCurrentFrameScore(scorecard.currentFrame.scoreThrow1);
+        scorecard.setCurrentFrameBonus();
+        scorecard.updatePreviousFrameScore();
+      };
+
+      // use forEach loop here?
+
+      scorecard.setCurrentFrame(1);
+      scorecard.throw1(10);
+      scorecard.updateCurrentFrameScore(scorecard.currentFrame.scoreThrow1);
+      scorecard.setCurrentFrameBonus();
+
+      scorecard.setCurrentFrame(2);
+      updateFrameAttributes();
+      scorecard.setCurrentFrame(3);
+      updateFrameAttributes();
+      scorecard.setCurrentFrame(4);
+      updateFrameAttributes();
+      scorecard.setCurrentFrame(5);
+      updateFrameAttributes();
+      scorecard.setCurrentFrame(6);
+      updateFrameAttributes();
+      scorecard.setCurrentFrame(7);
+      updateFrameAttributes();
+      scorecard.setCurrentFrame(8);
+      updateFrameAttributes();
+      scorecard.setCurrentFrame(9);
+      updateFrameAttributes();
+      scorecard.setCurrentFrame(10);
+      updateFrameAttributes();
+      scorecard.throw3(10);
+      scorecard.updateFrame10ScoreThrow3();
+
+      scorecard.setGameTotalScore();
+
+      // This fails - result is 200 points
+      // as the Scorecard can only use the throws/points from
+      // the next frame, not next 2 frames.
+      expect(scorecard.gameTotalScore).toEqual(300);
+    })
+  });
 });

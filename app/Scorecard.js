@@ -1,5 +1,11 @@
 const Frame = require('./Frame');
 
+/*
+This iteration of the class only works for using the
+immediate next frame after a strike/spare to award bonus points.
+See different branch for new method(s) to resolve this issue.
+*/
+
 class Scorecard {
   constructor() {
     this.frame1 = new Frame();
@@ -13,13 +19,14 @@ class Scorecard {
     this.frame9 = new Frame();
     this.frame10 = new Frame();
     this.currentFrame = 0;
+    this.gameTotalScore = 0;
   }
   
-  // refactor - reduce repetition
+  // refactor - use loop to reduce repetition
   setCurrentFrame(frame) {
     if (frame === 1) {
       this.currentFrame = this.frame1;
-      this.previousFrame = null;
+      this.previousFrame = 0;
     } else if (frame === 2) {
       this.currentFrame = this.frame2;
       this.previousFrame = this.frame1;
@@ -69,11 +76,18 @@ class Scorecard {
   }
 
   updatePreviousFrameScore() {
+    
+    // may need to discard this method
+    // and look at a method that works with next 2 frames
+    // not previous 2 frames
+    
     if (this.previousFrame.strike) {
       this.previousFrame.score += (
         this.currentFrame.scoreThrow1 + 
           this.currentFrame.scoreThrow2
       );
+
+
     } else if (this.previousFrame.spare) {
       this.previousFrame.score += (
         this.currentFrame.scoreThrow1
@@ -96,6 +110,25 @@ class Scorecard {
 
   setCurrentFrameBonus() {
     this.currentFrame.setBonus();
+  }
+
+  setGameTotalScore() {
+    const allFrames = [
+      this.frame1,
+      this.frame2, 
+      this.frame3, 
+      this.frame4, 
+      this.frame5, 
+      this.frame6, 
+      this.frame7, 
+      this.frame8, 
+      this.frame9, 
+      this.frame10
+    ]
+
+    allFrames.forEach( (frame) => {
+      this.gameTotalScore += frame.score;
+    });    
   }
 };
 

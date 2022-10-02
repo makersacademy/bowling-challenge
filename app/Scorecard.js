@@ -70,9 +70,27 @@ class Scorecard {
 
   updatePreviousFrameScore() {
     if (this.previousFrame.strike) {
-      this.previousFrame.score += (this.currentFrame.scoreThrow1 + this.currentFrame.scoreThrow2);
+      this.previousFrame.score += (
+        this.currentFrame.scoreThrow1 + 
+          this.currentFrame.scoreThrow2
+      );
     } else if (this.previousFrame.spare) {
-      this.previousFrame.score += (this.currentFrame.scoreThrow1);
+      this.previousFrame.score += (
+        this.currentFrame.scoreThrow1
+      );
+    }
+  }
+
+  updateFrame10ScoreThrow3() {
+    if (this.currentFrame.strike) {
+      this.currentFrame.score += (
+        this.currentFrame.scoreThrow2 +
+          this.currentFrame.scoreThrow3
+      ); 
+    } else if (this.currentFrame.spare) {
+      this.currentFrame.score += (
+        this.currentFrame.scoreThrow3
+      );
     }
   }
 

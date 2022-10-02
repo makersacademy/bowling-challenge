@@ -1,7 +1,8 @@
 class Frame {
-  constructor() {
+  constructor(id) {
     // eventually separate frame score?
     // i.e. base score vs bonus score
+    this.id = id;
     this.score = 0;
     this.scoreThrow1 = 0;
     this.scoreThrow2 = 0;

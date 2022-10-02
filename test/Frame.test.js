@@ -1,12 +1,13 @@
 const Frame = require('../app/Frame');
 
 beforeEach( () => {
-  frame = new Frame();
+  frame = new Frame(1);
 });
 
 describe('Frame class', () => {
   describe('frame attributes at start of game', () => {
     it('to be default starting values', () => {
+      expect(frame.id).toEqual(1);
       expect(frame.score).toEqual(0);
       expect(frame.scoreThrow1).toEqual(0);
       expect(frame.scoreThrow2).toEqual(0);

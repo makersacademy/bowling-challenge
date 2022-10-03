@@ -7,46 +7,31 @@ class Frame {
     this.bonus = 0;
     this.score = 0;
     this.totalScore = 0;
-  }
+  };
 
-  getId() {
-    return this.id;
-  }
-  setRoll1(roll1) {
-    this.roll1 = roll1;
-  }
-  getRoll1() {
-    return this.roll1;
-  }
-  setRoll2(roll2) {
-    this.roll2 = roll2;
-  }
-  getRoll2() {
-    return this.roll2;
-  }  
-  setRoll3(roll3) {
-    this.roll3 = roll3;
-  }
-  getRoll3() {
-    return this.roll3;
-  }
-  setBonus(bonus) {
-    this.bonus = bonus;
-  }
-  getBonus() {
-    return this.bonus;
-  }
   calculateScore() {
-    this.score = this.roll1 + this.roll2 + this.roll3 + this.bonus;
-    return this.score;
-  }
-  setTotalScore(totalScore) {
-    this.totalScore = totalScore;
-  }
-  getTotalScore() {
-    return this.totalScore;
-  }
+    if (this.roll2 === '') {
+      this.score = this.roll1 + this.roll3 + this.bonus;
+    } else {
+      this.score = this.roll1 + this.roll2 + this.roll3 + this.bonus; 
+    };
+  };
 
-}
+  isStrike() {
+    if (this.roll1 === 10) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  isSpare() {
+    if (!this.isStrike && this.roll1 + this.roll2 === 10 && ! (this.id === 10 && this.roll1 === 10 && this.roll2 === 0)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+};
 
 module.exports = Frame;

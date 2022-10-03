@@ -18,19 +18,13 @@ class Frame {
   };
 
   isStrike() {
-    if (this.roll1 === 10) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.roll1 === 10;
   };
 
   isSpare() {
-    if (!this.isStrike && this.roll1 + this.roll2 === 10 && ! (this.id === 10 && this.roll1 === 10 && this.roll2 === 0)) {
-      return true;
-    } else {
-      return false;
-    }
+    return !this.isStrike && (this.roll1 + this.roll2 === 10);
+    // Will maybe need this for frame 10?
+    // && ! (this.id === 10 && this.roll1 === 10 && this.roll2 === 0);
   };
 };
 

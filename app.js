@@ -41,43 +41,58 @@ class Application {
       console.log(`  ${frame.id}   -    ${frame.roll1}   -    ${frame.roll2}   -    ${frame.roll3}   -   ${frame.score}   -   ${frame.totalScore}  `);
     });
   };
-
-  bonusRequired(currentFrame) {
-    if (this.frames[currentFrame - 2].isSpare() || this.frames[currentFrame - 2].isStrike()) {
-      return true;
+  
+  // if we are at least in frame 2, checking if last frame was spare or strike
+  firstRollBonusRequired(currentFrame) {  
+    if (currentFrame > 1) {
+      return (this.frames[currentFrame - 2].isSpare() || this.frames[currentFrame - 2].isStrike());
     } else {
       return false;
-    }
-  }
-
-  secondBonusRollRequired(currentFrame) {
-    if (this.frames[currentFrame -3].isStrike && this.frames[currentFrame -2].isStrike) {
-      return true;
-    } else {
-      return false;
-    }
+    };
   };
 
-  addPreviousRoundBonuses(currentFrame) {
-    // Adding the bonus for previous round if they were spare or strike
-    if (this.bonusRequired(currentFrame)) {
+  // if we are at least in frame 2, checking if last frame was strike and no strike in first roll on current frame
+  secondRollBonusRequired(currentFrame) {
+    if (currentFrame > 1) {
+      return (this.frames[currentFrame - 2].isStrike() && !this.frames[currentFrame - 1].isStrike());
+    } else {
+      return false;
+    };
+  };
+
+  // if we are at least in frame 3, checking if last two frames were strikes
+  twoStrikesBonus(currentFrame) {
+    if (currentFrame > 2) {
+      return (this.frames[currentFrame -3].isStrike() && this.frames[currentFrame -2].isStrike());
+    } else {
+      return false;
+    };
+  };
+
+  addBonuses(currentFrame) {
+    // Adding first roll of current frame as bonus for previous round if they were spare or strike
+    if (this.firstRollBonusRequired(currentFrame)) {
       this.frames[currentFrame - 2].bonus = this.frames[currentFrame - 1].roll1;
-      this.frames[currentFrame - 2].calculateScore;
-    }
+      this.frames[currentFrame - 2].calculateScore();
+    };
+    
+    // Adding second roll of current frame as bonus for last frame if it was a strike
+    if (this.secondRollBonusRequired(currentFrame)) {
+      this.frames[currentFrame - 2].bonus += this.frames[currentFrame - 1].roll2;
+      this.frames[currentFrame - 2].calculateScore();
+    };
 
     // If last two rounds were strikes we still need to add a bonus to the score two rounds ago
-    if (this.secondBonusRollRequired(currentFrame)) {
+    if (this.twoStrikesBonus(currentFrame)) {
       this.frames[currentFrame - 3].bonus += this.frames[currentFrame - 1].roll1;
-      this.frames[currentFrame - 3].calculateScore;
-    }
+      this.frames[currentFrame - 3].calculateScore();
+    };
   };
 
   run() {
     this.frames.forEach((frame) => {
       this.printFrameNumber(frame.id);
       frame.roll1 = this.rollInput.getRoll('First Roll: ');
-      
-      this.addPreviousRoundBonuses(frame.id);
 
       // Strike!
       if (frame.isStrike()) {
@@ -91,27 +106,24 @@ class Application {
       // If first roll wasn't a strike (or it's the 10th round), user gets second roll
       if ( !frame.isStrike() || frame.id === 10 ) {
         frame.roll2 = this.rollInput.getRoll('Second Roll: ');
-        // Spare!
+        // Spare! - Doesn't work!
         if (frame.isSpare()) {
           this.printSpare();
         };
       };
 
-      // TODO More bonuses to add? (2nd bonus roll after previous round strike) - put this in addPreviousRoundBonuses
-
-      // TODO 10th frame!
+      this.addBonuses(frame.id);
+      // TODO: Calculate 10th frame!
 
       frame.calculateScore();
       this.printScorecard(frame.id);
     });
   };
-
-
-
-
-}
+};
 
 module.exports = Application;
+
+// These lines are for running the app
 
 // const rollInput = new RollInput();
 // const app = new Application(rollInput);

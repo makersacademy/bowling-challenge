@@ -83,11 +83,22 @@ describe('Scorecard class', () => {
       expect(scorecard.frame1.bonusScore).toEqual(1);
       expect(scorecard.frame1.totalScore).toEqual(11);
     });
+    
+    it('frames 1 to 2, frame 1 strike', () => {
+      scorecard.setCurrentFrame(1);
+      scorecard.throw1(10);
+      updateFrame();
+      scorecard.setCurrentFrame(2);
+      scorecard.throw1(1);
+      scorecard.throw2(1);
+      updateFrame();
 
-  //   it('frames 1 to 2, frame 1 strike', () => {
-
-  //   });
-  // });
+      expect(scorecard.frame1.strike).toEqual(true);
+      expect(scorecard.frame1.score).toEqual(10);
+      expect(scorecard.frame1.bonusScore).toEqual(2);
+      expect(scorecard.frame1.totalScore).toEqual(12);
+    });
+  });
 
   // describe('full games', () => {
   //   it('perfect game - all frames - 12 strikes, 300 points', () => {
@@ -103,5 +114,3 @@ describe('Scorecard class', () => {
 
   // tests for frames 9 to 10 that don't have 2 frames after
 });
-
-

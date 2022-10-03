@@ -49,4 +49,28 @@ describe('Application', () => {
     expect(app.frames[8].score).toBe(16);
     expect(app.frames[9].score).toBe(6);
   });
+
+  it('returns additional bonuses if there are multiple strikes or spares in a row', () => {
+    let i = -1;
+    const fakeRollInput = {
+      // returns a the next number in the array every time it is called
+      getRoll: () => {
+        const rolls = [10, 10, 10, 4, 3, 3, 7, 2, 8, 10, 0, 0, 4, 6, 5, 5, 7];
+        i++;
+        return rolls[i];
+      }
+    }
+    app = new Application(fakeRollInput);
+    app.run();
+    expect(app.frames[0].score).toBe(30);
+    expect(app.frames[1].score).toBe(24);
+    expect(app.frames[2].score).toBe(17);
+    expect(app.frames[3].score).toBe(7);
+    expect(app.frames[4].score).toBe(12);
+    expect(app.frames[5].score).toBe(20);
+    expect(app.frames[6].score).toBe(10);
+    expect(app.frames[7].score).toBe(0);
+    expect(app.frames[8].score).toBe(15);
+    expect(app.frames[9].score).toBe(17);
+  });
 });

@@ -113,7 +113,11 @@ class Application {
       };
 
       this.addBonuses(frame.id);
-      // TODO: Calculate 10th frame!
+    
+      // In tenth frame if there has been spare or strike, add a third roll
+      if (frame.id === 10 && (frame.isStrike() || frame.isSpare())) {
+        frame.roll3 = this.rollInput.getRoll('Third Roll: ');
+      }
 
       frame.calculateScore();
       this.printScorecard(frame.id);

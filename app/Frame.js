@@ -1,9 +1,9 @@
 class Frame {
   constructor(id) {
-    // eventually separate frame score?
-    // i.e. base score vs bonus score
     this.id = id;
-    this.score = 0;
+    this.score = 0; // from throws only
+    this.bonusScore = 0; // from bonus points only
+    this.totalScore = 0;
     this.scoreThrow1 = 0;
     this.scoreThrow2 = 0;
     this.scoreThrow3 = 0;
@@ -17,6 +17,17 @@ class Frame {
     } else if (this.scoreThrow1 + this.scoreThrow2 === 10) {
       this.spare = true;
     }
+  }
+
+  // sets score for only this frame's throws, no bonuses
+  setScore() {
+    this.score = this.scoreThrow1 + this.scoreThrow2 + this.scoreThrow3;
+  }
+
+  // awarding of bonus points is done by Scorecard class
+
+  setTotalScore() {
+    this.totalScore = this.score + this.bonusScore;
   }
 };
 

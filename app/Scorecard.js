@@ -1,59 +1,59 @@
 const Frame = require('./Frame');
 
-/*
-This iteration of the class only works for using the
-immediate next frame after a strike/spare to award bonus points.
-See different branch for new method(s) to resolve this issue.
-*/
-
 class Scorecard {
   constructor() {
-    this.frame1 = new Frame();
-    this.frame2 = new Frame();
-    this.frame3 = new Frame();
-    this.frame4 = new Frame();
-    this.frame5 = new Frame();
-    this.frame6 = new Frame();
-    this.frame7 = new Frame();
-    this.frame8 = new Frame();
-    this.frame9 = new Frame();
-    this.frame10 = new Frame();
+    this.frame0 = new Frame(0);
+    this.frame1 = new Frame(1);
+    this.frame2 = new Frame(2);
+    this.frame3 = new Frame(3);
+    this.frame4 = new Frame(4);
+    this.frame5 = new Frame(5);
+    this.frame6 = new Frame(6);
+    this.frame7 = new Frame(7);
+    this.frame8 = new Frame(8);
+    this.frame9 = new Frame(9);
+    this.frame10 = new Frame(10);
     this.currentFrame = 0;
     this.gameTotalScore = 0;
+
+    this.allFrames = [
+      this.frame0,
+      this.frame1,
+      this.frame2,
+      this.frame3,
+      this.frame4,
+      this.frame5,
+      this.frame6,
+      this.frame7,
+      this.frame8,
+      this.frame9,
+      this.frame10
+    ];
   }
   
-  // refactor - use loop to reduce repetition
+  // refactor - reduce repetition
+  // could use the allFrames array?
   setCurrentFrame(frame) {
     if (frame === 1) {
       this.currentFrame = this.frame1;
-      this.previousFrame = 0;
-    } else if (frame === 2) {
+    } if (frame === 2) {
       this.currentFrame = this.frame2;
-      this.previousFrame = this.frame1;
-    } else if (frame === 3) {
+    } if (frame === 3) {
       this.currentFrame = this.frame3;
-      this.previousFrame = this.frame2;
-    } else if (frame === 4) {
+    } if (frame === 4) {
       this.currentFrame = this.frame4;
-      this.previousFrame = this.frame3;
-    } else if (frame === 5) {
+    } if (frame === 5) {
       this.currentFrame = this.frame5;
-      this.previousFrame = this.frame4;
-    } else if (frame === 6) {
+    } if (frame === 6) {
       this.currentFrame = this.frame6;
-      this.previousFrame = this.frame5;
-    } else if (frame === 7) {
+    } if (frame === 7) {
       this.currentFrame = this.frame7;
-      this.previousFrame = this.frame6;
-    } else if (frame === 8) {
+    } if (frame === 8) {
       this.currentFrame = this.frame8;
-      this.previousFrame = this.frame7;
-    } else if (frame === 9) {
+    } if (frame === 9) {
       this.currentFrame = this.frame9;
-      this.previousFrame = this.frame8;
-    } else if (frame === 10) {
+    } if (frame === 10) {
       this.currentFrame = this.frame10;
-      this.previousFrame = this.frame9;
     }
   }
   
@@ -70,65 +70,56 @@ class Scorecard {
     this.currentFrame.scoreThrow3 = pins;
   }
 
-  // versatile method
-  updateCurrentFrameScore(points) {
-    this.currentFrame.score = points;
+  // total of all throws for a single frame, no bonus points
+  setCurrentFrameScore() {
+    this.currentFrame.setScore();
   }
 
-  updatePreviousFrameScore() {
-    
-    // may need to discard this method
-    // and look at a method that works with next 2 frames
-    // not previous 2 frames
-    
-    if (this.previousFrame.strike) {
-      this.previousFrame.score += (
-        this.currentFrame.scoreThrow1 + 
-          this.currentFrame.scoreThrow2
-      );
-
-
-    } else if (this.previousFrame.spare) {
-      this.previousFrame.score += (
-        this.currentFrame.scoreThrow1
-      );
-    }
-  }
-
-  updateFrame10ScoreThrow3() {
-    if (this.currentFrame.strike) {
-      this.currentFrame.score += (
-        this.currentFrame.scoreThrow2 +
-          this.currentFrame.scoreThrow3
-      ); 
-    } else if (this.currentFrame.spare) {
-      this.currentFrame.score += (
-        this.currentFrame.scoreThrow3
-      );
-    }
-  }
-
+  // eventually change this to set bonus type for all frames
   setCurrentFrameBonus() {
     this.currentFrame.setBonus();
   }
 
-  setGameTotalScore() {
-    const allFrames = [
-      this.frame1,
-      this.frame2, 
-      this.frame3, 
-      this.frame4, 
-      this.frame5, 
-      this.frame6, 
-      this.frame7, 
-      this.frame8, 
-      this.frame9, 
-      this.frame10
-    ]
+  // will need to adjust this for frames 9 and 10
+  awardBonusAllFrames() {
+    this.allFrames.forEach((frame) => {
+      const frameIndex = this.allFrames.indexOf(frame);
+      const nextFrame = this.allFrames[(frameIndex + 1)]
+      const nextNextFrame = this.allFrames[(frameIndex + 2)]
 
-    allFrames.forEach( (frame) => {
+      if (frame.strike) {
+        if (nextFrame.strike) {
+          frame.bonusScore += nextFrame.scoreThrow1 + nextNextFrame.scoreThrow1;
+        } else {
+          frame.bonusScore += nextFrame.scoreThrow1 + nextFrame.scoreThrow2;
+        }
+      } else if (frame.spare) {
+        frame.bonusScore += nextFrame.scoreThrow1;
+      }
+    })
+  }
+
+  setAllFramesTotalScores() {
+    this.allFrames.forEach((frame) => {
+      frame.setTotalScore();
+    })
+  }
+
+  // add method for dealing with frame 10 logic
+
+  // can be used at any given point in game
+  getGameTotalScore() {
+    this.allFrames.forEach((frame) => {
       this.gameTotalScore += frame.score;
-    });    
+    })
+    return this.gameTotalScore;
+  }
+
+  // method for returning current score for specified frame?
+
+  // versatile utility method - may not be needed
+  updateCurrentFrameScore(points) {
+    this.currentFrame.score = points;
   }
 };
 

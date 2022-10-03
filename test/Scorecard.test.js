@@ -5,7 +5,7 @@ beforeEach( () => {
 });
 
 const updateFrame = () => {
-  scorecard.setCurrentFrameScore(); // from throws, no bonuses
+  scorecard.setCurrentFrameScore(); // score from throws, no bonuses
   scorecard.setCurrentFrameBonus();
   scorecard.awardBonusAllFrames();
   scorecard.setAllFramesTotalScores();
@@ -81,12 +81,13 @@ describe('Scorecard class', () => {
       expect(scorecard.frame1.spare).toEqual(true);
       expect(scorecard.frame1.score).toEqual(10);
       expect(scorecard.frame1.bonusScore).toEqual(1);
-      expect(scorecard.frame1.totalScore).toEqual(11); // unsure why this is returning as 10, not 11
+      expect(scorecard.frame1.totalScore).toEqual(11);
     });
 
   //   it('frames 1 to 2, frame 1 strike', () => {
+
   //   });
-  });
+  // });
 
   // describe('full games', () => {
   //   it('perfect game - all frames - 12 strikes, 300 points', () => {

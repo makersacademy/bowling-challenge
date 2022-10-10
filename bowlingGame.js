@@ -19,16 +19,14 @@ class BowlingGame {
     // 1th frame to 9th frame
     do {
       this.throw();
-    } while (scoreboard.getFrame() < 9)
+    } while (scoreboard.getFrame() < 9);
     
     // 10th frame 
     this.throw();
     this.throw();
-
       // checking whether there's been a strike or spare before offering to throw for the third time
-    if (board[scoreboard.getFrame()][0] + board[scoreboard.getFrame()][1] >= 10) {
-        this.throw();
-    }
+    if (board[scoreboard.getFrame()][0] + board[scoreboard.getFrame()][1] < 10) return;
+    this.throw();
 
     // calculating and displaying score
     scorecard.calculateScore();
@@ -40,7 +38,7 @@ class BowlingGame {
     this.validateInput();
     this._pinsDown = this._userInput;
     this.confirmInput();
-    scoreboard.update(this._pinsDown)
+    scoreboard.update(this._pinsDown);
   }
   
   getInput(){
@@ -51,23 +49,20 @@ class BowlingGame {
     do {
       validation.validateInput(this._userInput, scoreboard)
       this._error = validation.getError();
-      if (this._error) {
-        this._userInput = parseInt(prompt(this._error));
-      } else {
-        this._error = null;
-      }
-    } while (this._error)
+      if (this._error === null) return;
+      this._userInput = parseInt(prompt(this._error));
+    } while (this._error);
   }
 
   confirmInput(){
     const strike = this._pinsDown === 10;
     const spare = (board[scoreboard.getFrame()][0] + this._pinsDown === 10) && (scoreboard.getRoll() === 1);
     if (strike) {
-      console.log("Congratulations! Strike!")
+      console.log("Congratulations! Strike!");
     } else if (spare) {
-      console.log("Congratulations! Spare!")
+      console.log("Congratulations! Spare!");
     } else if (this._pinsDown == 1) {
-      console.log(`You knocked down ${this._pinsDown} pin.`)
+      console.log(`You knocked down ${this._pinsDown} pin.`);
     } else {
       console.log(`You knocked down ${this._pinsDown} pins.`);
     }
@@ -75,7 +70,6 @@ class BowlingGame {
 }
 
 module.exports = BowlingGame;
-
 
 const game = new BowlingGame;
 game.run();

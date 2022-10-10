@@ -53,17 +53,31 @@ cd bowling-challenge
 npm install bundle
 ```
 
-To play bowling game run:
+To input the rolls and calculate total score run:
 
 ```
 node bowlingGame.js
 ```
 
-To run tests use:
+To run the tests use:
 ```
 npm test
 ```
-There are unit tests for three classes: BowlingScorecard, BowlingBoard and InputValidation. Test coverage: 100%. Please view screenshots [here](https://github.com/EvSivtsova/bowling-challenge/tree/main/outputs).
+
+## Code Design
+
+To calculate the score for the game, one needs to input the data in the right format. This data is then used to complete the scorecard for the game. And once the game is over, the total score is calculated and communicated to the user.
+
+I designed four classes in line with Single Responsibility Principle:
+
+1. BowlingGame: communicates with the user and gets user input;
+2. InputValidation: validates user input;
+3. BowlingScoreboard: populates the game’s scoreboard;
+4. BowlingScorecard: calculates the score for the game.
+
+InputValidation, BowlingScoreboard and BowlingScorecard were TDD’d. The test coverage is 100%. Please view test results [here](https://github.com/EvSivtsova/bowling-challenge/tree/main/outputs)..
+
+I used CLI to design the BowlingGame class, which requires other three classes to run the game.
 
 The output for the example game:
 

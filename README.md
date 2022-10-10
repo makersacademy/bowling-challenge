@@ -40,8 +40,8 @@ Please [view an example of the game here](https://github.com/EvSivtsova/bowling-
 
 ## TechBit
 
-    * Node
-    * NPM
+    * Node(18.0.0)
+    * NPM(8.19.2)
     * Jest(4.2.0)
     * eslint(28.1.3)
     

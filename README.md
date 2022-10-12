@@ -75,7 +75,7 @@ I designed four classes in line with Single Responsibility Principle:
 3. BowlingScoreboard: populates the game’s scoreboard;
 4. BowlingScorecard: calculates the score for the game.
 
-InputValidation, BowlingScoreboard and BowlingScorecard were TDD’d. The test coverage is 100%. Please view test results [here](https://github.com/EvSivtsova/bowling-challenge/tree/main/outputs)..
+InputValidation, BowlingScoreboard and BowlingScorecard were TDD’d. The test coverage is 100%. Please view test results [here](https://github.com/EvSivtsova/bowling-challenge/tree/main/outputs).
 
 I used CLI to design the BowlingGame class, which requires other three classes to run the game.
 

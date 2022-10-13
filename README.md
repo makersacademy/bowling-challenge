@@ -50,7 +50,7 @@ To install the project, clone the repository and install node.js and the depende
 ```
 git clone https://github.com/EvSivtsova/bowling-challenge.git
 cd bowling-challenge
-npm install bundle
+npm install
 ```
 
 To input the rolls and calculate total score run:

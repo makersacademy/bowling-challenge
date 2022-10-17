@@ -27,9 +27,9 @@ ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. 
 
 In any order you like:
 
-* Create a nice interactive animated interface with jQuery.
 * Set up [Travis CI](https://travis-ci.org) to run your tests.
 * Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
+* Create a UserInterface class, allowing you to run a game from the command line.
 
 You might even want to start with ESLint early on in your work — to help you
 learn Javascript conventions as you go along.

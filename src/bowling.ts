@@ -24,4 +24,9 @@ export default class Bowling {
 
     this.scorecard.push(score);
   }
+
+  get currentScore(): number {
+    return this.scorecard.reduce((total, current) => total.concat(...current), [])
+      .reduce((total, current) => total + current);
+  }
 }

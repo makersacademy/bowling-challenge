@@ -65,4 +65,19 @@ describe('Bowling', () => {
             expect(bowling.scorecard[9]).toEqual([10, 10, 10]);
         });
     });
+    describe('.currentScore', () => {
+        it('can return a non strike score', () => {
+            let bowling = new bowling_1.default();
+            bowling.addScore([4, 5]);
+            expect(bowling.currentScore).toEqual(9);
+        });
+        it('can return a multiple non-strike/space score', () => {
+            let bowling = new bowling_1.default();
+            bowling.addScore([4, 5]);
+            bowling.addScore([4, 5]);
+            bowling.addScore([4, 5]);
+            bowling.addScore([4, 5]);
+            expect(bowling.currentScore).toEqual(36);
+        });
+    });
 });

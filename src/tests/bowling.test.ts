@@ -86,5 +86,12 @@ describe('Bowling', () => {
       bowling.addScore([4, 5])
       expect(bowling.currentScore).toEqual(36)
     })
+
+    it('Correctly handles a spare and gives appropriate score', () => {
+      let bowling = new Bowling();
+      bowling.addScore([5, 5])
+      bowling.addScore([4, 5])
+      expect(bowling.currentScore).toEqual(23)
+    })
   })
 })

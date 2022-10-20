@@ -20,8 +20,15 @@ class Bowling {
         this.scorecard.push(score);
     }
     get currentScore() {
-        return this.scorecard.reduce((total, current) => total.concat(...current), [])
+        const regularScore = this.scorecard.reduce((big, little) => big.concat(...little), [])
             .reduce((total, current) => total + current);
+        let spareScore = 0;
+        this.scorecard.forEach((score, index) => {
+            if (score[0] != 10 && score[0] + score[1] === 10) {
+                spareScore += this.scorecard[index + 1][0];
+            }
+        });
+        return regularScore + spareScore;
     }
 }
 exports.default = Bowling;

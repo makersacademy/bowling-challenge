@@ -26,7 +26,19 @@ export default class Bowling {
   }
 
   get currentScore(): number {
-    return this.scorecard.reduce((total, current) => total.concat(...current), [])
+    // squishes the array and adds up all the values
+    const regularScore = this.scorecard.reduce((big, little) => big.concat(...little), [])
       .reduce((total, current) => total + current);
+
+    let spareScore = 0
+
+    // Iterates through and every roll after a spare gets added to spareScore
+    this.scorecard.forEach((score: number[], index: number) => {
+      if (score[0] != 10 && score[0] + score[1] === 10) {
+        spareScore += this.scorecard[index + 1][0]
+      }
+    })
+    
+    return regularScore + spareScore;
   }
 }

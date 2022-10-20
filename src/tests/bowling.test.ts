@@ -16,22 +16,38 @@ describe('Bowling', () => {
       expect(bowling.scorecard.length).toEqual(3)
       expect(bowling.scorecard[1]).toEqual([6, 2]);
     })
-  })
 
-  it('should not allow arrays with a sum greater than 10 to be added', () => {
-    let bowling = new Bowling();
-    bowling.addScore([6, 6]) // 12 > 10
-    expect(bowling.scorecard.length).toEqual(0)
-    bowling.addScore([100, 0])
-    expect(bowling.scorecard.length).toEqual(0)
-  })
+    it('should not allow arrays with a sum greater than 10 to be added', () => {
+      let bowling = new Bowling();
+      bowling.addScore([6, 6]) // 12 > 10
+      expect(bowling.scorecard.length).toEqual(0)
+      bowling.addScore([100, 0])
+      expect(bowling.scorecard.length).toEqual(0)
+    })
+  
+    it('should not add any more arrays when the scorecard is 10 long already', () => {
+      let bowling = new Bowling();
+      for(let i = 0; i < 12; i++) {
+        bowling.addScore([4, 5])
+      }
+      expect(bowling.scorecard.length).toEqual(10);
+    })
 
-  it('should not add any more arrays when the scorecard is 10 long already', () => {
-    let bowling = new Bowling();
-    for(let i = 0; i < 12; i++) {
-      bowling.addScore(4, 5)
-    }
+    it('should only allow arrays that are 2 long', () => {
+      let bowling = new Bowling();
+      bowling.addScore([2, 1])
+      bowling.addScore([3, 3, 4])
+      expect(bowling.scorecard.length).toEqual(1);
+    })
 
-    expect(bowling.scorecard.length).toEqual(10);
-  })
+    it('should only allow the 10th array to be 3 long', () => {
+      let bowling = new Bowling();
+      for(let i = 0; i < 9; i++) { // should add 9 arrays
+        bowling.addScore([4, 5])
+      }
+
+      bowling.addScore([5, 5, 4]) // For 10th array to be 3 long it requires a spare on the first 2 rolls.
+      expect(bowling.scorecard[9]).toEqual([5, 5, 4])
+    })
+  })  
 })

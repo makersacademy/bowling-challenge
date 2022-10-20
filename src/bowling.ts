@@ -1,30 +1,27 @@
-class Bowling {
+export default class Bowling {
   scorecard: number[][];
 
   constructor() {
-    this.scorecard = []
+    this.scorecard = [];
   }
 
   addScore(score: number[]) {
     if (score[0] + score[1] > 10 && score.length === 2) {
-      return
+      return;
     }
 
     if (this.scorecard.length === 10) {
-      return
+      return;
     }
 
     if (score.length === 3 && this.scorecard.length != 9) {
-      return
+      return;
     }
 
     if (score.length === 3 && !(score[0] + score[1] >= 10 || score[0] == 10)) {
-      return
+      return;
     }
 
     this.scorecard.push(score);
   }
-
 }
-
-export default Bowling;

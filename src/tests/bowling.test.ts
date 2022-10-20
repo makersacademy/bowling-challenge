@@ -93,5 +93,31 @@ describe('Bowling', () => {
       bowling.addScore([4, 5])
       expect(bowling.currentScore).toEqual(23)
     })
+
+    it('correctly handles multiple non-overlapping spares and gives correct score', () => {
+      let bowling = new Bowling();
+      bowling.addScore([5, 5])
+      bowling.addScore([4, 5])
+      bowling.addScore([5, 5])
+      bowling.addScore([4, 5])
+      expect(bowling.currentScore).toEqual(46)
+    })
+
+    it('correctly handles overlapping spares and gives correct score', () => {
+      let bowling = new Bowling();
+      bowling.addScore([5, 5])
+      bowling.addScore([5, 5])
+      bowling.addScore([5, 5])
+      bowling.addScore([7, 1])
+      expect(bowling.currentScore).toEqual(55)
+    })
+
+    it('returns correct score after a strike', () => {
+      let bowling = new Bowling();
+      bowling.addScore([10, 0])
+      bowling.addScore([4, 2])
+      bowling.addScore([2, 1])
+      expect(bowling.currentScore).toEqual(25)
+    })
   })
 })

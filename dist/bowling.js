@@ -28,7 +28,13 @@ class Bowling {
                 spareScore += this.scorecard[index + 1][0];
             }
         });
-        return regularScore + spareScore;
+        let strikeScore = 0;
+        this.scorecard.forEach((score, index) => {
+            if (score[0] === 10) {
+                strikeScore += this.scorecard[index + 1][0] + this.scorecard[index + 1][1];
+            }
+        });
+        return regularScore + spareScore + strikeScore;
     }
 }
 exports.default = Bowling;

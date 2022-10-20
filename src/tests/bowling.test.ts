@@ -49,5 +49,25 @@ describe('Bowling', () => {
       bowling.addScore([5, 5, 4]) // For 10th array to be 3 long it requires a spare on the first 2 rolls.
       expect(bowling.scorecard[9]).toEqual([5, 5, 4])
     })
+
+    test('last frame can only be 3 long if first 2 is a spare', () => {
+      let bowling = new Bowling();
+      for(let i = 0; i < 9; i++) { // should add 9 arrays
+        bowling.addScore([4, 5])
+      }
+
+      bowling.addScore([1, 5, 8]) // First 2 rolls aren't a spare and should be rejected
+      expect(bowling.scorecard.length).toBe(9) // 10th not added
+    })
+
+    test('getting a triple strike in the last frame is possible', () => {
+      let bowling = new Bowling();
+      for(let i = 0; i < 9; i++) { // should add 9 arrays
+        bowling.addScore([2, 7])
+      }
+      bowling.addScore([10, 10, 10])
+      expect(bowling.scorecard.length).toEqual(10)
+      expect(bowling.scorecard[9]).toEqual([10, 10, 10])
+    })
   })  
 })

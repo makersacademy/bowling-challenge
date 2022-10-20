@@ -47,5 +47,22 @@ describe('Bowling', () => {
             bowling.addScore([5, 5, 4]);
             expect(bowling.scorecard[9]).toEqual([5, 5, 4]);
         });
+        test('last frame can only be 3 long if first 2 is a spare', () => {
+            let bowling = new bowling_1.default();
+            for (let i = 0; i < 9; i++) {
+                bowling.addScore([4, 5]);
+            }
+            bowling.addScore([1, 5, 8]);
+            expect(bowling.scorecard.length).toBe(9);
+        });
+        test('getting a triple strike in the last frame is possible', () => {
+            let bowling = new bowling_1.default();
+            for (let i = 0; i < 9; i++) {
+                bowling.addScore([2, 7]);
+            }
+            bowling.addScore([10, 10, 10]);
+            expect(bowling.scorecard.length).toEqual(10);
+            expect(bowling.scorecard[9]).toEqual([10, 10, 10]);
+        });
     });
 });

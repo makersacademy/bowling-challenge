@@ -33,7 +33,11 @@ export default class Bowling {
     let spareScore = 0
     // Iterates through and every roll after a spare gets added to spareScore
     this.scorecard.forEach((score: number[], index: number) => {
-      if (score[0] != 10 && score[0] + score[1] === 10) {
+      if (this.scorecard.length === 1 && score[0] != 10 && score[0] + score[1] === 10) {
+        // Prevent spare score from being calculated before second frame
+      }
+      
+      else if (score[0] != 10 && score[0] + score[1] === 10) {
         spareScore += this.scorecard[index + 1][0]
       }
     })

@@ -94,6 +94,12 @@ describe('Bowling', () => {
       expect(bowling.currentScore).toEqual(23)
     })
 
+    it('handles 1 spare without crashing', () => {
+      let bowling = new Bowling();
+      bowling.addScore([3, 7]) // 1 spare
+      expect(bowling.currentScore).toEqual(10)
+    })
+
     it('correctly handles multiple non-overlapping spares and gives correct score', () => {
       let bowling = new Bowling();
       bowling.addScore([5, 5])

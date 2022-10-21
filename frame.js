@@ -25,6 +25,10 @@ class Frame {
       return false;
     }
   }
+
+  framePins() {
+    return this._framePins;
+  }
 }
 
 module.exports = Frame;

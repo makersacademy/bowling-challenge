@@ -6,18 +6,19 @@ export default class Bowling {
   }
 
   addScore(score: number[]) {
+    // no illegal scores (is sensitive to last frame)
     if (score[0] + score[1] > 10 && score.length === 2) {
       return;
     }
-
+    // no more than 10 frames
     if (this.scorecard.length === 10) {
       return;
     }
-
+    // only allows last frame to be 3 long
     if (score.length === 3 && this.scorecard.length != 9) {
       return;
     }
-
+    // last frame must have spare/strike to be 3 long
     if (score.length === 3 && !(score[0] + score[1] >= 10 || score[0] == 10)) {
       return;
     }
@@ -60,5 +61,9 @@ export default class Bowling {
     })
 
     return regularScore + spareScore + strikeScore;
+  }
+
+  get currentFrame(): number {
+    return this.scorecard.length === 10 ? 10 : this.scorecard.length + 1
   }
 }

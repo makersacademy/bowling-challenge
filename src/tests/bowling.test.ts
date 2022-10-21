@@ -150,4 +150,20 @@ describe('Bowling', () => {
       expect(bowling.currentScore).toEqual(79)
     })
   })
+
+  describe('.currentFrame', () => {
+    it('returns the current frame', () => {
+      let bowling = new Bowling();
+      expect(bowling.currentFrame).toEqual(1)
+      for(let i = 0; i < 4; i++) {
+        bowling.addScore([7, 1]);
+      }
+      expect(bowling.currentFrame).toEqual(5)
+      for(let i = 0; i < 6; i++) {
+        bowling.addScore([7, 1]);
+      }
+      // Frames cant be greater than 10 long.
+      expect(bowling.currentFrame).toEqual(10)
+    })
+  })
 })

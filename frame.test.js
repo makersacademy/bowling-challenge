@@ -11,7 +11,7 @@ describe('frame', () => {
       let pinsKnocked2 = 4;
       currentFrame.addPins(pinsKnocked2);
 
-      expect(currentFrame.framePins).toStrictEqual([1, 4]);
+      expect(currentFrame._framePins).toStrictEqual([1, 4]);
     });
   });
 

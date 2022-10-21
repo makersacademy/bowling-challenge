@@ -1,14 +1,25 @@
 class Frame {
   constructor(framePins = []) {
-    this.framePins = framePins;
+    this._framePins = framePins;
   }
 
   addPins(pinsKnocked) {
-    this.framePins.push(pinsKnocked);
+    this._framePins.push(pinsKnocked);
   }
 
   isStrike() {
-    if (this.framePins.includes(10)) {
+    if (this._framePins.includes(10)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isSpare() {
+    if (
+      !this._framePins.includes(10) &&
+      this._framePins.reduce((val1, val2) => val1 + val2) === 10
+    ) {
       return true;
     } else {
       return false;

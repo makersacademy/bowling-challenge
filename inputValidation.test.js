@@ -1,6 +1,11 @@
 const InputValidation = require("./inputValidation");
 
-describe('InputValidation', () => {
+describe("InputValidation", () => {
+  it("is an instance of InputValidation class", () => {
+    const validation = new InputValidation;
+    expect(validation).toBeInstanceOf(InputValidation);
+  });
+
   it("checks whether user input is a whole number from 0 to 10", () => {
     const validation = new InputValidation;
     const inputDouble = 1;

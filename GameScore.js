@@ -5,7 +5,7 @@ class GameScore {
     this.frameScores = frameScores;
   }
 
-  addFrame(frame) {
+  addFrameScore(frame) {
     let points = frame.framePins().reduce((val1, val2) => val1 + val2);
     this.frameScores.push(points);
   }

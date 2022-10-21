@@ -169,6 +169,17 @@ describe('Bowling', () => {
       bowling.addScore([10, 10, 10]);
       expect(bowling.currentScore).toEqual(300)
     })
+
+    test('last frame is a spare then strike', () => {
+      let bowling = new Bowling()
+      for(let i = 0; i < 4; i++) { // Should be 8 frames from the loop
+        bowling.addScore([3, 6])
+        bowling.addScore([3, 4])
+      }
+      bowling.addScore([8, 1]) // frame 9 & 10 after the loop
+      bowling.addScore([3, 7, 10])
+      expect(bowling.currentScore).toEqual(93)
+    })
   })
 
   describe('.currentFrame', () => {

@@ -1,4 +1,5 @@
-// to run ESLint - npx eslint yourfile.jsn
+to run ESLint - npx eslint yourfile.js
+to fix - npx eslint --fix yourfile.js
 
 ```js
 class Frame {

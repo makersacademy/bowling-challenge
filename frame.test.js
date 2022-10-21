@@ -25,14 +25,12 @@ describe('Frame', () => {
     const frame = new Frame;
     frame.firstRoll = 2;
     frame.secondRoll = 3;
-    frame.getTotal();
-    expect(frame.total).toBe(5);
+    expect(frame.getTotal()).toBe(5);
   });
   it('returns total score', () => {
     const frame = new Frame;
     frame.firstRoll = 10;
-    frame.getTotal();
-    expect(frame.total).toBe(10);
+    expect(frame.getTotal()).toBe(10);
   });
 });
 

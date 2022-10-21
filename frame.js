@@ -1,6 +1,5 @@
 class Frame {
   constructor () {
-    this.total = 0;
     this.bonus = 0;
     this.firstRoll = 0; 
     this.secondRoll = 0; 
@@ -16,7 +15,7 @@ class Frame {
   }
 
   getTotal = () => {
-    this.total = this.firstRoll + this.secondRoll + this.bonus;
+    return this.firstRoll + this.secondRoll + this.bonus;
   }
 }
 

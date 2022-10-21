@@ -1,4 +1,4 @@
-const Frame = require('./frame');
+const Frame = require('./lib/frame');
 
 describe('frame', () => {
   describe('addPins', () => {

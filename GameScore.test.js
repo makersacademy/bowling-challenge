@@ -1,4 +1,4 @@
-const GameScore = require('./gamescore');
+const GameScore = require('./lib/GameScore');
 
 describe('gamescore', () => {
   describe('addFrameScore', () => {

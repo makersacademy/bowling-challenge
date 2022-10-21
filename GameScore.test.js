@@ -1,7 +1,7 @@
 const GameScore = require('./gamescore');
 
 describe('gamescore', () => {
-  describe('addFrame', () => {
+  describe('addFrameScore', () => {
     it("adds the current frame's pins to the frameScores array", () => {
       let gameScore = new GameScore();
       const fakeFrame = {
@@ -30,6 +30,26 @@ describe('gamescore', () => {
       gameScore.addFrameScore(fakeFrame2);
 
       expect(gameScore.frameScores).toStrictEqual([7, 10]);
+    });
+
+    it('adds the bonus points when strike', () => {
+      let gameScore = new GameScore();
+      const fakeFrame1 = {
+        framePins: () => [10],
+        isStrike: () => true,
+        isSpare: () => false,
+      };
+
+      const fakeFrame2 = {
+        framePins: () => [2, 5],
+        isStrike: () => false,
+        isSpare: () => false,
+      };
+
+      gameScore.addFrameScore(fakeFrame1);
+      gameScore.addFrameScore(fakeFrame2);
+
+      expect(gameScore.frameScores).toStrictEqual([17, 7]);
     });
   });
 });

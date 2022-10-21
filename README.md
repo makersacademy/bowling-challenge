@@ -1,3 +1,6 @@
+# Description
+
+Very much a work in progress, I didn't have much time over the weekend. I spent some time trying (and failing) to implement testing for user input using jest. I think I will come back to this during the week to try and solve it. Ultimately, the user input on the rolls would be mocked when testing the Frame and Scoresheet/Game class, I'm also not sure on this. 
 
 Bowling Challenge
 =================

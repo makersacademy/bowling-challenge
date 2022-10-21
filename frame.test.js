@@ -36,4 +36,18 @@ describe('frame', () => {
       expect(currentFrame.isStrike()).toEqual(false);
     });
   });
+
+  describe('isSpare', () => {
+    it('returns true if frame is a spare', () => {
+      let currentFrame = new Frame();
+
+      let pinsKnocked1 = 2;
+      currentFrame.addPins(pinsKnocked1);
+
+      let pinsKnocked2 = 8;
+      currentFrame.addPins(pinsKnocked2);
+
+      expect(currentFrame.isSpare()).toEqual(true);
+    });
+  });
 });

@@ -120,6 +120,12 @@ describe('Bowling', () => {
       expect(bowling.currentScore).toEqual(25)
     })
 
+    it('returns the score after 1 strike', () => {
+      let bowling = new Bowling();
+      bowling.addScore([10, 0]);
+      expect(bowling.currentScore).toEqual(10)
+    })
+
     it('returns the correct score after multiple non-consecutive strikes', () => {
       let bowling = new Bowling();
       bowling.addScore([10, 0])

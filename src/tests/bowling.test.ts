@@ -119,5 +119,23 @@ describe('Bowling', () => {
       bowling.addScore([2, 1])
       expect(bowling.currentScore).toEqual(25)
     })
+
+    it('returns the correct score after multiple non-consecutive strikes', () => {
+      let bowling = new Bowling();
+      bowling.addScore([10, 0])
+      bowling.addScore([4, 2])
+      bowling.addScore([10, 0])
+      bowling.addScore([4, 2])
+      expect(bowling.currentScore).toEqual(44)
+    })
+
+    it('returns the correct score after multiple consecutive strikes', () => {
+      let bowling = new Bowling();
+      bowling.addScore([10, 0]) // 30
+      bowling.addScore([10, 0]) // 53
+      bowling.addScore([10, 0]) // 71
+      bowling.addScore([3, 5]) // 79
+      expect(bowling.currentScore).toEqual(79)
+    })
   })
 })

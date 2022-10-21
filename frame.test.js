@@ -1,10 +1,10 @@
 const Frame = require('./frame');
 
 describe('frame', () => {
-  const currentFrame = new Frame();
-
   describe('addPins', () => {
     it("adds the current roll's pins to the roundPins array", () => {
+      let currentFrame = new Frame();
+
       let pinsKnocked = 1;
       currentFrame.addPins(pinsKnocked);
 
@@ -12,6 +12,16 @@ describe('frame', () => {
       currentFrame.addPins(pinsKnocked2);
 
       expect(currentFrame.roundPins).toStrictEqual([1, 4]);
+    });
+  });
+
+  describe('isStrike', () => {
+    it('returns true if frame is strike', () => {
+      let currentFrame = new Frame();
+
+      let pinsKnocked = 10;
+      currentFrame.addPins(pinsKnocked);
+      expect(currentFrame.isStrike()).toEqual(true);
     });
   });
 });

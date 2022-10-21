@@ -41,9 +41,15 @@ export default class Bowling {
     let strikeScore = 0;
     // Iterates through the score card to add bonus strike score
     this.scorecard.forEach((score: number[], index: number) => {
-      if (score[0] === 10) {
+      // Handles consecutive strikes.
+      if (score[0] === 10 && this.scorecard[index + 1][0] === 10) {
+        strikeScore += this.scorecard[index + 1][0] + this.scorecard[index + 2][0]
+      }
+      // Handles non-consecutive strikes.
+      else if (score[0] === 10) {
         strikeScore += this.scorecard[index + 1][0] + this.scorecard[index + 1][1]
       }
+
     })
 
     return regularScore + spareScore + strikeScore;

@@ -149,6 +149,26 @@ describe('Bowling', () => {
       bowling.addScore([3, 5]) // 79
       expect(bowling.currentScore).toEqual(79)
     })
+
+    it('returns the correct score with a spare on the last frame', () => {
+      let bowling = new Bowling();
+      for(let i = 0; i < 9; i++) {
+        bowling.addScore([4, 5])
+      }
+      bowling.addScore([5, 5, 5])
+
+      expect(bowling.currentScore).toEqual(96)
+    })
+
+    it('returns correct score in a perfect game', () => {
+      let bowling = new Bowling()
+      for(let i = 0; i < 9; i++) {
+        bowling.addScore([10, 0])
+        console.log(bowling.currentScore);
+      }
+      bowling.addScore([10, 10, 10]);
+      expect(bowling.currentScore).toEqual(300)
+    })
   })
 
   describe('.currentFrame', () => {

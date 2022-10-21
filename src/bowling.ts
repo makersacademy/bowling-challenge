@@ -38,6 +38,10 @@ export default class Bowling {
         // Prevent spare score from being calculated before second frame
       }
       
+      else if (score[0] != 10 && score[0] + score[1] === 10 && score.length === 3) {
+        // On the last frame regular score calculates any spare score
+      }
+
       else if (score[0] != 10 && score[0] + score[1] === 10) {
         spareScore += this.scorecard[index + 1][0]
       }
@@ -46,8 +50,16 @@ export default class Bowling {
     let strikeScore = 0;
     // Iterates through the score card to add bonus strike score
     this.scorecard.forEach((score: number[], index: number) => {
-      if (score[0] === 10 && this.scorecard.length === 1) {
-        // prevent strike score from being calculated on the first roll
+      if (score[0] === 10 && typeof this.scorecard[index + 1] == "undefined") {
+        // prevent strike score from being when next frame isn't available
+      }
+      else if (score[0] === 10 && this.scorecard[index + 1][0] === 10 && typeof this.scorecard[index + 2] == "undefined") {
+        // in case of double strike checks if the frame afterwards exists
+        strikeScore += this.scorecard[index + 1][0] + this.scorecard[index + 1][0];
+      }
+
+      else if (score.length === 3 && score[0] === 10) {
+        // strike score is calculated by regularScore for last frame
       }
       // Handles consecutive strikes.
       else if (score[0] === 10 && this.scorecard[index + 1][0] === 10) {

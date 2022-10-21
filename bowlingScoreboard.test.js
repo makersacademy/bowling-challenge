@@ -1,6 +1,11 @@
 const BowlingScoreboard = require("./bowlingScoreboard");
 
 describe("BowlingScoreboard", () => {
+  it("is an instance of BowlingScoreboard class", () => {
+    const board = new BowlingScoreboard;
+    expect(board).toBeInstanceOf(BowlingScoreboard);
+  });
+
   it("populates scoreboard with 1 pin", () =>{
     const board = new BowlingScoreboard;
 

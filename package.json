@@ -22,5 +22,8 @@
   "homepage": "https://github.com/PatriciaGN/bowling-challenge#readme",
   "dependencies": {
     "jest": "^29.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.25.0"
   }
 }

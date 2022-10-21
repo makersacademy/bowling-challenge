@@ -1,10 +1,18 @@
 class Frame {
-  constructor(roundPins = []) {
-    this.roundPins = roundPins;
+  constructor(framePins = []) {
+    this.framePins = framePins;
   }
 
   addPins(pinsKnocked) {
-    this.roundPins.push(pinsKnocked);
+    this.framePins.push(pinsKnocked);
+  }
+
+  isStrike() {
+    if (this.framePins.includes(10)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

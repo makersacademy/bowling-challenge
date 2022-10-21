@@ -21,8 +21,19 @@ describe('frame', () => {
 
       let pinsKnocked = 10;
       currentFrame.addPins(pinsKnocked);
-      console.log(currentFrame.framePins);
       expect(currentFrame.isStrike()).toEqual(true);
+    });
+
+    it('returns false if frame is not a strike', () => {
+      let currentFrame = new Frame();
+
+      let pinsKnocked1 = 2;
+      currentFrame.addPins(pinsKnocked1);
+
+      let pinsKnocked2 = 8;
+      currentFrame.addPins(pinsKnocked2);
+
+      expect(currentFrame.isStrike()).toEqual(false);
     });
   });
 });

@@ -1,6 +1,7 @@
 class Scoreboard {
   constructor () {
     this.frames = []
+    this.frameScores = []
     this.totalScore = 0
   }
 
@@ -8,20 +9,23 @@ class Scoreboard {
     return this.frames
   }
 
+  allFrameScores () {
+    return this.frameScores
+  }
+
   addFrame (frame) {
     this.frames.push(frame)
   }
 
   scoreCalculator(frame) {
-    let score = 0
-    // console.log(this.frames)
-    // console.log('this.frames.length - 1', this.frames.slice(-2)[0])
-    // console.log('is spare?', this.frames.slice(-2)[0].isSpare())
-
-    if (this.frames.slice(-2)[0].isSpare() === true) score += 10
-    score += (frame.frameResult()[0] + frame.frameResult()[1])
+    const isPreviousSpare = (this.frames.slice(-2)[0].isSpare()) // check if previous frame was spare
     
-    this.totalScore += score
+    if (isPreviousSpare === true) {
+      this.addToPreviousFrame(frame.frameResult()[0]); // add spare bonus to previous frame
+    }
+    this.frameScores.push(frame.frameScore()) // add frame score to current frame
+
+    console.log('this.frameScores', this.frameScores)
   }
 
   scoreTotal () {
@@ -30,6 +34,10 @@ class Scoreboard {
 
   resetFrames () {
     this.frames = []
+  }
+
+  addToPreviousFrame(score) {
+    this.frameScores[this.frameScores.length - 1] += score
   }
 }
 

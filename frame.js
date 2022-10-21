@@ -25,6 +25,10 @@ class Frame {
     if (this.frame[0] + this.frame[1] === 10) return true
     return false
   }
+
+  frameScore () {
+    return this.frame[0] + this.frame[1]
+  }
 }
 
 module.exports = Frame

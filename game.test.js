@@ -19,6 +19,7 @@ describe('Game', () => {
   describe('play()', () => {
     const nineFrameResultsDouble = [[1, 4], [4, 5], [6, 4], [5, 5], [10, 0], [0, 1], [7, 3], [6, 4], [10, 0]]
     const tenFrameResultsDouble = [[1, 4], [4, 5], [6, 4], [5, 5], [10, 0], [0, 1], [7, 3], [6, 4], [10, 0], [2, 8, 6]]
+    const tenFrameResultsDouble2 = [[5, 5], [4, 5], [8, 2], [10, 0], [0, 10], [10, 0], [6, 2], [10, 0], [4, 6], [10, 10, 0]]
     
     it('creates and adds frames', () => {
       game.play(nineFrameResultsDouble)
@@ -31,28 +32,35 @@ describe('Game', () => {
       expect(game.scoresTotal()).toEqual(107)
     })
 
-    xit('returns accurate score total for 10 frames', () => {
+    it('returns accurate score total for 10 frames', () => {
       let game = new Game
       game.play(tenFrameResultsDouble)
       expect(game.scoresTotal()).toEqual(133)
-    })
 
-    xit('creates new frame with content', () => {
-      game.play()
-      result = game.getScoreboard().allFrames()[0].frameResult()
-      expect(result).toEqual([1, 4])
+      let game2 = new Game
+      game2.play(tenFrameResultsDouble2)
+      expect(game2.scoresTotal()).toEqual(169)
     })
+    
+  })
 
-    xit('creates 9 frames', () => {
+  describe('gutterGame()', () => {
+    it('returns true if no pins are hit', () => {
+      const gutterGameDouble = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0, 0]]
+
       let game = new Game
-      game.play()
-      expect(game.getScoreboard().allFrames().length).toEqual(9)
+      game.play(gutterGameDouble)
+      expect(game.gutterGame()).toEqual(true)
     })
+  })
 
-    xit('creates 9 frames with scores', () => {
+  describe('perfectGame()', () => {
+    it('returns true if all strikes', () => {
+      const perfectGameDouble = [[10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]]
+
       let game = new Game
-      game.play()
-      expect(game.scoresTotal()).toEqual(117)
+      game.play(perfectGameDouble)
+      expect(game.perfectGame()).toEqual(true)
     })
   })
 

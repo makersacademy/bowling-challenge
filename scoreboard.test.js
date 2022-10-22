@@ -11,6 +11,7 @@ describe('Scoreboard', () => {
   const frameDouble7Strike = { frameResult: () => [10, 0], isSpare: () => false, isStrike: () => true, frameScore: () => 10 }
   const frameDouble8Strike = { frameResult: () => [10, 0], isSpare: () => false, isStrike: () => true, frameScore: () => 10 }
   const frameDouble9 = { frameResult: () => [5, 3], isSpare: () => false, isStrike: () => false, frameScore: () => 8 }
+  const frameDouble10 = { frameResult: () => [1, 9, 10], isSpare: () => true, isStrike: () => false, frameScore: () => 10 }
 
   describe('allFrames', () => {
     it('initially returns empty array', () => {
@@ -99,7 +100,12 @@ describe('Scoreboard', () => {
       expect(scoreboard.allFrameScores()).toEqual([5, 15, 8, 16, 6, 30, 28, 18, 8])
     })
 
-   
+    it('totals score after frame 10', () => {
+      scoreboard.addFrame(frameDouble10)
+      scoreboard.scoreCalculator(frameDouble10)
+
+      expect(scoreboard.allFrameScores()).toEqual([5, 15, 8, 16, 6, 30, 28, 18, 8, 20])
+    })
   })
 
   describe('scoreTotal', () => {

@@ -18,7 +18,7 @@ class Frame {
   ball3 (ball) {
     this.frame[2] = ball
   }
-  
+
   isStrike () {
     if (this.frame[0] === 10) return true
     return false
@@ -31,8 +31,7 @@ class Frame {
   }
 
   frameScore () {
-    if (this.frame.length === 2) return this.frame[0] + this.frame[1]
-    return this.frame[0] + this.frame[1] + this.frame[2]
+    return this.frame[0] + this.frame[1]
   }
 }
 

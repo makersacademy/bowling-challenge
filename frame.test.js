@@ -64,11 +64,5 @@ describe('Frame', () => {
       expect(frame.frameScore()).toEqual(7)
     })
 
-    it('totals score for 10th frame', () => {
-      frame.ball1(3)
-      frame.ball2(4)
-      frame.ball3(4)
-      expect(frame.frameScore()).toEqual(11)
-    })
   })
 })

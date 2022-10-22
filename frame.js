@@ -1,35 +1,28 @@
 class Frame {
-  constructor(index) {
-    this.index = index;
-    this.rollOne = 0;
-    this.rollTwo = 0;
-    this.total = 0;
+  constructor(rollOne, rollTwo) {
+    this.rollOne = rollOne;
+    this.rollTwo = rollTwo;
   }
   
-  getRollOne(rollOne) {
-    this.rollOne = rollOne;
-    return this.rollOne;
-  }
-
-  getRollTwo(rollTwo) {
-    this.rollTwo = rollTwo;
-    return this.rollTwo;
-  }
-
-  score() {
-    this.total = this.rollOne + this.rollTwo;
-    return this.total;
+  getFrameSum() {
+    return this.rollOne + this.rollTwo;
   }
 
   strike() {
     if (this.rollOne === 10) {
       return true;
     }
+    else {
+      return false;
+    }
   }
   
   spare() {
-    if (this.total === 10) {
+    if (!this.strike() && this.getFrameSum() === 10) {
       return true;
+    }
+    else {
+      return false;
     }
   }
 }

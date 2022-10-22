@@ -1,36 +1,28 @@
 const Frame = require('./frame');
 
 describe('Frame', () => {
-  it('gets the first roll', () => {
-    const frame = new Frame(1);
-    frame.getRollOne(5);
-    expect(frame.rollOne).toEqual(5);
-  })
-
-  it('gets the second roll', () => {
-    const frame = new Frame(1);
-    frame.getRollTwo(4);
-    expect(frame.rollTwo).toEqual(4);
-  })
-  
   it('returns the total of two rolls', () => {
-    const frame = new Frame(1);
-    frame.getRollOne(4);
-    frame.getRollTwo(5);
-    expect(frame.score()).toEqual(9);
+    const frame = new Frame(4,5);
+    expect(frame.getFrameSum()).toBe(9);
   })
 
-  it('marks strike when the first roll is equal to 10', () => {
-    const frame = new Frame(1);
-    frame.getRollOne(10);
-    expect(frame.strike()).toEqual(true);
+  it('marks strike', () => {
+    const frame = new Frame(10,0);
+    expect(frame.strike()).toBe(true);
+  })
+
+  it('returns false if the roll one is not equal to 10', () => {
+    const frame = new Frame(0,10);
+    expect(frame.strike()).toBe(false);
   })
 
   it('marks spare', () => {
-    const frame = new Frame(1);
-    frame.getRollOne(4);
-    frame.getRollTwo(6);
-    frame.score();
-    expect(frame.spare()).toEqual(true);
+    const frame = new Frame(5,5);
+    expect(frame.spare()).toBe(true);
+  })
+
+  it('returns false if it is a strike hit', () => {
+    const frame = new Frame(10,0);
+    expect(frame.spare()).toBe(false);
   })
 })

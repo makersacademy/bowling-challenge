@@ -7,6 +7,8 @@ class Frame {
     getSum() {
         return this.roll1 + this.roll2
     };
+
+   
 };
 
 module.exports = Frame;

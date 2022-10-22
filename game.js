@@ -1,20 +1,16 @@
 class Game {
     constructor() {
         this.frames = [];
-    };
-
+        this.scores = [];
+    }
     add(frame) {
         this.frames.push(frame);
-    };
-
-    // total() {
-    //     const calculate = (i) => {
-    //         i += 1
-    //         return
-    //     }
-    //     const totalGame = [...Array(10).keys().map(calculateFrame)]
-    // }
+    }
+    scores(score1, score2) {
+        this.scores.push({frame: this.frames.length, score1: score1, score2: score2});
+    }
     
-}
+
+};
 
 module.exports = Game;

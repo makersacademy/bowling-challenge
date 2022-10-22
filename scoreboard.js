@@ -33,33 +33,33 @@ class Scoreboard {
     } else {
       if (this.isSecondPreviousStrike()) {
         this.addToPreviousFrame(frame.frameScore(), 2)
-      } //  check and add strike bonus to second previous frame
+      } // check and add strike bonus to second previous frame
       this.addFrameScore(frame, 0)
     }
   }
 
   addFrameScore (frame, frameTenBonus) {
-    this.frameScores.push(frame.frameScore() + frameTenBonus) // add frame score to current frame
+    // add frame score to current frame
+    this.frameScores.push(frame.frameScore() + frameTenBonus)
   }
 
   isPreviousSpare () {
-    return this.frames.slice(-2)[0].isSpare() // check if previous frame was spare
+    // check if previous frame was spare
+    return this.frames.slice(-2)[0].isSpare()
   }
 
   isPreviousStrike () {
-    return this.frames.slice(-2)[0].isStrike() // check if previous frame was strike
+    // check if previous frame was strike
+    return this.frames.slice(-2)[0].isStrike()
   }
 
   isSecondPreviousStrike () {
-    return this.frames.slice(-3)[0].isStrike() && this.isPreviousStrike() // check if previous frame -1 was strike and needs bonus
+    // check if previous frame -1 was strike and needs bonus
+    return this.frames.slice(-3)[0].isStrike() && this.isPreviousStrike()
   }
 
   scoreTotal () {
     return this.frameScores.reduce((a, b) => a + b, 0)
-  }
-
-  resetFrames () {
-    this.frames = []
   }
 
   addToPreviousFrame (score, indexReduction) {

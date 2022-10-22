@@ -1,16 +1,16 @@
-const Scoreboard = require('./scoreboard')
+const Scorecard = require('./scorecard')
 const Frame = require('./frame')
 
 class Game {
   constructor () {
-    this.scoreboard = new Scoreboard()
+    this.scorecard = new Scorecard()
   }
 
   scoresTotal () {
-    return this.scoreboard.scoreTotal()
+    return this.scorecard.scoreTotal()
   }
 
-  play (gameResults) {
+  run (gameResults) {
     gameResults.forEach((frameElement) => {
       const frame = new Frame()
       frame.ball1(frameElement[0])
@@ -18,20 +18,20 @@ class Game {
       if (gameResults.indexOf(frameElement) === 9) {
         frame.ball3(frameElement[2])
       }
-      this.scoreboard.addFrame(frame)
-      this.scoreboard.scoreCalculator(frame)
+      this.scorecard.addFrame(frame)
+      this.scorecard.scoreCalculator(frame)
     })
   }
 
-  getScoreboard () {
-    return this.scoreboard
+  getScorecard () {
+    return this.scorecard
   }
 
-  gutterGame () {
+  checkForGutterGame () {
     if (this.scoresTotal() === 0) return true
   }
 
-  perfectGame () {
+  checkForPerfectGame () {
     if (this.scoresTotal() === 300) return true
   }
 }

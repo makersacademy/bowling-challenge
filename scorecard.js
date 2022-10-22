@@ -1,4 +1,4 @@
-class Scoreboard {
+class Scorecard {
   constructor () {
     this.frames = []
     this.frameScores = []
@@ -17,21 +17,21 @@ class Scoreboard {
   }
 
   scoreCalculator (frame) {
-    if (this.isPreviousSpare()) {
+    if (this.checkPreviousFrameForSpare()) {
       this.addToPreviousFrame(frame.frameResult()[0], 1)
     } // check and add spare bonus to previous frame
 
-    if (this.isPreviousStrike()) {
+    if (this.checkPreviousFrameForStrike()) {
       this.addToPreviousFrame(frame.frameScore(), 1)
     } // check and add strike bonus to previous frame
 
     if (this.frameScores.length === 9) {
-      if (this.isSecondPreviousStrike()) {
+      if (this.checkSecondPreviousFrameForStrike()) {
         this.addToPreviousFrame(frame.frameResult()[0], 2)
       } // check and add strike bonus to second previous frame
       this.addFrameScore(frame, frame.frameResult()[2])
     } else {
-      if (this.isSecondPreviousStrike()) {
+      if (this.checkSecondPreviousFrameForStrike()) {
         this.addToPreviousFrame(frame.frameScore(), 2)
       } // check and add strike bonus to second previous frame
       this.addFrameScore(frame, 0)
@@ -39,23 +39,19 @@ class Scoreboard {
   }
 
   addFrameScore (frame, frameTenBonus) {
-    // add frame score to current frame
     this.frameScores.push(frame.frameScore() + frameTenBonus)
   }
 
-  isPreviousSpare () {
-    // check if previous frame was spare
+  checkPreviousFrameForSpare () {
     return this.frames.slice(-2)[0].isSpare()
   }
 
-  isPreviousStrike () {
-    // check if previous frame was strike
+  checkPreviousFrameForStrike () {
     return this.frames.slice(-2)[0].isStrike()
   }
 
-  isSecondPreviousStrike () {
-    // check if previous frame -1 was strike and needs bonus
-    return this.frames.slice(-3)[0].isStrike() && this.isPreviousStrike()
+  checkSecondPreviousFrameForStrike () {
+    return this.frames.slice(-3)[0].isStrike() && this.checkPreviousFrameForStrike()
   }
 
   scoreTotal () {
@@ -67,4 +63,4 @@ class Scoreboard {
   }
 }
 
-module.exports = Scoreboard
+module.exports = Scorecard

@@ -13,5 +13,20 @@ describe('Scorecard', () => {
       scorecard.addRoll(3);
       expect(scorecard.totalScore()).toEqual(15);
     });
+    it('returns sum after spare + open frame', () => {
+      const scorecard = new Scorecard();
+      scorecard.addRoll(9);
+      scorecard.addRoll(1);
+      scorecard.addRoll(5);
+      scorecard.addRoll(4);
+      expect(scorecard.totalScore()).toEqual(24);
+    });
+    it('returns sum after spare + open frame', () => {
+      const scorecard = new Scorecard();
+      scorecard.addRoll(10);
+      scorecard.addRoll(6);
+      scorecard.addRoll(3);
+      expect(scorecard.totalScore()).toEqual(28);
+    });
   });
 });

@@ -132,5 +132,27 @@ describe('gamescore', () => {
 
       expect(gameScore.frameScores).toStrictEqual([15, 7]);
     });
+
+    describe('calcTotalPoints', () => {
+      it('returns the correct number of total points', () => {
+        let gameScore = new GameScore();
+        const fakeFrame1 = {
+          framePins: () => [6, 4],
+          isStrike: () => false,
+          isSpare: () => true,
+        };
+
+        const fakeFrame2 = {
+          framePins: () => [5, 2],
+          isStrike: () => false,
+          isSpare: () => false,
+        };
+
+        gameScore.addFrameScore(fakeFrame1);
+        gameScore.addFrameScore(fakeFrame2);
+
+        expect(gameScore.calcTotalPoints).toEqual(22);
+      });
+    });
   });
 });

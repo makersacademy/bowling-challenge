@@ -17,28 +17,28 @@ describe('Game', () => {
   })
 
   describe('play()', () => {
-    const nineFrameResultsDouble = [[1, 4], [4, 5], [6, 4], [5, 5], [10, 0], [0, 1], [7, 3], [6, 4], [10, 0]]
-    const tenFrameResultsDouble = [[1, 4], [4, 5], [6, 4], [5, 5], [10, 0], [0, 1], [7, 3], [6, 4], [10, 0], [2, 8, 6]]
-    const tenFrameResultsDouble2 = [[5, 5], [4, 5], [8, 2], [10, 0], [0, 10], [10, 0], [6, 2], [10, 0], [4, 6], [10, 10, 0]]
+    const nineGameResultsDouble = [[1, 4], [4, 5], [6, 4], [5, 5], [10, 0], [0, 1], [7, 3], [6, 4], [10, 0]]
+    const tenGameResultsDouble = [[1, 4], [4, 5], [6, 4], [5, 5], [10, 0], [0, 1], [7, 3], [6, 4], [10, 0], [2, 8, 6]]
+    const tenGameResultsDouble2 = [[5, 5], [4, 5], [8, 2], [10, 0], [0, 10], [10, 0], [6, 2], [10, 0], [4, 6], [10, 10, 0]]
     
     it('creates and adds frames', () => {
-      game.play(nineFrameResultsDouble)
+      game.play(nineGameResultsDouble)
       expect(game.getScoreboard().allFrames().length).toEqual(9)
     })
 
     it('returns accurate score total for 9 frames', () => {
       let game = new Game
-      game.play(nineFrameResultsDouble)
+      game.play(nineGameResultsDouble)
       expect(game.scoresTotal()).toEqual(107)
     })
 
     it('returns accurate score total for 10 frames', () => {
       let game = new Game
-      game.play(tenFrameResultsDouble)
+      game.play(tenGameResultsDouble)
       expect(game.scoresTotal()).toEqual(133)
 
       let game2 = new Game
-      game2.play(tenFrameResultsDouble2)
+      game2.play(tenGameResultsDouble2)
       expect(game2.scoresTotal()).toEqual(169)
     })
     

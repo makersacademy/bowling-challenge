@@ -151,7 +151,7 @@ describe('gamescore', () => {
         gameScore.addFrameScore(fakeFrame1);
         gameScore.addFrameScore(fakeFrame2);
 
-        expect(gameScore.calcTotalPoints).toEqual(22);
+        expect(gameScore.calcTotalPoints()).toEqual(22);
       });
     });
   });

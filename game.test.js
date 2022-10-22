@@ -83,4 +83,65 @@ describe('Game', () => {
     expect(game.score()).toEqual(26);
     expect(game.strikeCount).toEqual(0);
   });
+
+  it('checks 8 strikes', () => {
+    let frame = new Frame();
+    frame.addRoll(10);
+    let game = new Game();
+    for (let i = 0; i < 8; i++) {
+      game.addFrame(frame);
+    }
+    expect(game.score()).toEqual(210);
+    expect(game.strikeCount).toEqual(8);
+  });
+
+  it('checks 10 spares and a normal', () => {
+    let frame = new Frame();
+    frame.addRoll(5);
+    frame.addRoll(5);
+    let game = new Game();
+    for (let i = 0; i < 9; i++) {
+      game.addFrame(frame);
+    }
+    let frame2 = new Frame();
+    frame2.addRoll(3);
+    frame2.addRoll(5);
+    game.addFrame(frame2);
+    expect(game.score()).toEqual(141);
+  });
+
+  it('checks 10 normals', () => {
+    let frame = new Frame();
+    frame.addRoll(3);
+    frame.addRoll(5);
+    let game = new Game();
+    for (let i = 0; i < 10; i++) {
+      game.addFrame(frame);
+    }
+    expect(game.score()).toEqual(80);
+  });
+
+  it('checks 12 strike run', () => {
+    let frame = new Frame();
+    frame.addRoll(10);
+    let game = new Game();
+    for (let i = 0; i < 12; i++) {
+      game.addFrame(frame);
+    }
+    expect(game.score()).toEqual(300);
+  });
+
+  it('checks 9 strikes then normal frame', () => {
+    let frame = new Frame();
+    frame.addRoll(10);
+    let game = new Game();
+    for (let i = 0; i < 9; i++) {
+      game.addFrame(frame);
+    }
+    let frame2 = new Frame();
+    frame2.addRoll(3);
+    frame2.addRoll(5);
+    game.addFrame(frame2);
+    expect(game.score()).toEqual(259);
+  });
 });

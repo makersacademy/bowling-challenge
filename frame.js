@@ -29,7 +29,7 @@ class Frame {
 
 module.exports = Frame;
 
-let frame1 = new Frame();
-frame1.addRoll(4);
-frame1.addRoll(6);
-frame1.total();
+// let frame1 = new Frame();
+// frame1.addRoll(4);
+// frame1.addRoll(6);
+// frame1.total();

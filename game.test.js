@@ -68,9 +68,10 @@ describe('Game', () => {
     game.addFrame(frame1);
     game.addFrame(frame2);
     expect(game.score()).toEqual(22);
+    expect(game.spareCount).toEqual(0);
   });
 
-  xit('checks the strike counter', () => {
+  it('checks the strike counter', () => {
     let frame1 = new Frame();
     frame1.addRoll(10);
     let frame2 = new Frame();
@@ -79,7 +80,7 @@ describe('Game', () => {
     let game = new Game();
     game.addFrame(frame1);
     game.addFrame(frame2);
-    expect(game.score()).toEqual(36);
+    expect(game.score()).toEqual(26);
     expect(game.strikeCount).toEqual(0);
   });
 });

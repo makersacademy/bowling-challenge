@@ -4,7 +4,8 @@
   "description": "Bowling Challenge =================",
   "main": "frame.js",
   "directories": {
-    "doc": "docs"
+    "doc": "docs",
+    "lib": "lib"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

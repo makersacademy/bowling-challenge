@@ -153,6 +153,53 @@ describe('gamescore', () => {
 
         expect(gameScore.calcTotalPoints()).toEqual(22);
       });
+
+      it('returns the correct number of total points', () => {
+        let gameScore = new GameScore();
+        const fakeFrame1 = {
+          framePins: () => [10],
+          isStrike: () => true,
+          isSpare: () => false,
+        };
+
+        const fakeFrame2 = {
+          framePins: () => [3, 6],
+          isStrike: () => false,
+          isSpare: () => false,
+        };
+
+        gameScore.addFrameScore(fakeFrame1);
+        gameScore.addFrameScore(fakeFrame2);
+
+        expect(gameScore.calcTotalPoints()).toEqual(28);
+      });
+
+      it('returns the correct number of total points', () => {
+        let gameScore = new GameScore();
+        const fakeFrame1 = {
+          framePins: () => [10],
+          isStrike: () => true,
+          isSpare: () => false,
+        };
+
+        const fakeFrame2 = {
+          framePins: () => [10],
+          isStrike: () => true,
+          isSpare: () => false,
+        };
+
+        const fakeFrame3 = {
+          framePins: () => [4, 2],
+          isStrike: () => false,
+          isSpare: () => false,
+        };
+
+        gameScore.addFrameScore(fakeFrame1);
+        gameScore.addFrameScore(fakeFrame2);
+        gameScore.addFrameScore(fakeFrame3);
+
+        expect(gameScore.calcTotalPoints()).toEqual(46);
+      });
     });
   });
 });

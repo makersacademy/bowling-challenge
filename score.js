@@ -22,7 +22,7 @@ class Score {
     }
   }
   
-  // lastGame() {
+  // lastFrame() {
   //   if (this.frames.length === 11) {
   //   return this.frames[this.frames.length - 1];
   //   }
@@ -35,6 +35,7 @@ class Score {
     if (nextFrame.strike()) {
       return 10 + thirdFrame.rollOne;
     }
+
     return nextFrame.getSum(); 
   }
    

@@ -1,8 +1,11 @@
 const Score = require('./score');
 
 describe('ScoreCard', () => {
+  beforeEach(function(){
+    score = new Score();
+  });
+
   it ('returns the frame score without stirkes or spares', () => {
-    const score = new Score();
     const mockedFrame = { 
       getSum: () => 9, 
       strike: () => false,
@@ -14,7 +17,6 @@ describe('ScoreCard', () => {
   });
 
   it ('returns the frame score with strike', () => {
-    const score = new Score();
     const mockedFrame1 = { 
       getSum: () => 10, 
       strike: () => true,
@@ -33,7 +35,6 @@ describe('ScoreCard', () => {
   })
 
   it ('returns the frame score with spare', () => {
-    const score = new Score();
     const mockedFrame1 = { 
       getSum: () => 10, 
       strike: () => false,
@@ -54,14 +55,7 @@ describe('ScoreCard', () => {
   })
 
   it('returns the frame score with two consecutive strikes', () => {
-    const score = new Score();
-    const mockedFrame1 = { 
-      getSum: () => 10, 
-      strike: () => true,
-      spare: () => false  
-    }
-
-    const mockedFrame2 = { 
+    const mockedFrame = { 
       getSum: () => 10, 
       strike: () => true,
       spare: () => false  
@@ -75,15 +69,16 @@ describe('ScoreCard', () => {
       spare: () => false  
     }
 
-    score.add(mockedFrame1);
-    score.add(mockedFrame2);
+    for (let i = 1 ; i <= 2 ; i++) {
+      score.add(mockedFrame);
+    };
+
     score.add(mockedFrame3);
     
     expect(score.frameScore(1)).toBe(23);
   })
 
   it('returns the total score of a gutter game', () => {
-    const score = new Score();
     const mockedFrame = { 
       getSum: () => 0, 
       strike: () => false,
@@ -96,8 +91,7 @@ describe('ScoreCard', () => {
     expect(score.getTotalScore()).toBe(0);
   })
 
-  it('returns the total score of a full game', () => {
-    const score = new Score();
+  it('returns the total score of a 10 frame game', () => {
     const mockedFrame = { 
       getSum: () => 9, 
       strike: () => false,
@@ -111,18 +105,18 @@ describe('ScoreCard', () => {
     expect(score.getTotalScore()).toBe(90);
   })
 
-  it('returns the total score of the perfect game', () => {
-    const score = new Score();
+  xit('returns the total score of a perfect game', () => {
     const mockedFrame = { 
+      rollOne: () => 10,
       getSum: () => 10, 
       strike: () => true,
       spare: () => false  
     }
 
-    for (let i = 1 ; i <= 11 ; i++) {
+    for (let i = 1 ; i <= 12 ; i++) {
       score.add(mockedFrame);
     };
-    
+
     expect(score.getTotalScore()).toBe(300);
   })
 })

@@ -8,7 +8,7 @@ class Game {
   }
 
   playFrames = () => {
-    for (let i = 1 ; i <= 2 ; i++) {
+    for (let i = 1 ; i < 10 ; i++) {
       let frame = new Frame;
       console.log(`Frame ${i}`);
 
@@ -22,32 +22,58 @@ class Game {
     }
   }
 
-  calculateScore = () => {
+  playFinalFrame = () => {
+
+    let frame = new Frame;
+    console.log(`Frame 10`);
+
+    this.getFirstRoll(frame);
+    this.getSecondRoll(frame);
+
+    if (frame.isAStrike() || frame.isASpare()) {
+      this.getBonusRoll(frame);
+    }
+
+    this.frames.push(frame);
+  }
+
+  calculateBonus = () => {
     this.frames.forEach((frame, i) => {
-      if (i > 0) {
-        let currentFrame = frame;
-        let previousFrame = this.frames[i-1];
-        this.calculateBonus(currentFrame, previousFrame);
+      let currentFrame = frame;
+      let previousFrame = this.frames[i-1];
+      let nextFrame = this.frames[i+1];
+      if (nextFrame === undefined) {
+        nextFrame = {firstRoll: 0};
+      }
+      
+      if (i >= 1) {
+        this.addBonus(currentFrame, previousFrame, nextFrame);
       }
     });
+  }
 
+  calculateTotalScore = () => {
     this.total = this.frames.map(frame => frame.getTotal())
       .reduce((a, b) => a + b)
   }
 
-  calculateBonus = (currentFrame, previousFrame) => {
+  addBonus = (currentFrame, previousFrame, nextFrame) => {
     if (previousFrame.isAStrike()) {
-      previousFrame.bonus = this.strikeBonus(currentFrame);
+      previousFrame.bonus = this.calculateStrikeBonus(currentFrame, nextFrame);
     } else if (previousFrame.isASpare()) {
-      previousFrame.bonus = this.spareBonus(currentFrame);
+      previousFrame.bonus = this.calculateSpareBonus(currentFrame);
     }
   }
 
-  strikeBonus = (currentFrame) => {
-    return currentFrame.firstRoll + currentFrame.secondRoll;
+  calculateStrikeBonus = (currentFrame, nextFrame) => {
+    if (currentFrame.getTotal() >= 20 || currentFrame.isASpare()) {
+      return currentFrame.firstRoll + currentFrame.secondRoll;
+    } else {
+      return currentFrame.firstRoll + nextFrame.firstRoll;
+    }
   }
 
-  spareBonus = (currentFrame) => {
+  calculateSpareBonus = (currentFrame) => {
     return currentFrame.firstRoll;
   }
 
@@ -58,12 +84,19 @@ class Game {
   getSecondRoll = (frame) => {
     frame.secondRoll = parseInt(prompt(`Enter roll 2 score: `));
   }
+
+  getBonusRoll = (frame) => {
+    frame.bonus = parseInt(prompt(`Enter bonus roll score: `));
+  }
 }
 
 module.exports = Game;
 
 // const game = new Game;
 // game.playFrames();
-// game.calculateScore();
+// game.playFinalFrame();
+// game.calculateBonus();
+// game.calculateTotalScore();
+// console.log(game.frames.map(frame => frame.getTotal()));
 // console.log(game.total);
 

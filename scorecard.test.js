@@ -2,16 +2,16 @@ const Scorecard = require('./scorecard')
 
 describe('scorecard', () => {
   let scorecard = new Scorecard()
-  const frameDouble1 = { frameResult: () => [1, 4], isSpare: () => false, isStrike: () => false, frameScore: () => 5 }
-  const frameDouble2Spare = { frameResult: () => [6, 4], isSpare: () => true, isStrike: () => false, frameScore: () => 10 }
-  const frameDouble3 = { frameResult: () => [5, 3], isSpare: () => false, isStrike: () => false, frameScore: () => 8 }
-  const frameDouble4Strike = { frameResult: () => [10, 0], isSpare: () => false, isStrike: () => true, frameScore: () => 10 }
-  const frameDouble5 = { frameResult: () => [3, 3], isSpare: () => false, isStrike: () => false,frameScore: () => 6 }
-  const frameDouble6Strike = { frameResult: () => [10, 0], isSpare: () => false, isStrike: () => true, frameScore: () => 10 }
-  const frameDouble7Strike = { frameResult: () => [10, 0], isSpare: () => false, isStrike: () => true, frameScore: () => 10 }
-  const frameDouble8Strike = { frameResult: () => [10, 0], isSpare: () => false, isStrike: () => true, frameScore: () => 10 }
-  const frameDouble9 = { frameResult: () => [5, 3], isSpare: () => false, isStrike: () => false, frameScore: () => 8 }
-  const frameDouble10 = { frameResult: () => [1, 9, 10], isSpare: () => true, isStrike: () => false, frameScore: () => 10 }
+  const frameDouble1 = { frameResult: () => [1, 4], checkIfSpare: () => false, checkIfStrike: () => false, frameScore: () => 5 }
+  const frameDouble2Spare = { frameResult: () => [6, 4], checkIfSpare: () => true, checkIfStrike: () => false, frameScore: () => 10 }
+  const frameDouble3 = { frameResult: () => [5, 3], checkIfSpare: () => false, checkIfStrike: () => false, frameScore: () => 8 }
+  const frameDouble4Strike = { frameResult: () => [10, 0], checkIfSpare: () => false, checkIfStrike: () => true, frameScore: () => 10 }
+  const frameDouble5 = { frameResult: () => [3, 3], checkIfSpare: () => false, checkIfStrike: () => false,frameScore: () => 6 }
+  const frameDouble6Strike = { frameResult: () => [10, 0], checkIfSpare: () => false, checkIfStrike: () => true, frameScore: () => 10 }
+  const frameDouble7Strike = { frameResult: () => [10, 0], checkIfSpare: () => false, checkIfStrike: () => true, frameScore: () => 10 }
+  const frameDouble8Strike = { frameResult: () => [10, 0], checkIfSpare: () => false, checkIfStrike: () => true, frameScore: () => 10 }
+  const frameDouble9 = { frameResult: () => [5, 3], checkIfSpare: () => false, checkIfStrike: () => false, frameScore: () => 8 }
+  const frameDouble10 = { frameResult: () => [1, 9, 10], checkIfSpare: () => true, checkIfStrike: () => false, frameScore: () => 10 }
 
   describe('allFrames', () => {
     it('initially returns empty array', () => {
@@ -117,6 +117,51 @@ describe('scorecard', () => {
       scorecard.scoreCalculator(frameDouble2Spare)
 
       expect(scorecard.scoreTotal()).toEqual(15)
+    })
+  })
+
+
+
+  describe('getPreviousFrame ()', () => {
+    it('returns previous frame', () => {
+      let scorecard = new Scorecard()
+      scorecard.addFrame(frameDouble1)
+      scorecard.addFrame(frameDouble2Spare)
+
+      expect(scorecard.getPreviousFrame()).toEqual(frameDouble1)
+    })
+  })
+
+  describe('calculatePreviousBonuses(frame)', () => {
+    it('adds bonus to previous frame', () => {
+      let scorecard = new Scorecard()
+      scorecard.addFrame(frameDouble2Spare)
+      scorecard.addFrameScore(frameDouble2Spare, 0)
+      scorecard.addFrame(frameDouble1)
+      scorecard.calculatePreviousBonuses(frameDouble1)
+      scorecard.addFrameScore(frameDouble1, 0)
+      expect(scorecard.allFrameScores()).toEqual([11, 5])
+
+      scorecard.addFrame(frameDouble4Strike)
+      scorecard.addFrameScore(frameDouble4Strike, 0)
+      scorecard.addFrame(frameDouble3)
+      scorecard.calculatePreviousBonuses(frameDouble3)
+      scorecard.addFrameScore(frameDouble3, 0)
+      expect(scorecard.allFrameScores()).toEqual([11, 5, 18, 8])
+    })
+  })
+
+  describe('getSecondPreviousFrameIfDoubleStrike ()', () => {
+    xit('returns true', () => {
+      let scorecard = new Scorecard()
+      scorecard.addFrame(frameDouble6Strike)
+      scorecard.addFrameScore(frameDouble6Strike, 0)
+      scorecard.addFrame(frameDouble4Strike)
+      scorecard.addFrameScore(frameDouble4Strike, 0)
+      scorecard.addFrame(frameDouble4Strike)
+      scorecard.addFrameScore(frameDouble4Strike, 0)
+
+      expect(scorecard.getSecondPreviousFrameIfDoubleStrike()).toEqual(true)
     })
   })
 

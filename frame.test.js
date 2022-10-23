@@ -1,66 +1,46 @@
 const Frame = require('./frame')
 
 describe('Frame', () => {
-  const frame = new Frame();
+  let frame = new Frame([1, 3]);
   describe('frameResult()', () => {
-    it('returns empty array', () => {
-      expect(frame.frameResult()).toEqual([])
-    })
+    it('returns frame', () => {
+      expect(frame.frameResult()).toEqual([1, 3])
+    })    
   })
 
-  describe('ball1()', () => {
-    it('adds ball1 to frame', () => {
-      frame.ball1(4)
-      expect(frame.frameResult()).toEqual([4])
-    })
-  })
-
-  describe('ball2()', () => {
-    it('adds ball2 to frame', () => {
-      frame.ball2(3)
-      expect(frame.frameResult()).toEqual([4, 3])
-    })
-  })
-
-  describe('isStrike()', () => {
+  describe('checkIfStrike()', () => {
     it('returns false if not strike', () => {
-      frame.ball1(3)
-      frame.ball2(4)
-      expect(frame.isStrike()).toEqual(false)
+      const frame1 = new Frame([3, 4])
+      expect(frame1.checkIfStrike()).toEqual(false)
 
-      frame.ball1(3)
-      frame.ball2(7)
-      expect(frame.isStrike()).toEqual(false)
+      const frame2 = new Frame([3, 7])
+      expect(frame2.checkIfStrike()).toEqual(false)
     })
 
     it('returns true if strike', () => {
-      frame.ball1(10)
-      expect(frame.isStrike()).toEqual(true)
+      let frame = new Frame([10, 0])
+      expect(frame.checkIfStrike()).toEqual(true)
     })
   })
 
-  describe('isSpare()', () => {
+  describe('checkIfSpare()', () => {
     it('returns false if not spare', () => {
-      frame.ball1(10)
-      frame.ball2(0)
-      expect(frame.isSpare()).toEqual(false)
+      let frame = new Frame([3, 5])
+      expect(frame.checkIfSpare()).toEqual(false)
 
-      frame.ball1(3)
-      frame.ball2(4)
-      expect(frame.isSpare()).toEqual(false)
+      let frame2 = new Frame([10, 0])
+      expect(frame2.checkIfSpare()).toEqual(false)
     })
 
     it('returns true if spare', () => {
-      frame.ball1(5)
-      frame.ball2(5)
-      expect(frame.isSpare()).toEqual(true)
+      const frame = new Frame([3, 7])
+      expect(frame.checkIfSpare()).toEqual(true)
     })
   })
 
   describe('frameScore()', () => {
     it('totals score for first 9 frames', () => {
-      frame.ball1(3)
-      frame.ball2(4)
+      const frame = new Frame([3, 4])
       expect(frame.frameScore()).toEqual(7)
     })
 

@@ -21,10 +21,6 @@ describe('Game', () => {
     const tenGameResultsDouble = [[1, 4], [4, 5], [6, 4], [5, 5], [10, 0], [0, 1], [7, 3], [6, 4], [10, 0], [2, 8, 6]]
     const tenGameResultsDouble2 = [[5, 5], [4, 5], [8, 2], [10, 0], [0, 10], [10, 0], [6, 2], [10, 0], [4, 6], [10, 10, 0]]
     
-    it('creates and adds frames', () => {
-      game.run(nineGameResultsDouble)
-      expect(game.getScorecard().allFrames().length).toEqual(9)
-    })
 
     it('returns accurate score total for 9 frames', () => {
       let game = new Game

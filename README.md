@@ -4,7 +4,9 @@ Bowling Challenge
 
 A bowling scorecard program which continuously calculates the score for each frame of a bowling game.
 
-## Setup
+Future development would be to potentially break out the scoreCalculator function from the scorecard into its own class.
+
+### Setup
 
 **To clone this repo:**
 ```bash
@@ -31,6 +33,8 @@ $ npm install -g jest
 # Run tests
 $ jest
 ```  
+
+### Additional information
 
 Extras used:
 - Prettier (formatting)

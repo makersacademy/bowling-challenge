@@ -32,6 +32,3 @@ class Game {
 }
 
 module.exports = Game
-
-// const game = new Game
-// game.scoresTotal()

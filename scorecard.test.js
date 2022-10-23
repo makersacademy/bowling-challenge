@@ -13,22 +13,7 @@ describe('scorecard', () => {
   const frameDouble9 = { frameResult: () => [5, 3], checkIfSpare: () => false, checkIfStrike: () => false, frameScore: () => 8 }
   const frameDouble10 = { frameResult: () => [1, 9, 10], checkIfSpare: () => true, checkIfStrike: () => false, frameScore: () => 10 }
 
-  describe('allFrames', () => {
-    it('initially returns empty array', () => {
-      expect(scorecard.allFrames()).toEqual([])
-    })
-  })
-
-  describe('addFrame', () => {
-    it('returns array of frames', () => {
-      scorecard.addFrame(frameDouble1)
-      expect(scorecard.allFrames()).toStrictEqual([frameDouble1])
-      
-      scorecard.addFrame(frameDouble2Spare)
-      expect(scorecard.allFrames()).toStrictEqual([frameDouble1, frameDouble2Spare])
-    })
-  })
-
+  
   describe('allFrameScores', () => {
     it('initially returns empty array', () => {
       expect(scorecard.allFrameScores()).toEqual([])
@@ -120,8 +105,6 @@ describe('scorecard', () => {
     })
   })
 
-
-
   describe('getPreviousFrame ()', () => {
     it('returns previous frame', () => {
       let scorecard = new Scorecard()
@@ -152,7 +135,7 @@ describe('scorecard', () => {
   })
 
   describe('getSecondPreviousFrameIfDoubleStrike ()', () => {
-    xit('returns true', () => {
+    it('returns true', () => {
       let scorecard = new Scorecard()
       scorecard.addFrame(frameDouble6Strike)
       scorecard.addFrameScore(frameDouble6Strike, 0)

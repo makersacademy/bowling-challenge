@@ -2,12 +2,48 @@
 Bowling Challenge
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+A bowling scorecard program which continuously calculates the score for each frame of a bowling game.
 
-## The Task
+Future development would be to potentially break out the scoreCalculator function from the scorecard into its own class.
+
+[Planning diagram - image](https://github.com/AUTOMCAS/bowling-challenge/blob/main/bowling-js-diagram.png)  
+[Planning diagram - Excalidraw](https://excalidraw.com/#json=FcCn6naESE2eg0Edoi39Q,fGhsL-coMNlX-j9e2D1SRQ)
+
+### Setup
+
+**To clone this repo:**
+```bash
+$ git clone https://github.com/AUTOMCAS/bowling-challenge.git 
+$ cd bowling-challenge
+```
+
+**To test:**
+
+Ensure you have the latest node version:
+```bash
+$ nvm use node
+```
+```bash
+# Initialise the NPM project
+$ npm init -y
+
+# Add the jest package
+$ npm add jest
+
+# Install jest "globally"
+$ npm install -g jest
+
+# Run tests
+$ jest
+```  
+
+### Additional information
+
+Extras used:
+- Prettier (formatting)
+- ESLint (undoing Prettier formatting and reformatting...)
+----------------------
+## The Task Brief
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
 

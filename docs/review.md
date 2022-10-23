@@ -174,9 +174,9 @@ Of course this would all be much easier to separate out if we were using a separ
 ```javascript
 BowlingGame.prototype.currentMove = function(pins) {
   if ( this.isFirstRoll() ) {
-    if ( this.isStrike() ) {
+    if ( this.checkIfStrike() ) {
       this.strikeScoring(pins);
-    } else if ( this.isSpare() ) {
+    } else if ( this.checkIfSpare() ) {
       this.spareScoring(pins);
     } else {
       this.incrementRoll();
@@ -184,9 +184,9 @@ BowlingGame.prototype.currentMove = function(pins) {
     }
   }
   else {
-    if ( this.isStrike() ) {
+    if ( this.checkIfStrike() ) {
       this.strikeScoring(pins);
-    } else if ( this.isSpare() ) {
+    } else if ( this.checkIfSpare() ) {
       this.spareScoring(pins);
     } else {
       this.addToScore(pins);
@@ -200,9 +200,9 @@ The above code has a lot of replication across the two branches of the if/else s
 
 ```javascript
 BowlingGame.prototype.currentMove = function(pins) {
-  if ( this.isStrike() ) {
+  if ( this.checkIfStrike() ) {
     this.strikeScoring(pins);
-  } else if ( this.isSpare() ) {
+  } else if ( this.checkIfSpare() ) {
     this.spareScoring(pins);
   } else {
     this.addToScore(pins);

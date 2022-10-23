@@ -3,7 +3,7 @@ const Frame = require('./frame');
 describe('Frame', () => {
   it('returns the total of two rolls', () => {
     const frame = new Frame(4,5);
-    expect(frame.getFrameSum()).toBe(9);
+    expect(frame.getSum()).toBe(9);
   })
 
   it('marks strike', () => {

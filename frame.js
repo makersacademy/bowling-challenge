@@ -4,7 +4,7 @@ class Frame {
     this.rollTwo = rollTwo;
   }
   
-  getFrameSum() {
+  getSum() {
     return this.rollOne + this.rollTwo;
   }
 
@@ -18,7 +18,7 @@ class Frame {
   }
   
   spare() {
-    if (!this.strike() && this.getFrameSum() === 10) {
+    if (!this.strike() && this.getSum() === 10) {
       return true;
     }
     else {

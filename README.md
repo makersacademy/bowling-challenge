@@ -6,6 +6,9 @@ A bowling scorecard program which continuously calculates the score for each fra
 
 Future development would be to potentially break out the scoreCalculator function from the scorecard into its own class.
 
+[Planning diagram - image](https://github.com/AUTOMCAS/bowling-challenge/blob/main/bowling-js-diagram.png)
+[Planning diagram - Excalidraw](https://excalidraw.com/#json=FcCn6naESE2eg0Edoi39Q,fGhsL-coMNlX-j9e2D1SRQ)
+
 ### Setup
 
 **To clone this repo:**

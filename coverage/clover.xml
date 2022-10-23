@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1666549099242" clover="3.2.0">
-  <project timestamp="1666549099242" name="All files">
+<coverage generated="1666550117337" clover="3.2.0">
+  <project timestamp="1666550117337" name="All files">
     <metrics statements="60" coveredstatements="40" conditionals="20" coveredconditionals="11" methods="18" coveredmethods="12" elements="98" coveredelements="63" complexity="0" loc="60" ncloc="60" packages="1" files="2" classes="2"/>
     <file name="frame.js" path="/Users/kate/Projects/week-6-js/bowling-challenge-js/frame.js">
       <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>

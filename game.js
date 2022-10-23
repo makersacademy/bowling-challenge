@@ -92,11 +92,3 @@ class Game {
 
 module.exports = Game;
 
-// const game = new Game;
-// game.playFrames();
-// game.playFinalFrame();
-// game.calculateBonus();
-// game.calculateTotalScore();
-// console.log(game.frames.map(frame => frame.getTotal()));
-// console.log(game.total);
-

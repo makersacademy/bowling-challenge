@@ -26,7 +26,7 @@ class Game {
 
   tenthBonus() {
     // standard points have already added this is just
-    // bonus
+    // bonus points for spare, strike or double going into frame 10
     if (this.spareCount > 0) {
       this.total += this.tenth[0];
     } else if (this.strikeCount === 1) {
@@ -36,11 +36,14 @@ class Game {
         this.total += this.tenth[0];
       }
     } else if (this.strikeCount > 1) {
+      // if frame 9 was double
       // frame 8 gets roll1, 9 gets roll 1+2
       this.total += this.tenth[0];
       this.total += this.tenth[0] + this.tenth[1];
     }
   }
+
+  // setBonusCounter() {}
 
   score() {
     this.frames.forEach((frame) => {

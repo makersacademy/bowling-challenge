@@ -1,4 +1,4 @@
-const Frame = require('./frame.js')
+const Frame = require('../lib/frame.js')
 
 describe('Frame', () => {
   it('returns false when not a spare', () => {

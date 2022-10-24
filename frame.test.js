@@ -16,7 +16,7 @@ describe('frame', () => {
   });
 
   describe('isStrike', () => {
-    it('returns true if frame is strike', () => {
+    it('returns true if frame is strikes', () => {
       let currentFrame = new Frame();
 
       let pinsKnocked = 10;

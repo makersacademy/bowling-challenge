@@ -87,7 +87,7 @@ describe('integration', () => {
       result = gameScore.calcTotalPoints();
       expect(result).toStrictEqual(105);
     });
-
+    s;
     it('can return the correct number of points on a full game', () => {
       let gameScore = new GameScore();
       const frame1 = new Frame();

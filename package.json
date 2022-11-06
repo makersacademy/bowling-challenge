@@ -1,0 +1,29 @@
+{
+  "name": "makers-w6-bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddrmv/makers-w6-bowling-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddrmv/makers-w6-bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/ddrmv/makers-w6-bowling-challenge#readme",
+  "dependencies": {
+    "jest": "^29.1.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.1.1"
+  }
+}

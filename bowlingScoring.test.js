@@ -39,4 +39,11 @@ describe('BowlingScoring', () => {
 
   });
 
+  describe('after a full 10 frame game', () => {
+    it('returns correct total score with no spares or strikes', () => {
+      const scorecard = new BowlingScoring([[8, 1], [2, 7], [3, 6], [0, 9], [8, 1], [2, 7], [3, 6], [0, 9], [8, 1], [2, 7]]);
+      expect(scorecard.calculate()).toEqual(90);
+    });
+  });
+
 });

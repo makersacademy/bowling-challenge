@@ -19,6 +19,11 @@ describe('BowlingScoring', () => {
       const scorecard = new BowlingScoring([[2, 8], [2, 5]]);
       expect(scorecard.calculate()).toEqual(19);
     });
+
+    it('returns total score with a strike in 1st frame', () => {
+      const scorecard = new BowlingScoring([[10, 0], [1, 5]]);
+      expect(scorecard.calculate()).toEqual(22);
+    })
   });
 
 });

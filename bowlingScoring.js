@@ -13,7 +13,10 @@ class BowlingScoring {
       this.score.push(this.scorecard[frame][0]);
       this.score.push(this.scorecard[frame][1]);
 
-      if (frame > 0 && this.scorecard[frame - 1][0] + this.scorecard[frame - 1][1] === 10) {
+      if (frame > 0 && this.scorecard[frame - 1][0] === 10) {
+        this.score.push(this.scorecard[frame][0] + this.scorecard[frame][1]);
+      }
+      else if (frame > 0 && this.scorecard[frame - 1][0] + this.scorecard[frame - 1][1] === 10) {
         this.score.push(this.scorecard[frame][0]);
       }
 

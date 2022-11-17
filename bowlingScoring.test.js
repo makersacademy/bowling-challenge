@@ -49,6 +49,11 @@ describe('BowlingScoring', () => {
       const scorecard = new BowlingScoring([[8, 2], [3, 7], [3, 6], [0, 9], [8, 2], [3, 7], [3, 6], [0, 9], [10, 0], [1, 9, 4]]);
       expect(scorecard.calculate()).toEqual(122);
     });
+
+    it('returns correct total score with 3 strikes in 10th frame', () => {
+      const scorecard = new BowlingScoring([[8, 2], [3, 7], [3, 6], [0, 9], [8, 2], [3, 7], [3, 6], [0, 9], [10, 0], [10, 10, 10]]);
+      expect(scorecard.calculate()).toEqual(148);
+    });
   });
 
 });

@@ -44,6 +44,11 @@ describe('BowlingScoring', () => {
       const scorecard = new BowlingScoring([[8, 1], [2, 7], [3, 6], [0, 9], [8, 1], [2, 7], [3, 6], [0, 9], [8, 1], [2, 7]]);
       expect(scorecard.calculate()).toEqual(90);
     });
+
+    it('returns correct total score with spares and strikes', () => {
+      const scorecard = new BowlingScoring([[8, 2], [3, 7], [3, 6], [0, 9], [8, 2], [3, 7], [3, 6], [0, 9], [10, 0], [1, 9, 4]]);
+      expect(scorecard.calculate()).toEqual(122);
+    });
   });
 
 });

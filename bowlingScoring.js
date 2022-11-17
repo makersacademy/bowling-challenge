@@ -10,8 +10,9 @@ class BowlingScoring {
     let frame = 0;
 
     while (rounds > 0) {
-      this.score.push(this.scorecard[frame][0]);
-      this.score.push(this.scorecard[frame][1]);
+      for (let i = 0; i < this.scorecard[frame].length; i++) {
+        this.score.push(this.scorecard[frame][i]);
+      }
 
       if (frame > 0 && this.scorecard[frame - 1][0] === 10) {
         this.score.push(this.scorecard[frame][0] + this.scorecard[frame][1]);

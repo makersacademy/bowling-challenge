@@ -25,8 +25,6 @@ class BowlingScoring {
 
     }
 
-    console.log(this.score)
-
     for (let i = 0; i < this.score.length; i++) {
         this.total += this.score[i];
     }

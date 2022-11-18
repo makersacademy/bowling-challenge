@@ -54,6 +54,11 @@ describe('BowlingScoring', () => {
       const scorecard = new BowlingScoring([[8, 2], [3, 7], [3, 6], [0, 9], [8, 2], [3, 7], [3, 6], [0, 9], [10, 0], [10, 10, 10]]);
       expect(scorecard.calculate()).toEqual(148);
     });
+
+    it('returns correct total score for perfect game', () => {
+      const scorecard = new BowlingScoring([[10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]]);
+      expect(scorecard.calculate()).toEqual(300);
+    });
   });
 
 });

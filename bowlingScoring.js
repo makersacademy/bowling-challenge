@@ -25,9 +25,12 @@ class BowlingScoring {
 
       frame += 1;
       rounds -= 1;
-
     }
 
+   return this.totalScore();
+  }
+
+  totalScore() {
     this.score = this.score.flat();
 
     for (let i = 0; i < this.score.length; i++) {
@@ -35,14 +38,11 @@ class BowlingScoring {
     }
 
     return this.total;
-
-    
   }
 
 }
 
-const scorecard = new BowlingScoring([[10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]]);
-scorecard.calculate();
-
-module.exports = BowlingScoring;
+// const scorecard = new BowlingScoring([[10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]]);
+// scorecard.calculate();
+// module.exports = BowlingScoring;
 

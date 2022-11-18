@@ -1,8 +1,9 @@
 class Frame {
   constructor() {
-    this.roll1 = null;
-    this.roll2 = null;
-    this.roll3 = null;
+    this.roll1 = 0;
+    this.roll2 = 0;
+    this.roll3 = 0;
+    this.total = 0;
   }
 
   getRoll1() {
@@ -17,6 +18,10 @@ class Frame {
     return this.roll3;
   }
 
+  getTotal() {
+    return this.total;
+  }
+
   setRoll1(score) {
     this.roll1 = score;
   }
@@ -27,6 +32,10 @@ class Frame {
 
   setRoll3(score) {
     this.roll3 = score;
+  }
+
+  addToTotal(score) {
+    this.total += score
   }
 }
 

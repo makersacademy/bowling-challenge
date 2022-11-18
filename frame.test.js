@@ -49,8 +49,5 @@ describe("Frame", () => {
     expect(bowling.totalScore()).toEqual(80);
   });
 
-  it("scores a single spare", () => {
-    bowling.rolls(4, 6);
-    expect(bowling.totalScore()).toEqual(10);
-  }); */
+   */
 });

@@ -37,6 +37,8 @@ class Frame {
   addToTotal(score) {
     this.total += score
   }
+
+  
 }
 
 module.exports = Frame;

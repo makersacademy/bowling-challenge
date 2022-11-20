@@ -14,9 +14,13 @@ class BowlingGame {
   }
 
   endGame() {
-    const scorecard = new BowlingScoring(this.scorecard);
-    scorecard.calculate();
-    return scorecard.getScore();
+    if (this.scorecard.length < 10) {
+      return `You only have scores for ${this.scorecard.length} / 10 frames. Input ${10 - this.scorecard.length} more for a complete game.`
+    } else {
+      const scorecard = new BowlingScoring(this.scorecard);
+      scorecard.calculate();
+      return scorecard.getScore();
+    }
   }
 }
 

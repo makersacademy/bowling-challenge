@@ -17,7 +17,7 @@ class BowlingScoring {
         this.score.push(this.scorecard[this.frame - 1]);
       }
       else if (this.frame > 0 && this.scorecard[this.frame - 1][0] === 10) {
-        this.score.push(this.scorecard[this.frame].slice(0, 2));
+        this.strike();
       }
       else if (this.frame > 0 && this.scorecard[this.frame - 1][0] + this.scorecard[this.frame - 1][1] === 10) {
         this.spare();
@@ -28,6 +28,10 @@ class BowlingScoring {
     }
 
    return this.totalScore();
+  }
+
+  strike() {
+    this.score.push(this.scorecard[this.frame].slice(0, 2));
   }
 
   spare() {

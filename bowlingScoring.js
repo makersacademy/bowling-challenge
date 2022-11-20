@@ -10,8 +10,7 @@ class BowlingScoring {
     let rounds = this.scorecard.length;
 
     while (rounds > 0) {
-      this.score.push(this.scorecard[this.frame]);
-
+      this.addScore();
       if (this.frame > 1 && this.scorecard[this.frame - 1][0] === 10 && this.scorecard[this.frame - 2][0] === 10) {
         this.doubleStrikeScore();
       }
@@ -27,6 +26,10 @@ class BowlingScoring {
     }
 
    return this.totalScore();
+  }
+
+  addScore() {
+    this.score.push(this.scorecard[this.frame]);
   }
 
   doubleStrikeScore() {

@@ -65,7 +65,7 @@ describe('BowlingScoring', () => {
     it('returns score message if there are 10 full frames', () => {
       const scorecard = new BowlingScoring([[8, 2], [3, 7], [3, 6], [0, 9], [8, 2], [3, 7], [3, 6], [0, 9], [10, 0], [10, 10, 10]]);
       scorecard.calculate();
-      expect(scorecard.getScore()).toEqual('Your score from the last game is: 148.')
+      expect(scorecard.getScore()).toEqual('Score from the last game: 148.')
     });
   });
 

@@ -61,6 +61,13 @@ describe('BowlingGame', () => {
       expect(game.getFramesPlayed()).toEqual('Frames played so far: 2 / 10.');
     });
 
+    it('returns current score when requested', () => {
+      const game = new BowlingGame();
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      expect(game.getCurrentScore()).toEqual('Score so far: 16.');
+    });
+
   });
 
   describe('when end game is requested', () => {    
@@ -76,7 +83,7 @@ describe('BowlingGame', () => {
       game.addScore([3, 5]);
       game.addScore([3, 5]);
       game.addScore([3, 5]);
-      expect(game.endGame()).toEqual('Your score from the last game is: 80.');
+      expect(game.endGame()).toEqual('Score from the last game: 80.');
     });
 
     it('returns prompt to add more scores if there are fewer than 10 frames', () => {
@@ -88,7 +95,7 @@ describe('BowlingGame', () => {
       game.addScore([3, 5]);
       game.addScore([3, 5]);
       game.addScore([3, 5]);
-      expect(game.endGame()).toEqual('You only have scores for 7 / 10 frames. Input 3 more for a complete game.')
+      expect(game.endGame()).toEqual('Scores only inputted for 7 / 10 frames. Input 3 more for a complete game.')
     });
 
   });

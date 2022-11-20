@@ -41,7 +41,11 @@ class BowlingScoring {
   }
 
   getScore() {
-    return `Your score from the last game is: ${this.total}.`
+    if (this.scorecard.length < 10) {
+      return `Score so far: ${this.total}.`
+    } else {
+      return `Score from the last game: ${this.total}.`
+    }
   }
 
 }

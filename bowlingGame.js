@@ -1,3 +1,5 @@
+const BowlingScoring = require('./bowlingScoring');
+
 class BowlingGame {
   constructor() {
     this.scorecard = [];
@@ -9,6 +11,11 @@ class BowlingGame {
 
   getScorecard() {
     return this.scorecard;
+  }
+
+  endGame() {
+    const scorecard = new BowlingScoring(game.scorecard);
+    scorecard.calculate();
   }
 }
 

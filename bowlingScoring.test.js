@@ -59,6 +59,13 @@ describe('BowlingScoring', () => {
       const scorecard = new BowlingScoring([[10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]]);
       expect(scorecard.calculate()).toEqual(300);
     });
+
+    it('returns score message from last game when requested', () => {
+      const scorecard = new BowlingScoring([[8, 2], [3, 7], [3, 6], [0, 9], [8, 2], [3, 7], [3, 6], [0, 9], [10, 0], [10, 10, 10]]);
+      scorecard.calculate();
+      expect(scorecard.getScore()).toEqual('Your score from the last game is: 148.')
+    });
   });
+
 
 });

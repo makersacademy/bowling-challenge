@@ -40,9 +40,11 @@ class BowlingScoring {
     return this.total;
   }
 
+  getScore() {
+    return `Your score from the last game is: ${this.total}.`
+  }
+
 }
 
-const scorecard = new BowlingScoring([[10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]]);
-scorecard.calculate();
 module.exports = BowlingScoring;
 

@@ -3,31 +3,35 @@ class BowlingScoring {
     this.scorecard = scorecard;
     this.score = [];
     this.total = 0;
+    this.frame = 0;
   }
 
   calculate() {
     let rounds = this.scorecard.length;
-    let frame = 0;
 
     while (rounds > 0) {
-      this.score.push(this.scorecard[frame]);
+      this.score.push(this.scorecard[this.frame]);
 
-      if (frame > 1 && this.scorecard[frame - 1][0] === 10 && this.scorecard[frame - 2][0] === 10) {
-        this.score.push(this.scorecard[frame].slice(0, 2));
-        this.score.push(this.scorecard[frame - 1]);
+      if (this.frame > 1 && this.scorecard[this.frame - 1][0] === 10 && this.scorecard[this.frame - 2][0] === 10) {
+        this.score.push(this.scorecard[this.frame].slice(0, 2));
+        this.score.push(this.scorecard[this.frame - 1]);
       }
-      else if (frame > 0 && this.scorecard[frame - 1][0] === 10) {
-        this.score.push(this.scorecard[frame].slice(0, 2));
+      else if (this.frame > 0 && this.scorecard[this.frame - 1][0] === 10) {
+        this.score.push(this.scorecard[this.frame].slice(0, 2));
       }
-      else if (frame > 0 && this.scorecard[frame - 1][0] + this.scorecard[frame - 1][1] === 10) {
-        this.score.push(this.scorecard[frame][0]);
+      else if (this.frame > 0 && this.scorecard[this.frame - 1][0] + this.scorecard[this.frame - 1][1] === 10) {
+        this.spare();
       }
 
-      frame += 1;
+      this.frame += 1;
       rounds -= 1;
     }
 
    return this.totalScore();
+  }
+
+  spare() {
+    this.score.push(this.scorecard[this.frame][0]);
   }
 
   totalScore() {

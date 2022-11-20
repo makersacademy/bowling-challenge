@@ -54,6 +54,13 @@ describe('BowlingGame', () => {
       expect(game.getScorecard()).toEqual([[3, 5]]);
     });
 
+    it('returns number of frames played so far when requested', () => {
+      const game = new BowlingGame();
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      expect(game.getFramesPlayed()).toEqual('Frames played so far: 2 / 10.');
+    });
+
   });
 
   describe('when end game is requested', () => {    

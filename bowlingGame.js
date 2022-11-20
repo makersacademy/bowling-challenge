@@ -17,6 +17,10 @@ class BowlingGame {
     this.scorecard.pop();
   }
 
+  getFramesPlayed() {
+    return `Frames played so far: ${this.scorecard.length} / 10.`;
+  }
+
   getScorecard() {
     return this.scorecard;
   }

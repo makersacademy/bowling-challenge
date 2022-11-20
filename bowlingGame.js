@@ -6,7 +6,11 @@ class BowlingGame {
   }
 
   addScore(score) {
-    this.scorecard.push(score);
+    if (this.scorecard.length < 10) {
+      this.scorecard.push(score);
+    } else {
+      return 'Game scorecard complete (10/10 frames). Cannot add another score.';
+    }
   }
 
   getScorecard() {

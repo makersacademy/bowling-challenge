@@ -1,5 +1,4 @@
 const BowlingGame = require('./bowlingGame');
-const BowlingScoring = require('./bowlingScoring');
 
 describe('BowlingGame', () => {
   describe('when taking score inputs', () => {    
@@ -22,6 +21,21 @@ describe('BowlingGame', () => {
       game.addScore([3, 5]);
       game.addScore([3, 5]);
       expect(game.getScorecard()).toEqual([[3, 5], [3, 5], [3, 5], [3, 5], [3, 5], [3, 5], [3, 5], [3, 5], [3, 5], [3, 5]]);
+    });
+
+    it('stops more than 10 frame scores from being added', () => { 
+      const game = new BowlingGame();
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      expect(game.addScore([3, 5])).toEqual('Game scorecard complete (10/10 frames). Cannot add another score.')
     });
 
   });

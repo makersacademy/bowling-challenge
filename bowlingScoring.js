@@ -11,17 +11,7 @@ class BowlingScoring {
 
     while (rounds > 0) {
       this.addScore();
-
-      if (this.checkDoubleStrike()) {
-        this.doubleStrikeScore();
-      }
-      else if (this.checkStrike()) {
-        this.strikeScore();
-      }
-      else if (this.checkSpare()) {
-        this.spareScore();
-      }
-
+      this.checkScore();
       this.frame += 1;
       rounds -= 1;
     }
@@ -31,6 +21,18 @@ class BowlingScoring {
 
   addScore() {
     this.score.push(this.scorecard[this.frame]);
+  }
+
+  checkScore() {
+    if (this.checkDoubleStrike()) {
+      this.doubleStrikeScore();
+    }
+    else if (this.checkStrike()) {
+      this.strikeScore();
+    }
+    else if (this.checkSpare()) {
+      this.spareScore();
+    }
   }
 
   checkDoubleStrike() {

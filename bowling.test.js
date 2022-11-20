@@ -14,7 +14,6 @@ describe("Bowling", () => {
     let frame = new Frame();
     frame.roll(5);
     frame.roll(2);
-    frame.totalScore;
     bowling.add(frame);
     expect(bowling.frames.length).toEqual(1);
   });
@@ -298,6 +297,9 @@ describe("Bowling", () => {
     expect(bowling.totalScore()).toEqual(51);
   });
 
+ 
+
+
   it("can score a perfect game", () => {
     let frame1 = new Frame();
     frame1.roll(10);
@@ -399,5 +401,4 @@ describe("Bowling", () => {
     expect(bowling.totalScore()).toEqual(300);
   });
 });
-// need to fix strikes in a row and refactor
-// if this round is a strike and last two rounds were strikes, frames (10)(10)(6, 3)(5, 2), scores (10)(20)(6+6+3+6+3)
+

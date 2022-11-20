@@ -1,7 +1,7 @@
 const BowlingGame = require('./bowlingGame');
 
 describe('BowlingGame', () => {
-  describe('when taking score inputs', () => {    
+  describe('after taking score inputs', () => {    
     it('adds and returns two scores from a single frame', () => {
       const game = new BowlingGame();
       game.addScore([3, 5]);
@@ -36,6 +36,14 @@ describe('BowlingGame', () => {
       game.addScore([3, 5]);
       game.addScore([3, 5]);
       expect(game.addScore([3, 5])).toEqual('Game scorecard complete (10/10 frames). Cannot add another score.')
+    });
+
+    it('resets scorecard when requested', () => {
+      const game = new BowlingGame();
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      game.resetScorecard();
+      expect(game.getScorecard()).toEqual([]);
     });
 
   });

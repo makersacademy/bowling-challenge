@@ -44,7 +44,6 @@ class Bowling {
   sum() {
     console.log(this.strikebonus);
     if (this.strikes === true && this.strike === true) {
-      console.log("1");
       for (let i = 0; i < 3; i++) {
         this.strikeOrSpare();
       }
@@ -52,7 +51,6 @@ class Bowling {
       this.strikes = false;
       for (let i = 0; i < 2; i++) {
         this.frameScore();
-        console.log("2");
       }
       this.spareScore();
     } else if (this.spare === true && this.sparebonus === true) {
@@ -67,10 +65,8 @@ class Bowling {
         this.strikeOrSpare();
       }
     } else if (this.sparebonus === true) {
-      console.log("YES");
       // if last frame was a spare
       this.spareScore();
-      console.log(this.score);
       this.frameScore();
       this.sparebonus = false;
     } else if (this.strikebonus === true) {
@@ -88,7 +84,6 @@ class Bowling {
       this.strikeOrSpare();
       this.spare = true;
     } else if (this.strike === true) {
-      console.log("9");
       // if this frame is a strike
       this.strikebonus = true;
       this.strikeOrSpare();

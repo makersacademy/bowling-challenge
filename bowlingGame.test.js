@@ -46,6 +46,14 @@ describe('BowlingGame', () => {
       expect(game.getScorecard()).toEqual([]);
     });
 
+    it('removes last score when requested', () => {
+      const game = new BowlingGame();
+      game.addScore([3, 5]);
+      game.addScore([3, 5]);
+      game.removeLast();
+      expect(game.getScorecard()).toEqual([[3, 5]]);
+    });
+
   });
 
   describe('when end game is requested', () => {    

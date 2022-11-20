@@ -13,6 +13,10 @@ class BowlingGame {
     }
   }
 
+  removeLast() {
+    this.scorecard.pop();
+  }
+
   getScorecard() {
     return this.scorecard;
   }

@@ -42,7 +42,7 @@ class BowlingScoring {
 
 }
 
-// const scorecard = new BowlingScoring([[10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]]);
-// scorecard.calculate();
-// module.exports = BowlingScoring;
+const scorecard = new BowlingScoring([[10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 0], [10, 10, 10]]);
+scorecard.calculate();
+module.exports = BowlingScoring;
 

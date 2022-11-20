@@ -38,8 +38,6 @@ class BowlingScoring {
   checkDoubleStrike() {
     if (this.frame > 1 && this.checkStrike() && this.scorecard[this.frame - 2][0] === 10) {
       return true;
-    } else if (this.frame > 1 && this.checkStrike() && this.scorecard[this.frame - 2][1] === 10) {
-      return true;
     }
   }
 
@@ -50,8 +48,6 @@ class BowlingScoring {
 
   checkStrike() {
     if (this.frame > 0 && this.scorecard[this.frame - 1][0] === 10) {
-      return true;
-    } else if (this.frame > 0 && this.scorecard[this.frame - 1][1] === 10) {
       return true;
     }
   }

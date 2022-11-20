@@ -13,14 +13,13 @@ class BowlingScoring {
       this.score.push(this.scorecard[this.frame]);
 
       if (this.frame > 1 && this.scorecard[this.frame - 1][0] === 10 && this.scorecard[this.frame - 2][0] === 10) {
-        this.score.push(this.scorecard[this.frame].slice(0, 2));
-        this.score.push(this.scorecard[this.frame - 1]);
+        this.doubleStrikeScore();
       }
       else if (this.frame > 0 && this.scorecard[this.frame - 1][0] === 10) {
-        this.strike();
+        this.strikeScore();
       }
       else if (this.frame > 0 && this.scorecard[this.frame - 1][0] + this.scorecard[this.frame - 1][1] === 10) {
-        this.spare();
+        this.spareScore();
       }
 
       this.frame += 1;
@@ -30,11 +29,16 @@ class BowlingScoring {
    return this.totalScore();
   }
 
-  strike() {
+  doubleStrikeScore() {
+    this.score.push(this.scorecard[this.frame].slice(0, 2));
+    this.score.push(this.scorecard[this.frame - 1]);
+  }
+
+  strikeScore() {
     this.score.push(this.scorecard[this.frame].slice(0, 2));
   }
 
-  spare() {
+  spareScore() {
     this.score.push(this.scorecard[this.frame][0]);
   }
 

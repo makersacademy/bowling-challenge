@@ -14,8 +14,9 @@ class BowlingGame {
   }
 
   endGame() {
-    const scorecard = new BowlingScoring(game.scorecard);
+    const scorecard = new BowlingScoring(this.scorecard);
     scorecard.calculate();
+    return scorecard.getScore();
   }
 }
 

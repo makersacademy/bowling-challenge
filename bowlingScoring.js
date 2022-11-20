@@ -11,13 +11,14 @@ class BowlingScoring {
 
     while (rounds > 0) {
       this.addScore();
+
       if (this.frame > 1 && this.scorecard[this.frame - 1][0] === 10 && this.scorecard[this.frame - 2][0] === 10) {
         this.doubleStrikeScore();
       }
       else if (this.frame > 0 && this.scorecard[this.frame - 1][0] === 10) {
         this.strikeScore();
       }
-      else if (this.frame > 0 && this.scorecard[this.frame - 1][0] + this.scorecard[this.frame - 1][1] === 10) {
+      else if (this.checkSpare()) {
         this.spareScore();
       }
 
@@ -39,6 +40,12 @@ class BowlingScoring {
 
   strikeScore() {
     this.score.push(this.scorecard[this.frame].slice(0, 2));
+  }
+
+  checkSpare() {
+    if (this.frame > 0 && this.scorecard[this.frame - 1][0] + this.scorecard[this.frame - 1][1] === 10) {
+      return true;
+    }
   }
 
   spareScore() {

@@ -7,7 +7,7 @@ This was a solo coding challenge that I completed during the Makers bootcamp.
 It calculates the correct scores for each round in a game of ten-pin bowling.
 I followed the TDD method to write this program - therefore I always know what works and have lots of tests to refer to when something doesn't.  
 I built a basic version of the program first that calculates the scores without strikes or spares and then gradually built on that.
-Then I refactored again and again - generalising behaviours and organising my code into reusable classes and functions. I followed the principle of Object-Oriented-Programming.
+Then I refactored again and again - generalising behaviours and organising my code into reusable functions. I started learning to work in an object-oriented way for this challenge.
 
 
 ## Bowling — Rules

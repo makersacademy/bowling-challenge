@@ -5,6 +5,7 @@ class BowlingGame {
     this.scorecard = [];
   }
 
+  // adds a score from a frame to scorecard array
   addScore(score) {
     if (this.scorecard.length < 10) {
       this.scorecard.push(score);
@@ -13,28 +14,34 @@ class BowlingGame {
     }
   }
 
+  // removes last frame score from scorecard array
   removeLast() {
     this.scorecard.pop();
   }
 
+  // returns number of rames played so far
   getFramesPlayed() {
     return `Frames played so far: ${this.scorecard.length} / 10.`;
   }
 
+  // returns scorecard array
   getScorecard() {
     return this.scorecard;
   }
 
+  // returns current score
   getCurrentScore() {
     const scorecard = new BowlingScoring(this.scorecard);
     scorecard.calculate();
     return scorecard.getScore();
   }
 
+  // removes all scores from scorecard array
   resetScorecard() {
     this.scorecard = [];
   }
 
+  // returns final score if 10 frames have been inputted
   endGame() {
     if (this.scorecard.length < 10) {
       return `Scores only inputted for ${this.scorecard.length} / 10 frames. Input ${10 - this.scorecard.length} more for a complete game.`

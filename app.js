@@ -37,8 +37,10 @@ class Application {
     console.log('Frame - Roll 1 - Roll 2 - Roll 3 - Score - Total Score');
     // only displaying the scored frames
     let scoredFrames = this.frames.slice(0, frameNumber);
+    let totalScore = 0;
     scoredFrames.forEach((frame) => {
-      console.log(`  ${frame.id}   -    ${frame.roll1}   -    ${frame.roll2}   -    ${frame.roll3}   -   ${frame.score}   -   ${frame.totalScore}  `);
+      totalScore += frame.score;
+      console.log(`  ${frame.id}   -    ${frame.roll1}   -    ${frame.roll2}   -    ${frame.roll3}   -   ${frame.score}   -   ${totalScore}  `);
     });
   };
   
@@ -127,7 +129,7 @@ class Application {
 
 module.exports = Application;
 
-// These lines are for running the app
+// These lines are for running the app - uncomment to try it
 
 // const rollInput = new RollInput();
 // const app = new Application(rollInput);

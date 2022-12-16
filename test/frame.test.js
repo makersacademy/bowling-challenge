@@ -21,7 +21,7 @@ describe(Frame, () => {
       expect(frame.getStatus()).toEqual("active");
     });
 
-    it('raises error when adding a roll not between 0 and 10', () => {
+    it('throws error when adding a roll not between 0 and 10', () => {
       const frame = new Frame();
 
       expect(() => frame.addRoll(-1)).toThrow('A roll must be between 0 and 10');
@@ -30,7 +30,7 @@ describe(Frame, () => {
       expect(frame.getRolls()).toEqual([]);
     });
 
-    it("raises error if the roll isn't an integer", () => {
+    it("throws error if the roll isn't an integer", () => {
       const frame = new Frame();
 
       expect(() => frame.addRoll('Hello world'))
@@ -56,12 +56,23 @@ describe(Frame, () => {
       expect(frame.getStatus()).toEqual('completed');
     });
 
-    it('raises error if rolls add up to more than 10', () => {
+    it('throws error if rolls add up to more than 10', () => {
       const frame = new Frame();
 
       frame.addRoll(7);
       expect(() => frame.addRoll(7))
         .toThrow('Rolls cannot add up to more than 10');
+    });
+  });
+
+  describe('Three rolls', () => {
+    it('throws error', () => {
+      const frame = new Frame();
+
+      frame.addRoll(4);
+      frame.addRoll(4);
+      expect(() => frame.addRoll(4))
+        .toThrow('Cannot add more than two throws to a frame');
     });
   });
 });

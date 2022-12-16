@@ -16,8 +16,9 @@ describe(Frame, () => {
       const frame = new Frame();
 
       frame.addRoll(5);
-      expect(frame.score).toEqual(5);
+      expect(frame.getScore()).toEqual(5);
       expect(frame.getRolls()).toEqual([5]);
+      expect(frame.getStatus()).toEqual("active");
     });
 
     it('raises error when adding a roll not between 0 and 10', () => {
@@ -26,7 +27,7 @@ describe(Frame, () => {
       expect(() => frame.addRoll(-1)).toThrow('A roll must be between 0 and 10');
       expect(() => frame.addRoll(15)).toThrow('A roll must be between 0 and 10');
 
-      expect(frame.rolls).toEqual([]);
+      expect(frame.getRolls()).toEqual([]);
     });
 
     it("raises error if the roll isn't an integer", () => {
@@ -36,12 +37,31 @@ describe(Frame, () => {
         .toThrow('A roll must be an integer');
       expect(() => frame.addRoll(1.5))
         .toThrow('A roll must be an integer');
-      expect(frame.rolls).toEqual([]);
+      expect(frame.getRolls()).toEqual([]);
 
-      expect(() => frame.addRoll(1.0))
-        .not.toThrow();
-      expect(frame.rolls).toStrictEqual([1])
-      expect(frame.score).toBe(1)
+      expect(() => frame.addRoll(1.0)).not.toThrow();
+      expect(frame.getRolls()).toStrictEqual([1])
+      expect(frame.getScore()).toBe(1)
+    });
+  });
+
+  describe('Two rolls', () => {
+    it('adds a roll of 5 and a roll of 4', () => {
+      const frame = new Frame();
+
+      frame.addRoll(5);
+      frame.addRoll(4);
+      expect(frame.getRolls()).toEqual([5,4]);
+      expect(frame.getScore()).toEqual(9);
+      expect(frame.getStatus()).toEqual('completed');
+    });
+
+    it('raises error if rolls add up to more than 10', () => {
+      const frame = new Frame();
+
+      frame.addRoll(7);
+      expect(() => frame.addRoll(7))
+        .toThrow('Rolls cannot add up to more than 10');
     });
   });
 });

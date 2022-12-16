@@ -2,15 +2,10 @@
 
 # constructor()
   this.frameScores = []
-  this.tenthFrameScores = []
 
 # methods:
-playFrame()
-- calls rollOne(score)
-- calls rollTwo(score) if this.rollOneScore !== 10
-
 rollOne(score)
-- raise error if not an int from 0 to 10
+- raise error if score is not an int from 0 to 10
 - this.rollOneScore = score
 - pushes this.rollOneScore to this.frameScores
 - if this.rollOneScore === 10:
@@ -21,6 +16,10 @@ rollTwo(score)
 - raise error if not an int from 0 to 10
 - this.rollTwoScore = score;
 - push this.rollTwoScore to this.frameScores
+
+playFrame()
+- calls rollOne(score)
+- calls rollTwo(score) if this.rollOneScore !== 10
 
 getFrameScores()
 - returns this.frameScores array

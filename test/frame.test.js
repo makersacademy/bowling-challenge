@@ -91,7 +91,7 @@ describe(Frame, () => {
       frame.addRoll(4);
       frame.addRoll(4);
       expect(() => frame.addRoll(4))
-        .toThrow('Cannot add more than two throws to a frame');
+        .toThrow('Cannot add rolls to this frame');
     });
   });
 
@@ -100,13 +100,13 @@ describe(Frame, () => {
       let frame = new Frame();
       frame.addRoll(10);
       expect(frame.getStatus()).toEqual('strike');
-      expect(() => frame.addRoll()).toThrow();
+      expect(() => frame.addRoll()).toThrow('Cannot add rolls to this frame');
 
       frame = new Frame();
       frame.addRoll(1);
       frame.addRoll(9);
       expect(frame.getStatus()).toEqual('spare');
-      expect(() => frame.addRoll()).toThrow();
+      expect(() => frame.addRoll()).toThrow('Cannot add rolls to this frame');
     });
   });
 });

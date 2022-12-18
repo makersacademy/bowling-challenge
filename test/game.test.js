@@ -9,7 +9,8 @@ describe(Game, () => {
       return {
         getScore: () => 0,
         getRolls: () => [],
-        getStatus: () => 'active'
+        getStatus: () => 'active',
+        addRoll: jest.fn(x => null)
       };
     });
   });
@@ -22,5 +23,12 @@ describe(Game, () => {
     expect(frames.length).toEqual(10);
     expect(frames.every((frame) => frame.getRolls().length === 0)).toBe(true);
     expect(frames.every((frame) => frame.getStatus() === 'active')).toBe(true);
+  });
+
+  it("addFrame calls the first frame's addFrame method", () => {
+    const game = new Game();
+
+    game.addRoll(5);
+    expect(game.getFrames()[0].addRoll).toHaveBeenCalledTimes(1);
   });
 });

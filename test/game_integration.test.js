@@ -64,6 +64,19 @@ describe('Game integration', () => {
       expect(frames[2].getRolls()).toEqual([4]);
       expect(frames[2].getStatus()).toEqual('active');
     });
+
+    it('two strikes and a roll', () => {
+      const game = new Game();
+      game.addRoll(10);
+      game.addRoll(10);
+      game.addRoll(4);
+
+      const frames = game.getFrames();
+      expect(frames[0].getStatus()).toEqual('strike');
+      expect(frames[1].getStatus()).toEqual('strike');
+      expect(frames[2].getRolls()).toEqual([4]);
+      expect(frames[2].getStatus()).toEqual('active');
+    });
   });
 
   describe('Full game', () => {

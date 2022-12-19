@@ -38,7 +38,7 @@ class Game {
 
   strikeBonusScorecardUpdate() {
     this.frames.forEach((x, i) => {
-      if (x.strike() && i < 9) {
+      if (x.strike() && i < (this.frames.length - 1)) {
         this.scorecard[i] = (this.frames[i].score() + this.frames[i+1].rolls[0] + this.frames[i+1].rolls[1]);
         }
     })
@@ -46,7 +46,7 @@ class Game {
 
   spareBonusScorecardUpdate() {
     this.frames.forEach((x, i) => {
-      if (x.spare() && i < 9) {
+      if (x.spare() && i < (this.frames.length - 1)) {
         this.scorecard[i] = (this.frames[i].score() + this.frames[i+1].rolls[0]);
       }
     })

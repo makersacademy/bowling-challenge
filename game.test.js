@@ -56,6 +56,8 @@ describe('Game class', () => {
     game.addFrame(frame9);
     game.addFrame(frame10);
 
+    expect(game.updateScorecard()).toEqual([ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]);
+
     expect(game.updateScore()).toEqual(0);
   })
 
@@ -113,6 +115,8 @@ describe('Game class', () => {
     game.addFrame(frame9);
     game.addFrame(frame10);
 
+    expect(game.updateScorecard()).toEqual([ 5, 5, 9, 9, 7, 0, 8, 5, 0, 7 ]);
+
     expect(game.updateScore()).toEqual((55));
   })
 
@@ -168,7 +172,7 @@ describe('Game class', () => {
     game.addFrame(frame9);
     game.addFrame(frame10);
 
-    game.updateScorecard();
+    expect(game.updateScorecard()).toEqual([ 5, 5, 19, 9, 7, 18, 8, 5, 0, 7 ]);
 
     expect(game.updateScore()).toEqual((83));
   })
@@ -227,7 +231,7 @@ describe('Game class', () => {
     game.addFrame(frame9);
     game.addFrame(frame10);
 
-    game.updateScorecard();
+    expect(game.updateScorecard()).toEqual([ 5, 5, 15, 9, 7, 15, 8, 5, 0, 7 ]);
 
     expect(game.updateScore()).toEqual((76));
   })
@@ -286,7 +290,7 @@ describe('Game class', () => {
     game.addFrame(frame9);
     game.addFrame(frame10);
 
-    game.updateScorecard();
+    expect(game.updateScorecard()).toEqual([ 5, 5, 15, 9, 7, 15, 8, 5, 30, 30 ]);
 
     expect(game.updateScore()).toEqual((129));
   })

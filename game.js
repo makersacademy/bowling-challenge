@@ -1,36 +1,67 @@
 class Game {
 
   constructor() {
-    this.frames = []
+    this.frames = [];
+    this.scorecard = [];
   }
 
   addFrame(frame) {
     this.frames.push(frame);
+    this.scorecard.push(frame.score());
   }
 
   strikeBonuses() {
     this.strikeBonus = 0;
-    this.frames.forEach((x, i) => x.strike() ? this.strikeBonus += this.frames[i+1].score() : 0);
+    this.frames.forEach((x, i) => {
+      if (x.strike() && i < 9) {
+        this.strikeBonus += (this.frames[i+1].rolls[0] + this.frames[i+1].rolls[1]);
+        }
+    })
     return this.strikeBonus;
   }
 
   spareBonuses() {
     this.spareBonus = 0;
-    this.frames.forEach((x, i) => x.spare() ? this.spareBonus += this.frames[i+1].rolls[0] : 0);
+    this.frames.forEach((x, i) => {
+      if (x.spare() && i < 9) {
+        this.spareBonus += this.frames[i+1].rolls[0];
+      }
+    })
     return this.spareBonus;
-  }
-
-  lastFrameBonuses() {
-    this.lastFrameBonus = 0;
-    if (this.frames.last.rolls[0] === 10) {
-      
-    }
   }
 
   totalScore() {
     let total = 0;
     this.frames.forEach(x => total += x.score());
     return total + this.strikeBonuses() + this.spareBonuses();
+  }
+
+  strikeBonusScorecardUpdate() {
+    this.frames.forEach((x, i) => {
+      if (x.strike() && i < 9) {
+        this.scorecard[i] = (this.frames[i].score() + this.frames[i+1].rolls[0] + this.frames[i+1].rolls[1]);
+        }
+    })
+  }
+
+  spareBonusScorecardUpdate() {
+    this.frames.forEach((x, i) => {
+      if (x.spare() && i < 9) {
+        this.scorecard[i] = (this.frames[i].score() + this.frames[i+1].rolls[0]);
+      }
+    })
+  }
+
+  updateScorecard() {
+    this.strikeBonusScorecardUpdate();
+    this.spareBonusScorecardUpdate();
+    return this.scorecard;
+  }
+
+  updateScore() {
+    let currentScore = 0;
+    this.scorecard.forEach(x => currentScore += x);
+    return currentScore;
   }
 }
 
@@ -53,8 +84,7 @@ module.exports = Game;
 // frame3.addRoll(0);
 
 // const frame4 = new Frame;
-// frame4.addRoll(5);
-// frame4.addRoll(5);
+// frame4.addRoll(10);
 
 // const frame5 = new Frame;
 // frame5.addRoll(5);
@@ -65,20 +95,20 @@ module.exports = Game;
 // frame6.addRoll(4);
 
 // const frame7 = new Frame;
-// frame7.addRoll(3);
+// frame7.addRoll(6);
 // frame7.addRoll(4);
 
 // const frame8 = new Frame;
-// frame8.addRoll(0);
-// frame8.addRoll(0);
+// frame8.addRoll(4);
+// frame8.addRoll(6);
 
 // const frame9 = new Frame;
-// frame9.addRoll(0);
-// frame9.addRoll(0);
+// frame9.addRoll(10);
 
 // const frame10 = new Frame;
-// frame10.addRoll(0);
-// frame10.addRoll(0);
+// frame10.addRoll(10);
+// frame10.addRoll(10);
+// frame10.addRoll(10);
 
 // const game = new Game;
 // game.addFrame(frame1);
@@ -92,4 +122,5 @@ module.exports = Game;
 // game.addFrame(frame9);
 // game.addFrame(frame10);
 
-// console.log(game.spareBonuses());
+// console.log(game.updateScorecard());
+// console.log(game.updateScore());

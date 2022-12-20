@@ -29,6 +29,25 @@ describe('GameFormatter integration', () => {
       expect(scorecard).toContain('|       | TOTAL |    9  |');
     });
 
+    it('one spare', () => {
+      game.addRoll(7);
+      game.addRoll(3);
+
+      const scorecard = gameFormatter.getScorecard();
+      expect(scorecard).toContain('|   1.  | 7 , / |       |');
+      expect(scorecard).toContain('|   2.  |       |       |');
+      expect(scorecard).toContain('|       | TOTAL |    0  |');
+    });
+
+    it('one strike', () => {
+      game.addRoll(10);
+      
+      const scorecard = gameFormatter.getScorecard();
+      expect(scorecard).toContain('|   1.  |     X |       |');
+      expect(scorecard).toContain('|   2.  |       |       |');
+      expect(scorecard).toContain('|       | TOTAL |    0  |');
+    });
+
     it('2 and a half frames (ONE CALL)', () => {
       for (let i = 0; i < 5; i++) {
         game.addRoll(4);

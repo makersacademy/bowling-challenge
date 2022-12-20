@@ -8,8 +8,29 @@ class Scoreboard {
 
   addFrame(frame) {
     this.frame_array = frame.accessFrame()
+    this.checkForFails()
     this.scoreboard.push(frame)
     this.frame_count++
+  }
+
+  checkForFails() {
+    if (this.frame_array[0] > 10 || this.frame_array[1] > 10) {
+      throw "A roll cannot be greater than 10"
+    }
+    if (this.frame_count < 9) {
+      if (this.frame_array[0] + this.frame_array[1] > 10) {
+      throw "Sum of rolls cannot be greater than 10"
+    }} else {
+      if (this.frame_array[0] != 10 && this.frame_array[1] != 10) {
+        if (this.frame_array[0] + this.frame_array[1] > 10) {
+          throw "Sum of rolls cannot be greater than 10"
+        }
+      } else if (this.frame_array[1] != 10 && this.frame_array[2] != 10) {
+        if (this.frame_array[1] + this.frame_array[2] > 10) {
+          throw "Sum of rolls cannot be greater than 10"
+        }
+      }
+    }
   }
 
   frameCount() {

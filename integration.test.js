@@ -234,3 +234,43 @@ describe("perfect game is scored", () => {
     expect(scoreboard.frameCount()).toBe(10)
   })
 })
+
+describe("expected errors", () => {
+  it("fails if a roll is greater than 10", () => {
+    const scoreboard = new Scoreboard
+    expect(() => {scoreboard.addFrame(new Frame(11,0))}).toThrow("A roll cannot be greater than 10");
+  })
+
+  it("fails if both rolls sum greater than 10", () => {
+    const scoreboard = new Scoreboard
+    expect(() => {scoreboard.addFrame(new Frame(5,6))}).toThrow("Sum of rolls cannot be greater than 10");
+  })
+
+  it("fails if the final frame is a strike first roll then two scores that add to more than 10", () => {
+  const scoreboard = new Scoreboard   
+  scoreboard.addFrame(new Frame(1,4))
+  scoreboard.addFrame(new Frame(4,5))
+  scoreboard.addFrame(new Frame(6,4))
+  scoreboard.addFrame(new Frame(5,5))
+  scoreboard.addFrame(new Frame(10,0))
+  scoreboard.addFrame(new Frame(0,1))
+  scoreboard.addFrame(new Frame(7,3))
+  scoreboard.addFrame(new Frame(6,4))
+  scoreboard.addFrame(new Frame(10,0))
+  expect(() => {scoreboard.addFrame(new Frame(10,8,3))}).toThrow("Sum of rolls cannot be greater than 10");
+  })
+
+  it("fails if the final frame is two scores that add to more than 10", () => {
+    const scoreboard = new Scoreboard   
+    scoreboard.addFrame(new Frame(1,4))
+    scoreboard.addFrame(new Frame(4,5))
+    scoreboard.addFrame(new Frame(6,4))
+    scoreboard.addFrame(new Frame(5,5))
+    scoreboard.addFrame(new Frame(10,0))
+    scoreboard.addFrame(new Frame(0,1))
+    scoreboard.addFrame(new Frame(7,3))
+    scoreboard.addFrame(new Frame(6,4))
+    scoreboard.addFrame(new Frame(10,0))
+    expect(() => {scoreboard.addFrame(new Frame(9,2,3))}).toThrow("Sum of rolls cannot be greater than 10");
+    })
+})

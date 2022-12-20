@@ -19,7 +19,7 @@ As usual please start by
 
 * Forking this repo
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.
 
 ___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
 
@@ -73,3 +73,28 @@ In code review we'll be hoping to see:
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
 Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+
+
+User Stories
+
+As a user
+I want to play a frame of bowling
+so that I can get the points from it
+
+As a user
+I want to play two frame of bowling
+so that I can get the total from it
+
+As a user
+I want to play 10 frame of bowling
+so that I can get the total score
+
+As a user
+I want to play get individual roll scores
+so that I can analyse my game
+
+As a user
+I want to be able to play bonus rounds for my spare and strikes
+so that I can aim for a total high score of 300
+
+

@@ -18,59 +18,115 @@ describe('GameFormatter integration', () => {
       expect(scorecard).toContain('|  10.  |       |       |');
       expect(scorecard).toContain('|       | TOTAL |    0  |');
     });
+  });
 
-    it('one frame', () => {
-      game.addRoll(7);
-      game.addRoll(2);
-      
-      const scorecard = gameFormatter.getScorecard();
-      expect(scorecard).toContain('|   1.  | 7 , 2 |    9  |');
-      expect(scorecard).toContain('|   2.  |       |       |');
-      expect(scorecard).toContain('|       | TOTAL |    9  |');
-    });
+  it('one frame', () => {
+    game.addRoll(7);
+    game.addRoll(2);
+    
+    const scorecard = gameFormatter.getScorecard();
+    expect(scorecard).toContain('|   1.  | 7 , 2 |    9  |');
+    expect(scorecard).toContain('|   2.  |       |       |');
+    expect(scorecard).toContain('|       | TOTAL |    9  |');
+  });
 
-    it('one spare', () => {
-      game.addRoll(7);
-      game.addRoll(3);
+  it('one spare', () => {
+    game.addRoll(7);
+    game.addRoll(3);
 
-      const scorecard = gameFormatter.getScorecard();
-      expect(scorecard).toContain('|   1.  | 7 , / |       |');
-      expect(scorecard).toContain('|   2.  |       |       |');
-      expect(scorecard).toContain('|       | TOTAL |    0  |');
-    });
+    const scorecard = gameFormatter.getScorecard();
+    expect(scorecard).toContain('|   1.  | 7 , / |       |');
+    expect(scorecard).toContain('|   2.  |       |       |');
+    expect(scorecard).toContain('|       | TOTAL |    0  |');
+  });
 
-    it('one strike', () => {
+  it('one strike', () => {
+    game.addRoll(10);
+    
+    const scorecard = gameFormatter.getScorecard();
+    expect(scorecard).toContain('|   1.  |     X |       |');
+    expect(scorecard).toContain('|   2.  |       |       |');
+    expect(scorecard).toContain('|       | TOTAL |    0  |');
+  });
+
+  it('2 and a half frames (all rolls of 4)', () => {
+    for (let i = 0; i < 5; i++) {
+      game.addRoll(4);
+    }
+
+    const scorecard = gameFormatter.getScorecard();
+    expect(scorecard).toContain('|   1.  | 4 , 4 |    8  |');
+    expect(scorecard).toContain('|   2.  | 4 , 4 |   16  |');
+    expect(scorecard).toContain('|   3.  | 4     |       |');
+    expect(scorecard).toContain('|   4.  |       |       |');
+    expect(scorecard).toContain('|       | TOTAL |   16  |');
+  });
+
+  it('two strikes and a roll', () => {
+    game.addRoll(10);
+    game.addRoll(10);
+    game.addRoll(4);
+
+    const scorecard = gameFormatter.getScorecard();
+    expect(scorecard).toContain('|   1.  |     X |   24  |');
+    expect(scorecard).toContain('|   2.  |     X |       |');
+    expect(scorecard).toContain('|   3.  | 4     |       |');
+    expect(scorecard).toContain('|   4.  |       |       |');
+    expect(scorecard).toContain('|       | TOTAL |   24  |');
+  });
+
+  it('two [7, 3] spares and a roll', () => {
+    game.addRoll(7); game.addRoll(3);
+    game.addRoll(7); game.addRoll(3);
+    game.addRoll(4);
+
+    const scorecard = gameFormatter.getScorecard();
+    expect(scorecard).toContain('|   1.  | 7 , / |   17  |');
+    expect(scorecard).toContain('|   2.  | 7 , / |   31  |');
+    expect(scorecard).toContain('|   3.  | 4     |       |');
+    expect(scorecard).toContain('|   4.  |       |       |');
+    expect(scorecard).toContain('|       | TOTAL |   31  |');
+  });
+
+  it('10 strikes (without frame 10)', () => {
+    for (let i = 0; i < 10; i++) {
       game.addRoll(10);
-      
-      const scorecard = gameFormatter.getScorecard();
-      expect(scorecard).toContain('|   1.  |     X |       |');
-      expect(scorecard).toContain('|   2.  |       |       |');
-      expect(scorecard).toContain('|       | TOTAL |    0  |');
-    });
+    }
 
-    it('2 and a half frames (ONE CALL)', () => {
-      for (let i = 0; i < 5; i++) {
-        game.addRoll(4);
-      }
+    const scorecard = gameFormatter.getScorecard();
+    expect(scorecard).toContain('|   1.  |     X |   30  |');
+    expect(scorecard).toContain('|   2.  |     X |   60  |');
+    expect(scorecard).toContain('|   8.  |     X |  240  |');
+    expect(scorecard).toContain('|   9.  |     X |       |');
+    expect(scorecard).toContain('|  10.  |     X |       |');
+    expect(scorecard).toContain('|       | TOTAL |  240  |');
+  });
 
-      const scorecard = gameFormatter.getScorecard();
-      expect(scorecard).toContain('|   1.  | 4 , 4 |    8  |');
-      expect(scorecard).toContain('|   2.  | 4 , 4 |   16  |');
-      expect(scorecard).toContain('|   3.  | 4     |       |');
-      expect(scorecard).toContain('|   4.  |       |       |');
-      expect(scorecard).toContain('|       | TOTAL |   16  |');
-    });
+  it('9 [9, 1] spares and two gutter balls', () => {
+    for (let i = 0; i < 9; i++) {
+      game.addRoll(9);
+      game.addRoll(1);
+    }
+    game.addRoll(0); game.addRoll(0);
 
-    it('gutter game', () => {
-      for (let i = 0; i < 20; i++) {
-        game.addRoll(0);
-      }
+    const scorecard = gameFormatter.getScorecard();
+    expect(scorecard).toContain('|   1.  | 9 , / |   19  |');
+    expect(scorecard).toContain('|   2.  | 9 , / |   38  |');
+    expect(scorecard).toContain('|   8.  | 9 , / |  152  |');
+    expect(scorecard).toContain('|   9.  | 9 , / |  162  |');
+    expect(scorecard).toContain('|  10.  | - , - |  162  |');
+    expect(scorecard).toContain('|       | TOTAL |  162  |');
+  });
 
-      const scorecard = gameFormatter.getScorecard();
-      expect(scorecard).toContain('|   1.  | - , - |    0  |');
-      expect(scorecard).toContain('|   2.  | - , - |    0  |');
-      expect(scorecard).toContain('|  10.  | - , - |    0  |');
-      expect(scorecard).toContain('|       | TOTAL |    0  |');
-    });
+  it('gutter game', () => {
+    for (let i = 0; i < 20; i++) {
+      game.addRoll(0);
+    }
+
+    const scorecard = gameFormatter.getScorecard();
+    expect(scorecard).toContain('|   1.  | - , - |    0  |');
+    expect(scorecard).toContain('|   2.  | - , - |    0  |');
+    expect(scorecard).toContain('|  10.  | - , - |    0  |');
+    expect(scorecard).toContain('|       | TOTAL |    0  |');
   });
 });

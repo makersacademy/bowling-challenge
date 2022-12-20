@@ -109,4 +109,37 @@ describe(Frame, () => {
       expect(() => frame.addRoll()).toThrow('Cannot add rolls to this frame');
     });
   });
+
+  describe('Format method', () => {
+    it('initialized frame', () => {
+      const frame = new Frame();
+      expect(frame.format()).toEqual("     ");
+    });
+
+    it('one roll', () => {
+      const frame = new Frame();
+      frame.addRoll(5);
+      expect(frame.format()).toEqual('5    ');
+    });
+
+    it('two rolls', () => {
+      const frame = new Frame();
+      frame.addRoll(5);
+      frame.addRoll(4);
+      expect(frame.format()).toEqual('5 , 4');
+    });
+
+    it('strike', () => {
+      const frame = new Frame();
+      frame.addRoll(10);
+      expect(frame.format()).toEqual('    X');
+    });
+
+    it('spare', () => {
+      const frame = new Frame();
+      frame.addRoll(7);
+      frame.addRoll(3);
+      expect(frame.format()).toEqual('7 , /');
+    });
+  });
 });

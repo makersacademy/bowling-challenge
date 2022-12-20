@@ -87,17 +87,17 @@ describe(Frame, () => {
     it('throws error', () => {
       frame.addRoll(10);
       expect(frame.getStatus()).toEqual('strike');
-      expect(() => frame.addRoll()).toThrow('Cannot add rolls to this frame');
+      expect(() => frame.addRoll(0)).toThrow('Cannot add rolls to this frame');
 
       frame = new Frame();
       frame.addRoll(1);
       frame.addRoll(9);
       expect(frame.getStatus()).toEqual('spare');
-      expect(() => frame.addRoll()).toThrow('Cannot add rolls to this frame');
+      expect(() => frame.addRoll(0)).toThrow('Cannot add rolls to this frame');
     });
   });
 
-  describe('Format method', () => {
+  describe('format method', () => {
     it('initialized frame', () => {
       expect(frame.format()).toEqual("     ");
     });
@@ -122,6 +122,66 @@ describe(Frame, () => {
       frame.addRoll(7);
       frame.addRoll(3);
       expect(frame.format()).toEqual('7 , /');
+    });
+  });
+
+  describe('addBonus method', () => {
+    it("throws if roll isn't an integer between 0 and 10", () => {
+      frame.addRoll(10);
+      
+      expect(() => frame.addBonus(-1))
+        .toThrow('A roll must be between 0 and 10');
+      expect(() => frame.addBonus(15))
+        .toThrow('A roll must be between 0 and 10');
+
+      expect(() => frame.addBonus('Hello world'))
+        .toThrow('A roll must be an integer');
+      expect(() => frame.addBonus(1.5))
+        .toThrow('A roll must be an integer');
+      
+      expect(frame.getScore()).toEqual(10);
+
+      expect(() => frame.addBonus(1.0)).not.toThrow();
+    });
+
+    it("does nothing if status isn't strike or spare", () => {
+      frame.addBonus(5);
+      expect(frame.getScore()).toBe(0);
+
+      frame.addRoll(3);
+      frame.addRoll(2);
+      frame.addBonus(7);
+      expect(frame.getScore()).toBe(5)
+    });
+
+    it('adds two bonuses if we rolled a strike', () => {
+      frame.addRoll(10);
+      expect(frame.getScore()).toBe(10);
+      expect(frame.getStatus()).toEqual('strike');
+
+      frame.addBonus(5);
+      expect(frame.getScore()).toBe(15);
+
+      frame.addBonus(2);
+      expect(frame.getScore()).toBe(17);
+      expect(frame.getStatus()).toEqual('completed');
+
+      frame.addBonus(7);
+      expect(frame.getScore()).toBe(17);
+    });
+
+    it('adds one bonus if we rolled a spare', () => {
+      frame.addRoll(5);
+      frame.addRoll(5);
+      expect(frame.getScore()).toBe(10);
+      expect(frame.getStatus()).toEqual('spare');
+
+      frame.addBonus(3);
+      expect(frame.getScore()).toBe(13);
+      expect(frame.getStatus()).toEqual('completed');
+      
+      frame.addBonus(7);
+      expect(frame.getScore()).toBe(13);
     });
   });
 });

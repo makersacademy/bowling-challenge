@@ -41,5 +41,17 @@ describe('GameFormatter integration', () => {
       expect(scorecard).toContain('|   4.  |       |       |');
       expect(scorecard).toContain('|       | TOTAL |   16  |');
     });
+
+    it('gutter game', () => {
+      for (let i = 0; i < 20; i++) {
+        game.addRoll(0);
+      }
+
+      const scorecard = gameFormatter.getScorecard();
+      expect(scorecard).toContain('|   1.  | - , - |    0  |');
+      expect(scorecard).toContain('|   2.  | - , - |    0  |');
+      expect(scorecard).toContain('|  10.  | - , - |    0  |');
+      expect(scorecard).toContain('|       | TOTAL |    0  |');
+    });
   });
 });

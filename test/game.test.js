@@ -4,6 +4,8 @@ const Frame = require('../lib/frame');
 jest.mock('../lib/frame');
 
 describe(Game, () => {
+  let game;
+
   beforeAll(() => {
     Frame.mockImplementation(() => {
       return {
@@ -13,10 +15,11 @@ describe(Game, () => {
         addRoll: jest.fn(x => null)
       };
     });
+
+    game = new Game();
   });
 
   it('initialized game', () => {
-    const game = new Game();
     expect(Frame).toHaveBeenCalledTimes(10);
 
     const frames = game.getFrames();
@@ -26,8 +29,6 @@ describe(Game, () => {
   });
 
   it("addFrame calls the first frame's addFrame method", () => {
-    const game = new Game();
-
     game.addRoll(5);
     expect(game.getFrames()[0].addRoll).toHaveBeenCalledTimes(1);
   });

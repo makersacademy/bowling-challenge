@@ -1,4 +1,3 @@
-const Frame = require('../lib/frame');
 const Game = require('../lib/game');
 
 describe('Game integration', () => {
@@ -134,7 +133,7 @@ describe('Game integration', () => {
       game.addRoll(6);
       game.addRoll(4);
 
-      frames = game.getFrames();
+      const frames = game.getFrames();
       expect(frames[0].getRolls()).toEqual([10]);
       expect(frames[0].getScore()).toEqual(16);
       expect(frames[0].getStatus()).toEqual('completed');

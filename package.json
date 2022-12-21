@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ThomasSel/bowling-challenge#readme",
   "dependencies": {
+    "eslint-plugin-jest": "^27.1.7",
     "jest": "^29.3.1",
     "sprintf-js": "^1.1.2"
   },

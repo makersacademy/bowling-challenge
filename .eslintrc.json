@@ -1,4 +1,5 @@
 {
+    "plugins": ["jest"],
     "env": {
         "browser": true,
         "commonjs": true,

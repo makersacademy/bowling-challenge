@@ -8,10 +8,10 @@ describe('Game integration', () => {
   });
 
   it('initialized game', () => {
-    const frames = game.getFrames();
+    const frames = game.frames;
     expect(frames.length).toEqual(10);
-    expect(frames.every((frame) => frame.getRolls().length === 0)).toBe(true);
-    expect(frames.every((frame) => frame.getStatus() === 'active')).toBe(true);
+    expect(frames.every((frame) => frame.rolls.length === 0)).toBe(true);
+    expect(frames.every((frame) => frame.status === 'active')).toBe(true);
   });
 
   describe('Adding one frame', () => {
@@ -19,32 +19,32 @@ describe('Game integration', () => {
       game.addRoll(5);
       game.addRoll(1);
       
-      const frames = game.getFrames();
-      expect(frames[0].getScore()).toEqual(6);
-      expect(frames[0].getStatus()).toEqual('completed');
-      expect(frames[1].getRolls()).toEqual([]);
-      expect(frames[1].getStatus()).toEqual('active');
+      const frames = game.frames;
+      expect(frames[0].score).toEqual(6);
+      expect(frames[0].status).toEqual('completed');
+      expect(frames[1].rolls).toEqual([]);
+      expect(frames[1].status).toEqual('active');
     });
 
     it('first frame is a strike', () => {
       game.addRoll(10);
       
-      const frames = game.getFrames();
-      expect(frames[0].getScore()).toEqual(10);
-      expect(frames[0].getStatus()).toEqual('strike');
-      expect(frames[1].getRolls()).toEqual([]);
-      expect(frames[1].getStatus()).toEqual('active');
+      const frames = game.frames;
+      expect(frames[0].score).toEqual(10);
+      expect(frames[0].status).toEqual('strike');
+      expect(frames[1].rolls).toEqual([]);
+      expect(frames[1].status).toEqual('active');
     });
 
     it('first frame is a spare', () => {
       game.addRoll(0);
       game.addRoll(10);
       
-      const frames = game.getFrames();
-      expect(frames[0].getScore()).toEqual(10);
-      expect(frames[0].getStatus()).toEqual('spare');
-      expect(frames[1].getRolls()).toEqual([]);
-      expect(frames[1].getStatus()).toEqual('active');
+      const frames = game.frames;
+      expect(frames[0].score).toEqual(10);
+      expect(frames[0].status).toEqual('spare');
+      expect(frames[1].rolls).toEqual([]);
+      expect(frames[1].status).toEqual('active');
     });
   });
 
@@ -54,11 +54,11 @@ describe('Game integration', () => {
         game.addRoll(4);
       }
 
-      const frames = game.getFrames();
-      expect(frames[0].getStatus()).toEqual('completed');
-      expect(frames[1].getStatus()).toEqual('completed');
-      expect(frames[2].getRolls()).toEqual([4]);
-      expect(frames[2].getStatus()).toEqual('active');
+      const frames = game.frames;
+      expect(frames[0].status).toEqual('completed');
+      expect(frames[1].status).toEqual('completed');
+      expect(frames[2].rolls).toEqual([4]);
+      expect(frames[2].status).toEqual('active');
     });
   });
 
@@ -68,9 +68,9 @@ describe('Game integration', () => {
         game.addRoll(0);
       }
 
-      const frames = game.getFrames();
-      expect(frames.every(frame => frame.getScore() === 0)).toBe(true);
-      expect(frames.every(frame => frame.getStatus() === 'completed')).toBe(true);
+      const frames = game.frames;
+      expect(frames.every(frame => frame.score === 0)).toBe(true);
+      expect(frames.every(frame => frame.status === 'completed')).toBe(true);
     });
 
     it('full game with rolls of 4', () => {
@@ -78,9 +78,9 @@ describe('Game integration', () => {
         game.addRoll(4);
       }
 
-      const frames = game.getFrames();
-      expect(frames.every(frame => frame.getScore() === 8)).toBe(true);
-      expect(frames.every(frame => frame.getStatus() === 'completed')).toBe(true);
+      const frames = game.frames;
+      expect(frames.every(frame => frame.score === 8)).toBe(true);
+      expect(frames.every(frame => frame.status === 'completed')).toBe(true);
     });
 
     it('10 strikes (without frame 10)', () => {
@@ -88,17 +88,17 @@ describe('Game integration', () => {
         game.addRoll(10);
       }
 
-      const frames = game.getFrames();
+      const frames = game.frames;
       for (let i = 0; i < 8; i++) {
-        expect(frames[i].getScore()).toBe(30);
-        expect(frames[i].getStatus()).toBe('completed')
+        expect(frames[i].score).toBe(30);
+        expect(frames[i].status).toBe('completed')
       }
 
-      expect(frames[8].getScore()).toBe(20);
-      expect(frames[8].getStatus()).toBe('strike')
+      expect(frames[8].score).toBe(20);
+      expect(frames[8].status).toBe('strike')
 
-      expect(frames[9].getScore()).toBe(10);
-      expect(frames[9].getStatus()).toBe('strike')
+      expect(frames[9].score).toBe(10);
+      expect(frames[9].status).toBe('strike')
     });
 
     it('10 [9, 1] spares (without frame 10)', () => {
@@ -107,13 +107,13 @@ describe('Game integration', () => {
         game.addRoll(1);
       }
 
-      const frames = game.getFrames();
+      const frames = game.frames;
       for (let i = 0; i < 9; i++) {
-        expect(frames[i].getScore()).toBe(19);
-        expect(frames[i].getStatus()).toBe('completed')
+        expect(frames[i].score).toBe(19);
+        expect(frames[i].status).toBe('completed')
       }
 
-      expect(frames[9].getScore()).toBe(10);
+      expect(frames[9].score).toBe(10);
     });
 
     it('throws error when trying to add a new roll', () => {
@@ -133,10 +133,10 @@ describe('Game integration', () => {
       game.addRoll(6);
       game.addRoll(4);
 
-      const frames = game.getFrames();
-      expect(frames[0].getRolls()).toEqual([10]);
-      expect(frames[0].getScore()).toEqual(16);
-      expect(frames[0].getStatus()).toEqual('completed');
+      const frames = game.frames;
+      expect(frames[0].rolls).toEqual([10]);
+      expect(frames[0].score).toEqual(16);
+      expect(frames[0].status).toEqual('completed');
     });
 
     it('two strikes and a roll', () => {
@@ -144,17 +144,17 @@ describe('Game integration', () => {
       game.addRoll(10);
       game.addRoll(4);
 
-      const frames = game.getFrames();
-      expect(frames[0].getStatus()).toEqual('completed');
-      expect(frames[0].getRolls()).toEqual([10]);
-      expect(frames[0].getScore()).toEqual(24);
+      const frames = game.frames;
+      expect(frames[0].status).toEqual('completed');
+      expect(frames[0].rolls).toEqual([10]);
+      expect(frames[0].score).toEqual(24);
 
-      expect(frames[1].getStatus()).toEqual('strike');
-      expect(frames[1].getRolls()).toEqual([10]);
-      expect(frames[1].getScore()).toEqual(14);
+      expect(frames[1].status).toEqual('strike');
+      expect(frames[1].rolls).toEqual([10]);
+      expect(frames[1].score).toEqual(14);
 
-      expect(frames[2].getRolls()).toEqual([4]);
-      expect(frames[2].getStatus()).toEqual('active');
+      expect(frames[2].rolls).toEqual([4]);
+      expect(frames[2].status).toEqual('active');
     });
   });
 
@@ -164,12 +164,12 @@ describe('Game integration', () => {
       game.addRoll(1);
 
       game.addRoll(6);
-      expect(game.getFrames()[0].getRolls()).toEqual([9, 1]);
-      expect(game.getFrames()[0].getScore()).toEqual(16);
-      expect(game.getFrames()[0].getStatus()).toEqual('completed');
+      expect(game.frames[0].rolls).toEqual([9, 1]);
+      expect(game.frames[0].score).toEqual(16);
+      expect(game.frames[0].status).toEqual('completed');
 
       game.addRoll(4);
-      expect(game.getFrames()[0].getScore()).toEqual(16);
+      expect(game.frames[0].score).toEqual(16);
     });
   });
 });

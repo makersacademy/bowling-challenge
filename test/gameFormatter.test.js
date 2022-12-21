@@ -7,17 +7,17 @@ describe(GameFormatter, () => {
   it('example full game without a bonus final roll', () => {
     Game.mockImplementation(() => {
       return {
-        getFrames: () => [
-          { getScore: () => 9, getRolls: () => [4,5], getStatus: () => 'completed', format: () => '4 , 5' },
-          { getScore: () => 8, getRolls: () => [0,8], getStatus: () => 'completed', format: () => '- , 8' },
-          { getScore: () => 11, getRolls: () => [2,8], getStatus: () => 'completed', format: () => '2 , /' },
-          { getScore: () => 1, getRolls: () => [1,0], getStatus: () => 'completed', format: () => '1 , -' },
-          { getScore: () => 15, getRolls: () => [10], getStatus: () => 'completed', format: () => '    X' },
-          { getScore: () => 5, getRolls: () => [4,1], getStatus: () => 'completed', format: () => '4 , 1' },
-          { getScore: () => 0, getRolls: () => [0,0], getStatus: () => 'completed', format: () => '- , -' },
-          { getScore: () => 8, getRolls: () => [7,1], getStatus: () => 'completed', format: () => '7 , 1' },
-          { getScore: () => 9, getRolls: () => [9,0], getStatus: () => 'completed', format: () => '9 , -' },
-          { getScore: () => 9, getRolls: () => [8,1], getStatus: () => 'completed', format: () => '8 , 1' }
+        frames: [
+          { score: 9, rolls: [4,5], status: 'completed', format: () => '4 , 5' },
+          { score: 8, rolls: [0,8], status: 'completed', format: () => '- , 8' },
+          { score: 11, rolls: [2,8], status: 'completed', format: () => '2 , /' },
+          { score: 1, rolls: [1,0], status: 'completed', format: () => '1 , -' },
+          { score: 15, rolls: [10], status: 'completed', format: () => '    X' },
+          { score: 5, rolls: [4,1], status: 'completed', format: () => '4 , 1' },
+          { score: 0, rolls: [0,0], status: 'completed', format: () => '- , -' },
+          { score: 8, rolls: [7,1], status: 'completed', format: () => '7 , 1' },
+          { score: 9, rolls: [9,0], status: 'completed', format: () => '9 , -' },
+          { score: 9, rolls: [8,1], status: 'completed', format: () => '8 , 1' }
         ]
       }
     });

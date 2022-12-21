@@ -23,6 +23,7 @@ describe('a frame of bowling', () => {
     expect(frame.frame_rolls()).toEqual ([3, 7])
     expect(frame.total_frame_points()).toEqual (10)
     expect(frame.spare()).toBe (true)
+
   });
 
   it('returns true if a strike scored in the frame', () => {

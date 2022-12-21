@@ -42,7 +42,7 @@ describe('a game with no spare or strikes, 10 frames with more than 0 points eac
 });
 
 describe('a game with no spare or strikes and every frame has a different score', () => {
-  it('adds all frames with a score of 50', () => {
+  it('adds all frames with a score of 73', () => {
     const scoreboard = new Scoreboard
     let frame = new Frame(2, 3)
     scoreboard.add_frame(frame)
@@ -67,5 +67,44 @@ describe('a game with no spare or strikes and every frame has a different score'
     expect(scoreboard.total()).toBe (73)
     expect(scoreboard.total_frames()).toBe (10)
   });
+});
 
+describe('a game with spares scored', () => {
+  it('returns total score of 120, 100 from frames and 20 from bonus roll 3', () => {
+    const frame = new Frame (5, 5)
+    const scoreboard = new Scoreboard
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    frame.spare()
+    expect(scoreboard.total()).toBe (150)
+    expect(scoreboard.total_frames()).toBe (10)
+  });
+});
+
+describe('a game with strikes scored', () => {
+  it('returns total score 120, 100 from fraes and 20 from bonus roll 3', () => {
+    const frame = new Frame (10)
+    const scoreboard = new Scoreboard
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    expect(scoreboard.total()).toBe (200)
+    expect(scoreboard.total_frames()).toBe (10)
+  });
 });

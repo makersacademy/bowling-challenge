@@ -10,7 +10,7 @@ describe('Game integration', () => {
   it('initialized game', () => {
     const frames = game.frames;
     expect(frames.length).toEqual(10);
-    expect(frames.every((frame) => frame.rolls.length === 0)).toBe(true);
+    expect(frames.every((frame) => frame.numRolls === 0)).toBe(true);
     expect(frames.every((frame) => frame.status === 'active')).toBe(true);
   });
 

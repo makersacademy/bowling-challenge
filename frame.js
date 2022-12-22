@@ -23,7 +23,7 @@ class Frame {
     }
   }
 
-  complete(frame_count) {
+  isComplete(frame_count) {
     if (this.rolls.length >= this.#frameLength(frame_count)) {
       return true;
     } else {

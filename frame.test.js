@@ -33,41 +33,41 @@ describe("spare", () => {
   });
 });
 
-describe("complete", () => {
-  it("returns complete as true if two rolls and no strike or spare", () => {
+describe("isComplete", () => {
+  it("returns isComplete as true if two rolls and no strike or spare", () => {
     const frame = new Frame([2, 1]);
-    expect(frame.complete(1)).toBe(true);
+    expect(frame.isComplete(1)).toBe(true);
   });
-  it("returns complete as false if one roll and no strike or spare", () => {
+  it("returns isComplete as false if one roll and no strike or spare", () => {
     const frame = new Frame([2]);
-    expect(frame.complete(1)).toBe(false);
+    expect(frame.isComplete(1)).toBe(false);
   });
-  it("returns complete as true if one roll strike when not frame 10", () => {
+  it("returns isComplete as true if one roll strike when not frame 10", () => {
     const frame = new Frame([10]);
-    expect(frame.complete(1)).toBe(true);
+    expect(frame.isComplete(1)).toBe(true);
   });
-  it("returns complete as true if two rolls spare when not frame 10", () => {
+  it("returns isComplete as true if two rolls spare when not frame 10", () => {
     const frame = new Frame([8, 2]);
-    expect(frame.complete(1)).toBe(true);
+    expect(frame.isComplete(1)).toBe(true);
   });
-  it("returns complete as true if three rolls when first roll strike and frame 10", () => {
+  it("returns isComplete as true if three rolls when first roll strike and frame 10", () => {
     const frame = new Frame([10, 1, 2]);
-    expect(frame.complete(10)).toBe(true);
+    expect(frame.isComplete(10)).toBe(true);
   });
-  it("returns complete as false if two rolls when first roll strike and frame 10", () => {
+  it("returns isComplete as false if two rolls when first roll strike and frame 10", () => {
     const frame = new Frame([10, 1]);
-    expect(frame.complete(10)).toBe(false);
+    expect(frame.isComplete(10)).toBe(false);
   });
-  it("returns complete as false if one roll when first roll strike and frame 10", () => {
+  it("returns isComplete as false if one roll when first roll strike and frame 10", () => {
     const frame = new Frame([10]);
-    expect(frame.complete(10)).toBe(false);
+    expect(frame.isComplete(10)).toBe(false);
   });
-  it("returns complete as true if three rolls when first two rolls spare and frame 10", () => {
+  it("returns isComplete as true if three rolls when first two rolls spare and frame 10", () => {
     const frame = new Frame([8, 2, 2]);
-    expect(frame.complete(10)).toBe(true);
+    expect(frame.isComplete(10)).toBe(true);
   });
-  it("returns complete as false if two rolls when first two rolls spare and frame 10", () => {
+  it("returns isComplete as false if two rolls when first two rolls spare and frame 10", () => {
     const frame = new Frame([8, 2]);
-    expect(frame.complete(10)).toBe(false);
+    expect(frame.isComplete(10)).toBe(false);
   });
 });

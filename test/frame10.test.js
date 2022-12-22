@@ -19,6 +19,16 @@ describe(Frame10, () => {
       expect(() => frame.addRoll(0)).toThrow('Cannot add rolls to this frame');
     });
 
+    it('format returns the same as a normal frame', () => {
+      expect(frame.format()).toEqual('     ');
+
+      frame.addRoll(4);
+      expect(frame.format()).toEqual('4    ');
+
+      frame.addRoll(5);
+      expect(frame.format()).toEqual('4 , 5');
+    });
+
     it('throws if the rolls add up to more than 10', () => {
       frame.addRoll(4);
       expect(frame.score).toBe(4);
@@ -55,6 +65,28 @@ describe(Frame10, () => {
         expect(() => frame.addRoll(7))
           .toThrow('Rolls cannot add up to more than 10');
       });
+
+      it('format is condensed', () => {
+        frame.addRoll(10);
+        expect(frame.format()).toEqual('X    ');
+
+        frame.addRoll(4);
+        expect(frame.format()).toEqual('X,4  ');
+
+        frame.addRoll(5);
+        expect(frame.format()).toEqual('X,4,5');
+      });
+
+      it('format handles strike and a spare', () => {
+        frame.addRoll(10);
+        expect(frame.format()).toEqual('X    ');
+
+        frame.addRoll(0);
+        expect(frame.format()).toEqual('X,-  ');
+
+        frame.addRoll(10);
+        expect(frame.format()).toEqual('X,-,/');
+      });
     });
 
     describe('Roll another strike', () => {
@@ -85,6 +117,25 @@ describe(Frame10, () => {
         frame.addRoll(10);
         expect(() => frame.addRoll(11))
           .toThrow('A roll must be between 0 and 10');
+      });
+
+      it('format allows for any valid roll', () => {
+        frame.addRoll(10);
+        frame.addRoll(10);
+        frame.addRoll(0);
+        expect(frame.format()).toEqual('X,X,-');
+
+        frame = new Frame10();
+        frame.addRoll(10);
+        frame.addRoll(10);
+        frame.addRoll(5);
+        expect(frame.format()).toEqual('X,X,5');
+
+        frame = new Frame10();
+        frame.addRoll(10);
+        frame.addRoll(10);
+        frame.addRoll(10);
+        expect(frame.format()).toEqual('X,X,X');
       });
     });
   });

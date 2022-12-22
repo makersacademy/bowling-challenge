@@ -13,7 +13,7 @@ describe('a frame of bowling', () => {
     expect(frame.total_frame_points()).toEqual (9)
   });
 
-  it('returns 0 for a gutter frame', () => {
+  it('returns the total score of 0 for a gutter frame', () => {
     const frame = new Frame(0, 0)
     expect(frame.total_frame_points()).toEqual (0)
   });
@@ -33,7 +33,7 @@ describe('a frame of bowling', () => {
     expect(frame.strike()).toBe (true)
   });
 
-  it('returns true if a strike scored in the frame', () => {
+  it('returns a bonus frame if a spare scored in the frame', () => {
     const frame = new Frame(5, 5)
     expect(frame.frame_rolls()).toEqual ([5, 5])
     bonus_frame = new Frame(4)

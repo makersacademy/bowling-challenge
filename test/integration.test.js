@@ -1,5 +1,6 @@
-Frame = require('../lib/frame')
-Scoreboard = require('../lib/scoreboard')
+const Frame = require('../lib/frame')
+const Scoreboard = require('../lib/scoreboard')
+
 
 describe('gutter game, 10 frames with 0 points', () => {
   it('adds all frames with a score of 0', () => {
@@ -84,13 +85,15 @@ describe('a game with spares scored', () => {
     scoreboard.add_frame(frame)
     scoreboard.add_frame(frame)
     frame.spare()
+    bonus_frame = new Frame(5)
+    scoreboard.add_bonus_frame(bonus_frame)
     expect(scoreboard.total()).toBe (150)
     expect(scoreboard.total_frames()).toBe (10)
   });
 });
 
-describe('a game with strikes scored', () => {
-  it('returns total score 120, 100 from fraes and 20 from bonus roll 3', () => {
+describe('a perfect game, all strikes scored', () => {
+  it('returns total score 300', () => {
     const frame = new Frame (10)
     const scoreboard = new Scoreboard
     scoreboard.add_frame(frame)
@@ -104,7 +107,109 @@ describe('a game with strikes scored', () => {
     scoreboard.add_frame(frame)
     scoreboard.add_frame(frame)
     frame.strike()
-    expect(scoreboard.total()).toBe (200)
+    bonus_frame = new Frame(10, 10)
+    scoreboard.add_bonus_frame(bonus_frame)
+    expect(scoreboard.total()).toBe (300)
+    expect(scoreboard.total_frames()).toBe (10)
+  });
+});
+
+describe('a game with spares and strikes and a spare is scored in the 10th frame', () => {
+  it('adds all frames with a score of 73', () => {
+    const scoreboard = new Scoreboard
+    let frame = new Frame(10)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(5, 5)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(2, 1)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(7, 1)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(10)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(8, 1)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(9, 0)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(5, 5)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(5, 1)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(5, 5)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    bonus_frame = new Frame(4)
+    scoreboard.add_bonus_frame(bonus_frame)
+    expect(scoreboard.total()).toBe (115)
+    expect(scoreboard.total_frames()).toBe (10)
+  });
+});
+
+describe('a game with spares and strikes', () => {
+  it('adds all frames with a score of 73', () => {
+    const scoreboard = new Scoreboard
+    let frame = new Frame(10)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(5, 5)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(2, 1)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(7, 1)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(10)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(8, 1)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(9, 0)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(5, 5)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(5, 1)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    frame = new Frame(5, 5)
+    scoreboard.add_frame(frame)
+    frame.strike()
+    frame.spare()
+    bonus_frame = new Frame(4)
+    scoreboard.add_bonus_frame(bonus_frame)
+    expect(scoreboard.total()).toBe (115)
     expect(scoreboard.total_frames()).toBe (10)
   });
 });

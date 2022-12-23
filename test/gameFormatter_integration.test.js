@@ -98,7 +98,7 @@ describe('GameFormatter integration', () => {
     expect(scorecard).toContain('|   2.  |     X |   60  |');
     expect(scorecard).toContain('|   8.  |     X |  240  |');
     expect(scorecard).toContain('|   9.  |     X |       |');
-    expect(scorecard).toContain('|  10.  |     X |       |');
+    expect(scorecard).toContain('|  10.  | X     |       |');
     expect(scorecard).toContain('|       | TOTAL |  240  |');
   });
 

@@ -142,13 +142,13 @@ describe(Frame10, () => {
 
   describe('Roll a spare', () => {
     it('adds one bonus roll', () => {
-      frame.addRoll(0);
-      frame.addRoll(10);
+      frame.addRoll(9);
+      frame.addRoll(1);
       expect(frame.status).toBe('bonus');
 
       frame.addRoll(10);
       expect(frame.score).toBe(20);
-      expect(frame.rolls).toEqual([0, 10, 10]);
+      expect(frame.rolls).toEqual([9, 1, 10]);
       expect(frame.status).toEqual('completed');
     });
 

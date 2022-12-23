@@ -88,7 +88,7 @@ describe('GameFormatter integration', () => {
     expect(scorecard).toContain('|       | TOTAL |   31  |');
   });
 
-  it('10 strikes (without frame 10)', () => {
+  it('10 strikes', () => {
     for (let i = 0; i < 10; i++) {
       game.addRoll(10);
     }
@@ -102,20 +102,20 @@ describe('GameFormatter integration', () => {
     expect(scorecard).toContain('|       | TOTAL |  240  |');
   });
 
-  it('9 [9, 1] spares and two gutter balls', () => {
-    for (let i = 0; i < 9; i++) {
+  it('10 [9, 1] spares and a strike', () => {
+    for (let i = 0; i < 10; i++) {
       game.addRoll(9);
       game.addRoll(1);
     }
-    game.addRoll(0); game.addRoll(0);
+    game.addRoll(10);
 
     const scorecard = gameFormatter.getScorecard();
     expect(scorecard).toContain('|   1.  | 9 , / |   19  |');
     expect(scorecard).toContain('|   2.  | 9 , / |   38  |');
     expect(scorecard).toContain('|   8.  | 9 , / |  152  |');
-    expect(scorecard).toContain('|   9.  | 9 , / |  162  |');
-    expect(scorecard).toContain('|  10.  | - , - |  162  |');
-    expect(scorecard).toContain('|       | TOTAL |  162  |');
+    expect(scorecard).toContain('|   9.  | 9 , / |  171  |');
+    expect(scorecard).toContain('|  10.  | 9,/,X |  191  |');
+    expect(scorecard).toContain('|       | TOTAL |  191  |');
   });
 
   it('gutter game', () => {

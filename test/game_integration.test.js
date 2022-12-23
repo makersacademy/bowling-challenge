@@ -10,7 +10,7 @@ describe('Game integration', () => {
   it('initialized game', () => {
     const frames = game.frames;
     expect(frames.length).toEqual(10);
-    expect(frames.every((frame) => frame.rolls.length === 0)).toBe(true);
+    expect(frames.every((frame) => frame.numRolls === 0)).toBe(true);
     expect(frames.every((frame) => frame.status === 'active')).toBe(true);
   });
 
@@ -83,29 +83,24 @@ describe('Game integration', () => {
       expect(frames.every(frame => frame.status === 'completed')).toBe(true);
     });
 
-    it('10 strikes (without frame 10)', () => {
-      for (let i = 0; i < 10; i++) {
+    it('maximum game', () => {
+      for (let i = 0; i < 12; i++) {
         game.addRoll(10);
       }
 
       const frames = game.frames;
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 10; i++) {
         expect(frames[i].score).toBe(30);
         expect(frames[i].status).toBe('completed')
       }
-
-      expect(frames[8].score).toBe(20);
-      expect(frames[8].status).toBe('strike')
-
-      expect(frames[9].score).toBe(10);
-      expect(frames[9].status).toBe('strike')
     });
 
-    it('10 [9, 1] spares (without frame 10)', () => {
+    it('10 [9, 1] spares and a bonus roll', () => {
       for (let i = 0; i < 10; i++) {
         game.addRoll(9);
         game.addRoll(1);
       }
+      game.addRoll(9);
 
       const frames = game.frames;
       for (let i = 0; i < 9; i++) {
@@ -113,7 +108,7 @@ describe('Game integration', () => {
         expect(frames[i].status).toBe('completed')
       }
 
-      expect(frames[9].score).toBe(10);
+      expect(frames[9].score).toBe(19);
     });
 
     it('throws error when trying to add a new roll', () => {

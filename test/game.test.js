@@ -9,6 +9,7 @@ const mockFrame = (status) => {
       score: 0,
       rolls: [],
       status: status,
+      numRolls: 0,
       // eslint-disable-next-line no-unused-vars
       addRoll: jest.fn(x => null),
       // eslint-disable-next-line no-unused-vars
@@ -30,7 +31,7 @@ describe(Game, () => {
 
     const frames = game.frames;
     expect(frames.length).toEqual(10);
-    expect(frames.every((frame) => frame.rolls.length === 0)).toBe(true);
+    expect(frames.every((frame) => frame.numRolls === 0)).toBe(true);
     expect(frames.every((frame) => frame.status === 'active')).toBe(true);
   });
 

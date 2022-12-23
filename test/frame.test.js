@@ -123,6 +123,12 @@ describe(Frame, () => {
       frame.addRoll(3);
       expect(frame.format()).toEqual('7 , /');
     });
+
+    it('zero then a spare', () => {
+      frame.addRoll(0);
+      frame.addRoll(10);
+      expect(frame.format()).toEqual('- , /');
+    });
   });
 
   describe('addBonus method', () => {

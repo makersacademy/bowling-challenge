@@ -9,6 +9,7 @@ const Frame = require('./frame');
 const Game = require('./game');
 
 const frame1 = new Frame;
+const frame2 = new Frame;
 
 rl.prompt();
 
@@ -23,6 +24,7 @@ rl.on('line', (line) => {
   }
 
 })
+
 
 rl.on('close', () => {
   console.log(frame1.rolls);

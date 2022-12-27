@@ -1,74 +1,76 @@
 class Scoreboard {
-
   constructor() {
-    this.scoreboard = []
-    this.frame_count = 0
-    this.sum = 0
+    this.scoreboard = [];
+    this.frame_count = 0;
+    this.sum = 0;
   }
 
   addFrame(frame) {
-    this.frame_array = frame.accessFrame()
-    this.checkForFails()
-    this.scoreboard.push(frame)
-    this.frame_count++
+    this.frame_array = frame.accessFrame();
+    this.roll1 = frame.roll1();
+    this.roll2 = frame.roll2();
+    this.checkForFails();
+    this.scoreboard.push(frame);
+    this.frame_count++;
   }
 
   checkForFails() {
-    if (this.frame_array[0] > 10 || this.frame_array[1] > 10) {
-      throw "A roll cannot be greater than 10"
+    if (this.roll1 > 10 || this.roll2 > 10) {
+      throw 'A roll cannot be greater than 10';
     }
     if (this.frame_count < 9) {
-      if (this.frame_array[0] + this.frame_array[1] > 10) {
-      throw "Sum of rolls cannot be greater than 10"
-    }} else {
-      if (this.frame_array[0] != 10 && this.frame_array[1] != 10) {
-        if (this.frame_array[0] + this.frame_array[1] > 10) {
-          throw "Sum of rolls cannot be greater than 10"
+      if (this.roll1 + this.roll2 > 10) {
+        throw 'Sum of rolls cannot be greater than 10';
+      }
+    } else {
+      if (this.roll1 != 10 && this.roll2 != 10) {
+        if (this.roll1 + this.roll2 > 10) {
+          throw 'Sum of rolls cannot be greater than 10';
         }
-      } else if (this.frame_array[1] != 10 && this.frame_array[2] != 10) {
-        if (this.frame_array[1] + this.frame_array[2] > 10) {
-          throw "Sum of rolls cannot be greater than 10"
+      } else if (this.roll2 != 10 && this.frame_array[2] != 10) {
+        if (this.roll2 + this.frame_array[2] > 10) {
+          throw 'Sum of rolls cannot be greater than 10';
         }
       }
     }
   }
 
   frameCount() {
-    return this.frame_count
+    return this.frame_count;
   }
 
   calculateLastFrame() {
-    const last_frame = this.scoreboard[9]
-    return (this.frame_count === 10 ? last_frame.frameTotal() : 0);
+    const lastFrame = this.scoreboard[9];
+    return (this.frame_count === 10 ? lastFrame.frameTotal() : 0);
   }
 
   calculateFramesTotal() {
-    let index = 0
-    let normal_frames = this.scoreboard.slice(0,9)
-    normal_frames.forEach(frame => {
-      let frame1 = this.scoreboard[index + 1]
-      let frame2 = this.scoreboard[index + 2]
+    let index = 0;
+    const normalFrames = this.scoreboard.slice(0, 9);
+    normalFrames.forEach((frame) => {
+      const frame1 = this.scoreboard[index + 1];
+      const frame2 = this.scoreboard[index + 2];
       if (frame.checkForSpare()) {
-        this.sum += frame.frameTotal() + frame1.accessFrame()[0]
+        this.sum += frame.frameTotal() + frame1.roll1();
       } else if (frame.checkForStrike()) {
-        this.sum += frame.frameTotal()
+        this.sum += frame.frameTotal();
         if (frame1.checkForStrike()) {
-          this.sum += (index === 8 ? frame1.accessFrame()[0] + frame1.accessFrame()[1] : frame1.accessFrame()[0] + frame2.accessFrame()[0])
+          this.sum += (index === 8 ? frame1.roll1() + frame1.roll2() : frame1.roll1() + frame2.roll1());
         } else {
-          this.sum += frame1.accessFrame()[0] + frame1.accessFrame()[1]
+          this.sum += frame1.roll1() + frame1.roll2();
         }
       } else {
-        this.sum += frame.frameTotal()
+        this.sum += frame.frameTotal();
       }
-      index++
-    })
-    return this.sum
+      index++;
+    });
+    return this.sum;
   }
 
   total() {
-    this.sum += this.calculateFramesTotal()
-    this.sum += this.calculateLastFrame()
-    return this.sum
+    this.sum += this.calculateFramesTotal();
+    this.sum += this.calculateLastFrame();
+    return this.sum;
   }
 }
 

@@ -2,6 +2,7 @@
 
 # constructor()
   this.frameScores = []
+  this.BonusRollScores = []
 
 # methods:
 playFrame(firstScore, secondScore)

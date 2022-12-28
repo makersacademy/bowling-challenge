@@ -11,11 +11,11 @@ playFrame(firstScore, secondScore)
 getFrameScores()
 - returns this.frameScores array
 
-playTenthFrame()
-- calls rollOne(score)
-- calls rollTwo(score)
-- if spare, call rollOne(score)
-- if strike, call rollOne(score) and rollTwo(score)
+bonusSpareRoll(score)
+
+bonusStrikeRolls(firstScore, secondScore)
+
+getBonusRollScores()
 
 
 
@@ -32,7 +32,13 @@ rollOne(score)
 rollTwo(score)
 - raise error if not an int from 0 to 10
 *- this.rollTwoScore = score;*
-- push this.rollTwoScore to this.frameScores -->
+- push this.rollTwoScore to this.frameScores
+
+playTenthFrame()
+- calls rollOne(score)
+- calls rollTwo(score)
+- if spare, call rollOne(score)
+- if strike, call rollOne(score) and rollTwo(score) -->
 
 
 

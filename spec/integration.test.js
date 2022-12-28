@@ -40,7 +40,24 @@ describe('integration', () => {
         scorecard.newFrame(7, 2);
         scorecard.newFrame(7, 2);
         scorecard.newFrame(7, 2);
-      }).toThrow('newFrame can only be called 9 times, please call newTenthFrame for the final frame');
+      }).toThrow('newFrame can only be called 10 times, please call newTenthFrame for the final frame');
+    });
+  });
+
+  describe('newTenthFrame(firstScore, secondScore, thirdScore, fourthScore) (with seeScorecard())', () => {
+    it('adds first two scores to scorecard if no bonus rolls', () => {
+      scorecard.newTenthFrame(5, 4, 0, 0);
+      expect(scorecard.seeScorecard()).toEqual([5, 4])
+    });
+
+    it('adds first three scores to scorecard if one bonus roll', () => {
+      scorecard.newTenthFrame(5, 5, 5, 0);
+      expect(scorecard.seeScorecard()).toEqual([5, 5, 5])
+    });
+
+    it('adds four scores to scorecard if two bonus rolls', () => {
+      scorecard.newTenthFrame(10, 0, 7, 6);
+      expect(scorecard.seeScorecard()).toEqual([10, 0, 7, 6])
     });
   });
 });

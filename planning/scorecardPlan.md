@@ -7,30 +7,31 @@
 # methods:
 playFullGame()
 - const scorecard = new Scorecard;
-- loop 9 times:
+- loop 10 times:
     - scorecard.newFrame()
-    - scorecard.addFrameToScorecard()
-- scorecard.newTenthFrame()
+if
 - totalScore = scorecard.calculateTotalScore
 - if totalScore === 0, console.log / return gutter game message
 - else if totalScore === 300, console.log / return perfect game message
 - else console.log / return general totalScore message
 
-newFrame()
+newFrame(firstScore, secondScore)
 - creates instance of Frame
 - calls playFrame on instance Frame
 - calls addFrameToScorecard(frame)
 
-newTenthFrame()
+newTenthFrame(firstScore, secondScore, thirdScore, fourthScore)
 - creates instance of Frame
 - calls playFrame on instance of Frame
+- if (firstScore === 10)
+      call bonusStrikeRolls(thirdScore, fourthScore) on frame
+      call getBonusRollScores()
+- else if (firstScore + secondScore === 10)
+      call bonusSpareRoll(thirdScore) on frame
+      call getBonusRollScores()
+- else
+      only push first two scores to scorecard
 - calls addFrameToScorecard
-- if (this.scorecard[18] === 10)
-      call bonusStrikeRolls(firstScore, secondScore) on frame
-      call getBonusRollScores()
-- else if (this.scorecard[18] + this.scorecard[19] === 10)
-      call bonusSpareRoll(score) on frame
-      call getBonusRollScores()
 
 addFrameToScorecard(frame)
 - calls getFrameScores() on instance of Frame

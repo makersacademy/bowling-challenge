@@ -30,5 +30,10 @@ describe(Frame, () => {
       frame.rollTwo(4);
       expect(frame.getFrameScores()).toEqual([5, 4]);
     });
+
+    it('returns 10 if player scores a strike', () => {
+      frame.rollOne(10);
+      expect(frame.getFrameScores()).toEqual([10, 0]);
+    })
   });
 });

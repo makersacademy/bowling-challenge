@@ -6,7 +6,7 @@
 # methods:
 rollOne(score)
 - raise error if score is not an int from 0 to 10
-- this.rollOneScore = score
+*- this.rollOneScore = score*
 - pushes this.rollOneScore to this.frameScores
 - if this.rollOneScore === 10:
     - this.rollTwoScore = 0
@@ -14,7 +14,7 @@ rollOne(score)
 
 rollTwo(score)
 - raise error if not an int from 0 to 10
-- this.rollTwoScore = score;
+*- this.rollTwoScore = score;*
 - push this.rollTwoScore to this.frameScores
 
 playFrame()

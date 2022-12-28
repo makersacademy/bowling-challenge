@@ -19,7 +19,7 @@ playFullGame()
 newFrame()
 - creates instance of Frame
 - calls playFrame on instance Frame
-- calls addFrameToScorecard
+- calls addFrameToScorecard(frame)
 
 newTenthFrame()
 - creates instance of Frame
@@ -32,10 +32,14 @@ newTenthFrame()
       call bonusSpareRoll(score) on frame
       call getBonusRollScores()
 
-addFrameToScorecard()
+addFrameToScorecard(frame)
 - calls getFrameScores() on instance of Frame
 - adds each element of scores array to this.scorecard
 - increments this.frame
+
+
+seeScorecard()
+- returns this.scorecard
 
 calculateScoreWithoutBonusRolls
 - works out total for first 20 scores (two scores for each frame) by iterating through this.scorecard

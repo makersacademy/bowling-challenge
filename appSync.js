@@ -4,6 +4,7 @@ const Frame = require('./frame');
 const Game = require('./game');
 
 const game = new Game;
+let frameNum = 1;
 
 const playNewFrame = () => {
 
@@ -14,7 +15,7 @@ const playNewFrame = () => {
   while(true) {
     counter += 1;
   
-    let pins = parseInt(readline.question(`Type number of pins knocked down in frame 1, roll ${counter}:\n`));
+    let pins = parseInt(readline.question(`Type number of pins knocked down in frame ${frameNum}, roll ${counter}:\n`));
 
     while(pins > (10 - frame.score())) {
       pins = parseInt(readline.question('Number too big, try again:\n'));
@@ -23,6 +24,7 @@ const playNewFrame = () => {
     frame.addRoll(pins);
 
     if (counter === 2 || pins === 10) {
+      frameNum += 1;
       break;
     }
 

@@ -23,8 +23,14 @@ newFrame()
 
 newTenthFrame()
 - creates instance of Frame
-- calls playTenthFrame on instance of Frame
+- calls playFrame on instance of Frame
 - calls addFrameToScorecard
+- if (this.scorecard[18] === 10)
+      call bonusStrikeRolls(firstScore, secondScore) on frame
+      call getBonusRollScores()
+- else if (this.scorecard[18] + this.scorecard[19] === 10)
+      call bonusSpareRoll(score) on frame
+      call getBonusRollScores()
 
 addFrameToScorecard()
 - calls getFrameScores() on instance of Frame

@@ -39,4 +39,38 @@ describe(Frame, () => {
       }).toThrow('Total score for a frame must not exceed 10');
     });
   });
+
+  describe('bonusSpareRoll(score)', () => {
+    test('throws an error when score is > 10', () => {
+      expect(() => {
+        frame.bonusSpareRoll(11);
+      }).toThrow('Please enter numbers between 0 to 10');
+    });
+  });
+
+  describe('bonusStrikeRolls(firstScore, secondScore)', () => {
+    test('throws an error when firstScore is > 10', () => {
+      expect(() => {
+        frame.bonusStrikeRolls(11, 0);
+      }).toThrow('Please enter numbers between 0 to 10');
+    });
+
+    test('throws an error when secondScore is > 10', () => {
+      expect(() => {
+        frame.bonusStrikeRolls(5, 11);
+      }).toThrow('Please enter numbers between 0 to 10');
+    });
+  });
+
+  describe('getBonusRollScores()', () => {
+    it('returns the score from a bonus spare roll', () => {
+      frame.bonusSpareRoll(5);
+      expect(frame.getBonusRollScores()).toEqual([5]);
+    })
+
+    it('returns the scores from bonus strike rolls', () => {
+      frame.bonusStrikeRolls(7, 6);
+      expect(frame.getBonusRollScores()).toEqual([7, 6]);
+    })
+  })
 });

@@ -1,1 +1,0 @@
-const Frame = require('./frame');

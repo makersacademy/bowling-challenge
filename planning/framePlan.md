@@ -4,22 +4,9 @@
   this.frameScores = []
 
 # methods:
-rollOne(score)
-- raise error if score is not an int from 0 to 10
-*- this.rollOneScore = score*
-- pushes this.rollOneScore to this.frameScores
-- if this.rollOneScore === 10:
-    - this.rollTwoScore = 0
-    - push this.rollTwoScore to this.frameScores
-
-rollTwo(score)
-- raise error if not an int from 0 to 10
-*- this.rollTwoScore = score;*
-- push this.rollTwoScore to this.frameScores
-
-playFrame()
-- calls rollOne(score)
-- calls rollTwo(score) if this.rollOneScore !== 10
+playFrame(firstScore, secondScore)
+- handles errors
+- pushes each score to this.frameScores if valid
 
 getFrameScores()
 - returns this.frameScores array
@@ -31,6 +18,21 @@ playTenthFrame()
 - if strike, call rollOne(score) and rollTwo(score)
 
 
+
+
+<!-- # Old
+rollOne(score)
+- raise error if score is not an int from 0 to 10
+*- this.rollOneScore = score*
+- pushes this.rollOneScore to this.frameScores
+- if this.rollOneScore === 10:
+    - this.rollTwoScore = 0
+    - push this.rollTwoScore to this.frameScores
+
+rollTwo(score)
+- raise error if not an int from 0 to 10
+*- this.rollTwoScore = score;*
+- push this.rollTwoScore to this.frameScores -->
 
 
 

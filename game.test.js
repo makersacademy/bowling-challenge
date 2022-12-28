@@ -337,4 +337,62 @@ describe('Game class', () => {
 
     expect(game.updateScore()).toEqual((50));
   })
+
+  it('returns the score for a gutter game', () => {
+    
+    const frame1 = new Frame;
+    frame1.addRoll(10);
+
+    const frame2 = new Frame;
+    frame2.addRoll(10);
+    
+    const frame3 = new Frame;
+    frame3.addRoll(10);
+    
+
+    const frame4 = new Frame;
+    frame4.addRoll(10);
+    
+
+    const frame5 = new Frame;
+    frame5.addRoll(10);
+    
+
+    const frame6 = new Frame;
+    frame6.addRoll(10);
+    
+
+    const frame7 = new Frame;
+    frame7.addRoll(10);
+    
+
+    const frame8 = new Frame;
+    frame8.addRoll(10);
+    
+
+    const frame9 = new Frame;
+    frame9.addRoll(10);
+    
+
+    const frame10 = new Frame;
+    frame10.addRoll(10);
+    frame10.addRoll(10);
+    frame10.addRoll(10);
+
+    const game = new Game;
+    game.addFrame(frame1);
+    game.addFrame(frame2);
+    game.addFrame(frame3);
+    game.addFrame(frame4);
+    game.addFrame(frame5);
+    game.addFrame(frame6);
+    game.addFrame(frame7);
+    game.addFrame(frame8);
+    game.addFrame(frame9);
+    game.addFrame(frame10);
+
+    expect(game.updateScorecard()).toEqual([ 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 ]);
+
+    expect(game.updateScore()).toEqual(300);
+  })
 })

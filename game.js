@@ -38,9 +38,12 @@ class Game {
 
   strikeBonusScorecardUpdate() {
     this.frames.forEach((x, i) => {
-      if (x.strike() && i < (this.frames.length - 1)) {
+      if(x.strike() && i < (this.frames.length - 2) && this.frames[i+1].strike() === true) {
+        this.scorecard[i] = (this.frames[i].score() + this.frames[i+1].rolls[0] + this.frames[i+2].rolls[0]);
+      }
+      else if (x.strike() && i < (this.frames.length - 1)) {
         this.scorecard[i] = (this.frames[i].score() + this.frames[i+1].rolls[0] + this.frames[i+1].rolls[1]);
-        }
+        } 
     })
   }
 

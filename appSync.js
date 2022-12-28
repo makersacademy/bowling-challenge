@@ -40,4 +40,10 @@ const frameByFrameScore = () => {
 playNewFrame();
 playNewFrame();
 playNewFrame();
+playNewFrame();
+playNewFrame();
+playNewFrame();
+playNewFrame();
+playNewFrame();
+playNewFrame();
 frameByFrameScore();

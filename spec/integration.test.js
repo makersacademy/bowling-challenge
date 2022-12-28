@@ -26,4 +26,21 @@ describe('integration', () => {
       expect(scorecard.seeScorecard()).toEqual([7, 2, 5, 0]);
     });
   });
+
+  describe('newFrame(firstScore, secondScore)', () => {
+    test('throws error if newFrame is called more than 9 times', () => {
+      expect(() => {
+        scorecard.newFrame(7, 2);
+        scorecard.newFrame(7, 2);
+        scorecard.newFrame(7, 2);
+        scorecard.newFrame(7, 2);
+        scorecard.newFrame(7, 2);
+        scorecard.newFrame(7, 2);
+        scorecard.newFrame(7, 2);
+        scorecard.newFrame(7, 2);
+        scorecard.newFrame(7, 2);
+        scorecard.newFrame(7, 2);
+      }).toThrow('newFrame can only be called 9 times, please call newTenthFrame for the final frame');
+    });
+  });
 });

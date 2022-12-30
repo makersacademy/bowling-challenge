@@ -15,12 +15,15 @@ class Game {
   framesWithRolls() {
     let frames = [];
 
-    this.allFrames.forEach(addFrames);
-
-    function addFrames(frame) {
+    this.allFrames.forEach((frame) => {
       frames.push(frame.scores());
-    }
+    });
+
     return frames;
+  }
+
+  frames() {
+    return this.allFrames;
   }
 
   #addRollToFrame(roll) {

@@ -16,7 +16,7 @@ class Frame {
   }
 
   spare() {
-    if (this.strike() === false && this.#sum() === 10) {
+    if (this.strike() === false && this.sum() === 10) {
       return true;
     } else {
       return false;
@@ -31,7 +31,7 @@ class Frame {
     }
   }
 
-  #sum() {
+  sum() {
     const sum = this.rolls.reduce((accumulator, value) => {
       return accumulator + value;
     }, 0);
@@ -40,7 +40,7 @@ class Frame {
 
   #frameLength(frame_count) {
     let frameLength = 2;
-    if (this.#sum() >= 10) {
+    if (this.sum() >= 10) {
       if (frame_count === 10) {
         frameLength = 3;
       } else {

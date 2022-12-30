@@ -3,7 +3,6 @@ const Game = require("./game");
 class Scorecard {
   constructor(game) {
     this.game = game.frames();
-    // this.framesWithRolls = game.framesWithRolls();
   }
 
   scoreByFrame() {
@@ -24,17 +23,14 @@ class Scorecard {
     return sum;
   }
 
-  // addScores(frame) {
-  //   frameScores.push(frame.sum() + bonusPoints(frame));
-  // }
-
   #bonusPoints(frame) {
+    this.nextRolls = [];
     let bonusPoints = 0;
     const notFrameTen = this.nextIndex < 10;
 
-    if (frame.strike() === true && notFrameTen === true) {
+    if (frame.strike() && notFrameTen) {
       bonusPoints = this.#nextTwoRolls();
-    } else if (frame.spare() === true && this.nextIndex < 10) {
+    } else if (frame.spare() && notFrameTen) {
       bonusPoints = this.#nextRoll();
     }
 
@@ -42,33 +38,24 @@ class Scorecard {
   }
 
   #nextTwoRolls() {
-    const nextRolls = [];
+    this.#addNextFrame(this.nextIndex);
+    this.#addNextFrame(this.nextIndex + 1);
 
-    this.#addNextFrame(nextRolls);
-    this.#addSecondaryFrame(nextRolls);
-
-    return nextRolls.flat()[0] + nextRolls.flat()[1];
-  }
-
-  #addNextFrame(nextRolls) {
-    if (this.nextIndex < this.game.length) {
-      nextRolls.push(this.game[this.nextIndex].scores());
-    } else {
-      nextRolls.push([0]);
-    }
-  }
-
-  #addSecondaryFrame(nextRolls) {
-    const secondaryIndex = this.nextIndex + 1;
-    if (secondaryIndex < this.game.length) {
-      nextRolls.push(this.game[secondaryIndex].scores());
-    } else {
-      nextRolls.push([0]);
-    }
+    return this.nextRolls.flat()[0] + this.nextRolls.flat()[1];
   }
 
   #nextRoll() {
-    return this.game[this.nextIndex].scores()[0];
+    this.#addNextFrame(this.nextIndex);
+
+    return this.nextRolls.flat()[0];
+  }
+
+  #addNextFrame(index) {
+    if (index < this.game.length) {
+      this.nextRolls.push(this.game[index].scores());
+    } else {
+      this.nextRolls.push([0]);
+    }
   }
 }
 

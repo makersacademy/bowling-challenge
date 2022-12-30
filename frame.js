@@ -8,27 +8,15 @@ class Frame {
   }
 
   strike() {
-    if (this.rolls[0] === 10) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.rolls[0] === 10;
   }
 
   spare() {
-    if (this.strike() === false && this.sum() === 10) {
-      return true;
-    } else {
-      return false;
-    }
+    return !this.strike() && this.sum() === 10;
   }
 
   isComplete(frame_count) {
-    if (this.rolls.length >= this.#frameLength(frame_count)) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.rolls.length >= this.#frameLength(frame_count);
   }
 
   sum() {

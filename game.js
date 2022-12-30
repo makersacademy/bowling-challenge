@@ -7,7 +7,7 @@ class Game {
   }
 
   add(roll) {
-    if (this.#maxNumberOfFrames() === false) {
+    if (!this.#maxNumberOfFrames()) {
       this.#addRollToGame(roll);
     }
   }
@@ -47,7 +47,7 @@ class Game {
   }
 
   #resetCurrentFrame(frame) {
-    if (frame.isComplete(this.allFrames.length) === true) {
+    if (frame.isComplete(this.allFrames.length)) {
       this.currentFrame = [];
     }
   }

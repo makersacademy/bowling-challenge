@@ -324,4 +324,114 @@ describe("Returns total score when partial game complete", () => {
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 10]);
     expect(scorecard.totalScore()).toBe(31);
   });
+  it("when 8 frames complete and spare scored in frame 8", () => {
+    const game = new Game();
+
+    for (let i = 0; i < 7; i++) {
+      game.add(1);
+      game.add(2);
+    }
+
+    game.add(8);
+    game.add(2);
+
+    expect(game.framesWithRolls()).toEqual([
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [8, 2],
+    ]);
+
+    const scorecard = new Scorecard(game);
+    expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 10]);
+    expect(scorecard.totalScore()).toBe(31);
+  });
+  it("when 8 frames and 1 roll complete and spare scored in frame 8", () => {
+    const game = new Game();
+
+    for (let i = 0; i < 7; i++) {
+      game.add(1);
+      game.add(2);
+    }
+
+    game.add(8);
+    game.add(2);
+    game.add(1);
+
+    expect(game.framesWithRolls()).toEqual([
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [8, 2],
+      [1],
+    ]);
+
+    const scorecard = new Scorecard(game);
+    expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 11, 1]);
+    expect(scorecard.totalScore()).toBe(33);
+  });
+  it("when 8 frames and 1 roll complete and strike scored in frame 8", () => {
+    const game = new Game();
+
+    for (let i = 0; i < 7; i++) {
+      game.add(1);
+      game.add(2);
+    }
+
+    game.add(10);
+    game.add(1);
+
+    expect(game.framesWithRolls()).toEqual([
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [10],
+      [1],
+    ]);
+
+    const scorecard = new Scorecard(game);
+    expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 11, 1]);
+    expect(scorecard.totalScore()).toBe(33);
+  });
+  it("when 9 frames and 1 roll complete and strike scored in frame 8 and frame 9", () => {
+    const game = new Game();
+
+    for (let i = 0; i < 7; i++) {
+      game.add(1);
+      game.add(2);
+    }
+
+    game.add(10);
+    game.add(10);
+    game.add(1);
+
+    expect(game.framesWithRolls()).toEqual([
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [10],
+      [10],
+      [1],
+    ]);
+
+    const scorecard = new Scorecard(game);
+    expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 21, 11, 1]);
+    expect(scorecard.totalScore()).toBe(54);
+  });
 });

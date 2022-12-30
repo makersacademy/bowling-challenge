@@ -2,6 +2,8 @@ const ScoreCard = require('./scorecard');
 
 
 describe('Scorecard', () => {
+  // created beforeEach loop so that I dont have to create a new instance of
+  // ScoreCard on each test
   let scoreCard;
 
   beforeEach(() => {
@@ -26,7 +28,7 @@ describe('Scorecard', () => {
     expect(scoreCard.totalScore()).toBe(16); //spare with a score of 3 after 
   });
 
-  xit('gives the score when you roll a strike in your game', () => {
+  it('gives the score when you roll a strike in your game', () => {
     
     expect(scoreCard.totalScore()).toBe(22); //strike with a score of 3 and 3 after 
   });

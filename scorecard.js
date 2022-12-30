@@ -42,16 +42,29 @@ class Scorecard {
   }
 
   #nextTwoRolls() {
-    const nextTwoFrames = [];
-    const secondaryIndex = this.nextIndex + 1;
+    const nextRolls = [];
 
-    nextTwoFrames.push(this.game[this.nextIndex].scores());
+    this.#addNextFrame(nextRolls);
+    this.#addSecondaryFrame(nextRolls);
 
-    if (secondaryIndex < 10) {
-      nextTwoFrames.push(this.game[secondaryIndex].scores());
+    return nextRolls.flat()[0] + nextRolls.flat()[1];
+  }
+
+  #addNextFrame(nextRolls) {
+    if (this.nextIndex < this.game.length) {
+      nextRolls.push(this.game[this.nextIndex].scores());
+    } else {
+      nextRolls.push([0]);
     }
+  }
 
-    return nextTwoFrames.flat()[0] + nextTwoFrames.flat()[1];
+  #addSecondaryFrame(nextRolls) {
+    const secondaryIndex = this.nextIndex + 1;
+    if (secondaryIndex < this.game.length) {
+      nextRolls.push(this.game[secondaryIndex].scores());
+    } else {
+      nextRolls.push([0]);
+    }
   }
 
   #nextRoll() {

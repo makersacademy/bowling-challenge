@@ -278,3 +278,50 @@ describe("Returns total score when all frames complete", () => {
     expect(scorecard.totalScore()).toBe(108);
   });
 });
+describe("Returns total score when partial game complete", () => {
+  it("when 5 frames complete and no strikes or spares are scored", () => {
+    const game = new Game();
+
+    for (let i = 0; i < 5; i++) {
+      game.add(1);
+      game.add(2);
+    }
+
+    expect(game.framesWithRolls()).toEqual([
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+    ]);
+
+    const scorecard = new Scorecard(game);
+    expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3]);
+    expect(scorecard.totalScore()).toBe(15);
+  });
+  it("when 8 frames complete and strikes scored in frame 8", () => {
+    const game = new Game();
+
+    for (let i = 0; i < 7; i++) {
+      game.add(1);
+      game.add(2);
+    }
+
+    game.add(10);
+
+    expect(game.framesWithRolls()).toEqual([
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [10],
+    ]);
+
+    const scorecard = new Scorecard(game);
+    expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 10]);
+    expect(scorecard.totalScore()).toBe(31);
+  });
+});

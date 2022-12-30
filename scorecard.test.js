@@ -20,7 +20,7 @@ describe('Scorecard', () => {
     expect(scoreCard.totalScore()).toBe(20);
   });
 
-  it('gives the score when you roll a spare in your game', () => {
+  it('gives the correct score with spare logic in your game', () => {
     scoreCard.roll(5);
     scoreCard.roll(5);
     scoreCard.roll(3);
@@ -28,7 +28,7 @@ describe('Scorecard', () => {
     expect(scoreCard.totalScore()).toBe(16); //spare with a score of 3 after 
   });
 
-  it('gives the score when you roll a strike in your game', () => {
+  it('gives the correct score with strike logic in your game', () => {
     scoreCard.roll(10);
     scoreCard.roll(3);
     scoreCard.roll(3);

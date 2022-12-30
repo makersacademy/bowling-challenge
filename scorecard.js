@@ -1,7 +1,6 @@
 class ScoreCard {
   constructor() {
     this.rolls = [];
-    
   }
   
   roll(pins) {

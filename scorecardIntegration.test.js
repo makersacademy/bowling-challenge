@@ -142,7 +142,7 @@ describe("Returns total score when all frames complete", () => {
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 30, 21, 13]);
     expect(scorecard.totalScore()).toBe(85);
   });
-  it("when perfect gamne returns 300", () => {
+  it("when perfect game returns 300", () => {
     const game = new Game();
 
     for (let i = 0; i < 12; i++) {
@@ -167,5 +167,35 @@ describe("Returns total score when all frames complete", () => {
       30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
     ]);
     expect(scorecard.totalScore()).toBe(300);
+  });
+  it("when spare scored in frame 9", () => {
+    const game = new Game();
+
+    for (let i = 0; i < 8; i++) {
+      game.add(1);
+      game.add(2);
+    }
+
+    game.add(8);
+    game.add(2);
+    game.add(1);
+    game.add(2);
+
+    expect(game.framesWithRolls()).toEqual([
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [1, 2],
+      [8, 2],
+      [1, 2],
+    ]);
+
+    const scorecard = new Scorecard(game);
+    expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 3, 11, 3]);
+    expect(scorecard.totalScore()).toBe(38);
   });
 });

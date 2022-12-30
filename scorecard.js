@@ -34,7 +34,10 @@ class Scorecard {
 
     if (frame.strike() === true && notFrameTen === true) {
       bonusPoints = this.#nextTwoRolls();
+    } else if (frame.spare() === true && this.nextIndex < 10) {
+      bonusPoints = this.#nextRoll();
     }
+
     return bonusPoints;
   }
 
@@ -49,6 +52,10 @@ class Scorecard {
     }
 
     return nextTwoFrames.flat()[0] + nextTwoFrames.flat()[1];
+  }
+
+  #nextRoll() {
+    return this.game[this.nextIndex].scores()[0];
   }
 }
 

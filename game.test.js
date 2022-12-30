@@ -338,7 +338,7 @@ describe('Game class', () => {
     expect(game.updateScore()).toEqual((50));
   })
 
-  it('returns the score for a gutter game', () => {
+  it('returns the score for a straight strikes', () => {
     
     const frame1 = new Frame;
     frame1.addRoll(10);
@@ -348,7 +348,6 @@ describe('Game class', () => {
     
     const frame3 = new Frame;
     frame3.addRoll(10);
-    
 
     const frame4 = new Frame;
     frame4.addRoll(10);

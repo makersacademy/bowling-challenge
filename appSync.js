@@ -7,8 +7,6 @@ const game = new Game;
 let frameNum = 1;
 
 const playNewFrame = () => {
-
-  
   const frame = new Frame;
   let counter = 0
 
@@ -51,7 +49,7 @@ const playTenthFrame = () => {
     if (counter === 2 && frame.score() < 10) {
       break;
     }
-    if (counter === 3 && (frame.rolls[0] || frame.rolls[1] === 10)) {
+    else if (counter === 3 && (frame.rolls[0] || frame.rolls[1] === 10)) {
       break;
     }
     else if(counter === 3 && frame.rolls[0] === 10) {

@@ -10,40 +10,14 @@ class Game {
     this.scorecard.push(frame.score());
   }
 
-  // strikeBonuses() {
-  //   this.strikeBonus = 0;
-  //   this.frames.forEach((x, i) => {
-  //     if (x.strike() && i < 9) {
-  //       this.strikeBonus += (this.frames[i+1].rolls[0] + this.frames[i+1].rolls[1]);
-  //       }
-  //   })
-  //   return this.strikeBonus;
-  // }
-
-  // spareBonuses() {
-  //   this.spareBonus = 0;
-  //   this.frames.forEach((x, i) => {
-  //     if (x.spare() && i < 9) {
-  //       this.spareBonus += this.frames[i+1].rolls[0];
-  //     }
-  //   })
-  //   return this.spareBonus;
-  // }
-
-  // totalScore() {
-  //   let total = 0;
-  //   this.frames.forEach(x => total += x.score());
-  //   return total + this.strikeBonuses() + this.spareBonuses();
-  // }
-
   strikeBonusScorecardUpdate() {
     this.frames.forEach((x, i) => {
       if(x.strike() && i < (this.frames.length - 2) && this.frames[i+1].strike() === true) {
         this.scorecard[i] = (this.frames[i].score() + this.frames[i+1].rolls[0] + this.frames[i+2].rolls[0]);
       }
-      else if(x.strike() && i < (this.frames.length - 1) && this.frames[i+1].strike() === true) {
-        this.scorecard[i] = (this.frames[i].score() + this.frames[i+1].rolls[0]);
-      }
+      // else if(x.strike() && i < (this.frames.length - 1) && this.frames[i+1].strike() === true) {
+      //   this.scorecard[i] = (this.frames[i].score() + this.frames[i+1].rolls[0]);
+      // }
       else if (x.strike() && i < (this.frames.length - 1)) {
         this.scorecard[i] = (this.frames[i].score() + this.frames[i+1].rolls[0] + this.frames[i+1].rolls[1]);
         } 

@@ -2,7 +2,7 @@ const Game = require("./game");
 const Scorecard = require("./scorecard");
 
 describe("Returns total score when all frames complete", () => {
-  it("when gutter game", () => {
+  it("when gutter game returns 0", () => {
     const game = new Game();
 
     for (let i = 0; i < 20; i++) {
@@ -141,5 +141,31 @@ describe("Returns total score when all frames complete", () => {
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 30, 21, 13]);
     expect(scorecard.totalScore()).toBe(85);
+  });
+  it("when perfect gamne returns 300", () => {
+    const game = new Game();
+
+    for (let i = 0; i < 12; i++) {
+      game.add(10);
+    }
+
+    expect(game.framesWithRolls()).toEqual([
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10],
+      [10, 10, 10],
+    ]);
+
+    const scorecard = new Scorecard(game);
+    expect(scorecard.scoreByFrame()).toEqual([
+      30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+    ]);
+    expect(scorecard.totalScore()).toBe(300);
   });
 });

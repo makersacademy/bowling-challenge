@@ -24,17 +24,31 @@ class Scorecard {
     return sum;
   }
 
-  addScores(frame) {
-    frameScores.push(frame.sum() + bonusPoints(frame));
-  }
+  // addScores(frame) {
+  //   frameScores.push(frame.sum() + bonusPoints(frame));
+  // }
 
   #bonusPoints(frame) {
     let bonusPoints = 0;
+    const notFrameTen = this.nextIndex < 10;
 
-    if (frame.strike() === true) {
-      bonusPoints = this.game[this.nextIndex].sum();
+    if (frame.strike() === true && notFrameTen === true) {
+      bonusPoints = this.#nextTwoRolls();
     }
     return bonusPoints;
+  }
+
+  #nextTwoRolls() {
+    const secondaryIndex = this.nextIndex + 1;
+    const nextTwoFrames = [];
+
+    nextTwoFrames.push(this.game[this.nextIndex].scores());
+
+    if (secondaryIndex < 10) {
+      nextTwoFrames.push(this.game[secondaryIndex].scores());
+    }
+
+    return nextTwoFrames.flat()[0] + nextTwoFrames.flat()[1];
   }
 }
 

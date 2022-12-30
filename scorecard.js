@@ -42,8 +42,8 @@ class Scorecard {
   }
 
   #nextTwoRolls() {
-    const secondaryIndex = this.nextIndex + 1;
     const nextTwoFrames = [];
+    const secondaryIndex = this.nextIndex + 1;
 
     nextTwoFrames.push(this.game[this.nextIndex].scores());
 

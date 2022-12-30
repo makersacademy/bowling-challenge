@@ -8,7 +8,7 @@ class Game {
 
   add(roll) {
     if (this.#maxNumberOfFrames() === false) {
-      this.#addRollToFrame(roll);
+      this.#addRollToGame(roll);
     }
   }
 
@@ -26,16 +26,27 @@ class Game {
     return this.allFrames;
   }
 
-  #addRollToFrame(roll) {
-    this.currentFrame.push(roll);
+  #addRollToGame(roll) {
+    this.#removeIncompleteFrame();
+    this.#addFrameToGame(roll);
+  }
 
-    if (this.currentFrame.length > 1) {
+  #removeIncompleteFrame() {
+    if (this.currentFrame.length > 0) {
       this.allFrames.pop();
     }
+  }
 
+  #addFrameToGame(roll) {
+    this.currentFrame.push(roll);
     const frame = new Frame(this.currentFrame);
+
     this.allFrames.push(frame);
 
+    this.#resetCurrentFrame(frame);
+  }
+
+  #resetCurrentFrame(frame) {
     if (frame.isComplete(this.allFrames.length) === true) {
       this.currentFrame = [];
     }

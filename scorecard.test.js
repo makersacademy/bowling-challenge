@@ -29,12 +29,15 @@ describe('Scorecard', () => {
   });
 
   it('gives the score when you roll a strike in your game', () => {
-    
+    scoreCard.roll(10);
+    scoreCard.roll(3);
+    scoreCard.roll(3);
+    rollMultiple(0, 16);
     expect(scoreCard.totalScore()).toBe(22); //strike with a score of 3 and 3 after 
   });
 
-  xit('gives you a score of 300 when you play a perfect game', () => {
-    
+  it('gives you a score of 300 when you play a perfect game', () => {
+    rollMultiple(10, 12)
     expect(scoreCard.totalScore()).toBe(300);
   });
 

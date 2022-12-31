@@ -65,7 +65,7 @@ describe(Frame, () => {
   describe('getBonusRollScores()', () => {
     it('returns the score from a bonus spare roll', () => {
       frame.bonusSpareRoll(5);
-      expect(frame.getBonusRollScores()).toEqual([5]);
+      expect(frame.getBonusRollScores()).toEqual([5, 0]);
     })
 
     it('returns the scores from bonus strike rolls', () => {

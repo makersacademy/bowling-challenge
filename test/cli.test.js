@@ -48,4 +48,59 @@ describe('Cli integration', () => {
       expect.stringContaining('FRAME | ROLLS | SCORE')
     );
   });
+
+  it('Allows for roll input until empty input is given', () => {
+    prompt.mockReturnValueOnce('1') // Add rolls
+      .mockReturnValueOnce('10') // Strike
+      .mockReturnValueOnce('3') // Roll 3
+      .mockReturnValueOnce('7') // Roll 7 (spare)
+      .mockReturnValueOnce('5') // Roll 5
+      .mockReturnValueOnce('') // Back to menu
+      .mockReturnValueOnce('2') // Print scorecard
+      .mockReturnValueOnce('3'); // Quit
+
+    cli.run();
+    
+    expect(prompt).toHaveBeenCalledTimes(8);
+    expect(log).toHaveBeenCalledWith('Input your rolls (to stop press enter again)');
+    expect(log).toHaveBeenCalledWith(expect.stringContaining('1.  |     X |   20'));
+    expect(log).toHaveBeenCalledWith(expect.stringContaining('2.  | 3 , / |   35'));
+    expect(log).toHaveBeenCalledWith(expect.stringContaining('3.  | 5     |     '));
+  });
+
+  it('Allows for several roll inputs', () => {
+    prompt.mockReturnValueOnce('1') // Add rolls
+      .mockReturnValueOnce('10') // Strike
+      .mockReturnValueOnce('3') // Roll 3
+      .mockReturnValueOnce('') // Back to menu
+      .mockReturnValueOnce('1') // Add rolls
+      .mockReturnValueOnce('7') // Roll 7 (spare)
+      .mockReturnValueOnce('5') // Roll 5
+      .mockReturnValueOnce('') // Back to menu
+      .mockReturnValueOnce('2') // Print scorecard
+      .mockReturnValueOnce('3'); // Quit
+
+    cli.run();
+    expect(prompt).toHaveBeenCalledTimes(10);
+    expect(log).toHaveBeenCalledWith('Input your rolls (to stop press enter again)');
+    expect(log).toHaveBeenCalledWith(expect.stringContaining('1.  |     X |   20'));
+    expect(log).toHaveBeenCalledWith(expect.stringContaining('2.  | 3 , / |   35'));
+    expect(log).toHaveBeenCalledWith(expect.stringContaining('3.  | 5     |     '));
+  });
+
+  it('stops after a full game', () => {
+    prompt.mockReturnValueOnce('1'); // Add rolls
+    for (let i = 0; i < 12; i++) {
+      prompt.mockReturnValueOnce('10');
+    }
+    prompt.mockReturnValueOnce('1')
+      .mockReturnValueOnce('2')
+      .mockReturnValueOnce('3');
+
+    cli.run();
+
+    expect(prompt).toHaveBeenCalledTimes(16);
+    expect(log).toHaveBeenNthCalledWith(7, 'The game is complete!');
+    expect(log).toHaveBeenNthCalledWith(13, 'The game is complete!');
+  });
 });

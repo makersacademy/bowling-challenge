@@ -3,19 +3,21 @@ const Frame = require('../lib/frame');
 
 jest.mock('../lib/frame');
 
-const mockFrame = (status) => {
-  Frame.mockImplementation(() => {
-    return {
-      score: 0,
-      rolls: [],
-      status: status,
-      numRolls: 0,
-      // eslint-disable-next-line no-unused-vars
-      addRoll: jest.fn(x => null),
-      // eslint-disable-next-line no-unused-vars
-      addBonus: jest.fn(x => null)
-    };
-  });
+const mockFrame = (status, times = 10) => {
+  for (let i = 0; i < times; i++) {
+    Frame.mockImplementationOnce(() => {
+      return {
+        score: 0,
+        rolls: [],
+        status: status,
+        numRolls: 0,
+        // eslint-disable-next-line no-unused-vars
+        addRoll: jest.fn(x => null),
+        // eslint-disable-next-line no-unused-vars
+        addBonus: jest.fn(x => null)
+      };
+    });
+  }
 }
 
 describe(Game, () => {
@@ -41,7 +43,7 @@ describe(Game, () => {
   });
 
   it('addFrame calls addBonus once on the second frame and twice on the third frame', () => {
-    mockFrame('completed');
+    mockFrame('completed', 2);
     game = new Game();
 
     game.addRoll(0);

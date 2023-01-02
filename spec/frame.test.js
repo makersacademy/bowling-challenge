@@ -38,6 +38,12 @@ describe(Frame, () => {
         frame.playFrame(8, 7);
       }).toThrow('Total score for a frame must not exceed 10');
     });
+
+    test('throws an error when frame score is not an int', () => {
+      expect(() => {
+        frame.playFrame('L', NaN);
+      }).toThrow('Scores must be integers');
+    });
   });
 
   describe('bonusSpareRoll(score)', () => {
@@ -45,6 +51,12 @@ describe(Frame, () => {
       expect(() => {
         frame.bonusSpareRoll(11);
       }).toThrow('Please enter numbers between 0 to 10');
+    });
+
+    test('throws an error when score is not an int', () => {
+      expect(() => {
+        frame.bonusSpareRoll('a');
+      }).toThrow('Scores must be integers');
     });
   });
 
@@ -59,6 +71,12 @@ describe(Frame, () => {
       expect(() => {
         frame.bonusStrikeRolls(5, 11);
       }).toThrow('Please enter numbers between 0 to 10');
+    });
+
+    test('throws an error when score is not an int', () => {
+      expect(() => {
+        frame.bonusStrikeRolls('a', null);
+      }).toThrow('Scores must be integers');
     });
   });
 

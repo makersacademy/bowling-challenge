@@ -101,6 +101,6 @@ describe('Cli integration', () => {
 
     expect(prompt).toHaveBeenCalledTimes(16);
     expect(log).toHaveBeenNthCalledWith(7, 'The game is complete!');
-    expect(log).toHaveBeenNthCalledWith(13, 'The game is complete!');
+    expect(log).toHaveBeenNthCalledWith(12, 'The game is complete!');
   });
 });

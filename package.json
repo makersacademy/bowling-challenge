@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "jest": "^29.3.1"
+  },
+  "name": "bowling-challenge",
+  "description": "Bowling Challenge =================",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "tests"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shussain894/bowling-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shussain894/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/shussain894/bowling-challenge#readme"
+}

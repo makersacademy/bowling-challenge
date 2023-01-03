@@ -9,19 +9,6 @@ describe("Returns total score when all frames complete", () => {
       game.add(0);
     }
 
-    expect(game.framesWithRolls()).toEqual([
-      [0, 0],
-      [0, 0],
-      [0, 0],
-      [0, 0],
-      [0, 0],
-      [0, 0],
-      [0, 0],
-      [0, 0],
-      [0, 0],
-      [0, 0],
-    ]);
-
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     expect(scorecard.totalScore()).toBe(0);
@@ -33,19 +20,6 @@ describe("Returns total score when all frames complete", () => {
       game.add(1);
       game.add(2);
     }
-
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-    ]);
 
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 3, 3, 3]);
@@ -63,19 +37,6 @@ describe("Returns total score when all frames complete", () => {
     game.add(1);
     game.add(2);
 
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [10],
-      [1, 2],
-    ]);
-
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 3, 13, 3]);
     expect(scorecard.totalScore()).toBe(40);
@@ -92,19 +53,6 @@ describe("Returns total score when all frames complete", () => {
     game.add(10);
     game.add(1);
     game.add(2);
-
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [10],
-      [10],
-      [1, 2],
-    ]);
 
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 21, 13, 3]);
@@ -125,19 +73,6 @@ describe("Returns total score when all frames complete", () => {
     game.add(1);
     game.add(2);
 
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [10],
-      [10],
-      [10, 1, 2],
-    ]);
-
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 30, 21, 13]);
     expect(scorecard.totalScore()).toBe(85);
@@ -148,19 +83,6 @@ describe("Returns total score when all frames complete", () => {
     for (let i = 0; i < 12; i++) {
       game.add(10);
     }
-
-    expect(game.framesWithRolls()).toEqual([
-      [10],
-      [10],
-      [10],
-      [10],
-      [10],
-      [10],
-      [10],
-      [10],
-      [10],
-      [10, 10, 10],
-    ]);
 
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([
@@ -181,19 +103,6 @@ describe("Returns total score when all frames complete", () => {
     game.add(1);
     game.add(2);
 
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [8, 2],
-      [1, 2],
-    ]);
-
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 3, 11, 3]);
     expect(scorecard.totalScore()).toBe(38);
@@ -212,19 +121,6 @@ describe("Returns total score when all frames complete", () => {
     }
 
     game.add(1);
-
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [8, 2],
-      [8, 2, 1],
-    ]);
 
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 3, 18, 11]);
@@ -258,19 +154,6 @@ describe("Returns total score when all frames complete", () => {
 
     game.add(1);
 
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [8, 2],
-      [8, 2],
-      [10],
-      [10],
-      [1, 2],
-      [1, 2],
-      [10, 10, 1],
-    ]);
-
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([
       3, 3, 3, 18, 20, 21, 13, 3, 3, 21,
@@ -287,14 +170,6 @@ describe("Returns total score when partial game complete", () => {
       game.add(2);
     }
 
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-    ]);
-
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3]);
     expect(scorecard.totalScore()).toBe(15);
@@ -308,17 +183,6 @@ describe("Returns total score when partial game complete", () => {
     }
 
     game.add(10);
-
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [10],
-    ]);
 
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 10]);
@@ -334,17 +198,6 @@ describe("Returns total score when partial game complete", () => {
 
     game.add(8);
     game.add(2);
-
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [8, 2],
-    ]);
 
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 10]);
@@ -362,18 +215,6 @@ describe("Returns total score when partial game complete", () => {
     game.add(2);
     game.add(1);
 
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [8, 2],
-      [1],
-    ]);
-
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 11, 1]);
     expect(scorecard.totalScore()).toBe(33);
@@ -388,18 +229,6 @@ describe("Returns total score when partial game complete", () => {
 
     game.add(10);
     game.add(1);
-
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [10],
-      [1],
-    ]);
 
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 11, 1]);
@@ -416,19 +245,6 @@ describe("Returns total score when partial game complete", () => {
     game.add(10);
     game.add(10);
     game.add(1);
-
-    expect(game.framesWithRolls()).toEqual([
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [1, 2],
-      [10],
-      [10],
-      [1],
-    ]);
 
     const scorecard = new Scorecard(game);
     expect(scorecard.scoreByFrame()).toEqual([3, 3, 3, 3, 3, 3, 3, 21, 11, 1]);

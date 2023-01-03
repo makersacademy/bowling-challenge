@@ -9,7 +9,7 @@ describe("Separates each game into 10 frames when complete game", () => {
       game.add(2);
     }
 
-    expect(game.framesWithRolls()).toEqual([
+    expect(game.viewFramesWithRolls()).toEqual([
       [1, 2],
       [1, 2],
       [1, 2],
@@ -30,7 +30,7 @@ describe("Separates each game into 10 frames when complete game", () => {
       game.add(2);
     }
 
-    expect(game.framesWithRolls()).toEqual([
+    expect(game.viewFramesWithRolls()).toEqual([
       [1, 2],
       [1, 2],
       [1, 2],
@@ -54,7 +54,7 @@ describe("Separates each game into 10 frames when complete game", () => {
     game.add(1);
     game.add(2);
 
-    expect(game.framesWithRolls()).toEqual([
+    expect(game.viewFramesWithRolls()).toEqual([
       [1, 2],
       [1, 2],
       [1, 2],
@@ -78,7 +78,7 @@ describe("Separates each game into 10 frames when complete game", () => {
     game.add(2);
     game.add(2);
 
-    expect(game.framesWithRolls()).toEqual([
+    expect(game.viewFramesWithRolls()).toEqual([
       [1, 2],
       [1, 2],
       [1, 2],
@@ -103,7 +103,7 @@ describe("Separates each game into 10 frames when complete game", () => {
     game.add(1);
     game.add(2);
 
-    expect(game.framesWithRolls()).toEqual([
+    expect(game.viewFramesWithRolls()).toEqual([
       [1, 2],
       [1, 2],
       [1, 2],
@@ -129,7 +129,7 @@ describe("Separates each game into 10 frames when complete game", () => {
     game.add(1);
     game.add(2);
 
-    expect(game.framesWithRolls()).toEqual([
+    expect(game.viewFramesWithRolls()).toEqual([
       [1, 2],
       [1, 2],
       [1, 2],
@@ -152,7 +152,7 @@ describe("Separates each game into frames when partial game", () => {
       game.add(2);
     }
 
-    expect(game.framesWithRolls()).toEqual([
+    expect(game.viewFramesWithRolls()).toEqual([
       [1, 2],
       [1, 2],
       [1, 2],
@@ -170,7 +170,7 @@ describe("Separates each game into frames when partial game", () => {
 
     game.add(10);
 
-    expect(game.framesWithRolls()).toEqual([
+    expect(game.viewFramesWithRolls()).toEqual([
       [1, 2],
       [1, 2],
       [1, 2],
@@ -189,7 +189,7 @@ describe("Separates each game into frames when partial game", () => {
     game.add(8);
     game.add(2);
 
-    expect(game.framesWithRolls()).toEqual([
+    expect(game.viewFramesWithRolls()).toEqual([
       [1, 2],
       [1, 2],
       [1, 2],
@@ -208,7 +208,7 @@ describe("Separates each game into frames when partial game", () => {
     game.add(10);
     game.add(2);
 
-    expect(game.framesWithRolls()).toEqual([
+    expect(game.viewFramesWithRolls()).toEqual([
       [1, 2],
       [1, 2],
       [1, 2],

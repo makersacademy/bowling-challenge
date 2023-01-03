@@ -12,14 +12,14 @@ class Frame {
   }
 
   spare() {
-    return !this.strike() && this.sum() === 10;
+    return !this.strike() && this.frameScore() === 10;
   }
 
   isComplete(frame_count) {
     return this.rolls.length >= this.#frameLength(frame_count);
   }
 
-  sum() {
+  frameScore() {
     const sum = this.rolls.reduce((accumulator, value) => {
       return accumulator + value;
     }, 0);
@@ -28,7 +28,7 @@ class Frame {
 
   #frameLength(frame_count) {
     let frameLength = 2;
-    if (this.sum() >= 10) {
+    if (this.frameScore() >= 10) {
       if (frame_count === 10) {
         frameLength = 3;
       } else {

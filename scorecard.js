@@ -10,7 +10,7 @@ class Scorecard {
 
     this.game.forEach((frame, index) => {
       this.nextIndex = index + 1;
-      frameScores.push(frame.sum() + this.#bonusPoints(frame));
+      frameScores.push(frame.frameScore() + this.#bonusPoints(frame));
     });
 
     return frameScores;

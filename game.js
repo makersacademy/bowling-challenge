@@ -12,7 +12,7 @@ class Game {
     }
   }
 
-  framesWithRolls() {
+  viewFramesWithRolls() {
     let frames = [];
 
     this.allFrames.forEach((frame) => {

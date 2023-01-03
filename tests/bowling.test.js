@@ -1,4 +1,4 @@
-const BowlingScore = require('../lib/bowling');
+const BowlingScore = require('../main/bowling');
 
 describe('BowlingScore', () => {
   it('returns perfect game when score is 300', () => {

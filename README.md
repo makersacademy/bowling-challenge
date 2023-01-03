@@ -45,7 +45,8 @@ $ jest
 
 ## Approach
 
-- Object-Oriented Design:
+- Object-Oriented Design
+- Designed mutli class system:
   - **Frame:** _determines frame attributes such as strike, spare, score etc._
   - **Game:** _adds each role to a frame and then adds the frame to the game._
   - **Scorecard:** _initialised by an instance of game and provides a total score based on scoring methodology._

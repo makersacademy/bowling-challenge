@@ -2,7 +2,7 @@ const Game = require("./game");
 
 class Scorecard {
   constructor(game) {
-    this.game = game.frames();
+    this.game = game.getFrames();
   }
 
   scoreByFrame() {
@@ -52,7 +52,7 @@ class Scorecard {
 
   #addNextFrame(index) {
     if (index < this.game.length) {
-      this.nextRolls.push(this.game[index].scores());
+      this.nextRolls.push(this.game[index].getRolls());
     } else {
       this.nextRolls.push([0]);
     }

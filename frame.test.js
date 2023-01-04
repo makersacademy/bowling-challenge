@@ -3,7 +3,7 @@ const Frame = require("./frame");
 describe("scores", () => {
   it("returns the scores of the frame", () => {
     const frame = new Frame([2, 1]);
-    expect(frame.scores()).toEqual([2, 1]);
+    expect(frame.getRolls()).toEqual([2, 1]);
   });
 });
 

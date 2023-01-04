@@ -2,7 +2,7 @@ const Frame = require("./frame");
 
 class Game {
   constructor() {
-    this.allFrames = [];
+    this.currentGame = [];
     this.currentFrame = [];
   }
 
@@ -12,18 +12,18 @@ class Game {
     }
   }
 
-  viewFramesWithRolls() {
+  displayFrames() {
     let frames = [];
 
-    this.allFrames.forEach((frame) => {
-      frames.push(frame.scores());
+    this.currentGame.forEach((frame) => {
+      frames.push(frame.getRolls());
     });
 
     return frames;
   }
 
-  frames() {
-    return this.allFrames;
+  getFrames() {
+    return this.currentGame;
   }
 
   #addRollToGame(roll) {
@@ -33,7 +33,7 @@ class Game {
 
   #removeIncompleteFrame() {
     if (this.currentFrame.length > 0) {
-      this.allFrames.pop();
+      this.currentGame.pop();
     }
   }
 
@@ -41,19 +41,19 @@ class Game {
     this.currentFrame.push(roll);
     const frame = new Frame(this.currentFrame);
 
-    this.allFrames.push(frame);
+    this.currentGame.push(frame);
 
     this.#resetCurrentFrame(frame);
   }
 
   #resetCurrentFrame(frame) {
-    if (frame.isComplete(this.allFrames.length)) {
+    if (frame.isComplete(this.currentGame.length)) {
       this.currentFrame = [];
     }
   }
 
   #maxNumberOfFrames() {
-    if (this.allFrames.length === 10 && this.currentFrame.length === 0) {
+    if (this.currentGame.length === 10 && this.currentFrame.length === 0) {
       return true;
     } else {
       return false;

@@ -3,7 +3,7 @@ class Frame {
     this.rolls = rolls;
   }
 
-  scores() {
+  getRolls() {
     return this.rolls;
   }
 

@@ -1,3 +1,5 @@
+const {sum} = require('lodash')
+
 class Scoreboard {
   constructor() {
     this.scoreboard = [];

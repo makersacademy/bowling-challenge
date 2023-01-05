@@ -1,6 +1,8 @@
 /**
  * frame.js file for Frame class
 */
+const {sum} = require('lodash')
+
 class Frame {
   /**
    * Constructs with an array with rolls inserted
@@ -44,14 +46,14 @@ class Frame {
    * @return {number}
    */
   frameTotal() {
-    return this.frame.reduce((a, b) => a + b, 0);
+    return sum(this.frame);
   }
   /**
    * Checks if the frame is a spare
    * @return {boolean}
    */
   checkForSpare() {
-    if (this.frame[0] < 10 && this.frame.reduce((a, b) => a + b, 0) === 10) {
+    if (this.frame[0] < 10 && sum(this.frame) === 10) {
       return true;
     } else {
       return false;

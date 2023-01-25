@@ -32,6 +32,14 @@ const doubleOpenFrame = {
   isStrike: () => false,
   isSpare: () => false,
 };
+const doubleSpareBonusFrame = {
+  getFirst: () => 5,
+  getSecond: () => 5,
+  getThird: () => 5,
+  getTotal: () => 15,
+  isStrike: () => false,
+  isSpare: () => true,
+};
 
 describe('Game', () => {
   it('should add a frame to the scorecard', () => {
@@ -86,5 +94,18 @@ describe('Game', () => {
     }
     game.add(doublePerfectFinalFrame);
     expect(game.calculateGrandTotal()).toEqual(300);
+  });
+  it('should calculate 130 when accounting for a spare in final frame', () => {
+    const game = new Game();
+    let times = 2;
+    for (let i = 0; i < times; i++) {
+      game.add(doubleStrikeFrame);
+      game.add(doubleStrikeFrame);
+      game.add(doubleOpenFrame);
+      game.add(doubleOpenFrame);
+    }
+    game.add(doubleOpenFrame);
+    game.add(doubleSpareBonusFrame);
+    expect(game.calculateGrandTotal()).toEqual(130);
   });
 });

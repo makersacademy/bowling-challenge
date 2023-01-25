@@ -21,6 +21,11 @@ describe('Frame', () => {
     expect(frame.getThird()).toEqual(4);
   });
 
+  it('should return the total of all rolls', () => {
+    expect(frame.getTotal()).toEqual(17);
+    expect(openFrame.getTotal()).toEqual(9);
+    expect(spareFrame.getTotal()).toEqual(10);
+  });
   it('should return true for a strike', () => {
     expect(frame.isStrike()).toEqual(true);
   });

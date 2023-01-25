@@ -2,7 +2,7 @@
 
  A Javascript implementation of a bowling scorecard program.
 
- I this program, a full game of bowling can be input.
+ In this program, a full game of bowling can be input.
  At any point during the game, a scorecard can be printed to the screen.
  This scorecard is formatted as a markdown table so it can easily be used online if required.
 

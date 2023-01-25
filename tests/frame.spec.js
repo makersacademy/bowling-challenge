@@ -1,4 +1,3 @@
-const { default: expect } = require('expect');
 const Frame = require('../lib/frame');
 frame = new Frame(10, 3, 4);
 openFrame = new Frame(8, 1, 0);

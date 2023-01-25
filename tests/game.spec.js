@@ -1,10 +1,10 @@
 const Game = require('../lib/game');
 
-const doubleBonusFrame = {
+const doublePerfectFinalFrame = {
   getFirst: () => 10,
-  getSecond: () => 3,
-  getThird: () => 4,
-  getTotal: () => 17,
+  getSecond: () => 10,
+  getThird: () => 10,
+  getTotal: () => 30,
   isStrike: () => true,
   isSpare: () => false,
 };
@@ -45,7 +45,7 @@ describe('Game', () => {
     for (let i = 0; i < times; i++) {
       game.add(doubleOpenFrame);
     }
-    expect(game.faceValue()).toEqual(70);
+    expect(game.calculateFaceValue()).toEqual(70);
   });
   it('should calculate the total bonuses of spares', () => {
     const game = new Game();
@@ -76,5 +76,15 @@ describe('Game', () => {
       game.add(doubleOpenFrame);
     }
     expect(game.calculateStrikes()).toEqual(40);
+  });
+
+  it('should calculate 300 for a perfect game', () => {
+    const game = new Game();
+    let times = 9;
+    for (let i = 0; i < times; i++) {
+      game.add(doubleStrikeFrame);
+    }
+    game.add(doublePerfectFinalFrame);
+    expect(game.calculateGrandTotal()).toEqual(300);
   });
 });

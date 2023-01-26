@@ -1,4 +1,4 @@
 language: javascript
 node_js:
-  - 19
+  - 17
 os: osx

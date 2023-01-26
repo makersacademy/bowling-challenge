@@ -11,8 +11,6 @@ class Game {
     }
 
     scored(){
-        this.score = 0
-        this.throwIndex = 0
         for (let i = 0; i < 10; i++){
             if (this.strike(this.throwIndex)) {
                 this.score += 10 + this.strike_bonus(this.throwIndex)

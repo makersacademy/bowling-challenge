@@ -1,5 +1,39 @@
-
 Bowling Challenge
+=================
+## Setup & Navigation
+```
+git clone https://github.com/laura-voss/bowling-challenge-js.git
+```
+
+```
+% node
+> .load  game.js
+> game = new Game
+Game { rolls: [] }
+> game.roll(10)    
+```
+enter your rolls with `game.roll(pins)` <br>
+check your score with `game.calculateScore()`
+
+<br>
+
+## Input - Output 
+| Title             | Input                                                                   | Output | Bonus |
+|-------------------|-------------------------------------------------------------------------|--------|-------|
+| Gutter Game       | [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0]    | 0      | 0     |     
+| Spare             | [1,9], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1]    | 29     | 1     |
+| Strike            | [10], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1]     | 30     | 2     |  
+| 10th Frame Spare  | [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,9,1]  | 29     | 1     |
+| 10th Frame Strike | [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [1,1], [10,1,1] | 30     | 2     |
+| Perfect Game      | [10], [10], [10], [10], [10], [10], [10], [10], [10], [10,10,10]        | 300    | 200   |
+
+
+<br>
+<br>
+<br>
+<br>
+
+Bowling Challenge - Task description
 =================
 
 * Feel free to use google, your notes, books, etc. but work on your own

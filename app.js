@@ -12,7 +12,6 @@ for (let i = 0; i < 9; i++) {
   let frame = new Frame(rollOne, rollTwo, 0);
   game.add(frame);
   frameCount++;
-  UI.clearRolls;
 }
 console.log(`You are on frame ${frameCount}`);
 let rollOne = UI.getRollOne();

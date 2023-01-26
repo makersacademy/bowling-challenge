@@ -1,7 +1,7 @@
 const Frame = require('../lib/frame');
-frame = new Frame(10, 3, 4);
-openFrame = new Frame(8, 1, 0);
-spareFrame = new Frame(5, 5, 0);
+const frame = new Frame(10, 3, 4);
+const openFrame = new Frame(8, 1, 0);
+const spareFrame = new Frame(5, 5, 0);
 
 describe('Frame', () => {
   it('should record the rolls passed to it', () => {

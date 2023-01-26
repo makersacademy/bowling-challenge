@@ -187,7 +187,6 @@
     "pretty-format": "^29.4.0",
     "prompts": "^2.4.2",
     "proxy-addr": "^2.0.7",
-    "pug": "^3.0.2",
     "qs": "^6.11.0",
     "range-parser": "^1.2.1",
     "raw-body": "^2.5.1",

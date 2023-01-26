@@ -1,0 +1,30 @@
+{
+  "name": "js-bowling-challenge",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abodian/js-bowling-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abodian/js-bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/abodian/js-bowling-challenge#readme",
+  "dependencies": {
+    "jest": "^29.4.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.19.1",
+    "eslint": "^8.32.0"
+  }
+}

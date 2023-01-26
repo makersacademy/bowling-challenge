@@ -1,3 +1,37 @@
+Russell's Bowling Challenge in JS:
+=================
+
+Planning
+-------
+
+* The user will input how many pins are knocked down for each roll and frame. 
+* 10 Frames
+* 2 rolls per frame. 
+* In each frame, the max amount of pins that can be knocked down is 10.
+* If 10 pins are knocked down in the first roll, then there is no second roll, unless it is the 10th frame.
+* Bonuses happen when 10 pins are knocked over within the 2 rolls. 
+* If first roll is a strike the frame ends immediately, then the points are 10 + the score from the next two rolls.
+* If the second roll knocks down the remaining pins, and both rolls = 10 then it’s a spare, the points are 10 + first roll of next frame. 
+* The 10th frame is 2 rolls, unless a strike or spare happens on roll 1 or 2, then there is an extra roll.
+* For a spare the points would equal 10 + score from third roll.
+* For strike the points would equal 10 + the score from the next two rolls.
+* A gutter game is 20 rolls each of a score of 0.
+* A perfect game would be 10 regular strikes for the 10 frames, then 2 extra rolls for the 10th frame and would equal 300.
+
+A test example.
+------
+* Frame would start at 1 and go up to 10
+* Roll would always start at 1 and max at 2 unless in the 10th frame after a strike/spare then there will be a 3rd roll.
+* Score would start at 0
+* First roll would start at 0
+* Max pins = 10
+
+Test Table
+
+<img width="575" alt="Screenshot 2022-05-22 at 22 40 01" src="https://user-images.githubusercontent.com/101583630/169717206-74e1d8d4-100a-4459-9593-9808c18c71fa.png">
+
+<img width="471" alt="Screenshot 2022-05-22 at 22 41 41" src="https://user-images.githubusercontent.com/101583630/169717214-2796574b-1cbd-4e69-9f6d-b3715f303330.png">
+
 
 Bowling Challenge
 =================

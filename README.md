@@ -1,4 +1,4 @@
-Travis CI: https://app.travis-ci.com/abodian/js-bowling-challenge.svg?branch=main
+Travis CI: [![Build Status](https://app.travis-ci.com/abodian/js-bowling-challenge.svg?branch=main)](https://app.travis-ci.com/abodian/js-bowling-challenge)
 
 # Bowling Challenge
 

@@ -1,22 +1,15 @@
 const UserInterface = require('./lib/userInterface');
 const Frame = require('./lib/frame');
 const Game = require('./lib/game');
-const UI = new UserInterface();
 const game = new Game();
+const UI = new UserInterface(game);
 
-let frameCount = 1;
-for (let i = 0; i < 9; i++) {
-  console.log(`You are on frame ${frameCount}`);
+for (let i = 0; i < 10; i++) {
+  console.log(`You are on frame ${UI.game.frameCount}`);
   let rollOne = UI.getRollOne();
   let rollTwo = UI.getRollTwo();
-  let frame = new Frame(rollOne, rollTwo, 0);
-  game.add(frame);
-  frameCount++;
+  let rollThree = UI.getRollThree();
+  let frame = new Frame(rollOne, rollTwo, rollThree);
+  UI.game.add(frame);
 }
-console.log(`You are on frame ${frameCount}`);
-let rollOne = UI.getRollOne();
-let rollTwo = UI.getRollTwo();
-let rollThree = UI.getRollThree();
-let frame = new Frame(rollOne, rollTwo, rollThree);
-game.add(frame);
-console.log(`Your total score is: ${game.calculateGrandTotal()}`);
+console.log(`Your total score is: ${UI.game.calculateGrandTotal()}`);

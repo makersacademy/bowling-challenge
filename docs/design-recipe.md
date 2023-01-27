@@ -201,7 +201,7 @@ let frame6 = { isStrike: () => true, isSpare: () => false, printFrame: () => [10
 let frame7 = { isStrike: () => true, isSpare: () => false, printFrame: () => [10] }
 let frame8 = { isStrike: () => true, isSpare: () => false, printFrame: () => [10] }
 let frame9 = { isStrike: () => true, isSpare: () => false, printFrame: () => [10] }
-let frame10 = { isStrike: () => true, isSpare: () => false, printFrame: () => [10, 10, 10] }
+let frame10 = { isStrike: () => true, isSpare: () => false, printFrame: () => [10], printBonus: () => [10, 10] }
 let scorecard = new Scorecard
 scorecard.addFrame(frame1);
 scorecard.addFrame(frame2);

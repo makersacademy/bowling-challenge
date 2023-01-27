@@ -22,6 +22,17 @@ describe('ScoreCard', () => {
     scoreCard.getRoll(2)
     expect(scoreCard.currentGame).toEqual([[5,3], [1,2], [], [], [], [], [], [], [], []])
   })
+
+  it('calculates the score of the game so', () => {
+    const scoreCard = new ScoreCard();
+    scoreCard.getRoll(5)
+    scoreCard.getRoll(3)
+    scoreCard.getRoll(1)
+    scoreCard.getRoll(2)
+    expect(scoreCard.calculateScore()).toEqual(11)
+  })
+
+
 })
 
 // Get user rolls in scorecard class

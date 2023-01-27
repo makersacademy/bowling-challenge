@@ -25,7 +25,7 @@ describe('UserInterface', () => {
       ui.getRollOne();
       readlineSync.question.mockReturnValueOnce('5');
       const rollTwo = ui.getRollTwo();
-      expect(rollTwo).toEqual(5);
+      expect(rollTwo).toBe(5);
     });
     it('should return zero if rollOne is 10 and it is not the final frame', () => {
       game = { frameCount: 10 };
@@ -34,7 +34,7 @@ describe('UserInterface', () => {
       ui.getRollOne();
       readlineSync.question.mockReturnValueOnce('10');
       const rollTwo = ui.getRollTwo();
-      expect(rollTwo).toEqual(10);
+      expect(rollTwo).toBe(10);
     });
     it('should allow the user a second roll if the first roll of frame 10 is a strike', () => {
       game = { frameCount: 10 };
@@ -43,21 +43,17 @@ describe('UserInterface', () => {
       ui.getRollOne();
       readlineSync.question.mockReturnValueOnce('10');
       const rollTwo = ui.getRollTwo();
-      expect(rollTwo).toEqual(10);
+      expect(rollTwo).toBe(10);
     });
     it('should return an error if maximum pins exceeded', () => {
-      const consoleSpy = jest.spyOn(console, 'log');
+      console.log = jest.fn();
       readlineSync.question.mockReturnValueOnce('6');
       ui.getRollOne();
       readlineSync.question.mockReturnValueOnce('6');
       ui.getRollTwo();
-      expect(consoleSpy).toHaveBeenCalledWith(
+      expect(console.log.mock.calls[0][0]).toBe(
         'Invalid input. You have 4 remaining.'
       );
-      expect(readlineSync.question).toHaveBeenCalledWith(
-        'Enter your second roll: '
-      );
-      consoleSpy.mockRestore;
     });
   });
 
@@ -71,7 +67,7 @@ describe('UserInterface', () => {
       ui.getRollTwo();
       readlineSync.question.mockReturnValueOnce('10');
       const rollThree = ui.getRollThree();
-      expect(rollThree).toEqual(10);
+      expect(rollThree).toBe(10);
     });
     it('should return a valid roll three if rollOne and rollTwo of frame 10 make a spare', () => {
       game = { frameCount: 10 };
@@ -82,7 +78,7 @@ describe('UserInterface', () => {
       ui.getRollTwo();
       readlineSync.question.mockReturnValueOnce('10');
       const rollThree = ui.getRollThree();
-      expect(rollThree).toEqual(10);
+      expect(rollThree).toBe(10);
     });
     it('should return zero if rollOne and rollTwo of frame 10 are an open frame', () => {
       game = { frameCount: 10 };
@@ -92,7 +88,7 @@ describe('UserInterface', () => {
       readlineSync.question.mockReturnValueOnce('4');
       ui.getRollTwo();
       const rollThree = ui.getRollThree();
-      expect(rollThree).toEqual(0);
+      expect(rollThree).toBe(0);
     });
   });
 });

@@ -1,4 +1,4 @@
-const Game = require("./bowling");
+const Game = require("./game");
 
 describe("Game", () => {
   it("should start game with 0 score", () => {

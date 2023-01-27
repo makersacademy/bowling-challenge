@@ -33,12 +33,14 @@ describe('Application', () => {
   test('run method should call the expected methods and log the expected output', () => {
     console.log = jest.fn();
     app.run();
-    expect(console.log.mock.calls[0][0]).toBe('You are on frame 0');
-    expect(console.log.mock.calls[10][0]).toBe('Your total score is: 90');
+    expect(console.log.mock.calls[8][0]).toContain(
+      '\nYou are on frame 0'.yellow.bold
+    );
     expect(ui.getRollOne.mock.calls.length).toBe(10);
     expect(ui.getRollTwo.mock.calls.length).toBe(10);
     expect(ui.getRollThree.mock.calls.length).toBe(10);
     expect(ui.game.add.mock.calls.length).toBe(10);
     expect(ui.game.calculateGrandTotal.mock.calls.length).toBe(1);
+    expect(console.log.mock.calls[18][0]).toContain('Your total score is: 90');
   });
 });

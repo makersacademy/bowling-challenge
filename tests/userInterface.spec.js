@@ -51,7 +51,7 @@ describe('UserInterface', () => {
       ui.getRollOne();
       readlineSync.question.mockReturnValueOnce('6');
       ui.getRollTwo();
-      expect(console.log.mock.calls[0][0]).toBe(
+      expect(console.log.mock.calls[0][0]).toContain(
         'Invalid input. You have 4 remaining.'
       );
     });

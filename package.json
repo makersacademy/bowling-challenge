@@ -40,6 +40,7 @@
     "collect-v8-coverage": "^1.0.1",
     "color-convert": "^2.0.1",
     "color-name": "^1.1.4",
+    "colors": "^1.4.0",
     "concat-map": "^0.0.1",
     "content-disposition": "^0.5.4",
     "content-type": "^1.0.4",

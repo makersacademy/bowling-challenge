@@ -1,23 +1,35 @@
 const Frame = require('../lib/frame')
 
 describe('Frame', () => {
-  it('returns true if strike is bowled in current turn', () => {
-    let frame1 = new Frame(10,0)
+  it('adds two rolls to the frame', () => {
+    let frame1 = new Frame()
+    frame1.rollsInFrame(5, 6)
+    expect(frame1.frame).toEqual([5, 6])
+  })
+
+  it('returns true if a strike is bowled', () => {
+    let frame1 = new Frame()
+    frame1.rollsInFrame(10, 0)
     expect(frame1.checkStrike()).toEqual(true)
   })
 
-  it('returns false if strike is not bowled in current turn', () => {
-    let frame1 = new Frame(3,4)
+  it('returns false if a strike is bowled', () => {
+    let frame1 = new Frame()
+    frame1.rollsInFrame(5, 3)
     expect(frame1.checkStrike()).toEqual(false)
   })
 
-  it('Returns true if frame was a spare', () => {
-    let frame1 = new Frame(3, 7)
+  it('returns true if a spare is bowled', () => {
+    let frame1 = new Frame()
+    frame1.rollsInFrame(5, 5)
     expect(frame1.checkSpare()).toEqual(true)
   })
 
-  it('Returns false if frame was a spare', () => {
-    let frame1 = new Frame(3, 6)
+  it('returns false if a spare is not bowled', () => {
+    let frame1 = new Frame()
+    frame1.rollsInFrame(5, 4)
     expect(frame1.checkSpare()).toEqual(false)
   })
+
+
 });

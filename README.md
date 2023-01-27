@@ -1,11 +1,10 @@
 
-Bowling Challenge
+Bowling Challenge in JavaScript
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+This repo contains my solution to the Makers bootcamp week 6 end of week challenge. The JavaScript program I wrote for this assignment calculates scorecards for ten pin bowling.
+
+The spec and instructions I followed for this challenge are outlined below.
 
 ## The Task
 
@@ -64,12 +63,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

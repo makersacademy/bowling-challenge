@@ -28,13 +28,21 @@ describe('UserInterface', () => {
       expect(rollTwo).toBe(5);
     });
     it('should return zero if rollOne is 10 and it is not the final frame', () => {
-      game = { frameCount: 10 };
+      game = { frameCount: 5 };
       ui = new UserInterface(game);
       readlineSync.question.mockReturnValueOnce('10');
       ui.getRollOne();
-      readlineSync.question.mockReturnValueOnce('10');
       const rollTwo = ui.getRollTwo();
-      expect(rollTwo).toBe(10);
+      expect(rollTwo).toBe(0);
+    });
+    it('should allow another roll if first roll is not a strike', () => {
+      game = { frameCount: 5 };
+      ui = new UserInterface(game);
+      readlineSync.question.mockReturnValueOnce('4');
+      ui.getRollOne();
+      readlineSync.question.mockReturnValueOnce('5');
+      const rollTwo = ui.getRollTwo();
+      expect(rollTwo).toBe(5);
     });
     it('should allow the user a second roll if the first roll of frame 10 is a strike', () => {
       game = { frameCount: 10 };
@@ -89,6 +97,21 @@ describe('UserInterface', () => {
       ui.getRollTwo();
       const rollThree = ui.getRollThree();
       expect(rollThree).toBe(0);
+    });
+
+    it('should always return zero for frames 1-9', () => {
+      game = { frameCount: 1 };
+      ui = new UserInterface(game);
+      ui.getRollThree();
+      expect(ui.rollThree).toBe(0);
+
+      ui.game.frameCount = 2;
+      ui.getRollThree();
+      expect(ui.rollThree).toBe(0);
+
+      ui.game.frameCount = 9;
+      ui.getRollThree();
+      expect(ui.rollThree).toBe(0);
     });
   });
 });

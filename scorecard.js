@@ -12,7 +12,11 @@ class Scorecard {
     this.scores.map((score, index) => {
       if (score.isStrike() && index !== 9) {
         this.#addStrikeBonus(0, index)
-      } 
+      } else if (score.isSpare() && index !==9) {
+        let nextFrame = this.scores[index+1].printFrame()
+        let nextRoll = nextFrame[0]
+        this.bonus.push(nextRoll)
+      }
     })
     let totalBonuses = this.#total(this.bonus.flat())
     let totalScores = this.#total(this.scores.map(score => score.printFrame()).flat())
@@ -29,10 +33,10 @@ class Scorecard {
     let scores = this.scores.map(score => score.printFrame())
     let newArray = scores.slice(startIndex, endIndex)
     let newIndex = newArray.flat().length
-    let bonusOne = scores.flat()[newIndex+1]
-    let bonusTwo = scores.flat()[newIndex+2]
-    this.bonus.push((bonusOne))
-    this.bonus.push((bonusTwo));
+    let nextRoll = scores.flat()[newIndex+1]
+    let subsequentRoll = scores.flat()[newIndex+2]
+    this.bonus.push((nextRoll))
+    this.bonus.push((subsequentRoll));
   }
 
 }

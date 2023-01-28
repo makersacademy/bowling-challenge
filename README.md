@@ -2,10 +2,27 @@
 Bowling Challenge
 =================
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+Bowling score calculator written in Node.js for the end of week 6 challenge at Makers Academy. This was a fun challenge building on a previous exercise to put together the logic for a bowling scorecard using Ruby in the previous week.
+
+Once the logic was in place and fully functional I took the challenge a step further in creating a terminal UI for users to input their scores. I used [readline-sync](https://github.com/anseki/readline-sync) for this and tested the terminal input/output using Jest mocks. I also used [colors](https://github.com/marak/colors.js/) to add some colour to the terminal output.
+
+Additional logic was included to ensure that users could only input a valid number of pins for each roll, and takes into account how many had been knocked down in their first roll. It also takes into account the rolls thrown in the final frame and will allow the user to input their bonus third roll if a strike or spare is achieved.
+
+![Ten Pin Score Example](images/UI-screenshot.png)
+
+## How to use
+
+1. Clone the repository to your machine
+2. Ensure you have [Node.js](https://nodejs.org/en/download/) installed
+3. Navigate to the directory in your terminal and run:
+
+   - `npm install`
+   - `node app.js`
+
+
+4. You will be greeted with the title screen and asked to input your rolls.
+
+
 
 ## The Task
 
@@ -58,12 +75,6 @@ A Gutter Game is when the player never hits a pin (20 zero scores).
 ### Perfect Game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
 ## Code Review
 

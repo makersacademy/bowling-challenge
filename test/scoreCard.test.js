@@ -62,4 +62,42 @@ describe('Frame', () => {
     scoreCard.addFrame(frame3)
     expect(scoreCard.calculateScore()).toEqual(27)
   })
+
+  it('calculates the current score for a game with a spare', () => {
+    const scoreCard = new ScoreCard();
+    const frame1 = new Frame();
+    const frame2 = new Frame();
+    const frame3 = new Frame();
+
+    frame1.addRollsToFrame(1,2)
+    frame2.addRollsToFrame(7, 3)
+    frame3.addRollsToFrame(6,1)
+    
+    scoreCard.addFrame(frame1)
+    scoreCard.addFrame(frame2)
+    scoreCard.addFrame(frame3)
+    expect(scoreCard.calculateScore()).toEqual(26)
+  })
+
+  it('calculates the current score for a game with a strike and spare', () => {
+    const scoreCard = new ScoreCard();
+    const frame1 = new Frame();
+    const frame2 = new Frame();
+    const frame3 = new Frame();
+    const frame4 = new Frame();
+    const frame5 = new Frame();
+
+    frame1.addRollsToFrame(1,2)
+    frame2.addRollsToFrame(7, 3)
+    frame3.addRollsToFrame(6,1)
+    frame4.addRollsToFrame(10,0)
+    frame5.addRollsToFrame(5,2)
+    
+    scoreCard.addFrame(frame1)
+    scoreCard.addFrame(frame2)
+    scoreCard.addFrame(frame3)
+    scoreCard.addFrame(frame4)
+    scoreCard.addFrame(frame5)
+    expect(scoreCard.calculateScore()).toEqual(50)
+  })
 })

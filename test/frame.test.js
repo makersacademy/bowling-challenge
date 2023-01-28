@@ -36,4 +36,10 @@ describe('Frame', () => {
     frame1.addRollsToFrame(5, 4)
     expect(frame1.frameSum()).toEqual(9)
   })
+
+  it('returns the first element of the frame to calculate the score of a spare', () => {
+    let frame1 = new Frame()
+    frame1.addRollsToFrame(7, 3)
+    expect(frame1.addSpare()).toEqual(7)
+  })
 });

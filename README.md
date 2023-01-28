@@ -1,5 +1,5 @@
 
-[![Wallaby.js](https://img.shields.io/badge/wallaby.js-configured-green.svg)](https://wallabyjs.com)
+[![Wallaby.js](https://img.shields.io/badge/wallaby.js-configured-green.svg)](https://wallabyjs.com) [![Build Status](https://app.travis-ci.com/josephburgess/bowling-challenge-js.svg?branch=main)](https://app.travis-ci.com/josephburgess/bowling-challenge-js)
 
 Bowling Challenge
 =================

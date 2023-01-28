@@ -30,4 +30,10 @@ describe('Frame', () => {
     frame1.addRollsToFrame(5, 4)
     expect(frame1.checkSpare()).toEqual(false)
   })
+
+  it('returns the sum of the frame', () => {
+    let frame1 = new Frame()
+    frame1.addRollsToFrame(5, 4)
+    expect(frame1.frameSum()).toEqual(9)
+  })
 });

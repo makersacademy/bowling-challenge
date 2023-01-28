@@ -26,7 +26,7 @@ Additional logic was included to ensure that users could only input a valid numb
 
 <div style="text-align: center;">
 
-![Screenshot of UI](images/UI-screenshot.png)
+![Screenshot of UI](images/UI_screenshot.png)
 
 </div>
 

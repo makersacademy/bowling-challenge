@@ -16,6 +16,9 @@ export class Scorecard {
     }
     getScoreFromJustPlayedFrame = () => sumArray(this.currentFrameScore.rolls)
     startFrame = () => {
+        if (this.frameCount === 10) {
+            throw("You cannot start another Frame until you start a new game")
+        }
         this.frameCount++
         this.currentFrameScore = {
             frame: this.frameCount,
@@ -48,5 +51,5 @@ export class Scorecard {
         pv += subTotalScore
         return pv
     },0)
-
+    getFrameCount = () => this.frameCount
 }

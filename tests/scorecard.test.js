@@ -41,11 +41,26 @@ let playFrameMock = (roll1,roll2,card) => {
      it("calculate total score",() => {
          let card = new Scorecard()
          card.startGame()
-         playFrameMock(1,4,card) // 10 + 10
-         playFrameMock(4,5,card) // 20 + 10
-         playFrameMock(6,4,card) // 30 + 10
-         playFrameMock(5,5,card) // 40 + 8
+         playFrameMock(1,4,card)
+         playFrameMock(4,5,card)
+         playFrameMock(6,4,card)
+         playFrameMock(5,5,card)
          expect(card.getScorecardTotal()).toEqual(39)
+     })
+     it("should throw when a player tries to play another frame at the end of a game",() => {
+         let card = new Scorecard()
+         card.startGame()
+         playFrameMock(0,0,card)
+         playFrameMock(0,0,card)
+         playFrameMock(0,0,card)
+         playFrameMock(0,0,card)
+         playFrameMock(0,0,card)
+         playFrameMock(0,0,card)
+         playFrameMock(0,0,card)
+         playFrameMock(0,0,card)
+         playFrameMock(0,0,card)
+         playFrameMock(0,0,card)
+expect(card.startFrame).toThrow("You cannot start another Frame until you start a new game")
      })
 
  })

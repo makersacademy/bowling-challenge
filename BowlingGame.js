@@ -1,7 +1,7 @@
 class BowlingGame {
     constructor() {
         this.frames = [];
-        this.frameTotals = [];
+        this.frameBonuses = [];
         this.framesPlayed = 0;
     };
 

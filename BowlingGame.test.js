@@ -66,197 +66,156 @@ describe(BowlingGame, () => {
         });
     });
 
-    // xcontext 'player hits all pins a frame' do
-    //     it 'they hit a spare' do
-    //         frame.roll1 = 9
-    //         frame.roll2 = 1
-    //         game.add_frame(frame)
-    //         expect(game.calculate_score).to eq 10
-    //         frame2 = Frame.new
-    //         frame2.roll1 = 3
-    //         frame2.roll2 = 2
-    //         game.add_frame(frame2)
-    //         expect(game.calculate_score).to eq 18
-    //         frame3 = Frame.new
-    //         frame3.roll1 = 7
-    //         frame3.roll2 = 3
-    //         game.add_frame(frame3)
-    //         expect(game.calculate_score).to eq 28
-    //         frame4 = Frame.new
-    //         frame4.roll1 = 8
-    //         frame4.roll2 = 1
-    //         game.add_frame(frame4)
-    //         expect(game.calculate_score).to eq 45
-    //     end
+    describe('player hits all pins in a frame', () => {
+        it('they hit a spare', () => {
+            const game = new BowlingGame();
+            const frame = new BowlingFrame(9, 1);
+            game.addFrame(frame)
+            expect(game.calculateScore()).toBe(10);
+            const frame2 = new BowlingFrame(3, 2);
+            game.addFrame(frame2)
+            expect(game.calculateScore()).toBe(18);
+            const frame3 = new BowlingFrame(7, 3);
+            game.addFrame(frame3)
+            expect(game.calculateScore()).toBe(28);
+            const frame4 = new BowlingFrame(8, 1);
+            game.addFrame(frame4)
+            expect(game.calculateScore()).toBe(45);
+        });
 
-    //     it 'they hit a strike once' do
-    //         frame.roll1 = 10
-    //         game.add_frame(frame)
-    //         expect(game.calculate_score).to eq 10
-    //         frame2 = Frame.new
-    //         frame2.roll1 = 3
-    //         frame2.roll2 = 2
-    //         game.add_frame(frame2)
-    //         expect(game.calculate_score).to eq 20
-    //         frame3 = Frame.new
-    //         frame3.roll1 = 0
-    //         frame3.roll2 = 10
-    //         game.add_frame(frame3)
-    //         expect(game.calculate_score).to eq 30
-    //         frame4 = Frame.new
-    //         frame4.roll1 = 8
-    //         frame4.roll2 = 1
-    //         game.add_frame(frame4)
-    //         expect(game.calculate_score).to eq 47
-    //     end
+        it('they hit a strike once', () => {
+            const game = new BowlingGame();
+            const frame = new BowlingFrame(10);
+            game.addFrame(frame)
+            expect(game.calculateScore()).toBe(10);
+            const frame2 = new BowlingFrame(3, 2);
+            game.addFrame(frame2)
+            expect(game.calculateScore()).toBe(20);
+            const frame3 = new BowlingFrame(0, 10);
+            game.addFrame(frame3)
+            expect(game.calculateScore()).toBe(30);
+            const frame4 = new BowlingFrame(8, 1);
+            game.addFrame(frame4)
+            expect(game.calculateScore()).toBe(47);
+        });
 
-    //     it 'they hit a couple strikes in a row' do
-    //         frame.roll1 = 10
-    //         game.add_frame(frame)
-    //         expect(game.calculate_score).to eq 10
-    //         frame2 = Frame.new
-    //         frame2.roll1 = 10
-    //         game.add_frame(frame2)
-    //         expect(game.calculate_score).to eq 30
-    //         frame3 = Frame.new
-    //         frame3.roll1 = 4
-    //         frame3.roll2 = 3
-    //         game.add_frame(frame3)
-    //         expect(game.calculate_score).to eq 48
-    //         frame4 = Frame.new
-    //         frame4.roll1 = 10
-    //         game.add_frame(frame4)
-    //         expect(game.calculate_score).to eq 58
-    //         frame5 = Frame.new
-    //         frame5.roll1 = 3
-    //         frame5.roll2 = 1
-    //         game.add_frame(frame5)
-    //         expect(game.calculate_score).to eq 66
-    //     end
+        it('they hit a couple strikes in a row', () => {
+            const game = new BowlingGame();
+            const frame = new BowlingFrame(10);
+            game.addFrame(frame)
+            expect(game.calculateScore()).toBe(10);
+            const frame2 = new BowlingFrame(10);
+            game.addFrame(frame2)
+            expect(game.calculateScore()).toBe(30);
+            const frame3 = new BowlingFrame(4, 3);
+            game.addFrame(frame3)
+            expect(game.calculateScore()).toBe(48);
+            const frame4 = new BowlingFrame(10);
+            game.addFrame(frame4)
+            expect(game.calculateScore()).toBe(58);
+            const frame5 = new BowlingFrame(3, 1);
+            game.addFrame(frame5)
+            expect(game.calculateScore()).toBe(66);
+        });
 
-    //     it 'they hit 9 strikes in a row' do
-    //         frame.roll1 = 10
-    //         9.times { game.add_frame(frame) }
-    //         expect(game.calculate_score).to eq 240
-    //     end
-        
-    //     it 'they hit alternating strike/spare' do
-    //         frame.roll1 = 10
-    //         frame2 = Frame.new
-    //         frame2.roll1 = 0
-    //         frame2.roll2 = 10
-    //         4.times do
-    //             game.add_frame(frame)
-    //             game.add_frame(frame2)
-    //         end
-    //         game.add_frame(frame)
-    //         expect(game.calculate_score).to eq 170
-    //     end
-    // end
+        it('they hit 9 strikes in a row', () => {
+            const game = new BowlingGame();
+            const frame = new BowlingFrame(10);
+            for (let i = 0; i < 9; i++) {
+                game.addFrame(frame);
+            };
+            expect(game.calculateScore()).toBe(240);
+        });
 
-    // xcontext 'player plays full game' do
-    //     it 'they hit a perfect game' do
-    //         frame.roll1 = 10
-    //         9.times { game.add_frame(frame) }
-    //         frame10 = Frame.new
-    //         frame10.roll1 = 10
-    //         frame10.roll2 = 10
-    //         frame10.roll3 = 10
-    //         game.add_frame(frame10)
-    //         expect(game.calculate_score).to eq 300
-    //     end
+        it('they hit alternating/strike spare', () => {
+            const game = new BowlingGame();
+            const frame = new BowlingFrame(10);
+            const frame2 = new BowlingFrame(0, 10);
+            for (let i = 0; i < 4; i++) {
+                game.addFrame(frame);
+                game.addFrame(frame2);
+            };
+            game.addFrame(frame);
+            expect(game.calculateScore()).toBe(170);
+        });
+    });
 
-    //     it 'they hit a perfect game except for a spare and strike in the 10th frame' do
-    //         frame.roll1 = 10
-    //         9.times { game.add_frame(frame) }
-    //         expect(game.calculate_score).to eq 240
-    //         frame10 = Frame.new
-    //         frame10.roll1 = 9
-    //         frame10.roll2 = 1
-    //         frame10.roll3 = 10
-    //         game.add_frame(frame10)
-    //         expect(game.calculate_score).to eq 279
-    //     end
+    describe('player plays a full game', () => {
+        it('they play a perfect game', () => {
+            const game = new BowlingGame();
+            const frame = new BowlingFrame(10);
+            for (let i = 0; i < 9; i++) {
+                game.addFrame(frame);
+            };
+            const frame10 = new BowlingFrame(10, 10, 10);
+            expect(game.calculateScore()).toBe(300);
+        });
 
-    //     it 'they hit a perfect game except for a spare and gutter in the 10th frame' do
-    //         frame.roll1 = 10
-    //         9.times { game.add_frame(frame) }
-    //         expect(game.calculate_score).to eq 240
-    //         frame10 = Frame.new
-    //         frame10.roll1 = 5
-    //         frame10.roll2 = 5
-    //         frame10.roll3 = 5
-    //         game.add_frame(frame10)
-    //         expect(game.calculate_score).to eq 270
-    //     end
+        it('they play a perfect game except for spare and strike in 10th frame', () => {
+            const game = new BowlingGame();
+            const frame = new BowlingFrame(10);
+            for (let i = 0; i < 9; i++) {
+                game.addFrame(frame);
+            };
+            const frame10 = new BowlingFrame(9, 1, 10);
+            expect(game.calculateScore()).toBe(279);
+        });
 
-    //     it 'they hit a perfect game except for a spare and gutter in the 10th frame' do
-    //         frame.roll1 = 10
-    //         9.times { game.add_frame(frame) }
-    //         expect(game.calculate_score).to eq 240
-    //         frame10 = Frame.new
-    //         frame10.roll1 = 0
-    //         frame10.roll2 = 10
-    //         frame10.roll3 = 3
-    //         game.add_frame(frame10)
-    //         expect(game.calculate_score).to eq 263
-    //     end
+        it('they play a perfect game except for spare in 10th frame', () => {
+            const game = new BowlingGame();
+            const frame = new BowlingFrame(10);
+            for (let i = 0; i < 9; i++) {
+                game.addFrame(frame);
+            };
+            const frame10 = new BowlingFrame(5, 5, 5);
+            expect(game.calculateScore()).toBe(270);
+        });
 
-    //     it 'they hit a perfect game except for a spare and gutter in the 10th frame' do
-    //         frame.roll1 = 10
-    //         9.times { game.add_frame(frame) }
-    //         expect(game.calculate_score).to eq 240
-    //         frame10 = Frame.new
-    //         frame10.roll1 = 10
-    //         frame10.roll2 = 0
-    //         frame10.roll3 = 10
-    //         game.add_frame(frame10)
-    //         expect(game.calculate_score).to eq 280
-    //     end
-    // end
+        it('they play a perfect game except for gutter saved by spare in 10th frame', () => {
+            const game = new BowlingGame();
+            const frame = new BowlingFrame(10);
+            for (let i = 0; i < 9; i++) {
+                game.addFrame(frame);
+            };
+            const frame10 = new BowlingFrame(0, 10, 3);
+            expect(game.calculateScore()).toBe(263);
+        });
 
-    // context 'player plays a whole game' do
-    //     it 'example from readme' do
-    //         frame.roll1 = 1
-    //         frame.roll2 = 4
-    //         game.add_frame(frame)
-    //         frame2 = Frame.new
-    //         frame2.roll1 = 4
-    //         frame2.roll2 = 5
-    //         game.add_frame(frame2)
-    //         frame3 = Frame.new
-    //         frame3.roll1 = 6
-    //         frame3.roll2 = 4
-    //         game.add_frame(frame3)
-    //         frame4 = Frame.new
-    //         frame4.roll1 = 5
-    //         frame4.roll2 = 5
-    //         game.add_frame(frame4)
-    //         frame5 = Frame.new
-    //         frame5.roll1 = 10
-    //         game.add_frame(frame5)
-    //         frame6 = Frame.new
-    //         frame6.roll1 = 0
-    //         frame6.roll2 = 1
-    //         game.add_frame(frame6)
-    //         frame7 = Frame.new
-    //         frame7.roll1 = 7
-    //         frame7.roll2 = 3
-    //         game.add_frame(frame7)
-    //         frame8 = Frame.new
-    //         frame8.roll1 = 6
-    //         frame8.roll2 = 4
-    //         game.add_frame(frame8)
-    //         frame9 = Frame.new
-    //         frame9.roll1 = 10
-    //         game.add_frame(frame9)
-    //         frame10 = Frame.new
-    //         frame10.roll1 = 2
-    //         frame10.roll2 = 8
-    //         frame10.roll3 = 6
-    //         game.add_frame(frame10)
-    //         expect(game.cumulative_frame_totals).to eq [5, 14, 29, 49, 60, 61, 77, 97, 117, 133]
-    //         expect(game.calculate_score).to eq 133
-    //     end
-    // end
+        it('they play a perfect game except for strike, gutter, strike in 10th frame', () => {
+            const game = new BowlingGame();
+            const frame = new BowlingFrame(10);
+            for (let i = 0; i < 9; i++) {
+                game.addFrame(frame);
+            };
+            const frame10 = new BowlingFrame(10, 0, 10);
+            expect(game.calculateScore()).toBe(280);
+        });
+    });
+
+    describe('player plays a whole game scenario', () => {
+        it('example from readme', () => {
+            const game = new BowlingGame();
+            const frame = new BowlingFrame(1, 4);
+            game.addFrame(frame)
+            const frame2 = new BowlingFrame(4, 5);
+            game.addFrame(frame2)
+            const frame3 = new BowlingFrame(6, 4);
+            game.addFrame(frame3)
+            const frame4 = new BowlingFrame(5, 5);
+            game.addFrame(frame4)
+            const frame5 = new BowlingFrame(10);
+            game.addFrame(frame5)
+            const frame6 = new BowlingFrame(0, 1);
+            game.addFrame(frame6)
+            const frame7 = new BowlingFrame(7, 3);
+            game.addFrame(frame7)
+            const frame8 = new BowlingFrame(6, 4);
+            game.addFrame(frame8)
+            const frame9 = new BowlingFrame(10);
+            game.addFrame(frame9)
+            const frame10 = new BowlingFrame(2, 8, 6);
+            game.addFrame(frame10)
+            expect(game.calculateScore()).toBe(133);
+        });
+    });
 });

@@ -16,7 +16,7 @@ The output to the terminal when running the program features colours and emojis.
 ## To run:
 
 `nvm install node`\
-`npm init y`\
+`npm init -y`\
 `npm install prompt-sync`\
 `npm i chalk@4.1.2`\
 `npm install --save node-emoji`\

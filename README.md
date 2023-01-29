@@ -1,5 +1,17 @@
+Rachel Newby's Bowling Challenge!
+=================
+Full details of the challenge are included below. 
+## To run:
 
-Bowling Challenge
+`nvm install node`
+`npm init y`
+`npm install prompt-sync`
+`npm i chalk@4.1.2`
+`npm install --save node-emoji`
+Run the following in the terminal to use the bowling calculator:
+`node app.js` 
+
+Bowling Challenge Instructions
 =================
 
 * Feel free to use google, your notes, books, etc. but work on your own

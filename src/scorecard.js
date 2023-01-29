@@ -27,17 +27,24 @@ export class Scorecard {
         }
     }
     endFrame = () => {
-        if (this.frameCount > 1) {
-            if (this?.previousFrameScore && this.previousFrameScore?.rolls[0] === 10) {
+        this.scorecard.push(this.currentFrameScore)
+        if (this.frameCount === 10) {
+            if (this.isfirstRollATen()) {
+                this.scorecard[this.getPreviousArrayLocation()].bonus = this.currentFrameScore.rolls[0] + this.currentFrameScore.rolls[1]
+            } else if (this.areFirstTwoRollsATen()) {
+//                this.scorecard[this.getPreviousArrayLocation()].bonus = this.currentFrameScore.rolls[0]
+            }
+            return;
+        }
+        if ((this.frameCount > 1)) {
+            if (this.isfirstRollATen()) {
                 this.scorecard[this.getPreviousArrayLocation()].bonus = this.getScoreFromJustPlayedFrame()
-            } else if (this?.previousFrameScore && (sumArray(this.previousFrameScore?.rolls) === 10)) {
+            } else if (this.areFirstTwoRollsATen()) {
                 this.scorecard[this.getPreviousArrayLocation()].bonus = this.currentFrameScore.rolls[0]
             }
-
         }
-        this.previousFrameScore = this.currentFrameScore
-        this.scorecard.push(this.currentFrameScore)
 
+        this.previousFrameScore = this.currentFrameScore
     }
     rollInput = (item) => this.currentFrameScore.rolls.push(item)
 
@@ -45,11 +52,18 @@ export class Scorecard {
     getPreviousArrayLocation = () => this.frameCount - 2
     getScorecard = () => this.scorecard
 
-    getScorecardTotal = () =>   this.scorecard.reduce((pv,cv) => {
-        let {bonus,rolls} = cv
+    getScorecardTotal = () => this.scorecard.reduce((pv, cv) => {
+        let {
+            bonus,
+            rolls
+        } = cv
         let subTotalScore = bonus + sumArray(rolls)
         pv += subTotalScore
         return pv
-    },0)
+    }, 0)
     getFrameCount = () => this.frameCount
+
+    isfirstRollATen = () => this?.previousFrameScore && this.previousFrameScore?.rolls[0] === 10
+
+    areFirstTwoRollsATen = () => this?.previousFrameScore && (sumArray(this.previousFrameScore?.rolls) === 10)
 }

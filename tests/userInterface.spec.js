@@ -2,7 +2,7 @@ const { default: expect } = require('expect');
 const readlineSync = require('readline-sync');
 const UserInterface = require('../lib/userInterface');
 
-jest.mock('readline-sync'); // mock the readline-sync module
+jest.mock('readline-sync');
 
 describe('UserInterface', () => {
   let game, ui;

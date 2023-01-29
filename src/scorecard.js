@@ -1,4 +1,4 @@
-
+import {sumArray} from "./utils.js";
 
 export class Scorecard {
     constructor() {
@@ -14,8 +14,7 @@ export class Scorecard {
     startGame = () => {
 //        this.frameCount++
     }
-    getScoreFromJustPlayedFrame = () => this.currentFrameScore.rolls
-        .reduce((pv,cv) => pv + cv,0 )
+    getScoreFromJustPlayedFrame = () => sumArray(this.currentFrameScore.rolls)
     startFrame = () => {
         this.frameCount++
         this.currentFrameScore = {
@@ -28,7 +27,10 @@ export class Scorecard {
         if (this.frameCount > 1) {
             if (this?.previousFrameScore && this.previousFrameScore?.rolls[0] === 10) {
                 this.scorecard[this.getPreviousArrayLocation()].bonus = this.getScoreFromJustPlayedFrame()
+            } else if (this?.previousFrameScore && (sumArray(this.previousFrameScore?.rolls) === 10)) {
+                this.scorecard[this.getPreviousArrayLocation()].bonus = this.currentFrameScore.rolls[0]
             }
+
         }
         this.previousFrameScore = this.currentFrameScore
         this.scorecard.push(this.currentFrameScore)

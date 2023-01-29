@@ -1,4 +1,4 @@
-const BowlingScoreCard = require("./BowlingScoreCard");
+const BowlingScoreCard = require("../lib/bowlingScoreCard");
 
 describe("bowlingScoreCard class", () => {
   beforeEach(() => {
@@ -7,14 +7,14 @@ describe("bowlingScoreCard class", () => {
 
   it("tests for a zero score game", () => {
     for (let i = 0; i < 20; i++) {
-      return scoreCard.roll(0);
+      scoreCard.roll(0);
     }
     expect(scoreCard.overallScore()).toEqual(0);
   });
 
   it("tests for user hitting 1 for every roll", () => {
     for (let i = 0; i < 20; i++) {
-      return scoreCard.roll(1);
+      scoreCard.roll(1);
     }
     expect(scoreCard.overallScore()).toEqual(20);
   });
@@ -50,10 +50,31 @@ describe("bowlingScoreCard class", () => {
     perfectGame();
     expect(scoreCard.overallScore()).toEqual(300);
   });
-});
 
-// 1. test for a 0 score game (0)
-// 2. test for user hits 1 for every roll (20 score)
-// 3. test for user rolls one spare and then a five for next roll (18 score)
-// 4. test for user rolls one strike then a four and a five (28 score)
-// 5. test for user rolls the highest score possible for each roll
+  it("tests a spare in the last frame", () => {
+    let oneRolls = () => {
+      for (let i = 0; i < 18; i++) {
+        scoreCard.roll(1);
+      }
+    };
+    let finalSpare = () => {
+      scoreCard.roll(5);
+      scoreCard.roll(5);
+      scoreCard.roll(10);
+    };
+    oneRolls();
+    finalSpare();
+    expect(scoreCard.overallScore()).toEqual(48);
+  });
+
+  it("tests a spare in every frame", () => {
+    let spareRolls = () => {
+      for (let i = 0; i < 21; i++) {
+        scoreCard.roll(5);
+      }
+    };
+
+    spareRolls();
+    expect(scoreCard.overallScore()).toEqual(155);
+  });
+});

@@ -1,0 +1,1 @@
+export let sumArray = collection => collection.reduce((pv,cv) => pv + cv,0 )

@@ -4,7 +4,8 @@ Full details of the challenge are included below.
 
 ## What it does: 
 This program runs in the terminal and will calculate the total score of a single player's bowling rolls.\
-It will only accept one roll in a frame if the first roll is a strike. For any other rolls, it will ask for a second roll.\ 
+It will only accept one roll in a frame if the first roll is a strike. For any other rolls, it will ask for a second roll.\
+
 In the final frame, if you score a strike or a spare, the relevant bonus rolls will be included.\
 The output to the terminal when running the program features colours and emojis.
 

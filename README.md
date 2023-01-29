@@ -1,5 +1,29 @@
+Rachel Newby's Bowling Challenge!
+=================
+Full details of the challenge are included below. 
 
-Bowling Challenge
+## What it does: 
+This program runs in the terminal and will calculate the total score of a single player's bowling rolls.\
+It will only accept one roll in a frame if the first roll is a strike. For any other rolls, it will ask for a second roll. In the final frame, if you score a strike or a spare, the relevant bonus rolls will be included.\
+The output to the terminal when running the program features colours and emojis.
+
+## What it needs: 
+- The UserInterface class was not test driven, and tests have not yet been used to check the class.
+- The UserInterface class requires refactoring - the code is long and not elegant.
+- There is no validation on user input - they can input strings which are not numbers and the program will continue to run but NaN will be the output.
+- There is no limit to the number that the user can add, so if they rolled a 9, they could still input 8 and the program will use those numbers to calculate a final score. 
+
+## To run:
+
+`nvm install node`\
+`npm init -y`\
+`npm install prompt-sync`\
+`npm i chalk@4.1.2`\
+`npm install --save node-emoji`\
+Run the following in the terminal to use the bowling calculator:\
+`node app.js` 
+
+Bowling Challenge Instructions
 =================
 
 * Feel free to use google, your notes, books, etc. but work on your own

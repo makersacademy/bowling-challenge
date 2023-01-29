@@ -1,5 +1,9 @@
 language: node_js
 node_js:
   - 19
+install:
+  - npm install
 script:
-  - jest
+  - npm test
+os:
+  - osx

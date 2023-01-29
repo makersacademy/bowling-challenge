@@ -15,11 +15,11 @@ Additional logic was included to ensure that users could only input a valid numb
 ## How to use
 
 1. Clone the repository to your machine
-2. Ensure you have [Node.js](https://nodejs.org/en/download/) installed
+2. Ensure you have [Node.js](https://nodejs.org/en/download/) installed and you are using npm
 3. Navigate to the directory in your terminal and run:
 
    - `npm install`
-   - `node app.js`
+   - `npm start`
 
 
 4. You will be greeted with the title screen and asked to input your rolls.

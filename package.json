@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/rachelnewby/bowling-challenge#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
     "jest": "^29.4.1",
+    "node-emoji": "^1.11.0",
     "prompt-sync": "^4.2.0"
   },
   "devDependencies": {

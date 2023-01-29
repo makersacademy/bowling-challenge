@@ -42,5 +42,11 @@ export class Scorecard {
     getPreviousArrayLocation = () => this.frameCount - 2
     getScorecard = () => this.scorecard
 
+    getScorecardTotal = () =>   this.scorecard.reduce((pv,cv) => {
+        let {bonus,rolls} = cv
+        let subTotalScore = bonus + sumArray(rolls)
+        pv += subTotalScore
+        return pv
+    },0)
 
 }

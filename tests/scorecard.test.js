@@ -38,12 +38,14 @@ let playFrameMock = (roll1,roll2,card) => {
         playFrameMock(5,3,card)
          expect(card.getScorecard()[0]).toHaveProperty("bonus",8)
      })
-     it("First Spare then 2nd score Frame",() => {
+     it("calculate total score",() => {
          let card = new Scorecard()
          card.startGame()
-         playFrameMock(5,5,card)
-         playFrameMock(5,3,card)
-         expect(card.getScorecard()[0]).toHaveProperty("bonus",5)
+         playFrameMock(1,4,card) // 10 + 10
+         playFrameMock(4,5,card) // 20 + 10
+         playFrameMock(6,4,card) // 30 + 10
+         playFrameMock(5,5,card) // 40 + 8
+         expect(card.getScorecardTotal()).toEqual(39)
      })
 
  })

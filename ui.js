@@ -43,9 +43,6 @@ class Game {
           console.log(
             "You have entered a incorrect score, please enter again: "
           );
-        } else if ([score1, score2].isSpare() || [score1, score2].isStrike()) {
-          this.arr.push([score1, score2]);
-          this.frameIndex++;
         } else {
           this.arr.push([score1, score2]);
           this.frameIndex++;

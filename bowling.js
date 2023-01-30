@@ -1,3 +1,10 @@
+const frames = 10;
+const rollsPerFrame = 2;
+const totalPins = 10;
+let ball1 = 0;
+let ball2 = 0;
+
+
 class BowlingGame {
     constructor(frames, rollsPerFrame, totalPins) {
       this.frames = frames;
@@ -32,18 +39,19 @@ class BowlingGame {
       this.scores[this.currentFrame] = frameScore;
       this.currentFrame++;
     }
-  
+
     playExtraBalls() {
-      let extraBalls = 0;
-      if (this.scores[this.frames - 1] === this.totalPins) {
-        extraBalls = this.getRandomScore() + this.getRandomScore();
-        this.scores[this.frames - 1] += extraBalls;
-      } else if (this.scores[this.frames - 1] > this.totalPins) {
-        extraBalls = this.getRandomScore();
-        this.scores[this.frames - 1] += extraBalls;
+        let extraBalls = 0;
+        if (this.scores[this.frames - 1] === this.totalPins) {
+          extraBalls = 2 * this.getRandomScore();
+          this.scores[this.frames - 1] += extraBalls;
+        } else if (this.scores[this.frames - 1] > this.totalPins) {
+          extraBalls = this.getRandomScore();
+          this.scores[this.frames - 1] += extraBalls;
+        }
       }
-    }
-  
+      
+      
     getRandomScore(limit = this.totalPins) {
       return Math.floor(Math.random() * limit);
     }

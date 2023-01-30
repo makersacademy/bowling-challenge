@@ -48,20 +48,36 @@ class Bowling {
 
 module.exports = Bowling;
 
-//#1 on terminal, enter node and require the file:
+//to test #1: comment everything below this point, then,
+//on terminal, enter node and require the file:
 //Bowling = require('./bowling');
-// output: [class Bowling]
-bowling = new Bowling();
-// output: Bowling { score: 0, frame: 1, bonusRoll: 0 }
-console.log(bowling.process_frame([1, 4]));
-console.log(bowling.process_frame([4, 5]));
-console.log(bowling.process_frame([6, 4]));
-console.log(bowling.process_frame([5, 5]));
-console.log(bowling.process_frame([10, 0]));
-console.log(bowling.process_frame([0, 1]));
-console.log(bowling.process_frame([7, 3]));
-console.log(bowling.process_frame([6, 4]));
-console.log(bowling.process_frame([10, 0]));
-console.log(bowling.process_frame([2, 8, 6]));
-console.log(bowling.report_score());
+//then type the scores.
 
+//to test #2: run the file with the below:
+bowling = new Bowling();
+bowling.process_frame([1, 4]);
+bowling.process_frame([4, 5]);
+bowling.process_frame([6, 4]);
+bowling.process_frame([5, 5]);
+bowling.process_frame([10]);
+bowling.process_frame([0, 1]);
+bowling.process_frame([7, 3]);
+bowling.process_frame([6, 4]);
+bowling.process_frame([10]);
+bowling.process_frame([2, 8, 6]);
+console.log(bowling.report_score());
+// output:You scored 133 points!
+
+bowling_perfect = new Bowling();
+bowling_perfect.process_frame([10]);
+bowling_perfect.process_frame([10]);
+bowling_perfect.process_frame([10]);
+bowling_perfect.process_frame([10]);
+bowling_perfect.process_frame([10]);
+bowling_perfect.process_frame([10]);
+bowling_perfect.process_frame([10]);
+bowling_perfect.process_frame([10]);
+bowling_perfect.process_frame([10]);
+bowling_perfect.process_frame([10, 10]);
+console.log(bowling_perfect.report_score());
+// output:Congratulations on your perfect game! You scored 300 points!

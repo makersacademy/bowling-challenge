@@ -10,7 +10,6 @@ interface frame{
 
 class Bowling{
   scoreCard: Array<frame> = [];
-  currentRoll: number;
 
   constructor() {
     for (let i = 0; i < 9; i++){
@@ -30,24 +29,24 @@ class Bowling{
       calculated: false
     }
     this.scoreCard.push(lastFrame);
-    
-    this.currentRoll = 0;
+
+    const finalScore = this.scoreCard.reduce((a, b) => a.score + b.score)
+    console.log(`Final Score: ` )
   }
 
   run(){
     console.log('Welcome to Bowling!\n');
 
     this.scoreCard.forEach((frame, index) => {
-      console.log(`Frame: ${index + 1}, Roll: ${this.currentRoll}`);
       console.table(this.scoreCard);
       this.getFrame(index);
       this.checkSpares(index);
       this.checkStrikes(index);
     });
-
+    this.printFinalScore();
   }
 
-  getInput(frame: number): number{
+  getInput(frame: number, roll: number): number{
     let score: number;
     while (true) {
       const input: string = prompt('What was your score? ');
@@ -58,13 +57,14 @@ class Bowling{
       }
       score = parseInt(input);
 
+      // check that it' a number in range
       if (score > 10 || score < 0){
         console.log("That's impossible!");
         continue;
       }
 
       // check that the user input is a valid score
-      if (this.currentRoll == 1 && score + this.scoreCard[frame].roll1 > 10){
+      if (roll == 1 && score + this.scoreCard[frame].roll1 > 10 && frame != 9){
         console.log("That's more than a spare!");
         continue
       }
@@ -75,16 +75,21 @@ class Bowling{
 
   getFrame(frame: number): void {
     // Gets the scores for the current frame
-    const firstRoll = this.getInput(frame);
+    const firstRoll = this.getInput(frame, 0);
     this.scoreCard[frame].roll1 = firstRoll;
-    if (firstRoll == 10) return; // it's a strike so we'll stop here
+    if (firstRoll == 10 && frame != 9) return; // it's a strike so we'll stop here
     
-    const secondRoll = this.getInput(frame);
+    const secondRoll = this.getInput(frame, 1);
     this.scoreCard[frame].roll2 = secondRoll;
-    if (firstRoll + secondRoll < 10){
+    if (firstRoll + secondRoll < 10 && frame != 9){
       this.scoreCard[frame].score = firstRoll + secondRoll;
       this.scoreCard[frame].calculated = true;
     }
+    if (frame < 9 && this.scoreCard[9].roll1 != 10) return;
+    // last frame, bonus roll
+    const thirdRoll = this.getInput(9, 2);
+    this.scoreCard[9].roll3 = thirdRoll;
+    this.scoreCard[9].score = firstRoll + secondRoll + thirdRoll;
   }
 
   checkSpares(frame: number): void {
@@ -96,6 +101,7 @@ class Bowling{
       if (this.scoreCard[i].roll1 + this.scoreCard[i].roll2 == 10 && this.scoreCard[i+1].roll1 != -1){
         // calculate the score for the spare
         this.scoreCard[i].score = this.scoreCard[i].roll1 + this.scoreCard[i].roll2 + this.scoreCard[i+1].roll1;
+        this.scoreCard[i].calculated = true;
       }
     }
   }
@@ -109,7 +115,9 @@ class Bowling{
       
       if (this.scoreCard[i].roll1 == 10){
         // calculate the score for the spare
-        const nextScores = [this.scoreCard[i+1].roll1, this.scoreCard[i+1].roll2, this.scoreCard[i+2].roll1]
+        // const nextScores = [this.scoreCard[i+1].roll1, this.scoreCard[i+1].roll2, this.scoreCard[i+2].roll1]
+        
+        const nextScores = this.scoreCard.slice(i, 10).map(frame => [frame.roll1, frame.roll2]).flat();
         console.log(nextScores);
         let bonusScore = 0;
         let addedScores = 0;
@@ -126,6 +134,20 @@ class Bowling{
         }
       }
     }
+  }
+
+  printFinalScore(): void{
+    const finalScores = this.scoreCard.map(frame => {
+      return{
+        roll1: frame.roll1,
+        roll2: frame.roll2 == -1 ? 0 : frame.roll2,
+        roll3: frame.roll3 || '',
+        score: frame.score
+      }
+    });
+    console.table(finalScores);
+    const totalScore = finalScores.reduce((total, frame) => total + frame.score, 0)
+    console.log(`Total score is: ${totalScore}`);
   }
 }
 

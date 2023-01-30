@@ -29,9 +29,6 @@ class Bowling{
       calculated: false
     }
     this.scoreCard.push(lastFrame);
-
-    const finalScore = this.scoreCard.reduce((a, b) => a.score + b.score)
-    console.log(`Final Score: ` )
   }
 
   run(){
@@ -117,8 +114,8 @@ class Bowling{
         // calculate the score for the spare
         // const nextScores = [this.scoreCard[i+1].roll1, this.scoreCard[i+1].roll2, this.scoreCard[i+2].roll1]
         
-        const nextScores = this.scoreCard.slice(i, 10).map(frame => [frame.roll1, frame.roll2]).flat();
-        console.log(nextScores);
+        let nextScores = this.scoreCard.slice(i, 10).map(frame => [frame.roll1, frame.roll2]).flat();
+        nextScores[0] = -1;
         let bonusScore = 0;
         let addedScores = 0;
         for (let score of nextScores) {

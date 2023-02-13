@@ -33,7 +33,7 @@ I was able to TDD a working solution so a score can be calculated in any scoring
   - [ ] Strikes
   - [ ] Final Frame
 
-## Installation/Usage Instructions in README
+## Installation/Usage Instructions
 
 See instructions for how to download and run the tests:
 

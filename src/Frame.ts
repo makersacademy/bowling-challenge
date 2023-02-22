@@ -1,7 +1,4 @@
 export default class Frame {
-  static mockClear() {
-    throw new Error("Method not implemented.");
-  }
   // Types
   scores: number[];
   roll: number;

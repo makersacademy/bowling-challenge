@@ -13,6 +13,8 @@ describe("Frame", () => {
       expect(frame.getScores).toEqual([4, 0]);
       frame.add_score(6);
       expect(frame.getScores).toEqual([4, 6]);
+      frame.add_score(50);
+      expect(frame.getScores).toEqual([4, 6]);
     });
   });
 

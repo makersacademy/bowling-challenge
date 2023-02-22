@@ -23,9 +23,9 @@ export default class BowlingGame {
 
   result(): string {
     if (this.#is_ended()) {
-      return `Game ended! Your total score: ${this.#calculate_total_score()}`;
+      return `Game ended! Your total score: ${this.#calculate_total_score()}.`;
     } else {
-      return `Your current score: ${this.#calculate_total_score()}`;
+      return `Your current score: ${this.#calculate_total_score()}.`;
     }
   }
 

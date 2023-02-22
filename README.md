@@ -1,75 +1,155 @@
+<a name="readme-top"></a>
 
-Bowling Challenge
-=================
+<br />
+<div align="center">
+  <a href="https://github.com/terryhycheng/bowling-challenge">
+    <img src="images/logo.png" alt="Logo" width="100" height="100">
+  </a>
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+<h3 align="center">Bowling Challenge in <strong>Typescript</strong></h3>
+<p>Count and sum the scores of a bowling game for one player</p>
 
-## The Task
+[![circleci-build][circleci-build-shield]][circleci-build-url]
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+  <p align="center">
+    <a href="https://github.com/terryhycheng/bowling-challenge/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/terryhycheng/bowling-challenge/issues">Request Feature</a>
+  </p>
+</div>
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running Tests](#running-tests)
+  - [Production Build](#production-build)
+- [Contributing](#contributing)
+- [Contact](#contact)
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+
+The aim of this project is to build an **interactive terminal programme** to count and sum the scores of a bowling game for one player.
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
-As usual please start by
+### Built With
 
-* Forking this repo
+This project was built with the following tools:
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+- [![Typescipt][typescript-shield]][typescript-url]
+- [![CircleCI][circleci-shield]][circleci-url]
+- [![Jest][jest-shield]][jest-url]
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Optional Extras
+<!-- GETTING STARTED -->
 
-In any order you like:
+## Getting Started
 
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-* Create a UserInterface class, allowing you to run a game from the command line.
+This section shows you how to set up this project locally. First, get a local copy up and running follow these simple steps.
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+### Prerequisites
 
-## Bowling — how does it work?
+You have to make sure that `npm` and `node` have been installed in your local machine before running the project. If not, follow the steps below.
 
-### Strikes
+- npm
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+  ```sh
+  npm install npm@latest -g
+  npm -v
+  ```
 
-### Spares
+- nvm & node
+  ```sh
+    # visit https://github.com/nvm-sh/nvm on how to install nvm
+    nvm install node
+    node -v
+  ```
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+---
 
-### 10th frame
+### Installation
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/terryhycheng/bowling-challenge.git
+   cd bowling-challenge
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+---
 
-### Gutter Game
+### Running Tests
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+Before compiling the codes into production-ready Javascript, you should run the tests and make sure every line can be run without causing any errors.
 
-### Perfect Game
+1. Run the tests
+   ```sh
+   npm run test
+   ```
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+Then, test coverage reports will be automatically generated in the folder `coverage`. You can modify the setting in `jest.config.js` to turn this coverage function off.
 
-In the image below you can find some score examples.
+---
 
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
+### Production Build
 
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
+This project was built with `Typescript`. You have to covert all TS codes into JS before passing to deployment.
 
-## Code Review
+1. Build with Typescript
+   ```sh
+   npm run build
+   ```
 
-In code review we'll be hoping to see:
+All production-ready Javascript codes will be put in the folder `dist`.
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+<!-- CONTRIBUTING -->
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTACT -->
+
+## Contact
+
+Terry Cheng - [@terryhycheng](https://twitter.com/terryhycheng) - terryhycheng@gmail.com
+
+Project Link: [https://github.com/terryhycheng/bowling-challenge](https://github.com/terryhycheng/bowling-challenge)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[typescript-shield]: https://img.shields.io/badge/Typescript-3178c6?style=for-the-badge&logo=typescript&logoColor=white
+[typescript-url]: https://www.typescriptlang.org/
+[circleci-shield]: https://img.shields.io/badge/circleci-000000?style=for-the-badge&logo=circleci&logoColor=white
+[circleci-url]: https://circleci.com/
+[jest-shield]: https://img.shields.io/badge/jest-c21325?style=for-the-badge&logo=jest&logoColor=white
+[jest-url]: https://jestjs.io/
+[circleci-build-shield]: https://dl.circleci.com/status-badge/img/gh/terryhycheng/bowling-challenge/tree/main.svg?style=svg
+[circleci-build-url]: https://dl.circleci.com/status-badge/redirect/gh/terryhycheng/bowling-challenge/tree/main

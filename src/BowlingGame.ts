@@ -10,6 +10,7 @@ export default class BowlingGame {
     this.frame_index = 0;
   }
 
+  // Adds scores into the score board
   play(hits: number): void {
     if (this.#is_ended()) {
       return;
@@ -21,6 +22,7 @@ export default class BowlingGame {
     }
   }
 
+  // Returns a message with the total score
   result(): string {
     if (this.#is_ended()) {
       return `Game ended! Your total score: ${this.#calculate_total_score()}.`;
@@ -62,6 +64,7 @@ export default class BowlingGame {
     return this.frame_index == 10;
   }
 
+  // Creates an array of nine [0, 0] and one [0, 0, 0] for the 10th frame
   #new_board_handler(frame: typeof Frame): Frame[] {
     const new_board: Frame[] = [];
     for (let i of [...Array(9).keys()]) {

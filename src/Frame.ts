@@ -14,6 +14,7 @@ export default class Frame {
     return this.scores;
   }
 
+  // Adds scores to the correct roll
   add_score(score: number): void {
     if (this.is_ended()) {
       return;
@@ -22,10 +23,12 @@ export default class Frame {
     this.roll += 1;
   }
 
+  // Calculates the total socres of this frame
   total_score(): number {
     return this.scores.reduce((a: number, b: number) => a + b, 0);
   }
 
+  // Check if this frame is ended
   is_ended(): boolean {
     if (this.is_tenth) {
       return this.#check_tenth();
@@ -34,6 +37,7 @@ export default class Frame {
     }
   }
 
+  // Returns a status string
   status(): string {
     return this.#is_strike() ? "strike" : this.#is_spare() ? "spare" : "normal";
   }

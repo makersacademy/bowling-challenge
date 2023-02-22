@@ -1,15 +1,73 @@
+import Frame from "./Frame";
+
 export default class BowlingGame {
-  constructor() {}
+  // Types
+  score_board: Frame[];
+  frame_index: number;
 
-  play() {}
+  constructor(frame: typeof Frame) {
+    this.score_board = this.#new_board_handler(frame);
+    this.frame_index = 0;
+  }
 
-  print_score() {}
+  play(hits: number): void {
+    if (this.#is_ended()) {
+      return;
+    }
+    const current_frame = this.score_board[this.frame_index];
+    current_frame.add_score(hits);
+    if (current_frame.is_ended()) {
+      this.frame_index += 1;
+    }
+  }
+
+  result(): string {
+    if (this.#is_ended()) {
+      return `Game ended! Your total score: ${this.#calculate_total_score()}`;
+    } else {
+      return `Your current score: ${this.#calculate_total_score()}`;
+    }
+  }
 
   // Private
 
-  #calculate_total_score() {}
+  #calculate_total_score(): number {
+    let total_score = 0;
+    this.score_board.forEach((frame, index) => {
+      const next_frame = this.score_board[index + 1];
 
-  #is_ended() {}
+      if (index < 9) {
+        switch (frame.status()) {
+          case "strike":
+            total_score +=
+              frame.total_score() +
+              next_frame.getScores[0] +
+              next_frame.getScores[1];
+            break;
+          case "spare":
+            total_score += frame.total_score() + next_frame.getScores[0];
+            break;
+          default:
+            total_score += frame.total_score();
+            break;
+        }
+      } else {
+        total_score += frame.total_score();
+      }
+    });
+    return total_score;
+  }
 
-  #new_board_handler() {}
+  #is_ended(): boolean {
+    return this.frame_index == 10;
+  }
+
+  #new_board_handler(frame: typeof Frame): Frame[] {
+    const new_board: Frame[] = [];
+    for (let i of [...Array(9).keys()]) {
+      new_board.push(new frame(false));
+    }
+    new_board.push(new frame(true));
+    return new_board;
+  }
 }

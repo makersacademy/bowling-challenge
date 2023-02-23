@@ -2,7 +2,6 @@
 
 import { UserInterface } from "../../src/UserInterface";
 
-
 describe("UserInterface", () =>{
 
   test.todo("can start a new game");

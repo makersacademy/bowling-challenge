@@ -106,3 +106,11 @@ export class BowlingScore{
   }
 }
 
+// const game = new BowlingScore();
+// for (let i = 0;i<9; i++) {
+//   game.addFrame(10); 
+// }
+// game.addFrame(10,10,10);
+// console.log(game.getFrameArray());
+// console.log(game.getRunningTotal());
+

@@ -39,6 +39,7 @@ const ScoreBoard = ({ scores }) => {
     const roll2 = scores[rollIndex + 1];
     frame.score = 0
     frame.frameIndex = frameIndex
+    frame.thirdRoll = undefined;
 
     if (roll1 === 10 || roll1 + roll2 === 10) {
       const roll3 = scores[rollIndex + 2];

@@ -1,3 +1,5 @@
+import Frame from './Frame'
+
 const ScoreBoard = ({ scores }) => {
   const frames = [];
   let frameIndex = 0;
@@ -8,6 +10,7 @@ const ScoreBoard = ({ scores }) => {
     const frame = {};
     const roll1 = scores[rollIndex];
     const roll2 = scores[rollIndex + 1];
+    frame.frameIndex = frameIndex
 
     frame.firstRoll = roll1;
 
@@ -35,6 +38,7 @@ const ScoreBoard = ({ scores }) => {
     const roll1 = scores[rollIndex];
     const roll2 = scores[rollIndex + 1];
     frame.score = 0
+    frame.frameIndex = frameIndex
 
     if (roll1 === 10 || roll1 + roll2 === 10) {
       const roll3 = scores[rollIndex + 2];
@@ -54,11 +58,7 @@ const ScoreBoard = ({ scores }) => {
     <div>
       {frames.map((frame, index) => (
         <div key={index}>
-          <span>Frame {index + 1}: </span>
-          <span>First roll: {frame.firstRoll} </span>
-          <span>Second roll: {frame.secondRoll === null ? "X" : frame.secondRoll} </span>
-          {frame.thirdRoll ? <span>Third roll: {frame.thirdRoll === null ? "X" : frame.thirdRoll} </span> : null}
-          <span>Score: {frame.score}</span>
+          <Frame frame={frame}/>
         </div>
       ))}
       <span>Total Score: {totalScore}</span>

@@ -1,9 +1,11 @@
 import ScoreBoard from './ScoreBoard';
-import React from 'react';
+import React, { useState } from 'react';
 
 function Game() {
-  const scores  = [1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1];
+  // const scores  = [10,10,10,10,10,10,10,10,10,10,10,10];
   // const scores  = [10,2,3];
+  const [scores, setScores] = useState([])
+
 
   return (
     <div>
@@ -12,4 +14,4 @@ function Game() {
   );
 }
 
-export default Game;
+export default Game;                 

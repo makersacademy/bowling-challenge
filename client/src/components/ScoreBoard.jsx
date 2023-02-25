@@ -1,7 +1,11 @@
 import Frame from './Frame'
 import '../styles/ScoreBoard.css'
+import { GameOverContext } from './context/GameOverContext';
+import { useContext } from 'react';
 
-const ScoreBoard = ({ scores, handleCurrentFrame }) => {
+const ScoreBoard = ({ scores }) => {
+  const { handleGameOver } = useContext(GameOverContext);
+
   const frames = [];
   let frameIndex = 0;
   let rollIndex = 0;
@@ -57,6 +61,11 @@ const ScoreBoard = ({ scores, handleCurrentFrame }) => {
     frameIndex += 1;
     frames.push(frame);
     totalScore += frame.score;
+  }
+
+  // Check if game is over
+  if ( totalScore || totalScore === 0 ) {
+    handleGameOver()
   }
 
   return (

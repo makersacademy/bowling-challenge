@@ -1,7 +1,15 @@
-import {createContext} from 'react';
+import {createContext, useState} from 'react';
 
-// Create a new context
 const GameOverContext = createContext();
 
-// Export the context so other components can use it
-export default GameOverContext;
+const GameOverProvider = (props) => {
+  const [isGameOver, setIsGameOver] = useState(false)
+
+  const handleGameOver = () => {
+    setIsGameOver(true);
+  };
+
+  return <GameOverContext.Provider value={{isGameOver, handleGameOver}}>{props.children}</GameOverContext.Provider>;
+}
+
+export {GameOverProvider, GameOverContext};

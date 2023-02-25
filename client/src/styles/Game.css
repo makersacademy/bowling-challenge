@@ -1,0 +1,54 @@
+.score-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.score-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.score-label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #3B3B3B;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.score-input {
+  width: 50px;
+  height: 30px;
+  margin-left: 10px;
+  padding: 5px;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.add-score-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2D66A7;
+  color: #FFFFFF;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.add-score-btn:hover {
+  background-color: #1A4C7D;
+}

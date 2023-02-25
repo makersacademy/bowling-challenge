@@ -1,4 +1,5 @@
 import Frame from './Frame'
+import '../styles/ScoreBoard.css'
 
 const ScoreBoard = ({ scores }) => {
   const frames = [];
@@ -56,13 +57,13 @@ const ScoreBoard = ({ scores }) => {
   }
 
   return (
-    <div>
+    <div className='info-container'>
       {frames.map((frame, index) => (
         <div key={index}>
           <Frame frame={frame}/>
         </div>
       ))}
-      <span>Total Score: {totalScore}</span>
+      {totalScore ? <span className='total-score'>Total Score: {totalScore}</span> : null}
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import ScoreBoard from './ScoreBoard';
 import React, { useState } from 'react';
+import '../styles/Game.css'
 
 function Game() {
-  // const scores  = [10,10,10,10,10,10,10,10,10,10,10,10];
-  // const scores  = [10,2,3];
   const [scores, setScores] = useState([])
+  const [isGameOver, setIsGameOver] = useState(false) // WE ARE HERE NOWWewboivhreiuvnervbniuwrbvhiuroh
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,16 +13,15 @@ function Game() {
     event.target.reset();
   }
 
-
   return (
-    <div>
+    <div className="score-form-container">
       <ScoreBoard scores={scores}/>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form onSubmit={handleSubmit} className="score-form">
+        <label className="score-label">
           Your next score:
-          <input type='number' name='score' min='0' max='10' required/>
+          <input type="number" name="score" min="0" max="10" className="score-input" required/>
         </label>
-        <button type="submit">Add Score</button>
+        <button type="submit" className="add-score-btn">Add Score</button>
       </form>
     </div>
   );

@@ -1,0 +1,15 @@
+.info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.total-score {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #3B3B3B;
+  font-family: Arial, sans-serif;
+}

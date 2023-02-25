@@ -1,9 +1,4 @@
-@font-face {
-  font-family: 'BebasNeue';
-  src: url('./fonts/BebasNeue/woff2-cffbased/BebasNeue-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('Main.css');
 
 .app-container {
   display: flex;
@@ -18,6 +13,6 @@
   font-weight: bold;
   color: #3B3B3B;
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: BebasNeue, sans-serif;
   margin-bottom: 40px;
 }

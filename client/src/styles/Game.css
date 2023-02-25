@@ -1,3 +1,5 @@
+@import url('Main.css');
+
 .score-form-container {
   display: flex;
   justify-content: center;
@@ -8,18 +10,29 @@
 
 .score-form {
   display: flex;
+  margin-top: 70px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F8F8F8;
+  border: 1px solid #E0E0E0;
+  padding: 20px;
+  border-radius: 10px;
+  width: 280px;
+}
+
+.score-label-div {
+  display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .score-label {
   margin-top: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   color: #3B3B3B;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -31,18 +44,18 @@
   border: 1px solid #E0E0E0;
   border-radius: 5px;
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
 }
 
 .add-score-btn {
-  margin-top: 10px;
+  margin-top: 0px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   background-color: #2D66A7;
   color: #FFFFFF;
-  font-family: Arial, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;

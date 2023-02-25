@@ -1,3 +1,5 @@
+@import url('Main.css');
+
 .info-container {
   display: flex;
   flex-direction: row;
@@ -11,5 +13,5 @@
   font-size: 24px;
   font-weight: bold;
   color: #3B3B3B;
-  font-family: Arial, sans-serif;
+  font-family: Roboto, sans-serif;
 }

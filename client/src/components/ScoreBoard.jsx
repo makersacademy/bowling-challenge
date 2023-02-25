@@ -1,7 +1,7 @@
 import Frame from './Frame'
 import '../styles/ScoreBoard.css'
 
-const ScoreBoard = ({ scores }) => {
+const ScoreBoard = ({ scores, handleCurrentFrame }) => {
   const frames = [];
   let frameIndex = 0;
   let rollIndex = 0;
@@ -11,6 +11,7 @@ const ScoreBoard = ({ scores }) => {
     const frame = {};
     const roll1 = scores[rollIndex];
     const roll2 = scores[rollIndex + 1];
+
     frame.frameIndex = frameIndex
 
     frame.firstRoll = roll1;
@@ -29,6 +30,8 @@ const ScoreBoard = ({ scores }) => {
       }
     }
 
+    if (frame.firstRoll ) {}
+
     frames.push(frame);
     frameIndex += 1;
     totalScore += frame.score;
@@ -38,8 +41,8 @@ const ScoreBoard = ({ scores }) => {
     const frame = {};
     const roll1 = scores[rollIndex];
     const roll2 = scores[rollIndex + 1];
-    frame.score = 0
-    frame.frameIndex = frameIndex
+    frame.score = 0;
+    frame.frameIndex = frameIndex;
     frame.thirdRoll = undefined;
 
     if (roll1 === 10 || roll1 + roll2 === 10) {
@@ -63,7 +66,7 @@ const ScoreBoard = ({ scores }) => {
           <Frame frame={frame}/>
         </div>
       ))}
-      {totalScore ? <span className='total-score'>Total Score: {totalScore}</span> : null}
+      {totalScore || totalScore === 0 ? <span className='total-score'>Total Score: {totalScore}</span> : null}
     </div>
   );
 }

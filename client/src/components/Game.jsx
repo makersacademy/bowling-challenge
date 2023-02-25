@@ -1,10 +1,11 @@
 import ScoreBoard from './ScoreBoard';
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import '../styles/Game.css'
 
 function Game() {
   const [scores, setScores] = useState([])
-  const [isGameOver, setIsGameOver] = useState(false) // WE ARE HERE NOWWewboivhreiuvnervbniuwrbvhiuroh
+  const [currentFrame, setCurrentFrame] = useState([{frameIndex: 0, frameScore: 0}])
+  // const [isGameOver, setIsGameOver] = useState(false)
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,14 +14,18 @@ function Game() {
     event.target.reset();
   }
 
+  // const handleCurrentFrame = useCallback((frameIndex, frameScore) => {
+  //   setCurrentFrame({frameIndex, frameScore});
+  // }, [currentFrame]);
+
   return (
     <div className="score-form-container">
-      <ScoreBoard scores={scores}/>
+      <ScoreBoard scores={scores} />
       <form onSubmit={handleSubmit} className="score-form">
         <div className='score-label-div'>
           <label className="score-label">
             Your Next Score:
-            <input type="number" name="score" min="0" max="10" className="score-input" required/>
+            <input type="number" name="score" min="0" max={10} className="score-input" required/>
           </label>
         </div>
         <button type="submit" className="add-score-btn">Add Score</button>

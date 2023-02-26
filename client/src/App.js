@@ -8,8 +8,10 @@ import React, { useContext } from 'react';
 import './styles/App.css'
 
 function App() {
+  // 'isGameOver' is used to switch to the FinalScore page when the game ends
   const { isGameOver } = useContext(GameOverContext)
   
+  // Render App component
   return (
     <div className='app-container'>
       <Router>

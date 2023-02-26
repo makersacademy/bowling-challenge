@@ -1,5 +1,9 @@
-/* The parent CSS file for all the others */
+/*
+This is the parent CSS file for all other CSS files in the project.
+It includes the @font-face rule to define custom fonts for use in the project.
+*/
 
+/* Define the custom font 'BebasNeue' */
 @font-face {
   font-family: 'BebasNeue';
   src: url('./fonts/BebasNeue/woff2-cffbased/BebasNeue-Regular.woff2') format('woff2');
@@ -7,17 +11,10 @@
   font-style: normal;
 }
 
+/* Define the custom font 'Roboto' */
 @font-face {
   font-family: 'Roboto';
   src: url('./fonts/Roboto/Roboto-Regular.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
 }
-
-/* Cool palette to use:
-#F2C2E0 (a lighter shade of pinkish purple)
-#B992E6 (a deeper shade of purple)
-#9ED9CC (a light teal or greenish blue)
-#F3E0C5 (a light beige or peachy color)
-#FFA69E (a coral or salmon pink)
-#E1E1E1 (a light gray) */

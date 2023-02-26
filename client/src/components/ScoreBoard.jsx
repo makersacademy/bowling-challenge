@@ -4,16 +4,21 @@ import { GameOverContext } from './context/GameOverContext';
 import { ScoreContext } from './context/ScoreContext';
 import { useContext, useEffect } from 'react';
 
+// Passing the scores as props
 const ScoreBoard = ({ scores }) => {
+
+  // Getting states & functions from various contexts
   const { handleGameOver } = useContext(GameOverContext);
   const { handleFinalScore, handlePinsLeft } = useContext(ScoreContext);
 
+  // Creating variables for calculating frames and scores
   // eslint-disable-next-line
   const frames = [];
   let frameIndex = 0;
   let rollIndex = 0;
   let totalScore = 0;
 
+  // Creating frames using the scores array
   while (frameIndex < 9) {
     const frame = {};
     const roll1 = scores[rollIndex];
@@ -42,6 +47,7 @@ const ScoreBoard = ({ scores }) => {
     totalScore += frame.score;
   }
 
+  // Creating the 10th frame separately
   while (frameIndex === 9) {
     const frame = {};
     const roll1 = scores[rollIndex];
@@ -64,6 +70,7 @@ const ScoreBoard = ({ scores }) => {
     totalScore += frame.score;
   }
 
+  // Updating pinsLeft in ScoreContext by finding the frame with an incomplete second roll (aka the current frame)
   useEffect(() => {
     handlePinsLeft(
       frames.find(
@@ -75,7 +82,7 @@ const ScoreBoard = ({ scores }) => {
     ); 
   }, [frames, handlePinsLeft]);
 
-  // Check if game is over
+  // Checking if the game is over and updating the final score in ScoreContext
   useEffect(() => {
       if (totalScore || totalScore === 0 ) {
         handleFinalScore(totalScore);
@@ -83,6 +90,7 @@ const ScoreBoard = ({ scores }) => {
       }
   }, [totalScore, handleFinalScore, handleGameOver]);
 
+  // Rendering the frames in the ScoreBoard
   return (
     <div className='info-container'>
       {frames.map((frame, index) => (

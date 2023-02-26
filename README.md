@@ -27,6 +27,8 @@ This will start the app on your local server.
 - Final score display after the completion of the game
 - Reset button to start a new game.
 
+**Screenshots of the application being used in different ways can be found [here](https://github.com/forreya/bowling-scorecard/tree/main/extra-info/images).**
+
 ## Folder Structure
 **The folder structure of this app is as follows:**
 

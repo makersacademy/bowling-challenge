@@ -1,35 +1,41 @@
+# Bowling Scorecard React App
 
-Bowling Challenge
-=================
+This is a React application that allows users to keep score of a bowling game. The app consists of 10 frames, where each frame can have up to 2 rolls. The player's score is calculated based on the number of pins knocked down, strikes, and spares.
 
-## The Task
+The user interface of this app has been implemented using React components, and the score data is managed using a global state management tool called Context. The app also uses `react-router-dom` for routing and other React hooks such as `useState` and `useEffect` for adding state and side-effects to the functional components.
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+## Installation
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+To run this app, you will need to have **Node.js** and **npm** installed on your machine. Once you have installed **Node**.js and **npm**, clone this repository and run the following commands in your terminal:
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+```
+$ cd bowling-scorecard
+$ npm install
+$ npm start
+```
 
-As usual please start by
+This will start the app on your local server.
 
-* Forking this repo
+## Features
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+The app has the following features:
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+- The user can input the number of pins knocked down in each roll using the input fields provided.
+- App calculates the user's score in real-time, and displays it for each frame.
+- App handles strikes and spares correctly, and calculates the bonus points accordingly.
+- Final score display after the completion of the game
+- Reset button to start a new game.
 
-### Optional Extras
+## Folder Structure
+The folder structure of this app is as follows:
 
-In any order you like:
+components/: Contains all the React components used in the app.
+styles/: Contains all the CSS files & font files used in the app.
+App.jsx: The main React component that renders the app.
+index.jsx: The entry point for the app.
 
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-* Create a UserInterface class, allowing you to run a game from the command line.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
+## Bowling Rules
+_Here are the rules for bowling, for reference:_
 
 ### Strikes
 
@@ -46,25 +52,7 @@ If the player rolls a strike or spare in the 10th frame they can roll the additi
     10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
     1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
-### Gutter Game
+## Credits
+This app was developed by @forreya, based on the Bowling Challenge instructions provided by Makers Academy- which can be found [here](https://github.com/makersacademy/bowling-challenge).
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+The app was built using React, and various other tools such as react-router-dom.

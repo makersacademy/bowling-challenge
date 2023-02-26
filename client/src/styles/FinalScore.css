@@ -1,0 +1,48 @@
+.final-score-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 420px;
+  height: 300px;
+  background-color: #2d2d2d;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.final-score-title {
+  margin-top: 70px;
+  margin-left: 13px;
+  font-family: BebasNeue, sans-serif;
+  font-size: 45px;
+  font-weight: 700;
+  letter-spacing: 7px;
+  text-align: center;
+}
+
+.final-score {
+  margin-top: 30px;
+  margin-left: 13px;
+  font-family: BebasNeue, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 6px;
+}
+
+.final-score-button {
+  margin-top: 50px;
+  padding: 10px 20px;
+  background-color: #2D66A7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.final-score-button:hover {
+  background-color: #007ac1;
+}

@@ -1,0 +1,55 @@
+@import url('Main.css');
+
+.frame {
+  display: inline-block;
+  background-color: #F8F8F8;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  padding: 15px;
+  margin-right: 20px;
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.frame-label {
+  display: block;
+  margin-bottom: 20px;
+  color: #3B3B3B;
+  font-size: 16px;
+}
+
+.first-roll, .second-roll, .third-roll {
+  display: block;
+  margin-bottom: 10px;
+  color: #3B3B3B;
+}
+
+.first-roll:before, .second-roll:before, .third-roll:before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.first-roll:before {
+  background-color: #2D66A7;
+}
+
+.second-roll:before {
+  background-color: #EF9B0F;
+}
+
+.third-roll:before {
+  background-color: #ED1C24;
+}
+
+.frame-score {
+  display: block;
+  margin-top: 10px;
+  color: #3B3B3B;
+}

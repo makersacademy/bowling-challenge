@@ -1,0 +1,18 @@
+@import url('Main.css');
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.main-title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #3B3B3B;
+  text-align: center;
+  font-family: BebasNeue, sans-serif;
+  margin-bottom: 40px;
+}

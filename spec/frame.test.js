@@ -13,4 +13,18 @@ describe('frame', () => {
     frame.addRoll(3);
     expect(frame.score()).toBe(8);
   });
+
+  it('recognises two rolls equating to a spare', () => {
+    const frame = new Frame();
+    frame.addRoll(5);
+    frame.addRoll(5);
+    expect(frame.checkSpare()).toEqual(true);
+  });
+
+  it('recognises two rolls not equating to a spare', () => {
+    const frame = new Frame();
+    frame.addRoll(5);
+    frame.addRoll(3);
+    expect(frame.checkSpare()).toEqual(false);
+  });
 })

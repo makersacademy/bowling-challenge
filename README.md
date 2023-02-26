@@ -32,13 +32,13 @@ This will start the app on your local server.
 ## Folder Structure
 **The folder structure of this app is as follows:**
 
-components/: Contains all the React components used in the app.
+components: Contains all the React components used in the app.
 
-styles/: Contains all the CSS files & font files used in the app.
+styles: Contains all the CSS files & font files used in the app.
 
-App.jsx: The main React component that renders the app.
+App.js: The main React component that renders the app.
 
-index.jsx: The entry point for the app.
+index.js: The entry point for the app.
 
 ## Bowling Rules
 _Here are the rules for bowling, for reference:_

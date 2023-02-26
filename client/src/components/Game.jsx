@@ -1,11 +1,11 @@
 import ScoreBoard from './ScoreBoard';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../styles/Game.css'
 import { ScoreContext } from './context/ScoreContext';
 
 function Game() {
   const [scores, setScores] = useState([])
-  const { currentFrameScore } = useState()
+  const { pinsLeft } = useContext(ScoreContext)
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,7 +22,7 @@ function Game() {
         <div className='score-label-div'>
           <label className="score-label">
             Your Next Score:
-            <input type="number" name="score" min="0" max={10} className="score-input" required/>
+            <input type="number" name="score" min="0" max={pinsLeft} className="score-input" required/>
           </label>
         </div>
         <button type="submit" className="add-score-btn">Add Score</button>

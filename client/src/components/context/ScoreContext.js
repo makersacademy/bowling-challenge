@@ -4,21 +4,18 @@ const ScoreContext = createContext();
 
 const ScoreProvider = (props) => {
   const [finalScore, setFinalScore] = useState(0)
-  const [currentFrameScore, setCurrentFrameScore] = useState(0)
+  const [pinsLeft, setPinsLeft] = useState(0)
 
   const handleFinalScore = (finalScore) => {
     setFinalScore(finalScore);
   };
 
-  const handleCurrentFrameScore = (roll1,roll2) => {
-    setCurrentFrameScore(() => {
-      if (roll1 === undefined) {roll1 = 0} 
-      if (roll2 === undefined) {roll2 = 0}
-      return roll1+roll2
-    });
+  const handlePinsLeft = (currentFrame) => {
+    if (currentFrame === undefined) {setPinsLeft(10)}
+    else {setPinsLeft(10-currentFrame.firstRoll)}
   };
 
-  return <ScoreContext.Provider value={{finalScore, handleFinalScore, currentFrameScore, handleCurrentFrameScore, }}>{props.children}</ScoreContext.Provider>;
+  return <ScoreContext.Provider value={{finalScore, handleFinalScore, pinsLeft, handlePinsLeft, }}>{props.children}</ScoreContext.Provider>;
 }
 
 export {ScoreProvider, ScoreContext};

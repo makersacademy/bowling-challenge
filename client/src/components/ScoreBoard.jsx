@@ -6,8 +6,9 @@ import { useContext, useEffect } from 'react';
 
 const ScoreBoard = ({ scores }) => {
   const { handleGameOver } = useContext(GameOverContext);
-  const { handleFinalScore, handleCurrentFrameScore } = useContext(ScoreContext);
+  const { handleFinalScore, handlePinsLeft } = useContext(ScoreContext);
 
+  // eslint-disable-next-line
   const frames = [];
   let frameIndex = 0;
   let rollIndex = 0;
@@ -17,10 +18,6 @@ const ScoreBoard = ({ scores }) => {
     const frame = {};
     const roll1 = scores[rollIndex];
     const roll2 = scores[rollIndex + 1];
-
-    // if (roll1 === undefined || roll2 === undefined) {
-    //   handleCurrentFrameScore(roll1, roll2)
-    // }
 
     frame.frameIndex = frameIndex
 
@@ -67,6 +64,17 @@ const ScoreBoard = ({ scores }) => {
     totalScore += frame.score;
   }
 
+  useEffect(() => {
+    handlePinsLeft(
+      frames.find(
+        (frame) =>
+          frame.firstRoll !== undefined &&
+          frame.firstRoll !== 10 &&
+          frame.secondRoll === undefined
+      )
+    ); 
+  }, [frames, handlePinsLeft]);
+
   // Check if game is over
   useEffect(() => {
       if (totalScore || totalScore === 0 ) {
@@ -82,7 +90,6 @@ const ScoreBoard = ({ scores }) => {
           <Frame frame={frame}/>
         </div>
       ))}
-      {/* {totalScore || totalScore === 0 ? <span className='total-score'>Total Score: {totalScore}</span> : null} */}
     </div>
   );
 }

@@ -10,6 +10,7 @@ To run this app, you will need to have **Node.js** and **npm** installed on your
 
 ```
 $ cd bowling-scorecard
+$ cd client
 $ npm install
 $ npm start
 ```
@@ -18,7 +19,7 @@ This will start the app on your local server.
 
 ## Features
 
-The app has the following features:
+**The app has the following features:**
 
 - The user can input the number of pins knocked down in each roll using the input fields provided.
 - App calculates the user's score in real-time, and displays it for each frame.
@@ -27,11 +28,14 @@ The app has the following features:
 - Reset button to start a new game.
 
 ## Folder Structure
-The folder structure of this app is as follows:
+**The folder structure of this app is as follows:**
 
 components/: Contains all the React components used in the app.
+
 styles/: Contains all the CSS files & font files used in the app.
+
 App.jsx: The main React component that renders the app.
+
 index.jsx: The entry point for the app.
 
 ## Bowling Rules
@@ -53,6 +57,6 @@ If the player rolls a strike or spare in the 10th frame they can roll the additi
     1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
 ## Credits
-This app was developed by @forreya, based on the Bowling Challenge instructions provided by Makers Academy- which can be found [here](https://github.com/makersacademy/bowling-challenge).
+This app was developed by @forreya, based on the Bowling Challenge specifications provided by Makers Academy- which can be found [here](https://github.com/makersacademy/bowling-challenge).
 
 The app was built using React, and various other tools such as react-router-dom.

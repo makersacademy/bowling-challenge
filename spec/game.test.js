@@ -20,7 +20,7 @@ describe('Game', () => {
     game.roll(4);
     game.roll(6);
     game.roll(7);
-    const currFrame = game.frames[1];
+    let currFrame = game.frames[1];
     expect(currFrame.rolls).toEqual([6, 7]);
   });
 
@@ -31,7 +31,16 @@ describe('Game', () => {
     game.roll(10);
     game.roll(6);
     game.roll(7);
-    const currFrame = game.frames[1];
+    let currFrame = game.frames[1];
     expect(currFrame.rolls).toEqual([10]);
+  });
+
+  it('returns totalscore of 133 based on scores from README example', () => {
+    const game = new Game();
+    const pins = [1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6];
+    pins.forEach(pin => {
+      game.roll(pin);
+    });
+    expect(game.totalScore()).toEqual(133);
   });
 })

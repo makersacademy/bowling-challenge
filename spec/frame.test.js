@@ -38,12 +38,12 @@ describe('frame', () => {
     const frame = new Frame();
     frame.addRoll(10);
     expect(frame.checkStrike()).toEqual(true);
-    expect(frame.frameComplete()).toEqual(true);
+    expect(frame.frameComplete(0)).toEqual(true);
   }); 
 
   it('recognises a frame is not complete', () => {
     const frame = new Frame();
     frame.addRoll(5);
-    expect(frame.frameComplete()).toEqual(false);
+    expect(frame.frameComplete(0)).toEqual(false);
   }); 
 })

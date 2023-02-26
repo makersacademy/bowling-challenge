@@ -26,12 +26,14 @@ const Frame = (props) => {
         {!isStrike && frame.firstRoll !== 0 ? <span className="first-roll">First Roll: {frame.firstRoll || '-'}</span> : null}
         {frame.firstRoll === 0 ? <span className="first-roll">First Roll: 0</span> : null}
 
-        {!isSpare && frame.secondRoll !== 0 ? <span className="second-roll">Second Roll: {frame.secondRoll === undefined ? '-' : frame.secondRoll || '-'}</span> : null}
+        {!isSpare && frame.secondRoll !== 0 && frame.secondRoll !== 10? <span className="second-roll">Second Roll: {frame.secondRoll === undefined? '-' : frame.secondRoll || '-'}</span> : null}
         {isSpare? <span className="second-roll">Second Roll: /</span> : null}
+        {frame.secondRoll === 10? <span className="second-roll">Second Roll: X</span> : null}
         {frame.secondRoll === 0 ? <span className="second-roll">Second Roll: 0</span> : null}
 
-        {frame.thirdRoll ? (<span className="third-roll">Third Roll: {frame.thirdRoll}</span>) : null}
+        {frame.thirdRoll && frame.thirdRoll !== 10? (<span className="third-roll">Third Roll: {frame.thirdRoll}</span>) : null}
         {frame.thirdRoll === '' ? (<span className="third-roll">Third Roll: -</span>) : null}
+        {frame.thirdRoll === 10? <span className="third-roll">Third Roll: X</span> : null}
         {frame.thirdRoll === 0 ? (<span className="third-roll">Third Roll: 0</span>) : null}
       </div>
       {frame.score === 0 ?  <span className="frame-score">Score: 0</span> : <span className="frame-score">Score: {frame.score || '-'}</span>}

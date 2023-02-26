@@ -1,9 +1,11 @@
 import ScoreBoard from './ScoreBoard';
 import React, { useState } from 'react';
 import '../styles/Game.css'
+import { ScoreContext } from './context/ScoreContext';
 
 function Game() {
   const [scores, setScores] = useState([])
+  const { currentFrameScore } = useState()
 
   const handleSubmit = (event) => {
     event.preventDefault();

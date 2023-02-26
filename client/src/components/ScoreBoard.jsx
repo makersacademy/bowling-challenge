@@ -1,10 +1,12 @@
 import Frame from './Frame'
 import '../styles/ScoreBoard.css'
 import { GameOverContext } from './context/GameOverContext';
-import { useContext } from 'react';
+import { ScoreContext } from './context/ScoreContext';
+import { useContext, useEffect } from 'react';
 
 const ScoreBoard = ({ scores }) => {
   const { handleGameOver } = useContext(GameOverContext);
+  const { handleFinalScore, handleCurrentFrameScore } = useContext(ScoreContext);
 
   const frames = [];
   let frameIndex = 0;
@@ -15,6 +17,10 @@ const ScoreBoard = ({ scores }) => {
     const frame = {};
     const roll1 = scores[rollIndex];
     const roll2 = scores[rollIndex + 1];
+
+    // if (roll1 === undefined || roll2 === undefined) {
+    //   handleCurrentFrameScore(roll1, roll2)
+    // }
 
     frame.frameIndex = frameIndex
 
@@ -33,8 +39,6 @@ const ScoreBoard = ({ scores }) => {
         frame.score = roll1 + roll2;
       }
     }
-
-    if (frame.firstRoll ) {}
 
     frames.push(frame);
     frameIndex += 1;
@@ -64,9 +68,12 @@ const ScoreBoard = ({ scores }) => {
   }
 
   // Check if game is over
-  if ( totalScore || totalScore === 0 ) {
-    handleGameOver()
-  }
+  useEffect(() => {
+      if (totalScore || totalScore === 0 ) {
+        handleFinalScore(totalScore);
+        handleGameOver();
+      }
+  }, [totalScore, handleFinalScore, handleGameOver]);
 
   return (
     <div className='info-container'>
@@ -75,7 +82,7 @@ const ScoreBoard = ({ scores }) => {
           <Frame frame={frame}/>
         </div>
       ))}
-      {totalScore || totalScore === 0 ? <span className='total-score'>Total Score: {totalScore}</span> : null}
+      {/* {totalScore || totalScore === 0 ? <span className='total-score'>Total Score: {totalScore}</span> : null} */}
     </div>
   );
 }

@@ -52,4 +52,13 @@ describe('Game', () => {
     });
     expect(game.totalScore()).toEqual(300);
   });
+
+  it('returns the score of 0 for gutter game', () => {
+    const game = new Game();
+    const pins = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    pins.forEach(pin => {
+      game.roll(pin);
+    });
+    expect(game.totalScore()).toEqual(0);
+  });
 })

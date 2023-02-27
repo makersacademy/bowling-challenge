@@ -36,7 +36,6 @@ export class UserInterface{
       game.addFrame(scores[0],scores[1],scores[2]);
       this.frame += 1;
     }
-    console.log(game.getFrameArray());
     console.log(game.getRunningTotal());
   }
 
@@ -72,5 +71,5 @@ export class UserInterface{
 }
 
 // manual tests
-// const ui = new UserInterface();
-// ui.run();
+ const ui = new UserInterface();
+ ui.run();

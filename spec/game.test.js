@@ -43,4 +43,13 @@ describe('Game', () => {
     });
     expect(game.totalScore()).toEqual(133);
   });
+
+  it('returns the score of 300 for a perfect game', () => {
+    const game = new Game();
+    const pins = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+    pins.forEach(pin => {
+      game.roll(pin);
+    });
+    expect(game.totalScore()).toEqual(300);
+  });
 })

@@ -21,7 +21,6 @@ Additional logic was included to ensure that users could only input a valid numb
    - `npm install`
    - `npm start`
 
-
 4. You will be greeted with the title screen and asked to input your rolls.
 
 <div style="text-align: center;">

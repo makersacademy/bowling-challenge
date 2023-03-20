@@ -27,7 +27,6 @@ scorecard.addFrame([3, 5]) // returns "Please finish the current frame [5, ?]"
 scorecard.addRoll(2)
 scorecard.addFrame([3, 5])
 scorecard.calculateScore() // returns 15
-scorecard.showScore() // [[5, 2], [3, 5]]
 ```
 
 As usual please start by

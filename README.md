@@ -21,11 +21,9 @@ An example of how your code might be used could be:
 
 ```javaScript
 let scorecard = new Scorecard()
-scorecard.addRoll(5)
-scorecard.calculateScore() // returns 5
-scorecard.addFrame([3, 5]) // returns "Please finish the current frame [5, ?]"
-scorecard.addRoll(2)
-scorecard.addFrame([3, 5])
+scorecard.calculateScore() // returns 0
+scorecard.addFrame(2, 5) 
+scorecard.addFrame(3, 5)
 scorecard.calculateScore() // returns 15
 ```
 

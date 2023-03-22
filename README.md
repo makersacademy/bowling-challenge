@@ -27,6 +27,8 @@ scorecard.addFrame(3, 5)
 scorecard.calculateScore() // returns 15
 ```
 
+But feel free to add other methods if you think they are useful.
+
 As usual please start by
 
 * Forking this repo

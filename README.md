@@ -9,15 +9,31 @@ Bowling Challenge
 
 ## The Task
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. THE USER INPUTS THE ROLLS.**
+**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. AN ACTUAL USER INTERFACE IS OPTIONAL**
 
-Count and sum the scores of a bowling game for one player (in JavaScript).
+Count and sum the scores of a bowling game for one player (in JavaScript). 
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+
+Start by looking in detail at the rules and the example of scoring for a complete game given below.
+
+An example of how your code might be used could be:
+
+```javaScript
+let scorecard = new Scorecard()
+scorecard.calculateScore() // returns 0
+scorecard.addFrame(2, 5) 
+scorecard.addFrame(3, 5)
+scorecard.calculateScore() // returns 15
+```
+
+But feel free to add other methods if you think they are useful.
 
 As usual please start by
 
 * Forking this repo
+
+* Using test-driven development (if you decide to write a user interface, then make sure you have looked at the chapters on mocking).
 
 * Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
 

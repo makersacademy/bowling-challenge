@@ -1,9 +1,5 @@
 const Game = require('./Game');
 
-// // const nameDouble = { getPrice: () => '4.99'}
-// const fakeCandy = { name: 'Skittles', price: 3.99};
-// const newBasket = new ShoppingBasket();
-
 describe('Roll', () => {
   it ('adds the number of pins knocked down to the rolls array', () => {
     const newGame = new Game;
@@ -11,6 +7,13 @@ describe('Roll', () => {
     expect(newGame.rolls).toEqual([5]);
   });
 
-
+describe('score' () => {
+  it('scores a gutter game', () => {
+    const game = new BowlingGame();
+    for (let i = 0; i < 20; i++) {
+      game.roll(0);
+    }
+    expect(game.score()).toEqual(0);
+  });
+})
 });
-

@@ -47,4 +47,12 @@ describe('BowlingGame', () => {
     expect(bowlingGame.score()).toBe(24);
   });
 
+  it('scores a perfect game when the player rolls all strikes', () => {
+    const bowlingGame = new BowlingGame();
+    for (let i = 0 ; i < 12 ; i++) {
+      bowlingGame.roll(10);
+    };
+    expect(bowlingGame.score()).toBe(300);
+  });
+
 });

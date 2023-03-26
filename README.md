@@ -1,3 +1,7 @@
+## My Bowling Challenge in Javascript
+
+My attempt at the Bowling Score Card challenge in JavaScript.
+
 
 Bowling Challenge
 =================

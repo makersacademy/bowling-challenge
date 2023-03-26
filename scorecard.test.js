@@ -31,5 +31,18 @@ describe('Scorecard', () => {
     expect(scorecard.calculateScore()).toEqual(70)
   })
 
-  
+  it('calculates the correct score, with spares', () => {
+    scorecard.addFrame(5, 5)
+    scorecard.addFrame(5, 5)
+    scorecard.addFrame(5, 5)
+    scorecard.addFrame(5, 5)
+    scorecard.addFrame(5, 5)
+    scorecard.addFrame(5, 5)
+    scorecard.addFrame(5, 5)
+    scorecard.addFrame(5, 5)
+    scorecard.addFrame(5, 5)
+    scorecard.addFrame(5, 5)
+    expect(scorecard.calculateScore()).toEqual(150)
+  })
+
 })

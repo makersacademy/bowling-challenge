@@ -17,13 +17,13 @@ class Scorecard {
     for (let i = 0; i < this.frames.length; i++) {
       const frame = this.frames[i];
       score += frame.getScore();
+      if (frame.isSpare()) {
+        score += this.getSpareBonus(i);
+      }
     }
     return score;
   }
-
-  
-  private 
-
+ 
   createFrame(firstRoll, secondRoll) {
     const frame = new Frame();
     if (firstRoll === 10) {
@@ -34,6 +34,15 @@ class Scorecard {
       frame.addRoll(secondRoll);
     }
     return frame;
+  }
+
+  getSpareBonus(frameIndex) {
+    let bonus = 0
+    const nextFrame = this.frames[frameIndex + 1];
+    if (nextFrame) {
+      bonus += nextFrame.returnFirstRoll();
+    }
+    return bonus;
   }
 }
 

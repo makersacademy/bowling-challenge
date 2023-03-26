@@ -30,6 +30,19 @@ class Frame {
   isComplete() {
     return this.isStrike() || this.rolls.length === 2;
   }
+
+  returnFirstRoll() {
+    return this.rolls[0];
+  }
+
+  getSpareBonus(frameIndex) {
+    let bonus = 0
+    const nextFrame = this.frame[frameIndex + 1];
+    if (nextFrame) {
+      bonus += nextFrame.getFirstRoll();
+    }
+    return bonus;
+  }
 }
 
 module.exports = Frame;

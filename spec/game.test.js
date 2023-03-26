@@ -12,11 +12,14 @@ describe ('Game.', () => {
         expect(game1.roll(6)).toEqual (6);
     })
 
-    it ('Returns score board after two rolls.', () => {
+    it ('Returns score board after ten rolls.', () => {
         game1 = new Game();
-        game1.roll(6);
-        game1.roll(4);
-        expect(game1.score()).toEqual (10);
+        for (let i = 0; i < 10; i++) {
+            game1.roll(10);
+          }
+          game1.roll(10);
+          game1.roll(10);
+        expect(game1.score()).toEqual (300);
     })
 
     it ('Fails when first roll is incorrect.', () => {

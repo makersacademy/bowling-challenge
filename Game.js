@@ -4,8 +4,11 @@ class Game {
   }
 
   roll(pins) {
-  this.rolls.push(pins);
-  }
+    if (pins < 0 || pins > 10) {
+      throw new Error('Invalid number of pins');
+    }
+    this.rolls.push(pins);
+    }
 
   score() {
     let totalScore = 0;

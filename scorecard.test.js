@@ -5,4 +5,10 @@ describe('Scorecard', () => {
     const scorecard = new Scorecard();
     expect(scorecard.calculateScore()).toEqual(0);
   });
+  it('has a score of 9', () => {
+    const scorecard = new Scorecard();
+    scorecard.addFrame(4, 5);
+    expect(scorecard.calculateScore()).toEqual(9);
+  });
+
 })

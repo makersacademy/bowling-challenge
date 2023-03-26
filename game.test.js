@@ -65,4 +65,29 @@ describe('Game', () => {
     expect(newGame.score()).toEqual(150);
   })
 
+  it('when game has a mix of strikes, spares, and open frames', () => {
+    const newGame = new Game;
+    for (let i = 0; i < 21; i++) {
+      newGame.roll(1);
+      newGame.roll(4);
+      newGame.roll(4);
+      newGame.roll(5);
+      newGame.roll(6);
+      newGame.roll(4);
+      newGame.roll(5);
+      newGame.roll(5);
+      newGame.roll(10);
+      newGame.roll(0);
+      newGame.roll(1);
+      newGame.roll(7);
+      newGame.roll(3);
+      newGame.roll(6);
+      newGame.roll(4);
+      newGame.roll(10);
+      newGame.roll(2);
+      newGame.roll(8);
+      newGame.roll(6);
+    }
+    expect(newGame.score()).toEqual(133);
+  })
 })

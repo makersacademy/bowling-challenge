@@ -37,4 +37,15 @@ describe('Game', () => {
     }
     expect(newGame.score()).toEqual(16);
   })
+
+  it('Correctly calculates a strike', () => {
+    const newGame = new Game;
+    newGame.roll(10);
+    newGame.roll(3);
+    newGame.roll(4);
+    for (let i = 0; i < 16; i++) {
+      newGame.roll(0);
+    }
+    expect(newGame.score()).toEqual(24);
+  })
 })

@@ -1,5 +1,4 @@
 const Scorecard = require('./scorecard')
-const Frame = require('./frame')
 
 describe('Scorecard', () => {
   let scorecard;
@@ -17,4 +16,20 @@ describe('Scorecard', () => {
     scorecard.addFrame(10)
     expect(scorecard.calculateScore()).toEqual(10)
   })
+
+  it('calculates the correct score, without any strikes or spares', () => {
+    scorecard.addFrame(2, 5)
+    scorecard.addFrame(2, 5)
+    scorecard.addFrame(2, 5)
+    scorecard.addFrame(2, 5)
+    scorecard.addFrame(2, 5)
+    scorecard.addFrame(2, 5)
+    scorecard.addFrame(2, 5)
+    scorecard.addFrame(2, 5)
+    scorecard.addFrame(2, 5)
+    scorecard.addFrame(2, 5)
+    expect(scorecard.calculateScore()).toEqual(70)
+  })
+
+  
 })

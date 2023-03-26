@@ -7,16 +7,7 @@ class Scorecard {
   }
 
   addFrame(firstRoll, secondRoll) {
-    console.log(`Creating new frame with rolls: ${firstRoll}, ${secondRoll}`);
-
-    const frame = new Frame();
-    if (firstRoll === 10) {
-      frame.addRoll(firstRoll);
-      frame.markAsStrike();
-    } else {
-    frame.addRoll(firstRoll);
-    frame.addRoll(secondRoll);
-    }
+    const frame = this.createFrame(firstRoll, secondRoll);
     this.frames.push(frame);
     this.currentFrameIndex += 1;
   }
@@ -28,6 +19,21 @@ class Scorecard {
       score += frame.getScore();
     }
     return score;
+  }
+
+  
+  private 
+
+  createFrame(firstRoll, secondRoll) {
+    const frame = new Frame();
+    if (firstRoll === 10) {
+      frame.addRoll(firstRoll);
+      frame.markAsStrike();
+    } else {
+      frame.addRoll(firstRoll);
+      frame.addRoll(secondRoll);
+    }
+    return frame;
   }
 }
 

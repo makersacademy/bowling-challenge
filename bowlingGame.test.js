@@ -36,6 +36,15 @@ describe('BowlingGame', () => {
     expect(bowlingGame.score()).toBe(23);
   });
 
-
+  it('adds the score of the next two rolls to 10 when the player rolls a strike', () => {
+    const bowlingGame = new BowlingGame();
+    bowlingGame.roll(10);
+    bowlingGame.roll(5);
+    bowlingGame.roll(2);
+    for (let i = 0 ; i < 16 ; i++) {
+      bowlingGame.roll(0);
+    };
+    expect(bowlingGame.score()).toBe(24);
+  });
 
 });

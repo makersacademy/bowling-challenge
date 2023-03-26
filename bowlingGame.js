@@ -20,6 +20,9 @@ class BowlingGame {
       if (this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10) {
         totalScore += 10 + this.rolls[rollIndex + 2];
         rollIndex += 2;
+      } else if (this.rolls[rollIndex] === 10) {
+        totalScore += 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+        rollIndex += 1;
       } else {
         totalScore += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
         rollIndex += 2;

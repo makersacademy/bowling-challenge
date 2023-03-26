@@ -24,12 +24,16 @@ class BowlingGame {
         totalScore += this.strikeBonus(rollIndex);
         rollIndex += 1;
       } else {
-        totalScore += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+        totalScore += this.frameScore(rollIndex);
         rollIndex += 2;
       };
     };
 
     return totalScore;
+  }
+
+  frameScore(rollIndex) {
+    return this.rolls[rollIndex] + this.rolls[rollIndex + 1];
   }
 
   isSpare(rollIndex) {

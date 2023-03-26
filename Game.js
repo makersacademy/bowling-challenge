@@ -12,7 +12,14 @@ class Game {
     let rollIndex = 0;
 
     for (let frame = 0; frame < 10; frame++) {
-      if (this.spare(rollIndex)) {
+      if (this.strike(rollIndex)) {
+        if (this.rolls[rollIndex + 1] !== undefined && this.rolls[rollIndex + 2] !== undefined) {
+          totalScore += 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+        } else {
+          break;
+        }
+        rollIndex += 1;
+      } else if (this.spare(rollIndex)) {
         if (this.rolls[rollIndex + 2] !== undefined) {
           totalScore += 10 + this.rolls[rollIndex + 2];
         } else {
@@ -26,6 +33,10 @@ class Game {
     }
 
     return totalScore;
+  }
+
+  strike(rollIndex) {
+    return this.rolls[rollIndex] === 10;
   }
 
   spare(rollIndex) {

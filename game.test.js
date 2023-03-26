@@ -17,6 +17,14 @@ describe('Game', () => {
       }
       expect(newGame.score()).toEqual(0);
     });
+
+    it('returns the sum of al rolls for a game without strikes or spares', () => {
+      const newGame = new Game();
+      for (let i = 0; i < 20; i++) {
+        newGame.roll(4);
+      }
+      expect(newGame.score()).toEqual(80);
+    })
   });
 })
 

@@ -8,4 +8,12 @@ describe('BowlingGame', () => {
     expect(bowlingGame.score()).toBe(0);
   });
 
+  it('scores a gutter game when the player rolls all zeros', () => {
+    const bowlingGame = new BowlingGame();
+    for (let i = 0 ; i <= 20 ; i++) {
+      bowlingGame.roll(0);
+    };
+    expect(bowlingGame.score()).toBe(0);
+  });
+
 });

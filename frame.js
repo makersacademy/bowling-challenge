@@ -1,6 +1,7 @@
 class Frame {
   constructor() {
-    this.rolls = []
+    this.rolls = [];
+    this.strike = false;
   }
 
   addRoll(pins) {
@@ -11,7 +12,11 @@ class Frame {
   }
 
   isStrike() {
-    return this.rolls.length === 1 && this.rolls[0] === 10;
+    return this.strike;
+  }
+
+  markAsStrike() {
+    this.strike = true;
   }
 
   isSpare() {

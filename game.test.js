@@ -56,4 +56,13 @@ describe('Game', () => {
     }
     expect(newGame.score()).toEqual(300);
   })
+
+  it('Correctly calculates a perfect game', () => {
+    const newGame = new Game;
+    for (let i = 0; i < 21; i++) {
+      newGame.roll(5);
+    }
+    expect(newGame.score()).toEqual(150);
+  })
+
 })

@@ -1,0 +1,25 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "js bowling challenge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t-kellett/bowling-challenge.git"
+  },
+  "author": "Tom Kellett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/t-kellett/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/t-kellett/bowling-challenge#readme",
+  "dependencies": {
+    "jest": "^27.3.1"
+  }
+}

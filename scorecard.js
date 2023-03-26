@@ -6,6 +6,10 @@ class Scorecard {
   calculateScore() {
     return this.score;
   }
+
+  addFrame(num1, num2) {
+    this.score = num1 + num2;
+  }
 }
 
 

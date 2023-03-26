@@ -20,7 +20,7 @@ class BowlingGame {
       if (this.isSpare(rollIndex)) {
         totalScore += 10 + this.rolls[rollIndex + 2];
         rollIndex += 2;
-      } else if (this.rolls[rollIndex] === 10) {
+      } else if (this.isStrike(rollIndex)) {
         totalScore += 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
         rollIndex += 1;
       } else {
@@ -33,7 +33,11 @@ class BowlingGame {
   }
 
   isSpare(rollIndex) {
-    return this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10
+    return this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10;
+  }
+
+  isStrike(rollIndex) {
+    return this.rolls[rollIndex] === 10;
   }
 
 };

@@ -21,7 +21,7 @@ class BowlingGame {
         totalScore += this.spareBonus(rollIndex);
         rollIndex += 2;
       } else if (this.isStrike(rollIndex)) {
-        totalScore += 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
+        totalScore += this.strikeBonus(rollIndex);
         rollIndex += 1;
       } else {
         totalScore += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
@@ -42,6 +42,10 @@ class BowlingGame {
 
   isStrike(rollIndex) {
     return this.rolls[rollIndex] === 10;
+  }
+
+  strikeBonus(rollIndex) {
+    return 10 + this.rolls[rollIndex + 1] + this.rolls[rollIndex + 2];
   }
 
 };

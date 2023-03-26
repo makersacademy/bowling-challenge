@@ -8,7 +8,7 @@ class Scorecard {
   }
 
   addFrame(num1, num2) {
-    this.score = num1 + num2;
+    this.score += num1 + num2;
   }
 }
 

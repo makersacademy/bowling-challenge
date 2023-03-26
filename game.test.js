@@ -48,4 +48,12 @@ describe('Game', () => {
     }
     expect(newGame.score()).toEqual(24);
   })
+
+  it('Correctly calculates a perfect game', () => {
+    const newGame = new Game;
+    for (let i = 0; i < 12; i++) {
+      newGame.roll(10);
+    }
+    expect(newGame.score()).toEqual(300);
+  })
 })

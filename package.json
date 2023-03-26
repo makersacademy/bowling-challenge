@@ -1,0 +1,28 @@
+{
+  "name": "bowling-challenge",
+  "version": "1.0.0",
+  "description": "Week 6 Bowling challenge in JS",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AJOsmaston/bowling-challenge.git"
+  },
+  "author": "AJOsmaston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AJOsmaston/bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/AJOsmaston/bowling-challenge#readme",
+  "dependencies": {
+    "jest": "^27.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.1.0"
+  }
+}

@@ -26,5 +26,15 @@ describe('Game', () => {
       expect(newGame.score()).toEqual(80);
     })
   });
-})
 
+  it('Correctly calculates a spare', () => {
+    const newGame = new Game;
+    newGame.roll(5);
+    newGame.roll(5);
+    newGame.roll(3);
+    for (let i = 0; i < 17; i++) {
+      newGame.roll(0);
+    }
+    expect(newGame.score()).toEqual(16);
+  })
+})

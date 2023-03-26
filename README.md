@@ -11,3 +11,10 @@ newGame.roll(3);
 newGame.roll(4);
 newGame.score #=> 7
 ```
+
+## Note to future me: 
+
+Still to complete the optional extras 
+* Set up Travis CI to run your tests.
+* Add ESLint to your codebase and make your code conform.
+* Create a UserInterface class, allowing you to run a game from the command line.

@@ -16,5 +16,12 @@ describe('Scorecard', () => {
     scorecard.addFrame(3, 5);
     expect(scorecard.calculateScore()).toEqual(15);
   });
+  it('has 10 frames max', () => {
+    const scorecard = new Scorecard();
+    for(let i = 0; i < 10; i++) {
+      scorecard.addFrame(2, 5);
+    }
+    expect(() => scorecard.addFrame(2, 5)).toThrow('Error max frames reached!');
+  });
 
 })

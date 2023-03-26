@@ -16,4 +16,12 @@ describe('BowlingGame', () => {
     expect(bowlingGame.score()).toBe(0);
   });
 
+  it('scores a game of 20 when the player rolls all ones', () => {
+    const bowlingGame = new BowlingGame();
+    for (let i = 0 ; i <= 20 ; i++) {
+      bowlingGame.roll(1);
+    };
+    expect(bowlingGame.score()).toBe(20);
+  });
+
 });

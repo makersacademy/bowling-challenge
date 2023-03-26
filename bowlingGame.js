@@ -1,11 +1,24 @@
 class BowlingGame {
 
-  roll(pins) {
+  constructor() {
+    this.rolls = [];
+  }
 
+  roll(pins) {
+    this.rolls.push(pins);
   };
 
   score() {
-    return 0;
+    if (this.rolls.length === 0) {
+      return 0;
+    };
+    let totalScore = 0;
+    let rollIndex = 0;
+    for (let frame = 1 ; frame <= 10 ; frame++) {
+      totalScore += this.rolls[rollIndex] + this.rolls[rollIndex + 1];
+      rollIndex += 2;
+    }
+    return totalScore;
   }
 
 };

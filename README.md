@@ -13,7 +13,7 @@ In this version of the Bowling Scorecard there is no input from the user.
 
 - define a variable that equals to calling the method calculateScore() once the previous steps are done and console.log that variable to see the total score calculated.
 
-(just run the file scorecard.js to see the score for scoring only strikes!)
+(just run the file scorecard.js to see the score for a random game!)
 
 # Packages:
 

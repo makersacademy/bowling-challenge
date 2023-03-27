@@ -61,4 +61,24 @@ describe(Frame, () => {
       expect(frame.bonus).toEqual([3,5])
     })
   })
+
+  describe("totalScore method", () => {
+    it("should evaluate the total score when the frame is neither a spare nor a strike", () => {
+      frame.addRolls(3, 4)
+      expect(frame.totalScore()).toEqual(7)
+    })
+    it("should return '/' when the frame is a spare but the bonus is not collected yet", () => {
+      frame.addRolls(5, 5)
+      expect(frame.totalScore()).toEqual('/')
+    })
+    it("should return 'X' when the frame is a strike but the bonus is not collected yet", () => {
+      frame.addRolls(10)
+      expect(frame.totalScore()).toEqual('X')
+    })
+    it("should return 'X' when the frame is a strike but one bonus is missing", () => {
+      frame.addRolls(10)
+      frame.addBonus(3)
+      expect(frame.totalScore()).toEqual('X')
+    })
+  })
 })

@@ -2,7 +2,7 @@
 Bowling Challenge
 =================
 
-![Diagram for Scorecount]()
+![Diagram for Scorecount](https://github.com/francescoGuglielmi/bowling-challenge/blob/main/images/diagram.jpeg)
 
 # Usage
 

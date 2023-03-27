@@ -2,6 +2,8 @@
 Bowling Challenge
 =================
 
+![Diagram for Scorecount]()
+
 # Usage
 
 In this version of the Bowling Scorecard there is no input from the user.

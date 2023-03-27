@@ -2,6 +2,8 @@
 Bowling Challenge
 =================
 
+**program for calculating the score of a Bowling game**
+
 ![Diagram for Scorecount](https://github.com/francescoGuglielmi/bowling-challenge/blob/main/images/diagram.jpeg)
 
 # Usage

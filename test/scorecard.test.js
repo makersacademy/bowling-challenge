@@ -37,14 +37,14 @@ describe ('Scorecard', () => {
   it ('adds a frame to the scorecard', () => {
     scorecard.addFrame(1, 2);
 
-    expect(scorecard.game).toEqual([1, 2]); 
+    expect(scorecard.game).toEqual([0, 1, 2]); 
   });
 
   it ('adds a frame to the scorecard', () => {
     scorecard.addFrame(1, 2);
     scorecard.addFrame(4, 5);
 
-    expect(scorecard.game).toEqual([1, 2, 4, 5]); 
+    expect(scorecard.game).toEqual([0, 1, 2, 4, 5]); 
   });
 
   // Tests for isTenthFrame()
@@ -87,6 +87,80 @@ describe ('Scorecard', () => {
     expect(scorecard.game.slice(-3)[0]).toEqual(8);
   });
 
-  
+  // Tests for calculateBonus()
 
+  it ('throws an error if the game is not finished', () => {
+    for (let i = 0; i < 9; i++) {
+      scorecard.addFrame(8, 2);
+    }
+    expect(() => {
+      scorecard.calculateBonus()
+    }).toThrow('The game is not finished yet, make sure all frames have been played');
+  });
+
+  it ('calculates the bonus for scoring only strikes', () => {
+    for (let i = 0; i < 9; i++) {
+      scorecard.addFrame(10, 0);
+    }
+    scorecard.addTenthFrame(10, 10, 10);
+    expect(scorecard.calculateBonus()).toEqual(180);
+  })
+
+  it ('calculates the bonus for scoring only spares', () => {
+    for (let i = 0; i < 9; i++) {
+      scorecard.addFrame(9, 1);
+    }
+    scorecard.addTenthFrame(9, 1, 9);
+    expect(scorecard.calculateBonus()).toEqual(90);
+  })
+
+  it ('calculates the bonus for a game without spares or strikes', () => {
+    scorecard.addFrame(2, 3);
+    scorecard.addFrame(5, 4);
+    scorecard.addFrame(9, 0);
+    scorecard.addFrame(0, 1);
+    scorecard.addFrame(5, 3);
+    scorecard.addFrame(7, 2);
+    scorecard.addFrame(1, 1);
+    scorecard.addFrame(4, 4);
+    scorecard.addFrame(3, 3);
+    scorecard.addTenthFrame(3, 1, 9);
+
+    expect(scorecard.calculateBonus()).toEqual(0);
+  });
+
+  // Tests for calculateScore()
+
+  it ('calculates the score of a Perfect game', () => {
+  for (let i = 0; i < 9; i++) {
+    scorecard.addFrame(10, 0);
+  }
+    scorecard.addTenthFrame(10, 10, 10);
+
+    expect(scorecard.calculateScore()).toEqual(300);
+  });
+
+  it ('calculates the score of a game made of spares 9,1', () => {
+    for (let i = 0; i < 9; i++) {
+      scorecard.addFrame(9, 1);
+    }
+      scorecard.addTenthFrame(9, 1, 9);
+  
+      expect(scorecard.calculateScore()).toEqual(199);
+  });
+
+  it ('calculates the score of a random game', () => {
+    scorecard.addFrame(10, 0);
+    scorecard.addFrame(1, 6);
+    scorecard.addFrame(9, 0);
+    scorecard.addFrame(9, 1);
+    scorecard.addFrame(4, 5);
+    scorecard.addFrame(10, 0);
+    scorecard.addFrame(7, 3);
+    scorecard.addFrame(6, 3);
+    scorecard.addFrame(10, 0);
+    scorecard.addTenthFrame(1, 9, 10);
+
+    expect(scorecard.calculateScore()).toEqual(151);
+  });
 });

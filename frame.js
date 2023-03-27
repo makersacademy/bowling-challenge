@@ -1,4 +1,5 @@
 class Frame {
+  
   constructor() {
     this.rolls = [];
   }
@@ -20,17 +21,12 @@ class Frame {
   }
 
   isSpare() {
-    return this.rolls.length === 2 && this
+    return this.rolls[1] !== 0 && this.totalScore() === 10 
   }
 
-  
-  
-  // isComplete() {
-
-  // }
-
-
-    
+  isComplete() {
+    return this.isStrike() || this.rolls.length === 2;
+  }  
 }
 
 module.exports = Frame;

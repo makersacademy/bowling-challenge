@@ -31,44 +31,55 @@ describe('Frame', () => {
   describe('isStrike', () => {
     it('indicates if strike', () => {
       frame.addRollPoints(10);
-      expect(frame.isStrike()).toEqual(true)
+      expect(frame.isStrike()).toBe(true)
     });
 
     it('tests the isStrike function when its a spare', () => {
       frame.addRollPoints(3);
       frame.addRollPoints(7);
-      expect(frame.isStrike()).toEqual(false)
+      expect(frame.isStrike()).toBe(false)
     });
 
-      it('tests the isStrike function when its a spare - 10 points on 2nd roll', () => {
+    it('tests the isStrike function when its a spare - 10 points on 2nd roll', () => {
       frame.addRollPoints(0);
       frame.addRollPoints(10);
-      expect(frame.isStrike()).toEqual(false)
+      expect(frame.isStrike()).toBe(false)
     });
   });
 
   describe('isSpare', () => {
-    xit('indicates if a spare', () => {
+    it('indicates if a spare - 10 points scored accross two rolls', () => {
       frame.addRollPoints(4);
       frame.addRollPoints(6);
-      expect(frame.isSpare()).toEqual(true)
+      expect(frame.isSpare()).toBe(true)
     });
 
-    xit('tests the strike function when its a spare', () => {
-      frame.addRollPoints(3);
-      frame.addRollPoints(7);
-      expect(frame.strike()).toEqual(false)
-    });
-
-      xit('tests the strike function when its a spare - 10 points on 2nd roll', () => {
+    it('indicates if a spare - 10 points scored on the second roll', () => {
       frame.addRollPoints(0);
       frame.addRollPoints(10);
-      expect(frame.strike()).toEqual(false)
+      expect(frame.isSpare()).toBe(true)
+    });
+
+    it('tests the spare function when its a strike', () => {
+      frame.addRollPoints(10);
+      frame.addRollPoints(0);
+      expect(frame.isSpare()).toBe(false)
     });
   });
-  
+
+  describe('isComplete', () => {
+    it('is complete after the first roll when its a strike', () => {
+      frame.addRollPoints(10);
+      expect(frame.isComplete()).toBe(true);
+    });
+
+    it('is complete by the end of two rolls if not a strike', () => {
+      frame.addRollPoints(2);
+      expect(frame.isComplete()).toBe(false);
+      frame.addRollPoints(3);
+      expect(frame.isComplete()).toBe(true);
+    });
+  });
 })
-
-
 
 

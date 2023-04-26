@@ -19,8 +19,13 @@ describe('Scorecard unit testing:', () => {
   it('Adds scores, returns total score', () => {
     const result = new Scorecard()
 
-    const doubleFrame_1  = { getTotal: () => { return 3 }, getStrike: () => { return false }, getSpare: () => { return false },}
-    const doubleFrame_2  = { getTotal: () => { return 2 }, getStrike: () => { return false }, getSpare: () => { return false },}
+    const doubleFrame_1  = { getTotal: () => { return 3 }, 
+                             getStrike: () => { return false }, 
+                             getSpare: () => { return false }, }
+                             
+    const doubleFrame_2  = { getTotal: () => { return 2 }, 
+                             getStrike: () => { return false }, 
+                             getSpare: () => { return false }, }
 
     result.game = [doubleFrame_1, doubleFrame_2]
     result.calculateScore();

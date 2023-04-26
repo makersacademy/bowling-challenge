@@ -1,9 +1,14 @@
 class Frame {
-  constructor (frame) {
+  constructor (round, frame) {
+    this.round = round;
     this.frame = frame
     this.isStrike = false
     this.isSpare = false
     this.isValid = this.checkValid()
+  }
+
+  getIndex () {
+    return this.round - 1;
   }
 
   getFrame () {

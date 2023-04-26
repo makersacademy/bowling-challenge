@@ -2,8 +2,8 @@ class Frame {
   constructor (round, frame) {
     this.round = round;
     this.frame = frame
-    this.isStrike = false
-    this.isSpare = false
+    this.isStrike = this.getStrike()
+    this.isSpare = this.getSpare()
     this.isValid = this.checkValid()
   }
 
@@ -37,11 +37,10 @@ class Frame {
 
   getStrike () {
     if (this.frame[0] === 10) {
-      this.isStrike = true
+      return true
     } else {
-      this.isStrike = false
+      return false
     }
-    return this.isStrike
   }
 
   getSpare () {

@@ -27,7 +27,10 @@ describe('Scorecard unit testing:', () => {
                              getStrike: () => { return false }, 
                              getSpare: () => { return false }, }
 
-    result.game = [doubleFrame_1, doubleFrame_2]
+    result.game = [doubleFrame_1, doubleFrame_2];
+    result.updateScore(doubleFrame_1);
+    result.updateScore(doubleFrame_2);
+
     result.calculateScore();
     expect(result.getScore()).toEqual(5)
   });
@@ -68,12 +71,16 @@ describe('Scorecard unit testing:', () => {
     }
 
     result.game = [doubleFrame_1, doubleFrame_2, doubleFrame_3, doubleFrame_4]
+    result.updateScore(doubleFrame_1);
+    result.updateScore(doubleFrame_2);
+    result.updateScore(doubleFrame_3);
+    result.updateScore(doubleFrame_4);
 
     expect(result.getGame()).toEqual([[10,0], [1,1], [5,1], [5,4]]);
     expect(result.idStrikes()).toEqual([0]);
     
     result.calculateScore();
-    expect(result.getScore()).toEqual(35);
+    expect(result.getScore()).toEqual(29);
   });
 
   it('Adds scores, returns score with bonus score - spares', () => {
@@ -112,6 +119,10 @@ describe('Scorecard unit testing:', () => {
     }
 
     result.game = [doubleFrame_1, doubleFrame_2, doubleFrame_3, doubleFrame_4]
+    result.updateScore(doubleFrame_1);
+    result.updateScore(doubleFrame_2);
+    result.updateScore(doubleFrame_3);
+    result.updateScore(doubleFrame_4);
 
     expect(result.getGame()).toEqual([[0,0], [5,5], [5,1], [5,4]]);
     expect(result.idSpares()).toEqual([1]);
@@ -149,7 +160,7 @@ describe('Scorecard integration testing:', () => {
     expect(result.idStrikes()).toEqual([0]);
     
     result.calculateScore();
-    expect(result.getScore()).toEqual(35);
+    expect(result.getScore()).toEqual(29);
   });
 
   it('Adds scores, returns score with bonus score - spares', () => {
@@ -165,4 +176,34 @@ describe('Scorecard integration testing:', () => {
     result.calculateScore();
     expect(result.getScore()).toEqual(30);
   });
+
+  it('Calculates score of 300 for prefect game (inc. bonus)', () => {
+    const result = new Scorecard()
+    for (let i = 0 ; i < 12 ; i++) {
+      result.addFrame(i+1, [10,0]);
+    }
+
+    result.calculateScore();
+    expect(result.getScore()).toEqual(300);
+  });
+
+  it('Calculates score of 133 from example', () => {
+    const result = new Scorecard()
+
+    result.addFrame(1, [1,4]);
+    result.addFrame(2, [4,5]);
+    result.addFrame(3, [6,4]);
+    result.addFrame(4, [5,5]);
+    result.addFrame(5, [10,0]);
+    result.addFrame(6, [0,1]);
+    result.addFrame(7, [7,3]);
+    result.addFrame(8, [6,4]);
+    result.addFrame(9, [10,0]);
+    result.addFrame(10, [2,8]);
+    result.addFrame(11, [6,0]);
+
+    result.calculateScore();
+    expect(result.getScore()).toEqual(133);
+  });
+
 })

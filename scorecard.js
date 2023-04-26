@@ -17,23 +17,24 @@ class Scorecard {
   }
 
   addFrame (index, score) {
-    this.game.push(new Frame(index, score));
+    let frame = new Frame(index, score);
+    this.game.push(frame);
+    this.updateScore(frame);
+  }
+
+  updateScore (frame) {
+    this.total_score += frame.getTotal();
   }
 
   calculateScore () {
-    this.game.forEach(frame => {
-      this.total_score += frame.getTotal();
-    })
-
     let bonus_score = this.calculateStrikeBonus() + this.calculateSpareBonus();
-    
     this.total_score += bonus_score;
   }
 
   idStrikes () {
     let strikes = [];
     this.game.forEach(frame => {
-      if (frame.getStrike()) {
+      if (frame.getStrike() && frame.getIndex() <= 8) {
         strikes.push(frame.getIndex());
       }
     })
@@ -44,9 +45,12 @@ class Scorecard {
     let bonus = 0;
     const strikes = this.idStrikes()
     strikes.forEach(strike => {
-      bonus += this.game[strike+1].getTotal();
-      bonus += this.game[strike+2].getTotal();
-      
+      if (this.game[strike+1].getFrame()[0] === 10) {
+        bonus += this.game[strike+1].getTotal();
+        bonus += this.game[strike+2].getFrame()[0];
+      } else {
+        bonus += this.game[strike+1].getTotal();
+      }
     })
     return bonus;
   }
@@ -54,7 +58,7 @@ class Scorecard {
   idSpares () {
     let spares = [];
     this.game.forEach(frame => {
-      if (frame.getSpare()) {
+      if (frame.getSpare() && frame.getIndex() <= 8) {
         spares.push(frame.getIndex());
       }
     })

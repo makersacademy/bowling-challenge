@@ -7,7 +7,7 @@ describe ('scorecard class', () =>{
     scorecard.addFrame(3,5)
     scorecard.addFrame(7,0)
     scorecard.addFrame(2,5)
-    scorecard.addFrame(10,0)
+    scorecard.addFrame(10)
     scorecard.addFrame(3,5)
     scorecard.addFrame(7,0)
     scorecard.addFrame(2,5)
@@ -60,8 +60,8 @@ describe ('scorecard class', () =>{
   })
  
   describe ('checkSpecials method', () =>{
-    it ('returns strike if given frame is [10,0]', () =>{
-      expect(scorecard.checkSpecials([10,0])).toEqual("strike")
+    it ('returns strike if given frame is [10]', () =>{
+      expect(scorecard.checkSpecials([10])).toEqual("strike")
     })
  
     it ('returns a spare if given frame is [5,5]', () =>{
@@ -70,14 +70,6 @@ describe ('scorecard class', () =>{
 
     it ('returns a spare if given frame is [0,10]', () =>{
       expect(scorecard.checkSpecials([0,10])).toEqual("spare")
-    })
-
-    it ('returns normal if frame is normal [2,3]', () =>{
-      expect(scorecard.checkSpecials([1,2])).toBe("normal")
-    })
-
-    it ('returns gutter if frame is [0,0]', () =>{
-      expect(scorecard.checkSpecials([0,0])).toBe("gutter")
     })
   })
     
@@ -95,7 +87,7 @@ describe ('scorecard class', () =>{
     })
 
     it ('includes the bonus points awarded by a strike', () => {
-      scorecard.addFrame(10,0)
+      scorecard.addFrame(10)
       scorecard.addFrame(4,5)
       expect(scorecard.addFrameScore(1)).toEqual(18)
     })
@@ -143,7 +135,7 @@ describe ('scorecard class', () =>{
     })
 
     it ('returns the total score including strike points', () => {
-      scorecard.addFrame(10,0)
+      scorecard.addFrame(10)
       scorecard.addFrame(3,5)
       scorecard.addFrame(7,0)
       scorecard.addFrame(2,5)
@@ -151,19 +143,36 @@ describe ('scorecard class', () =>{
     })
 
     it ('returns the total score including consecutive strike points', () => {
-      scorecard.addFrame(10,0)
-      scorecard.addFrame(10,0)
+      scorecard.addFrame(10)
+      scorecard.addFrame(10)
       scorecard.addFrame(7,0)
       scorecard.addFrame(2,5)
       expect(scorecard.calculateScore()).toEqual(51)
     })
 
     it ('returns the total score including zigzagged strike points', () => {
-      scorecard.addFrame(10,0)
+      scorecard.addFrame(10)
       scorecard.addFrame(5,4)
-      scorecard.addFrame(10,0)
+      scorecard.addFrame(10)
       scorecard.addFrame(2,5)
       expect(scorecard.calculateScore()).toEqual(52)
+    })
+  })
+
+  describe ('checkForPerfectOrGutter method', () =>{
+    test('it returns regular game if player has anything besides 0 or 10', () => {
+      simulateGameUntilLastShot(scorecard)
+      expect(scorecard.checkForPerfectOrGutter()).toEqual("Regular game")
+    })
+
+    test('it returns perfect game if player has scored strikes in all rounds', () => {
+      for(let i=0; i<13; i ++) {scorecard.addFrame(10)}
+      expect(scorecard.checkForPerfectOrGutter()).toEqual("Perfect game")
+    })
+
+    test('it returns gutter game if player has scored 0 in all rounds', () => {
+      for(let i=0; i<10; i ++) {scorecard.addFrame(0,0)}
+      expect(scorecard.checkForPerfectOrGutter()).toEqual("Gutter game")
     })
   })
 
@@ -190,12 +199,29 @@ describe ('scorecard class', () =>{
 
     test ('if player ends with a strike / scores three consecutive strikes', () => {
       simulateGameUntilLastShot(scorecard)
-      scorecard.addFrame(10,0)
+      scorecard.addFrame(10)
       scorecard.addFrame(10,10,10)
       expect(scorecard.calculateScore()).toEqual(124)
     })
   })
-  
+
+  describe ('cross checking with readme gameplay for score validation', () => {
+    test ('returns 133', () => {
+      scorecard.addFrame(1,4)
+      scorecard.addFrame(4,5)
+      scorecard.addFrame(6,4)
+      scorecard.addFrame(5,5)
+      scorecard.addFrame(10)
+      scorecard.addFrame(0,1)
+      scorecard.addFrame(7,3)
+      scorecard.addFrame(6,4)
+      scorecard.addFrame(10)
+      scorecard.addFrame(2,8)
+      scorecard.addFrame(6)
+      expect(scorecard.calculateScore()).toEqual(133)
+    })
+  })
+
   describe ('helper methods', () => {
     it ('flattens an array and returns the sum', () =>{
       expect(scorecard.sum([4,5])).toEqual(9)

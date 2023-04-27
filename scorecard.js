@@ -10,8 +10,15 @@ class Scorecard{
   checkSpecials(frame) {
     if (frame[0] === 10) {return "strike"}
     else if (this.sum(frame) === 10) {return "spare"}
-    else if (this.sum(frame) === 0) {return "gutter"}
-    return "normal"
+  }
+
+  checkForPerfectOrGutter () {
+    const uniques = new Set(this.frames.flat())
+    if (uniques.size > 1) {return "Regular game"}
+    else if (uniques.size === 1) {
+      if (uniques.has(10) === true) {return "Perfect game"}
+      else if (uniques.has(0) === true) {return "Gutter game"}
+    }
   }
   
   calculateScore() {
@@ -60,7 +67,7 @@ class Scorecard{
   }
 
   // Helper methods //
-  // This method is for refactoring purposes. It flattens and array and sums contents
+  // This method is for refactoring purposes. It sums contents of array
   sum(frame) {
     return frame.reduce((ps,a) => ps + a, 0)
   }

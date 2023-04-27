@@ -36,28 +36,23 @@ describe ('scorecard class', () =>{
  
   describe ('checkSpecials method', () =>{
     it ('returns strike if given frame is [10,0]', () =>{
-      scorecard.addFrame(10,0)
-      expect(scorecard.checkSpecials(0)).toEqual("strike")
+      expect(scorecard.checkSpecials([10,0])).toEqual("strike")
     })
  
     it ('returns a spare if given frame is [5,5]', () =>{
-      scorecard.addFrame(5,5)
-      expect(scorecard.checkSpecials(0)).toEqual("spare")
+      expect(scorecard.checkSpecials([5,5])).toEqual("spare")
     })
 
     it ('returns a spare if given frame is [0,10]', () =>{
-      scorecard.addFrame(0,10)
-      expect(scorecard.checkSpecials(0)).toEqual("spare")
+      expect(scorecard.checkSpecials([0,10])).toEqual("spare")
     })
 
     it ('returns normal if frame is normal [2,3]', () =>{
-      scorecard.addFrame(2,3)
-      expect(scorecard.checkSpecials(0)).toBe("normal")
+      expect(scorecard.checkSpecials([1,2])).toBe("normal")
     })
 
     it ('returns gutter if frame is [0,0]', () =>{
-      scorecard.addFrame(0,0)
-      expect(scorecard.checkSpecials(0)).toBe("gutter")
+      expect(scorecard.checkSpecials([0,0])).toBe("gutter")
     })
   })
     
@@ -68,19 +63,40 @@ describe ('scorecard class', () =>{
       expect(scorecard.addFrameScore(1)).toEqual(9)
     })
 
-    // it ('shows the current score as 0 upon initialisation', () => {
-    //   expect(scorecard.calculateScore()).toEqual(0)
-    // })
+    it ('includes the bonus points awarded by a spare', () => {
+      scorecard.addFrame(4,6)
+      scorecard.addFrame(4,5)
+      expect(scorecard.addFrameScore(1)).toEqual(13)
+    })
 
-    // it ('update players current score each frame', () => {
-    //   scorecard.addFrame(2,3)
-      // expect(scorecard.getCurrentScore()).toEqual(5)
-    // })
+    it ('includes the bonus points awarded by a strike', () => {
+      scorecard.addFrame(10,0)
+      scorecard.addFrame(4,5)
+      expect(scorecard.addFrameScore(1)).toEqual(18)
+    })
+  })
+
+  describe ('calculateScore method', () =>{
+    it ('shows the current score as 0 upon initialisation', () => {
+      expect(scorecard.calculateScore()).toEqual(0)
+    })
+
+    it ('update players current score for first frame', () => {
+      scorecard.addFrame(2,3)
+      expect(scorecard.calculateScore()).toEqual(5)
+    })
+
+    it ('update players current score for each frame', () => {
+      scorecard.addFrame(2,3)
+      expect(scorecard.calculateScore()).toEqual(5)
+      scorecard.addFrame(4,6)
+      expect(scorecard.calculateScore()).toEqual(15)
+    })
   })
   
   describe ('helper methods', () => {
     it ('flattens an array and returns the sum', () =>{
-      expect(scorecard.flattenArrayAndSumContents([4,5])).toEqual(9)
+      expect(scorecard.sum([4,5])).toEqual(9)
     })
   })
 })

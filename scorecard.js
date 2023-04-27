@@ -1,7 +1,6 @@
 class Scorecard{
   constructor(frames){
     this.frames = frames
-    this.current_score = 0
   }
 
   checkSpecials(frame_index) {
@@ -11,11 +10,15 @@ class Scorecard{
     return "normal"
   }
   
-  getCurrentScore() {
+  calculateScore() {
+    return this.current_score
+  }
+
+  addFrameScore(frame) {
     // let sum = flat(this.frames)
-    const flattened_array = this.frames.flat()
-    const sum = this.frames.flat().reduce((ps, a) => ps + a, 0);
-    return sum
+    // const flattened_array = this.frames.flat()
+    // const sum = this.frames.flat().reduce((ps, a) => ps + a, 0);
+    // return sum
   }
 
   addBonusScore() {

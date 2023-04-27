@@ -92,6 +92,54 @@ describe ('scorecard class', () =>{
       scorecard.addFrame(4,6)
       expect(scorecard.calculateScore()).toEqual(15)
     })
+
+    it ('returns the total score including spare points', () => {
+      scorecard.addFrame(5,5)
+      scorecard.addFrame(3,5)
+      scorecard.addFrame(7,0)
+      scorecard.addFrame(2,5)
+      expect(scorecard.calculateScore()).toEqual(35)
+    })
+
+    it ('returns the total score including consecutive spare points', () => {
+      scorecard.addFrame(3,1)
+      scorecard.addFrame(3,7)
+      scorecard.addFrame(7,3)
+      scorecard.addFrame(2,5)
+      expect(scorecard.calculateScore()).toEqual(40)
+    })
+
+    it ('returns the total score including zigzagged spare points', () => {
+      scorecard.addFrame(3,7)
+      scorecard.addFrame(2,5)
+      scorecard.addFrame(7,3)
+      scorecard.addFrame(2,5)
+      expect(scorecard.calculateScore()).toEqual(38)
+    })
+
+    it ('returns the total score including strike points', () => {
+      scorecard.addFrame(10,0)
+      scorecard.addFrame(3,5)
+      scorecard.addFrame(7,0)
+      scorecard.addFrame(2,5)
+      expect(scorecard.calculateScore()).toEqual(40)
+    })
+
+    it ('returns the total score including consecutive strike points', () => {
+      scorecard.addFrame(10,0)
+      scorecard.addFrame(10,0)
+      scorecard.addFrame(7,0)
+      scorecard.addFrame(2,5)
+      expect(scorecard.calculateScore()).toEqual(51)
+    })
+
+    it ('returns the total score including zigzagged strike points', () => {
+      scorecard.addFrame(10,0)
+      scorecard.addFrame(5,4)
+      scorecard.addFrame(10,0)
+      scorecard.addFrame(2,5)
+      expect(scorecard.calculateScore()).toEqual(52)
+    })
   })
   
   describe ('helper methods', () => {

@@ -44,7 +44,7 @@ class Scorecard{
     }
     else if (this.checkSpecials(previous_frame) === "spare") {
       // If the previous frame was a spare, we only add the first roll of the current frame
-      frame_current_score += previous_frame[0]
+      frame_current_score += current_frame[0]
     }
     // Final score is returned
     return frame_current_score

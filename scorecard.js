@@ -26,6 +26,10 @@ class Scorecard {
     this.total_score += frame.getTotal();
   }
 
+  getScore () {
+    return this.total_score;
+  }
+
   calculateScore () {
     let bonus_score = this.calculateStrikeBonus() + this.calculateSpareBonus();
     this.total_score += bonus_score;
@@ -72,10 +76,6 @@ class Scorecard {
       bonus += this.game[spare+1].getFrame()[0];
     })
     return bonus;
-  }
-
-  getScore () {
-    return this.total_score;
   }
 }
 

@@ -2,16 +2,30 @@ const Scorecard = require('./scorecard')
 
 describe ('scorecard class', () =>{
 
+  const simulateGameUntilLastShot = (scorecard) => {
+    scorecard.addFrame(5,5)
+    scorecard.addFrame(3,5)
+    scorecard.addFrame(7,0)
+    scorecard.addFrame(2,5)
+    scorecard.addFrame(10,0)
+    scorecard.addFrame(3,5)
+    scorecard.addFrame(7,0)
+    scorecard.addFrame(2,5)
+    scorecard.addFrame(7,2)
+    // By the end of round 9, player has 84 points scored.
+    // All subsequent endgame tests are based on this one
+  }
+
   beforeEach(() => {
     scorecard = new Scorecard()
   })
   
   describe ('initialization and adding frames', () => {  
-    it('initializes with an empty frame', () =>{
+    it ('initializes with an empty frame', () =>{
       expect(scorecard.getFrames()).toEqual([])
     })
   
-    it('adds a frame into players frames with addFrame', () =>{
+    it ('adds a frame into players frames with addFrame', () =>{
       scorecard.addFrame(1,2)
       expect(scorecard.getFrames()).toEqual([[1,2]])
     })
@@ -31,6 +45,17 @@ describe ('scorecard class', () =>{
     it ('creates a bonus frame of a length of 3 and pushes to array', () =>{
       scorecard.addFrame(1,2,3)
       expect(scorecard.getFrames()).toEqual([[1,2,3]])
+    })
+    it ('returns the score of the bonus frame separately', () =>{
+      simulateGameUntilLastShot(scorecard)
+      scorecard.addFrame(7,3)
+      scorecard.addFrame(6)
+      expect(scorecard.addBonusScore()).toEqual(6)
+    })
+    it ('returns undefined if game has not gone beyond 10 shots', () =>{
+      simulateGameUntilLastShot(scorecard)
+      scorecard.addFrame(7,3)
+      expect(scorecard.addBonusScore()).toEqual(undefined)
     })
   })
  
@@ -139,6 +164,35 @@ describe ('scorecard class', () =>{
       scorecard.addFrame(10,0)
       scorecard.addFrame(2,5)
       expect(scorecard.calculateScore()).toEqual(52)
+    })
+  })
+
+  describe ('when evaluating the 10th frame', () => {
+    test ('counts the game regularly if the player fails to score any spare or strikes', () => {
+      simulateGameUntilLastShot(scorecard)
+      scorecard.addFrame(4,3)
+      expect(scorecard.calculateScore()).toEqual(91)
+    })
+
+    test ('if player ends with spare / fails to score strike', () => {
+      simulateGameUntilLastShot(scorecard)
+      scorecard.addFrame(7,3)
+      scorecard.addFrame(6)
+      expect(scorecard.calculateScore()).toEqual(100)
+    })
+
+    test ('if player ends with spare / scores a strike and two randoms', () => {
+      simulateGameUntilLastShot(scorecard)
+      scorecard.addFrame(7,3)
+      scorecard.addFrame(10,4,5)
+      expect(scorecard.calculateScore()).toEqual(113)
+    })
+
+    test ('if player ends with a strike / scores three consecutive strikes', () => {
+      simulateGameUntilLastShot(scorecard)
+      scorecard.addFrame(10,0)
+      scorecard.addFrame(10,10,10)
+      expect(scorecard.calculateScore()).toEqual(124)
     })
   })
   

@@ -29,6 +29,8 @@ class Scorecard{
       score += this.addFrameScore(i)
       i += 1
     }
+    // At the end, the game checks whether the player had bonus shots and only adds them if they exist
+    if (this.addBonusScore() !== undefined) { score += this.addBonusScore() }
     return score
   }
 
@@ -53,7 +55,7 @@ class Scorecard{
   addBonusScore() {
     // This line below is to ensure bonus scores are not added if the player has not rolled more than 10 shots
     if (this.frames.length > 10) {
-      this.current_score += this.sum(this.frames[-1])}
+      return this.sum(this.frames.slice(-1)[0])}
     return
   }
 

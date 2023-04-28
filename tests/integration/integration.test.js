@@ -15,7 +15,7 @@ describe('Scorecard-Frame Integration', () => {
     expect(scorecard.frames.length).toBe(10);
   });
 
-  xit("calculates full score of frames", () => {
+  it("calculates full score of frames", () => {
     for (let i = 0; i < 10; i++) {
       frame = new Frame;
       frame.addPoints(5, 3);

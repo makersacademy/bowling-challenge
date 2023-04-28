@@ -16,6 +16,10 @@ class Scorecard {
     return game_temp;
   }
 
+  getThisGame () {
+    return this.game;
+  }
+
   addFrame (index, score) {
     let frame = new Frame(index, score);
     this.game.push(frame);

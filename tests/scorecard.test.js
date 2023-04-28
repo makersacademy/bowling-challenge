@@ -1,7 +1,7 @@
-const Scorecard = require('./scorecard');
+const Scorecard = require('../models/scorecard.js');
 
 describe('Scorecard', () => {
-  it("", () => {
+  xit("", () => {
     
   });
 });

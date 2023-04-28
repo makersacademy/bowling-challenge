@@ -1,8 +1,8 @@
-const Scorecard = require('./scorecard');
-const Frame = require('./frame');
+const Scorecard = require('../../models/scorecard.js');
+const Frame = require('../../models/frame.js');
 
 describe('Scorecard-Frame Integration', () => {
-  it("", () => {
+  xit("", () => {
     
   });
 });

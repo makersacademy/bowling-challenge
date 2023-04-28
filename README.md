@@ -1,75 +1,57 @@
 Bowling Challenge - In JS
 =================
-Installation 
+First things first, there is no UI. I thought it would be unlikely to write any terminal based applications in JavaScript, so I skipped it.
+That being said, some of the program's logic assumes there would be some sort of UI in the long run, so user input checks and overall gameplay logic have not been incorporated.
 
+Installation and gameplay
+-----
+```bash
+git clone https://github.com/umutbaykan/bowling-challenge.git
+npm install
+jest # to see test results, it should all pass
+node
+```
+And to 'play' it through terminal
 
-```javaScript
-let scorecard = new Scorecard()
-scorecard.calculateScore() // returns 0
-scorecard.addFrame(2, 5) 
-scorecard.addFrame(3, 5)
-scorecard.calculateScore() // returns 15
+```javascript
+Scorecard = require('./scorecard')
+scorecard = new Scorecard()
+// all class methods should then be available
+scorecard.addFrame(5,3)
+scorecard.calculateScore() // 8
+// frames should be added as a pair of dropped pins
+scorecard.addFrame(2,3)
+// a strike should be added as just a 10. spares can be added as pairs
+scorecard.addFrame(10)
+scorecard.calculateScore() // 28
+
+// once 10 frames are completed, the player should add their bonus frames using the same method
+// 3 perfect bonuses
+scorecard.addFrame(10,10,10)
+// 1 strike, 1 additonal shot
+scorecard.addFrame(10,4)
+// 1 additional shot
+scorecard.addFrame(5)
+// if the player did not have any bonus shots, you dont need to do anything. 
+
+// if you want to reset all the frames without having to launch node again
+scorecard.resetGame()
+// if you want to check if a game is perfect, gutter or a regular one
+scorecard.checkForPerfectOrGutter()
 ```
 
-But feel free to add other methods if you think they are useful.
+How does it actually work?
+-----
+There are many ways this program could have been built, but this one is designed on top of single scoreboard class for simplicity. This is because 'pins' are actually just integers and 'frames' is an array of arrays that contain integers representing players dropped pins. Splitting them into separate classes seemed unnecessary as neither pins nor frames are expected to hold any functions of their own, interpreting their score is what matters here which is done by the scoreboard class.
 
-As usual please start by
+![Excalidraw diagram showing the array configuration of scorecard](https://i.ibb.co/CQzrWkF/Screenshot-2023-04-28-at-11-53-19.png)
+Frames and strikes effect the points of the frames that are after them so while evaluating the score, calculateScore() method checks the previous frame to see if it was a strike or spare and adds the extra points to the current frame. That way we can display the current score player has during the game and do not have to wait until the game concludes to see the score. 
 
-* Forking this repo
+Frames 0 to 9 (indexes) are checked this way, but because extra rolls are counted differently we have a separate method called out to evaluate their score. This method only activates if the length of the list is above 10 (meaning there are bonus shots). In an ideal world, allowing player to make more rolls based on their 10th frame would be handled by the UI and Game logic, but since we don't have that this was a workaround to handle miscounts that may have happened while playing through node.
 
-* Using test-driven development (if you decide to write a user interface, then make sure you have looked at the chapters on mocking).
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-* Create a UserInterface class, allowing you to run a game from the command line.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
-
-### Strikes
-
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
-
-### Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-### 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-### Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-### Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+//TODO's
+-----
+- An actual UI class, which would check user's input and sanitise it (if user enters strings, pins out of range etc.) as well as print messages to terminal.
+- A player class, which would hold a separate scorecard instance for each player.
+- A game class, which would run the full game and its overall logic. It would limit the game to 10 rolls, skip the second roll if player's first roll is a 10, decide the winner in the end etc.
+- Currently when we invoke calculateScore() method, it recounts the array from the beginning to get current score which is fine as we have a small array. If we worked with a large array, this method would need to be tweaked with to add the last roll to the general score instead of recounting it each time.

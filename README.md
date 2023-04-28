@@ -1,3 +1,5 @@
+[![Node.js CI](https://github.com/umutbaykan/bowling-challenge/actions/workflows/node.js.yml/badge.svg)](https://github.com/umutbaykan/bowling-challenge/actions/workflows/node.js.yml)
+
 Bowling Challenge - In JS
 =================
 First things first, there is no UI. I thought it would be unlikely to write any terminal based applications in JavaScript, so I skipped it.

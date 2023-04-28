@@ -1,4 +1,7 @@
 class Frame {
+  constructor() {
+    
+  }
 
 
 

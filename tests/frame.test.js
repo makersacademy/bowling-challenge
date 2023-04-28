@@ -19,9 +19,21 @@ describe('Frame', () => {
     expect(frameOne.strike()).toBe(true);
   });
 
+  it("given first roll is a not a strike", () => {
+    frameOne = new Frame();
+    frameOne.addPoints(9, 1, 2);
+    expect(frameOne.strike()).toBe(false);
+  });
+
   it("given the sum of one frame = 10", () => {
     frameOne = new Frame();
     frameOne.addPoints(5, 5);
     expect(frameOne.spare()).toBe(true);
+  });
+
+  it("given the sum of one frame != 10", () => {
+    frameOne = new Frame();
+    frameOne.addPoints(4, 5);
+    expect(frameOne.spare()).toBe(false);
   });
 });

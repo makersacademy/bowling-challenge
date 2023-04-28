@@ -1,8 +1,5 @@
 class Frame {
   constructor() {
-    // this.rollOne = rollOne;
-    // this.rollTwo = rollTwo;
-    // this.rollThree = rollThree;
     this.points = [];
   }
 
@@ -21,12 +18,8 @@ class Frame {
   }
 
   spare() {
-    return this.points[0] != 10 && (this.points[0] + this.points[1]) == 10;
+    return this.points[0] !== 10 && (this.points[0] + this.points[1]) === 10;
   }
 }
-
-// frame = new Frame;
-// frame.addPoints(3,3,3);
-// frame.framePoints()
 
 module.exports = Frame;

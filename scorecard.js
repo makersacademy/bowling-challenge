@@ -55,17 +55,19 @@ class Scorecard {
   }
 }
 
-let scorecard = new Scorecard();
+module.exports = Scorecard;
 
-scorecard.addFrame(1, 4);
-scorecard.addFrame(4, 5);
-scorecard.addFrame(6, 4);
-scorecard.addFrame(5, 5);
-scorecard.addFrame(10, 0);
-scorecard.addFrame(0, 1);
-scorecard.addFrame(7, 3);
-scorecard.addFrame(6, 4);
-scorecard.addFrame(10, 0);
-scorecard.addFrame(2, 8);
+// let scorecard = new Scorecard();
 
-console.log(scorecard.calculateScore());
+// scorecard.addFrame(1, 4);
+// scorecard.addFrame(4, 5);
+// scorecard.addFrame(6, 4);
+// scorecard.addFrame(5, 5);
+// scorecard.addFrame(10, 0);
+// scorecard.addFrame(0, 1);
+// scorecard.addFrame(7, 3);
+// scorecard.addFrame(6, 4);
+// scorecard.addFrame(10, 0);
+// scorecard.addFrame(2, 8);
+
+// console.log(scorecard.calculateScore());

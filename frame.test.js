@@ -7,18 +7,20 @@ describe('Frame class unit test', () => {
       expect(frame.rolls).toEqual([]);
     })
 
-    it('initliases with a bonus points value of 0', () => {
+    it('initliases with bonus points & regular points values of 0', () => {
       frame = new Frame();
-      expect(frame.bonus_points).toEqual(0);
+      expect(frame.bonusPoints).toEqual(0);
+      expect(frame.regularPoints).toEqual(0);
+
     })
 
     it('initliases with a boolean arg indicating whether it is the final frame', () => {
       frame = new Frame(false);
-      expect(frame.is_final_frame).toEqual(false);
+      expect(frame.isFinalFrame).toEqual(false);
       frame = new Frame();
-      expect(frame.is_final_frame).toEqual(false);
+      expect(frame.isFinalFrame).toEqual(false);
       frame = new Frame(true);
-      expect(frame.is_final_frame).toEqual(true);
+      expect(frame.isFinalFrame).toEqual(true);
     });
   });
 
@@ -35,7 +37,7 @@ describe('Frame class unit test', () => {
         frame = new Frame();
         frame.roll(5);
         frame.roll(3);
-        expect(frame.roll(6)).toEqual('Frame has already been played');
+        expect(frame.roll(6)).toEqual('Frame is over');
         expect(frame.rolls).toEqual([5, 3]);
       });
 
@@ -50,7 +52,7 @@ describe('Frame class unit test', () => {
       it('ends the frame early if player gets a strike on first shot', () => {
         frame = new Frame();
         frame.roll(10);
-        expect(frame.roll(5)).toEqual('Frame has already been played');
+        expect(frame.roll(5)).toEqual('Frame is over');
         expect(frame.rolls).toEqual([10, 0]); 
       });
     });

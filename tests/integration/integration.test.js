@@ -37,7 +37,7 @@ describe('Scorecard-Frame Integration', () => {
     expect(scorecard.calculateScore()).toBe(90);
   });
 
-  it("calculates correct score when ninth frame has a strike", () => {
+  it("calculates perfect score of 300", () => {
     for (let i = 0; i < 9; i++) {
       frame = new Frame;
       frame.addPoints(10, 0);

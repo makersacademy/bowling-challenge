@@ -31,20 +31,19 @@ class Scorecard {
           score += frameScore;
         }
       } else {
-        // Frames 1-9 logic
-        if (isStrike) {
-          score += 10 + this.getStrikeBonus(frameIndex + 1);
-          frameIndex += 1;
-        } else if (isSpare) {
-          score += 10 + this.getSpareBonus(frameIndex + 1);
-          frameIndex += 1;
-        } else {
-          score += frameScore;
-          frameIndex += 1;
-        }
+          // Frames 1-9 logic
+          if (isStrike) {
+            score += 10 + this.getStrikeBonus(frameIndex + 1);
+            frameIndex++;
+          } else if (isSpare) {
+            score += 10 + this.getSpareBonus(frameIndex + 1);
+            frameIndex++;
+          } else {
+            score += frameScore;
+            frameIndex++;
+          }
       }
     }
-  
     return score;
   }  
 
@@ -56,10 +55,10 @@ class Scorecard {
           const nextNextFrame = this.frames[nextFrameIndex + 1];
           return 10 + (nextNextFrame ? nextNextFrame.roll1 : 0);
         } else {
-          return 10;
+            return 10;
         }
       } else {
-        return nextFrame.roll1 + nextFrame.roll2;
+          return nextFrame.roll1 + nextFrame.roll2;
       }
     }
     return 0;
@@ -75,18 +74,3 @@ class Scorecard {
 }
 
 module.exports = Scorecard;
-
-// let scorecard = new Scorecard();
-
-// scorecard.addFrame(1, 4);
-// scorecard.addFrame(4, 5);
-// scorecard.addFrame(6, 4);
-// scorecard.addFrame(5, 5);
-// scorecard.addFrame(10, 0);
-// scorecard.addFrame(0, 1);
-// scorecard.addFrame(7, 3);
-// scorecard.addFrame(6, 4);
-// scorecard.addFrame(10, 0);
-// scorecard.addFrame(2, 8);
-
-// console.log(scorecard.calculateScore());

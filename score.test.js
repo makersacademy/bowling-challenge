@@ -28,9 +28,11 @@ describe('Score class', () => {
   })
 
   it('pushes the results of one frame to the scorecard and returns result', () => {
-    const frameOne = new Score(4, 10, 2, 2, 0);
-    console.log(frameOne);
-    expect(frameOne.addFrame()).toBe(4);
+    const doubleframeOne = {rollone + rolltwo ()  => { return 4 } };
+    const frameOne = new Score(4, doubleframeOne);
+    let theFrame = frameOne.addFrame();
+    expect(theFrame).toEqual(4);
+
   })
 
-});
+})

@@ -3,29 +3,117 @@
   font-size: xx-large;
 }
 
-.frame-box {
+.grid-container {
   display: grid;
-  grid-template-columns: 25% 75%;
-  height: 150px;
-  width: 150px;
-  background-color: red;
+  grid-template-rows: 35% 65%;
+  height: 100px;
+  width: 100px;
+  border: 3px solid black;
 }
 
 .frame-box-header {
   display: grid;
-  grid-template-rows: 50% 50%;
-  color: brown;
-  height: 50px;
-  width: 170px;
+  grid-template-columns: 60% 40%;
+  height: auto;
+  width: auto;
   border-style: solid;
   border: 3px;
+}
+
+.roll-scores {
+  display: grid;
+  width: auto;
+  grid-template-columns: 50% 50%;
+  border-style: solid black;
 }
 
 .frame-box-body {
   color: black;
 }
 
+.roll-box {
+  border-style: solid;
+  text-align: center;
+}
+
 .roll {
-  text-align: right;
-  font-size: 20px;
+  font-size: 25px;
+}
+
+.frame-score {
+  font-size: 60px;
+  float: bottom;
+  float: right;
+  padding-bottom: 10px;
+  padding-right: 3px;
+}
+
+.quantity {
+  position: relative;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+.quantity input {
+  width: 45px;
+  height: 42px;
+  line-height: 1.65;
+  float: left;
+  display: block;
+  padding: 0;
+  margin: 0;
+  padding-left: 20px;
+  border: 1px solid #eee;
+}
+
+.quantity input:focus {
+  outline: 0;
+}
+
+.quantity-nav {
+  float: left;
+  position: relative;
+  height: 42px;
+}
+
+.quantity-button {
+  position: relative;
+  cursor: pointer;
+  border-left: 1px solid #eee;
+  width: 20px;
+  text-align: center;
+  color: #333;
+  font-size: 13px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+  line-height: 1.7;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.quantity-button.quantity-up {
+  position: absolute;
+  height: 50%;
+  top: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.quantity-button.quantity-down {
+  position: absolute;
+  bottom: -1px;
+  height: 50%;
 }

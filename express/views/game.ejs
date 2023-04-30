@@ -6,18 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome to Your Bowling ScoreCard</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script src="/js/script.js"></script>
   </head>
   <body>
-    <div class="frame-box">
+    <form action="/add_frame" method="post">
+      <span class="input-number-decrement">–</span><input class="input-number" type="text" value="1" min="0" max="10"><span class="input-number-increment">+</span>
+    </form>
+    <frame-box class="grid-container">
       <div class="frame-box-header">
-        <roll_1 class="roll">10</roll_1>
-      </div>
-      <div>
-        <roll_2 class="roll">X</roll_2>
+        <div>
+        </div>
+        <div class="roll-scores">
+          <div class="roll-box">
+            <roll_1 class="roll">/</roll_1>
+          </div>
+          <div class="roll-box">
+            <roll_2 class="roll">X</roll_2>
+          </div>
+        </div>
       </div>
       <div class="frame-box-body">
-        <h2>20</h2>
+        <frame-score class="frame-score">300</frame-score>
       </div>
-    </div>
+    </frame-box>
   </body>
 </html>

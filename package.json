@@ -1,0 +1,30 @@
+{
+  "name": "js-bowling-challenge",
+  "version": "1.0.0",
+  "description": "makers js bowling challenge",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1 --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonpillay/js-bowling-challenge.git"
+  },
+  "author": "Jon Pillay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonpillay/js-bowling-challenge/issues"
+  },
+  "homepage": "https://github.com/jonpillay/js-bowling-challenge#readme",
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-semistandard": "^17.0.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1"
+  }
+}

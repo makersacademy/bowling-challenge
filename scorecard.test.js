@@ -59,4 +59,32 @@ describe('Scorecard', () => {
     scorecard.addFrame(2, 2);
     expect(scorecard.calculateScore()).toEqual(115);
   });
+
+  test('the score when there is a strike in the tenth frame plus the two extra rolls', () => {
+    scorecard.addFrame(1, 4);
+    scorecard.addFrame(4, 5);
+    scorecard.addFrame(6, 4);
+    scorecard.addFrame(5, 5);
+    scorecard.addFrame(10, 0);
+    scorecard.addFrame(0, 1);
+    scorecard.addFrame(7, 3);
+    scorecard.addFrame(6, 4);
+    scorecard.addFrame(10, 0);
+    scorecard.addFrame(10, 10, 10);
+    expect(scorecard.calculateScore()).toEqual(157);
+  });
+
+  test('the score when there is a spare in the tenth frame plus the one extra roll', () => {
+    scorecard.addFrame(1, 4);
+    scorecard.addFrame(4, 5);
+    scorecard.addFrame(6, 4);
+    scorecard.addFrame(5, 5);
+    scorecard.addFrame(10, 0);
+    scorecard.addFrame(0, 1);
+    scorecard.addFrame(7, 3);
+    scorecard.addFrame(6, 4);
+    scorecard.addFrame(10, 0);
+    scorecard.addFrame(8, 2, 10);
+    expect(scorecard.calculateScore()).toEqual(137);
+  });
 });

@@ -3,35 +3,50 @@ class Scorecard {
     this.frames = []; // array to hold the frames
   }
 
-  addFrame(roll1, roll2) {
+  addFrame(roll1, roll2, roll3 = 0) { // roll3 only used for the tenth frame
     // create a new frame object and add it to the frames array
-    this.frames.push({ roll1, roll2 });
+    this.frames.push({ roll1, roll2, roll3 });
   }
 
   calculateScore() {
     let score = 0;
     let frameIndex = 0;
     const numFrames = this.frames.length;
-    for (let i = 0; i < 10 && frameIndex < numFrames; i++) { // iterate through the 10 frames
+  
+    for (let i = 0; i < 10 && frameIndex < numFrames; i++) {
       const frame = this.frames[frameIndex];
       const isStrike = frame.roll1 === 10;
       const isSpare = !isStrike && frame.roll1 + frame.roll2 === 10;
       const frameScore = frame.roll1 + frame.roll2;
   
       // add bonuses for strikes and spares in the current frame
-      if (isStrike) {
-        score += 10 + this.getStrikeBonus(frameIndex + 1);
-        frameIndex += 1;
-      } else if (isSpare) {
-        score += 10 + this.getSpareBonus(frameIndex + 1);
-        frameIndex += 1;
+      if (i === 9) {
+        // Tenth frame logic
+        if (isStrike) {
+          score += 10 + frame.roll1 + frame.roll2 + frame.roll3;
+          frameIndex += 1;
+        } else if (isSpare) {
+          score += 10 + frame.roll3;
+        } else {
+          score += frameScore;
+        }
       } else {
-        score += frameScore;
-        frameIndex += 1;
+        // Frames 1-9 logic
+        if (isStrike) {
+          score += 10 + this.getStrikeBonus(frameIndex + 1);
+          frameIndex += 1;
+        } else if (isSpare) {
+          score += 10 + this.getSpareBonus(frameIndex + 1);
+          frameIndex += 1;
+        } else {
+          score += frameScore;
+          frameIndex += 1;
+        }
       }
     }
+  
     return score;
-  }
+  }  
 
   getStrikeBonus(nextFrameIndex) {
     if (nextFrameIndex < this.frames.length) {

@@ -37,14 +37,18 @@ class Scorecard {
     if (nextFrameIndex < this.frames.length) {
       const nextFrame = this.frames[nextFrameIndex];
       if (nextFrame.roll1 === 10) { // strike in the next frame
-        const nextNextFrame = this.frames[nextFrameIndex + 1];
-        return 10 + nextNextFrame.roll1;
+        if (nextFrameIndex + 1 < this.frames.length) {
+          const nextNextFrame = this.frames[nextFrameIndex + 1];
+          return 10 + (nextNextFrame ? nextNextFrame.roll1 : 0);
+        } else {
+          return 10;
+        }
       } else {
         return nextFrame.roll1 + nextFrame.roll2;
       }
     }
     return 0;
-  }
+  }  
 
   getSpareBonus(nextFrameIndex) {
     if (nextFrameIndex < this.frames.length) {

@@ -15,7 +15,6 @@ const firstNineFrames = () => {
 }
 
 describe('Scorecard', () => {
-
   beforeEach(() => {
     scorecard = new Scorecard();
   });

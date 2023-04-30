@@ -19,14 +19,14 @@ describe('Scorecard', () => {
   test('the score when there is a strike in frame three', () => {
     scorecard.addFrame(1, 4);
     scorecard.addFrame(4, 5);
-    scorecard.addFrame(10, 0);
+    scorecard.addFrame(10);
     expect(scorecard.calculateScore()).toEqual(24);
   });
 
   test('the score when there is a strike in the previous frame', () => {
     scorecard.addFrame(1, 4);
     scorecard.addFrame(4, 5);
-    scorecard.addFrame(10, 0);
+    scorecard.addFrame(10);
     scorecard.addFrame(5, 3);
     expect(scorecard.calculateScore()).toEqual(40);
   });
@@ -51,11 +51,11 @@ describe('Scorecard', () => {
     scorecard.addFrame(4, 5);
     scorecard.addFrame(6, 4);
     scorecard.addFrame(5, 5);
-    scorecard.addFrame(10, 0);
+    scorecard.addFrame(10);
     scorecard.addFrame(0, 1);
     scorecard.addFrame(7, 3);
     scorecard.addFrame(6, 4);
-    scorecard.addFrame(10, 0);
+    scorecard.addFrame(10);
     scorecard.addFrame(2, 2);
     expect(scorecard.calculateScore()).toEqual(115);
   });
@@ -65,11 +65,11 @@ describe('Scorecard', () => {
     scorecard.addFrame(4, 5);
     scorecard.addFrame(6, 4);
     scorecard.addFrame(5, 5);
-    scorecard.addFrame(10, 0);
+    scorecard.addFrame(10);
     scorecard.addFrame(0, 1);
     scorecard.addFrame(7, 3);
     scorecard.addFrame(6, 4);
-    scorecard.addFrame(10, 0);
+    scorecard.addFrame(10);
     scorecard.addFrame(10, 10, 10);
     expect(scorecard.calculateScore()).toEqual(157);
   });
@@ -79,12 +79,40 @@ describe('Scorecard', () => {
     scorecard.addFrame(4, 5);
     scorecard.addFrame(6, 4);
     scorecard.addFrame(5, 5);
-    scorecard.addFrame(10, 0);
+    scorecard.addFrame(10);
     scorecard.addFrame(0, 1);
     scorecard.addFrame(7, 3);
     scorecard.addFrame(6, 4);
-    scorecard.addFrame(10, 0);
+    scorecard.addFrame(10);
     scorecard.addFrame(8, 2, 10);
     expect(scorecard.calculateScore()).toEqual(137);
+  });
+
+  test('the score after bowling all spares', () => {
+    scorecard.addFrame(5, 5);
+    scorecard.addFrame(5, 5);
+    scorecard.addFrame(5, 5);
+    scorecard.addFrame(5, 5);
+    scorecard.addFrame(5, 5);
+    scorecard.addFrame(5, 5);
+    scorecard.addFrame(5, 5);
+    scorecard.addFrame(5, 5);
+    scorecard.addFrame(5, 5);
+    scorecard.addFrame(5, 5, 5);
+    expect(scorecard.calculateScore()).toEqual(150);
+  });
+
+  test('the score after bowling 12 strikes - a perfect game', () => {
+    scorecard.addFrame(10);
+    scorecard.addFrame(10);
+    scorecard.addFrame(10);
+    scorecard.addFrame(10);
+    scorecard.addFrame(10);
+    scorecard.addFrame(10);
+    scorecard.addFrame(10);
+    scorecard.addFrame(10);
+    scorecard.addFrame(10);
+    scorecard.addFrame(10, 10, 10);
+    expect(scorecard.calculateScore()).toEqual(300);
   });
 });

@@ -1,9 +1,9 @@
 class Scorecard {
   constructor() {
-    this.frames = []; // array to hold the frames
+    this.frames = [];
   }
 
-  addFrame(roll1, roll2, roll3 = 0) { // roll3 only used for the tenth frame
+  addFrame(roll1, roll2 = 0, roll3 = 0) { 
     // create a new frame object and add it to the frames array
     this.frames.push({ roll1, roll2, roll3 });
   }
@@ -51,7 +51,7 @@ class Scorecard {
   getStrikeBonus(nextFrameIndex) {
     if (nextFrameIndex < this.frames.length) {
       const nextFrame = this.frames[nextFrameIndex];
-      if (nextFrame.roll1 === 10) { // strike in the next frame
+      if (nextFrame.roll1 === 10) {
         if (nextFrameIndex + 1 < this.frames.length) {
           const nextNextFrame = this.frames[nextFrameIndex + 1];
           return 10 + (nextNextFrame ? nextNextFrame.roll1 : 0);

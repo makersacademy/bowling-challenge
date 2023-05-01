@@ -17,7 +17,12 @@ class Scorecard {
     }
 
     return this.frames.reduce((totalScore, frame, index) => {
-      const frameScore = frame.firstRoll + frame.secondRoll;
+      let frameScore = frame.firstRoll + frame.secondRoll;
+
+      if (frame.isFinalFrame() && frameScore >= 10) {
+        frameScore += frame.thirdRoll || 0;
+      }
+
       totalScore += frameScore;
 
       if (frame.isStrike() && index < this.MAX_FRAMES - 1) {
@@ -54,5 +59,8 @@ class Scorecard {
     return this.frames.length === this.MAX_FRAMES && this.frames.every(frame => frame.isStrike());
   }
 }
+
+module.exports = Scorecard;
+
 
 module.exports = Scorecard;

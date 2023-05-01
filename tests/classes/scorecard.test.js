@@ -135,4 +135,58 @@ describe('Scorecard', () => {
     expect(scorecard.isPerfectGame()).toBe(true);
     expect(scorecard.getScore()).toBe(300);
   });
+
+  test('a full game with mixed strikes and spares returns the correct score', () => {
+    const scorecard = new Scorecard();
+    const frame1 = new Frame(10); // strike
+    const frame2 = new Frame(6, 4); // spare
+    const frame3 = new Frame(10); // strike
+    const frame4 = new Frame(10); // strike
+    const frame5 = new Frame(10); // strike
+    const frame6 = new Frame(10); // strike
+    const frame7 = new Frame(10); // strike
+    const frame8 = new Frame(10); // strike
+    const frame9 = new Frame(10); // strike
+    const frame10 = new Frame(10, 10, 10); // strike
+
+    scorecard.addFrame(frame1);
+    scorecard.addFrame(frame2);
+    scorecard.addFrame(frame3);
+    scorecard.addFrame(frame4);
+    scorecard.addFrame(frame5);
+    scorecard.addFrame(frame6);
+    scorecard.addFrame(frame7);
+    scorecard.addFrame(frame8);
+    scorecard.addFrame(frame9);
+    scorecard.addFrame(frame10);
+
+    expect(scorecard.getScore()).toBe(280); // 280 points
+  });
+
+  test('a full game with a mix of strikes, spares and normal frames returns the correct score', () => {
+    const scorecard = new Scorecard();
+    const frame1 = new Frame(2, 3); // 5 points
+    const frame2 = new Frame(6, 4); // spare
+    const frame3 = new Frame(10); // strike
+    const frame4 = new Frame(5, 2); // 7 points
+    const frame5 = new Frame(10); // strike
+    const frame6 = new Frame(3, 3); // 6 points
+    const frame7 = new Frame(4, 6); // spare
+    const frame8 = new Frame(6, 3); // 9 points
+    const frame9 = new Frame(10); // strike
+    const frame10 = new Frame(2, 5); // 7 points
+
+    scorecard.addFrame(frame1);
+    scorecard.addFrame(frame2);
+    scorecard.addFrame(frame3);
+    scorecard.addFrame(frame4);
+    scorecard.addFrame(frame5);
+    scorecard.addFrame(frame6);
+    scorecard.addFrame(frame7);
+    scorecard.addFrame(frame8);
+    scorecard.addFrame(frame9);
+    scorecard.addFrame(frame10);
+
+    expect(scorecard.getScore()).toBe(120); // 120 points
+  });
 });

@@ -35,10 +35,15 @@
 
       <% } else if ( session.game_in_progress == false ) { %>
       
-        <div class="title">Game over! You Scored <%= session.scorecard.current_score() %></div>
+        <div class="title">Game over! You Scored <%= scorecard.current_score() %></div>
 
       <% } %>
 
+    <ul class="scorecard_list">
+
+    <% for(var i=0; i < scorecard.frames.length; i++) { %>
+
+    <li id="score-panel">  
     <frame-box class="grid-container">
       <div class="frame-box-header">
         <div>
@@ -56,5 +61,14 @@
         <frame-score class="frame-score">300</frame-score>
       </div>
     </frame-box>
+    
+
+
+  </li>
+
+  <% } %>
+
+</ul>
+
   </body>
 </html>

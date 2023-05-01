@@ -3,6 +3,10 @@
   font-size: xx-large;
 }
 
+#score_panel {
+  display: inline;
+}
+
 .grid-container {
   display: grid;
   grid-template-rows: 35% 65%;
@@ -46,4 +50,12 @@
   float: right;
   padding-bottom: 10px;
   padding-right: 3px;
+}
+
+.scorecard_list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }

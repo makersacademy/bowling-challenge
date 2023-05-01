@@ -1,5 +1,3 @@
-const Frame = require('./frame');
-
 class Scorecard {
   constructor() {
     this.frames = [];
@@ -14,6 +12,10 @@ class Scorecard {
   }
 
   getScore() {
+    if (this.isPerfectGame()) {
+      return 300;
+    }
+
     return this.frames.reduce((totalScore, frame, index) => {
       const frameScore = frame.firstRoll + frame.secondRoll;
       totalScore += frameScore;
@@ -46,6 +48,10 @@ class Scorecard {
     const nextFrame = this.frames[index + 1];
     const bonus = nextFrame.firstRoll;
     return bonus;
+  }
+
+  isPerfectGame() {
+    return this.frames.length === this.MAX_FRAMES && this.frames.every(frame => frame.isStrike());
   }
 }
 

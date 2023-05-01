@@ -20,7 +20,6 @@ class Frame {
   isStrike(){
     return this.rolls[0] === 10
   }
-
 }
 
 module.exports = Frame

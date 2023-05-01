@@ -1,8 +1,8 @@
-const Frame = require('./frame')
+const Frame = require("./frame")
 
 class Scoreboard {
   constructor() {
-    this.frames = [];
+    this.frames = []
     
   }
 
@@ -45,7 +45,6 @@ class Scoreboard {
         }
 
       }
-
 
       score += currentFrame.score()
     }

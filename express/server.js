@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 const session = require('express-session')
 const { redirect } = require('express/lib/response');
+const sum_arr = require('../lib/helpers');
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '../express/views'))
@@ -44,28 +45,37 @@ app.get('/game', (req, res) => {
 
 app.post('/add_frame', (req, res) => {
   score = req.body.roll
-  if ( req.session.frame_num == 10 && sum_arr(req.session.cur_frame.score) + score == 10 ) {
-    req.session.cur_frame.add_roll(score)
-    req.session.roll_num = 2
-    res.redirect('/game')
-  } else if ( req.session.frame_num == 10 && sum_arr(req.session.cur_frame.score) + score < 10 ) {
-    req.session.cur_frame.add_roll(score)
-    req.session.scorecard.add_frame(req.session.cur_frame)
-    req.session.cur_frame = null
-    req.session.game_in_progress = false
-    res.redirect('/game')
-  } else if (req.session.roll_num == 1 ) {
+  if (req.session.roll_num == 1 ) {
     req.session.cur_frame = new Frame(req.session.frame_num)
     req.session.cur_frame.add_roll(score)
     req.session.roll_num++
+    req.session.save()
     res.redirect('/game')
-  } else if (req.session.roll_num == 2) {
-    req.session.cur_frame.add_roll(score)
-    req.session.scorecard.add_frame(req.session.cur_frame)
+  } else if (req.session.roll_num == 2 && req.session.frame_num != 10) {
+    console.log(req.session.scorecard)
+    req.session.cur_frame.score.push(score)
+    req.session.scorecard.frames.push(req.session.cur_frame)
     req.session.cur_frame = null
     req.session.roll_num = 1
     req.session.frame_num++
     res.redirect('/game')
+  } else if (req.session.roll_num == 2 && req.session.frame_num == 10) {
+    console.log(req.session.scorecard)
+    req.session.cur_frame.score.push(score);
+      if ( sum_arr(req.session.cur_frame.score) < 10 ) {
+        req.session.scorecard.add_frame(req.session.cur_frame)
+        req.session.cur_frame = null
+        req.session.game_in_progress = false
+        res.redirect('/game')
+      } else {
+        req.session.roll_num = 3
+        res.redirect('/game')
+      }
+  } else if (req.session.roll_num == 3 ) {
+        req.session.cur_frame.score.push(score)
+        req.session.scorecard.frames.push(req.session.cur_frame)
+        req.session.game_in_progress = false
+        res.redirect('/game')
   }
 })
 

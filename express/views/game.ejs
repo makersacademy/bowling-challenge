@@ -6,12 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome to Your Bowling ScoreCard</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
-    <script src="/js/script.js"></script>
+    <script href="/js/script.js"></script>
   </head>
   <body>
+
+
+    <% if ( session.game_in_progress == true ) { %>
+
+    <h2>Please enter your score for Frame <%= session.frame_num %> Roll <%= session.roll_num %> </h2>
+
+    <label for="roll">What did you roll?</label>
     <form action="/add_frame" method="post">
-      <span class="input-number-decrement">–</span><input class="input-number" type="text" value="1" min="0" max="10"><span class="input-number-increment">+</span>
+      <select name="roll" id="roll-drop">
+        <option value='0'>0</option>
+        <option value='1'>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">Strike</option>
+      </select>
+      <button type="submit">Score</button>
     </form>
+
+      <% } else if ( session.game_in_progress == false ) { %>
+      
+        <div class="title">Game over! You Scored <%= session.scorecard.current_score() %></div>
+
+      <% } %>
+
     <frame-box class="grid-container">
       <div class="frame-box-header">
         <div>

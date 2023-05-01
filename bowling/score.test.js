@@ -126,40 +126,5 @@ describe('Scorecard', () => {
       
       expect(scorecard.calculateScore()).toEqual(300)
     })
-
-
-  //   it('calculates the correct score in the 10th frame', () => {
-  //     scorecard.addFrame(9, 1)
-  //     scorecard.addFrame(9, 1)
-  //     scorecard.addFrame(9, 1, 5)
-  //     expect(scorecard.calculateScore()).toEqual(33)
-  //   })
-  // })
-
-  // describe('when a gutter game is scored', () => {
-  //   it('calculates the correct score', () => {
-  //     for (let i = 0; i < 10; i++) {
-  //       scorecard.addFrame(0, 0)
-  //     }
-  //     expect(scorecard.calculateScore()).toEqual(0)
-  //   })
-  // })
-
-  // // describe('when a perfect game is scored', () => {
-  // //   it('calculates the correct score', () => {
-  // //     for (let i = 0; i < 12; i++) {
-  // //       scorecard.addFrame(10, 0, 10)
-  // //     }
-  // //     expect(scorecard.calculateScore()).toEqual(300)
-  // //   })
-  // // })
-
-  // describe('when an invalid frame is added', () => {
-  //   it('throws an error when more than 10 frames are added', () => {
-  //     for (let i = 0; i < 10; i++) {
-  //       scorecard.addFrame(1, 1)
-  //     }
-  //     expect(() => scorecard.addFrame(1, 1)).toThrow('Game is over')
-  //   })
    })
   })

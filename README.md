@@ -6,6 +6,20 @@ The rules of bowling can become complex when you start adding the bonuses and th
 
 For the folder structure I asked ChatGPT and searched on google which led me to this: https://stackoverflow.com/questions/5178334/folder-structure-for-a-node-js-project
 
+## Diagram
+
+INSERT DIAGRAM HERE
+
+## Readline feature
+
+Implement a readline feature to get the user input.
+
+## How to use
+
+1. Clone this repo
+2. Run `npm install`
+3. Run `userInterface.js` in the terminal with `node userInterface.js`
+
 ## Classes
 frame.js: Single frame of the bowling game.
 Methods: isStrike, isSpare, isFinalFrame

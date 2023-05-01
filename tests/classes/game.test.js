@@ -68,6 +68,8 @@ describe("Game", () => {
 
       logSpy.mockRestore();
       addFrameSpy.mockRestore();
+
+      console.log(`Final score: ${game.scorecard.getScore()}`);
     });
   });
 });

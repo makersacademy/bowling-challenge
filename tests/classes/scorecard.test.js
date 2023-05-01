@@ -94,6 +94,25 @@ describe('Scorecard', () => {
     expect(scorecard.getScore()).toBe(9 + 10 + 3 + 6 + 3); // 31 points
   });  
 
+  test('calculateSpareScore calculates the correct bonus for two spares in a row', () => {
+    const scorecard = new Scorecard();
+    const frame1 = new Frame(5, 4); // 9 points
+    const frame2 = new Frame(6, 4); // spare
+    const frame3 = new Frame(6, 4); // spare
+    const frame4 = new Frame(3, 6); // 9 points
+
+    scorecard.addFrame(frame1);
+    scorecard.addFrame(frame2);
+    scorecard.addFrame(frame3);
+    scorecard.addFrame(frame4);
+
+    const bonus1 = scorecard.calculateSpareScore(1);
+    expect(bonus1).toBe(6); // bonus is the score of the next roll (6)
+    const bonus2 = scorecard.calculateSpareScore(2);
+    expect(bonus2).toBe(3); // bonus is the score of the next roll (3)
+    expect(scorecard.getScore()).toBe(9 + 10 + 10 + 3 + 6 + 6 + 3); // 47 points
+  });
+
   test('isPerfectGame returns true when all frames are strikes', () => {
     const scorecard = new Scorecard();
     const frame = new Frame(10);

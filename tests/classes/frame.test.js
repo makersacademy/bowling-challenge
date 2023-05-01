@@ -10,4 +10,34 @@ describe('Frame', () => {
     expect(frame.secondRoll).toBe(secondRoll);
     expect(frame.bonus).toBe(0);
   });
+
+  test('isStrike returns true when first roll is 10', () => {
+    const frame = new Frame(10);
+
+    expect(frame.isStrike()).toBe(true);
+  });
+
+  test('isStrike returns false when first roll is not 10', () => {
+    const frame = new Frame(5, 4);
+
+    expect(frame.isStrike()).toBe(false);
+  });
+
+  test('isSpare returns true when the sum of first and second rolls is 10 and it is not a strike', () => {
+    const frame = new Frame(5, 5);
+
+    expect(frame.isSpare()).toBe(true);
+  });
+
+  test('isSpare returns false when the sum of first and second rolls is not 10', () => {
+    const frame = new Frame(5, 4);
+
+    expect(frame.isSpare()).toBe(false);
+  });
+
+  test('isSpare returns false when it is a strike', () => {
+    const frame = new Frame(10);
+
+    expect(frame.isSpare()).toBe(false);
+  });
 });

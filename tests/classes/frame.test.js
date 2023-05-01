@@ -1,4 +1,4 @@
-const Frame = require('../../src/classes/frame');
+const Frame = require('../../lib/classes/frame');
 
 describe('Frame', () => {
   test('initializes firstRoll, secondRoll, and bonus correctly', () => {

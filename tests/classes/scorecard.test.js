@@ -1,13 +1,13 @@
-const Scorecard = require('../../src/classes/scorecard');
-const Frame = require('../../src/classes/frame');
+const Scorecard = require("../../lib/classes/scorecard");
+const Frame = require("../../lib/classes/frame");
 
-describe('Scorecard', () => {
-  test('initializes an empty array of frames', () => {
+describe("Scorecard", () => {
+  test("initializes an empty array of frames", () => {
     const scorecard = new Scorecard();
     expect(scorecard.frames).toEqual([]);
   });
 
-  test('adds a frame to the scorecard', () => {
+  test("adds a frame to the scorecard", () => {
     const scorecard = new Scorecard();
     const frame = new Frame(5, 4);
 
@@ -18,7 +18,7 @@ describe('Scorecard', () => {
     expect(scorecard.frames[0]).toEqual(frame);
   });
 
-  test('throws an error when trying to add more frames than the maximum allowed', () => {
+  test("throws an error when trying to add more frames than the maximum allowed", () => {
     const scorecard = new Scorecard();
     const frame = new Frame(5, 4);
 
@@ -31,7 +31,7 @@ describe('Scorecard', () => {
     }).toThrow(`Maximum number of frames (${scorecard.MAX_FRAMES}) reached.`);
   });
 
-  test('getScore calculates the correct score with multiple frames', () => {
+  test("getScore calculates the correct score with multiple frames", () => {
     const scorecard = new Scorecard();
     const frame1 = new Frame(5, 4); // 9 points
     const frame2 = new Frame(4, 4); // 8 points
@@ -45,22 +45,22 @@ describe('Scorecard', () => {
     expect(score).toBe(9 + 8 + 9); // 26 points
   });
 
-  test('calculateStrikeScore calculates the correct bonus for a strike', () => {
+  test("calculateStrikeScore calculates the correct bonus for a strike", () => {
     const scorecard = new Scorecard();
     const frame1 = new Frame(5, 4); // 9 points
     const frame2 = new Frame(10); // strike
     const frame3 = new Frame(3, 6); // 9 points
-  
+
     scorecard.addFrame(frame1);
     scorecard.addFrame(frame2);
     scorecard.addFrame(frame3);
-  
+
     const bonus = scorecard.calculateStrikeScore(1);
     expect(bonus).toBe(9); // bonus is the score of the next two rolls (3, 6)
     expect(scorecard.getScore()).toBe(9 + 10 + 9 + 9); // 37 points
   });
 
-  test('calculateStrikeScore calculates the correct bonus for two strikes in a row', () => {
+  test("calculateStrikeScore calculates the correct bonus for two strikes in a row", () => {
     const scorecard = new Scorecard();
     const frame1 = new Frame(5, 4); // 9 points
     const frame2 = new Frame(10); // strike
@@ -79,22 +79,22 @@ describe('Scorecard', () => {
     expect(scorecard.getScore()).toBe(9 + 10 + 10 + 3 + 6 + 22); // 60 points
   });
 
-  test('calculateSpareScore calculates the correct bonus for a spare', () => {
+  test("calculateSpareScore calculates the correct bonus for a spare", () => {
     const scorecard = new Scorecard();
     const frame1 = new Frame(5, 4); // 9 points
     const frame2 = new Frame(6, 4); // spare
     const frame3 = new Frame(3, 6); // 9 points
-  
+
     scorecard.addFrame(frame1);
     scorecard.addFrame(frame2);
     scorecard.addFrame(frame3);
-  
+
     const bonus = scorecard.calculateSpareScore(1);
     expect(bonus).toBe(3); // bonus is the score of the next roll (3)
     expect(scorecard.getScore()).toBe(9 + 10 + 3 + 6 + 3); // 31 points
-  });  
+  });
 
-  test('calculateSpareScore calculates the correct bonus for two spares in a row', () => {
+  test("calculateSpareScore calculates the correct bonus for two spares in a row", () => {
     const scorecard = new Scorecard();
     const frame1 = new Frame(5, 4); // 9 points
     const frame2 = new Frame(6, 4); // spare
@@ -113,7 +113,7 @@ describe('Scorecard', () => {
     expect(scorecard.getScore()).toBe(9 + 10 + 10 + 3 + 6 + 6 + 3); // 47 points
   });
 
-  test('isPerfectGame returns true when all frames are strikes', () => {
+  test("isPerfectGame returns true when all frames are strikes", () => {
     const scorecard = new Scorecard();
     const frame = new Frame(10);
 
@@ -124,7 +124,7 @@ describe('Scorecard', () => {
     expect(scorecard.isPerfectGame()).toBe(true);
   });
 
-  test('isPerfectGame is true and getScore returns 300 when all frames are strikes', () => {
+  test("isPerfectGame is true and getScore returns 300 when all frames are strikes", () => {
     const scorecard = new Scorecard();
     const frame = new Frame(10);
 
@@ -136,7 +136,7 @@ describe('Scorecard', () => {
     expect(scorecard.getScore()).toBe(300);
   });
 
-  test('a full game with mixed strikes and spares returns the correct score', () => {
+  test("a full game with mixed strikes and spares returns the correct score", () => {
     const scorecard = new Scorecard();
     const frame1 = new Frame(10); // strike
     const frame2 = new Frame(6, 4); // spare
@@ -163,7 +163,7 @@ describe('Scorecard', () => {
     expect(scorecard.getScore()).toBe(280); // 280 points
   });
 
-  test('a full game with a mix of strikes, spares and normal frames returns the correct score', () => {
+  test("a full game with a mix of strikes, spares and normal frames returns the correct score", () => {
     const scorecard = new Scorecard();
     const frame1 = new Frame(2, 3); // 5 points
     const frame2 = new Frame(6, 4); // spare
@@ -190,7 +190,7 @@ describe('Scorecard', () => {
     expect(scorecard.getScore()).toBe(120); // 120 points
   });
 
-  test('isGutterGame returns true when all frames have a score of zero', () => {
+  test("isGutterGame returns true when all frames have a score of zero", () => {
     const scorecard = new Scorecard();
     const frame = new Frame(0, 0);
 

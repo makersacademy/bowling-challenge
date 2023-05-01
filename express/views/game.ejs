@@ -41,7 +41,7 @@
 
     <ul class="scorecard_list">
 
-    <% for(var i=0; i < scorecard.frames.length; i++) { %>
+    <% for(let i=0; i < scorecard.frames.length; i++) { %>
 
     <li id="score-panel">  
     <frame-box class="grid-container">
@@ -58,7 +58,7 @@
         </div>
       </div>
       <div class="frame-box-body">
-        <frame-score class="frame-score">300</frame-score>
+        <frame-score class="frame-score"><%= scorecard.current_score(i+1) %></frame-score>
       </div>
     </frame-box>
     

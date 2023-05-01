@@ -8,13 +8,13 @@ For the folder structure I asked ChatGPT and searched on google which led me to 
 
 ## Classes
 frame.js: Single frame of the bowling game.
-Methods: isStrike, isSpare
+Methods: isStrike, isSpare, isFinalFrame
 
-scoreCard.js: Handles the calculation of the scores.
-Methods: addFrame, getScore
+scorecard.js: Handles the calculation of the scores.
+Methods: addFrame, getScore, calculateStrikeBonus, calculateSpareBonus, isPerfectGame, isGutterGame
 
 game.js: Represents a bowling game with 10 frames.
-Methods: play
+Methods: roll, startGame, endGame
 
 userInterface.js: Provides the user interface for the terminal.
 Methods: displayWelcomeMessage, getUserInput, displayScore, displayError

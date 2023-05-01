@@ -58,9 +58,10 @@ class Scorecard {
   isPerfectGame() {
     return this.frames.length === this.MAX_FRAMES && this.frames.every(frame => frame.isStrike());
   }
+
+  isGutterGame() {
+    return this.frames.every(frame => frame.firstRoll === 0 && frame.secondRoll === 0);
+  }
 }
-
-module.exports = Scorecard;
-
 
 module.exports = Scorecard;

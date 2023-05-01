@@ -189,4 +189,15 @@ describe('Scorecard', () => {
 
     expect(scorecard.getScore()).toBe(120); // 120 points
   });
+
+  test('isGutterGame returns true when all frames have a score of zero', () => {
+    const scorecard = new Scorecard();
+    const frame = new Frame(0, 0);
+
+    for (let i = 0; i < scorecard.MAX_FRAMES; i++) {
+      scorecard.addFrame(frame);
+    }
+
+    expect(scorecard.isGutterGame()).toBe(true);
+  });
 });

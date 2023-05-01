@@ -3,31 +3,49 @@ const Frame = require('./frame');
 class Scorecard {
   constructor() {
     this.frames = [];
+    this.MAX_FRAMES = 10;
   }
 
   addFrame(frame) {
+    if (this.frames.length >= this.MAX_FRAMES) {
+      throw new Error(`Maximum number of frames (${this.MAX_FRAMES}) reached.`);
+    }
     this.frames.push(frame);
   }
 
   getScore() {
-    let score = 0;
+    return this.frames.reduce((totalScore, frame, index) => {
+      const frameScore = frame.firstRoll + frame.secondRoll;
+      totalScore += frameScore;
 
-    for (let i = 0; i < this.frames.length; i++) {
-      const frame = this.frames[i];
-      score += frame.firstRoll + frame.secondRoll;
-
-      if (frame.isStrike()) {
-        if (this.frames[i + 1]) {
-          score += this.frames[i + 1].firstRoll + this.frames[i + 1].secondRoll;
-        }
-      } else if (frame.isSpare()) {
-        if (this.frames[i + 1]) {
-          score += this.frames[i + 1].firstRoll;
-        }
+      if (frame.isStrike() && index < this.MAX_FRAMES - 1) {
+        totalScore += this.calculateStrikeScore(index);
+      } else if (frame.isSpare() && index < this.MAX_FRAMES - 1) {
+        totalScore += this.calculateSpareScore(index);
       }
+
+      return totalScore;
+    }, 0);
+  }
+
+  calculateStrikeScore(index) {
+    let bonus = 0;
+    const nextFrame = this.frames[index + 1];
+    const nextTwoRolls = [nextFrame.firstRoll, nextFrame.secondRoll];
+
+    if (nextFrame.isStrike() && index < this.MAX_FRAMES - 2) {
+      const thirdFrame = this.frames[index + 2];
+      nextTwoRolls.push(thirdFrame.firstRoll);
     }
 
-    return score;
+    bonus += nextTwoRolls.reduce((sum, roll) => sum + roll, 0);
+    return bonus;
+  }
+
+  calculateSpareScore(index) {
+    const nextFrame = this.frames[index + 1];
+    const bonus = nextFrame.firstRoll;
+    return bonus;
   }
 }
 

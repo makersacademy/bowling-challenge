@@ -1,7 +1,7 @@
 class Frame {
   constructor(firstRoll, secondRoll) {
-    this.firstRoll = firstRoll;
-    this.secondRoll = secondRoll;
+    this.firstRoll = Number(firstRoll);
+    this.secondRoll = Number(secondRoll) || 0;
     this.bonus = 0;
   }
 

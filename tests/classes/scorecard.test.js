@@ -18,4 +18,18 @@ describe('Scorecard', () => {
     expect(scorecard.frames[0]).toBeInstanceOf(Frame);
     expect(scorecard.frames[0]).toEqual(frame);
   });
+
+  test('getScore calculates the correct score with multiple frames', () => {
+    const scorecard = new Scorecard();
+    const frame1 = new Frame(5, 4); // 9 points
+    const frame2 = new Frame(10); // Strike, 10 points + next frame's points
+    const frame3 = new Frame(3, 6); // 9 points
+
+    scorecard.addFrame(frame1);
+    scorecard.addFrame(frame2);
+    scorecard.addFrame(frame3);
+
+    const score = scorecard.getScore();
+    expect(score).toBe(9 + (10 + 9) + 9); // 9 + 19 + 9 = 37
+  });
 });

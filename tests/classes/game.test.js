@@ -1,5 +1,5 @@
 const Game = require('../../src/classes/game');
-// const Scorecard = require('../src/classes/scorecard.js');
+const Scorecard = require('../../src/classes/scorecard.js');
 
 describe('Game', () => {
   test('creates a new game', () => {

@@ -13,48 +13,85 @@ describe('Frame class unit test', () => {
       expect(frame.regularPoints).toEqual(0);
 
     })
-
-    it('initliases with a boolean arg indicating whether it is the final frame', () => {
-      frame = new Frame(false);
-      expect(frame.isFinalFrame).toEqual(false);
-      frame = new Frame();
-      expect(frame.isFinalFrame).toEqual(false);
-      frame = new Frame(true);
-      expect(frame.isFinalFrame).toEqual(true);
-    });
   });
 
   describe('.roll', () => { 
-    describe('in non-final frame', () => {
-      it('adds roll score to this.rolls', () => {
-        frame = new Frame();
-        frame.roll(5);
-        expect(frame.rolls[0]).toEqual(5);
-        expect(frame.rolls.length).toEqual(1);
-      });
+    it('adds roll score to this.rolls', () => {
+      frame = new Frame();
+      frame.roll(5);
+      expect(frame.rolls[0]).toEqual(5);
+      expect(frame.rolls.length).toEqual(1);
+      frame.roll(5);
+      expect(frame.regularPoints).toEqual(10);
+      expect(frame.bonusPoints).toEqual(0);
+    });
 
-      it('refuses to add a roll if two have already been scored', () => {
+    it('refuses to add a roll if two have already been scored', () => {
+      expect(() => {
         frame = new Frame();
         frame.roll(5);
         frame.roll(3);
-        expect(frame.roll(6)).toEqual('Frame is over');
-        expect(frame.rolls).toEqual([5, 3]);
-      });
+        frame.roll(6)
+      }).toThrow('Tried to add points to a frame that is already over');
+    });
 
-      it('returns error message given an invalid roll score', () => {
-        frame = new Frame();
-        expect(frame.roll(13)).toEqual('Invalid roll score');
-        expect(frame.roll(-5)).toEqual('Invalid roll score');
-        frame.roll(5);
-        expect(frame.roll(7)).toEqual('Invalid roll score');   
-      });
+    it('refuses to add a roll if a strike was made on first roll=', () => {
+      frame = new Frame();
+      frame.roll(10);
+      expect(() => frame.roll(6)).toThrow('Tried to add points to a frame that is already over');
+      expect(frame.rolls).toEqual([10]);
+    });
 
-      it('ends the frame early if player gets a strike on first shot', () => {
-        frame = new Frame();
-        frame.roll(10);
-        expect(frame.roll(5)).toEqual('Frame is over');
-        expect(frame.rolls).toEqual([10, 0]); 
-      });
+    it('returns error message given an invalid roll score', () => {
+      frame = new Frame();
+      expect(() => frame.roll(13)).toThrow('Tried to add an invalid roll score (13)');
+      expect(() => frame.roll(-5)).toThrow('Tried to add an invalid roll score (-5)');  
+    });
+
+    it('returns error message if roll would exceed max score in a frame', () => {
+      frame = new Frame();
+      frame.roll(5);
+      expect(() => frame.roll(7)).toThrow('Tried to add roll that would exceed max score in a frame (5 + 7');   
+    }); 
+  });
+
+  it('takes an array of points for .playFrame() and rolls for each one', () => {
+    frame = new Frame();
+    frame.playFrame([5, 3]);
+    expect(frame.regularPoints).toEqual(8)
+  });
+
+  describe('.isSpare()', () => {
+    it('returns true when frame is a spare', () => {
+      frame = new Frame();
+      frame.playFrame([5, 5]);
+      expect(frame.isSpare()).toEqual(true);
+    });
+
+    it('returns true when frame is a spare with a 10 on 2nd roll', () => {
+      frame = new Frame();
+      frame.playFrame([0, 10]);
+      expect(frame.isSpare()).toEqual(true);
+    });
+
+    it('returns false when frame is a strike', () => {
+      frame = new Frame();
+      frame.playFrame([10]);
+      expect(frame.isSpare()).toEqual(false);
+    });
+  });
+
+  describe('.isStrike()', () => {
+    it('returns true when frame is a strike', () => {
+      frame = new Frame();
+      frame.playFrame([10]);
+      expect(frame.isStrike()).toEqual(true);
+    });
+
+    it('returns false when frame is a spare', () => {
+      frame = new Frame();
+      frame.playFrame([2, 8]);
+      expect(frame.isStrike()).toEqual(false);
     });
   });
 });

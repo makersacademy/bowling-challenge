@@ -47,7 +47,7 @@ Methods: playGame()
 
 - [ ] Add a feature to allow the user to enter the number of players.
 - [ ] Add a feature to allow the user to enter the names of the players.
-- [ ] Score entry need to be limited to 10.
+- [X] Score entry need to be limited to 10.
 - [ ] Complete tests for the UserInterface.
 - [ ] Add a feature to show current score after each frame.
 - [ ] Add feature to allow the user to end the game prematurely.

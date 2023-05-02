@@ -40,4 +40,10 @@ describe('Frame', () => {
 
     expect(frame.isSpare()).toBe(false);
   });
+
+  test('throws an error when a roll has more than 10 pins', () => {
+    expect(() => {
+      const frame = new Frame(11, 0);
+    }).toThrow('Invalid number of pins. Maximum is 10.');
+  });
 });

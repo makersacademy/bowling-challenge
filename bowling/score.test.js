@@ -125,6 +125,22 @@ describe('Scorecard', () => {
       scorecard.addFrame(10) 
       
       expect(scorecard.calculateScore()).toEqual(300)
+      expect(scorecard.msgStatus()).toEqual('Perfect Game')
     })
    })
+
+   it('when gutter game', () => {
+    scorecard.addFrame(0,0)
+    scorecard.addFrame(0,0)
+    scorecard.addFrame(0,0)
+    scorecard.addFrame(0,0)
+    scorecard.addFrame(0,0)
+    scorecard.addFrame(0,0)
+    scorecard.addFrame(0,0)
+    scorecard.addFrame(0,0)
+    scorecard.addFrame(0,0)
+    scorecard.addFrame(0,0) 
+    
+    expect(scorecard.msgStatus()).toEqual('Gutter Game')
   })
+ })

@@ -63,6 +63,16 @@ class Scoreboard {
   isPerfectGame(score){
     return score === 220
   }
+
+  msgStatus(){
+    if(this.frames.length === 10 && this.calculateScore() === 0){
+      return 'Gutter Game'
+    }else if(this.calculateScore() === 300){
+      return 'Perfect Game'
+    }else{
+      return 'Game still on'
+    }
+  }
  
 }
 

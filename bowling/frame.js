@@ -10,7 +10,7 @@ class Frame {
   }
 
   addBonus(bonus) {
-    this.bonus += bonus
+    this.bonus = bonus
   }
 
   isSpare(){

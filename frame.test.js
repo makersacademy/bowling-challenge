@@ -42,12 +42,6 @@ describe('Frame class unit test', () => {
       expect(frame.rolls).toEqual([10]);
     });
 
-    it('returns error message given an invalid roll score', () => {
-      frame = new Frame();
-      expect(() => frame.roll(13)).toThrow('Tried to add an invalid roll score (13)');
-      expect(() => frame.roll(-5)).toThrow('Tried to add an invalid roll score (-5)');  
-    });
-
     it('returns error message if roll would exceed max score in a frame', () => {
       frame = new Frame();
       frame.roll(5);

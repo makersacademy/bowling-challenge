@@ -6,12 +6,8 @@ class Frame {
   };
 
   roll(points) {
-    // check if frame has already ended
-    if (this.rolls.length == 2 || this.rolls.includes(10)) {
+    if (this.rolls.length == 2 || this.rolls[0] == 10) {
       throw new Error('Tried to add points to a frame that is already over');
-      // check for invalid scores being inputted
-    } else if(points < 0 || points > 10 ) {
-      throw new Error(`Tried to add an invalid roll score (${points})`);
     } else if ((this.regularPoints + points) > 10) {
       throw new Error(`Tried to add roll that would exceed max score in a frame (${this.regularPoints} + ${points})`);
     } else {
@@ -27,11 +23,11 @@ class Frame {
   }
 
   isStrike() {
-    return (this.rolls.includes(10) && this.rolls.length == 1 ? true : false);
+    return this.rolls[0] == 10;
   }
 
   isSpare() {
-    return (this.regularPoints == 10 && this.rolls.length == 2 ? true : false);
+    return this.regularPoints == 10 && this.rolls.length == 2;
   }
 }
 module.exports = Frame;

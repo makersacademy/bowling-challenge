@@ -51,11 +51,11 @@ class Game {
   };
 
   isGutterGame() {
-    return (this.grandTotal == 0 ? true : false);
+    return this.grandTotal == 0;
   };
 
   isPerfectGame() {
-    return (this.grandTotal == 300 ? true : false);
+    return this.grandTotal == 300;
   };
 };
 

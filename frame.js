@@ -16,7 +16,7 @@ class Frame {
     };
   };
   // is this function necessary? This logic could be in Game
-  playFrame(points_array) {
+  play(points_array) {
     points_array.forEach((points) => {
       this.roll(points);
     });

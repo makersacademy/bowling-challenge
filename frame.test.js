@@ -49,28 +49,28 @@ describe('Frame class unit test', () => {
     }); 
   });
 
-  it('takes an array of points for .playFrame() and rolls for each one', () => {
+  it('takes an array of points for .play() and rolls for each one', () => {
     frame = new Frame();
-    frame.playFrame([5, 3]);
+    frame.play([5, 3]);
     expect(frame.regularPoints).toEqual(8)
   });
 
   describe('.isSpare()', () => {
     it('returns true when frame is a spare', () => {
       frame = new Frame();
-      frame.playFrame([5, 5]);
+      frame.play([5, 5]);
       expect(frame.isSpare()).toEqual(true);
     });
 
     it('returns true when frame is a spare with a 10 on 2nd roll', () => {
       frame = new Frame();
-      frame.playFrame([0, 10]);
+      frame.play([0, 10]);
       expect(frame.isSpare()).toEqual(true);
     });
 
     it('returns false when frame is a strike', () => {
       frame = new Frame();
-      frame.playFrame([10]);
+      frame.play([10]);
       expect(frame.isSpare()).toEqual(false);
     });
   });
@@ -78,13 +78,13 @@ describe('Frame class unit test', () => {
   describe('.isStrike()', () => {
     it('returns true when frame is a strike', () => {
       frame = new Frame();
-      frame.playFrame([10]);
+      frame.play([10]);
       expect(frame.isStrike()).toEqual(true);
     });
 
     it('returns false when frame is a spare', () => {
       frame = new Frame();
-      frame.playFrame([2, 8]);
+      frame.play([2, 8]);
       expect(frame.isStrike()).toEqual(false);
     });
   });

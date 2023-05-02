@@ -1,4 +1,5 @@
-const Scorecard = require('./scorecard')
+const Scorecard = require('./scorecard');
+// const Frame = require('./frame');
 
 describe('Scorecard class', () => {
   let scorecard;
@@ -9,13 +10,12 @@ describe('Scorecard class', () => {
       expect(scorecard.calculateScore()).toBe(0);
     })
 
+    // it('returns zero points when player never hits a pin in all 10 frames', () => {
 
+    // })
   })
+
+
+
+
 })
-
-
-// let scorecard = new Scorecard()
-// scorecard.calculateScore() // returns 0
-// scorecard.addFrame(2, 5) 
-// scorecard.addFrame(3, 5)
-// scorecard.calculateScore() 

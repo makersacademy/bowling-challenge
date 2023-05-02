@@ -110,8 +110,8 @@
     },
     {
       "type": "text",
-      "version": 402,
-      "versionNonce": 822505824,
+      "version": 446,
+      "versionNonce": 1845799264,
       "isDeleted": false,
       "id": "lqxirN87sVBEs3dC0WxxP",
       "fillStyle": "hachure",
@@ -130,16 +130,16 @@
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1682933358220,
+      "updated": 1683014400878,
       "link": null,
       "locked": false,
       "fontSize": 16,
       "fontFamily": 1,
-      "text": "Task:\n\nDevelop a program that counts and sums the scores of a bowling game for one player.\n\nThe program should be designed for a bowling scorecard, not a game simulator.\n\nThe user should input the rolls, and random rolls should not be generated.\n\nThe program should not include a UI or database.\n\nA bowling game consists of 10 frames, and in every frame, the player can roll one or two times, depending on strikes and spares.\n\nThe score of a frame is the number of knocked down pins plus bonuses for strikes and spares.\n\nAfter every frame, the 10 pins are reset.",
+      "text": "Task:\n\nDevelop a program that counts and sums the scores of a bowling game for one player.\n\nThe program should be designed for a bowling scorecard, not a game simulator.\n\nThe user should input the rolls, and random rolls should not be generated.\n\nA UI is an optional extra.\n\nA bowling game consists of 10 frames, and in every frame, the player can roll one or two times, depending on strikes and spares.\n\nThe score of a frame is the number of knocked down pins plus bonuses for strikes and spares.\n\nAfter every frame, the 10 pins are reset.",
       "textAlign": "left",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "Task:\n\nDevelop a program that counts and sums the scores of a bowling game for one player.\n\nThe program should be designed for a bowling scorecard, not a game simulator.\n\nThe user should input the rolls, and random rolls should not be generated.\n\nThe program should not include a UI or database.\n\nA bowling game consists of 10 frames, and in every frame, the player can roll one or two times, depending on strikes and spares.\n\nThe score of a frame is the number of knocked down pins plus bonuses for strikes and spares.\n\nAfter every frame, the 10 pins are reset.",
+      "originalText": "Task:\n\nDevelop a program that counts and sums the scores of a bowling game for one player.\n\nThe program should be designed for a bowling scorecard, not a game simulator.\n\nThe user should input the rolls, and random rolls should not be generated.\n\nA UI is an optional extra.\n\nA bowling game consists of 10 frames, and in every frame, the player can roll one or two times, depending on strikes and spares.\n\nThe score of a frame is the number of knocked down pins plus bonuses for strikes and spares.\n\nAfter every frame, the 10 pins are reset.",
       "lineHeight": 1.25,
       "baseline": 294
     },
@@ -2668,8 +2668,8 @@
     },
     {
       "type": "text",
-      "version": 1933,
-      "versionNonce": 1029033312,
+      "version": 1993,
+      "versionNonce": 155951456,
       "isDeleted": false,
       "id": "kONUB0cRAFnKZYgOVJFF6",
       "fillStyle": "hachure",
@@ -2679,27 +2679,27 @@
       "opacity": 100,
       "angle": 0,
       "x": 310.734375,
-      "y": 2229.31640625,
+      "y": 2228.9609375,
       "strokeColor": "#000000",
       "backgroundColor": "transparent",
-      "width": 604.5916137695312,
-      "height": 280,
+      "width": 596.5916137695312,
+      "height": 300,
       "seed": 198759776,
       "groupIds": [],
       "roundness": null,
       "boundElements": null,
-      "updated": 1682956971794,
+      "updated": 1682958205535,
       "link": null,
       "locked": false,
       "fontSize": 16,
       "fontFamily": 1,
-      "text": "Javascript\nTDD\n\n1. game.js and game.test.js created \n2. create scorecard.test.js and scorecard \n3. create frame.test.js and frame \n4. previous code reviews suggested I complete the unit testing and \nall necessary features for a class fully before moving on.  So now \nimplementing the bonus methods.\n5. back to scorecard class to complete adding methods, now passing \nprevious failing test\n6. added getScore method but had to amend frames as the rolls weren't \nbeing stored as numbers\n7. game.js is in its primitive form but I think there's enough to start a UI ",
+      "text": "Javascript\nTDD\n\n1. game.js and game.test.js created \n2. create scorecard.test.js and scorecard \n3. create frame.test.js and frame \n4. previous code reviews suggested I complete the unit testing and \nall necessary features for a class fully before moving on.  So now \nimplementing the bonus methods.\n5. back to scorecard class to complete adding methods, now passing \nprevious failing test\n6. added getScore method but had to amend frames as the rolls weren't \nbeing stored as numbers\n7. game.js is in its primitive form but I think there's enough to start a UI\n8. UI implemented with readline but haven't test driven it ",
       "textAlign": "left",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "Javascript\nTDD\n\n1. game.js and game.test.js created \n2. create scorecard.test.js and scorecard \n3. create frame.test.js and frame \n4. previous code reviews suggested I complete the unit testing and \nall necessary features for a class fully before moving on.  So now \nimplementing the bonus methods.\n5. back to scorecard class to complete adding methods, now passing \nprevious failing test\n6. added getScore method but had to amend frames as the rolls weren't \nbeing stored as numbers\n7. game.js is in its primitive form but I think there's enough to start a UI ",
+      "originalText": "Javascript\nTDD\n\n1. game.js and game.test.js created \n2. create scorecard.test.js and scorecard \n3. create frame.test.js and frame \n4. previous code reviews suggested I complete the unit testing and \nall necessary features for a class fully before moving on.  So now \nimplementing the bonus methods.\n5. back to scorecard class to complete adding methods, now passing \nprevious failing test\n6. added getScore method but had to amend frames as the rolls weren't \nbeing stored as numbers\n7. game.js is in its primitive form but I think there's enough to start a UI\n8. UI implemented with readline but haven't test driven it ",
       "lineHeight": 1.25,
-      "baseline": 274
+      "baseline": 294
     },
     {
       "type": "arrow",
@@ -3201,7 +3201,7 @@
       "type": "text",
       "x": 523.3167245191574,
       "y": 249.14132098956392,
-      "width": 17.944259864567197,
+      "width": 17.936660766601562,
       "height": 17.682979428045464,
       "angle": 0,
       "strokeColor": "#000000",
@@ -3214,11 +3214,11 @@
       "groupIds": [],
       "roundness": null,
       "seed": 734401696,
-      "version": 285,
-      "versionNonce": 2105566560,
+      "version": 286,
+      "versionNonce": 370177376,
       "isDeleted": false,
       "boundElements": null,
-      "updated": 1682933358222,
+      "updated": 1682958270769,
       "link": null,
       "locked": false,
       "text": "JS",
@@ -3230,6 +3230,581 @@
       "containerId": null,
       "originalText": "JS",
       "lineHeight": 1.15
+    },
+    {
+      "type": "freedraw",
+      "version": 226,
+      "versionNonce": 1663930528,
+      "isDeleted": false,
+      "id": "vCX6kFOHjbGInBdEsU2DN",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 375.3612747192383,
+      "y": 1749.087890625,
+      "strokeColor": "#2b8a3e",
+      "backgroundColor": "transparent",
+      "width": 31.13671875,
+      "height": 20.19921875,
+      "seed": 1193898336,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1682958150338,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.35546875,
+          0
+        ],
+        [
+          0.7109375,
+          0
+        ],
+        [
+          1.421875,
+          0.359375
+        ],
+        [
+          1.77734375,
+          0.359375
+        ],
+        [
+          3.19921875,
+          1.43359375
+        ],
+        [
+          3.5546875,
+          2.1484375
+        ],
+        [
+          4.62109375,
+          3.22265625
+        ],
+        [
+          5.33203125,
+          3.58203125
+        ],
+        [
+          5.6875,
+          3.94140625
+        ],
+        [
+          5.6875,
+          3.5859375
+        ],
+        [
+          7.109375,
+          2.51953125
+        ],
+        [
+          12.2109375,
+          -2.08984375
+        ],
+        [
+          17.8984375,
+          -6.640625
+        ],
+        [
+          21.95703125,
+          -9.68359375
+        ],
+        [
+          27.58203125,
+          -13.76953125
+        ],
+        [
+          28.29296875,
+          -14.48046875
+        ],
+        [
+          29.71484375,
+          -15.19140625
+        ],
+        [
+          30.42578125,
+          -15.90234375
+        ],
+        [
+          31.13671875,
+          -16.2578125
+        ],
+        [
+          31.13671875,
+          -16.2578125
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "simulatePressure": true,
+      "pressures": []
+    },
+    {
+      "type": "freedraw",
+      "version": 166,
+      "versionNonce": 290179424,
+      "isDeleted": false,
+      "id": "gSQOaSg7dmtUu1CHplDhB",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 372.8378372192383,
+      "y": 1831.779296875,
+      "strokeColor": "#2b8a3e",
+      "backgroundColor": "transparent",
+      "width": 31.13671875,
+      "height": 20.19921875,
+      "seed": 343047328,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1682958153520,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.35546875,
+          0
+        ],
+        [
+          0.7109375,
+          0
+        ],
+        [
+          1.421875,
+          0.359375
+        ],
+        [
+          1.77734375,
+          0.359375
+        ],
+        [
+          3.19921875,
+          1.43359375
+        ],
+        [
+          3.5546875,
+          2.1484375
+        ],
+        [
+          4.62109375,
+          3.22265625
+        ],
+        [
+          5.33203125,
+          3.58203125
+        ],
+        [
+          5.6875,
+          3.94140625
+        ],
+        [
+          5.6875,
+          3.5859375
+        ],
+        [
+          7.109375,
+          2.51953125
+        ],
+        [
+          12.2109375,
+          -2.08984375
+        ],
+        [
+          17.8984375,
+          -6.640625
+        ],
+        [
+          21.95703125,
+          -9.68359375
+        ],
+        [
+          27.58203125,
+          -13.76953125
+        ],
+        [
+          28.29296875,
+          -14.48046875
+        ],
+        [
+          29.71484375,
+          -15.19140625
+        ],
+        [
+          30.42578125,
+          -15.90234375
+        ],
+        [
+          31.13671875,
+          -16.2578125
+        ],
+        [
+          31.13671875,
+          -16.2578125
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "simulatePressure": true,
+      "pressures": []
+    },
+    {
+      "type": "freedraw",
+      "version": 209,
+      "versionNonce": 1482752352,
+      "isDeleted": false,
+      "id": "0-1-uSJfpP5eObhaqblYd",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 507.6229934692383,
+      "y": 1909.017578125,
+      "strokeColor": "#2b8a3e",
+      "backgroundColor": "transparent",
+      "width": 31.13671875,
+      "height": 20.19921875,
+      "seed": 2076941664,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1682958159640,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.35546875,
+          0
+        ],
+        [
+          0.7109375,
+          0
+        ],
+        [
+          1.421875,
+          0.359375
+        ],
+        [
+          1.77734375,
+          0.359375
+        ],
+        [
+          3.19921875,
+          1.43359375
+        ],
+        [
+          3.5546875,
+          2.1484375
+        ],
+        [
+          4.62109375,
+          3.22265625
+        ],
+        [
+          5.33203125,
+          3.58203125
+        ],
+        [
+          5.6875,
+          3.94140625
+        ],
+        [
+          5.6875,
+          3.5859375
+        ],
+        [
+          7.109375,
+          2.51953125
+        ],
+        [
+          12.2109375,
+          -2.08984375
+        ],
+        [
+          17.8984375,
+          -6.640625
+        ],
+        [
+          21.95703125,
+          -9.68359375
+        ],
+        [
+          27.58203125,
+          -13.76953125
+        ],
+        [
+          28.29296875,
+          -14.48046875
+        ],
+        [
+          29.71484375,
+          -15.19140625
+        ],
+        [
+          30.42578125,
+          -15.90234375
+        ],
+        [
+          31.13671875,
+          -16.2578125
+        ],
+        [
+          31.13671875,
+          -16.2578125
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "simulatePressure": true,
+      "pressures": []
+    },
+    {
+      "type": "freedraw",
+      "version": 245,
+      "versionNonce": 1355194720,
+      "isDeleted": false,
+      "id": "r5Qpyd3wQTUVvSqrS97ks",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 428.2401809692383,
+      "y": 2030.056640625,
+      "strokeColor": "#2b8a3e",
+      "backgroundColor": "transparent",
+      "width": 31.13671875,
+      "height": 20.19921875,
+      "seed": 460969312,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1682958176461,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.35546875,
+          0
+        ],
+        [
+          0.7109375,
+          0
+        ],
+        [
+          1.421875,
+          0.359375
+        ],
+        [
+          1.77734375,
+          0.359375
+        ],
+        [
+          3.19921875,
+          1.43359375
+        ],
+        [
+          3.5546875,
+          2.1484375
+        ],
+        [
+          4.62109375,
+          3.22265625
+        ],
+        [
+          5.33203125,
+          3.58203125
+        ],
+        [
+          5.6875,
+          3.94140625
+        ],
+        [
+          5.6875,
+          3.5859375
+        ],
+        [
+          7.109375,
+          2.51953125
+        ],
+        [
+          12.2109375,
+          -2.08984375
+        ],
+        [
+          17.8984375,
+          -6.640625
+        ],
+        [
+          21.95703125,
+          -9.68359375
+        ],
+        [
+          27.58203125,
+          -13.76953125
+        ],
+        [
+          28.29296875,
+          -14.48046875
+        ],
+        [
+          29.71484375,
+          -15.19140625
+        ],
+        [
+          30.42578125,
+          -15.90234375
+        ],
+        [
+          31.13671875,
+          -16.2578125
+        ],
+        [
+          31.13671875,
+          -16.2578125
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "simulatePressure": true,
+      "pressures": []
+    },
+    {
+      "type": "freedraw",
+      "version": 165,
+      "versionNonce": 1107894624,
+      "isDeleted": false,
+      "id": "-gYOGSyaAA35ZaDDH4HkO",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 427.1190872192383,
+      "y": 2112.470703125,
+      "strokeColor": "#2b8a3e",
+      "backgroundColor": "transparent",
+      "width": 31.13671875,
+      "height": 20.19921875,
+      "seed": 908817760,
+      "groupIds": [],
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1682958179810,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.35546875,
+          0
+        ],
+        [
+          0.7109375,
+          0
+        ],
+        [
+          1.421875,
+          0.359375
+        ],
+        [
+          1.77734375,
+          0.359375
+        ],
+        [
+          3.19921875,
+          1.43359375
+        ],
+        [
+          3.5546875,
+          2.1484375
+        ],
+        [
+          4.62109375,
+          3.22265625
+        ],
+        [
+          5.33203125,
+          3.58203125
+        ],
+        [
+          5.6875,
+          3.94140625
+        ],
+        [
+          5.6875,
+          3.5859375
+        ],
+        [
+          7.109375,
+          2.51953125
+        ],
+        [
+          12.2109375,
+          -2.08984375
+        ],
+        [
+          17.8984375,
+          -6.640625
+        ],
+        [
+          21.95703125,
+          -9.68359375
+        ],
+        [
+          27.58203125,
+          -13.76953125
+        ],
+        [
+          28.29296875,
+          -14.48046875
+        ],
+        [
+          29.71484375,
+          -15.19140625
+        ],
+        [
+          30.42578125,
+          -15.90234375
+        ],
+        [
+          31.13671875,
+          -16.2578125
+        ],
+        [
+          31.13671875,
+          -16.2578125
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "simulatePressure": true,
+      "pressures": []
     }
   ],
   "appState": {

@@ -28,7 +28,7 @@ For the folder structure I asked ChatGPT and searched on google which led me to 
 
 ## Readline feature
 
-Used ChatGPT to find out how to use the readline feature.
+Used ChatGPT to find out how to use the readline feature and this is also a good resource: https://nodejs.org/api/readline.html
 
 ## Classes
 frame.js: Single frame of the bowling game.
@@ -51,3 +51,4 @@ Methods: playGame()
 - [ ] Complete tests for the UserInterface.
 - [ ] Add a feature to show current score after each frame.
 - [ ] Add feature to allow the user to end the game prematurely.
+- [ ] Add more error handling to all classes.

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to Your Bowling ScoreCard</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script href="/js/script.js"></script>
+  </head>
+  <body>
+
+
+    <% if ( session.game_in_progress == true ) { %>
+
+    <h2>Please enter your score for Frame <%= session.frame_num %> Roll <%= session.roll_num %> </h2>
+
+    <label for="roll">What did you roll?</label>
+    <form action="/add_frame" method="post">
+      <select name="roll" id="roll-drop">
+        <option value='0'>0</option>
+        <option value='1'>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">Strike</option>
+      </select>
+      <button type="submit">Score</button>
+    </form>
+
+      <% } else if ( session.game_in_progress == false ) { %>
+      
+        <div class="title">Game over! You Scored <%= scorecard.current_score() %></div>
+
+      <% } %>
+
+    <ul class="scorecard_list">
+
+    <% for(let i=0; i < scorecard.frames.length; i++) { %>
+
+    <li id="score-panel">  
+    <frame-box class="grid-container">
+      <div class="frame-box-header">
+        <div>
+        </div>
+        <div class="roll-scores">
+          <div class="roll-box">
+            <roll_1 class="roll"><%= scorecard.frames[i].str_rep[0] %></roll_1>
+          </div>
+          <div class="roll-box">
+            <roll_2 class="roll"><%= scorecard.frames[i].str_rep[1] %></roll_2>
+          </div>
+        </div>
+      </div>
+      <div class="frame-box-body">
+        <frame-score class="frame-score"><%= scorecard.current_score(i+1) %></frame-score>
+      </div>
+    </frame-box>
+    
+
+
+  </li>
+
+  <% } %>
+
+</ul>
+
+<form action="end_game" method="post">
+  <button type="submit">End Game</button>
+</form>
+
+  </body>
+</html>

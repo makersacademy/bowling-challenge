@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">72.91% </span>
+                <span class="strong">81.39% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>35/48</span>
+                <span class='fraction'>35/43</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/10</span>
+                <span class='fraction'>6/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">82.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>33/44</span>
+                <span class='fraction'>33/40</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -157,11 +157,7 @@
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -181,16 +177,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -273,22 +265,18 @@ class Frame {
 <span class="cstat-no" title="statement not covered" >    this.score.push(roll_score);</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  st</span>ring_rep(score) {
-<span class="cstat-no" title="statement not covered" >    if (score[0] == 10) {</span>
+<span class="fstat-no" title="function not covered" >  ge</span>n_string_rep() {
+<span class="cstat-no" title="statement not covered" >    if (this.score[0] == 10) {</span>
 <span class="cstat-no" title="statement not covered" >      this.str_rep = ["", "X"]</span>
-    } else <span class="cstat-no" title="statement not covered" >if (score.sum == 10) {</span>
-<span class="cstat-no" title="statement not covered" >      this.str_rep = [score[0].toString(), "/"]</span>
+    } else <span class="cstat-no" title="statement not covered" >if (sum_arr(this.score) == 10) {</span>
+<span class="cstat-no" title="statement not covered" >      this.str_rep = [this.score[0].toString(), "/"]</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      for (let i = <span class="cstat-no" title="statement not covered" >0;</span> i &lt; score.length; i++) {</span>
-<span class="cstat-no" title="statement not covered" >        this.str_rep.push(score[i].toString());</span>
-      }
+      /*
+      for (let i = 0; i &lt; this.score.length-1; i++) {
+        this.str_rep.push(this.score[i].toString());
+      */
+<span class="cstat-no" title="statement not covered" >      this.score.forEach(<span class="fstat-no" title="function not covered" >sc</span>ore =&gt; <span class="cstat-no" title="statement not covered" >this.str_rep.push(score))</span></span>
     }
-  }
-&nbsp;
-<span class="fstat-no" title="function not covered" >  fr</span>ame_total() {
-    let rolls_total = <span class="cstat-no" title="statement not covered" >0;</span>
-<span class="cstat-no" title="statement not covered" >    this.frame.forEach( <span class="fstat-no" title="function not covered" >ro</span>ll =&gt; <span class="cstat-no" title="statement not covered" >rolls_total += roll </span>)</span>
-<span class="cstat-no" title="statement not covered" >    return rolls_total</span>
   }
 }
 &nbsp;
@@ -318,7 +306,7 @@ class ScoreCard {
   }
 &nbsp;
   gen_bonuses(frame = <span class="branch-0 cbranch-no" title="branch not covered" >10)</span> {
-    // clearing in case of repeated calls - funct (and program)
+    // clearing in case of repeated calls - funct (and programme)
     // depend on poisitioning bonuses in relation to frame index
 &nbsp;
     this.frame_bonuses = []
@@ -364,7 +352,7 @@ module.exports.ScoreCard = ScoreCard;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-01T17:54:38.849Z
+                at 2023-05-01T23:49:56.853Z
             </div>
         <script src="prettify.js"></script>
         <script>

@@ -1,3 +1,30 @@
+# JavaScript Bowling Challenge. Feat. 'The Honest Pirate's Scorecard' (Express JS UI)
+
+Javascript implementation of the Makers Bowling challenge. The models and most of their associated methods remain the same as they were in my Ruby implementation (https://github.com/jonpillay/bowling-challenge-ruby). Some small changes have been made to ScoreCard.current_score() and .gen_bonuses() to accommodate the web app (Express JS) implementation. All code still passes all the original tests.
+
+As with the Ruby project, the same design philosophy remains. Base data is the simple frame scores, which are never mutated. All other information is derived from this data, which makes it reflexive to changes in the scorecard (scores change as the game progresses and bonuses are applied).
+
+This approach has come to fruition in the user interface/web app stage of the project. The score card rendered here updates as the game is played and scores added. Although at the same time I am unsure if I have over complicated the process.
+
+## Notes on the Express JS app -
+
+This has been implemented as a single page application (other than the landing page).
+
+There is no database connection. The game is based on session data. This was taken as a bowling alley was imagined where persistence is not required, it is after all… a throw away game… and puns (as well as pins) are important. This did produce some challenges. Express JS (more specifically "express-session": "^1.17.3") when passed an object instance into sessions stores it as a basic JavaScript object (as far as I can tell). Possibly something to do with ‘serialisation’ (requires further investigation). This process destroys the object’s identity as a class (Frame etc… ) and with it all of its methods. When recalling it from sessions, the data must be passed into a new obj instance, this happens every time the app is rerouted. It seems possibly overly complex - made worse by a lack of time not allowing for functions to be written to handle the process… and thus code cleaned up.
+
+## Known issues:
+
+As of this version the view does not render the full possible 3 frames in frame 10. This is known and has not been implemented due to time constraints.
+
+The clue is in the name, “The Honest Pirate’s Bowling Scorecard”. There is no error checking. Two rolls amounting to over the 10 pins can be inputed (Frame.score = [9, 10]) with no error thrown. Error checking wasn’t an aim of the project, but should be implemented.
+
+The code needs some refactoring… quite a bit (see above).
+
+Needs more CSS!
+
+Frame.message exists, but Frame.gen_message() has not been implemented. Has been left as a reminder.
+
+
 
 Bowling Challenge
 =================

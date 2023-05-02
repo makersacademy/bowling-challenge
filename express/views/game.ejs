@@ -50,10 +50,10 @@
         </div>
         <div class="roll-scores">
           <div class="roll-box">
-            <roll_1 class="roll">/</roll_1>
+            <roll_1 class="roll"><%= scorecard.frames[i].str_rep[0] %></roll_1>
           </div>
           <div class="roll-box">
-            <roll_2 class="roll">X</roll_2>
+            <roll_2 class="roll"><%= scorecard.frames[i].str_rep[1] %></roll_2>
           </div>
         </div>
       </div>
@@ -69,6 +69,10 @@
   <% } %>
 
 </ul>
+
+<form action="end_game" method="post">
+  <button type="submit">End Game</button>
+</form>
 
   </body>
 </html>

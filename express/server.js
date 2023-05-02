@@ -39,6 +39,11 @@ app.post("/start_game", (req, res) => {
   res.redirect('/game')
 })
 
+app.post("/end_game", (req, res) => {
+  req.session.destroy();
+  res.redirect('/')
+})
+
 app.get('/game', (req, res) => {
   const cardData = req.session.scorecard
   const scorecard = new ScoreCard(cardData.frames)
@@ -47,60 +52,61 @@ app.get('/game', (req, res) => {
 
 app.post('/add_frame', (req, res) => {
   score = req.body.roll
-  if (req.session.roll_num == 1 ) {
+  if (req.session.roll_num == 1 ) { // if first roll init frame with frame_num and reinit scorecard with frames taken from session
     const frame = new Frame(req.session.frame_num)
     const cardData = req.session.scorecard
     const scorecard = new ScoreCard(cardData.frames)
     frame.add_roll(parseInt(score))
     console.log(req.session.frame_num)
-    if (score == '10' && req.session.frame_num != 10 ) {
+    if (score == '10' && req.session.frame_num != 10 ) { // if a strike and not frame 10, score strike and move on to next frame
+      frame.gen_string_rep()
       scorecard.add_frame(frame)
       req.session.frame_num++
       req.session.roll_num = 1
-    } else if (score == '10' && req.session.frame_num == 10 ) {
-      req.session.roll_num++
-    } else {
+    } else { // if is frame 10, give player another throw
       req.session.roll_num++
     }
     req.session.cur_frame = frame
     req.session.scorecard = scorecard
     res.redirect('/game')
-  } else if (req.session.roll_num == 2 && req.session.frame_num != 10) {
+  } else if (req.session.roll_num == 2 && req.session.frame_num != 10) { // if second roll and not frame 10, push frame and move onto next
       const frameData = req.session.cur_frame
       const frame = new Frame(frameData.frame_num, frameData.score)
       const cardData = req.session.scorecard
       const scorecard = new ScoreCard(cardData.frames)
       frame.add_roll(parseInt(score))
+      frame.gen_string_rep()
       scorecard.add_frame(frame)
       req.session.cur_frame = null
       req.session.scorecard = scorecard
       req.session.roll_num = 1
       req.session.frame_num++
       res.redirect('/game')
-  } else if (req.session.roll_num == 2 && req.session.frame_num == 10) {
-      console.log(req.session.scorecard)
-      req.session.cur_frame.score.push(parseInt(score));
-        if ( sum_arr(req.session.cur_frame.score) < 10 && req.session.roll_num == 2 ) {
-          const frameData = req.session.cur_frame
-          const frame = new Frame(frameData.frame_num, frameData.score)
-          const cardData = req.session.scorecard
-          const scorecard = new ScoreCard(cardData.frames)
-          scorecard.add_frame(req.session.cur_frame)
-          req.session.scorecard = scorecard
-          req.session.cur_frame = null
-          req.session.game_in_progress = false
-          res.redirect('/game')
-        } else {
-          req.session.roll_num = 3
-          res.redirect('/game')
-        }
-  } else if (req.session.roll_num == 3 ) {
+  } else if (req.session.roll_num == 2 && req.session.frame_num == 10) { // if frame 10 and roll 2
+      req.session.cur_frame.score.push(parseInt(score))
+      if ( sum_arr(req.session.cur_frame.score) < 10 && req.session.roll_num == 2 ) { // if not got a spare, push frame and close game
+        const frameData = req.session.cur_frame
+        const frame = new Frame(frameData.frame_num, frameData.score)
+        const cardData = req.session.scorecard
+        const scorecard = new ScoreCard(cardData.frames)
+        frame.gen_string_rep()
+        scorecard.add_frame(frame)
+        req.session.scorecard = scorecard
+        req.session.cur_frame = null
+        req.session.game_in_progress = false
+        res.redirect('/game')
+      } else { // else give another go to player
+        req.session.roll_num = 3
+        res.redirect('/game')
+      }
+  } else if (req.session.roll_num == 3 ) { // if reached roll 3, assume is last frame, push frame and end game
       const frameData = req.session.cur_frame
       const frame = new Frame(frameData.frame_num, frameData.score)
       const cardData = req.session.scorecard
       const scorecard = new ScoreCard(cardData.frames)
       frame.add_roll(parseInt(score))
-      scorecard.add_frame(req.session.cur_frame)
+      frame.gen_string_rep()
+      scorecard.add_frame(frame)
       req.session.scorecard = scorecard
       req.session.game_in_progress = false
       console.log(req.session.scorecard)

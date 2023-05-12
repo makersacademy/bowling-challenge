@@ -1,0 +1,34 @@
+{
+  "name": "bowling-challenge-javascript",
+  "version": "1.0.0",
+  "description": "Bowling Challenge =================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delphiine/Bowling-Challenge-JavaScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/delphiine/Bowling-Challenge-JavaScript/issues"
+  },
+  "homepage": "https://github.com/delphiine/Bowling-Challenge-JavaScript#readme",
+  "dependencies": {
+    "jest": "^28.1.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.20.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.7.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0"
+  }
+}

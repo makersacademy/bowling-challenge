@@ -1,5 +1,7 @@
+const Frame = require("./frame");
+
 class Game {
-  constructor(frameClass) {
+  constructor(frameClass = Frame) {
     this.grandTotal = 0;
     this.frames = [];
     this.frameClass = frameClass;

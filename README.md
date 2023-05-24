@@ -1,11 +1,4 @@
-
-Bowling Challenge
-=================
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+# Makers Academy Bowling Challenge (Javascript)
 
 ## The Task
 
@@ -14,41 +7,6 @@ Bowling Challenge
 Count and sum the scores of a bowling game for one player (in JavaScript). 
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
-
-Start by looking in detail at the rules and the example of scoring for a complete game given below.
-
-An example of how your code might be used could be:
-
-```javaScript
-let scorecard = new Scorecard()
-scorecard.calculateScore() // returns 0
-scorecard.addFrame(2, 5) 
-scorecard.addFrame(3, 5)
-scorecard.calculateScore() // returns 15
-```
-
-But feel free to add other methods if you think they are useful.
-
-As usual please start by
-
-* Forking this repo
-
-* Using test-driven development (if you decide to write a user interface, then make sure you have looked at the chapters on mocking).
-
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
-
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
-
-### Optional Extras
-
-In any order you like:
-
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-* Create a UserInterface class, allowing you to run a game from the command line.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
 
 ## Bowling — how does it work?
 
@@ -81,11 +39,37 @@ More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
 
-## Code Review
+## Getting started
 
-In code review we'll be hoping to see:
+`git clone https://github.com/tomcarmichael/bowling-challenge.git`
 
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
+`npm install`
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+## Usage
+
+`node`
+
+`const Game = require('./game')`
+
+`const game = new Game()`
+
+Define a 2D array of valid scores for a bowling game (each frame is an array) e.g.
+
+`const scores = [[1, 4], [4, 5], [6, 4], [5, 5], [10], [0, 1], [7, 3], [6, 4], [10], [2, 7]]`
+
+`game.play(scores)`
+
+See the total score for the game:
+
+`game.grandTotal`
+
+Check if the game is a perfect game or gutter game:
+
+`game.isGutterGame()` , `game.isPerfectGame()`
+
+## Running Tests
+
+`jest`
+
+![bowling-challenge-jest](./screenshots/bowling-challenge-jest.png)
+![bowling-challenge-node](./screenshots/bowling-challenge-node.png)

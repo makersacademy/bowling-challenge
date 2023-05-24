@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1684933289319" clover="3.2.0">
+  <project timestamp="1684933289319" name="All files">
+    <metrics statements="49" coveredstatements="49" conditionals="27" coveredconditionals="26" methods="17" coveredmethods="17" elements="93" coveredelements="92" complexity="0" loc="49" ncloc="49" packages="1" files="2" classes="2"/>
+    <file name="frame.js" path="/Users/tomcarmichael/Documents/code/js/bowling-challenge/frame.js">
+      <metrics statements="14" coveredstatements="14" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="6"/>
+      <line num="3" count="122" type="stmt"/>
+      <line num="4" count="122" type="stmt"/>
+      <line num="5" count="122" type="stmt"/>
+      <line num="9" count="195" type="cond" truecount="4" falsecount="0"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="11" count="193" type="cond" truecount="2" falsecount="0"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="14" count="192" type="stmt"/>
+      <line num="15" count="192" type="stmt"/>
+      <line num="20" count="116" type="stmt"/>
+      <line num="21" count="186" type="stmt"/>
+      <line num="26" count="148" type="stmt"/>
+      <line num="30" count="110" type="cond" truecount="2" falsecount="0"/>
+      <line num="33" count="3" type="stmt"/>
+    </file>
+    <file name="game.js" path="/Users/tomcarmichael/Documents/code/js/bowling-challenge/game.js">
+      <metrics statements="35" coveredstatements="35" conditionals="19" coveredconditionals="18" methods="11" coveredmethods="11"/>
+      <line num="1" count="2" type="stmt"/>
+      <line num="5" count="15" type="stmt"/>
+      <line num="6" count="15" type="stmt"/>
+      <line num="7" count="15" type="stmt"/>
+      <line num="8" count="15" type="stmt"/>
+      <line num="12" count="15" type="stmt"/>
+      <line num="13" count="150" type="stmt"/>
+      <line num="14" count="150" type="stmt"/>
+      <line num="19" count="13" type="stmt"/>
+      <line num="21" count="130" type="stmt"/>
+      <line num="22" count="130" type="cond" truecount="2" falsecount="0"/>
+      <line num="24" count="13" type="stmt"/>
+      <line num="25" count="13" type="cond" truecount="4" falsecount="0"/>
+      <line num="27" count="7" type="stmt"/>
+      <line num="29" count="13" type="stmt"/>
+      <line num="33" count="117" type="stmt"/>
+      <line num="34" count="117" type="stmt"/>
+      <line num="35" count="117" type="stmt"/>
+      <line num="37" count="117" type="cond" truecount="2" falsecount="0"/>
+      <line num="38" count="13" type="stmt"/>
+      <line num="39" count="104" type="cond" truecount="2" falsecount="0"/>
+      <line num="40" count="43" type="stmt"/>
+      <line num="42" count="43" type="cond" truecount="4" falsecount="0"/>
+      <line num="43" count="32" type="stmt"/>
+      <line num="49" count="7" type="stmt"/>
+      <line num="50" count="7" type="stmt"/>
+      <line num="52" count="7" type="stmt"/>
+      <line num="53" count="10" type="stmt"/>
+      <line num="56" count="7" type="cond" truecount="4" falsecount="0"/>
+      <line num="57" count="2" type="stmt"/>
+      <line num="62" count="13" type="stmt"/>
+      <line num="63" count="130" type="stmt"/>
+      <line num="68" count="1" type="stmt"/>
+      <line num="72" count="1" type="stmt"/>
+      <line num="76" count="2" type="stmt"/>
+    </file>
+  </project>
+</coverage>

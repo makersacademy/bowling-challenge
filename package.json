@@ -15,5 +15,10 @@
   "dependencies": {
     "jest": "^29.5.0",
     "node": "^20.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
   }
 }

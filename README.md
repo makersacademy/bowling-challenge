@@ -1,5 +1,7 @@
 # Makers Academy Bowling Challenge (Javascript)
 
+A weekend challenge as part of the Makers Academy bootcamp.
+
 ## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. AN ACTUAL USER INTERFACE IS OPTIONAL**

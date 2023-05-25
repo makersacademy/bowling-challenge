@@ -1,26 +1,19 @@
 const Frame = require('./frame');
 
 class Scorecard {
-  constructor() {
+  constructor(frameClass = Frame) {
+    this.frameClass = frameClass;
     this.frames = [];
   }
 
   addFrame(...scores) {
-
-    this.frames.push(new Frame(...scores));
+    this.frames.push(new this.frameClass(...scores));
   }
 
   getScore() {
-    let totalScore = 0
-    this.frames.slice(0, 10).forEach((frame, index) => {
-      totalScore +=  frame.getBaseScore();
-      if (frame.isSpare()) {
-        totalScore += this.#getNextRollScore(index);
-      } else if (frame.isStrike()) {
-        totalScore += this.#getNextTwoRollsScore(index);
-      }
-    })
-    return totalScore;
+    return this.frames.slice(0, 10).reduce((acc, frame, index) => {
+      return acc + frame.getBaseScore() + this.#getBonusPoints(index)
+    }, 0)
   }
 
   isPerfectGame() {
@@ -31,19 +24,23 @@ class Scorecard {
     return this.getScore() == 0;
   }
 
+  #getBonusPoints(currentIndex){
+    const frame = this.frames[currentIndex];
+    if (frame.isSpare()) return this.#getNextRollScore(currentIndex);
+    if (frame.isStrike()) return this.#getNextTwoRollsScore(currentIndex);
+    return 0;
+  }
+
   #getNextRollScore(currentIndex) {
     return this.frames[currentIndex + 1].scores[0];
   }
 
   #getNextTwoRollsScore(currentIndex) {
-    const nextFrame = this.frames[currentIndex + 1];
-    let score = nextFrame.scores[0];
-    if (nextFrame.scores.length == 2) {
-      score += nextFrame.scores[1];
-    } else {
-      score += this.frames[currentIndex + 2].scores[0]
-    }
-    return score;
+    const firstRoll = this.#getNextRollScore(currentIndex)
+    const secondRoll = this.frames[currentIndex + 1].scores[1]
+      || this.frames[currentIndex + 2].scores[0]
+
+    return firstRoll + secondRoll
   }
 }
 

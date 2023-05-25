@@ -1,10 +1,15 @@
-const Frame = require('./frame');
+const Frame = require('../frame');
 
 describe('Frame', () => {
   describe('when it is initialised with two zeros', () => {
     it('has those scores', () => {
       const frame = new Frame(0, 0);
       expect(frame.getScores()).toEqual([0, 0]);
+    })
+
+    it('has a base score of 0', () => {
+      const frame = new Frame(0, 0);
+      expect(frame.getBaseScore()).toEqual(0);
     })
 
     it('is not a strike', () => {
@@ -33,6 +38,11 @@ describe('Frame', () => {
       const frame = new Frame(4, 5);
       expect(frame.isSpare()).toEqual(false);
     })
+
+    it('has a base score of 9', () => {
+      const frame = new Frame(4, 5);
+      expect(frame.getBaseScore()).toEqual(9);
+    })
   })
 
   describe('when initialised with two numbers that add up to 10', () => {
@@ -58,6 +68,11 @@ describe('Frame', () => {
     it('is not a spare', () => {
       const frame = new Frame(10);
       expect(frame.isSpare()).toEqual(false);
+    })
+
+    it('has a base score of 10', () => {
+      const frame = new Frame(10);
+      expect(frame.getBaseScore()).toEqual(10);
     })
   })
 })

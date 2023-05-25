@@ -1,6 +1,6 @@
-const Scorecard = require('./scorecard')
+const Scorecard = require('../scorecard')
 
-describe('Frame', () => {
+describe('Scorecard integration', () => {
   it('calculates the score when there are no strikes or spares', () => {
     const scorecard = new Scorecard();
     scorecard.addFrame(1, 2);

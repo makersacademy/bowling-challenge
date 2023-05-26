@@ -17,4 +17,17 @@ describe('Frame class', () => {
       expect(frame.getRolls()).toEqual([]);
     });
   });
+
+  describe('getRolls', () => {
+    it('adds a roll result to this.rolls', () => {
+      frame.addRoll(2);
+      expect(frame.getRolls()).toEqual([2]);
+    });
+
+    it('adds two roll results to this.rolls', () => {
+      frame.addRoll(2);
+      frame.addRoll(0);
+      expect(frame.getRolls()).toEqual([2, 0]);
+    });
+  });
 });

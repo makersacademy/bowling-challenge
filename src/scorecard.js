@@ -12,6 +12,12 @@ class Scorecard {
   }
 
   calculateScore() {
+    if (this.frames.length === 0) {
+      return 0;
+    } else if (this.frames.at(-1).spare() || this.frames.at(-1).strike()) {
+      return null
+    }
+
     return this.frames.map((frame) => frame.frameScore())
     .reduce((sum, num) => {
       return sum += num;

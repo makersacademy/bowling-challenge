@@ -27,7 +27,12 @@ describe('Scorecard', () => {
   })
 
   describe('calculateScore after one frame', () => {
-    it('calculates score after one zer frame', () => {
+    it('calculates score before any frames added', () => {
+
+      expect(scorecard.calculateScore()).toEqual(0);
+    })
+
+    it('calculates score after one zero frame', () => {
       scorecard.addFrame(0, 0);
 
       expect(scorecard.calculateScore()).toEqual(0);
@@ -37,6 +42,12 @@ describe('Scorecard', () => {
       scorecard.addFrame(2, 4);
 
       expect(scorecard.calculateScore()).toEqual(6);
+    })
+
+    it('calculates null score when one spare added', () => {
+      scorecard.addFrame(2, 8);
+
+      expect(scorecard.calculateScore()).toEqual(null);
     })
   })
 })

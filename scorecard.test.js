@@ -1,14 +1,19 @@
 const Scorecard = require('./scorecard');
 
+
+
 describe('Scorecard', () => {
+  let scorecard = new Scorecard();
+  beforeEach(() => {
+    scorecard = new Scorecard();
+  })
+
   it('should initially return 0 and an empty array of frames', () => {
-    const scorecard = new Scorecard();
     expect(scorecard.getFrames()).toEqual([]);
     expect(scorecard.getTotalScore()).toBe(0);
   });
 
   it('should return the score of 7 first frame in the array', () => {
-    const scorecard = new Scorecard();
     scorecard.addFrame(2, 5, 0);
     scorecard.calculateBasicScore();
     scorecard.calculateStrikeBonuses();
@@ -18,7 +23,6 @@ describe('Scorecard', () => {
   });
 
   it('should return a score of 15 and two frames in the array', () => {
-    const scorecard = new Scorecard();
     scorecard.addFrame(2, 5, 0);
     scorecard.addFrame(3, 5, 0);
     scorecard.calculateBasicScore();
@@ -29,7 +33,6 @@ describe('Scorecard', () => {
   });
 
   it('should return 29 instead of 27 because the strike doubles the next two rolls', () => {
-    const scorecard = new Scorecard();
     scorecard.addFrame(2, 5, 0);
     scorecard.addFrame(3, 5, 0);
     scorecard.addFrame(10, 0, 0);
@@ -41,7 +44,6 @@ describe('Scorecard', () => {
   })
 
   it('should return 55 instead of 45 because two strikes doubles the next rolls', () => {
-    const scorecard = new Scorecard();
     scorecard.addFrame(2, 5, 0);
     scorecard.addFrame(3, 5, 0);
     scorecard.addFrame(10, 0, 0);
@@ -55,7 +57,6 @@ describe('Scorecard', () => {
   })
 
   it('should return 17 instead of 16 because the spare doubles the first roll of the next frame', () => {
-    const scorecard = new Scorecard();
     scorecard.addFrame(5, 5, 0);
     scorecard.addFrame(1, 5, 0);
     scorecard.calculateBasicScore();
@@ -66,7 +67,6 @@ describe('Scorecard', () => {
   })
 
   it('should return 17 instead of 16 because the spare doubles the first roll of the next frame', () => {
-    const scorecard = new Scorecard();
     scorecard.addFrame(1, 4, 0);
     scorecard.addFrame(4, 5, 0);
     scorecard.addFrame(6, 4, 0);

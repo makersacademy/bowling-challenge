@@ -2,7 +2,7 @@
 
 - A bowling scorecard program made as part of the Makers Academy Software Development course
 
-## The Task
+## The task
 
 To count and sum the scores of a bowling game for one player (in JavaScript).
 
@@ -37,10 +37,10 @@ jest
 Class design plan
 ![plan document](images/BowlingChallengePlan.png)
 
-## Examples on how to run the code
+## Example
 
 ```javaScript
-const Frame = require('./lib/frame');
+// node
 const BowlingScoreSheet = require('./lib/bowlingScoreSheet');
 
 let scorecard = new BowlingScoreSheet();
@@ -58,7 +58,7 @@ scorecard.complete(); // false
 - Catch erroneous inputs and ask for correct input
 - Dual-player functionality
 
-## Further Information: Bowling — how does it work?
+## Further information: Bowling — how does it work?
 
 A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
@@ -77,11 +77,11 @@ If the player rolls a strike or spare in the 10th frame they can roll the additi
     10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
     1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
-### Gutter Game
+### Gutter game
 
 A Gutter Game is when the player never hits a pin (20 zero scores).
 
-### Perfect Game
+### Perfect game
 
 A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
 

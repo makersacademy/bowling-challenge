@@ -34,8 +34,8 @@ jest
 
 ## Design documents
 
-- Class design plan
-  - [Link to plan document](images/BowlingChallengePlan.png)
+Class design plan
+![plan document](images/BowlingChallengePlan.png)
 
 ## Examples on how to run the code
 

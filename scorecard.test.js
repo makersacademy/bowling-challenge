@@ -1,13 +1,9 @@
 const Scorecard = require('./scorecard');
 
 describe('Scorecard', () => {
-  it('should initially return 0', () => {
+  it('should initially return 0 and an empty array of frames', () => {
     const scorecard = new Scorecard();
     expect(scorecard.calculateScore()).toBe(0);
-  });
-
-  it('should initially return an empty array', () => {
-    const scorecard = new Scorecard();
     expect(scorecard.getFrames()).toEqual([]);
   });
 
@@ -15,11 +11,6 @@ describe('Scorecard', () => {
     const scorecard = new Scorecard();
     scorecard.addFrame(2, 5);
     expect(scorecard.getFrames()).toEqual([[2, 5]]);
-  });
-
-  it('should return score 7 after the first frame', () => {
-    const scorecard = new Scorecard();
-    scorecard.addFrame(2, 5);
     expect(scorecard.calculateScore()).toBe(7);
   });
 });

@@ -31,8 +31,24 @@ describe('BowlingGame class', () => {
   });
 
   describe('checkFrameEnd method', () => {
-    it('adds current frame to completed frames, then resets it, if frame is ended', () => {
-      
+    it('adds currentFrame to completedFrames then resets it, if frame is ended', () => {
+      bowlingGame.addRollToFrame(10);
+      // tells our mock frames isFrameOver method to return true
+      mockFrame.isFrameOver.mockImplementation(() => true);
+      bowlingGame.checkFrameEnd();
+      expect(mockFrame.isFrameOver).toHaveBeenCalledTimes(1);
+      expect(bowlingGame.completedFrames).toEqual([mockFrame]);
+      // checks that the method has reset the current frame
+      expect(bowlingGame.currentFrame).not.toEqual(bowlingGame.completedFrames[0]);
+    });
+
+    it('does nothing if frame is ongoing', () => {
+      bowlingGame.addRollToFrame(5);
+      // tells our mock frames isFrameOver method to return false
+      mockFrame.isFrameOver.mockImplementation(() => false);
+      bowlingGame.checkFrameEnd();
+      expect(mockFrame.isFrameOver).toHaveBeenCalledTimes(1);
+      expect(bowlingGame.completedFrames).toEqual([]);
     });
   });
 });

@@ -32,14 +32,25 @@ jest
 - Jest
   - Testing tool for JavaScript, created for Test Driven Development
 
-## Testing coverage
-
--
-
 ## Design documents
 
 - Class design plan
   - [Link to plan document](images/BowlingChallengePlan.png)
+
+## Examples on how to run the code
+
+```javaScript
+const Frame = require('./lib/frame');
+const BowlingScoreSheet = require('./lib/bowlingScoreSheet');
+
+let scorecard = new BowlingScoreSheet();
+scorecard.addRoll(2);
+scorecard.addRoll(5);
+scorecard.addRoll(3);
+scorecard.addRoll(5);
+scorecard.calculateScore(); // returns 15
+scorecard.complete(); // false
+```
 
 ## Future developments
 

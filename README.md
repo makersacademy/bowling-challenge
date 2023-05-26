@@ -1,56 +1,55 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
-
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+- A bowling scorecard program made as part of the Makers Academy Software Development course
 
 ## The Task
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. AN ACTUAL USER INTERFACE IS OPTIONAL**
+To count and sum the scores of a bowling game for one player (in JavaScript).
 
-Count and sum the scores of a bowling game for one player (in JavaScript). 
+## Learning objectives
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+- Class design in JavaScript
+- TDD with Jest
 
-Start by looking in detail at the rules and the example of scoring for a complete game given below.
+## Setup
 
-An example of how your code might be used could be:
+```zsh
+# Install packages
+npm install
 
-```javaScript
-let scorecard = new Scorecard()
-scorecard.calculateScore() // returns 0
-scorecard.addFrame(2, 5) 
-scorecard.addFrame(3, 5)
-scorecard.calculateScore() // returns 15
+# To get details on test coverage:
+jest
 ```
 
-But feel free to add other methods if you think they are useful.
+## Built with
 
-As usual please start by
+#### Languages used:
 
-* Forking this repo
+- JavaScript
 
-* Using test-driven development (if you decide to write a user interface, then make sure you have looked at the chapters on mocking).
+#### Testing environment:
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+- Jest
+  - Testing tool for JavaScript, created for Test Driven Development
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+## Testing coverage
 
-### Optional Extras
+-
 
-In any order you like:
+## Design documents
 
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-* Create a UserInterface class, allowing you to run a game from the command line.
+- Class design plan
+  - [Link to plan document](images/BowlingChallengePlan.png)
 
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
+## Future developments
 
-## Bowling — how does it work?
+- User interface to get the number of pins from the user and print the current scorecard
+- Catch erroneous inputs and ask for correct input
+- Dual-player functionality
+
+## Further Information: Bowling — how does it work?
+
+A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
 
 ### Strikes
 
@@ -80,12 +79,3 @@ In the image below you can find some score examples.
 More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
 
 ![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.

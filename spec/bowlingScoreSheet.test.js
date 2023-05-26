@@ -176,5 +176,82 @@ describe('BowlingScoreSheet', () =>{
         expect(scoreSheet.totalScore()).toBe(133);
     });
 
+    it("determines a game is incomplete if less than 10 frames", () =>{
+        const scoreSheet = new BowlingScoreSheet();
+        for (i = 0; i < 10 ; i++){
+            scoreSheet.addRoll(1);
+        };
+        expect(scoreSheet.complete()).toBe(false);
+    });
+
+    it("determines a game is incomplete if 10 frames have been played but still needs 2 bonus rolls after a strike", () =>{
+        const scoreSheet = new BowlingScoreSheet();
+        for (i = 0; i < 18 ; i++){
+            scoreSheet.addRoll(1);
+        };
+        scoreSheet.addRoll(10);
+        expect(scoreSheet.complete()).toBe(false);
+    });
+
+    it("determines a game is incomplete if 10 frames have been played but still needs 1 bonus roll after a strike", () =>{
+        const scoreSheet = new BowlingScoreSheet();
+        for (i = 0; i < 18 ; i++){
+            scoreSheet.addRoll(1);
+        };
+        scoreSheet.addRoll(10);
+        scoreSheet.addRoll(2);
+        expect(scoreSheet.complete()).toBe(false);
+    });
+
+    it("determines a game is incomplete if 10 frames have been played but still needs 1 bonus roll after a spare", () =>{
+        const scoreSheet = new BowlingScoreSheet();
+        for (i = 0; i < 18 ; i++){
+            scoreSheet.addRoll(1);
+        };
+        scoreSheet.addRoll(8);
+        scoreSheet.addRoll(2);
+
+        expect(scoreSheet.complete()).toBe(false);
+    });
+
+    it("determines a game is complete after 10 frames have been played and no bonus", () =>{
+        const scoreSheet = new BowlingScoreSheet();
+        for (i = 0; i < 20 ; i++){
+            scoreSheet.addRoll(1);
+        };
+        expect(scoreSheet.complete()).toBe(true);
+    });
+
+    it("determines a game is complete after 10 frames have been played and 1 bonus has been played after a spare", () =>{
+        const scoreSheet = new BowlingScoreSheet();
+        for (i = 0; i < 18 ; i++){
+            scoreSheet.addRoll(1);
+        };
+        scoreSheet.addRoll(8);
+        scoreSheet.addRoll(2);
+        scoreSheet.addRoll(3);
+        expect(scoreSheet.complete()).toBe(true);
+    });
+
+    it("determines a game is complete after 10 frames have been played and 2 bonuses has been played after a strike", () =>{
+        const scoreSheet = new BowlingScoreSheet();
+        for (i = 0; i < 18 ; i++){
+            scoreSheet.addRoll(1);
+        };
+        scoreSheet.addRoll(10);
+        scoreSheet.addRoll(2);
+        scoreSheet.addRoll(3);
+        expect(scoreSheet.complete()).toBe(true);
+    });
+
+    it("determines a game is complete after 10 frames have been played and both bonus rolls have been strikes", () =>{
+        const scoreSheet = new BowlingScoreSheet();
+        for (i = 0; i < 12 ; i++){
+            scoreSheet.addRoll(10);
+        };
+        
+        expect(scoreSheet.complete()).toBe(true);
+    });
+
 
 });

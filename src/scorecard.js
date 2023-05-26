@@ -9,7 +9,6 @@ class Scorecard {
     const rolls = Array.from(arguments);
     const frame = new Frame(rolls);
     this.frames.push(frame);
-    console.log(frame.rolls)
   }
 
 };

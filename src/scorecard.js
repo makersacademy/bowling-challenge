@@ -11,6 +11,12 @@ class Scorecard {
     this.frames.push(frame);
   }
 
+  calculateScore() {
+    return this.frames.map((frame) => frame.frameScore())
+    .reduce((sum, num) => {
+      return sum += num;
+    }, 0)
+  }
 };
 
 module.exports = Scorecard;

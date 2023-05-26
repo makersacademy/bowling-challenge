@@ -21,10 +21,9 @@ class Frame {
   }
 
   pinsDown() {
-    let sum = 0;
-    this.rolls.forEach((a) => {
-      sum += a;
-    })
+    return this.rolls.reduce((sum, num) => {
+      return sum += num;
+    }, 0)
     return sum;
   }
 }

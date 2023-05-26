@@ -5,9 +5,17 @@ class Frame {
   }
 
   frameScore() {
-    return 0;
+    let sum = 0
+    this.rolls.forEach((a) => {
+      sum += a;
+    })
+    return sum
   }
 
+
+  add(acc, a) {
+    return acc + a;
+  }
 }
 
 module.exports = Frame;

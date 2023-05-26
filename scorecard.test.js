@@ -8,6 +8,12 @@ describe('Scorecard', () => {
 
   it('should initially return an empty array', () => {
     const scorecard = new Scorecard();
-    expect(scorecard.getFrames()).toEqual('[]');
+    expect(scorecard.getFrames()).toEqual([]);
+  });
+
+  it('should return the first frame in the array', () => {
+    const scorecard = new Scorecard();
+    scorecard.addFrame(2, 5);
+    expect(scorecard.getFrames()).toEqual([[2, 5]]);
   });
 });

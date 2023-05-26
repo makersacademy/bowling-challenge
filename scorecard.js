@@ -1,10 +1,17 @@
 class Scorecard {
+  constructor() {
+    this.frames = [];
+  }
   calculateScore() {
     return 0;
   };
 
   getFrames() {
-    return '[]';
+    return this.frames;
+  }
+
+  addFrame(roll1, roll2) {
+    return this.frames.push([roll1, roll2]);
   }
 
 

@@ -16,15 +16,25 @@ describe('Frame', () => {
   })
 
   it('recognises a spare', () => {
-    frame = new Frame([4, 6])
+    frame = new Frame([4, 6]);
+    frame2 = new Frame([4, 5]);
 
-    expect(frame.spare()).toEqual(true)
+    expect(frame.spare()).toEqual(true);
+    expect(frame2.spare()).toEqual(false);
   })
 
   it('recognises a strike', () => {
-    frame = new Frame([10])
+    frame = new Frame([10]);
 
-    expect(frame.spare()).toEqual(false)
-    expect(frame.strike()).toEqual(true)
+    expect(frame.spare()).toEqual(false);
+    expect(frame.strike()).toEqual(true);
+  })
+
+  it('scores a spare or strike as null', () => {
+    frame = new Frame([10]);
+    frame2 = new Frame([8, 2]);
+
+    expect(frame.frameScore()).toEqual(null);
+    expect(frame2.frameScore()).toEqual(null);
   })
 })

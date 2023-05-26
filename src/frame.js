@@ -1,23 +1,31 @@
 class Frame {
   
   constructor(rolls) {
-    this.rolls = rolls
+    this.rolls = rolls;
   }
 
   frameScore() {
-    let sum = 0
-    this.rolls.forEach((a) => {
-      sum += a;
-    })
-    return sum
+    if (this.spare() || this.strike()) {
+      return null;
+    } else {
+      return this.pinsDown();
+    }
   }
 
   spare() {
-    return this.frameScore() === 10 && this.rolls.length === 2;
+    return this.pinsDown() === 10 && this.rolls.length === 2;
   }
 
   strike() {
-    return this.rolls[0] == 10 && this.rolls.length === 1;
+    return this.pinsDown() === 10 && this.rolls.length === 1;
+  }
+
+  pinsDown() {
+    let sum = 0;
+    this.rolls.forEach((a) => {
+      sum += a;
+    })
+    return sum;
   }
 }
 

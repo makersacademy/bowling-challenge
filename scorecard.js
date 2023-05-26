@@ -1,9 +1,14 @@
 class Scorecard {
   constructor() {
     this.frames = [];
+    this.score = 0;
   }
   calculateScore() {
-    return 0;
+    this.frames.forEach(frame => {
+      const frameScore = frame[0] + frame[1];
+      this.score += frameScore;
+    });
+    return this.score;
   };
 
   getFrames() {

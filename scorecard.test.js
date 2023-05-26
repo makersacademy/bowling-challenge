@@ -16,4 +16,10 @@ describe('Scorecard', () => {
     scorecard.addFrame(2, 5);
     expect(scorecard.getFrames()).toEqual([[2, 5]]);
   });
+
+  it('should return score 7 after the first frame', () => {
+    const scorecard = new Scorecard();
+    scorecard.addFrame(2, 5);
+    expect(scorecard.calculateScore()).toBe(7);
+  });
 });

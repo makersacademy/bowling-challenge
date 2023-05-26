@@ -1,7 +1,5 @@
 const Scorecard = require('./scorecard');
 
-
-
 describe('Scorecard', () => {
   let scorecard = new Scorecard();
   beforeEach(() => {
@@ -97,7 +95,6 @@ describe('Scorecard', () => {
     scorecard.addFrame(10, 0, 0);
     
     calculateScore();
-    scorecard.checkPerfectGame();
 
     expect(scorecard.getTotalScore()).toBe(210);
   })
@@ -117,8 +114,6 @@ describe('Scorecard', () => {
     scorecard.addFrame(10, 0, 0);
     
     calculateScore();
-    scorecard.checkPerfectGame();
-
     expect(scorecard.getTotalScore()).toBe(300);
   })
 });

@@ -38,8 +38,19 @@ class Scorecard {
     }
   }
 
+  checkPerfectGame() {
+    const areAllStrikes = this.frames.every((subArray) => {
+      return subArray[0] === 10;
+    });
+    return areAllStrikes;
+  }
+
   getTotalScore() {
-    return this.basicScore + this.strikeBonusScore + this.spareBonusScore;
+    if (this.checkPerfectGame() && this.frames.length === 12) {
+      return 300;
+    } else {
+      return this.basicScore + this.strikeBonusScore + this.spareBonusScore;
+    }
   }
   
   getFrames() {

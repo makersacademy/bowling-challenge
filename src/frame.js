@@ -12,9 +12,12 @@ class Frame {
     return sum
   }
 
+  spare() {
+    return this.frameScore() === 10 && this.rolls.length === 2;
+  }
 
-  add(acc, a) {
-    return acc + a;
+  strike() {
+    return this.rolls[0] == 10 && this.rolls.length === 1;
   }
 }
 

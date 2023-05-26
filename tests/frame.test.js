@@ -14,4 +14,17 @@ describe('Frame', () => {
     expect(frame.rolls).toEqual([1, 2]);
     expect(frame.frameScore()).toEqual(3);
   })
+
+  it('recognises a spare', () => {
+    frame = new Frame([4, 6])
+
+    expect(frame.spare()).toEqual(true)
+  })
+
+  it('recognises a strike', () => {
+    frame = new Frame([10])
+
+    expect(frame.spare()).toEqual(false)
+    expect(frame.strike()).toEqual(true)
+  })
 })

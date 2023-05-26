@@ -28,7 +28,7 @@ describe('BowlingGame class', () => {
 
       expect(mockFrame.addRoll).toHaveBeenCalledTimes(2);
       expect(mockFrame.addRoll).toHaveBeenNthCalledWith(1, 2);
-      expect(mockFrame.addRoll).toHaveBeenCalledTimes(2, 4);
+      expect(mockFrame.addRoll).toHaveBeenNthCalledWith(2, 4);
     });
   });
 });

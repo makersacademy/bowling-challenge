@@ -1,9 +1,8 @@
 const {BowlingGame} = require('../lib/index');
 const Frame = require('../lib/Frame');
+
 // auto mocks the frame class
 jest.mock('../lib/Frame');
-
-let bowlingGame = new BowlingGame();
 
 // this creates a new game instance before each test
 beforeEach(() => {

@@ -13,4 +13,12 @@ describe('Scorecard', () => {
     expect(scorecard.getFrames()).toEqual([[2, 5]]);
     expect(scorecard.calculateScore()).toBe(7);
   });
+
+  it('should return a score of 15 and two frames in the array', () => {
+    const scorecard = new Scorecard();
+    scorecard.addFrame(2, 5);
+    scorecard.addFrame(3, 5);
+    expect(scorecard.getFrames()).toEqual([[2, 5], [3, 5]]);
+    expect(scorecard.calculateScore()).toBe(15);
+  });
 });

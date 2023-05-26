@@ -49,5 +49,11 @@ describe('Scorecard', () => {
 
       expect(scorecard.calculateScore()).toEqual(null);
     })
+
+    it('calculates null score when one strike added', () => {
+      scorecard.addFrame(10);
+
+      expect(scorecard.calculateScore()).toEqual(null);
+    })
   })
 })

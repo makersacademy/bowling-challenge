@@ -22,7 +22,7 @@ class Scorecard {
       const currentArray = this.frames[i];
       const nextArray = this.frames[i + 1];
       if (currentArray[0] === 10) {
-          const sum = nextArray.reduce((roll1, roll2, roll3) => roll1 + roll2, 0);
+          const sum = nextArray[0] + nextArray[1];
           this.strikeBonusScore += sum;
       }
     }

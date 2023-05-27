@@ -22,7 +22,7 @@ class Scorecard {
   }
 
   #sumFrameScores() {
-    return this.frames.map((frame) => frame.frameScore())
+    return this.frames.map((frame) => frame.getFrameScore())
     .reduce((sum, num) => {
       return sum += num;
     }, 0)

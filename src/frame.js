@@ -1,12 +1,13 @@
 class Frame {
   
   constructor(rolls) {
-    this.rolls = rolls;
+    this.rolls = rolls,
+    this.score = null
   }
 
-  frameScore() {
+  getFrameScore() {
     if (this.spare() || this.strike()) {
-      return null;
+      return this.score;
     } else {
       return this.#pinsDown();
     }

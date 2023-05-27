@@ -5,14 +5,14 @@ describe('Frame', () => {
     frame = new Frame([0, 0]);
 
     expect(frame.rolls).toEqual([0, 0]);
-    expect(frame.frameScore()).toEqual(0);
+    expect(frame.getFrameScore()).toEqual(0);
   })
 
   it('finds score of a simple frame', () => {
     frame = new Frame([1, 2]);
 
     expect(frame.rolls).toEqual([1, 2]);
-    expect(frame.frameScore()).toEqual(3);
+    expect(frame.getFrameScore()).toEqual(3);
   })
 
   it('recognises a spare', () => {
@@ -34,7 +34,7 @@ describe('Frame', () => {
     frame = new Frame([10]);
     frame2 = new Frame([8, 2]);
 
-    expect(frame.frameScore()).toEqual(null);
-    expect(frame2.frameScore()).toEqual(null);
+    expect(frame.getFrameScore()).toEqual(null);
+    expect(frame2.getFrameScore()).toEqual(null);
   })
 })

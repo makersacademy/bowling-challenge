@@ -139,5 +139,13 @@ describe('Scorecard', () => {
 
       expect(scorecard.currentScore()).toEqual(44)
     })
+
+    it('calculates score with spares and strikes two strikes', () => {
+      scorecard.addFrame(2, 8);
+      scorecard.addFrame(10);
+      scorecard.addFrame(2, 4);
+
+      expect(scorecard.currentScore()).toEqual(42)
+    })
   })
 })

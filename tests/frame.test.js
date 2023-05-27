@@ -37,4 +37,23 @@ describe('Frame', () => {
     expect(frame.getFrameScore()).toEqual(null);
     expect(frame2.getFrameScore()).toEqual(null);
   })
+
+
+  describe('scoring a spare frame', () => {
+    it('updates spare score once next roll is 0', () => {
+      frame = new Frame([4, 6])
+      frame2 = new Frame([0, 0])
+
+      frame.scoreWithSpareBonus(frame2)
+      expect(frame.getFrameScore()).toEqual(10)
+    })
+
+    it('updates spare score once next roll is 4', () => {
+      frame = new Frame([4, 6])
+      frame2 = new Frame([4, 0])
+
+      frame.scoreWithSpareBonus(frame2)
+      expect(frame.getFrameScore()).toEqual(14)
+    })
+  })
 })

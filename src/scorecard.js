@@ -13,14 +13,10 @@ class Scorecard {
   }
 
   currentScore() {
-    return this.#sumFrameScoresUpTo(this.frames.length);
+    return this.calculateScoreUpTo(this.frames.length);
   }
 
   calculateScoreUpTo(i) {
-    return this.#sumFrameScoresUpTo(i);
-  }
-
-  #sumFrameScoresUpTo(i) {
     const frameSlice = this.frames.slice(0, i + 1)
     return frameSlice.map((frame) => frame.getFrameScore())
     .reduce((sum, num) => {

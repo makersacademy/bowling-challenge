@@ -24,6 +24,9 @@ class Frame {
   scoreWithSpareBonus(frame) {
     this.score = 10 + frame.rolls[0];
   }
+  scoreWithStrikeBonus(frame) {
+    this.score = 10 + frame.#pinsDown();
+  }
 
   #pinsDown() {
     return this.rolls.reduce((sum, num) => {

@@ -52,6 +52,7 @@ describe('Frame', () => {
       frame = new Frame([4, 6])
       frame2 = new Frame([4, 0])
 
+      expect(frame.getFrameScore()).toEqual(null)
       frame.scoreWithSpareBonus(frame2)
       expect(frame.getFrameScore()).toEqual(14)
     })
@@ -60,8 +61,21 @@ describe('Frame', () => {
       frame = new Frame([4, 6])
       frame2 = new Frame([10])
 
+      expect(frame.getFrameScore()).toEqual(null)
       frame.scoreWithSpareBonus(frame2)
       expect(frame.getFrameScore()).toEqual(20)
+    })
+  })
+
+  describe('scoring a strike frame', () => {
+    it('updates the score when followed by zero frame', () => {
+      frame = new Frame([10])
+      frame2 = new Frame([0, 0])
+
+      expect(frame.getFrameScore()).toEqual(null)
+      frame.scoreWithStrikeBonus(frame2)
+      expect(frame.getFrameScore()).toEqual(10)
+
     })
   })
 })

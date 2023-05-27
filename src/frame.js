@@ -29,7 +29,6 @@ class Frame {
     return this.rolls.reduce((sum, num) => {
       return sum += num;
     }, 0)
-    return sum;
   }
 }
 

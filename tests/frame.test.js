@@ -75,7 +75,24 @@ describe('Frame', () => {
       expect(frame.getFrameScore()).toEqual(null)
       frame.scoreWithStrikeBonus(frame2)
       expect(frame.getFrameScore()).toEqual(10)
+    })
 
+    it('updates the score when followed by simple frame', () => {
+      frame = new Frame([10])
+      frame2 = new Frame([2, 2])
+
+      expect(frame.getFrameScore()).toEqual(null)
+      frame.scoreWithStrikeBonus(frame2)
+      expect(frame.getFrameScore()).toEqual(14)
+    })
+
+    it('updates the score when followed by a spare', () => {
+      frame = new Frame([10])
+      frame2 = new Frame([2, 8])
+
+      expect(frame.getFrameScore()).toEqual(null)
+      frame.scoreWithStrikeBonus(frame2)
+      expect(frame.getFrameScore()).toEqual(20)
     })
   })
 })

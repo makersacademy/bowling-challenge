@@ -131,5 +131,13 @@ describe('Scorecard', () => {
 
       expect(scorecard.currentScore()).toEqual(0)
     })
+
+    it('calculates score after two strikes and simple frame', () => {
+      scorecard.addFrame(10);
+      scorecard.addFrame(10);
+      scorecard.addFrame(2, 4);
+
+      expect(scorecard.currentScore()).toEqual(44)
+    })
   })
 })

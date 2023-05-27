@@ -111,5 +111,11 @@ describe('Scorecard', () => {
 
       expect(scorecard.currentScore()).toEqual(34)
     })
+
+    it('calculates score after one strike', () => {
+      scorecard.addFrame(10);
+
+      expect(scorecard.currentScore()).toEqual(0)
+    })
   })
 })

@@ -33,7 +33,7 @@ class Frame {
         this.score = 20 + frame2.rolls[0];
       }
     } else {
-      this.score = 10 + frame1.#pinsDown();
+      this.score = 10 + frame1.rolls[0] + frame1.rolls[1];
     }
   }
 

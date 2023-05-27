@@ -167,5 +167,21 @@ describe('Scorecard', () => {
 
       expect(scorecard.currentScore()).toEqual(56)
     })
+
+    it('calculates total score of a perfect game', () => {
+      for(let i = 0 ; i < 9 ; i ++) {
+        scorecard.addFrame(10);
+      }
+      scorecard.addFrame(10, 10, 10)
+
+      console.log(scorecard.calculateScoreUpTo(8))
+      expect(scorecard.currentScore()).toEqual(300)
+    })
+  })
+
+  describe('show', () => {
+    it('shows a scorecard after one zero frame', () => {
+
+    })
   })
 })

@@ -94,5 +94,13 @@ describe('Scorecard', () => {
 
       expect(scorecard.currentScore()).toEqual(12)
     })
+
+    it('calculates score after three spares', () => {
+      scorecard.addFrame(2, 8);
+      scorecard.addFrame(2, 8);
+      scorecard.addFrame(2, 8);
+
+      expect(scorecard.currentScore()).toEqual(24)
+    })
   })
 })

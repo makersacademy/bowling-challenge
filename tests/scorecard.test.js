@@ -56,4 +56,21 @@ describe('Scorecard', () => {
       expect(scorecard.calculateScore()).toEqual(null);
     })
   })
+
+  describe('calculateScore after multiple frames', () => {
+    it('calculates score for gutter game', () => {
+      for(let i = 0 ; i < 10 ; i ++) {
+        scorecard.addFrame(0, 0);
+      }
+
+      expect(scorecard.calculateScore()).toEqual(0)
+    })
+
+    it('calculates score after two simple frames', () => {
+      scorecard.addFrame(2, 3);
+      scorecard.addFrame(4, 5);
+
+      expect(scorecard.calculateScore()).toEqual(14)
+    })
+  })
 })

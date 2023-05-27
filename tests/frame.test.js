@@ -130,4 +130,19 @@ describe('Frame', () => {
       expect(frame.getFrameScore()).toEqual(30)
     })
   })
+
+  describe('final frame', () => {
+    it('scores a spare on final frame', () => {
+      frame = new Frame([3, 7, 4])
+      frame2 = new Frame([5, 5, 0])
+
+      expect(frame.getFrameScore()).toEqual(14)
+      expect(frame2.getFrameScore()).toEqual(10)
+    })
+
+    it('scores a strike on final frame', () => {
+      frame = new Frame([10, 5, 5])
+      expect(frame.getFrameScore()).toEqual(20)
+    })
+  })
 })

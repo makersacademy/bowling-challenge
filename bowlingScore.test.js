@@ -73,4 +73,13 @@ describe('BowlingScore', () => {
     expect(scorecard.calculateScore()).toEqual(49)
   })
 
+  it ('returns the accumulated score with two spares', () => {
+    let scorecard = new BowlingScore
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    expect(scorecard.calculateScore()).toEqual(90)
+  })
 })

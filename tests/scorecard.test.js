@@ -148,4 +148,15 @@ describe('Scorecard', () => {
       expect(scorecard.currentScore()).toEqual(42)
     })
   })
+
+  describe('final frame', () => {
+    it('calculates total score with spare final frame', () => {
+      for(let i = 0 ; i < 9 ; i ++) {
+        scorecard.addFrame(2, 2);
+      }
+      scorecard.addFrame(4, 6, 5)
+
+      expect(scorecard.currentScore()).toEqual(51)
+    })
+  })
 })

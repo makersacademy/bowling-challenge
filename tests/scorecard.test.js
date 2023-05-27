@@ -29,48 +29,63 @@ describe('Scorecard', () => {
   describe('calculateScore after one frame', () => {
     it('calculates score before any frames added', () => {
 
-      expect(scorecard.calculateScore()).toEqual(0);
+      expect(scorecard.currentScore()).toEqual(0);
     })
 
     it('calculates score after one zero frame', () => {
       scorecard.addFrame(0, 0);
 
-      expect(scorecard.calculateScore()).toEqual(0);
+      expect(scorecard.currentScore()).toEqual(0);
     })
 
     it('calculates score after one simple frame', () => {
       scorecard.addFrame(2, 4);
 
-      expect(scorecard.calculateScore()).toEqual(6);
+      expect(scorecard.currentScore()).toEqual(6);
     })
 
     it('calculates null score when one spare added', () => {
       scorecard.addFrame(2, 8);
 
-      expect(scorecard.calculateScore()).toEqual(null);
+      expect(scorecard.currentScore()).toEqual(0);
     })
 
     it('calculates null score when one strike added', () => {
       scorecard.addFrame(10);
 
-      expect(scorecard.calculateScore()).toEqual(null);
+      expect(scorecard.currentScore()).toEqual(0);
     })
   })
 
-  describe('calculateScore after multiple frames', () => {
+  describe('currentScore after multiple frames', () => {
     it('calculates score for gutter game', () => {
       for(let i = 0 ; i < 10 ; i ++) {
         scorecard.addFrame(0, 0);
       }
 
-      expect(scorecard.calculateScore()).toEqual(0)
+      expect(scorecard.currentScore()).toEqual(0)
     })
 
     it('calculates score after two simple frames', () => {
       scorecard.addFrame(2, 3);
       scorecard.addFrame(4, 5);
 
-      expect(scorecard.calculateScore()).toEqual(14)
+      expect(scorecard.currentScore()).toEqual(14)
+    })
+
+    it('calculates score after ten simple frames', () => {
+      for(let i = 0 ; i < 10 ; i ++) {
+        scorecard.addFrame(2, 2);
+      }
+
+      expect(scorecard.currentScore()).toEqual(40)
+    })
+
+    it('calculates score after spare then simple frame', () => {
+      scorecard.addFrame(2, 8);
+      scorecard.addFrame(2, 2);
+
+      expect(scorecard.currentScore()).toEqual(16)
     })
   })
 })

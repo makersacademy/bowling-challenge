@@ -34,7 +34,7 @@ class Frame {
       }
     } else {
       this.score = 10 + frame1.#pinsDown();
-    };
+    }
   }
 
   #pinsDown() {

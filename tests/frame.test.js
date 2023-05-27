@@ -111,5 +111,23 @@ describe('Frame', () => {
 
       expect(frame.getFrameScore()).toEqual(20)
     })
+
+    it('updates the score when followed by a strike then simplle frame', () => {
+      frame = new Frame([10])
+      frame2 = new Frame([10])
+      frame3 = new Frame([2, 5])
+      frame.scoreWithStrikeBonus(frame2, frame3)
+
+      expect(frame.getFrameScore()).toEqual(22)
+    })
+
+    it('updates the score when followed by two strikes', () => {
+      frame = new Frame([10])
+      frame2 = new Frame([10])
+      frame3 = new Frame([10])
+      frame.scoreWithStrikeBonus(frame2, frame3)
+
+      expect(frame.getFrameScore()).toEqual(30)
+    })
   })
 })

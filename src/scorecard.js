@@ -26,9 +26,14 @@ class Scorecard {
 
   #updateScores() {
     for(let i = 0 ; i < this.frames.length - 1 ; i++) {
-      if (this.frames[i].getFrameScore() === null) {
-        if (this.frames[i].spare()) {
-          this.frames[i].scoreWithSpareBonus(this.frames[i + 1]);
+      const frame = this.frames[i]
+      if (frame.getFrameScore() === null) {
+        if (frame.spare()) {
+          frame.scoreWithSpareBonus(this.frames[i + 1]);
+        } else if (frame.strike()) {
+          frame.scoreWithStrikeBonus(
+            this.frames[i + 1],
+            this.frames[i + 2])
         }
       }
     }

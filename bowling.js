@@ -104,6 +104,12 @@ class Bowling {
     return this.frameNum[num-1]
     
     }
+  reset() {
+    this.score = 0
+    this.frameNum = []
+    this.spare = 0
+    this.strike = 0
+  }
   }
 
 

@@ -115,21 +115,21 @@ describe('Scorecard', () => {
     it('calculates score after one strike', () => {
       scorecard.addFrame(10);
 
-      expect(scorecard.currentScore()).toEqual(0)
+      expect(scorecard.currentScore()).toEqual(0);
     })
 
     it('calculates score after a strike and simple frame', () => {
       scorecard.addFrame(10);
       scorecard.addFrame(2, 4);
 
-      expect(scorecard.currentScore()).toEqual(22)
+      expect(scorecard.currentScore()).toEqual(22);
     })
 
     it('calculates score after two strikes', () => {
       scorecard.addFrame(10);
       scorecard.addFrame(10);
 
-      expect(scorecard.currentScore()).toEqual(0)
+      expect(scorecard.currentScore()).toEqual(0);
     })
 
     it('calculates score after two strikes and simple frame', () => {
@@ -137,7 +137,7 @@ describe('Scorecard', () => {
       scorecard.addFrame(10);
       scorecard.addFrame(2, 4);
 
-      expect(scorecard.currentScore()).toEqual(44)
+      expect(scorecard.currentScore()).toEqual(44);
     })
 
     it('calculates score with spares and strikes two strikes', () => {
@@ -145,7 +145,7 @@ describe('Scorecard', () => {
       scorecard.addFrame(10);
       scorecard.addFrame(2, 4);
 
-      expect(scorecard.currentScore()).toEqual(42)
+      expect(scorecard.currentScore()).toEqual(42);
     })
   })
 
@@ -154,33 +154,34 @@ describe('Scorecard', () => {
       for(let i = 0 ; i < 9 ; i ++) {
         scorecard.addFrame(2, 2);
       }
-      scorecard.addFrame(4, 6, 5)
+      scorecard.addFrame(4, 6, 5);
 
-      expect(scorecard.currentScore()).toEqual(51)
+      expect(scorecard.currentScore()).toEqual(51);
     })
 
     it('calculates total score with strike final frame', () => {
       for(let i = 0 ; i < 9 ; i ++) {
         scorecard.addFrame(2, 2);
       }
-      scorecard.addFrame(10, 5, 5)
+      scorecard.addFrame(10, 5, 5);
 
-      expect(scorecard.currentScore()).toEqual(56)
+      expect(scorecard.currentScore()).toEqual(56);
     })
 
     it('calculates total score of a perfect game', () => {
       for(let i = 0 ; i < 9 ; i ++) {
         scorecard.addFrame(10);
       }
-      scorecard.addFrame(10, 10, 10)
+      scorecard.addFrame(10, 10, 10);
 
-      console.log(scorecard.calculateScoreUpTo(8))
-      expect(scorecard.currentScore()).toEqual(300)
+      expect(scorecard.currentScore()).toEqual(300);
     })
   })
 
   describe('show', () => {
     it('shows a scorecard after one zero frame', () => {
+      scorecard.addFrame(0, 0);
+      expect(scorecard.show()).toEqual('1 - rolls: 0,0 ...... 0')
 
     })
   })

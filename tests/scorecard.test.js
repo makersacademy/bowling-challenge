@@ -158,5 +158,14 @@ describe('Scorecard', () => {
 
       expect(scorecard.currentScore()).toEqual(51)
     })
+
+    it('calculates total score with strike final frame', () => {
+      for(let i = 0 ; i < 9 ; i ++) {
+        scorecard.addFrame(2, 2);
+      }
+      scorecard.addFrame(10, 5, 5)
+
+      expect(scorecard.currentScore()).toEqual(56)
+    })
   })
 })

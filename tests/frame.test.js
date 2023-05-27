@@ -94,5 +94,13 @@ describe('Frame', () => {
       frame.scoreWithStrikeBonus(frame2)
       expect(frame.getFrameScore()).toEqual(20)
     })
+
+    it('does not update the score when followed by a strike', () => {
+      frame = new Frame([10])
+      frame2 = new Frame([10])
+
+      frame.scoreWithStrikeBonus(frame2)
+      expect(frame.getFrameScore()).toEqual(null)
+    })
   })
 })

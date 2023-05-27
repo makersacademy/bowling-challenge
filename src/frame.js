@@ -25,6 +25,9 @@ class Frame {
     this.score = 10 + frame.rolls[0];
   }
   scoreWithStrikeBonus(frame) {
+    if (frame.strike()) {
+      return
+    }
     this.score = 10 + frame.#pinsDown();
   }
 

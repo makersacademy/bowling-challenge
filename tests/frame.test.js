@@ -73,7 +73,7 @@ describe('Frame', () => {
       frame2 = new Frame([0, 0])
 
       expect(frame.getFrameScore()).toEqual(null)
-      frame.scoreWithStrikeBonus(frame2)
+      frame.scoreWithStrikeBonus(frame2, undefined)
       expect(frame.getFrameScore()).toEqual(10)
     })
 
@@ -82,7 +82,7 @@ describe('Frame', () => {
       frame2 = new Frame([2, 2])
 
       expect(frame.getFrameScore()).toEqual(null)
-      frame.scoreWithStrikeBonus(frame2)
+      frame.scoreWithStrikeBonus(frame2, undefined)
       expect(frame.getFrameScore()).toEqual(14)
     })
 
@@ -91,7 +91,7 @@ describe('Frame', () => {
       frame2 = new Frame([2, 8])
 
       expect(frame.getFrameScore()).toEqual(null)
-      frame.scoreWithStrikeBonus(frame2)
+      frame.scoreWithStrikeBonus(frame2, undefined)
       expect(frame.getFrameScore()).toEqual(20)
     })
 
@@ -99,8 +99,17 @@ describe('Frame', () => {
       frame = new Frame([10])
       frame2 = new Frame([10])
 
-      frame.scoreWithStrikeBonus(frame2)
+      frame.scoreWithStrikeBonus(frame2, undefined)
       expect(frame.getFrameScore()).toEqual(null)
+    })
+
+    it('updates the score when followed by a strike then zero', () => {
+      frame = new Frame([10])
+      frame2 = new Frame([10])
+      frame3 = new Frame([0, 5])
+      frame.scoreWithStrikeBonus(frame2, frame3)
+
+      expect(frame.getFrameScore()).toEqual(20)
     })
   })
 })

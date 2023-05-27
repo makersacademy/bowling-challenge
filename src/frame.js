@@ -24,11 +24,17 @@ class Frame {
   scoreWithSpareBonus(frame) {
     this.score = 10 + frame.rolls[0];
   }
-  scoreWithStrikeBonus(frame) {
-    if (frame.strike()) {
-      return
-    }
-    this.score = 10 + frame.#pinsDown();
+
+  scoreWithStrikeBonus(frame1, frame2) {
+    if (frame1.strike()) {
+      if (frame2 === undefined) {
+        return
+      } else {
+        this.score = 20 + frame2.rolls[0];
+      }
+    } else {
+      this.score = 10 + frame1.#pinsDown();
+    };
   }
 
   #pinsDown() {

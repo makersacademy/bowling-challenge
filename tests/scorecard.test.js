@@ -1,4 +1,4 @@
-const Scorecard = require('../lib/scorecard');
+const Scorecard = require('../docs/scorecard');
 
 describe('Scorecard', () => {
     it('adds the scores when no bonus points', () => {
@@ -75,8 +75,7 @@ describe('Scorecard', () => {
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
-        scorecard.addFrame(10, 10) // needs this last array to be read differently
-        // scorecard.addFrame(10, 10) doesn't work if final bonus rolls both 10
+        scorecard.addFrame(10, 10) // final bonus rolls
         
         expect(scorecard.calculateScore()).toEqual(300)
         
@@ -96,7 +95,7 @@ describe('Scorecard', () => {
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
         scorecard.addFrame(5, 5)
-        scorecard.addFrame(10, 0)
+        scorecard.addFrame(10, 0) // final bonus rolls
         
         expect(scorecard.calculateScore()).toEqual(275)
         
@@ -116,7 +115,6 @@ describe('Scorecard', () => {
         scorecard.addFrame(6, 4)
         scorecard.addFrame(10, 0)
         scorecard.addFrame(2, 8)
-
         scorecard.addFrame(6, 0) // bonus roll because of spare
         
         expect(scorecard.calculateScore()).toEqual(133)

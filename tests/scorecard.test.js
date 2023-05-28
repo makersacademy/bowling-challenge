@@ -179,6 +179,10 @@ describe('Scorecard', () => {
   })
 
   describe('show', () => {
+    it('shows a empty string after no frames', () => {
+      expect(scorecard.show()).toEqual('')
+    })
+
     it('shows a scorecard after one zero frame', () => {
       scorecard.addFrame(0, 0);
       expect(scorecard.show()).toEqual('1 - rolls: 0,0 ...... 0')

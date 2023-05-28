@@ -26,11 +26,9 @@ class Frame {
   }
 
   scoreWithStrikeBonus(frame1, frame2) {
-    if (frame1.strike()) {
-      if (frame2 !== undefined) {
-        this.score = 20 + frame2.rolls[0];
-      }
-    } else {
+    if (frame1.strike() && frame2 !== undefined) {
+      this.score = 20 + frame2.rolls[0];
+    } else if (!frame1.strike()) {
       this.score = 10 + frame1.rolls[0] + frame1.rolls[1];
     }
   }

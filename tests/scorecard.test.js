@@ -207,7 +207,7 @@ describe('Scorecard', () => {
       expect(scorecard.show()).toEqual(expectedScorecard);
     });
     
-    xit('shows a scorecard after three strikes', () => {
+    it('shows a scorecard after three strikes', () => {
       scorecard.addFrame(10);
       scorecard.addFrame(10);
       scorecard.addFrame(10);

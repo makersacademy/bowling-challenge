@@ -9,11 +9,10 @@ class BowlingScore {
   addFrame(bowl1, bowl2, bowl3) {
     if (bowl3) {
       this.framesArray.push(bowl1, bowl2, bowl3);
-      this.frameCount += 1;
+      this.frameCount += 10;
     } else {
       if (bowl1 === 'X') {
         this.framesArray.push(bowl1)
-        console.log(this.framesArray)
       } else {
         this.framesArray.push(bowl1, bowl2)
         this.frameCount += 1
@@ -24,7 +23,9 @@ class BowlingScore {
   calculateScore() {
     if (this._allStrikes()) {
       this._perfectGame()
-      console.log('hi1')
+      if (this._perfectGame && this.frameCount === 10) {
+        this.bonusPoints -= 60
+      }
       this.score = this.framesArray.reduce((a, b) => a + b, 0)
       return this.score + this.bonusPoints
     } else {
@@ -32,21 +33,21 @@ class BowlingScore {
         console.log('hi2')
         this._replaceLastElement()
       }
-  
+      
       if (this.framesArray.includes('X') || this.framesArray.includes('/')) {
         console.log('hi3')
         this._scoringStrikesAndSpares()
       }
-  
+      
       this.score = this.framesArray.reduce((a, b) => a + b, 0)
       return this.score + this.bonusPoints
     }
   }
-
+  
   _lastElement() {
     this.framesArray[this.framesArray.length - 1] === 'X' || this.framesArray[this.framesArray.length - 1] === '/'
   }
-
+  
   _replaceLastElement() {
     if (this.framesArray[this.framesArray.length - 1] === '/') {
       this.framesArray.splice(-2, 1, 0);
@@ -55,7 +56,7 @@ class BowlingScore {
       this.framesArray.splice(-1, 1, 0);
     }
   }
-
+  
   _scoringStrikesAndSpares() {
     this.framesArray.forEach((val, i) => { 
       if (val === 'X') {
@@ -65,24 +66,21 @@ class BowlingScore {
       }
     })
   }
-
+  
   _allStrikes() {
     if (this.framesArray.every(val => val === 'X')) {
       return true
     }
   }
-
+  
   _perfectGame() {
     if (this.frameCount === 10) {
-      console.log(this.frameCount)
-      console.log(this.framesArray)
       this.framesArray.forEach((strike, i) => {
         this.framesArray[i] = 10;
         this.bonusPoints += 20;
       });
     } else {
-      // console.log(this.framesArray)
-      // console.log(this.bonusPoints)
+
       this.framesArray.pop()
       this.framesArray.pop()
       this.framesArray.forEach((strike, i) => {
@@ -91,7 +89,7 @@ class BowlingScore {
       });
     }
   }
-
+  
   _strikeCalculation(i) {
     if (this.framesArray[i + 1] === 'X' && this.framesArray[i + 2] === 'X') {
       this.bonusPoints += 20
@@ -100,19 +98,26 @@ class BowlingScore {
       this.bonusPoints += 10
       this.bonusPoints += this.framesArray[i + 2]
       this._spareConvert(i)
+    } else if (this.framesArray[i + 2] === '/') {
+      this.bonusPoints += 10
+      this._spareConvert(i)
     } else {
       this.bonusPoints += this.framesArray[i + 1] + this.framesArray[i + 2]
       this._spareConvert(i)
     }
   }
-
+  
   _spareConvert(i) {
     this.framesArray[i] = 10
   }
-
+  
   _spareCalculation(i) {
-    this.bonusPoints += this.framesArray[i + 1]
-    this.framesArray[i] = (10 - this.framesArray[i - 1])
+    if (this.frameCount === 10) {
+      this.framesArray[i] = (10 - this.framesArray[i - 1])
+    } else {
+      this.bonusPoints += this.framesArray[i + 1]
+      this.framesArray[i] = (10 - this.framesArray[i - 1])
+    }
   }
 }
 
@@ -122,6 +127,11 @@ scorecard.addFrame('X')
 scorecard.addFrame('X')
 scorecard.addFrame('X')
 scorecard.addFrame('X')
+scorecard.addFrame('X')
+scorecard.addFrame('X')
+scorecard.addFrame('X')
+scorecard.addFrame('X')
+scorecard.addFrame('X', 'X', 'X')
 
 console.log(scorecard.calculateScore())
 

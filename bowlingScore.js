@@ -7,13 +7,17 @@ class BowlingScore {
   }
 
   addFrame(bowl1, bowl2, bowl3) {
-
-    if (bowl1 === 'X') {
-      this.framesArray.push(bowl1)
-      this.frameCount += 1
+    if (bowl3) {
+      this.framesArray.push(bowl1, bowl2, bowl3);
+      this.frameCount += 1;
     } else {
-      this.framesArray.push(bowl1, bowl2)
-      this.frameCount += 1
+      if (bowl1 === 'X') {
+        this.framesArray.push(bowl1)
+        console.log(this.framesArray)
+      } else {
+        this.framesArray.push(bowl1, bowl2)
+        this.frameCount += 1
+      }
     }
   }
 
@@ -69,14 +73,23 @@ class BowlingScore {
   }
 
   _perfectGame() {
-    this.framesArray.pop()
-    this.framesArray.pop()
-    this.framesArray.forEach((strike, i) => {
-      this.framesArray[i] = 10;
-      this.bonusPoints += 20;
-    });
-    console.log(this.framesArray)
-    console.log(this.bonusPoints)
+    if (this.frameCount === 10) {
+      console.log(this.frameCount)
+      console.log(this.framesArray)
+      this.framesArray.forEach((strike, i) => {
+        this.framesArray[i] = 10;
+        this.bonusPoints += 20;
+      });
+    } else {
+      // console.log(this.framesArray)
+      // console.log(this.bonusPoints)
+      this.framesArray.pop()
+      this.framesArray.pop()
+      this.framesArray.forEach((strike, i) => {
+        this.framesArray[i] = 10;
+        this.bonusPoints += 20;
+      });
+    }
   }
 
   _strikeCalculation(i) {
@@ -109,11 +122,6 @@ scorecard.addFrame('X')
 scorecard.addFrame('X')
 scorecard.addFrame('X')
 scorecard.addFrame('X')
-scorecard.addFrame('X')
-scorecard.addFrame('X')
-scorecard.addFrame('X')
-scorecard.addFrame('X')
-scorecard.addFrame(5, 3)
 
 console.log(scorecard.calculateScore())
 

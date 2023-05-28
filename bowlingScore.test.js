@@ -93,4 +93,19 @@ describe('BowlingScore', () => {
     scorecard.addFrame(3, 5)
     expect(scorecard.calculateScore()).toEqual(139)
   })
+
+  it ('returns the accumulated score of a perfect game', () => {
+    let scorecard = new BowlingScore
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    scorecard.addFrame('X')
+    scorecard.addFrame('X', 'X', 'X')
+    expect(scorecard.calculateScore()).toEqual(300)
+  })
 })

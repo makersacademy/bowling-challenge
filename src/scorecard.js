@@ -17,8 +17,8 @@ class Scorecard {
   }
 
   calculateScoreUpTo(i) {
-    const frameSlice = this.frames.slice(0, i + 1)
-    return frameSlice.map((frame) => frame.getFrameScore())
+    return this.frames.slice(0, i + 1)
+    .map((frame) => frame.getFrameScore())
     .reduce((sum, num) => sum += num, 0)
   }
 
@@ -34,15 +34,20 @@ class Scorecard {
 
   #updateScores() {
     for(let i = 0 ; i < this.frames.length - 1 ; i++) {
-      const frame = this.frames[i]
-      if (frame.getFrameScore() === null) {
-        if (frame.spare()) {
-          frame.scoreWithSpareBonus(this.frames[i + 1]);
-        } else if (frame.strike()) {
-          frame.scoreWithStrikeBonus(
-            this.frames[i + 1],
-            this.frames[i + 2])
-        }
+      const currentFrame = this.frames[i]
+      const frameScore = currentFrame.getFrameScore()
+
+      if (frameScore !==null) {
+        continue
+      }
+
+      const nextFrame = this.frames[i + 1]
+      const frameAfterNext = this.frames[i + 2]
+
+      if (currentFrame.spare()) {
+        currentFrame.scoreWithSpareBonus(nextFrame);
+      } else if (currentFrame.strike()) {
+        currentFrame.scoreWithStrikeBonus(nextFrame, frameAfterNext)
       }
     }
   }

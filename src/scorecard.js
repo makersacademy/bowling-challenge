@@ -26,11 +26,10 @@ class Scorecard {
 
   show() {
     const scorecardArr = this.frames.map(this.format);
-    return scorecardArr.join()
+    return scorecardArr.join('\n')
   }
 
   format = (frame) => {
-    console.log(frame)
     const round = this.frames.indexOf(frame) + 1;
     return `${round} - rolls: ${frame.rolls} ...... ${this.calculateScoreUpTo(round - 1)}`
   }

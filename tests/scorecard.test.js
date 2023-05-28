@@ -184,5 +184,26 @@ describe('Scorecard', () => {
       expect(scorecard.show()).toEqual('1 - rolls: 0,0 ...... 0')
 
     })
+
+    it('shows a scorecard after two frames', () => {
+      scorecard.addFrame(2, 2);
+      scorecard.addFrame(2, 2);
+
+      const expectedScorecard = '1 - rolls: 2,2 ...... 4\n2 - rolls: 2,2 ...... 8'
+      expect(scorecard.show()).toEqual(expectedScorecard)
+    })
+
+    it('shows a scorecard after three strikes', () => {
+      scorecard.addFrame(10);
+      scorecard.addFrame(10);
+      scorecard.addFrame(10);
+
+      score1 = '1 - rolls: 10 ...... 30'
+      score2 = '2 - rolls: 10 ...... 30'
+      score3 = '3 - rolls: 10 ...... 30'
+
+      const expectedScorecard = [score1, score2, score3].join('\n')
+      expect(scorecard.show()).toEqual(expectedScorecard)
+    })
   })
 })

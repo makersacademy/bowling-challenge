@@ -34,9 +34,8 @@ class Frame {
   }
 
   #pinsDown() {
-    return this.rolls.reduce((sum, num) => {
-      return sum += num;
-    }, 0)
+    return this.rolls.reduce(
+      (sum, pins) => sum += pins, 0)
   }
 }
 

@@ -19,9 +19,7 @@ class Scorecard {
   calculateScoreUpTo(i) {
     const frameSlice = this.frames.slice(0, i + 1)
     return frameSlice.map((frame) => frame.getFrameScore())
-    .reduce((sum, num) => {
-      return sum += num;
-    }, 0)
+    .reduce((sum, num) => sum += num, 0)
   }
 
   show() {

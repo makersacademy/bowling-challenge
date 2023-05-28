@@ -205,5 +205,14 @@ describe('Scorecard', () => {
       const expectedScorecard = [score1, score2, score3].join('\n')
       expect(scorecard.show()).toEqual(expectedScorecard)
     })
+
+    it('shows a scorecard with final strike frame', () => {
+      for(let i = 0 ; i < 9 ; i ++) {
+        scorecard.addFrame(2, 2);
+      }
+      scorecard.addFrame(10, 10, 10)
+
+      expect(scorecard.show()).toMatch(/10 - rolls: 10,10,10 ...... 66/)
+    })
   })
 })

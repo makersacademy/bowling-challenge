@@ -3,19 +3,24 @@ class BowlingScore {
     this.framesArray = []
     this.score = 0
     this.bonusPoints = 0
+    this.frameCount = 0
   }
 
-  addFrame(bowl1, bowl2) {
+  addFrame(bowl1, bowl2, bowl3) {
+
     if (bowl1 === 'X') {
       this.framesArray.push(bowl1)
+      this.frameCount += 1
     } else {
       this.framesArray.push(bowl1, bowl2)
+      this.frameCount += 1
     }
   }
 
   calculateScore() {
     if (this._allStrikes()) {
       this._perfectGame()
+      console.log('hi1')
       this.score = this.framesArray.reduce((a, b) => a + b, 0)
       return this.score + this.bonusPoints
     } else {
@@ -77,15 +82,19 @@ class BowlingScore {
   _strikeCalculation(i) {
     if (this.framesArray[i + 1] === 'X' && this.framesArray[i + 2] === 'X') {
       this.bonusPoints += 20
-      this.framesArray[i] = 10
-
+      this._spareConvert(i)
     } else if (this.framesArray[i + 1] === 'X') {
       this.bonusPoints += 10
-      this.framesArray[i] = 10
+      this.bonusPoints += this.framesArray[i + 2]
+      this._spareConvert(i)
     } else {
       this.bonusPoints += this.framesArray[i + 1] + this.framesArray[i + 2]
-      this.framesArray[i] = 10
+      this._spareConvert(i)
     }
+  }
+
+  _spareConvert(i) {
+    this.framesArray[i] = 10
   }
 
   _spareCalculation(i) {
@@ -100,6 +109,12 @@ scorecard.addFrame('X')
 scorecard.addFrame('X')
 scorecard.addFrame('X')
 scorecard.addFrame('X')
+scorecard.addFrame('X')
+scorecard.addFrame('X')
+scorecard.addFrame('X')
+scorecard.addFrame('X')
+scorecard.addFrame(5, 3)
+
 console.log(scorecard.calculateScore())
 
 module.exports = BowlingScore;

@@ -180,20 +180,23 @@ describe('Scorecard', () => {
 
   describe('show', () => {
     it('shows a empty string after no frames', () => {
-      expect(scorecard.show()).toEqual('')
+      expect(scorecard.show()).toEqual({})
     })
 
     it('shows a scorecard after one zero frame', () => {
       scorecard.addFrame(0, 0);
-      expect(scorecard.show()).toEqual('1 - rolls: 0,0 ...... 0')
-
+      expect(scorecard.show()).toEqual({"0,0": 0})
     })
 
     it('shows a scorecard after two frames', () => {
       scorecard.addFrame(2, 2);
       scorecard.addFrame(2, 2);
 
-      const expectedScorecard = '1 - rolls: 2,2 ...... 4\n2 - rolls: 2,2 ...... 8'
+      const expectedScorecard = {
+        "2,2": 4,
+        "2,2": 8
+      }
+
       expect(scorecard.show()).toEqual(expectedScorecard)
     })
 
@@ -202,21 +205,35 @@ describe('Scorecard', () => {
       scorecard.addFrame(10);
       scorecard.addFrame(10);
 
-      score1 = '1 - rolls: 10 ...... 30'
-      score2 = '2 - rolls: 10 ...... 30'
-      score3 = '3 - rolls: 10 ...... 30'
+     const expectedScorecard = {
+      "10": 30,
+      "10": 30,
+      "10": 30
+     }
 
-      const expectedScorecard = [score1, score2, score3].join('\n')
       expect(scorecard.show()).toEqual(expectedScorecard)
     })
 
-    it('shows a scorecard with final strike frame', () => {
+    it('shows a scorecard with all strikes', () => {
       for(let i = 0 ; i < 9 ; i ++) {
-        scorecard.addFrame(2, 2);
+        scorecard.addFrame(10);
       }
       scorecard.addFrame(10, 10, 10)
 
-      expect(scorecard.show()).toMatch(/10 - rolls: 10,10,10 ...... 66/)
+      const expectedScorecard = {
+        "10": 30,
+        "10": 60,
+        "10": 90,
+        "10": 120,
+        "10": 150,
+        "10": 180,
+        "10": 210,
+        "10": 240,
+        "10": 270,
+        "10,10,10": 300
+      }
+
+      expect(scorecard.show()).toEqual(expectedScorecard)
     })
   })
 })

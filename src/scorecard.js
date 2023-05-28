@@ -23,13 +23,14 @@ class Scorecard {
   }
 
   show() {
-    const scorecardArr = this.frames.map(this.format);
-    return scorecardArr.join('\n')
-  }
-
-  format = (frame) => {
-    const round = this.frames.indexOf(frame) + 1;
-    return `${round} - rolls: ${frame.rolls} ...... ${this.calculateScoreUpTo(round - 1)}`
+    let scorecard = {}
+    const framesLength = this.frames.length;
+    
+    for(let i = 0 ; i < framesLength ; i ++) {
+      const currentFrame = this.frames[i]
+      scorecard[currentFrame.rolls] = this.calculateScoreUpTo(i);
+    }
+    return scorecard
   }
 
   #updateScores() {

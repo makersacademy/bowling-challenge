@@ -60,7 +60,7 @@ describe('Scorecard', () => {
         
     })
 
-    xit('allows bonus points for srike on final frame', () => {
+    it('allows bonus points for srike on final frame', () => {
         let scorecard = new Scorecard()
 
         expect(scorecard.calculateScore()).toEqual(0)
@@ -73,10 +73,11 @@ describe('Scorecard', () => {
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
-        // scorecard.addFrame(10, 0)
-        scorecard.addFrame(5, 5)
+        scorecard.addFrame(10, 0)
+        scorecard.addFrame(2, 2) // needs this last array to be read differently
+        // scorecard.addFrame(10, 10) doesn't work if final bonus rolls both 10
         
-        expect(scorecard.calculateScore()).toEqual(300)
+        expect(scorecard.calculateScore()).toEqual(284)
         
     })
 

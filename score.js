@@ -92,6 +92,9 @@ scorecard.addFrame(10,0);
 scorecard.addFrame(5,2);
 
 console.log(scorecard.calculateScore());
+console.log(scorecard.frames[-1]);
+// last array comes up as undefined - why?
+console.log(scorecard.frames[0]);
 
 
 

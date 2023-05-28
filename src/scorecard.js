@@ -23,7 +23,7 @@ class Scorecard {
   }
 
   show() {
-    let scorecard = {}
+    let scoresArray = []
     const framesLength = this.frames.length;
 
     for(let i = 0 ; i < framesLength ; i ++) {
@@ -33,10 +33,10 @@ class Scorecard {
         "score": this.calculateScoreUpTo(i)
       }
 
-      scorecard[i + 1] = frameData;
+      scoresArray.push(frameData);
     }
 
-    return scorecard
+    return {"scorecard": scoresArray}
   }
 
   #updateScores() {

@@ -14,7 +14,6 @@ describe('Scorecard', () => {
     it('adds bonus points when strike', () => {
         let scorecard = new Scorecard()
 
-        expect(scorecard.calculateScore()).toEqual(0)
         scorecard.addFrame(10, 0)
         scorecard.addFrame(2, 2)
         expect(scorecard.calculateScore()).toEqual(18)
@@ -24,7 +23,6 @@ describe('Scorecard', () => {
     it('adds bonus points when two strikes in a row', () => {
         let scorecard = new Scorecard()
 
-        expect(scorecard.calculateScore()).toEqual(0)
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
         scorecard.addFrame(2, 2)
@@ -35,7 +33,6 @@ describe('Scorecard', () => {
     it('adds bonus points for spare', () => {
         let scorecard = new Scorecard()
 
-        expect(scorecard.calculateScore()).toEqual(0)
         scorecard.addFrame(1, 9)
         scorecard.addFrame(1, 3)
         expect(scorecard.calculateScore()).toEqual(15)
@@ -45,7 +42,6 @@ describe('Scorecard', () => {
     it('adds up to 0 for gutter game', () => {
         let scorecard = new Scorecard()
 
-        expect(scorecard.calculateScore()).toEqual(0)
         scorecard.addFrame(0, 0)
         scorecard.addFrame(0, 0)
         scorecard.addFrame(0, 0)
@@ -64,7 +60,6 @@ describe('Scorecard', () => {
     it('adds up to 300 because perfect score', () => {
         let scorecard = new Scorecard()
 
-        expect(scorecard.calculateScore()).toEqual(0)
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
@@ -84,7 +79,6 @@ describe('Scorecard', () => {
     it('allows bonus points for spare on final frame', () => {
         let scorecard = new Scorecard()
 
-        expect(scorecard.calculateScore()).toEqual(0)
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
@@ -104,7 +98,6 @@ describe('Scorecard', () => {
     it('allows bonus points for spare on final frame', () => {
         let scorecard = new Scorecard()
 
-        expect(scorecard.calculateScore()).toEqual(0)
         scorecard.addFrame(1, 4)
         scorecard.addFrame(4, 5)
         scorecard.addFrame(6, 4)

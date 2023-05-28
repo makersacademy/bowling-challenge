@@ -27,9 +27,7 @@ class Frame {
 
   scoreWithStrikeBonus(frame1, frame2) {
     if (frame1.strike()) {
-      if (frame2 === undefined) {
-        return
-      } else {
+      if (frame2 !== undefined) {
         this.score = 20 + frame2.rolls[0];
       }
     } else {

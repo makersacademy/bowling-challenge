@@ -185,7 +185,8 @@ describe('Scorecard', () => {
 
     it('shows a scorecard after one zero frame', () => {
       scorecard.addFrame(0, 0);
-      expect(scorecard.show()).toEqual({"0,0": 0})
+      expect(scorecard.show()).toEqual({
+        1: {"rolls": [0, 0], "score": 0}})
     })
 
     it('shows a scorecard after two frames', () => {
@@ -193,8 +194,8 @@ describe('Scorecard', () => {
       scorecard.addFrame(2, 2);
 
       const expectedScorecard = {
-        "2,2": 4,
-        "2,2": 8
+        1: {"rolls": [2, 2], "score": 4},
+        2: {"rolls": [2, 2], "score": 8}
       }
 
       expect(scorecard.show()).toEqual(expectedScorecard)
@@ -205,11 +206,11 @@ describe('Scorecard', () => {
       scorecard.addFrame(10);
       scorecard.addFrame(10);
 
-     const expectedScorecard = {
-      "10": 30,
-      "10": 30,
-      "10": 30
-     }
+      const expectedScorecard = {
+        1: {"rolls": [10], "score": 30},
+        2: {"rolls": [10], "score": 30},
+        3: {"rolls": [10], "score": 30}
+      }
 
       expect(scorecard.show()).toEqual(expectedScorecard)
     })
@@ -221,16 +222,16 @@ describe('Scorecard', () => {
       scorecard.addFrame(10, 10, 10)
 
       const expectedScorecard = {
-        "10": 30,
-        "10": 60,
-        "10": 90,
-        "10": 120,
-        "10": 150,
-        "10": 180,
-        "10": 210,
-        "10": 240,
-        "10": 270,
-        "10,10,10": 300
+        1: {"rolls": [10], "score": 30},
+        2: {"rolls": [10], "score": 60},
+        3: {"rolls": [10], "score": 90},
+        4: {"rolls": [10], "score": 120},
+        5: {"rolls": [10], "score": 150},
+        6: {"rolls": [10], "score": 180},
+        7: {"rolls": [10], "score": 210},
+        8: {"rolls": [10], "score": 240},
+        9: {"rolls": [10], "score": 270},
+        10: {"rolls": [10, 10, 10], "score": 300}
       }
 
       expect(scorecard.show()).toEqual(expectedScorecard)

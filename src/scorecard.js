@@ -25,11 +25,17 @@ class Scorecard {
   show() {
     let scorecard = {}
     const framesLength = this.frames.length;
-    
+
     for(let i = 0 ; i < framesLength ; i ++) {
       const currentFrame = this.frames[i]
-      scorecard[currentFrame.rolls] = this.calculateScoreUpTo(i);
+      const frameData = {
+        "rolls": currentFrame.rolls,
+        "score": this.calculateScoreUpTo(i)
+      }
+
+      scorecard[i + 1] = frameData;
     }
+
     return scorecard
   }
 

@@ -32,24 +32,6 @@ describe('Scorecard', () => {
         
     })
 
-    it('adds bonus points when strike', () => {
-        let scorecard = new Scorecard()
-
-        expect(scorecard.calculateScore()).toEqual(0)
-        scorecard.addFrame(2, 2)
-        scorecard.addFrame(2, 2)
-        scorecard.addFrame(2, 2)
-        scorecard.addFrame(2, 2)
-        scorecard.addFrame(2, 2)
-        scorecard.addFrame(2, 2)
-        scorecard.addFrame(2, 2)
-        scorecard.addFrame(2, 2)
-        scorecard.addFrame(2, 2)
-        scorecard.addFrame(2, 2)
-        expect(scorecard.calculateScore()).toEqual(40)
-        
-    })
-    
     it('adds bonus points for spare', () => {
         let scorecard = new Scorecard()
 
@@ -57,6 +39,25 @@ describe('Scorecard', () => {
         scorecard.addFrame(1, 9)
         scorecard.addFrame(1, 3)
         expect(scorecard.calculateScore()).toEqual(15)
+        
+    })
+
+    it('adds up to 0 for gutter game', () => {
+        let scorecard = new Scorecard()
+
+        expect(scorecard.calculateScore()).toEqual(0)
+        scorecard.addFrame(0, 0)
+        scorecard.addFrame(0, 0)
+        scorecard.addFrame(0, 0)
+        scorecard.addFrame(0, 0)
+        scorecard.addFrame(0, 0)
+        scorecard.addFrame(0, 0)
+        scorecard.addFrame(0, 0)
+        scorecard.addFrame(0, 0)
+        scorecard.addFrame(0, 0)
+        scorecard.addFrame(0, 0)
+     
+        expect(scorecard.calculateScore()).toEqual(0)
         
     })
 
@@ -119,7 +120,6 @@ describe('Scorecard', () => {
         scorecard.addFrame(6, 0) // bonus roll because of spare
         
         expect(scorecard.calculateScore()).toEqual(133)
-        
     })
 
 })

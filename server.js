@@ -16,17 +16,10 @@ app.get('/scorecard', (req, res) => {
 })
 
 app.post('/frame', (req, res) => {
-  const roll1 = req.body.roll1;
-  const roll2 = req.body.roll2;
-  const roll3 = req.body.roll3;
-
-  if (roll2 === undefined) {
-    scorecard.addFrame(roll1);
-  } else if (roll3 === undefined) {
-    scorecard.addFrame(roll1, roll2);
-  } else {
-    scorecard.addFrame(roll1, roll2, roll3);
-  }
+  const { roll1, roll2, roll3 } = req.body;
+  const rolls = [roll1, roll2, roll3].filter(roll => roll !== undefined);
+  
+  scorecard.addFrame(...rolls);
 
   res.send('Frame added')
 })

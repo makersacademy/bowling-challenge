@@ -143,7 +143,7 @@ describe("Scorecard", () => {
 
   it("correctly calculates a perfect game", () => {
     const scorecard = new Scorecard();
-    for (let i = 0; i < 0; i++) {
+    for (let i = 0; i < 9; i++) {
       scorecard.addFrame([10]);
     }
     scorecard.addFrame([10, 10, 10]);

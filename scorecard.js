@@ -57,7 +57,7 @@ class Scorecard {
     if (this.scores[index + 2]) {
       return this.scores[index + 2].frame[0] + this.scores[index + 1].frame[0];
     } else if (this.scores[index + 1] && this.scores[index + 1].frame.length > 1) {
-      return this.frameTotal(this.scores[index + 1]);
+      return this.scores[index + 1].frame[0] + this.scores[index + 1].frame[1];
     }
   }
 

@@ -1,16 +1,21 @@
 const {BowlingGame} = require('../lib/index');
 const Frame = require('../lib/Frame');
+const BowlingScorecard = require('../lib/BowlingScorecard');
 
-// auto mocks the frame class
+// auto mocks the frame and scorecard class
 jest.mock('../lib/Frame');
+jest.mock('../lib/BowlingScorecard');
 let mockFrame = new Frame();
-let bowlingGame = new BowlingGame(mockFrame);
+let mockBowlingScorecard = new BowlingScorecard();
+let bowlingGame = new BowlingGame(mockFrame, mockBowlingScorecard);
 
 // this resets a new game instance before each test
 beforeEach(() => {
   mockFrame = new Frame();
-  bowlingGame = new BowlingGame(mockFrame);
+  mockBowlingScorecard = new BowlingScorecard();
+  bowlingGame = new BowlingGame(mockFrame, mockBowlingScorecard);
   Frame.mockClear();
+  BowlingScorecard.mockClear();
 });
 
 describe('BowlingGame class', () => {
@@ -49,6 +54,19 @@ describe('BowlingGame class', () => {
       bowlingGame.checkFrameEnd();
       expect(mockFrame.isFrameOver).toHaveBeenCalledTimes(1);
       expect(bowlingGame.completedFrames).toEqual([]);
+    });
+  });
+
+  describe('getTotalScore method', () => {
+    it( 'returns score of a regular game ', () => {
+    // 10 regular frames
+      for (let i = 1; i <= 10; i++) {
+        bowlingGame.addRollToFrame(2);
+        bowlingGame.addRollToFrame(2);
+        bowlingGame.checkFrameEnd();
+      }
+
+      expect(bowlingGame.getTotalScore()).toBe(40);
     });
   });
 });

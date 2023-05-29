@@ -1,3 +1,5 @@
+const { count } = require("console");
+
 class BowlingScore {
   constructor() {
     this.framesArray = []
@@ -5,7 +7,7 @@ class BowlingScore {
     this.bonusPoints = 0
     this.frameCount = 0
   }
-
+  
   addFrame(bowl1, bowl2, bowl3) {
     if (bowl3) {
       this.framesArray.push(bowl1, bowl2, bowl3);
@@ -19,7 +21,7 @@ class BowlingScore {
       }
     }
   }
-
+  
   calculateScore() {
     if (this._allStrikes()) {
       this._perfectGame()
@@ -34,19 +36,24 @@ class BowlingScore {
         this._replaceLastElement()
       }
       
+      
       if (this.framesArray.includes('X') || this.framesArray.includes('/')) {
         console.log('hi3')
         this._scoringStrikesAndSpares()
       }
       
+      
       this.score = this.framesArray.reduce((a, b) => a + b, 0)
+      console.log(this.bonusPoints)
       return this.score + this.bonusPoints
     }
   }
   
+  
   _lastElement() {
     this.framesArray[this.framesArray.length - 1] === 'X' || this.framesArray[this.framesArray.length - 1] === '/'
   }
+  
   
   _replaceLastElement() {
     if (this.framesArray[this.framesArray.length - 1] === '/') {
@@ -56,6 +63,7 @@ class BowlingScore {
       this.framesArray.splice(-1, 1, 0);
     }
   }
+  
   
   _scoringStrikesAndSpares() {
     this.framesArray.forEach((val, i) => { 
@@ -67,11 +75,13 @@ class BowlingScore {
     })
   }
   
+  
   _allStrikes() {
     if (this.framesArray.every(val => val === 'X')) {
       return true
     }
   }
+  
   
   _perfectGame() {
     if (this.frameCount === 10) {
@@ -80,7 +90,6 @@ class BowlingScore {
         this.bonusPoints += 20;
       });
     } else {
-
       this.framesArray.pop()
       this.framesArray.pop()
       this.framesArray.forEach((strike, i) => {
@@ -89,6 +98,7 @@ class BowlingScore {
       });
     }
   }
+  
   
   _strikeCalculation(i) {
     if (this.framesArray[i + 1] === 'X' && this.framesArray[i + 2] === 'X') {
@@ -101,9 +111,13 @@ class BowlingScore {
     } else if (this.framesArray[i + 2] === '/') {
       this.bonusPoints += 10
       this._spareConvert(i)
+    } else if (this.framesArray[i + 2] === '/') {
+      this.bonusPoints += 10
+      this._spareConvert(i)
     } else {
       this.bonusPoints += this.framesArray[i + 1] + this.framesArray[i + 2]
       this._spareConvert(i)
+
     }
   }
   
@@ -112,7 +126,8 @@ class BowlingScore {
   }
   
   _spareCalculation(i) {
-    if (this.frameCount === 10) {
+    if (this.framesArray[i + 1] === 'X') {
+      this.bonusPoints += 10
       this.framesArray[i] = (10 - this.framesArray[i - 1])
     } else {
       this.bonusPoints += this.framesArray[i + 1]
@@ -131,7 +146,7 @@ scorecard.addFrame('X')
 scorecard.addFrame('X')
 scorecard.addFrame('X')
 scorecard.addFrame('X')
-scorecard.addFrame('X', 'X', 'X')
+scorecard.addFrame('X', 'X', 5)
 
 console.log(scorecard.calculateScore())
 

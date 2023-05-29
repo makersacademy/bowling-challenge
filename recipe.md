@@ -2,11 +2,17 @@
 
 ### variables
 
-Before calc
+Pre calc
 bowlingLog = [[10, 0], [10, 0], [7, 3], [6, 0], [9, 0]]
 
+Post calc
+bowlingScore = [ 27, 27+20=47, 47+16=63, 69, 78 ] 
+
+if strike
+    wait for 2 more rolls before adding to postCalc
 
 ## Rules
+
 
 
 

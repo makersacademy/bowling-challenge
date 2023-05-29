@@ -45,7 +45,6 @@ app.post('/bonus', (req, res) => {
   let roll1 = parseInt(req.body.roll1) || 0
   let roll2 = parseInt(req.body.roll2) || 0
 
-console.log(roll1, roll2)
   if (isNaN(roll1) || isNaN(roll2)) {
     req.flash('error', 'Roll values must be numeric');
     res.redirect('bonus');

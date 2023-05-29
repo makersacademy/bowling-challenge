@@ -4,7 +4,7 @@ let frame;
 
 beforeEach(() => {
   frame = new Frame();
-})
+});
 
 describe('Frame class', () => {
   it('constructs', () => {
@@ -46,6 +46,14 @@ describe('Frame class', () => {
     it('returns true if roll is a strike', () => {
       frame.addRoll(10);
       expect(frame.isFrameOver()).toBe(true);
+    });
+  });
+
+  describe('sumFrame method', () => {
+    it('sums the rolls in a frame', () => {
+      frame.addRoll(2);
+      frame.addRoll(2);
+      expect(frame.sumFrame()).toBe(4);
     });
   });
 });

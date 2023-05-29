@@ -1,8 +1,14 @@
 const {BowlingScorecard} = require('../lib/index');
 
+let scorecard;
+
+beforeEach(() => {
+  scorecard = new BowlingScorecard();
+})
 
 describe('BowlingScorecard class', () => {
-  it('tbd', () => {
-    // test
+  it('constructs', () => {
+    expect(scorecard).toBeTruthy;
+    expect(scorecard).toHaveProperty('completedFrames', []);
   });
 });

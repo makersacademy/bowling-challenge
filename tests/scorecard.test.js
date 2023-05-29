@@ -2,7 +2,7 @@ const Scorecard = require('../docs/scorecard');
 
 describe('Scorecard', () => {
     it('adds the scores when no bonus points', () => {
-        let scorecard = new Scorecard()
+        let scorecard = new Scorecard();
 
         expect(scorecard.calculateScore()).toEqual(0)
         scorecard.addFrame(2, 5)
@@ -12,7 +12,7 @@ describe('Scorecard', () => {
     })
 
     it('adds bonus points when strike', () => {
-        let scorecard = new Scorecard()
+        let scorecard = new Scorecard();
 
         scorecard.addFrame(10, 0)
         scorecard.addFrame(2, 2)
@@ -21,7 +21,7 @@ describe('Scorecard', () => {
     })
 
     it('adds bonus points when two strikes in a row', () => {
-        let scorecard = new Scorecard()
+        let scorecard = new Scorecard();
 
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
@@ -31,7 +31,7 @@ describe('Scorecard', () => {
     })
 
     it('adds bonus points for spare', () => {
-        let scorecard = new Scorecard()
+        let scorecard = new Scorecard();
 
         scorecard.addFrame(1, 9)
         scorecard.addFrame(1, 3)
@@ -39,8 +39,8 @@ describe('Scorecard', () => {
         
     })
 
-    it('adds up to 0 for gutter game', () => {
-        let scorecard = new Scorecard()
+    it('adds to 0 for gutter game', () => {
+        let scorecard = new Scorecard();
 
         scorecard.addFrame(0, 0)
         scorecard.addFrame(0, 0)
@@ -57,8 +57,8 @@ describe('Scorecard', () => {
         
     })
 
-    it('adds up to 300 because perfect score', () => {
-        let scorecard = new Scorecard()
+    it('adds up to 300 for perfect score', () => {
+        let scorecard = new Scorecard();
 
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
@@ -77,7 +77,7 @@ describe('Scorecard', () => {
     })
 
     it('allows bonus points for spare on final frame', () => {
-        let scorecard = new Scorecard()
+        let scorecard = new Scorecard();
 
         scorecard.addFrame(10, 0)
         scorecard.addFrame(10, 0)
@@ -96,7 +96,7 @@ describe('Scorecard', () => {
     })
 
     it('allows bonus points for spare on final frame', () => {
-        let scorecard = new Scorecard()
+        let scorecard = new Scorecard();
 
         scorecard.addFrame(1, 4)
         scorecard.addFrame(4, 5)

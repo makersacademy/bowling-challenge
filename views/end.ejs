@@ -2,7 +2,11 @@
 <body>
 
   <h1><%= end %></h1>
-  <h1> You finished the game </h1>
+  <% if(score === 300 ) { %>
+  <h1> Congrats, You finished with a perfect score </h1>
+  <% }else{ %>
+    <h1>  You finished the game </h1>
+    <% }%>
   <h1> Play again? </h1>
     
   <form action="/" method="GET">

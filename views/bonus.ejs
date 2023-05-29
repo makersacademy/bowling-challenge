@@ -5,14 +5,14 @@
   <h1> Bonus rolls</h1>
   <% if (spare === true) { %>
     <p><%=errors%></p>
-  <form action="/end" method="GET">
+  <form action="/bonus" method="POST">
     <input name="roll1" placeholder="first roll" type="number" min="0" max="10"/>
    
     <button type="submit">Submit</button>
   </form>
   <% } else {%>
     <p><%=errors%></p>
-    <form action="/end" method="GET">
+    <form action="/bonus" method="POST">
       <input name="roll1" placeholder="first roll" type="number" min="0" max="10"/>
       <input name="roll2" placeholder="second roll" type="number" min="0" max="10"/>
      

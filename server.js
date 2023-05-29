@@ -22,7 +22,7 @@ app.get('/bonus', (req, res) => {
   points = game.getScore()
   turn = game.frameNum.length+1
   spare = false
-  if (game.strike + game.spare === 2) {
+  if (game.strike + game.spare > 1) {
     spare = false
   } else {
     spare = true
@@ -41,10 +41,30 @@ app.get('/bonus', (req, res) => {
     res.redirect('/');
   }
 });
+app.post('/bonus', (req, res) => {
+  let roll1 = parseInt(req.body.roll1) || 0
+  let roll2 = parseInt(req.body.roll2) || 0
+
+console.log(roll1, roll2)
+  if (isNaN(roll1) || isNaN(roll2)) {
+    req.flash('error', 'Roll values must be numeric');
+    res.redirect('bonus');
+  } else if(  roll1 > 10 || roll2 > 10 ) {
+    req.flash('error', "rolls can't be more than 1");
+    res.redirect('bonus');
+  } else if( roll1 < 0 || roll2 < 0) {
+    req.flash('error', 'roll values cant be negative');
+    res.redirect('bonus');
+  } else {
+    game.addScores(roll1,roll2)
+    res.redirect('/end');
+  }
+})
 app.get('/end', (req, res) => {
 
    data = {
-    end: game.addScores(0,0)
+    end: game.addScores(0,0),
+    score: game.score
    }
    game.reset()
   res.render('end', data);
@@ -61,12 +81,8 @@ app.get('/', (req, res) => {
     frame: turn,
     errors: errors
   };
-if(game.frameNum.length === 10 && game.frameNum[frameNum.length-1][0] === 10){
-    res.redirect('bonus');
-   } else if(game.frameNum.length === 10 ){
+ if(game.frameNum.length === 10 ){
     res.redirect('end');
-  } else if (game.frameNum.length === 10 && (game.frameNum[game.frameNum.length-1][0]+ game.frameNum[game.frameNum.length-1][1] === 10)){
-    res.redirect('/bonus');
   } else {
   res.render('index', data);
   }
@@ -88,7 +104,9 @@ app.post('/', (req, res) => {
   }
   if (game.frameNum.length === 10 && game.frameNum[game.frameNum.length-1][0] === 10){
       res.redirect('/bonus');
-  }else if (game.frameNum.length <10){
+  } else if (game.frameNum.length === 10 && (game.frameNum[game.frameNum.length-1][0]+ game.frameNum[game.frameNum.length-1][1] === 10)){
+        res.redirect('/bonus');
+      } else if (game.frameNum.length <10){
   res.redirect('/');
   }
   else{

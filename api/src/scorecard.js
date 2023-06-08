@@ -60,4 +60,14 @@ class Scorecard {
   }
 }
 
+
+const scorecard = new Scorecard()
+for(let i = 0 ; i < 9 ; i ++) {
+  scorecard.addFrame(10);
+}
+console.log(scorecard.currentScore())
+scorecard.addFrame(10, 10, 10);
+scorecard.addFrame(2, 4);
+console.log(scorecard.currentScore())
+
 module.exports = Scorecard;

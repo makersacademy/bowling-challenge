@@ -1,91 +1,70 @@
+# Bowling Challenge
 
-Bowling Challenge
-=================
+This repository contains a JavaScript implementation of a bowling scorecard. The purpose of this project is to count and sum the scores of a bowling game for one player. It consists of 10 frames, and the player tries to knock down 10 pins in each frame. The score of a frame is determined by the number of knocked down pins plus bonuses for strikes and spares.
 
-* Feel free to use google, your notes, books, etc. but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday week
+## Getting Started
 
-## The Task
+To use the bowling scorecard, follow the steps below:
 
-**THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. AN ACTUAL USER INTERFACE IS OPTIONAL**
+1. Fork this repository and clone it to your local machine.
+2. Open the project in your preferred JavaScript development environment.
+3. Use the provided `Scorecard` class to interact with the scorecard.
+4. You can add frames and calculate the score using the `addFrame` and `calculateScore` methods, respectively.
+5. Feel free to explore and extend the functionality by adding any additional methods you find useful.
 
-Count and sum the scores of a bowling game for one player (in JavaScript). 
+## Usage Example
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+Here's an example of how the bowling scorecard can be used:
 
-Start by looking in detail at the rules and the example of scoring for a complete game given below.
-
-An example of how your code might be used could be:
-
-```javaScript
-let scorecard = new Scorecard()
-scorecard.calculateScore() // returns 0
-scorecard.addFrame(2, 5) 
-scorecard.addFrame(3, 5)
-scorecard.calculateScore() // returns 15
+```javascript
+let scorecard = new Scorecard();
+scorecard.calculateScore(); // returns 0
+scorecard.addFrame(2, 5);
+scorecard.addFrame(3, 5);
+scorecard.calculateScore(); // returns 15
 ```
 
-But feel free to add other methods if you think they are useful.
+You can create an instance of the `Scorecard` class, add frames using the `addFrame` method, and calculate the score using the `calculateScore` method.
 
-As usual please start by
+## Testing
 
-* Forking this repo
+Test-driven development is encouraged for this project. You can write tests using your preferred testing framework to ensure the correctness of your implementation. However, it is not necessary to include the tests in this repository.
 
-* Using test-driven development (if you decide to write a user interface, then make sure you have looked at the chapters on mocking).
+## Optional Extras
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am. 
+If you want to challenge yourself further, you can consider the following optional extras:
 
-___STRONG HINT, IGNORE AT YOUR PERIL:___ Bowling is a deceptively complex game. Careful thought and thorough diagramming — both before and throughout — will save you literal hours of your life.
+- Set up Travis CI to automate the testing process.
+- Integrate ESLint into your codebase to enforce JavaScript code conventions.
+- Create a user interface class that allows running a game from the command line.
 
-### Optional Extras
+Feel free to explore these extras in any order you prefer.
 
-In any order you like:
+## Bowling Rules and Scoring
 
-* Set up [Travis CI](https://travis-ci.org) to run your tests.
-* Add [ESLint](http://eslint.org/) to your codebase and make your code conform.
-* Create a UserInterface class, allowing you to run a game from the command line.
-
-You might even want to start with ESLint early on in your work — to help you
-learn Javascript conventions as you go along.
-
-## Bowling — how does it work?
+To better understand the rules and scoring of bowling, please refer to the rules and examples provided below:
 
 ### Strikes
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+A strike occurs when the player knocks down all 10 pins with the first roll in a frame. The frame ends immediately, and the bonus for that frame is the number of pins knocked down by the next two rolls. The next frame is considered for the bonus unless the player rolls another strike.
 
 ### Spares
 
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+A spare occurs when the player knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (the first roll of the next frame).
 
-### 10th frame
+### 10th Frame
 
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+In the 10th frame, if the player rolls a strike or spare, they can roll additional balls for the bonus. However, the player can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus and not for the regular frame count.
 
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
+- Example 1: 10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
+- Example 2: 1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
 
 ### Gutter Game
 
-A Gutter Game is when the player never hits a pin (20 zero scores).
+A Gutter Game occurs when the player fails to hit any pins in all frames, resulting in 20 zero scores.
 
 ### Perfect Game
 
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
+A Perfect Game occurs when the player rolls 12 strikes, including 10 regular strikes and 2 strikes for the bonus in the 10th frame. A Perfect Game scores 300 points.
 
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-## Code Review
-
-In code review we'll be hoping to see:
-
-* All tests passing
-* The code is elegant: every class has a clear responsibility, methods are short etc.
-
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Note that referring to this rubric in advance may make the challenge somewhat easier.  You should be the judge of how much challenge you want.
+For more information on ten-pin bowling, you can

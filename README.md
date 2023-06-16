@@ -52,3 +52,7 @@ Check if the game is a perfect game or gutter game:
 
 ![bowling-challenge-jest](./screenshots/bowling-challenge-jest.png)
 ![bowling-challenge-node](./screenshots/bowling-challenge-node.png)
+
+## Reflections
+
+This challenge was completed after one week of learning Javascript, following on from completing [the same challenge in Ruby](https://github.com/tomcarmichael/bowling-challenge-ruby). Although I did not implement a UI via the command line in this Javascript version, I tried to design and write the program in a way that would make it easily extendable for such a feature. A key goal for me was to write the program in such a way that scores were updated as soon as possible, during the game (as they would be in a bowling alley) something made more complex by the rules around bonus points for strikes and spares which are based on the scores in the subsequent frames. In the Ruby version of the challenge, scores were calculated at the end of the game only, and the user interface code was not sufficiently separated from the rest of the game logic. In this version of the program, I feel I was able to improve on both of those problems.

@@ -56,12 +56,9 @@ class Frame {
   }
 
   totalFrameScore() {
-    return (
-      this.bonusScore +
-      this.ballScores.reduce(
-        (accumulator, currentValue) => accumulator + currentValue
-      )
-    );
+    const frameScore = this.frameScore();
+    const bonusScore = this.getBonusScore();
+    return frameScore + bonusScore;
   }
 }
 

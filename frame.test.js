@@ -23,8 +23,24 @@ describe("Frame", () => {
     expect(frame.totalFrameScore()).toBe(18);
   });
 
+  test(".setStrike sets ball 1 score to 10", () => {
+    frame.setStrike();
+    expect(frame.getBallScore(1)).toBe(10);
+  });
+
   test(".getStrike returns true if the frame has a strike", () => {
     frame.setStrike();
     expect(frame.getStrike()).toBe(true);
+  });
+
+  test(".setSpare sets ball 2 score", () => {
+    frame.setBallScore(1, 4);
+    frame.setSpare();
+    expect(frame.getBallScore(2)).toBe(6);
+  });
+
+  test(".getSpare returns true if the frame has a spare", () => {
+    frame.setSpare();
+    expect(frame.getSpare()).toBe(true);
   });
 });

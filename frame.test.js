@@ -33,6 +33,11 @@ describe("Frame", () => {
     expect(frame.getStrike()).toBe(true);
   });
 
+  test(".setBonusScore and .getBonusScore set and return a frame bonus", () => {
+    frame.setBonusScore(15);
+    expect(frame.getBonusScore()).toBe(15);
+  });
+
   test(".setSpare sets ball 2 score", () => {
     frame.setBallScore(1, 4);
     frame.setSpare();
@@ -42,5 +47,12 @@ describe("Frame", () => {
   test(".getSpare returns true if the frame has a spare", () => {
     frame.setSpare();
     expect(frame.getSpare()).toBe(true);
+  });
+
+  test(".checkCompleteFrame returns true if two balls bowled", () => {
+    frame.setBallScore(1, 5);
+    expect(frame.checkCompleteFrame()).toBe(false);
+    frame.setBallScore(2, 3);
+    expect(frame.checkCompleteFrame()).toBe(true);
   });
 });

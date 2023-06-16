@@ -6,6 +6,14 @@ class Frame {
     this.strike = false;
   }
 
+  checkCompleteFrame() {
+    if (this.getBallScore(1) !== 0 && this.getBallScore(2) !== 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   frameScore() {
     return this.ballScores.reduce(
       (accumulator, currentValue) => accumulator + currentValue
@@ -14,6 +22,10 @@ class Frame {
 
   getBallScore(ball) {
     return this.ballScores[ball - 1];
+  }
+
+  getBonusScore() {
+    return this.bonusScore;
   }
 
   getSpare() {

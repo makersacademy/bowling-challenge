@@ -2,9 +2,10 @@ class Frame {
   constructor() {
     this.ballScores = [0, 0, 0];
     this.bonusScore = 0;
+    this.strike = false;
   }
 
-  addBallScore(ball, score) {
+  setBallScore(ball, score) {
     this.ballScores[ball - 1] = score;
   }
 
@@ -18,6 +19,14 @@ class Frame {
     );
   }
 
+  getStrike() {
+    return this.strike;
+  }
+
+  setStrike() {
+    this.strike = true;
+  }
+
   totalFrameScore() {
     return (
       this.bonusScore +
@@ -27,7 +36,7 @@ class Frame {
     );
   }
 
-  updateBonusScore(bonus) {
+  setBonusScore(bonus) {
     this.bonusScore += bonus;
   }
 }

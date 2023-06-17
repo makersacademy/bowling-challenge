@@ -27,14 +27,14 @@ class Scoreboard {
   }
 
   isStrike(rollIndex) {
-    return this.rolls[rollIndex] === 10;
+    return parseInt(this.rolls[rollIndex]) === 10;
   }
 
   strikeBonus(rollIndex) {
     if (rollIndex === 18) {
       return (
         parseInt(this.rolls[rollIndex + 1]) +
-        parseInt(this, rolls[rollIndex + 2])
+        parseInt(this.rolls[rollIndex + 2])
       );
     } else {
       return (
@@ -45,7 +45,10 @@ class Scoreboard {
   }
 
   isSpare(rollIndex) {
-    return this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10;
+    return (
+      parseInt(this.rolls[rollIndex]) + parseInt(this.rolls[rollIndex + 1]) ===
+      10
+    );
   }
 
   spareBonus(rollIndex) {
@@ -56,6 +59,12 @@ class Scoreboard {
     return (
       parseInt(this.rolls[rollIndex]) + parseInt(this.rolls[rollIndex + 1])
     );
+  }
+
+  currentScore() {
+    return this.rolls.reduce((total, index) => {
+      return total + index;
+    }, 0);
   }
 }
 

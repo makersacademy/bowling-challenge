@@ -48,13 +48,20 @@ app.get("/", (req, res) => {
 });
 
 app.post("/score", (req, res) => {
-  const score = req.body.score;
-  frames[game.currentFrame].setBallScore(game.currentBall, req.body.score);
-
+  let input = req.body.score;
+  let currentFrame = game.currentFrame;
+  game.processCurrentBall(frames[currentFrame], input);
+  scoreCard.updatePendingBonuses(frames, currentFrame);
   if (game.checkContinue(frames)) {
     game.setNextBall(frames);
   }
 
+  res.redirect("/");
+});
+
+app.get("/reset", (req, res) => {
+  createFrames();
+  game.reset();
   res.redirect("/");
 });
 

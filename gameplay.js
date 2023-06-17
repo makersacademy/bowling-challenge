@@ -32,10 +32,10 @@ class Gameplay {
   }
 
   processCurrentBall(frame, input) {
-    if (input === "X") {
-      frame.setStrike(this.currentBall);
-    } else if (input === "/") {
+    if (frame.getBallScore(1) + Number(input) === 10) {
       frame.setSpare();
+    } else if (input === "X") {
+      frame.setStrike(this.currentBall);
     } else {
       frame.setBallScore(this.currentBall, Number(input));
     }
@@ -55,6 +55,11 @@ class Gameplay {
     } else {
       this.currentBall++;
     }
+  }
+
+  reset() {
+    this.currentFrame = 1;
+    this.currentBall = 1;
   }
 }
 

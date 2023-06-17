@@ -9,6 +9,10 @@ body {
   margin: 30px;
 }
 
+.resetLink {
+  text-align: center;
+}
+
 .btn {
   padding: 10px;
 }

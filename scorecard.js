@@ -3,6 +3,7 @@ class ScoreCard {
 
   updatePendingBonuses(frames, currentFrame) {
     this.updatePendingStrikes(frames, currentFrame);
+    this.updatePendingSpares(frames, currentFrame);
   }
 
   updatePendingStrikes(frames, currentFrame) {
@@ -14,8 +15,8 @@ class ScoreCard {
     }
 
     if (
-      frames[currentFrame].checkCompleteFrame &&
-      frames[previousFrame].checkCompleteFrame &&
+      frames[currentFrame].checkCompleteFrame() &&
+      frames[previousFrame].getStrike() &&
       frames[previousFrame].bonusScore === 0
     ) {
       frames[previousFrame].setBonusScore(frames[currentFrame].frameScore());
@@ -29,7 +30,7 @@ class ScoreCard {
       frames[currentFrame].getStrike() == true &&
       frames[previousFrame].getStrike() == true &&
       frames[frameBeforeLast].getStrike() == true &&
-      frames[frameBeforeLast].bonusScore() == 0
+      frames[frameBeforeLast].getBonusScore() == 0
     ) {
       frames[frameBeforeLast].setBonusScore(20);
     }
@@ -43,6 +44,15 @@ class ScoreCard {
       frames[frameBeforeLast].setBonusScore(
         10 + frames[currentFrame].frameScore()
       );
+    }
+  }
+
+  updatePendingSpares(frames, currentFrame) {
+    const previousFrame = currentFrame - 1;
+    if (previousFrame === 0) return;
+
+    if (frames[previousFrame].getSpare()) {
+      frames[previousFrame].setBonusScore(frames[currentFrame].getBallScore(1));
     }
   }
 }

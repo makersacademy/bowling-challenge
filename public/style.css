@@ -1,4 +1,5 @@
 body {
+  font-family: sans-serif;
 }
 .title {
   text-align: center;
@@ -7,10 +8,11 @@ body {
   text-align: center;
   margin: 30px;
 }
-.notice {
-  text-align: center;
-  color: #d3313a;
+
+.btn {
+  padding: 10px;
 }
+
 .final-score {
   text-align: center;
   color: green;
@@ -38,7 +40,7 @@ td {
 }
 table.scorecard th {
   border-bottom: 1px solid;
-  background-color: #d3313a;
+  background-color: #43aa8b;
   height: 30px;
   color: #fff;
 }

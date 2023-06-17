@@ -28,6 +28,10 @@ class Frame {
     return this.bonusScore;
   }
 
+  getRemainingPins() {
+    return 10 - this.frameScore();
+  }
+
   getSpare() {
     return this.spare;
   }

@@ -55,4 +55,9 @@ describe("Frame", () => {
     frame.setBallScore(2, 3);
     expect(frame.checkCompleteFrame()).toBe(true);
   });
+
+  test(".getRemaining pins returns the number of pins left in play", () => {
+    frame.setBallScore(1, 4);
+    expect(frame.getRemainingPins()).toBe(6);
+  });
 });

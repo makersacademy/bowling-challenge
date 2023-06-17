@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "engines": {
-    "node": "^10"
+    "node": "16.x"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,6 @@
     "multer": "^1.4.5-lts.1"
   },
   "scripts": {
-    "test": "jest"
+    "start": "node app.js"
   }
 }

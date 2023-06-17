@@ -38,4 +38,20 @@ describe("Scoreboard", () => {
 
     expect(scoreboard.score()).toBe(54);
   });
+
+  it("calculates the score for the perfect game", () => {
+    for (let i = 0; i < 12; i++) {
+      scoreboard.roll(10);
+    }
+
+    expect(scoreboard.score()).toBe(300);
+  });
+
+  it("calculates the score for a gutter game", () => {
+    for (let i = 0; i < 20; i++) {
+      scoreboard.roll(0);
+    }
+
+    expect(scoreboard.score()).toBe(0);
+  });
 });

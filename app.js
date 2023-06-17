@@ -3,15 +3,15 @@ const Gameplay = require("./gameplay");
 const ScoreCard = require("./scorecard");
 const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
-const multer = require("multer"); // v1.0.5
-const upload = multer(); // for parsing multipart/form-data
+const multer = require("multer");
+const upload = multer();
 
 const express = require("express");
 const app = express();
 const port = 3000;
 app.use(express.static("public"));
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "hbs");
 app.engine(
   "hbs",
@@ -35,19 +35,20 @@ const createFrames = () => {
 createFrames();
 
 app.get("/", (req, res) => {
-  console.log(frames[game.currentFrame].getRemainingPins());
+  const buttons = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "X"];
+  const remainingPins = frames[game.currentFrame].getRemainingPins() + 1;
+  const buttonsToShow = buttons.slice(0, remainingPins);
+
   res.render("scorecard", {
     layout: "index",
     scores: scoreCard.getBallScores(frames),
-    currentFrame: game.currentFrame,
-    currentBall: game.currentBall,
-    remainingPins: frames[game.currentFrame].getRemainingPins(),
+    checkContinue: game.checkContinue(frames),
+    buttonsToShow: buttonsToShow,
   });
 });
 
 app.post("/score", (req, res) => {
   const score = req.body.score;
-  console.log(score);
   frames[game.currentFrame].setBallScore(game.currentBall, req.body.score);
 
   if (game.checkContinue(frames)) {

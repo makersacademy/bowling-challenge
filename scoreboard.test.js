@@ -54,4 +54,28 @@ describe("Scoreboard", () => {
 
     expect(scoreboard.score()).toBe(0);
   });
+
+  it("calculates the score with having strikes and spares", () => {
+    scoreboard.roll(1);
+    scoreboard.roll(4);
+    scoreboard.roll(4);
+    scoreboard.roll(5);
+    scoreboard.roll(6);
+    scoreboard.roll(4);
+    scoreboard.roll(5);
+    scoreboard.roll(5);
+    scoreboard.roll(10);
+    scoreboard.roll(0);
+    scoreboard.roll(1);
+    scoreboard.roll(7);
+    scoreboard.roll(3);
+    scoreboard.roll(6);
+    scoreboard.roll(4);
+    scoreboard.roll(10);
+    scoreboard.roll(2);
+    scoreboard.roll(8);
+    scoreboard.roll(6);
+
+    expect(scoreboard.score()).toBe(133);
+  });
 });

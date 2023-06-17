@@ -49,7 +49,7 @@ class Scoreboard {
   }
 
   spareBonus(rollIndex) {
-    return parseInt(this.rolls[rollIndex + 1]);
+    return parseInt(this.rolls[rollIndex + 2]);
   }
 
   frameScore(rollIndex) {

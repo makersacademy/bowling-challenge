@@ -12,10 +12,33 @@ class Scoreboard {
     let rollIndex = 0;
 
     for (let frame = 1; frame <= 10; frame++) {
-      totalScore += this.frameScore(rollIndex);
-      rollIndex += 2;
+      if (this.isStrike(rollIndex)) {
+        totalScore += 10 + this.strikeBonus(rollIndex);
+        rollIndex += 1;
+      } else {
+        totalScore += this.frameScore(rollIndex);
+        rollIndex += 2;
+      }
     }
     return totalScore;
+  }
+
+  isStrike(rollIndex) {
+    return this.rolls[rollIndex] === 10;
+  }
+
+  strikeBonus(rollIndex) {
+    if (rollIndex === 18) {
+      return (
+        parseInt(this.rolls[rollIndex + 1]) +
+        parseInt(this, rolls[rollIndex + 2])
+      );
+    } else {
+      return (
+        parseInt(this.rolls[rollIndex + 1]) +
+        (parseInt(this.rolls[rollIndex + 2]) || 0)
+      );
+    }
   }
 
   frameScore(rollIndex) {

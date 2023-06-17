@@ -14,4 +14,16 @@ describe("Scoreboard", () => {
 
     expect(scoreboard.score()).toBe(80);
   });
+
+  it ("calculates the score with a strike", () => {
+    scoreboard.roll(10); // strike
+    scoreboard.roll(3);
+    scoreboard.roll(4);
+
+    for (let i = 0; i < 16; i++) {
+      scoreboard.roll(2);
+    }
+
+    expect(scoreboard.score()).toBe(56);
+  })
 });

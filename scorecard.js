@@ -1,6 +1,21 @@
 class ScoreCard {
   constructor() {}
 
+  getBallScores(frames) {
+    const scores = {};
+
+    for (i = 1; i <= 10; i++) {
+      scores[i] = {
+        ball1: frames[i].getBallScore(1),
+        ball2: frames[i].getBallScore(2),
+        ball3: frames[i].getBallScore(3),
+        total: frames[i].totalFrameScore(),
+      };
+    }
+
+    return scores;
+  }
+
   updatePendingBonuses(frames, currentFrame) {
     this.updatePendingStrikes(frames, currentFrame);
     this.updatePendingSpares(frames, currentFrame);

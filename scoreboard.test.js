@@ -15,7 +15,7 @@ describe("Scoreboard", () => {
     expect(scoreboard.score()).toBe(80);
   });
 
-  it ("calculates the score with a strike", () => {
+  it("calculates the score with a strike", () => {
     scoreboard.roll(10); // strike
     scoreboard.roll(3);
     scoreboard.roll(4);
@@ -25,5 +25,17 @@ describe("Scoreboard", () => {
     }
 
     expect(scoreboard.score()).toBe(56);
-  })
+  });
+
+  it("calculates the score with a spare", () => {
+    scoreboard.roll(5);
+    scoreboard.roll(5); // spare
+
+    scoreboard.roll(5);
+    for (let i = 0; i < 17; i++) {
+      scoreboard.roll(2);
+    }
+
+    expect(scoreboard.score()).toBe(54);
+  });
 });

@@ -15,6 +15,9 @@ class Scoreboard {
       if (this.isStrike(rollIndex)) {
         totalScore += 10 + this.strikeBonus(rollIndex);
         rollIndex += 1;
+      } else if (this.isSpare(rollIndex)) {
+        totalScore += 10 + this.spareBonus(rollIndex);
+        rollIndex += 2;
       } else {
         totalScore += this.frameScore(rollIndex);
         rollIndex += 2;
@@ -39,6 +42,14 @@ class Scoreboard {
         (parseInt(this.rolls[rollIndex + 2]) || 0)
       );
     }
+  }
+
+  isSpare(rollIndex) {
+    return this.rolls[rollIndex] + this.rolls[rollIndex + 1] === 10;
+  }
+
+  spareBonus(rollIndex) {
+    return parseInt(this.rolls[rollIndex + 1]);
   }
 
   frameScore(rollIndex) {

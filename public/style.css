@@ -17,14 +17,14 @@ body {
   padding: 10px;
 }
 
-.final-score {
+.totalScore {
   text-align: center;
-  color: green;
-  padding-bottom: 10px;
+  color: #43aa8b;
+  padding-bottom: 20px;
+  font-weight: bold;
+  font-size: 120%;
 }
-#playagain {
-  text-align: center;
-}
+
 table.scorecard {
   margin: 0 auto;
   width: 80%;

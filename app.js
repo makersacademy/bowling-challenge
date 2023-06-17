@@ -44,6 +44,7 @@ app.get("/", (req, res) => {
     scores: scoreCard.getBallScores(frames),
     checkContinue: game.checkContinue(frames),
     buttonsToShow: buttonsToShow,
+    totalScore: game.getFinalScore(frames),
   });
 });
 

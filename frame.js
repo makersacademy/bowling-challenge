@@ -45,7 +45,7 @@ class Frame {
   }
 
   setBonusScore(bonus) {
-    this.bonusScore += bonus;
+    this.bonusScore = bonus;
   }
 
   setSpare() {

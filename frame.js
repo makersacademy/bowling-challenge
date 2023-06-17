@@ -50,9 +50,9 @@ class Frame {
     this.setBallScore(2, score);
   }
 
-  setStrike() {
+  setStrike(ball) {
     this.strike = true;
-    this.setBallScore(1, 10);
+    this.setBallScore(ball, 10);
   }
 
   totalFrameScore() {

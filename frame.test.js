@@ -24,12 +24,12 @@ describe("Frame", () => {
   });
 
   test(".setStrike sets ball 1 score to 10", () => {
-    frame.setStrike();
+    frame.setStrike(1);
     expect(frame.getBallScore(1)).toBe(10);
   });
 
   test(".getStrike returns true if the frame has a strike", () => {
-    frame.setStrike();
+    frame.setStrike(1);
     expect(frame.getStrike()).toBe(true);
   });
 

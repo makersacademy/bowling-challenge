@@ -8,8 +8,16 @@ class ScoreCard {
       } else if (ball > 1 && frameNumber === 10) {
         return frame.getBallScore(ball);
       }
-    } else if (frame.getSpare() && ball > 1) {
+    } else if (
+      (frame.getSpare() && frameNumber < 10 && ball == 2) ||
+      (frameNumber === 10 && frame.getSpare() && (ball == 2 || ball == 3))
+    ) {
       return "/";
+    } else if (
+      frame.getBallScore(ball) === 0 &&
+      ball === frame.lastBallPlayed
+    ) {
+      return "-";
     } else {
       return frame.getBallScore(ball);
     }
@@ -44,7 +52,8 @@ class ScoreCard {
     }
 
     if (
-      frames[currentFrame].checkCompleteFrame() &&
+      frames[currentFrame].checkTwoBallsPlayed() &&
+      frames[currentFrame].getStrike() == false &&
       frames[previousFrame].getStrike() &&
       frames[previousFrame].bonusScore === 0
     ) {
@@ -56,10 +65,9 @@ class ScoreCard {
     }
 
     if (
-      frames[currentFrame].getStrike() == true &&
-      frames[previousFrame].getStrike() == true &&
-      frames[frameBeforeLast].getStrike() == true &&
-      frames[frameBeforeLast].getBonusScore() == 0
+      frames[currentFrame].getStrike() &&
+      frames[previousFrame].getStrike() &&
+      frames[frameBeforeLast].getStrike()
     ) {
       frames[frameBeforeLast].setBonusScore(20);
     }

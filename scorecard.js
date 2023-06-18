@@ -18,7 +18,7 @@ class ScoreCard {
   getGameScores(frames) {
     const scores = {};
 
-    for (i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 10; i++) {
       scores[i] = {
         ball1: this.formatScoreForDisplay(frames[i], i, 1),
         ball2: this.formatScoreForDisplay(frames[i], i, 2),

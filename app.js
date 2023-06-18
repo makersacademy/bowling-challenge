@@ -26,9 +26,9 @@ const game = new Gameplay();
 const scoreCard = new ScoreCard();
 
 const createFrames = () => {
-  for (i = 0; i < 10; i++) {
-    const frame = new Frame();
-    frames[i + 1] = frame;
+  for (let i = 1; i < 11; i++) {
+    const frame = new Frame(i);
+    frames[i] = frame;
   }
 };
 

@@ -36,7 +36,10 @@ class Frame {
     } else {
       if (this.lastBallPlayed === 1 && this.getBallScore(1) === 10) {
         return 10;
-      } else if (this.lastBallPlayed === 2 && this.frameScore() === 10) {
+      } else if (
+        this.lastBallPlayed === 2 &&
+        (this.frameScore() === 10 || this.getBallScore(2) === 10)
+      ) {
         return 10;
       } else {
         return 10 - this.frameScore();

@@ -1,14 +1,28 @@
 class ScoreCard {
   constructor() {}
 
-  getBallScores(frames) {
+  formatScoreForDisplay(frame, frameNumber, ball) {
+    if (frame.getStrike()) {
+      if (ball === 1 || (ball > 1 && frameNumber === 10)) {
+        return "X";
+      } else if (ball > 1 && frameNumber === 10) {
+        return frame.getBallScore(ball);
+      }
+    } else if (frame.getSpare() && ball > 1) {
+      return "/";
+    } else {
+      return frame.getBallScore(ball);
+    }
+  }
+
+  getGameScores(frames) {
     const scores = {};
 
     for (i = 1; i <= 10; i++) {
       scores[i] = {
-        ball1: frames[i].getBallScore(1),
-        ball2: frames[i].getBallScore(2),
-        ball3: frames[i].getBallScore(3),
+        ball1: this.formatScoreForDisplay(frames[i], i, 1),
+        ball2: this.formatScoreForDisplay(frames[i], i, 2),
+        ball3: this.formatScoreForDisplay(frames[i], i, 3),
         total: frames[i].totalFrameScore(),
       };
     }

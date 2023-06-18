@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 
   res.render("scorecard", {
     layout: "index",
-    scores: scoreCard.getBallScores(frames),
+    scores: scoreCard.getGameScores(frames),
     checkContinue: game.checkContinue(frames),
     buttonsToShow: buttonsToShow,
     totalScore: game.getFinalScore(frames),

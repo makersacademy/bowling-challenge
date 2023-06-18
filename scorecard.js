@@ -13,10 +13,7 @@ class ScoreCard {
       (frameNumber === 10 && frame.getSpare() && (ball == 2 || ball == 3))
     ) {
       return "/";
-    } else if (
-      frame.getBallScore(ball) === 0 &&
-      ball === frame.lastBallPlayed
-    ) {
+    } else if (frame.getBallScore(ball) === 0 && ball <= frame.lastBallPlayed) {
       return "-";
     } else {
       return frame.getBallScore(ball);

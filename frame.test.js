@@ -53,17 +53,24 @@ describe("Frame", () => {
     expect(frame.getSpare()).toBe(true);
   });
 
-  test(".checkCompleteFrame returns true if two balls bowled", () => {
+  test(".checkTwoBallsPlayed returns true if two balls bowled", () => {
     frame = new Frame(1);
     frame.setBallScore(1, 5);
-    expect(frame.checkCompleteFrame()).toBe(false);
+    expect(frame.checkTwoBallsPlayed()).toBe(false);
     frame.setBallScore(2, 3);
-    expect(frame.checkCompleteFrame()).toBe(true);
+    expect(frame.checkTwoBallsPlayed()).toBe(true);
   });
 
   test(".getRemaining pins returns the number of pins left in play", () => {
     frame = new Frame(1);
     frame.setBallScore(1, 4);
     expect(frame.getRemainingPins()).toBe(6);
+  });
+
+  test(".lastBallPlayed increments properly", () => {
+    frame = new Frame(1);
+    expect(frame.lastBallPlayed).toBe(0);
+    frame.setBallScore(1, 4);
+    expect(frame.lastBallPlayed).toBe(1);
   });
 });

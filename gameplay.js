@@ -13,9 +13,9 @@ class Gameplay {
       return false;
     } else if (
       this.currentFrame === 10 &&
-      frame.checkCompleteFrame() &&
-      frame.checkSpare() === false &&
-      frame.checkStrike() === false
+      frame.checkTwoBallsPlayed() &&
+      frame.getSpare() === false &&
+      frame.getStrike() === false
     ) {
       return false;
     } else {

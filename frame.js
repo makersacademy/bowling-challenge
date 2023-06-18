@@ -1,13 +1,21 @@
 class Frame {
-  constructor() {
+  constructor(frameNumber) {
+    this.frameNumber = frameNumber;
+    this.lastBallPlayed = 0;
     this.ballScores = [0, 0, 0];
     this.bonusScore = 0;
     this.spare = false;
     this.strike = false;
   }
 
-  checkCompleteFrame() {
-    if (this.getBallScore(1) !== 0 && this.getBallScore(2) !== 0) {
+  checkTwoBallsPlayed() {
+    if (this.lastBallPlayed === 2) {
+      return true;
+    } else if (
+      this.frameNumber === 10 &&
+      this.lastBallPlayed === 2 &&
+      this.getStrike() === false
+    ) {
       return true;
     } else {
       return false;
@@ -29,7 +37,17 @@ class Frame {
   }
 
   getRemainingPins() {
-    return 10 - this.frameScore();
+    if (this.frameNumber < 10) {
+      return 10 - this.frameScore();
+    } else {
+      if (this.lastBallPlayed === 1 && this.getBallScore(1) === 10) {
+        return 10;
+      } else if (this.lastBallPlayed === 2 && this.frameScore() === 10) {
+        return 10;
+      } else {
+        return 10;
+      }
+    }
   }
 
   getSpare() {
@@ -42,6 +60,7 @@ class Frame {
 
   setBallScore(ball, score) {
     this.ballScores[ball - 1] = score;
+    this.lastBallPlayed = ball;
   }
 
   setBonusScore(bonus) {

@@ -1,0 +1,49 @@
+<h1 class="title">Let’s bowl!</h1>
+{{#if checkContinue}}
+  <div id="buttons" class="buttons">
+    <form method="post" action="/score">
+      Score:
+      {{#each buttonsToShow}}
+        <input
+          type="submit"
+          name="score"
+          value="{{this}}"
+          class="btn btn-primary"
+        />
+      {{/each}}
+    </form>
+  </div>
+{{/if}}
+<div id="scorecard">
+  <table id="scorecardTable" class="scorecard" cellpadding="1" cellspacing="0">
+    <tr>
+      <th colspan="6">Frame 1</th>
+      <th colspan="6">Frame 2</th>
+      <th colspan="6">Frame 3</th>
+      <th colspan="6">Frame 4</th>
+      <th colspan="6">Frame 5</th>
+      <th colspan="6">Frame 6</th>
+      <th colspan="6">Frame 7</th>
+      <th colspan="6">Frame 8</th>
+      <th colspan="6">Frame 9</th>
+      <th colspan="6">Frame 10</th>
+    </tr>
+    <tr>
+      {{#each scores}}
+        <td colspan="3">{{#if this.ball1}}{{this.ball1}}{{/if}}</td><td
+          id="frame1"
+          colspan="3"
+        >{{#if this.ball2}}{{this.ball2}}{{/if}}{{#if
+            this.ball3
+          }}&nbsp;&nbsp;&nbsp;&nbsp;{{this.ball3}}{{/if}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      {{#each scores}}
+        <td colspan="6">{{#if this.total}}{{this.total}}{{/if}}</td>
+      {{/each}}
+    </tr>
+  </table>
+  <div class="totalScore">Total: {{totalScore}}</div>
+  <div class="resetLink"><a href="/reset">Reset the scorecard</a></div>
+</div>

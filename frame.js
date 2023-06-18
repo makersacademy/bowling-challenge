@@ -11,12 +11,6 @@ class Frame {
   checkTwoBallsPlayed() {
     if (this.lastBallPlayed === 2) {
       return true;
-    } else if (
-      this.frameNumber === 10 &&
-      this.lastBallPlayed === 2 &&
-      this.getStrike() === false
-    ) {
-      return true;
     } else {
       return false;
     }

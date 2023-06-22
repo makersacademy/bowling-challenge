@@ -10,11 +10,12 @@
   </head>
   <body>
 
-
+    <text id="title">Welcome to The Honest Pirate's Bowling ScoreCard App <span style="font-size:xx-small">(Thematic claims may depend on CSS implementation.)</span></text>
+    <br>
     <% if ( session.game_in_progress == true ) { %>
 
     <h2>Please enter your score for Frame <%= session.frame_num %> Roll <%= session.roll_num %> </h2>
-
+    <br>
     <label for="roll">What did you roll?</label>
     <form action="/add_frame" method="post">
       <select name="roll" id="roll-drop">
@@ -35,7 +36,7 @@
 
       <% } else if ( session.game_in_progress == false ) { %>
       
-        <div class="title">Game over! You Scored <%= scorecard.current_score() %></div>
+      <div id="title">Game over! You Scored <%= scorecard.current_score() %></div>
 
       <% } %>
 
@@ -67,7 +68,7 @@
   </li>
 
   <% } %>
-
+<br>
 </ul>
 
 <form action="end_game" method="post">

@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.urlencoded({ extended: true }));
 
-app.set('trust proxy', 1) // trust first proxy
+app.set('trust proxy', 1)
 app.use(session({
   secret: 'summer is coming',
   resave: false,
@@ -57,7 +57,6 @@ app.post('/add_frame', (req, res) => {
     const cardData = req.session.scorecard
     const scorecard = new ScoreCard(cardData.frames)
     frame.add_roll(parseInt(score))
-    console.log(req.session.frame_num)
     if (score == '10' && req.session.frame_num != 10 ) { // if a strike and not frame 10, score strike and move on to next frame
       frame.gen_string_rep()
       scorecard.add_frame(frame)
@@ -109,7 +108,6 @@ app.post('/add_frame', (req, res) => {
       scorecard.add_frame(frame)
       req.session.scorecard = scorecard
       req.session.game_in_progress = false
-      console.log(req.session.scorecard)
       res.redirect('/game')
   }
 })

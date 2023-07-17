@@ -24,7 +24,11 @@ $ jest
 
 # To use the scorecard
 $ node
-$ const game = require('./lib/)
+$ const game = require('./lib/scorecard.js)
+
+# While in node .addFrame(a,b) to add a score, .calculateScore() to calculate current score and addFrame10(a,b,c) to add the final frame
+$ game.addFrame(firstRoll, secondRoll)
+$ game.calculateScore()
 ```
 
 ## The Task

@@ -9,7 +9,7 @@ Bowling Challenge
 
 ## How to use 
 
-Listed below are the instructions I was given for this Makers Academy task. This is a task that is proved to be more difficult than the first expected, but one that I have finished successfully. It challenged the password P ability to create an algorithm with a scoring system that relies on future values 0 to obtain a correct output.
+Listed below are the instructions I was given for this Makers Academy task. This is a task that has proved to be more difficult than first expected, but one that I have finished successfully. It challenged my ability to create an algorithm with a scoring system that relies on future values to obtain a correct output.
 
 Bugs:
 - the program does not correctly score when multiple strokes are introduced, therefore do not use this as an actual scoring card if you're good at consistently getting strikes

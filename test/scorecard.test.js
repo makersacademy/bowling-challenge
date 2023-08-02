@@ -62,6 +62,56 @@ describe("Scorecard", () => {
 
             expect(scorecard.total()).toEqual(15);
         });
+
+        test('calculate the score with a strike', () => {
+            const scorecard = TestData.STRIKE
+
+            expect(scorecard.total()).toEqual(25);
+        });
+
+        test('calculate the score with spares and strikes', () => {
+            const scorecard = new Scorecard([[3,4],[5,5],[3,0],[10,0],[5,5],[1,2],[0,0],[5,0],[10,0],[5,0]])
+            // 7 + 13 + 3 + 20 + 11 + 3 + 0 + 5 + 15 + 5 = 82
+
+            expect(scorecard.total()).toEqual(82);
+        });
+
+        // double logic is incorrect
+        test('calculates a game with doubles', () => {
+            const scorecard = new Scorecard([[1,3],[10,0],[10,0],[3,6]])
+            // 4 + 23 + 19 + 9 = 61
+
+            expect(scorecard.total()).toEqual(55)
+        });
+
+        test('calculates a game with a turkey', () => {
+            const scorecard = new Scorecard([[1,3],[10,0],[10,0],[10,0],[3,5]])
+            // 4 + 30 + 28 + 18 + 8 = 88
+
+            expect(scorecard.total()).toEqual(83)
+        });
+
+        test('calculates a game with a double and turkey', () => {
+            const scorecard = new Scorecard([[1,3],[10,0],[10,0],[4,3],[10,0],[10,0],[10,0],[3,2],[10,0],[3,2]])
+
+            expect(scorecard.total()).toEqual(145)
+        });
+
+        test('calculates a game with a double in second last frame', () => {
+            const scorecard = new Scorecard([[1,3],[10,0],[10,0],[4,3],[10,0],[10,0],[10,0],[3,2],[10,0],[10,4,3]])
+            // 4 + 24 + 17 + 7 + 30 + 23 + 15 + 5 + 24 + 17 = 166
+
+            expect(scorecard.total()).toEqual(166)
+        });
+
+        test('calculates the perfect game', () => {
+            const scorecard = new Scorecard([[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,10,10]])
+            // 4 + 27 + 17 + 7 + 25 + 15 + 5
+
+            expect(scorecard.total()).toEqual(300)
+        });
+
+        // test comment
     });
 
 });

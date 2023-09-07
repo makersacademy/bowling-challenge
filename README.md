@@ -7,6 +7,30 @@ Bowling Challenge
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday week
 
+## How to use 
+
+Listed below are the instructions I was given for this Makers Academy task. This is a task that has proved to be more difficult than first expected, but one that I have finished successfully. It challenged my ability to create an algorithm with a scoring system that relies on future values to obtain a correct output.
+
+Bugs:
+- the program does not correctly score when multiple strokes are introduced, therefore do not use this as an actual scoring card if you're good at consistently getting strikes
+
+If you'd like to see this running for yourself, grab a copy of the repository and run the following commands 
+```
+# Setup our environment to use node latest version
+$ nvm use node
+
+# Run tests
+$ jest
+
+# To use the scorecard
+$ node
+$ const game = require('./lib/scorecard.js)
+
+# While in node .addFrame(a,b) to add a score, .calculateScore() to calculate current score and addFrame10(a,b,c) to add the final frame
+$ game.addFrame(firstRoll, secondRoll)
+$ game.calculateScore()
+```
+
 ## The Task
 
 **THIS IS NOT A BOWLING GAME, IT IS A BOWLING SCORECARD. DO NOT GENERATE RANDOM ROLLS. AN ACTUAL USER INTERFACE IS OPTIONAL**

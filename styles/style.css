@@ -3,12 +3,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   flex-direction: column;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 1rem;
-  margin: 0 1rem;
+  width: 96%;
+  top: 30%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-30%);
+  padding: 0 1rem;
+  margin: 0;
 }
 
 .scoreboard {

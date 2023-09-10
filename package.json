@@ -15,8 +15,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "open index.html",
-    "build": "mkdir -p dist && cp -R * dist/"
+    "start": "open index.html"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,83 @@
+.btn {
+  font-family: "Oswald";
+  border: none;
+  outline: none;
+  background-color: inherit;
+  /* padding: 14px 28px; */
+  font-size: 30px;
+  cursor: pointer;
+  display: inline-block;
+}
+.btn:active {
+  /* background-color: lightblue; */
+  /* box-shadow: 0 5px #666; */
+  transform: translateY(2px);
+}
+
+h1 {
+  font-family: "Oswald";
+}
+h3 {
+  font-family: "Oswald";
+}
+
+.box {
+  background-image: url(https://download.hipwallpaper.com/desktop/1600/900/24/77/Ovn5dc.jpg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  width: 1500px;
+  height: 500px;
+  border: 5px solid purple;
+  /* padding: 40px; */
+  margin: 15px;
+}
+
+body {
+  background-color: lightblue;
+}
+
+table.score {
+  margin: 0 auto;
+  width: 90%;
+  font-size: 20px;
+  border: 1px solid;
+  text-align: center;
+  table-layout: fixed;
+  margin-bottom: 40px;
+}
+table.score th,
+tr,
+td {
+  padding: 0;
+  /* vertical-align: middle; */
+  font-family: "Oswald";
+  font-size: 20px;
+  text-align: center;
+}
+table.score th {
+  border-bottom: 1px solid;
+  height: 30px;
+}
+table.score th {
+  border-right: 1px solid;
+  background-color: red;
+  height: 30px;
+  color: #fff;
+}
+table.score td {
+  height: 50px;
+  background: white;
+}
+table.score tr td:not(:last-child) {
+  border-right: 1px solid;
+}
+table.score tr:nth-child(2) td:nth-child(even) {
+  border-bottom: 1px solid;
+}
+table.score tr:nth-child(2) td:nth-child(odd) {
+  border-bottom: 1px solid;
+}
+table.score tr:nth-child(2) td:last-child {
+  border-bottom: 1px solid;
+}

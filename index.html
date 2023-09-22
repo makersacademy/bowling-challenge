@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<meta charset="UTF-8" />
+<center>
+  <html>
+    <head>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Oswald"
+      />
+      <link
+        href="https://afeld.github.io/emoji-css/emoji.css"
+        rel="stylesheet"
+      />
+      <link rel="stylesheet" type="text/css" href="./style/style.css" />
+
+      <title>Bowling</title>
+      <script src="jquery.js"></script>
+      <script src="./public/javascripts/interface.js"></script>
+      <script src="./public/javascripts/bowling.js"></script>
+    </head>
+    <div class="box">
+      <body>
+        <h1 style="font-size: 50px; color: white;">
+          <i class="em em-bowling"></i> Bowling : Score Card
+          <i class="em em-bowling"></i>
+        </h1>
+        <section>
+          <button class="btn" id="0">
+            <i class="em em-zero"></i>
+          </button>
+          <button class="btn" id="1">
+            <i class="em em-one"></i>
+          </button>
+          <button class="btn" id="2">
+            <i class="em em-two"></i>
+          </button>
+          <button class="btn" id="3">
+            <i class="em em-three"></i>
+          </button>
+          <button class="btn" id="4">
+            <i class="em em-four"></i>
+          </button>
+          <button class="btn" id="5">
+            <i class="em em-five"></i>
+          </button>
+          <button class="btn" id="6">
+            <i class="em em-six"></i>
+          </button>
+          <button class="btn" id="7">
+            <i class="em em-seven"></i>
+          </button>
+          <button class="btn" id="8">
+            <i class="em em-eight"></i>
+          </button>
+          <button class="btn" id="9">
+            <i class="em em-nine"></i>
+          </button>
+          <button class="btn" id="10">
+            <i class="em em-keycap_ten"></i>
+          </button>
+          <table id="scoreTable" class="score" cellpadding="1" cellspacing="0">
+            <tr>
+              <!-- these are the headers for each column -->
+              <th colspan="6">Frame 1</th>
+              <th colspan="6">Frame 2</th>
+              <th colspan="6">Frame 3</th>
+              <th colspan="6">Frame 4</th>
+              <th colspan="6">Frame 5</th>
+              <th colspan="6">Frame 6</th>
+              <th colspan="6">Frame 7</th>
+              <th colspan="6">Frame 8</th>
+              <th colspan="6">Frame 9</th>
+              <th colspan="6">Frame 10</th>
+            </tr>
+            <tr>
+              <!-- each bowl is the first roll -->
+              <td id="bowl1" colspan="3"></td>
+              <td id="frame1" colspan="3"></td>
+              <td id="bowl2" colspan="3"></td>
+              <td id="frame2" colspan="3"></td>
+              <td id="bowl3" colspan="3"></td>
+              <td id="frame3" colspan="3"></td>
+              <td id="bowl4" colspan="3"></td>
+              <td id="frame4" colspan="3"></td>
+              <td id="bowl5" colspan="3"></td>
+              <td id="frame5" colspan="3"></td>
+              <td id="bowl6" colspan="3"></td>
+              <td id="frame6" colspan="3"></td>
+              <td id="bowl7" colspan="3"></td>
+              <td id="frame7" colspan="3"></td>
+              <td id="bowl8" colspan="3"></td>
+              <td id="frame8" colspan="3"></td>
+              <td id="bowl9" colspan="3"></td>
+              <td id="frame9" colspan="3"></td>
+              <td id="bowl10" colspan="3"></td>
+              <td id="frame10" colspan="3"></td>
+            </tr>
+            <tr>
+              <td colspan="6" id="totaler0"></td>
+              <td colspan="6" id="totaler1"></td>
+              <td colspan="6" id="totaler2"></td>
+              <td colspan="6" id="totaler3"></td>
+              <td colspan="6" id="totaler4"></td>
+              <td colspan="6" id="totaler5"></td>
+              <td colspan="6" id="totaler6"></td>
+              <td colspan="6" id="totaler7"></td>
+              <td colspan="6" id="totaler8"></td>
+              <td colspan="6" id="totaler9"></td>
+            </tr>
+          </table>
+        </section>
+      </body>
+    </div>
+  </html>
+</center>

@@ -308,7 +308,7 @@ describe('Scorecard - Perfect Game', () => {
         expect(scorecard.getFrameTotal(scorecard.frames[4])).toBe(30);
         expect(scorecard.getFrameTotal(scorecard.frames[5])).toBe(30);
         expect(scorecard.getFrameTotal(scorecard.frames[6])).toBe(30);
-        expect(scorecard.getFrameTotal(scorecard.frames[7])).toBe(20); //only one roll ahead to count bonus
+        expect(scorecard.getFrameTotal(scorecard.frames[7])).toBe(20); //only one roll ahead to count bonus // ERROR, getting 10 instead of 30
         expect(scorecard.getFrameTotal(scorecard.frames[8])).toBe(10); //no rolls ahead to count bonus
         expect(scorecard.getTotalGameScoreAtFrame(9)).toBe(230);
         expect(scorecard.getTotalGameScore()).toBe(230);
@@ -336,7 +336,7 @@ describe('Scorecard - Perfect Game', () => {
         expect(scorecard.getFrameTotal(scorecard.frames[5])).toBe(30);
         expect(scorecard.getFrameTotal(scorecard.frames[6])).toBe(30);
         expect(scorecard.getFrameTotal(scorecard.frames[7])).toBe(30); 
-        expect(scorecard.getFrameTotal(scorecard.frames[8])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[8])).toBe(30); // ERROR, getting 10 instead of 30
         expect(scorecard.getFrameTotal(scorecard.frames[9])).toBe(30);
         expect(scorecard.getTotalGameScoreAtFrame(10)).toBe(300);
         expect(scorecard.getTotalGameScore()).toBe(300);

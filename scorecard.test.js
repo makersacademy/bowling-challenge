@@ -159,7 +159,7 @@ describe('Scorecard - example score', () => {
             [10, 0]
         ]);
         expect(scorecard.getFrameTotal(scorecard.frames[8])).toBe(10);
-        expect(scorecard.getTotalGameScoreAtFrame(8)).toBe(97);
+        expect(scorecard.getTotalGameScoreAtFrame(9)).toBe(107);
     });
 
     test('Frame 10: [2, 8, 6] F9 STRIKE BONUS => Framescore at F9: 20; Total Score at F9: 117', () =>{
@@ -186,3 +186,159 @@ describe('Scorecard - example score', () => {
         expect(scorecard.getTotalGameScoreAtFrame(10)).toBe(133);
     });
 })
+
+
+describe('Scorecard - Gutter Game', () => {
+    // arrange
+    const scorecard = new ScoreCard();
+
+    test('Frame 1: [0,0]: FrameScore at F1: 0; TotalScore at F1: 0;', () =>{
+        scorecard.addFrame(0,0); //Open
+        expect(scorecard.frames).toEqual([
+            [0, 0]
+        ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[0])).toBe(0);
+        expect(scorecard.getTotalGameScoreAtFrame(1)).toBe(0);
+        expect(scorecard.getTotalGameScore()).toBe(0);
+    });
+    test('Frame 2: [0,0]: FrameScore at F2: 0; TotalScore at F2: 0;', () =>{
+        scorecard.addFrame(0,0); //Open
+        expect(scorecard.frames).toEqual([
+            [0, 0],
+            [0, 0]
+        ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[1])).toBe(0);
+        expect(scorecard.getTotalGameScoreAtFrame(2)).toBe(0);
+        expect(scorecard.getTotalGameScore()).toBe(0);
+    });
+    test('Frame 3: [0,0]: FrameScore at 3: 0; TotalScore at F3: 0;', () =>{
+        scorecard.addFrame(0,0); //Open
+        expect(scorecard.frames).toEqual([
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[2])).toBe(0);
+        expect(scorecard.getTotalGameScoreAtFrame(3)).toBe(0);
+        expect(scorecard.getTotalGameScore()).toBe(0);
+    });
+    test('Frame 4-9: [0,0]: FrameScore at F9: 0; TotalScore at F9: 0;', () =>{
+        scorecard.addFrame(0,0); //Open F4
+        scorecard.addFrame(0,0); //Open F5
+        scorecard.addFrame(0,0); //Open F6
+        scorecard.addFrame(0,0); //Open F7
+        scorecard.addFrame(0,0); //Open F8
+        scorecard.addFrame(0,0); //Open F9
+
+        expect(scorecard.frames).toEqual([
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[8])).toBe(0);
+        expect(scorecard.getTotalGameScoreAtFrame(9)).toBe(0);
+        expect(scorecard.getTotalGameScore()).toBe(0);
+    });
+    test('Frame 10: [0,0]: FrameScore at 10: 0; TotalScore at 10: 0;', () =>{
+        scorecard.addFrame(0,0); //Open F10
+
+        expect(scorecard.frames).toEqual([
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0],
+            [0, 0]
+        ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[9])).toBe(0);
+        expect(scorecard.getTotalGameScoreAtFrame(10)).toBe(0);
+        expect(scorecard.getTotalGameScore()).toBe(0);
+    });
+    
+});
+
+describe('Scorecard - Perfect Game', () => {
+    // arrange
+    const scorecard = new ScoreCard();
+
+    test('Frame 1: [10,0]: FrameScore at F1: 10; TotalScore at F1: 10;', () =>{
+        scorecard.addFrame(10,0); //Strike F1
+        expect(scorecard.frames).toEqual([
+            [10, 0]
+        ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[0])).toBe(10);
+        expect(scorecard.getTotalGameScoreAtFrame(1)).toBe(10);
+        expect(scorecard.getTotalGameScore()).toBe(10);
+    });
+    test('Frame 2-9: [10,0]: FS7: 30, FS8: 20; FS9: 10; TotalScore at F9: 230;', () =>{
+        scorecard.addFrame(10,0); //Strike F2
+        scorecard.addFrame(10,0); //Strike F3
+        scorecard.addFrame(10,0); //Strike F4
+        scorecard.addFrame(10,0); //Strike F5
+        scorecard.addFrame(10,0); //Strike F6
+        scorecard.addFrame(10,0); //Strike F7
+        scorecard.addFrame(10,0); //Strike F8
+        scorecard.addFrame(10,0); //Strike F9
+
+        expect(scorecard.frames).toEqual([
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0]
+        ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[0])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[1])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[2])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[3])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[4])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[5])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[6])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[7])).toBe(20); //only one roll ahead to count bonus
+        expect(scorecard.getFrameTotal(scorecard.frames[8])).toBe(10); //no rolls ahead to count bonus
+        expect(scorecard.getTotalGameScoreAtFrame(9)).toBe(230);
+        expect(scorecard.getTotalGameScore()).toBe(230);
+    });
+    test('Frame 10: [10, 10, 10]: FS7: 30, FS8: 30; FS9: 30; TotalScore at F10: 300;', () =>{
+        scorecard.add10thFrame(10, 10, 10); //Strike F10
+
+        expect(scorecard.frames).toEqual([
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 0],
+            [10, 10, 10]
+        ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[0])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[1])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[2])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[3])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[4])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[5])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[6])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[7])).toBe(30); 
+        expect(scorecard.getFrameTotal(scorecard.frames[8])).toBe(30);
+        expect(scorecard.getFrameTotal(scorecard.frames[9])).toBe(30);
+        expect(scorecard.getTotalGameScoreAtFrame(10)).toBe(300);
+        expect(scorecard.getTotalGameScore()).toBe(300);
+    });
+});

@@ -26,7 +26,7 @@ describe('Scorecard - example score', () => {
         expect(scorecard.getTotalGameScore()).toBe(14);
     });
 
-    test('Frame 3: [6, 4] SPARE; FrameScore at F3: 10*; TotalScore at F3: 24', () => {
+    test('Frame 3: [6, 4] SPARE; FrameScore at F3: 10*; TotalScore at F3: 24*', () => {
         scorecard.addFrame(6, 4); //Spare F3
         expect(scorecard.frames).toEqual([
             [1, 4],
@@ -46,7 +46,7 @@ describe('Scorecard - example score', () => {
         expect(scorecard.getTotalGameScoreAtFrame(3)).toBe(29);
     });
 
-    test('Frame 4: [5, 5] SPARE; FrameScore at F4: 10*; TotalScore at F4: 39', () => {
+    test('Frame 4: [5, 5] SPARE; FrameScore at F4: 10*; TotalScore at F4: 39*', () => {
         expect(scorecard.frames).toEqual([
             [1, 4],
             [4, 5],
@@ -67,7 +67,7 @@ describe('Scorecard - example score', () => {
         expect(scorecard.getTotalGameScoreAtFrame(4)).toBe(49);
     });
 
-    test('Frame 5: [10, 0] STRIKE; FrameScore at F5: 10*; TotalScore at F5: 59', () => {
+    test('Frame 5: [10, 0] STRIKE; FrameScore at F5: 10*; TotalScore at F5: 59*', () => {
         expect(scorecard.frames).toEqual([
                     [1, 4],
                     [4, 5],
@@ -102,4 +102,87 @@ describe('Scorecard - example score', () => {
         expect(scorecard.getTotalGameScore()).toBe(61);
     });
 
+    test('Frame 7: [7, 3] SPARE; FrameScore at F7: 10*; TotalScore at F7: 71*', () => {
+        scorecard.addFrame(7, 3); //Spare F7
+        expect(scorecard.frames).toEqual([
+                    [1, 4],
+                    [4, 5],
+                    [6, 4],
+                    [5, 5],
+                    [10, 0],
+                    [0, 1],
+                    [7, 3]
+                ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[6])).toBe(10);
+        expect(scorecard.getTotalGameScoreAtFrame(7)).toBe(71);
+        expect(scorecard.getTotalGameScore()).toBe(71);
+    });
+    
+    test('Frame 8: [6,4] F7 SPARE BONUS => FrameScore at F7: 16; Total Score at F7: 77', ()=>{
+        scorecard.addFrame(6, 4); //Spare F8
+        expect(scorecard.getFrameTotal(scorecard.frames[6])).toBe(16);
+        expect(scorecard.getTotalGameScoreAtFrame(7)).toBe(77);
+    });
+
+    test('Frame 8: [6,4] SPARE: FrameScore at F8: 10*; Total Score at F8: 87*', ()=>{
+        expect(scorecard.frames).toEqual([
+            [1, 4],
+            [4, 5],
+            [6, 4],
+            [5, 5],
+            [10, 0],
+            [0, 1],
+            [7, 3],
+            [6, 4]
+        ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[7])).toBe(10);
+        expect(scorecard.getTotalGameScoreAtFrame(8)).toBe(87);
+        expect(scorecard.getTotalGameScore()).toBe(87);
+    });
+
+    test('Frame 9: [10, 0] F8 SPARE BONUS => Framescore at F8: 20; Total Score at F8: 97', () =>{
+        scorecard.addFrame(10, 0); //Strike F9
+        expect(scorecard.getFrameTotal(scorecard.frames[7])).toBe(20);
+        expect(scorecard.getTotalGameScoreAtFrame(8)).toBe(97);
+    });
+
+    test('Frame 9: [10, 0] STRIKE => Framescore at F9: 10*; Total Score at F9: 107*', () =>{
+        expect(scorecard.frames).toEqual([
+            [1, 4],
+            [4, 5],
+            [6, 4],
+            [5, 5],
+            [10, 0],
+            [0, 1],
+            [7, 3],
+            [6, 4],
+            [10, 0]
+        ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[8])).toBe(10);
+        expect(scorecard.getTotalGameScoreAtFrame(8)).toBe(97);
+    });
+
+    test('Frame 10: [2, 8, 6] F9 STRIKE BONUS => Framescore at F9: 20; Total Score at F9: 117', () =>{
+        scorecard.add10thFrame(2, 8, 6); //10th Frame Spare + 6 on 3rd roll
+        expect(scorecard.getFrameTotal(scorecard.frames[8])).toBe(20);
+        expect(scorecard.getTotalGameScoreAtFrame(9)).toBe(117);
+    })
+
+
+    test('Frame 10: [2, 8, 6] SPARE + 10th FRAME BONUS => Framescore at F10: 16; Total Score at F10: 133', () =>{
+        expect(scorecard.frames).toEqual([
+            [1, 4],
+            [4, 5],
+            [6, 4],
+            [5, 5],
+            [10, 0],
+            [0, 1],
+            [7, 3],
+            [6, 4],
+            [10, 0],
+            [2, 8, 6]
+        ]);
+        expect(scorecard.getFrameTotal(scorecard.frames[9])).toBe(16);
+        expect(scorecard.getTotalGameScoreAtFrame(10)).toBe(133);
+    });
 })

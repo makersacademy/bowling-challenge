@@ -52,8 +52,7 @@ describe("Scorecard", () => {
     "when a non-strike roll hitting %i pins is made on roll 1 of frame 1:\n" +
       "- it does not change ._currentFrame",
     (pinsHit) => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(pinsHit);
+      const scorecard = scorecardWithRolls([pinsHit]);
       expect(scorecard._currentFrame).toBe(1);
     },
   );
@@ -62,8 +61,7 @@ describe("Scorecard", () => {
     "when a non-strike roll hitting %i pins is made on roll 1 of frame 1:\n" +
       "- it sets ._rollsMadeInCurrentFrame to 1",
     (pinsHit) => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(pinsHit);
+      const scorecard = scorecardWithRolls([pinsHit]);
       expect(scorecard._rollsMadeInCurrentFrame).toBe(1);
     },
   );
@@ -76,8 +74,7 @@ describe("Scorecard", () => {
     "when a non-strike roll hitting %i pins is made on roll 1 of frame 1:\n" +
       "- it sets ._pinsRemaining to %i",
     (pinsHit, expectedPinsRemaining) => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(pinsHit);
+      const scorecard = scorecardWithRolls([pinsHit]);
       expect(scorecard._pinsRemaining).toBe(expectedPinsRemaining);
     },
   );
@@ -86,8 +83,7 @@ describe("Scorecard", () => {
     "when a non-strike roll hitting %i pins is made on roll 1 of frame 1:\n" +
       "- it does not modify ._activeBonusLifetimes",
     (pinsHit) => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(pinsHit);
+      const scorecard = scorecardWithRolls([pinsHit]);
       expect(scorecard._activeBonusLifetimes).toEqual([]);
     },
   );
@@ -96,8 +92,7 @@ describe("Scorecard", () => {
     "when a non-strike roll hitting %i pins is made on roll 1 of frame 1:\n" +
       "- it appends the correct object to .historyLog",
     (pinsHit) => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(pinsHit);
+      const scorecard = scorecardWithRolls([pinsHit]);
       expect(scorecard.historyLog).toEqual([
         { frame: 1, rollInFrame: 1, pinsHit: pinsHit },
       ]);
@@ -108,8 +103,7 @@ describe("Scorecard", () => {
     "when a non-strike roll hitting %i pins is made on roll 1 of frame 1:\n" +
       "- it updates .currentScore correctly",
     (pinsHit) => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(pinsHit);
+      const scorecard = scorecardWithRolls([pinsHit]);
       expect(scorecard.currentScore).toBe(pinsHit);
     },
   );
@@ -117,8 +111,7 @@ describe("Scorecard", () => {
     "upon a strike being rolled in roll 1 of frame 1:\n" +
       "- it changes ._currentFrame to 2",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(10);
+      const scorecard = scorecardWithRolls([10]);
       expect(scorecard._currentFrame).toBe(2);
     },
   );
@@ -126,8 +119,7 @@ describe("Scorecard", () => {
     "upon a strike being rolled in roll 1 of frame 1:\n" +
       "- it sets ._rollsMadeInCurrentFrame to 0",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(10);
+      const scorecard = scorecardWithRolls([10]);
       expect(scorecard._rollsMadeInCurrentFrame).toBe(0);
     },
   );
@@ -135,8 +127,7 @@ describe("Scorecard", () => {
     "upon a strike being rolled in roll 1 of frame 1:\n" +
       "- it sets ._pinsRemaining to 10",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(10);
+      const scorecard = scorecardWithRolls([10]);
       expect(scorecard._pinsRemaining).toBe(10);
     },
   );
@@ -144,8 +135,7 @@ describe("Scorecard", () => {
     "upon a strike being rolled in roll 1 of frame 1:\n" +
       "- it sets ._activeBonusLifetimes to [2]",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(10);
+      const scorecard = scorecardWithRolls([10]);
       expect(scorecard._activeBonusLifetimes).toEqual([2]);
     },
   );
@@ -153,8 +143,7 @@ describe("Scorecard", () => {
     "upon a strike being rolled in roll 1 of frame 1:\n" +
       "- it appends the correct object to .historyLog",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(10);
+      const scorecard = scorecardWithRolls([10]);
       expect(scorecard.historyLog).toEqual([
         { frame: 1, rollInFrame: 1, pinsHit: 10 },
       ]);
@@ -164,8 +153,7 @@ describe("Scorecard", () => {
     "upon a strike being rolled in roll 1 of frame 1:\n" +
       "- it updates .currentScore correctly",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(10);
+      const scorecard = scorecardWithRolls([10]);
       expect(scorecard.currentScore).toBe(10);
     },
   );
@@ -173,9 +161,7 @@ describe("Scorecard", () => {
     "upon 2 and then 3 being rolled in frame 1:\n" +
       "- it sets ._currentFrame to 2",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(2);
-      scorecard.addRoll(3);
+      const scorecard = scorecardWithRolls([2, 3]);
       expect(scorecard._currentFrame).toBe(2);
     },
   );
@@ -183,9 +169,7 @@ describe("Scorecard", () => {
     "upon 2 and then 3 being rolled in frame 1:\n" +
       "- it sets ._rollsMadeInCurrentFrame to 0",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(2);
-      scorecard.addRoll(3);
+      const scorecard = scorecardWithRolls([2, 3]);
       expect(scorecard._rollsMadeInCurrentFrame).toBe(0);
     },
   );
@@ -193,9 +177,7 @@ describe("Scorecard", () => {
     "upon 2 and then 3 being rolled in frame 1:\n" +
       "- it sets ._pinsRemaining to 10",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(2);
-      scorecard.addRoll(3);
+      const scorecard = scorecardWithRolls([2, 3]);
       expect(scorecard._pinsRemaining).toBe(10);
     },
   );
@@ -203,9 +185,7 @@ describe("Scorecard", () => {
     "upon 2 and then 3 being rolled in frame 1:\n" +
       "- it does not modify ._activeBonusLifetimes",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(2);
-      scorecard.addRoll(3);
+      const scorecard = scorecardWithRolls([2, 3]);
       expect(scorecard._activeBonusLifetimes).toEqual([]);
     },
   );
@@ -213,9 +193,7 @@ describe("Scorecard", () => {
     "upon 2 and then 3 being rolled in frame 1:\n" +
       "- it pushes two corresponding objects to .historyLog",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(2);
-      scorecard.addRoll(3);
+      const scorecard = scorecardWithRolls([2, 3]);
       expect(scorecard.historyLog).toEqual([
         { frame: 1, rollInFrame: 1, pinsHit: 2 },
         { frame: 1, rollInFrame: 2, pinsHit: 3 },
@@ -226,9 +204,7 @@ describe("Scorecard", () => {
     "upon 2 and then 3 being rolled in frame 1:\n" +
       "- it sets .currentScore to 5",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(2);
-      scorecard.addRoll(3);
+      const scorecard = scorecardWithRolls([2, 3]);
       expect(scorecard.currentScore).toBe(5);
     },
   );
@@ -236,9 +212,7 @@ describe("Scorecard", () => {
     "upon 6 and then 4 being rolled in frame 1:\n" +
       "- it sets ._currentFrame to 2",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(6);
-      scorecard.addRoll(4);
+      const scorecard = scorecardWithRolls([6, 4]);
       expect(scorecard._currentFrame).toBe(2);
     },
   );
@@ -246,9 +220,7 @@ describe("Scorecard", () => {
     "upon 6 and then 4 being rolled in frame 1:\n" +
       "- it sets ._rollsMadeInCurrentFrame to 0",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(6);
-      scorecard.addRoll(4);
+      const scorecard = scorecardWithRolls([6, 4]);
       expect(scorecard._rollsMadeInCurrentFrame).toBe(0);
     },
   );
@@ -256,9 +228,7 @@ describe("Scorecard", () => {
     "upon 6 and then 4 being rolled in frame 1:\n" +
       "- it sets ._pinsRemaining to 10",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(6);
-      scorecard.addRoll(4);
+      const scorecard = scorecardWithRolls([6, 4]);
       expect(scorecard._pinsRemaining).toBe(10);
     },
   );
@@ -266,9 +236,7 @@ describe("Scorecard", () => {
     "upon 6 and then 4 being rolled in frame 1:\n" +
       "- it sets ._activeBonusLifetimes to [1]",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(6);
-      scorecard.addRoll(4);
+      const scorecard = scorecardWithRolls([6, 4]);
       expect(scorecard._activeBonusLifetimes).toEqual([1]);
     },
   );
@@ -276,9 +244,7 @@ describe("Scorecard", () => {
     "upon 6 and then 4 being rolled in frame 1:\n" +
       "- it pushes two corresponding objects to .historyLog",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(6);
-      scorecard.addRoll(4);
+      const scorecard = scorecardWithRolls([6, 4]);
       expect(scorecard.historyLog).toEqual([
         { frame: 1, rollInFrame: 1, pinsHit: 6 },
         { frame: 1, rollInFrame: 2, pinsHit: 4 },
@@ -289,9 +255,7 @@ describe("Scorecard", () => {
     "upon 6 and then 4 being rolled in frame 1:\n" +
       "- it sets .currentScore to 10",
     () => {
-      const scorecard = new Scorecard();
-      scorecard.addRoll(6);
-      scorecard.addRoll(4);
+      const scorecard = scorecardWithRolls([6, 4]);
       expect(scorecard.currentScore).toBe(10);
     },
   );

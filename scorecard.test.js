@@ -2,7 +2,7 @@ const Scorecard = require("./scorecard");
 
 let cases = null;
 
-const simulateGame = (rolls) => {
+const scorecardWithRolls = (rolls) => {
   const scorecard = new Scorecard();
   rolls.forEach((roll) => {
     scorecard.addRoll(roll);

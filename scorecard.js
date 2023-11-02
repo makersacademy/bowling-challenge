@@ -36,6 +36,26 @@ class Scorecard {
       this._handleBothRollsMadeInFrame();
     }
   }
+  getGameStateInfo() {
+    if (this.gameFinished) {
+      return {
+        finished: true,
+        gameInfo: {
+          score: this.currentScore,
+        },
+      };
+    } else {
+      return {
+        finished: false,
+        gameInfo: {
+          frame: this._currentFrame,
+          nextRoll: this._rollsMadeInCurrentFrame + 1,
+          isFinalFrameBonusRoll: this._finalFrameBonusRolls.active,
+          score: this.currentScore,
+        },
+      };
+    }
+  }
   _makePinsHitValueError(pinsHit) {
     return new Error(`${pinsHit} is not a valid value for pinsHit`);
   }
@@ -49,10 +69,8 @@ class Scorecard {
     // a number with a non-numeric type
     // (=> the order of the lines in the if statement matters!)
     return (
-      !Number.isInteger(pinsHit) ||
-      pinsHit < 0 ||
-      pinsHit > NUMBER_OF_PINS
-    )
+      !Number.isInteger(pinsHit) || pinsHit < 0 || pinsHit > NUMBER_OF_PINS
+    );
   }
   _makeGameHasFinishedError() {
     return new Error("Cannot add another roll as the game has finished");
@@ -60,7 +78,7 @@ class Scorecard {
   _makeExcessPinsHitError(pinsHit) {
     return new Error(
       `Cannot hit ${pinsHit} pin(s) ` +
-      `as only ${this._pinsRemaining} pin(s) remain`
+        `as only ${this._pinsRemaining} pin(s) remain`,
     );
   }
   _updateGameState(pinsHit) {
@@ -72,7 +90,7 @@ class Scorecard {
       frame: this._currentFrame,
       rollInFrame: this._rollsMadeInCurrentFrame,
       pinsHit: pinsHit,
-    })
+    });
   }
   _registerFinalFrameBonusRoll() {
     this._finalFrameBonusRolls.remaining -= 1;

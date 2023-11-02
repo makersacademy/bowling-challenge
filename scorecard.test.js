@@ -47,21 +47,18 @@ describe("Scorecard", () => {
       }).toThrow(new Error("3.14 is not a valid value for pinsHit"));
     },
   );
-  it(
-    "will raise an error if a roll would exceed the count of pins remaining",
-    () => {
-      const scorecard1 = new Scorecard();
-      scorecard1.addRoll(6);
-      expect(() => {
-        scorecard1.addRoll(5);
-      }).toThrow(new Error("Cannot hit 5 pin(s) as only 4 pin(s) remain"));
-      const scorecard2 = new Scorecard();
-      scorecard2.addRoll(1);
-      expect(() => {
-        scorecard2.addRoll(10);
-      }).toThrow(new Error("Cannot hit 10 pin(s) as only 9 pin(s) remain"));
-    },
-  );
+  it("will raise an error if a roll would exceed the count of pins remaining", () => {
+    const scorecard1 = new Scorecard();
+    scorecard1.addRoll(6);
+    expect(() => {
+      scorecard1.addRoll(5);
+    }).toThrow(new Error("Cannot hit 5 pin(s) as only 4 pin(s) remain"));
+    const scorecard2 = new Scorecard();
+    scorecard2.addRoll(1);
+    expect(() => {
+      scorecard2.addRoll(10);
+    }).toThrow(new Error("Cannot hit 10 pin(s) as only 9 pin(s) remain"));
+  });
   cases = [[0], [1], [9]];
   test.each(cases)(
     "when a non-strike roll hitting %i pins is made on roll 1 of frame 1:\n" +
@@ -526,7 +523,7 @@ describe("Scorecard", () => {
     },
   );
   it(
-    "upon playing the example game shown in images/example_ten_pin_scoring.png:\n" +
+    "upon playing the example game shown in ./images:\n" +
       "- the final score for this game is 133",
     () => {
       const scorecard = scorecardWithRolls([
@@ -537,14 +534,46 @@ describe("Scorecard", () => {
     },
   );
   it(
-    "upon playing a \"Gutter Game\" (twenty rolls of 0):\n" +
+    "upon playing through the example game shown in ./images:\n" +
+      "- .getGameStateInfo returns an object with info about the game's progress",
+    () => {
+      const scorecard = scorecardWithRolls([
+        1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7,
+      ]);
+      expect(scorecard.getGameStateInfo()).toEqual({
+        finished: false,
+        gameInfo: {
+          frame: 7,
+          nextRoll: 2,
+          isFinalFrameBonusRoll: false,
+          score: 68,
+        },
+      });
+      [3, 6, 4, 10, 2, 8].forEach((pinsHit) => scorecard.addRoll(pinsHit));
+      expect(scorecard.getGameStateInfo()).toEqual({
+        finished: false,
+        gameInfo: {
+          frame: 10,
+          nextRoll: 3,
+          isFinalFrameBonusRoll: true,
+          score: 127,
+        },
+      });
+      scorecard.addRoll(6);
+      expect(scorecard.getGameStateInfo()).toEqual({
+        finished: true,
+        gameInfo: {
+          score: 133,
+        },
+      });
+    },
+  );
+  it(
+    'upon playing a "Gutter Game" (twenty rolls of 0):\n' +
       "- the final score for this game is 0",
     () => {
       const scorecard = scorecardWithRolls([
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       ]);
       expect(scorecard.gameFinished).toBe(true);
       expect(scorecard.currentScore).toBe(0);

@@ -415,4 +415,99 @@ describe("Scorecard", () => {
       expect(scorecard.currentScore).toBe(31);
     },
   );
+  it(
+    'upon playing the "Perfect Game" (twelve rolls of 10):\n' +
+      "- it sets ._currentFrame to 10",
+    () => {
+      const scorecard = scorecardWithRolls([
+        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+      ]);
+      expect(scorecard._currentFrame).toBe(10);
+    },
+  );
+  it(
+    'upon playing the "Perfect Game" (twelve rolls of 10):\n' +
+      "- it sets ._rollsMadeInCurrentFrame to 3",
+    () => {
+      const scorecard = scorecardWithRolls([
+        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+      ]);
+      expect(scorecard._rollsMadeInCurrentFrame).toBe(3);
+    },
+  );
+  it(
+    'upon playing the "Perfect Game" (twelve rolls of 10):\n' +
+      "- it sets ._pinsRemaining to 0",
+    () => {
+      const scorecard = scorecardWithRolls([
+        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+      ]);
+      expect(scorecard._pinsRemaining).toBe(0);
+    },
+  );
+  it(
+    'upon playing the "Perfect Game" (twelve rolls of 10):\n' +
+      "- it sets ._activeBonusLifetimes to []",
+    () => {
+      const scorecard = scorecardWithRolls([
+        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+      ]);
+      expect(scorecard._activeBonusLifetimes).toEqual([]);
+    },
+  );
+  it(
+    'upon playing the "Perfect Game" (twelve rolls of 10):\n' +
+      "- it pushes twelve corresponding objects to .historyLog",
+    () => {
+      const scorecard = scorecardWithRolls([
+        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+      ]);
+      expect(scorecard.historyLog).toEqual([
+        { frame: 1, rollInFrame: 1, pinsHit: 10 },
+        { frame: 2, rollInFrame: 1, pinsHit: 10 },
+        { frame: 3, rollInFrame: 1, pinsHit: 10 },
+        { frame: 4, rollInFrame: 1, pinsHit: 10 },
+        { frame: 5, rollInFrame: 1, pinsHit: 10 },
+        { frame: 6, rollInFrame: 1, pinsHit: 10 },
+        { frame: 7, rollInFrame: 1, pinsHit: 10 },
+        { frame: 8, rollInFrame: 1, pinsHit: 10 },
+        { frame: 9, rollInFrame: 1, pinsHit: 10 },
+        { frame: 10, rollInFrame: 1, pinsHit: 10 },
+        { frame: 10, rollInFrame: 2, pinsHit: 10 },
+        { frame: 10, rollInFrame: 3, pinsHit: 10 },
+      ]);
+    },
+  );
+  it(
+    'upon playing the "Perfect Game" (twelve rolls of 10):\n' +
+      "- it sets .currentScore to 300",
+    () => {
+      const scorecard = scorecardWithRolls([
+        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+      ]);
+      expect(scorecard.currentScore).toBe(300);
+    },
+  );
+  it(
+    'upon playing the "Perfect Game" (twelve rolls of 10):\n' +
+      "- it sets .gameFinished to true",
+    () => {
+      const scorecard = scorecardWithRolls([
+        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+      ]);
+      expect(scorecard.gameFinished).toBe(true);
+    },
+  );
+  it(
+    'upon playing the "Perfect Game" (twelve rolls of 10):\n' +
+      "- it throws an error if another roll is attempted",
+    () => {
+      const scorecard = scorecardWithRolls([
+        10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+      ]);
+      expect(() => {
+        scorecard.addRoll(5);
+      }).toThrow(new Error("Cannot add another roll as the game has finished"));
+    },
+  );
 });

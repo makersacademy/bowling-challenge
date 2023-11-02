@@ -1,4 +1,5 @@
-const TenthFrameSpecial = require('./tenthframe');
+const TenthFrameSpecial = require('../lib/tenthframe');
+
 
 
 /// =========== FOR 10th FRAME ================ /////////

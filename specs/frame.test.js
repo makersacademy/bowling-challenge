@@ -1,4 +1,4 @@
-const Frame = require('./frame');
+const Frame = require('../lib/frame');
 
 /// =========== FOR FRAME ================ /////////
 

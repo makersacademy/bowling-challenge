@@ -1,6 +1,6 @@
-const TenthFrameSpecial = require('./tenthframe');
-const Frame = require('./frame');
-const ScoreCard = require('./scorecard2');
+const TenthFrameSpecial = require('../lib/tenthframe');
+const Frame = require('../lib/frame');
+const ScoreCard = require('../lib/scorecard2');
 
 // INTEGRATION TESTS:
 describe('Scorecard - Gutter Game', () => {

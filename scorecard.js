@@ -9,11 +9,10 @@ class Scorecard {
     this.gameFinished = false;
   }
   addRoll(pinsHit) {
-    if (
-      !Number.isInteger(pinsHit) || // Use short-circuiting || operator
-      pinsHit < 0 ||
-      pinsHit > 10
-    ) {
+    // Use short-circuiting || operator to avoid comparing
+    // a number with a non-numeric type
+    // (=> the order of the lines in the if statement matters!)
+    if (!Number.isInteger(pinsHit) || pinsHit < 0 || pinsHit > 10) {
       throw new Error(`${pinsHit} is not a valid value for pinsHit`);
     }
     this._rollsMadeInCurrentFrame += 1;
@@ -25,9 +24,13 @@ class Scorecard {
     });
     this.currentScore += pinsHit;
     if (this._pinsRemaining === 0) {
-      // Check for strike
+      // Check for strike or spare
       if (this._rollsMadeInCurrentFrame === 1) {
+        // Strike!
         this._activeBonusLifetimes.push(2);
+      } else if (this._rollsMadeInCurrentFrame === 2) {
+        // Spare!
+        this._activeBonusLifetimes.push(1);
       }
       // Go to next frame (reset pins, etc.)
       this._gotoNextFrame();

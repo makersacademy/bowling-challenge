@@ -6,6 +6,7 @@ class Scorecard {
     this._activeBonusLifetimes = [];
     this.historyLog = [];
     this.currentScore = 0;
+    this.gameFinished = false;
   }
   addRoll(pinsHit) {
     if (

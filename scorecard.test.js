@@ -15,6 +15,7 @@ describe("Scorecard", () => {
     expect(scorecard._activeBonusLifetimes).toEqual([]);
     expect(scorecard.historyLog).toEqual([]);
     expect(scorecard.currentScore).toBe(0);
+    expect(scorecard.gameFinished).toBe(false);
   });
   it(
     "on construction, accepts all and only values between 0 and 10 " +

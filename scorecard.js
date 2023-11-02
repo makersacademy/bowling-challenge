@@ -47,8 +47,10 @@ class Scorecard {
     this._pinsRemaining = 10;
   }
   _calculateRollScore(pinsHit) {
-    const multiplier = this._getBaseMultiplier() + this._getBonusMultiplier();
-    return pinsHit * multiplier;
+    return pinsHit * (
+      this._getBaseMultiplier() +
+      this._getBonusMultiplier()
+    );
   }
   _getBaseMultiplier() {
     return 1;
@@ -59,6 +61,8 @@ class Scorecard {
   _tickBonusLifetimes() {
     this._activeBonusLifetimes = this._activeBonusLifetimes.map(
       (lifetime) => lifetime - 1
+    ).filter(
+      (lifetime) => lifetime > 0
     )
   }
 }

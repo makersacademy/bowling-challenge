@@ -38,23 +38,29 @@ class Scorecard {
   }
   getGameStateInfo() {
     if (this.gameFinished) {
-      return {
-        finished: true,
-        gameInfo: {
-          score: this.currentScore,
-        },
-      };
+      return this._getFinishedGameStateInfo();
     } else {
-      return {
-        finished: false,
-        gameInfo: {
-          frame: this._currentFrame,
-          nextRoll: this._rollsMadeInCurrentFrame + 1,
-          isFinalFrameBonusRoll: this._finalFrameBonusRolls.active,
-          score: this.currentScore,
-        },
-      };
+      return this._getInProgressGameStateInfo();
     }
+  }
+  _getFinishedGameStateInfo() {
+    return {
+      finished: true,
+      gameInfo: {
+        score: this.currentScore,
+      }
+    };
+  }
+  _getInProgressGameStateInfo() {
+    return {
+      finished: false,
+      gameInfo: {
+        frame: this._currentFrame,
+        nextRoll: this._rollsMadeInCurrentFrame + 1,
+        isFinalFrameBonusRoll: this._finalFrameBonusRolls.active,
+        score: this.currentScore,
+      }
+    };
   }
   _makePinsHitValueError(pinsHit) {
     return new Error(`${pinsHit} is not a valid value for pinsHit`);

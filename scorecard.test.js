@@ -532,7 +532,22 @@ describe("Scorecard", () => {
       const scorecard = scorecardWithRolls([
         1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6,
       ]);
+      expect(scorecard.gameFinished).toBe(true);
       expect(scorecard.currentScore).toBe(133);
-    }
-  )
+    },
+  );
+  it(
+    "upon playing a \"Gutter Game\" (twenty rolls of 0):\n" +
+      "- the final score for this game is 0",
+    () => {
+      const scorecard = scorecardWithRolls([
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0,
+      ]);
+      expect(scorecard.gameFinished).toBe(true);
+      expect(scorecard.currentScore).toBe(0);
+    },
+  );
 });

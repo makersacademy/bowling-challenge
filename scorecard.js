@@ -20,7 +20,7 @@ class Scorecard {
     this.historyLog.push({
       frame: this._currentFrame,
       rollInFrame: this._rollsMadeInCurrentFrame,
-      pinsHit: pinsHit
+      pinsHit: pinsHit,
     });
     this.currentScore += pinsHit;
   }

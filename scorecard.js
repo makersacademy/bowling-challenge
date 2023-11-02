@@ -130,7 +130,10 @@ class Scorecard {
     this._resetPins();
   }
   _calculateRollScore(pinsHit) {
-    return pinsHit * (this._getBaseMultiplier() + this._getBonusMultiplier());
+    return pinsHit * this._calculateRollMultiplier();
+  }
+  _calculateRollMultiplier() {
+    return this._getBaseMultiplier() + this._getBonusMultiplier();
   }
   _getBaseMultiplier() {
     if (!this._finalFrameBonusRolls.active) {

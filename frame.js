@@ -60,8 +60,8 @@ class Frame {
     }
 
     // Add bonus (calculated from the next 1-2 rolls in Scorecard)
-    addBonus(bonus){
-        this.bonus += bonus
+    updateBonus(bonus){
+        this.bonus = bonus
     }
 
     // Get the current total, inclusive of any bonuses.
@@ -72,53 +72,4 @@ class Frame {
 
 
 
-class TenthFrameSpecial {
-    constructor(roll1, roll2, roll3){
-        // catch errors for construction:
-        if (
-            (typeof roll1 !== 'number' || isNaN(roll1)) || 
-            (typeof roll2 !== 'number' || isNaN(roll2)) || 
-            (typeof roll3 !== 'number' || isNaN(roll3))) {
-            throw new Error('Rolls must be numbers and not empty.');
-        }
-
-        if (roll1 < 0 || roll1 > 10 || roll2 < 0 || roll2 > 10 || roll3 < 0 || roll3 > 10) {
-            throw new Error('Roll values must be between 0 and 10.');
-        }
-
-        // if not a strike, roll 1 & roll 2  cannot total more than 10;
-        // if (roll1 + roll2 > 10 && roll1 != 10){
-        //     throw new Error('This frame must be either a Strike or a Spare.');
-        // }
-
-
-        this.rolls = [roll1, roll2, roll3];
-        this.type = 'spare';
-
-        // check and update type immediately on init.
-        this.checkType();
-
-
-    }
-    // Return true if frame is a strike
-    isStrike(){
-        return this.rolls[0] === 10;
-    }
-    // Checks if frame is a strike or spare and updates this.type
-    // Default this.type is spare, so it only checks for strikes
-    checkType(){
-        if (this.isStrike()) {
-            this.type = 'strike';
-        }
-    }
-    // Using same method name as above so that ScoreCard use frame.getCurrentTotal() forEach frame in frames
-    getCurrentTotal(){
-        // equivalent of sum(self.rolls)
-        return this.rolls.reduce((sum, roll) => sum + roll, 0);
-    }
-}
-
-module.exports = {
-    Frame,
-    TenthFrameSpecial,
-};
+module.exports = Frame;

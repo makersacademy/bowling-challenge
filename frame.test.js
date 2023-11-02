@@ -1,4 +1,4 @@
-const { Frame, TenthFrameSpecial } = require('./frame');
+const Frame = require('./frame');
 
 /// =========== FOR FRAME ================ /////////
 
@@ -29,7 +29,7 @@ describe('Frame - spare frame: [5,5]', () => {
         expect(frame.getCurrentTotal()).toBe(10);
     });
     test('adding bonus of 4 updates the current total to 14', () => {
-        frame.addBonus(4);
+        frame.updateBonus(4);
         expect(frame.bonus).toBe(4);
         expect(frame.getInitialTotal()).toBe(10);
         expect(frame.getCurrentTotal()).toBe(14);
@@ -49,13 +49,13 @@ describe('Frame - strike frame: [10, 0]', () => {
         expect(frame.getCurrentTotal()).toBe(10);
     });
     test('adding bonus of 4 updates the current total to 14', () => {
-        frame.addBonus(4);
+        frame.updateBonus(4);
         expect(frame.bonus).toBe(4);
         expect(frame.getInitialTotal()).toBe(10);
         expect(frame.getCurrentTotal()).toBe(14);
     });
-    test('adding bonus of 5 updates the current total to 19', () => {
-        frame.addBonus(5);
+    test('adding bonus of 4+5 updates the current total to 19', () => {
+        frame.updateBonus(4+5);
         expect(frame.bonus).toBe(9);
         expect(frame.getInitialTotal()).toBe(10);
         expect(frame.getCurrentTotal()).toBe(19);
@@ -90,20 +90,19 @@ describe('Frame - strike frame: [10, 0]', () => {
         expect(frame.getCurrentTotal()).toBe(10);
     });
     test('adding bonus of 10 updates the current total to 20', () => {
-        frame.addBonus(10);
+        frame.updateBonus(10);
         expect(frame.bonus).toBe(10);
         expect(frame.getInitialTotal()).toBe(10);
         expect(frame.getCurrentTotal()).toBe(20);
     });
-    test('adding bonus of 10 updates the current total to 30', () => {
-        frame.addBonus(10);
+    test('adding bonus of 10+10 updates the current total to 30', () => {
+        frame.updateBonus(10+10);
         expect(frame.bonus).toBe(20);
         expect(frame.getInitialTotal()).toBe(10);
         expect(frame.getCurrentTotal()).toBe(30);
     });
 
 });
-
 
 
 // ERROR HANDLING
@@ -123,7 +122,7 @@ describe('Frame - Error Handling', () => {
     test('throws an error when roll values exceed 10', () => {
         expect(() => new Frame(7, 6)).toThrowError('The sum of roll1 and roll2 cannot exceed 10.');
     });
-    
+
 });
 
 

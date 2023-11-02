@@ -160,4 +160,67 @@ describe("Scorecard", () => {
       expect(scorecard.currentScore).toBe(10);
     },
   );
+  it(
+    "upon 2 and then 3 being rolled in frame 1:\n" +
+      "- it sets ._currentFrame to 2",
+    () => {
+      const scorecard = new Scorecard();
+      scorecard.addRoll(2);
+      scorecard.addRoll(3);
+      expect(scorecard._currentFrame).toBe(2);
+    },
+  );
+  it(
+    "upon 2 and then 3 being rolled in frame 1:\n" +
+      "- it sets ._rollsMadeInCurrentFrame to 0",
+    () => {
+      const scorecard = new Scorecard();
+      scorecard.addRoll(2);
+      scorecard.addRoll(3);
+      expect(scorecard._rollsMadeInCurrentFrame).toBe(0);
+    },
+  );
+  it(
+    "upon 2 and then 3 being rolled in frame 1:\n" +
+      "- it sets ._pinsRemaining to 10",
+    () => {
+      const scorecard = new Scorecard();
+      scorecard.addRoll(2);
+      scorecard.addRoll(3);
+      expect(scorecard._pinsRemaining).toBe(10);
+    },
+  );
+  it(
+    "upon 2 and then 3 being rolled in frame 1:\n" +
+      "- it does not modify ._activeBonusLifetimes",
+    () => {
+      const scorecard = new Scorecard();
+      scorecard.addRoll(2);
+      scorecard.addRoll(3);
+      expect(scorecard._activeBonusLifetimes).toEqual([]);
+    },
+  );
+  it(
+    "upon 2 and then 3 being rolled in frame 1:\n" +
+      "- it pushes two corresponding objects to .historyLog",
+    () => {
+      const scorecard = new Scorecard();
+      scorecard.addRoll(2);
+      scorecard.addRoll(3);
+      expect(scorecard.historyLog).toEqual([
+        { frame: 1, rollInFrame: 1, pinsHit: 2 },
+        { frame: 1, rollInFrame: 2, pinsHit: 3 },
+      ]);
+    },
+  );
+  it(
+    "upon 2 and then 3 being rolled in frame 1:\n" +
+      "- it sets .currentScore to 5",
+    () => {
+      const scorecard = new Scorecard();
+      scorecard.addRoll(2);
+      scorecard.addRoll(3);
+      expect(scorecard.currentScore).toBe(5);
+    },
+  );
 });

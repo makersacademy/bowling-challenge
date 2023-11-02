@@ -31,6 +31,9 @@ class Scorecard {
       // Go to next frame (reset pins, etc.)
       this._gotoNextFrame();
     }
+    if (this._rollsMadeInCurrentFrame === 2) {
+      this._gotoNextFrame();
+    }
   }
   _gotoNextFrame() {
     this._currentFrame += 1;

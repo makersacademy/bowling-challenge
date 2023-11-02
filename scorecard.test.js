@@ -47,6 +47,21 @@ describe("Scorecard", () => {
       }).toThrow(new Error("3.14 is not a valid value for pinsHit"));
     },
   );
+  it(
+    "will raise an error if a roll would exceed the count of pins remaining",
+    () => {
+      const scorecard1 = new Scorecard();
+      scorecard1.addRoll(6);
+      expect(() => {
+        scorecard1.addRoll(5);
+      }).toThrow(new Error("Cannot hit 5 pin(s) as only 4 pin(s) remain"));
+      const scorecard2 = new Scorecard();
+      scorecard2.addRoll(1);
+      expect(() => {
+        scorecard2.addRoll(10);
+      }).toThrow(new Error("Cannot hit 10 pin(s) as only 9 pin(s) remain"));
+    },
+  );
   cases = [[0], [1], [9]];
   test.each(cases)(
     "when a non-strike roll hitting %i pins is made on roll 1 of frame 1:\n" +

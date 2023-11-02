@@ -29,6 +29,12 @@ class Scorecard {
     ) {
       throw new Error(`${pinsHit} is not a valid value for pinsHit`);
     }
+    if (pinsHit > this._pinsRemaining) {
+      throw new Error(
+        `Cannot hit ${pinsHit} pin(s) ` +
+        `as only ${this._pinsRemaining} pin(s) remain`
+      );
+    }
     this._rollsMadeInCurrentFrame += 1;
     this._pinsRemaining -= pinsHit;
     this.historyLog.push({
@@ -56,6 +62,7 @@ class Scorecard {
         this._activeBonusLifetimes.push(2);
         if (this._currentFrame === NUMBER_OF_FRAMES) {
           this._grantFinalFrameBonusRolls(2);
+          this._resetPins();
         } else {
           this._gotoNextFrame();
         }
@@ -64,6 +71,7 @@ class Scorecard {
         this._activeBonusLifetimes.push(1);
         if (this._currentFrame === NUMBER_OF_FRAMES) {
           this._grantFinalFrameBonusRolls(1);
+          this._resetPins();
         } else {
           this._gotoNextFrame();
         }

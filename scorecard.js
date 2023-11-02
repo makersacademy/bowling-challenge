@@ -43,6 +43,7 @@ class Scorecard {
       return this._getInProgressGameStateInfo();
     }
   }
+  // Response object makers
   _getFinishedGameStateInfo() {
     return {
       finished: true,
@@ -62,13 +63,9 @@ class Scorecard {
       }
     };
   }
+  // Error makers
   _makePinsHitValueError(pinsHit) {
     return new Error(`${pinsHit} is not a valid value for pinsHit`);
-  }
-  _updateScoreForRoll(pinsHit) {
-    // Update score, then handle bonus lifetimes
-    this.currentScore += this._calculateRollScore(pinsHit);
-    this._tickBonusLifetimes();
   }
   _isInvalidNumberOfPinsHit(pinsHit) {
     // Use short-circuiting || operator to avoid comparing
@@ -86,6 +83,12 @@ class Scorecard {
       `Cannot hit ${pinsHit} pin(s) ` +
         `as only ${this._pinsRemaining} pin(s) remain`,
     );
+  }
+  // Updating & logging functions
+  _updateScoreForRoll(pinsHit) {
+    // Update score, then handle bonus lifetimes
+    this.currentScore += this._calculateRollScore(pinsHit);
+    this._tickBonusLifetimes();
   }
   _updateGameState(pinsHit) {
     this._rollsMadeInCurrentFrame += 1;
@@ -106,6 +109,7 @@ class Scorecard {
       this._resetPins();
     }
   }
+  // Game state logic handling
   _handleBothRollsMadeInFrame() {
     if (this._currentFrame !== NUMBER_OF_FRAMES) {
       this._gotoNextFrame();
@@ -138,6 +142,12 @@ class Scorecard {
       this._gotoNextFrame();
     }
   }
+  // Game state manipulation utility functions
+  _tickBonusLifetimes() {
+    this._activeBonusLifetimes = this._activeBonusLifetimes
+      .map((lifetime) => lifetime - 1)
+      .filter((lifetime) => lifetime > 0);
+  }
   _grantFinalFrameBonusRolls(bonusRollCount) {
     this._finalFrameBonusRolls.active = true;
     this._finalFrameBonusRolls.remaining = bonusRollCount;
@@ -153,6 +163,7 @@ class Scorecard {
     this._rollsMadeInCurrentFrame = 0;
     this._resetPins();
   }
+  // Score calculation
   _calculateRollScore(pinsHit) {
     return pinsHit * this._calculateRollMultiplier();
   }
@@ -169,11 +180,7 @@ class Scorecard {
   _getBonusMultiplier() {
     return this._activeBonusLifetimes.length;
   }
-  _tickBonusLifetimes() {
-    this._activeBonusLifetimes = this._activeBonusLifetimes
-      .map((lifetime) => lifetime - 1)
-      .filter((lifetime) => lifetime > 0);
-  }
+
 }
 
 module.exports = Scorecard;

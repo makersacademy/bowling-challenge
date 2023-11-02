@@ -525,4 +525,14 @@ describe("Scorecard", () => {
       }).toThrow(new Error("Cannot add another roll as the game has finished"));
     },
   );
+  it(
+    "upon playing the example game shown in images/example_ten_pin_scoring.png:\n" +
+      "- the final score for this game is 133",
+    () => {
+      const scorecard = scorecardWithRolls([
+        1, 4, 4, 5, 6, 4, 5, 5, 10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6,
+      ]);
+      expect(scorecard.currentScore).toBe(133);
+    }
+  )
 });

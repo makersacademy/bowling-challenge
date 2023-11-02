@@ -17,71 +17,101 @@ class Scorecard {
   }
   addRoll(pinsHit) {
     if (this.gameFinished) {
-      throw new Error("Cannot add another roll as the game has finished");
+      throw this._makeGameHasFinishedError();
     }
+    if (this._isInvalidNumberOfPinsHit(pinsHit)) {
+      throw this._makePinsHitValueError(pinsHit);
+    }
+    if (pinsHit > this._pinsRemaining) {
+      throw this._makeExcessPinsHitError(pinsHit);
+    }
+    this._updateGameState(pinsHit);
+    this._logRollData(pinsHit);
+    this._updateScoreForRoll(pinsHit);
+    if (this._finalFrameBonusRolls.active) {
+      this._registerFinalFrameBonusRoll();
+    } else if (this._pinsRemaining === 0) {
+      this._handleNoPinsRemaining();
+    } else if (this._rollsMadeInCurrentFrame === 2) {
+      this._handleBothRollsMadeInFrame();
+    }
+  }
+  _makePinsHitValueError(pinsHit) {
+    return new Error(`${pinsHit} is not a valid value for pinsHit`);
+  }
+  _updateScoreForRoll(pinsHit) {
+    // Update score, then handle bonus lifetimes
+    this.currentScore += this._calculateRollScore(pinsHit);
+    this._tickBonusLifetimes();
+  }
+  _isInvalidNumberOfPinsHit(pinsHit) {
     // Use short-circuiting || operator to avoid comparing
     // a number with a non-numeric type
     // (=> the order of the lines in the if statement matters!)
-    if (
+    return (
       !Number.isInteger(pinsHit) ||
       pinsHit < 0 ||
       pinsHit > NUMBER_OF_PINS
-    ) {
-      throw new Error(`${pinsHit} is not a valid value for pinsHit`);
-    }
-    if (pinsHit > this._pinsRemaining) {
-      throw new Error(
-        `Cannot hit ${pinsHit} pin(s) ` +
-        `as only ${this._pinsRemaining} pin(s) remain`
-      );
-    }
+    )
+  }
+  _makeGameHasFinishedError() {
+    return new Error("Cannot add another roll as the game has finished");
+  }
+  _makeExcessPinsHitError(pinsHit) {
+    return new Error(
+      `Cannot hit ${pinsHit} pin(s) ` +
+      `as only ${this._pinsRemaining} pin(s) remain`
+    );
+  }
+  _updateGameState(pinsHit) {
     this._rollsMadeInCurrentFrame += 1;
     this._pinsRemaining -= pinsHit;
+  }
+  _logRollData(pinsHit) {
     this.historyLog.push({
       frame: this._currentFrame,
       rollInFrame: this._rollsMadeInCurrentFrame,
       pinsHit: pinsHit,
-    });
-    // Update score, then handle bonus lifetimes
-    this.currentScore += this._calculateRollScore(pinsHit);
-    this._tickBonusLifetimes();
-    // Handle final frame bonus rolls; if active, return after this
-    if (this._finalFrameBonusRolls.active) {
-      this._finalFrameBonusRolls.remaining -= 1;
-      if (this._finalFrameBonusRolls.remaining === 0) {
-        this._finishGame();
-      } else {
-        this._resetPins();
-      }
-      return;
+    })
+  }
+  _registerFinalFrameBonusRoll() {
+    this._finalFrameBonusRolls.remaining -= 1;
+    if (this._finalFrameBonusRolls.remaining === 0) {
+      this._finishGame();
+    } else {
+      this._resetPins();
     }
-    if (this._pinsRemaining === 0) {
-      // Check for strike or spare
-      if (this._rollsMadeInCurrentFrame === 1) {
-        // Strike!
-        this._activeBonusLifetimes.push(2);
-        if (this._currentFrame === NUMBER_OF_FRAMES) {
-          this._grantFinalFrameBonusRolls(2);
-          this._resetPins();
-        } else {
-          this._gotoNextFrame();
-        }
-      } else if (this._rollsMadeInCurrentFrame === 2) {
-        // Spare!
-        this._activeBonusLifetimes.push(1);
-        if (this._currentFrame === NUMBER_OF_FRAMES) {
-          this._grantFinalFrameBonusRolls(1);
-          this._resetPins();
-        } else {
-          this._gotoNextFrame();
-        }
-      }
+  }
+  _handleBothRollsMadeInFrame() {
+    if (this._currentFrame !== NUMBER_OF_FRAMES) {
+      this._gotoNextFrame();
+    } else {
+      this._finishGame();
+    }
+  }
+  _handleNoPinsRemaining() {
+    if (this._rollsMadeInCurrentFrame === 1) {
+      this._handleStrikeAchieved(); // Strike!
     } else if (this._rollsMadeInCurrentFrame === 2) {
-      if (this._currentFrame !== NUMBER_OF_FRAMES) {
-        this._gotoNextFrame();
-      } else {
-        this._finishGame();
-      }
+      this._handleSpareAchieved(); // Spare!
+    }
+  }
+  _handleStrikeAchieved() {
+    this._activeBonusLifetimes.push(2);
+    if (this._currentFrame === NUMBER_OF_FRAMES) {
+      this._grantFinalFrameBonusRolls(2);
+      this._resetPins();
+    } else {
+      this._gotoNextFrame();
+    }
+  }
+  _handleSpareAchieved() {
+    this._activeBonusLifetimes.push(1);
+    if (this._currentFrame === NUMBER_OF_FRAMES) {
+      this._grantFinalFrameBonusRolls(1);
+      this._resetPins();
+    } else {
+      this._gotoNextFrame();
     }
   }
   _grantFinalFrameBonusRolls(bonusRollCount) {

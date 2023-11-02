@@ -23,6 +23,19 @@ class Scorecard {
       pinsHit: pinsHit,
     });
     this.currentScore += pinsHit;
+    if (this._pinsRemaining === 0) {
+      // Check for strike
+      if (this._rollsMadeInCurrentFrame === 1) {
+        this._activeBonusLifetimes.push(2);
+      }
+      // Go to next frame (reset pins, etc.)
+      this._gotoNextFrame();
+    }
+  }
+  _gotoNextFrame() {
+    this._currentFrame += 1;
+    this._rollsMadeInCurrentFrame = 0;
+    this._pinsRemaining = 10;
   }
 }
 

@@ -8,7 +8,7 @@ const scorecardWithRolls = (rolls) => {
     scorecard.addRoll(roll);
   });
   return scorecard;
-}
+};
 
 describe("Scorecard", () => {
   it("can be constructed", () => {
@@ -257,6 +257,58 @@ describe("Scorecard", () => {
     () => {
       const scorecard = scorecardWithRolls([6, 4]);
       expect(scorecard.currentScore).toBe(10);
+    },
+  );
+  it(
+    "upon 1 then 2 being rolled in frame 1, then 3 in frame 2:\n" +
+      "- it sets ._currentFrame to 2",
+    () => {
+      const scorecard = scorecardWithRolls([1, 2, 3]);
+      expect(scorecard._currentFrame).toBe(2);
+    },
+  );
+  it(
+    "upon 1 then 2 being rolled in frame 1, then 3 in frame 2:\n" +
+      "- it sets ._rollsMadeInCurrentFrame to 1",
+    () => {
+      const scorecard = scorecardWithRolls([1, 2, 3]);
+      expect(scorecard._rollsMadeInCurrentFrame).toBe(1);
+    },
+  );
+  it(
+    "upon 1 then 2 being rolled in frame 1, then 3 in frame 2:\n" +
+      "- it sets ._pinsRemaining to 7",
+    () => {
+      const scorecard = scorecardWithRolls([1, 2, 3]);
+      expect(scorecard._pinsRemaining).toBe(7);
+    },
+  );
+  it(
+    "upon 1 then 2 being rolled in frame 1, then 3 in frame 2:\n" +
+      "- it does not modify ._activeBonusLifetimes",
+    () => {
+      const scorecard = scorecardWithRolls([1, 2, 3]);
+      expect(scorecard._activeBonusLifetimes).toEqual([]);
+    },
+  );
+  it(
+    "upon 1 then 2 being rolled in frame 1, then 3 in frame 2:\n" +
+      "- it pushes three corresponding objects to .historyLog",
+    () => {
+      const scorecard = scorecardWithRolls([1, 2, 3]);
+      expect(scorecard.historyLog).toEqual([
+        { frame: 1, rollInFrame: 1, pinsHit: 1 },
+        { frame: 1, rollInFrame: 2, pinsHit: 2 },
+        { frame: 2, rollInFrame: 1, pinsHit: 3 },
+      ]);
+    },
+  );
+  it(
+    "upon 1 then 2 being rolled in frame 1, then 3 in frame 2:\n" +
+      "- it sets .currentScore to 6",
+    () => {
+      const scorecard = scorecardWithRolls([1, 2, 3]);
+      expect(scorecard.currentScore).toBe(6);
     },
   );
 });

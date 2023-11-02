@@ -15,6 +15,14 @@ class Scorecard {
     ) {
       throw new Error(`${pinsHit} is not a valid value for pinsHit`);
     }
+    this._rollsMadeInCurrentFrame += 1;
+    this._pinsRemaining -= pinsHit;
+    this.historyLog.push({
+      frame: this._currentFrame,
+      rollInFrame: this._rollsMadeInCurrentFrame,
+      pinsHit: pinsHit
+    });
+    this.currentScore += pinsHit;
   }
 }
 

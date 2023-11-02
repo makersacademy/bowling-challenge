@@ -18,6 +18,8 @@ class ScoreCard {
         this.frames = [];
     };
 
+    // ======= ADDING TO THE SCORECARD =============== //
+
     // ADDING FRAMES:
     /**
      * 
@@ -27,6 +29,53 @@ class ScoreCard {
         this.frames.push(frame)
     };
 
+    // ======= GET THE TOTAL SCORE ================= //
+
+    // GET GAME TOTAL:
+    /**
+     * 
+     * @returns the total score for the game
+     */
+    getGameTotal() {
+        let total = 0
+        // getFrameTotal each frame from this.frames
+        // Add total of each frame
+        this.frames.forEach((frame) => {
+            total += this.getFrameTotal(frame);
+        });
+        return total;
+    }
+
+
+    // ======= SHOWING THE SCORECARD ================= //
+
+    // SCORECARD:
+    /**
+     * 
+     * @returns a scorecard object
+     */
+    showScoreCard() {
+        let scorecard = [];
+        let cumulative_score = 0;
+        
+        this.frames.forEach((frame) => {
+
+            // bowling scorecard shows the cumulative score after each frame.
+            cumulative_score += this.getFrameTotal(frame)
+
+            const frameScoreCard = {
+                number: (this.frames.indexOf(frame)+1),
+                rolls: frame.rolls,
+                type: frame.type,
+                frameScore: cumulative_score
+            }
+            scorecard.push(frameScoreCard)
+        });
+        return scorecard;
+    }
+
+    // ------------- supportive functions: ----------------------  //
+    
     // GETTING SPARE BONUS:
     getSpareBonus(frame) {
         let bonus = 0;
@@ -46,7 +95,7 @@ class ScoreCard {
             if (error instanceof RangeError) { 
                 // pass, no bonus to add
             } else {
-                console.error('An error occured:', error.message);
+                // console.error('An error occured:', error.message); // Cannot read properties of undefined (reading 'rolls')
             }
         }
         return bonus;
@@ -81,7 +130,7 @@ class ScoreCard {
                     if (error instanceof RangeError) { 
                         // pass, no bonus to add
                     } else {
-                        console.error('An error occured:', error.message);
+                        // console.error('An error occured:', error.message);
                     }
                 }
             
@@ -96,7 +145,7 @@ class ScoreCard {
             if (error instanceof RangeError) { 
                 // pass, no bonus to add
             } else {
-                console.error('An error occured:', error.message);
+                // console.error('An error occured:', error.message);
             }
         }
 
@@ -104,7 +153,6 @@ class ScoreCard {
         frame.updateBonus(bonus)
         return bonus;
     };
-
 
 
     // CHECKING FOR BONUSES:
@@ -138,44 +186,6 @@ class ScoreCard {
         return frame.getCurrentTotal();
     };
 
-    // GET GAME TOTAL:
-    /**
-     * 
-     * @returns the total score for the game
-     */
-    getGameTotal() {
-        let total = 0
-        // getFrameTotal each frame from this.frames
-        // Add total of each frame
-        this.frames.forEach((frame) => {
-            total += this.getFrameTotal(frame);
-        });
-        return total;
-    }
-
-    // SCORECARD:
-    /**
-     * 
-     * @returns a scorecard object
-     */
-    showScoreCard() {
-        let scorecard = []
-        this.frames.forEach((frame) => {
-            // const frameNumber = this.frames.indexOf(frame);
-            // const frameRolls = frame.rolls;
-            // const frameType = frame.type;
-            // const frameScore = this.frames.getFrameTotal(frame);
-
-            const frameScoreCard = {
-                number: (this.frames.indexOf(frame)+1),
-                rolls: frame.rolls,
-                type: frame.type,
-                frameScore: this.getFrameTotal(frame)
-            }
-            scorecard.push(frameScoreCard)
-        });
-        return scorecard;
-    }
 
 }
 

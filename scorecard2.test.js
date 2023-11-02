@@ -185,7 +185,7 @@ describe('Scorecard - Perfect Game', () => {
                 number: 2,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 10
+                frameScore: 30
             }
         ])
         expect(scorecard.getGameTotal()).toBe(30)
@@ -197,19 +197,19 @@ describe('Scorecard - Perfect Game', () => {
                 number: 1,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30 // returns 20 right now
+                frameScore: 30 
             },
             {
                 number: 2,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 20 // returns 30 right now
+                frameScore: 50 
             },
             {
                 number: 3,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 10
+                frameScore: 60
             }
         ])
         expect(scorecard.getGameTotal()).toBe(60)
@@ -228,19 +228,19 @@ describe('Scorecard - Perfect Game', () => {
                 number: 2,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30 
+                frameScore: 60 
             },
             {
                 number: 3,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 20 // returns 30 right now
+                frameScore: 80 
             },
             {
                 number: 4,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 10
+                frameScore: 90
             }
         ])
         expect(scorecard.getGameTotal()).toBe(90)
@@ -264,49 +264,49 @@ describe('Scorecard - Perfect Game', () => {
                 number: 2,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30 
+                frameScore: 60 
             },
             {
                 number: 3,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 90
             },
             {
                 number: 4,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 120
             },
             {
                 number: 5,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 150
             },
             {
                 number: 6,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 180
             },
             {
                 number: 7,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 210
             },
             {
                 number: 8,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 20
+                frameScore: 230
             },
             {
                 number: 9,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 10
+                frameScore: 240
             }
         ])
         expect(scorecard.getGameTotal()).toBe(240)
@@ -325,55 +325,55 @@ describe('Scorecard - Perfect Game', () => {
                 number: 2,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30 
+                frameScore: 60 
             },
             {
                 number: 3,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 90
             },
             {
                 number: 4,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 120
             },
             {
                 number: 5,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 150
             },
             {
                 number: 6,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 180
             },
             {
                 number: 7,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 210
             },
             {
                 number: 8,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 240
             },
             {
                 number: 9,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 270
             },
             {
                 number: 10,
                 rolls: [10, 10, 10],
                 type: 'strike',
-                frameScore: 30
+                frameScore: 300
             }
 
         ])
@@ -412,7 +412,7 @@ describe('Scorecard - Example Game', () => {
                 number: 2,
                 rolls: [4, 5],
                 type: 'open',
-                frameScore: 9
+                frameScore: 14
             }
         ])
         expect(scorecard.getGameTotal()).toBe(14)
@@ -432,13 +432,13 @@ describe('Scorecard - Example Game', () => {
                 number: 2,
                 rolls: [4, 5],
                 type: 'open',
-                frameScore: 9
+                frameScore: 14
             },
             {
                 number: 3,
                 rolls: [6, 4],
                 type: 'spare',
-                frameScore: 10
+                frameScore: 24
             }
         ])
         expect(scorecard.getGameTotal()).toBe(24)
@@ -456,19 +456,19 @@ describe('Scorecard - Example Game', () => {
                 number: 2,
                 rolls: [4, 5],
                 type: 'open',
-                frameScore: 9
+                frameScore: 14
             },
             {
                 number: 3,
                 rolls: [6, 4],
                 type: 'spare',
-                frameScore: 15
+                frameScore: 29
             },
             {
                 number: 4,
                 rolls: [5, 5],
                 type: 'spare',
-                frameScore: 10
+                frameScore: 39
             }
         ])
         expect(scorecard.getGameTotal()).toBe(39);
@@ -486,25 +486,25 @@ describe('Scorecard - Example Game', () => {
                 number: 2,
                 rolls: [4, 5],
                 type: 'open',
-                frameScore: 9
+                frameScore: 14
             },
             {
                 number: 3,
                 rolls: [6, 4],
                 type: 'spare',
-                frameScore: 15
+                frameScore: 29
             },
             {
                 number: 4,
                 rolls: [5, 5],
                 type: 'spare',
-                frameScore: 20
+                frameScore: 49
             },
             {
                 number: 5,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 10
+                frameScore: 59
             }
         ])
         expect(scorecard.getGameTotal()).toBe(59);
@@ -522,31 +522,31 @@ describe('Scorecard - Example Game', () => {
                 number: 2,
                 rolls: [4, 5],
                 type: 'open',
-                frameScore: 9
+                frameScore: 14
             },
             {
                 number: 3,
                 rolls: [6, 4],
                 type: 'spare',
-                frameScore: 15
+                frameScore: 29
             },
             {
                 number: 4,
                 rolls: [5, 5],
                 type: 'spare',
-                frameScore: 20
+                frameScore: 49
             },
             {
                 number: 5,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 11
+                frameScore: 60
             },
             {
                 number: 6,
                 rolls: [0, 1],
                 type: 'open',
-                frameScore: 1
+                frameScore: 61
             }
         ])
         expect(scorecard.getGameTotal()).toBe(61);
@@ -566,37 +566,37 @@ describe('Scorecard - Example Game', () => {
                 number: 2,
                 rolls: [4, 5],
                 type: 'open',
-                frameScore: 9
+                frameScore: 14
             },
             {
                 number: 3,
                 rolls: [6, 4],
                 type: 'spare',
-                frameScore: 15
+                frameScore: 29
             },
             {
                 number: 4,
                 rolls: [5, 5],
                 type: 'spare',
-                frameScore: 20
+                frameScore: 49
             },
             {
                 number: 5,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 11
+                frameScore: 60
             },
             {
                 number: 6,
                 rolls: [0, 1],
                 type: 'open',
-                frameScore: 1
+                frameScore: 61
             },
             {
                 number: 7,
                 rolls: [7, 3],
                 type: 'spare',
-                frameScore: 10
+                frameScore: 71
             }
         ])
         expect(scorecard.getGameTotal()).toBe(71);
@@ -614,43 +614,43 @@ describe('Scorecard - Example Game', () => {
                 number: 2,
                 rolls: [4, 5],
                 type: 'open',
-                frameScore: 9
+                frameScore: 14
             },
             {
                 number: 3,
                 rolls: [6, 4],
                 type: 'spare',
-                frameScore: 15
+                frameScore: 29
             },
             {
                 number: 4,
                 rolls: [5, 5],
                 type: 'spare',
-                frameScore: 20
+                frameScore: 49
             },
             {
                 number: 5,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 11
+                frameScore: 60
             },
             {
                 number: 6,
                 rolls: [0, 1],
                 type: 'open',
-                frameScore: 1
+                frameScore: 61
             },
             {
                 number: 7,
                 rolls: [7, 3],
                 type: 'spare',
-                frameScore: 16
+                frameScore: 77
             },
             {
                 number: 8,
                 rolls: [6, 4],
                 type: 'spare',
-                frameScore: 10
+                frameScore: 87
             }
 
         ])
@@ -670,49 +670,49 @@ describe('Scorecard - Example Game', () => {
                 number: 2,
                 rolls: [4, 5],
                 type: 'open',
-                frameScore: 9
+                frameScore: 14
             },
             {
                 number: 3,
                 rolls: [6, 4],
                 type: 'spare',
-                frameScore: 15
+                frameScore: 29
             },
             {
                 number: 4,
                 rolls: [5, 5],
                 type: 'spare',
-                frameScore: 20
+                frameScore: 49
             },
             {
                 number: 5,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 11
+                frameScore: 60
             },
             {
                 number: 6,
                 rolls: [0, 1],
                 type: 'open',
-                frameScore: 1
+                frameScore: 61
             },
             {
                 number: 7,
                 rolls: [7, 3],
                 type: 'spare',
-                frameScore: 16
+                frameScore: 77
             },
             {
                 number: 8,
                 rolls: [6, 4],
                 type: 'spare',
-                frameScore: 20
+                frameScore: 97
             },
             {
                 number: 9,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 10
+                frameScore: 107
             }
         ])
         expect(scorecard.getGameTotal()).toBe(107);
@@ -732,55 +732,55 @@ describe('Scorecard - Example Game', () => {
                 number: 2,
                 rolls: [4, 5],
                 type: 'open',
-                frameScore: 9
+                frameScore: 14
             },
             {
                 number: 3,
                 rolls: [6, 4],
                 type: 'spare',
-                frameScore: 15
+                frameScore: 29
             },
             {
                 number: 4,
                 rolls: [5, 5],
                 type: 'spare',
-                frameScore: 20
+                frameScore: 49
             },
             {
                 number: 5,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 11
+                frameScore: 60
             },
             {
                 number: 6,
                 rolls: [0, 1],
                 type: 'open',
-                frameScore: 1
+                frameScore: 61
             },
             {
                 number: 7,
                 rolls: [7, 3],
                 type: 'spare',
-                frameScore: 16
+                frameScore: 77
             },
             {
                 number: 8,
                 rolls: [6, 4],
                 type: 'spare',
-                frameScore: 20
+                frameScore: 97
             },
             {
                 number: 9,
                 rolls: [10, 0],
                 type: 'strike',
-                frameScore: 20
+                frameScore: 117
             },
             {
                 number: 10,
                 rolls: [2, 8, 6],
                 type: 'spare',
-                frameScore: 16
+                frameScore: 133
             }
         ])
         expect(scorecard.getGameTotal()).toBe(133);

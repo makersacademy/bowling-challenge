@@ -1,3 +1,5 @@
 language: node_js
 node_js:
   - 21
+before_install:
+  - npm i -g npm@10

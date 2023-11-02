@@ -16,6 +16,19 @@ class Scorecard {
     };
   }
   addRoll(pinsHit) {
+    this._validateAddedRoll(pinsHit);
+    this._doUpdatesForAddedRoll(pinsHit);
+    this._doGameLogicHandling();
+  }
+  getGameStateInfo() {
+    if (this.gameFinished) {
+      return this._getFinishedGameStateInfo();
+    } else {
+      return this._getInProgressGameStateInfo();
+    }
+  }
+  // Validators
+  _validateAddedRoll(pinsHit) {
     if (this.gameFinished) {
       throw this._makeGameHasFinishedError();
     }
@@ -25,23 +38,6 @@ class Scorecard {
     if (pinsHit > this._pinsRemaining) {
       throw this._makeExcessPinsHitError(pinsHit);
     }
-    this._updateGameState(pinsHit);
-    this._logRollData(pinsHit);
-    this._updateScoreForRoll(pinsHit);
-    if (this._finalFrameBonusRolls.active) {
-      this._registerFinalFrameBonusRoll();
-    } else if (this._pinsRemaining === 0) {
-      this._handleNoPinsRemaining();
-    } else if (this._rollsMadeInCurrentFrame === 2) {
-      this._handleBothRollsMadeInFrame();
-    }
-  }
-  getGameStateInfo() {
-    if (this.gameFinished) {
-      return this._getFinishedGameStateInfo();
-    } else {
-      return this._getInProgressGameStateInfo();
-    }
   }
   // Response object makers
   _getFinishedGameStateInfo() {
@@ -49,7 +45,7 @@ class Scorecard {
       finished: true,
       gameInfo: {
         score: this.currentScore,
-      }
+      },
     };
   }
   _getInProgressGameStateInfo() {
@@ -60,7 +56,7 @@ class Scorecard {
         nextRoll: this._rollsMadeInCurrentFrame + 1,
         isFinalFrameBonusRoll: this._finalFrameBonusRolls.active,
         score: this.currentScore,
-      }
+      },
     };
   }
   // Error makers
@@ -85,6 +81,11 @@ class Scorecard {
     );
   }
   // Updating & logging functions
+  _doUpdatesForAddedRoll(pinsHit) {
+    this._updateGameState(pinsHit);
+    this._logRollData(pinsHit);
+    this._updateScoreForRoll(pinsHit);
+  }
   _updateScoreForRoll(pinsHit) {
     // Update score, then handle bonus lifetimes
     this.currentScore += this._calculateRollScore(pinsHit);
@@ -110,6 +111,15 @@ class Scorecard {
     }
   }
   // Game state logic handling
+  _doGameLogicHandling() {
+    if (this._finalFrameBonusRolls.active) {
+      this._registerFinalFrameBonusRoll();
+    } else if (this._pinsRemaining === 0) {
+      this._handleNoPinsRemaining();
+    } else if (this._rollsMadeInCurrentFrame === 2) {
+      this._handleBothRollsMadeInFrame();
+    }
+  }
   _handleBothRollsMadeInFrame() {
     if (this._currentFrame !== NUMBER_OF_FRAMES) {
       this._gotoNextFrame();
@@ -180,7 +190,6 @@ class Scorecard {
   _getBonusMultiplier() {
     return this._activeBonusLifetimes.length;
   }
-
 }
 
 module.exports = Scorecard;

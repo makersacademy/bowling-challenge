@@ -2,6 +2,14 @@ const Scorecard = require("./scorecard");
 
 let cases = null;
 
+const simulateGame = (rolls) => {
+  const scorecard = new Scorecard();
+  rolls.forEach((roll) => {
+    scorecard.addRoll(roll);
+  });
+  return scorecard;
+}
+
 describe("Scorecard", () => {
   it("can be constructed", () => {
     const scorecard = new Scorecard();

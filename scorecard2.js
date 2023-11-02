@@ -64,10 +64,10 @@ class ScoreCard {
             cumulative_score += this.getFrameTotal(frame)
 
             const frameScoreCard = {
-                number: (this.frames.indexOf(frame)+1),
-                rolls: frame.rolls,
-                type: frame.type,
-                frameScore: cumulative_score
+                number: (this.frames.indexOf(frame)+1), // 1-10
+                rolls: frame.rolls, 
+                type: frame.type, // open, spare, strike
+                frameScore: cumulative_score 
             }
             scorecard.push(frameScoreCard)
         });
@@ -81,23 +81,19 @@ class ScoreCard {
         let bonus = 0;
         // find the index of the current frame
         const thisFrameIndex = this.frames.indexOf(frame);
+        // find the next frame
+        const nextFrame = this.frames[thisFrameIndex + 1];
 
-        try {
-            // find the next frame,
-            const nextFrame = this.frames[thisFrameIndex + 1];
+        // If nextFrame has happened:
+        if (nextFrame !== undefined) {
             // find the first roll of the next frame
             bonus += nextFrame.rolls[0];
             // update the frame bonus
             frame.updateBonus(bonus);
-
-        } catch (error) {
-            // no bonus added if next roll hasn't happened yet.
-            if (error instanceof RangeError) { 
-                // pass, no bonus to add
-            } else {
-                // console.error('An error occured:', error.message); // Cannot read properties of undefined (reading 'rolls')
-            }
+            
+        } else { // no bonus added if next roll hasn't happened yet.
         }
+
         return bonus;
     };
 
@@ -106,47 +102,39 @@ class ScoreCard {
         let bonus = 0;
         // find the index of the current frame
         const thisFrameIndex = this.frames.indexOf(frame);
+        // find the next frame
+        const nextFrame = this.frames[thisFrameIndex + 1];
 
-        // try to find the next frame:
-        try {
-            // find the next frame,
-            const nextFrame = this.frames[thisFrameIndex + 1];
-            // find the first roll of the next frame
+        // If nextFrame has happened:
+        if (nextFrame !== undefined) {
+            // Add the first roll to the bonus. This is roll 1/2 of a strike bonus.
             bonus += nextFrame.rolls[0];
 
-            // if the next frame is a strike AND is NOT frame 10 (thisFrame is NOT frame 9):
-            if (nextFrame.type === 'strike' && thisFrameIndex !== 8) {
-                
-                // try to find the next-next-frame:
-                // This allows the score to be updated for a frame sequence STRIKE, STRIKE, No roll yet.
-                try {
-                    // find the next-next-frame,
-                    const nextNextFrame = this.frames[thisFrameIndex + 2];
-                    // find the first roll of the next-next-frame
-                    bonus += nextNextFrame.rolls[0];
+            // ========= Finding roll 2/2 of the strike bonus:===========
 
-                } catch (error) {
-                    // no bonus added if next-next-frame hasn't happened yet.
-                    if (error instanceof RangeError) { 
-                        // pass, no bonus to add
-                    } else {
-                        // console.error('An error occured:', error.message);
-                    }
+            // CASE 1: if the nextFrame is a strike AND is NOT frame 10 (thisFrame is NOT frame 9):
+            if (nextFrame.type === 'strike' && thisFrameIndex !== 8) {
+
+                // Try to find the nextNextFrame:
+                // This allows the score to be updated for a frame sequence STRIKE, STRIKE, No roll yet.
+                const nextNextFrame = this.frames[thisFrameIndex + 2];
+                
+                // If the nextNextFrame has happened:
+                if (nextNextFrame !== undefined) {
+                    // Add the first roll to the bonus. This is roll 2/2 of the strike bonus.
+                    bonus += nextNextFrame.rolls[0];
+                } else {
+                    // no bonus added if the nextNextFrame hasn't happened yet.
                 }
-            
-            // next frame is NOT a strike OR next frame IS a strike on frame 10:
+
+            // CASE 2: nextFrame is NOT a strike OR nextFrame IS a strike on frame 10:
+            // If pattern is Strike + Spare || Strike + Open || Strike + 10th Frame special
             } else { 
-                // second bonus is from the second roll of the next frame
+                // Add the second roll to the bonus. This is roll 2/2 of the strike bonus.
                 bonus += nextFrame.rolls[1]
             }
-
-        } catch (error) {
-            // no bonus added if next roll hasn't happened yet.
-            if (error instanceof RangeError) { 
-                // pass, no bonus to add
-            } else {
-                // console.error('An error occured:', error.message);
-            }
+            
+        } else { // no bonus added if nextFrame hasn't happened yet.
         }
 
         // update the bonus of this frame with the cumulated bonus:
@@ -178,10 +166,16 @@ class ScoreCard {
      * @returns {number}
      */
     getFrameTotal(frame) {
-        // If frame is frames 1-9, check for bonuses. If this is run on an open frame 10, nothing happens.
+        // Checks for and adds bonuses for the following conditions:
+        // Frames 1-9: strike or spare
+
+        // No bonus updates for the following conditions:
+        // Frames 1-10: open
+        // Frame 10: strike or spare
         if (!(frame instanceof TenthFrameSpecial)) {
             this.checkForBonus(frame)
         }
+        
         // Get the total after any bonuses
         return frame.getCurrentTotal();
     };

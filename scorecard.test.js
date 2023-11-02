@@ -311,4 +311,55 @@ describe("Scorecard", () => {
       expect(scorecard.currentScore).toBe(6);
     },
   );
+  it(
+    "upon a strike in frame 1, then a roll of 7 in frame 2:\n" +
+      "- it sets ._currentFrame to 2",
+    () => {
+      const scorecard = scorecardWithRolls([10, 7]);
+      expect(scorecard._currentFrame).toBe(2);
+    },
+  );
+  it(
+    "upon a strike in frame 1, then a roll of 7 in frame 2:\n" +
+      "- it sets ._rollsMadeInCurrentFrame to 1",
+    () => {
+      const scorecard = scorecardWithRolls([10, 7]);
+      expect(scorecard._rollsMadeInCurrentFrame).toBe(1);
+    },
+  );
+  it(
+    "upon a strike in frame 1, then a roll of 7 in frame 2:\n" +
+      "- it sets ._pinsRemaining to 3",
+    () => {
+      const scorecard = scorecardWithRolls([10, 7]);
+      expect(scorecard._pinsRemaining).toBe(3);
+    },
+  );
+  it(
+    "upon a strike in frame 1, then a roll of 7 in frame 2:\n" +
+      "- it sets ._activeBonusLifetimes to [1]",
+    () => {
+      const scorecard = scorecardWithRolls([10, 7]);
+      expect(scorecard._activeBonusLifetimes).toEqual([1]);
+    },
+  );
+  it(
+    "upon a strike in frame 1, then a roll of 7 in frame 2:\n" +
+      "- it pushes two corresponding objects to .historyLog",
+    () => {
+      const scorecard = scorecardWithRolls([10, 7]);
+      expect(scorecard.historyLog).toEqual([
+        { frame: 1, rollInFrame: 1, pinsHit: 10 },
+        { frame: 2, rollInFrame: 1, pinsHit: 7 },
+      ]);
+    },
+  );
+  it(
+    "upon a strike in frame 1, then a roll of 7 in frame 2:\n" +
+      "- it sets .currentScore to 24",
+    () => {
+      const scorecard = scorecardWithRolls([10, 7]);
+      expect(scorecard.currentScore).toBe(24);
+    },
+  );
 });

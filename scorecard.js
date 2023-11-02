@@ -22,7 +22,9 @@ class Scorecard {
       rollInFrame: this._rollsMadeInCurrentFrame,
       pinsHit: pinsHit,
     });
-    this.currentScore += pinsHit;
+    // Update score, then handle bonus lifetimes
+    this.currentScore += this._calculateRollScore(pinsHit);
+    this._tickBonusLifetimes();
     if (this._pinsRemaining === 0) {
       // Check for strike or spare
       if (this._rollsMadeInCurrentFrame === 1) {
@@ -43,6 +45,21 @@ class Scorecard {
     this._currentFrame += 1;
     this._rollsMadeInCurrentFrame = 0;
     this._pinsRemaining = 10;
+  }
+  _calculateRollScore(pinsHit) {
+    const multiplier = this._getBaseMultiplier() + this._getBonusMultiplier();
+    return pinsHit * multiplier;
+  }
+  _getBaseMultiplier() {
+    return 1;
+  }
+  _getBonusMultiplier() {
+    return this._activeBonusLifetimes.length;
+  }
+  _tickBonusLifetimes() {
+    this._activeBonusLifetimes = this._activeBonusLifetimes.map(
+      (lifetime) => lifetime - 1
+    )
   }
 }
 

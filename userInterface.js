@@ -1,4 +1,5 @@
-const readline = require('node:readline');
+//const readline = require('node:readline');
+const readline = require('node:readline/promises');
 const { stdin: input, stdout: output } = require('node:process');
 
 // === Buggy version ===
@@ -23,13 +24,10 @@ class UserInterface {
     this.scorecard = scorecard;
     this.rl = readline.createInterface({ input, output });
   }
-  tellMeTheScore() {
-    this.rl.question("What is your name?", (answer) => {
-      const score = this.scorecard.getGameStateInfo.gameInfo.score;
-      this.rl.write(
-        `Thanks, ${answer}. The current score is ${score}.`
-      );
-    });
+  async tellMeTheScore() {
+    const answer = await this.rl.question("What is your name?\n> ");
+    const score = this.scorecard.getGameStateInfo().gameInfo.score;
+    this.rl.write(`Thanks, ${answer}. The current score is ${score}.`);
   }
 }
 

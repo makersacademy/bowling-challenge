@@ -8,5 +8,6 @@ describe("UserInterface", () => {
     const scorecard = new Scorecard();
     const userInterface = new UserInterface(scorecard);
     expect(userInterface).toBeInstanceOf(UserInterface);
+    userInterface.rl.close();
   });
 });

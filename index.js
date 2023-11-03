@@ -4,3 +4,4 @@
 //   > .load ./index.js
 
 const Scorecard = require("./scorecard");
+const UserInterface = require("./userInterface");

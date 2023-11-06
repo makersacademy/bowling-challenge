@@ -5,13 +5,11 @@ const UserInterface = require("./userInterface");
 const mainFunction = (async () => {
   const scorecard = new Scorecard();
   const userInterface = new UserInterface(scorecard);
-  try {
-    await userInterface.tellMeTheScore();
-  } catch(err) {
-    console.log(`Error: ${err}`);
-  } finally {
-    userInterface.rl.close();
+  while (!userInterface.gameIsFinished()) {
+    await userInterface.showGameStateInfo();
+    await userInterface.addRollToScorecard();
   }
+  await userInterface.showGameStateInfo();
   process.exit();
 });
 

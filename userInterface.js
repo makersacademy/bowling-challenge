@@ -25,24 +25,22 @@ class UserInterface {
     const gameStateInfo = this.scorecard.getGameStateInfo();
     const score = gameStateInfo.gameInfo.score;
     if (gameStateInfo.finished) {
-      await this.rl.write(
-        `Game finished!\nYour score was: ${score}\n`
-      );
+      await this.rl.write(`Game finished!\nYour score was: ${score}\n`);
     } else {
       const frame = gameStateInfo.gameInfo.frame;
       const rollInFrame = gameStateInfo.gameInfo.nextRoll;
       if (gameStateInfo.gameInfo.isFinalFrameBonusRoll) {
         await this.rl.write(
           "Next up:\n" +
-          "  Final frame bonus roll!\n" +
-          `  Frame ${frame} | Roll ${rollInFrame}\n` +
-          `Score so far: ${score}\n`
+            "  Final frame bonus roll!\n" +
+            `  Frame ${frame} | Roll ${rollInFrame}\n` +
+            `Score so far: ${score}\n`,
         );
       } else {
         await this.rl.write(
           "Next up:\n" +
-          `  Frame ${frame} | Roll ${rollInFrame}\n` +
-          `Score so far: ${score}\n`
+            `  Frame ${frame} | Roll ${rollInFrame}\n` +
+            `Score so far: ${score}\n`,
         );
       }
     }
@@ -57,8 +55,10 @@ class UserInterface {
     const pinsHit = await this.rl.question("Pins knocked down this roll:\n> ");
     try {
       this.scorecard.addRoll(Number(pinsHit));
-    } catch(error) {
-      await this.rl.write("Sorry! That doesn't look quite right - please double check.\n");
+    } catch (error) {
+      await this.rl.write(
+        "Sorry! That doesn't look quite right - please double check.\n",
+      );
       await this.addRollToScorecard();
     }
   }

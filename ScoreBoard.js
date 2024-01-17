@@ -1,4 +1,5 @@
 class ScoreBoard {
+
     constructor() {
         this.frames = { 'frame01': 0, 'frame02': 0}
         this.rolls = { 'roll01': 0, 'roll02': 0}
@@ -20,4 +21,5 @@ class ScoreBoard {
     }
 }
 
-module.exports.ScoreBoard = ScoreBoard
+module.exports.scoreBoard = scoreBoard
+

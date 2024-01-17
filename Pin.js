@@ -1,4 +1,4 @@
-class Pin {
+class bowlingPin {
     constructor() {
         this.rolls = { 'rollOne' : 0,
                        'rollTwo' : 0 }
@@ -17,4 +17,7 @@ class Pin {
     }
 }
 
-module.exports.Pin = Pin
+
+module.exports.bowlingPin = bowlingPin;
+
+

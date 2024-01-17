@@ -1,4 +1,4 @@
-class ScoreBoard {
+class scoreBoard {
 
     constructor() {
         this.frames = { 'frame01': 0, 'frame02': 0}

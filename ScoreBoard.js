@@ -1,6 +1,5 @@
-// import random just to play around
+class ScoreBoard {
 
-class scoreBoard {
     constructor() {
         this.frames = { 'frame01': 0, 'frame02': 0}
         this.rolls = { 'roll01': 0, 'roll02': 0}
@@ -23,3 +22,4 @@ class scoreBoard {
 }
 
 module.exports.scoreBoard = scoreBoard
+

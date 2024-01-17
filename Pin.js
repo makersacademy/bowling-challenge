@@ -17,4 +17,7 @@ class bowlingPin {
     }
 }
 
+
 module.exports.bowlingPin = bowlingPin;
+
+

@@ -17,3 +17,4 @@ class Pin {
     }
 }
 
+module.exports.Pin = Pin

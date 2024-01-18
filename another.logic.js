@@ -55,7 +55,7 @@ class Game {
                     this.rl.close();
                 }
             });
-        } else if (turn > 1 && turn < 10){ 
+        } else { 
             this.rl.question(`Turn: ${turn} Roll again? (press Enter for yes, type 'no' to stop) `, (answer) => {
                 if (answer.toLowerCase() !== 'no') {
                     // No strike 
@@ -110,15 +110,21 @@ class Game {
                             this.total_score += (this.rollResult.rollOne + this.rollResult.rollTwo) * 2; // Double the bonus for striking last round
                             console.log(`Your ${turn} status: ${this.rollResult.rollOne}, Roll Two: ${this.rollResult.rollTwo}, Total Score ${this.total_score}`);
                         } 
+
+
                     // If got a spare and a strike
                     } else if (this.remaining_strike >= 1 && this.remaining_spare >= 1) {
                          // If you got a strike now
                          if (this.rollResult.rollOne == 10) {
                             this.total_score += 10;
                             this.total_score += this.rollResult.rollOne + this.rollResult.rollTwo;
+                            this.strike = true
+                            this.spare = false
                             console.log(`WOW, You got a strike in a roll: ${this.rollResult.rollOne}, Roll Two: ${this.rollResult.rollTwo}, Total Score ${this.total_score}`);
                          } else if (this.rollResult.rollOne + this.rollResult.rollTwo == 10) {
                             this.total_score += 10;
+                            this.strike = false
+                            this.spare = true
                             this.total_score += (this.rollResult.rollOne + this.rollResult.rollTwo) * 2; // Double the bonus for striking last round
                             console.log(`Your ${turn} status: ${this.rollResult.rollOne}, Roll Two: ${this.rollResult.rollTwo}, Total Score ${this.total_score}`);
 
@@ -126,29 +132,10 @@ class Game {
                     
                     }
                     this.rollAndAsk(playerName, turn + 1);
-                    
                 } else {
                     console.log("Game stopped");
                     this.rl.close();
-                    console.log(`WOW, You got a strike in a roll: ${this.rollResult.rollOne}, Roll Two: ${this.rollResult.rollTwo}, Total Score ${this.total_score}`);
                 }
-            });
-        } else if (turn == 10) {
-            this.rl.question(`Turn: ${turn} This is the last turn, if you hit a strike or a roll you will be able to run again. press enter to roll or 'no' to stop `, (answer) => {
-                if (answer.toLowerCase() !== 'no') {
-                    if (this.rollResult.rollOne == 10 || this.rollResult.rollOne + this.rollResult.rollTwo == 10) {
-                        this.total_score += 10;
-                        this.total_score += this.rollResult.rollOne + this.rollResult.rollTwo + this.rollResult.rollThree; // DUE TO THE 10th roll
-                        console.log(`You got an extra roll: ${this.rollResult.rollOne}, Roll Two: ${this.rollResult.rollTwo}, Roll Three: ${this.rollResult.rollThree} Total Score ${this.total_score}`);
-                    } else  {
-                        this.total_score = this.rollResult.rollOne + this.rollResult.rollTwo;
-                        console.log(`See final result: ${this.rollResult.rollOne}, Roll Two: ${this.rollResult.rollTwo}, Total Score ${this.total_score}`);
-                    }
-                    this.rollAndAsk(playerName, turn + 1);
-                } else {
-                    console.log("Game stopped");
-                    this.rl.close();
-                } 
             });
         }
     }

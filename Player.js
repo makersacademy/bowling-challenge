@@ -1,4 +1,4 @@
-class Player {
+class player {
     constructor() {
         this.player = { 'PlayerName' : "" , "PlayberNumberofWining": 0}
     }
@@ -11,4 +11,4 @@ class Player {
     }
 }
 
-module.export = Player
+module.exports.player = player
